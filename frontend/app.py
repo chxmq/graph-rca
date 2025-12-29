@@ -52,40 +52,78 @@ def main():
                     tmp.write(log_file.getvalue())
                     tmp_path = tmp.name
                 
-                parser = LogParser()
-                log_chain = parser.parse_log_from_file(tmp_path)
-                graph_gen = GraphGenerator(log_chain)
-                dag = graph_gen.generate_dag()
+                try:
+                    parser = LogParser()
+                    log_chain = parser.parse_log_from_file(tmp_path)
+                except ConnectionError as e:
+                    st.error(f"❌ Connection Error: {str(e)}")
+                    st.info("💡 **Troubleshooting:** Make sure Ollama service is running. Check with: `docker ps | grep ollama`")
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                    return
+                except ValueError as e:
+                    st.error(f"❌ Invalid Log File: {str(e)}")
+                    st.info("💡 **Tip:** Ensure your log file is in text format (.log or .txt) and contains valid log entries.")
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                    return
+                except Exception as e:
+                    st.error(f"❌ Error processing log file: {str(e)}")
+                    st.info("💡 **Troubleshooting:** Check that the log file is not corrupted and contains readable text.")
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                    return
+                finally:
+                    # Clean up temporary file if it still exists
+                    try:
+                        if os.path.exists(tmp_path):
+                            os.unlink(tmp_path)
+                    except OSError:
+                        pass
                 
-                # Build context
-                context_builder = ContextBuilder()
-                context = context_builder.build_context(dag)
-                
-                if log_chain:
-                    summary = rag.generate_summary(context.causal_chain)
-                    st.subheader("Log Analysis Summary")
-                    for summary_point in summary.summary:
-                        if summary_point:
-                            st.write(f"• {summary_point}")
-                    st.subheader("Root Cause")
-                    st.write(summary.root_cause_expln)
-                    st.subheader("Severity")
-                    st.write(summary.severity)
-                
-                # Store results in session state
-                st.session_state.processed_log = {
-                    'file_hash': current_file_hash,
-                    'dag': dag,
-                    'context': context,
-                    'summary': summary,
-                    'severity': summary.severity,
-                    'root_cause': summary.root_cause_expln
-                }
-                
-                # Store in MongoDB (keep this outside session state)
-                mongo.save_dag(dag.model_dump())
-                mongo.save_context(context.model_dump())
-                st.success("Log processed and stored successfully!")
+                # Only continue if parsing was successful
+                try:
+                    graph_gen = GraphGenerator(log_chain)
+                    dag = graph_gen.generate_dag()
+                    
+                    # Build context
+                    context_builder = ContextBuilder()
+                    context = context_builder.build_context(dag)
+                    
+                    if log_chain:
+                        summary = rag.generate_summary(context.causal_chain)
+                        st.subheader("Log Analysis Summary")
+                        for summary_point in summary.summary:
+                            if summary_point:
+                                st.write(f"• {summary_point}")
+                        st.subheader("Root Cause")
+                        st.write(summary.root_cause_expln)
+                        st.subheader("Severity")
+                        st.write(summary.severity)
+                    
+                    # Store results in session state
+                    st.session_state.processed_log = {
+                        'file_hash': current_file_hash,
+                        'dag': dag,
+                        'context': context,
+                        'summary': summary,
+                        'severity': summary.severity,
+                        'root_cause': summary.root_cause_expln
+                    }
+                    
+                    # Store in MongoDB (keep this outside session state)
+                    mongo.save_dag(dag.model_dump())
+                    mongo.save_context(context.model_dump())
+                    st.success("✅ Log processed and stored successfully!")
+                except Exception as e:
+                    st.error(f"❌ Error generating analysis: {str(e)}")
+                    st.info("💡 **Troubleshooting:** Check that all services are running and models are installed.")
             else:
                 st.info("Using cached log analysis results")
                 
@@ -115,7 +153,8 @@ def main():
                 docs = [f.read().decode() for f in doc_files]
                 
                 if not docs or len(docs) == 0:
-                    st.error("No valid text extracted from uploaded file!")
+                    st.error("❌ No valid text extracted from uploaded file!")
+                    st.info("💡 **Tip:** Ensure your documentation files contain readable text. Supported formats: .txt, .md")
                     return
                 
                 # Store in session state
@@ -124,8 +163,17 @@ def main():
                     'docs': docs
                 }
                 
-                rag.store_documentation(docs)
-                st.success(f"Stored {len(docs)} documentation chunks")
+                try:
+                    rag.store_documentation(docs)
+                    st.success(f"✅ Stored {len(docs)} documentation chunks")
+                except ConnectionError as e:
+                    st.error(f"❌ Connection Error: {str(e)}")
+                    st.info("💡 **Troubleshooting:** Make sure ChromaDB service is running. Check with: `docker ps | grep chroma`")
+                    return
+                except Exception as e:
+                    st.error(f"❌ Error storing documentation: {str(e)}")
+                    st.info("💡 **Troubleshooting:** Check that ChromaDB is accessible and the files contain valid text.")
+                    return
             else:
                 st.info("Using cached documentation")
             
@@ -175,9 +223,18 @@ def main():
                 else:
                     st.warning("No solution could be generated. Please check the documentation and try again.")
 
+            except ConnectionError as e:
+                st.error(f"❌ Connection Error: {str(e)}")
+                st.info("💡 **Troubleshooting:**")
+                st.info("1. Verify Ollama is running: `docker ps | grep ollama`")
+                st.info("2. Verify ChromaDB is running: `docker ps | grep chroma`")
+                st.info("3. Check service logs: `docker logs graph-rca-ollama`")
             except Exception as e:
-                st.error("⚠️ Error generating solution")
-                st.error(str(e))
+                st.error(f"❌ Error generating solution: {str(e)}")
+                st.info("💡 **Troubleshooting:**")
+                st.info("1. Ensure documentation has been uploaded")
+                st.info("2. Check that models are installed: `docker exec -it graph-rca-ollama ollama list`")
+                st.info("3. Try uploading more comprehensive documentation")
         else:
             st.warning("Please process a log file first to generate solutions")
 
