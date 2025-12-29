@@ -1,7 +1,5 @@
-import mirascope
-import ollama
 from typing import List
-from chromadb.utils.embedding_functions import OllamaEmbeddingFunction
+from core.database_handlers import OllamaEmbeddingFunction
 
 # import needed embedding logic
 # use bert or any other embedding models via ollama or mirascope
