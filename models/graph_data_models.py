@@ -19,4 +19,3 @@ class DAG(BaseModel):
     root_id: str = Field(description="Unique identifier of the root node")
     root_cause: Optional[str] = Field(description="Root cause of the issue")
     leaf_ids: list[str] = Field(description="List of unique identifiers of the leaf nodes")
-    log_chain: LogChain = Field(description="Collection of log entries")

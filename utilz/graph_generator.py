@@ -26,7 +26,7 @@ class GraphGenerator:
             self._find_root_and_leaf_nodes()
             self.root_cause = self.find_root_cause()
             
-            return DAG(nodes=self.dag_nodes,root_id=self.root_id,leaf_ids=self.leaf_ids,log_chain=self.log_chain,root_cause=self.root_cause)
+            return DAG(nodes=self.dag_nodes,root_id=self.root_id,leaf_ids=self.leaf_ids,root_cause=self.root_cause)
             
         except Exception as e:
             raise RuntimeError(f"Failed to generate DAG: {str(e)}")

@@ -80,8 +80,7 @@ def test_dag_with_multiple_nodes():
         nodes=[node1, node2],
         root_id="1",
         root_cause="Test cause",
-        leaf_ids=["2"],
-        log_chain=log_chain
+        leaf_ids=["2"]
     )
     assert len(dag.nodes) == 2
     assert dag.leaf_ids == ["2"]
@@ -95,8 +94,7 @@ def test_dag_without_root_cause():
             nodes=[node],
             root_id="1",
             root_cause=None,
-            leaf_ids=["1"],
-            log_chain=log_chain
+            leaf_ids=["1"]
         )
     assert dag.root_cause is None
 
