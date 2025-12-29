@@ -1,44 +1,20 @@
 import chromadb
+import chromadb.utils.embedding_functions as embedding_functions
 import pymongo
 from pymongo import MongoClient
-from chromadb.utils.embedding_functions import EmbeddingFunction
+from chromadb.utils.embedding_functions import OllamaEmbeddingFunction
 from typing import List
 from dataclasses import dataclass
-import requests
 
 @dataclass
 class Document:
     text: str
     metadata: dict
 
-class OllamaEmbeddingFunction(EmbeddingFunction):
-    """Custom Ollama embedding function for ChromaDB"""
-    def __init__(self, model_name: str, url: str):
-        self.model_name = model_name
-        self.url = url
-    
-    def __call__(self, input: List[str]) -> List[List[float]]:
-        """Generate embeddings for a list of texts"""
-        embeddings = []
-        for text in input:
-            try:
-                response = requests.post(
-                    self.url,
-                    json={"model": self.model_name, "prompt": text}
-                )
-                if response.status_code == 200:
-                    embeddings.append(response.json()["embedding"])
-                else:
-                    # Return zero vector on error
-                    embeddings.append([0.0] * 768)  # Default embedding size
-            except Exception as e:
-                print(f"Error generating embedding: {e}")
-                embeddings.append([0.0] * 768)
-        return embeddings
-
 class VectorDatabaseHandler:
     def __init__(self):
         try:
+            print("Initializing VectorDatabaseHandler...")
             self.client = chromadb.HttpClient(
                 host='localhost', 
                 port=8000,
@@ -47,30 +23,41 @@ class VectorDatabaseHandler:
                     is_persistent=True
                 )
             )
+            print("ChromaDB client initialized")
             
             # Test connection
-            self.client.heartbeat()
+            try:
+                self.client.heartbeat()
+                print("ChromaDB connection successful")
+            except Exception as e:
+                print(f"ChromaDB connection failed: {str(e)}")
+                raise
                 
             self.ef = OllamaEmbeddingFunction(
                 model_name="nomic-embed-text",
                 url="http://localhost:11435/api/embeddings",
             )
+            print("Embedding function initialized")
             
         except Exception as e:
-            raise ConnectionError(
-                f"Failed to connect to ChromaDB at localhost:8000. "
-                f"Make sure the ChromaDB service is running. "
-                f"Error: {str(e)}"
-            )
+            print(f"Error initializing VectorDB: {str(e)}")
+            import traceback
+            print(f"Full initialization error: {traceback.format_exc()}")
+            raise
     
     def get_collection(self, name: str = "docs"):
         try:
+            print(f"Getting collection: {name}")
             collection = self.client.get_or_create_collection(
                 name=name,
                 embedding_function=self.ef
             )
+            print(f"Collection info: {collection.count()} documents")
             return collection
         except Exception as e:
+            print(f"Error getting collection: {str(e)}")
+            import traceback
+            print(f"Collection error traceback: {traceback.format_exc()}")
             return None
     
     def add_documents(self, documents: List[str], embeddings: List[List[float]]):
@@ -94,12 +81,16 @@ class VectorDatabaseHandler:
     def search(self, query: str, context: str, top_k: int = 5) -> list:
         """Search implementation using text query"""
         try:
+            print("\n=== Starting Vector Search ===")
             collection = self.get_collection()
+            print(f"Debug - Collection: {collection}")
             
             if not collection:
+                print("Debug - No collection found")
                 return [Document(text="No documentation available", metadata={"source": "system"})]
 
             query_text = f"{query}\nContext: {context}"
+            print(f"Debug - Query text: {query_text}")
             
             try:
                 results = collection.query(
@@ -107,20 +98,33 @@ class VectorDatabaseHandler:
                     n_results=top_k,
                     include=["documents", "metadatas"]
                 )
+                print(f"Debug - Raw results type: {type(results)}")
+                print(f"Debug - Raw results keys: {results.keys() if hasattr(results, 'keys') else 'No keys'}")
+                print(f"Debug - Raw results: {results}")
             except Exception as e:
+                print(f"Query execution error: {str(e)}")
+                import traceback
+                print(f"Query error traceback: {traceback.format_exc()}")
                 return [Document(text=f"Error executing query: {str(e)}", metadata={"source": "error"})]
             
             if not results:
+                print("Debug - No results returned")
                 return [Document(text="No relevant documentation found", metadata={"source": "system"})]
             
             if not isinstance(results, dict):
+                print(f"Debug - Unexpected results type: {type(results)}")
                 return [Document(text="Unexpected query result format", metadata={"source": "error"})]
             
             if "documents" not in results:
+                print("Debug - No documents in results")
                 return [Document(text="No documents found in results", metadata={"source": "system"})]
             
             if not results["documents"] or not results["documents"][0]:
+                print("Debug - Empty documents list")
                 return [Document(text="Empty documents list", metadata={"source": "system"})]
+
+            print(f"Debug - Documents: {results['documents']}")
+            print(f"Debug - Metadatas: {results.get('metadatas', [])}")
 
             return [
                 Document(
@@ -132,6 +136,9 @@ class VectorDatabaseHandler:
                 )
             ]
         except Exception as e:
+            print(f"Search error: {str(e)}")
+            import traceback
+            print(f"Debug - Full traceback: {traceback.format_exc()}")
             return [Document(text=f"Error searching documentation: {str(e)}", metadata={"source": "error"})]
 
 class MongoDBHandler:

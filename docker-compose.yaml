@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   chroma:
     image: chromadb/chroma:latest
@@ -32,8 +30,6 @@ services:
       - "11435:11434"
     volumes:
       - ./data/ollama:/root/.ollama
-    networks:
-      - rca-network
     deploy:
       resources:
         reservations:
@@ -41,6 +37,8 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    networks:
+      - rca-network
 
 networks:
   rca-network:
