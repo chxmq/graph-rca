@@ -1,19 +1,12 @@
 from typing import List
 from core.database_handlers import OllamaEmbeddingFunction
 
-# import needed embedding logic
-# use bert or any other embedding models via ollama or mirascope
-
 class EmbeddingCreator:
     def __init__(self):
         self.ef = OllamaEmbeddingFunction(
             url="http://localhost:11435/api/embeddings",
             model_name="nomic-embed-text"
         )
-    
-    def show_model(self, model_name: str):
-        # this will show the model
-        pass
     
     def create_embedding(self, text: str) -> List[float]:
         """Create embedding for a single text"""
@@ -40,5 +33,9 @@ class EmbeddingCreator:
         dot_product = sum(a*b for a, b in zip(embedding1, embedding2))
         norm_a = sum(a**2 for a in embedding1) ** 0.5
         norm_b = sum(b**2 for b in embedding2) ** 0.5
+        
+        # Prevent division by zero for zero vectors
+        if norm_a == 0 or norm_b == 0:
+            return 0.0
+            
         return dot_product / (norm_a * norm_b)
-    

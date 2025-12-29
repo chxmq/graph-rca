@@ -68,13 +68,35 @@ def test_trace_info_optional_fields():
 
 # DAG Tests
 def test_dag_with_multiple_nodes():
-    log_entry1 = LogEntry(timestamp="2023-01-01", message="test1", level="INFO",user_info=None,system_info=None,trace_info=None)
-    log_entry2 = LogEntry(timestamp="2023-01-01", message="test2", level="ERROR",user_info=None,system_info=None,trace_info=None)
+    log_entry1 = LogEntry(
+        timestamp="2023-01-01", 
+        message="test1", 
+        level="INFO",
+        pid="",
+        component="",
+        error_code="",
+        username="",
+        ip_address="",
+        group="",
+        trace_id="",
+        request_id=""
+    )
+    log_entry2 = LogEntry(
+        timestamp="2023-01-01", 
+        message="test2", 
+        level="ERROR",
+        pid="",
+        component="",
+        error_code="",
+        username="",
+        ip_address="",
+        group="",
+        trace_id="",
+        request_id=""
+    )
     
     node1 = DAGNode(id="1", parent_id=None, children=["2"], log_entry=log_entry1)
     node2 = DAGNode(id="2", parent_id="1", children=[], log_entry=log_entry2)
-    
-    log_chain = LogChain(log_chain=[log_entry1, log_entry2])
     
     dag = DAG(
         nodes=[node1, node2],
@@ -86,9 +108,20 @@ def test_dag_with_multiple_nodes():
     assert dag.leaf_ids == ["2"]
 
 def test_dag_without_root_cause():
-    log_entry = LogEntry(timestamp="2023-01-01", message="test", level="INFO",user_info=None,system_info=None,trace_info=None)
+    log_entry = LogEntry(
+        timestamp="2023-01-01", 
+        message="test", 
+        level="INFO",
+        pid="",
+        component="",
+        error_code="",
+        username="",
+        ip_address="",
+        group="",
+        trace_id="",
+        request_id=""
+    )
     node = DAGNode(id="1", parent_id=None, children=[], log_entry=log_entry)
-    log_chain = LogChain(log_chain=[log_entry])
     
     dag = DAG(
             nodes=[node],

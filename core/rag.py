@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List
 from models.rag_response_data_models import SummaryResponse, SolutionQuery
 from .embedding import EmbeddingCreator
 from core.database_handlers import VectorDatabaseHandler, MongoDBHandler
@@ -23,16 +23,43 @@ class RAG_Engine:
     def generate_summary(self, context: List[str]) -> SummaryResponse:
         """Generate summary using LLM"""
         context_text = '\n'.join(context)
+        
+        prompt = f"""Analyze the following log context and provide a structured summary in JSON format.
+
+Log Context:
+{context_text}
+
+Provide your response in this exact JSON structure:
+{{
+  "summary": ["summary point 1", "summary point 2", "summary point 3"],
+  "root_cause": "detailed explanation of the root cause",
+  "severity": "Critical|High|Medium|Low"
+}}
+
+Make sure to identify the actual root cause from the logs and assess the appropriate severity level."""
+
         response = self.ollama_client.generate(
             model="llama3.2:3b",
-            prompt=f"Summarize this log context and identify root cause:\n{context_text}",
+            prompt=prompt,
+            format="json",
             options={"temperature": 0.2}
         )
-        return SummaryResponse(
-            summary=response['response'].split("\n"),
-            root_cause_expln="Identified via log analysis",
-            severity="High"
-        )
+        
+        try:
+            import json
+            parsed = json.loads(response['response'])
+            return SummaryResponse(
+                summary=parsed.get('summary', ['Unable to generate summary']),
+                root_cause_expln=parsed.get('root_cause', 'Unable to identify root cause'),
+                severity=parsed.get('severity', 'Unknown')
+            )
+        except (json.JSONDecodeError, KeyError) as e:
+            # Fallback if JSON parsing fails
+            return SummaryResponse(
+                summary=response['response'].split("\n"),
+                root_cause_expln="Unable to parse root cause from LLM response",
+                severity="Unknown"
+            )
     
     def generate_solution(self, context: str, root_cause: str) -> SolutionQuery:
         """Generate solution using RAG with automatic query"""
