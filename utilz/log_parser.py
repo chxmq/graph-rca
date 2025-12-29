@@ -1,8 +1,3 @@
-# Fix for SSL_CERT_FILE environment variable issue on some servers
-import os
-if 'SSL_CERT_FILE' in os.environ:
-    del os.environ['SSL_CERT_FILE']
-
 import ollama
 from datetime import datetime
 from models.parsing_data_models import LogEntry, LogChain
@@ -18,12 +13,7 @@ class LogParser:
             self.ollama_options = ollama.Options(temperature=0.2)
             self.system_prompt = f"You are an expert in log parsing. You are given a log entry and a pydantic model. Extract and fill the fields of the model with the information from the log entry."
         except Exception as e:
-            raise ConnectionError(
-                f"Failed to connect to Ollama at localhost:11435. "
-                f"Make sure the Ollama service is running and the model '{model}' is installed. "
-                f"Check with: docker exec -it graph-rca-ollama ollama list. "
-                f"Error: {str(e)}"
-            )
+            raise RuntimeError(f"Failed to initialize LogParser: {str(e)}")
         
     def extract_log_info_by_llm(self, log_entry: str) -> LogEntry:
         """Extract log information using the specified language model"""
@@ -57,6 +47,8 @@ class LogParser:
                 format="json"
             )
 
+            #print(f"Raw LLM response: {response.response}")  # Debug JSON output
+            
             # Handle empty responses
             if not response or not response.response.strip():
                 raise ValueError("Empty response from language model")

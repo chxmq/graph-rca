@@ -1,4 +1,7 @@
 from typing import List, Dict
+from mirascope.core import openai
+from mirascope.core.openai import OpenAICallParams
+from openai import OpenAI
 from models.rag_response_data_models import SummaryResponse, SolutionQuery
 from .embedding import EmbeddingCreator
 from core.database_handlers import VectorDatabaseHandler, MongoDBHandler
@@ -8,24 +11,16 @@ from langchain.schema import Document
 
 class RAG_Engine:
     def __init__(self):
-        try:
-            self.embedder = EmbeddingCreator()
-            self.vector_db = VectorDatabaseHandler()
-            self.mongo_db = MongoDBHandler()
-            self.ollama_client = ollama.Client(host="http://localhost:11435")
-        except Exception as e:
-            raise ConnectionError(
-                f"Failed to initialize RAG engine. "
-                f"Make sure all services (ChromaDB, MongoDB, Ollama) are running. "
-                f"Error: {str(e)}"
-            )
+        self.embedder = EmbeddingCreator()
+        self.vector_db = VectorDatabaseHandler()
+        self.mongo_db = MongoDBHandler()
+        self.ollama_client = ollama.Client(host="http://localhost:11435")
     
     def generate_summary(self, context: List[str]) -> SummaryResponse:
         """Generate summary using LLM"""
-        context_text = '\n'.join(context)
         response = self.ollama_client.generate(
             model="llama3.2:3b",
-            prompt=f"Summarize this log context and identify root cause:\n{context_text}",
+            prompt=f"Summarize this log context and identify root cause:\n{'\n'.join(context)}",
             options={"temperature": 0.2}
         )
         return SummaryResponse(
@@ -36,7 +31,10 @@ class RAG_Engine:
     
     def generate_solution(self, context: str, root_cause: str) -> SolutionQuery:
         """Generate solution using RAG with automatic query"""
+        print("\n=== Starting Solution Generation ===")
         automated_query = f"Provide resolution steps for: {root_cause}"
+        #print(f"Debug - Query: {automated_query}")
+        #print(f"Debug - Root cause: {root_cause}")
         
         try:
             # Ensure context is a string
@@ -48,20 +46,29 @@ class RAG_Engine:
             else:
                 context_str = context
             
+            #print(f"Debug - Context type after conversion: {type(context_str)}")
+            #print(f"Debug - Context preview: {context_str[:100]}...")
+            
             # Search documentation using context embeddings
             try:
+                print("\n=== Starting Vector Search ===")
                 results = self.vector_db.search(
                     query=automated_query,
                     context=context_str,
                     top_k=5
                 )
+                #print(f"Debug - Search results: {results}")
+                
             except Exception as e:
+                print(f"Vector search error: {str(e)}")
                 results = [Document(text="Error searching documentation", metadata={"source": "error"})]
             
             # Format context for prompt - Using doc.text since that's what our Document objects have
             doc_context = "\n".join([doc.text for doc in results])
+            #print(f"\nDebug - Formatted doc context: {doc_context[:200]}...")
             
             try:
+                print("\n=== Starting LLM Generation ===")
                 # Format response with sources
                 llm_response = self.ollama_client.generate(
                     model="llama3.2:3b",
@@ -95,8 +102,10 @@ Additional Recommendations:
 Please be specific and actionable in your recommendations.""",
                     options={"temperature": 0.1}
                 )
+                print(f"Debug - LLM response: {llm_response}")
                 
             except Exception as e:
+                print(f"LLM generation error: {str(e)}")
                 return SolutionQuery(
                     context=context_str,
                     query=automated_query,
@@ -131,6 +140,8 @@ Please be specific and actionable in your recommendations.""",
     
     def store_documentation(self, documents: List[str]) -> None:
         """Store documentation in ChromaDB"""
+        #print("\n=== Storing Documentation ===")
+        
         # Add validation for empty documents
         if not documents:
             raise ValueError("Received empty documents list")
@@ -143,15 +154,24 @@ Please be specific and actionable in your recommendations.""",
             add_start_index=True,
         )
         
+        #print(f"Original documents: {len(documents)} chunks")
         chunks = text_splitter.split_text("\n\n".join(documents))
+        #print(f"Split into {len(chunks)} chunks")
         
         # Validate chunks before embedding
         if not chunks:
             raise ValueError("No text chunks created after splitting")
         
+        #print("Creating embeddings...")
         embeddings = self.embedder.create_batch_embeddings(chunks)
+        #print(f"Created {len(embeddings)} embeddings")
         
+        #print("Storing in vector database...")
         self.vector_db.add_documents(
             documents=chunks,
             embeddings=embeddings
         )
+        
+        # Verify storage
+        collection = self.vector_db.get_collection()
+        #print(f"Collection now contains {collection.count()} documents")
