@@ -32,13 +32,24 @@ class GraphGenerator:
             raise RuntimeError(f"Failed to generate DAG: {str(e)}")
         
     def _set_parent_child_relationships(self) -> None:
-        """Set parent-child relationships between nodes"""
+        """Set parent-child relationships between nodes based on timestamp order.
+        Each node's parent is the immediately preceding node in time."""
         try:
-            for i in range(len(self.dag_nodes)):
-                for j in range(i+1,len(self.dag_nodes)):
-                    if self.dag_nodes[j].log_entry.timestamp > self.dag_nodes[i].log_entry.timestamp:
-                        self.dag_nodes[i].children.append(self.dag_nodes[j].id)
-                        self.dag_nodes[j].parent_id = self.dag_nodes[i].id
+            # Sort nodes by timestamp to ensure chronological order
+            sorted_nodes = sorted(self.dag_nodes, key=lambda n: n.log_entry.timestamp)
+            
+            # Create sequential parent-child relationships
+            for i in range(len(sorted_nodes) - 1):
+                current_node = sorted_nodes[i]
+                next_node = sorted_nodes[i + 1]
+                
+                # Set current node's child to be the next node
+                current_node.children.append(next_node.id)
+                # Set next node's parent to be the current node
+                next_node.parent_id = current_node.id
+            
+            # Update the dag_nodes list to use sorted order
+            self.dag_nodes = sorted_nodes
                         
         except Exception as e:
             raise RuntimeError(f"Failed to set parent-child relationships: {str(e)}")

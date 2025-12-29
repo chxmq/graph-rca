@@ -13,14 +13,14 @@ class ServerHealthCheck:
             server_info = self.chroma_client.heartbeat()
             return server_info != 0
         except Exception as e:
-            return str(e)
+            return False
     
     def check_mongo(self) -> bool:
         try:
             server_info = self.mongo_client.server_info()
             return server_info.get('ok', 0) == 1.0
         except Exception as e:
-            return str(e)
+            return False
 
 def check_services():
     health = ServerHealthCheck()

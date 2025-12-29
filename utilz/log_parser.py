@@ -4,8 +4,13 @@ if 'SSL_CERT_FILE' in os.environ:
     del os.environ['SSL_CERT_FILE']
 
 import ollama
+import logging
 from datetime import datetime
 from models.parsing_data_models import LogEntry, LogChain
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 LLAMA = "llama3.2:3b"
 QWEN = "qwen2.5-coder:3b"
@@ -72,8 +77,8 @@ class LogParser:
                 return parsed
                 
             except Exception as e:
-                print(f"JSON validation error: {e}")
-                print(f"Problematic JSON: {response.response}")
+                logger.error(f"JSON validation error: {e}")
+                logger.error(f"Problematic JSON: {response.response}")
                 raise
 
         except Exception as e:
@@ -109,23 +114,22 @@ class LogParser:
             log_data_split = log_data.split("\n")
             log_entries = []
             
-            print(f"Processing {len(log_data_split)} log lines")
+            logger.info(f"Processing {len(log_data_split)} log lines")
 
             for idx, log in enumerate(log_data_split):
                 if not log.strip():
-                    print(f"Skipping empty line {idx+1}")
+                    logger.debug(f"Skipping empty line {idx+1}")
                     continue
                     
                 try:
-                    print(f"\n--- Processing line {idx+1} ---")
-                    #print(f"Original log: {log}")
+                    logger.debug(f"Processing line {idx+1}")
                     entry = self.extract_log_info_by_llm(log)
-                    print(f"Parsed entry: {entry.model_dump_json(indent=2)}")
+                    logger.debug(f"Parsed entry: {entry.model_dump_json(indent=2)}")
                     # Store even partial entries for analysis
                     log_entries.append(entry)
                     
                 except Exception as e:
-                    print(f"Error processing line {idx+1}: {str(e)}")
+                    logger.warning(f"Error processing line {idx+1}: {str(e)}")
                     continue
             
             if not log_entries:
@@ -135,4 +139,3 @@ class LogParser:
             
         except Exception as e:
             raise RuntimeError(f"Failed to parse log data: {str(e)}")
-
