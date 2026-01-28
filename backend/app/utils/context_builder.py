@@ -4,20 +4,21 @@ from app.models.graph_data_models import DAGNode,DAG
 from app.models.context_data_models import Context
 
 class ContextBuilder:
-    def __init__(self) -> None:
-        self.dag = None
+    def __init__(self, dag: DAG) -> None:
+        if not dag:
+            raise ValueError("DAG is required to initialize ContextBuilder")
+        self.dag = dag
         self.root_cause = None
         self.causal_chain = []
     
-    def build_context(self,dag:DAG) -> Context:
-        if not dag:
-            raise RuntimeError("DAG is required to build context")
-        self.dag = dag
-        
+    def build_context(self) -> Context:
+        """Build context from the DAG, extracting root cause and causal chain."""
         try:
+            # Reset causal chain for fresh build
+            self.causal_chain = []
             self.root_cause = self.dag.root_cause
             self._find_causal_chain(self.dag.root_id)
-            return Context(root_cause=self.root_cause,causal_chain=self.causal_chain)
+            return Context(root_cause=self.root_cause, causal_chain=self.causal_chain)
         
         except Exception as e:
             raise RuntimeError(f"Failed to build context: {str(e)}")
