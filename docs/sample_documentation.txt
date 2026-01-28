@@ -15,7 +15,7 @@ The Flask server provides a RESTful API interface for the application. It handle
    - Create a `.env` file in the root directory
    - Add required environment variables:
      ```
-     FLASK_APP=frontend/app.py
+     FLASK_APP=app/frontend/app.py
      FLASK_ENV=development
      DATABASE_URL=your_database_connection_string
      ```
@@ -76,7 +76,7 @@ The server includes:
    ```
 2. Use gunicorn for production deployment:
    ```bash
-   gunicorn -w 4 -b 0.0.0.0:8000 frontend.app:app
+   gunicorn -w 4 -b 0.0.0.0:8000 app.frontend.app:app
    ```
 
 ## Troubleshooting

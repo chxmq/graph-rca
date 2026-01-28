@@ -1,8 +1,8 @@
 import pytest
-from models.context_data_models import Context
-from models.graph_data_models import DAG, DAGNode
-from models.parsing_data_models import LogEntry, LogChain, SystemInfo, UserInfo, TraceInfo
-from models.rag_response_data_models import SummaryResponse, SolutionQuery
+from app.models.context_data_models import Context
+from app.models.graph_data_models import DAG, DAGNode
+from app.models.parsing_data_models import LogEntry, LogChain, SystemInfo, UserInfo, TraceInfo
+from app.models.rag_response_data_models import SummaryResponse, SolutionQuery
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
 

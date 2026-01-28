@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, Mock
 import numpy as np
-from core.embedding import EmbeddingCreator
+from app.core.embedding import EmbeddingCreator
 
 class TestEmbeddingCreator(unittest.TestCase):
     def setUp(self):
@@ -51,7 +51,7 @@ class TestEmbeddingCreator(unittest.TestCase):
         with self.assertRaises(ZeroDivisionError):
             self.embedder.get_similarity([], [])
     
-    @patch('core.embedding.OllamaEmbeddingFunction')
+    @patch('app.core.embedding.OllamaEmbeddingFunction')
     def test_error_handling_in_embeddings(self, mock_embedding):
         # Create a mock instance that raises an exception
         mock_instance = Mock()

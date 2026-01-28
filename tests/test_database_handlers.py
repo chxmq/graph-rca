@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock, patch, MagicMock
-from core.database_handlers import VectorDatabaseHandler, MongoDBHandler, Document
+from app.core.database_handlers import VectorDatabaseHandler, MongoDBHandler, Document
 from pymongo.results import InsertOneResult
 from chromadb.api.models.Collection import Collection
 

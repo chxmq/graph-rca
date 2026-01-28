@@ -15,7 +15,7 @@ This application provides automated log analysis and incident resolution using A
 
 - Docker and Docker Compose
 - NVIDIA GPU (optional, for better performance)
-- Python 3.8+
+- Python 3.13 (Tested on this)
 
 ## Installation
 
@@ -68,7 +68,7 @@ docker exec -it $(docker ps -qf "name=ollama") ollama pull llama3.2:3b
 4. Run the Streamlit application:
 
 ```bash
-streamlit run frontend/app.py
+streamlit run app/frontend/app.py
 ```
 
 The application will be available at `http://localhost:8501`
