@@ -167,11 +167,49 @@ except ImportError:
     from drain3.template_miner_config import TemplateMinerConfig
 
 def parse_bgl_line(line):
-    match = re.match(r'(\S+)\s+(\S+)\s+(\w+)\s+(\w+)\s+(.*)', line.strip())
+    """Parse BGL log line - handles multiple formats."""
+    line = line.strip()
+    if not line:
+        return None
+    
+    # BGL format 1: "- timestamp date node ... severity message"
+    # Example: "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 ... FATAL ..."
+    match = re.match(r'^-?\s*(\d+)\s+(\S+)\s+(\S+)\s+(.*)', line)
     if match:
-        return {'timestamp': match.group(1), 'node': match.group(2), 
-                'severity': match.group(3), 'component': match.group(4), 'message': match.group(5)}
-    return None
+        # Extract severity from the message part
+        msg_part = match.group(4)
+        severity = "INFO"
+        for sev in ["FATAL", "ERROR", "WARNING", "FAILURE", "INFO"]:
+            if sev in msg_part.upper():
+                severity = sev
+                break
+        return {
+            'timestamp': match.group(1),
+            'node': match.group(3),
+            'severity': severity,
+            'component': 'kernel',
+            'message': msg_part
+        }
+    
+    # BGL format 2: Simple space-separated
+    parts = line.split(None, 4)
+    if len(parts) >= 2:
+        return {
+            'timestamp': parts[0],
+            'node': parts[1] if len(parts) > 1 else 'unknown',
+            'severity': 'INFO',
+            'component': 'system',
+            'message': parts[-1] if len(parts) > 2 else line
+        }
+    
+    # Fallback: treat entire line as message
+    return {
+        'timestamp': '0',
+        'node': 'unknown',
+        'severity': 'INFO',
+        'component': 'system',
+        'message': line
+    }
 
 config = TemplateMinerConfig()
 config.profiling_enabled = True
@@ -186,10 +224,13 @@ template_counts = defaultdict(int)
 print("Processing BGL logs with Drain...")
 with open("$DATA_DIR/BGL_2k.log", 'r') as f:
     for i, line in enumerate(f):
-        if not line.strip(): continue
+        if not line.strip(): 
+            continue
         total_lines += 1
+        
         parsed = parse_bgl_line(line)
-        if not parsed: continue
+        if not parsed:
+            continue
         
         start = time.perf_counter()
         result = template_miner.add_log_message(parsed['message'])
@@ -203,20 +244,29 @@ with open("$DATA_DIR/BGL_2k.log", 'r') as f:
         if (i + 1) % 500 == 0:
             print(f"  Processed {i+1} lines...")
 
+# Calculate statistics safely
+if parse_latencies:
+    avg_lat = statistics.mean(parse_latencies)
+    std_lat = statistics.stdev(parse_latencies) if len(parse_latencies) > 1 else 0
+    throughput = total_lines / (sum(parse_latencies) / 1000)
+else:
+    avg_lat = std_lat = throughput = 0
+
 results["metrics"] = {
     "total_lines": total_lines,
     "successful_parses": successful_parses,
     "parse_rate": round(successful_parses / total_lines * 100, 2) if total_lines > 0 else 0,
     "unique_templates": len(template_counts),
-    "avg_latency_ms": round(statistics.mean(parse_latencies), 4),
-    "std_latency_ms": round(statistics.stdev(parse_latencies), 4) if len(parse_latencies) > 1 else 0,
-    "throughput_logs_per_sec": round(total_lines / (sum(parse_latencies) / 1000), 1) if parse_latencies else 0
+    "avg_latency_ms": round(avg_lat, 4),
+    "std_latency_ms": round(std_lat, 4),
+    "throughput_logs_per_sec": round(throughput, 1)
 }
 
 with open("$RESULTS_DIR/drain_results.json", "w") as f:
     json.dump(results, f, indent=2)
 
 print(f"\nDrain Results:")
+print(f"  Total Lines: {results['metrics']['total_lines']}")
 print(f"  Parse Rate: {results['metrics']['parse_rate']}%")
 print(f"  Unique Templates: {results['metrics']['unique_templates']}")
 print(f"  Avg Latency: {results['metrics']['avg_latency_ms']:.4f}ms")
@@ -245,10 +295,38 @@ from datetime import datetime
 sys.path.insert(0, "$PROJECT_ROOT/backend")
 
 def parse_bgl_line(line):
-    match = re.match(r'(\S+)\s+(\S+)\s+(\w+)\s+(\w+)\s+(.*)', line.strip())
+    """Parse BGL log line to extract ground truth."""
+    line = line.strip()
+    if not line:
+        return None
+    
+    # BGL format: "- timestamp date node ... severity message"
+    match = re.match(r'^-?\s*(\d+)\s+(\S+)\s+(\S+)\s+(.*)', line)
     if match:
-        return {'timestamp': match.group(1), 'node': match.group(2),
-                'severity': match.group(3), 'component': match.group(4), 'message': match.group(5)}
+        msg_part = match.group(4)
+        severity = "INFO"
+        for sev in ["FATAL", "ERROR", "WARNING", "FAILURE", "INFO"]:
+            if sev in msg_part.upper():
+                severity = sev
+                break
+        return {
+            'timestamp': match.group(1),
+            'node': match.group(3),
+            'severity': severity,
+            'component': 'kernel',
+            'message': msg_part
+        }
+    
+    # Fallback
+    parts = line.split(None, 4)
+    if len(parts) >= 2:
+        return {
+            'timestamp': parts[0],
+            'node': parts[1] if len(parts) > 1 else 'unknown',
+            'severity': 'INFO',
+            'component': 'system',
+            'message': parts[-1] if len(parts) > 2 else line
+        }
     return None
 
 try:
@@ -284,9 +362,24 @@ for i, line in enumerate(sampled_lines):
         elapsed = time.perf_counter() - start
         latencies.append(elapsed)
         
-        sev_match = llm_result.level and llm_result.level.upper() == ground_truth['severity'].upper()
-        comp_match = llm_result.component and ground_truth['component'].lower() in llm_result.component.lower()
-        ts_match = llm_result.timestamp is not None
+            # Flexible severity matching (handle variations like FATAL/CRITICAL, ERROR/FAIL)
+            gt_sev = ground_truth['severity'].upper()
+            llm_sev = (llm_result.level or "").upper()
+            sev_synonyms = {
+                "FATAL": ["FATAL", "CRITICAL", "SEVERE"],
+                "ERROR": ["ERROR", "ERR", "FAIL", "FAILURE"],
+                "WARNING": ["WARNING", "WARN", "CAUTION"],
+                "INFO": ["INFO", "INFORMATION", "NOTICE", "DEBUG"]
+            }
+            sev_match = False
+            for key, synonyms in sev_synonyms.items():
+                if gt_sev in synonyms or gt_sev == key:
+                    sev_match = llm_sev in synonyms or llm_sev == key
+                    if sev_match:
+                        break
+            
+            comp_match = llm_result.component and ground_truth['component'].lower() in llm_result.component.lower()
+            ts_match = llm_result.timestamp is not None
         
         if sev_match: correct_severity += 1
         if comp_match: correct_component += 1
