@@ -89,60 +89,6 @@ echo -e "${GREEN}✓${NC} Test data: $LOG_COUNT entries"
 #===============================================================================
 echo -e "${YELLOW}[4/6] Running Drain parser...${NC}"
 
-python3 << 'DRAIN_SCRIPT'
-import time, json, re, statistics
-from collections import defaultdict
-from drain3 import TemplateMiner
-from drain3.template_miner_config import TemplateMinerConfig
-
-config = TemplateMinerConfig()
-miner = TemplateMiner(config=config)
-
-total = successful = 0
-latencies = []
-templates = defaultdict(int)
-
-with open("DATA_DIR_PLACEHOLDER/BGL_2k.log") as f:
-    for i, line in enumerate(f):
-        if not line.strip(): continue
-        total += 1
-        
-        # Extract message part
-        parts = line.strip().split(None, 4)
-        msg = parts[-1] if len(parts) > 4 else line.strip()
-        
-        start = time.perf_counter()
-        result = miner.add_log_message(msg)
-        latencies.append((time.perf_counter() - start) * 1000)
-        
-        if result and result.get("cluster_id"):
-            successful += 1
-            templates[result["cluster_id"]] += 1
-        
-        if (i+1) % 500 == 0:
-            print(f"  Processed {i+1}...")
-
-results = {
-    "parser": "Drain3",
-    "metrics": {
-        "total_lines": total,
-        "successful_parses": successful,
-        "parse_rate": round(successful/total*100, 2) if total else 0,
-        "unique_templates": len(templates),
-        "avg_latency_ms": round(statistics.mean(latencies), 4) if latencies else 0,
-        "std_latency_ms": round(statistics.stdev(latencies), 4) if len(latencies) > 1 else 0,
-        "throughput_logs_per_sec": round(total/(sum(latencies)/1000), 1) if latencies else 0
-    }
-}
-
-with open("RESULTS_DIR_PLACEHOLDER/drain_results.json", "w") as f:
-    json.dump(results, f, indent=2)
-
-print(f"\nDrain: {results['metrics']['parse_rate']}% rate, {results['metrics']['throughput_logs_per_sec']:.0f} logs/sec")
-DRAIN_SCRIPT
-
-# Replace placeholders
-sed -i "s|DATA_DIR_PLACEHOLDER|$DATA_DIR|g" /dev/stdin 2>/dev/null || true
 python3 -c "
 import time, json, re, statistics
 from collections import defaultdict
