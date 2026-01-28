@@ -2,15 +2,11 @@ import { useState } from "react";
 import { FiUploadCloud } from "react-icons/fi";
 import { uploadLog } from "../api";
 import { useAppStore } from "../store";
+import { AnalysisHistory } from "./AnalysisHistory";
 
 export function LogUploadPanel() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<{
-    severity?: string;
-    root_cause?: string;
-    summary?: string[];
-  } | null>(null);
 
   const { 
     isProcessing, 
@@ -18,7 +14,10 @@ export function LogUploadPanel() {
     addProcessingLog, 
     clearProcessingLogs, 
     setProcessingProgress,
-    setLogStatus 
+    setLogStatus,
+    analysisResult,
+    setAnalysisResult,
+    addToHistory
   } = useAppStore();
 
   const handleSubmit = async () => {
@@ -27,7 +26,7 @@ export function LogUploadPanel() {
       return;
     }
     setError(null);
-    setResult(null);
+    setAnalysisResult(null);
     setProcessing(true);
     clearProcessingLogs();
     
@@ -72,7 +71,8 @@ export function LogUploadPanel() {
         type: "success" 
       });
       
-      setResult(res);
+      setAnalysisResult(res);
+      addToHistory(file.name, res);
       setLogStatus({
         analysed: true,
         rootCause: res.root_cause,
@@ -93,6 +93,9 @@ export function LogUploadPanel() {
 
   return (
     <div className="space-y-4">
+      {/* Analysis History */}
+      <AnalysisHistory />
+      
       <div className="flex items-center justify-between gap-4 border-b border-green-500/30 pb-4">
         <div>
           <h2 className="text-xl font-bold text-green-50 flex items-center gap-3 uppercase tracking-wider">
@@ -110,8 +113,9 @@ export function LogUploadPanel() {
           type="button"
           onClick={() => {
             setFile(null);
-            setResult(null);
+            setAnalysisResult(null);
             setError(null);
+            setLogStatus({ analysed: false, rootCause: "", severity: "" });
           }}
           disabled={isProcessing}
         >
@@ -166,7 +170,7 @@ export function LogUploadPanel() {
         </div>
       )}
 
-      {result && (
+      {analysisResult && (
         <div className="glass-panel p-6 space-y-6 animate-in">
           <div className="grid gap-6 md:grid-cols-3">
             <div className="md:col-span-1 space-y-4">
@@ -177,16 +181,16 @@ export function LogUploadPanel() {
                 <div>
                   <span className="text-green-500">&gt; SEVERITY:</span>{" "}
                   <span className={`font-bold ${
-                    result.severity?.toLowerCase().includes('critical') ? 'text-neon-pink' :
-                    result.severity?.toLowerCase().includes('high') ? 'text-neon-purple' :
+                    analysisResult.severity?.toLowerCase().includes('critical') ? 'text-neon-pink' :
+                    analysisResult.severity?.toLowerCase().includes('high') ? 'text-neon-purple' :
                     'text-green-100'
                   }`}>
-                    {result.severity ?? "UNKNOWN"}
+                    {analysisResult.severity ?? "UNKNOWN"}
                   </span>
                 </div>
                 <div>
                   <span className="text-green-500">&gt; ROOT CAUSE:</span>{" "}
-                  <span className="text-green-100">{result.root_cause ?? "NOT IDENTIFIED"}</span>
+                  <span className="text-green-100">{analysisResult.root_cause ?? "NOT IDENTIFIED"}</span>
                 </div>
               </div>
             </div>
@@ -195,7 +199,7 @@ export function LogUploadPanel() {
                 [ANALYSIS OUTPUT]
               </h3>
               <div className="space-y-2">
-                {result.summary?.map((line, idx) => (
+                {analysisResult.summary?.map((line, idx) => (
                   <div key={idx} className="text-xs text-green-300 font-mono flex gap-2">
                     <span className="text-green-500">&gt;</span>
                     <span>{line}</span>

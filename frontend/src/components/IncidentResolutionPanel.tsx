@@ -34,7 +34,7 @@ export function IncidentResolutionPanel() {
   return (
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-4">
-        <div>
+        <div className="flex-1">
           <h2 className="text-lg font-semibold text-slate-50 flex items-center gap-2">
             <FiZap className="text-brand-400" />
             <span>Automatic incident resolution</span>
@@ -44,6 +44,20 @@ export function IncidentResolutionPanel() {
             documentation to propose a concrete set of remediation steps.
           </p>
         </div>
+        
+        {/* Documentation Status Badge */}
+        {docsStatus.uploaded ? (
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 border border-green-200 rounded-lg">
+            <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+            <span className="text-xs font-medium text-green-700">Docs Loaded</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <FiAlertTriangle className="h-3 w-3 text-yellow-600" />
+            <span className="text-xs font-medium text-yellow-700">No Docs</span>
+          </div>
+        )}
+        
         <button
           className="primary-button"
           type="button"
