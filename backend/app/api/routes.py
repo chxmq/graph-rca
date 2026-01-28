@@ -90,8 +90,8 @@ async def analyse_log(file: UploadFile = File(...)):
 
             # Build context
             logger.info("[◆] Building analysis context...")
-            context_builder = ContextBuilder()
-            context = context_builder.build_context(dag)
+            context_builder = ContextBuilder(dag)
+            context = context_builder.build_context()
             logger.info(f"[✓] Context built with {len(context.causal_chain)} causal events")
 
             # Generate summary
