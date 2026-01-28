@@ -2,6 +2,8 @@
 
 An AI-powered system for automated log analysis and incident resolution. Features a modern React frontend with a FastAPI backend, leveraging LLMs for root cause analysis and solution generation.
 
+> 🎓 **Running on Remote GPU Server?** See [REMOTE_SETUP.md](REMOTE_SETUP.md) for SSH tunnel and network access setup!
+
 ## 🎯 Features
 
 - 📊 **Automated log file analysis** with causal chain generation
