@@ -140,7 +140,7 @@ def benchmark_loghub_parsing():
     ]
     
     try:
-        from utilz.log_parser import LogParser
+        from utils.log_parser import LogParser
         parser = LogParser()
         
         for name, logs, ground_truth in datasets:

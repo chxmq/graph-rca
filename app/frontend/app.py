@@ -2,9 +2,9 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import streamlit as st
-from utilz.log_parser import LogParser
-from utilz.graph_generator import GraphGenerator
-from utilz.context_builder import ContextBuilder
+from utils.log_parser import LogParser
+from utils.graph_generator import GraphGenerator
+from utils.context_builder import ContextBuilder
 from core.database_handlers import MongoDBHandler, VectorDatabaseHandler
 from core.rag import RAG_Engine
 import tempfile

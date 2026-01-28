@@ -3,12 +3,12 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 from unittest.mock import Mock, patch
-from utilz.log_parser import LogParser
-from utilz.graph_generator import GraphGenerator
-from utilz.context_builder import ContextBuilder
-from utilz.database_healthcheck import ServerHealthCheck
-from utilz.database_healthcheck import check_services
-from models.parsing_data_models import LogChain, LogEntry, SystemInfo, UserInfo, TraceInfo
+from app.utils.log_parser import LogParser
+from app.utils.graph_generator import GraphGenerator
+from app.utils.context_builder import ContextBuilder
+from app.utils.database_healthcheck import ServerHealthCheck
+from app.utils.database_healthcheck import check_services
+from app.models.parsing_data_models import LogChain, LogEntry, SystemInfo, UserInfo, TraceInfo
 from pathlib import Path
 import json
 

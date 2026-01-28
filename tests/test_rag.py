@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock, patch, MagicMock
-from core.rag import RAG_Engine
-from models.rag_response_data_models import SummaryResponse, SolutionQuery
+from app.core.rag import RAG_Engine
+from app.models.rag_response_data_models import SummaryResponse, SolutionQuery
 from langchain.schema import Document
 import ollama
 import json

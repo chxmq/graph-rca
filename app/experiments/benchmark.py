@@ -36,7 +36,7 @@ SAMPLE_LOGS = [
 def benchmark_log_parsing(num_entries=5):
     """Benchmark log parsing performance"""
     try:
-        from utilz.log_parser import LogParser
+        from utils.log_parser import LogParser
     except Exception as e:
         import traceback
         return {
@@ -117,7 +117,7 @@ def benchmark_log_parsing(num_entries=5):
 
 def benchmark_dag_construction(num_entries=5):
     """Benchmark DAG construction performance"""
-    from utilz.graph_generator import GraphGenerator
+    from utils.graph_generator import GraphGenerator
     from models.parsing_data_models import LogChain, LogEntry
     
     # Create synthetic log entries
@@ -209,9 +209,9 @@ def benchmark_rag_retrieval():
 
 def benchmark_end_to_end(num_entries=5):
     """Benchmark full pipeline performance"""
-    from utilz.log_parser import LogParser
-    from utilz.graph_generator import GraphGenerator
-    from utilz.context_builder import ContextBuilder
+    from utils.log_parser import LogParser
+    from utils.graph_generator import GraphGenerator
+    from utils.context_builder import ContextBuilder
     from core.rag import RAG_Engine
     
     logs = SAMPLE_LOGS[:num_entries]
