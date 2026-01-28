@@ -66,13 +66,13 @@ echo ""
 
 # Step 4: Install Python dependencies
 echo -e "${BLUE}[4/8]${NC} Installing Python dependencies..."
-if [ -f "requirements.txt" ]; then
+if [ -f "backend/requirements.txt" ]; then
     echo "   This may take a few minutes..."
     pip install --upgrade pip setuptools wheel
-    pip install -r requirements.txt
+    pip install -r backend/requirements.txt
     echo -e "${GREEN}✓${NC} Python dependencies installed"
 else
-    echo -e "${RED}✗${NC} requirements.txt not found!"
+    echo -e "${RED}✗${NC} backend/requirements.txt not found!"
     exit 1
 fi
 echo ""
