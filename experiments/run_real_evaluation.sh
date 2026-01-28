@@ -362,24 +362,24 @@ for i, line in enumerate(sampled_lines):
         elapsed = time.perf_counter() - start
         latencies.append(elapsed)
         
-            # Flexible severity matching (handle variations like FATAL/CRITICAL, ERROR/FAIL)
-            gt_sev = ground_truth['severity'].upper()
-            llm_sev = (llm_result.level or "").upper()
-            sev_synonyms = {
-                "FATAL": ["FATAL", "CRITICAL", "SEVERE"],
-                "ERROR": ["ERROR", "ERR", "FAIL", "FAILURE"],
-                "WARNING": ["WARNING", "WARN", "CAUTION"],
-                "INFO": ["INFO", "INFORMATION", "NOTICE", "DEBUG"]
-            }
-            sev_match = False
-            for key, synonyms in sev_synonyms.items():
-                if gt_sev in synonyms or gt_sev == key:
-                    sev_match = llm_sev in synonyms or llm_sev == key
-                    if sev_match:
-                        break
-            
-            comp_match = llm_result.component and ground_truth['component'].lower() in llm_result.component.lower()
-            ts_match = llm_result.timestamp is not None
+        # Flexible severity matching (handle variations like FATAL/CRITICAL, ERROR/FAIL)
+        gt_sev = ground_truth['severity'].upper()
+        llm_sev = (llm_result.level or "").upper()
+        sev_synonyms = {
+            "FATAL": ["FATAL", "CRITICAL", "SEVERE"],
+            "ERROR": ["ERROR", "ERR", "FAIL", "FAILURE"],
+            "WARNING": ["WARNING", "WARN", "CAUTION"],
+            "INFO": ["INFO", "INFORMATION", "NOTICE", "DEBUG"]
+        }
+        sev_match = False
+        for key, synonyms in sev_synonyms.items():
+            if gt_sev in synonyms or gt_sev == key:
+                sev_match = llm_sev in synonyms or llm_sev == key
+                if sev_match:
+                    break
+        
+        comp_match = llm_result.component and ground_truth['component'].lower() in llm_result.component.lower()
+        ts_match = llm_result.timestamp is not None
         
         if sev_match: correct_severity += 1
         if comp_match: correct_component += 1
