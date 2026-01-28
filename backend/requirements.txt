@@ -19,6 +19,7 @@ mirascope==1.15.1
 # Database
 chromadb==1.3.7
 pymongo==4.6.1
+pysqlite3-binary  # Fix for old SQLite on Ubuntu 20.04
 
 # Text processing
 langchain==0.1.6
