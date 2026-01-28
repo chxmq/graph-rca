@@ -25,7 +25,7 @@ class GraphGenerator:
             for idx, log_entry in enumerate(self.log_chain.log_chain, 1):
                 node = DAGNode(id=str(log_entry.timestamp),parent_id=None,children=[],log_entry=log_entry)
                 self.dag_nodes.append(node)
-                logger.info(f"  [►] Created node {idx}: {log_entry.log_level} at {log_entry.timestamp}")
+                logger.info(f"  [►] Created node {idx}: {log_entry.level} at {log_entry.timestamp}")
                 
             logger.info("[◆] Establishing parent-child relationships...")
             self._set_parent_child_relationships()
