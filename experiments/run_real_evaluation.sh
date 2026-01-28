@@ -306,40 +306,44 @@ llm = json.load(open(rd/"llm_parser_results.json")) if (rd/"llm_parser_results.j
 rca = json.load(open(rd/"rca_results.json")) if (rd/"rca_results.json").exists() else None
 
 # LaTeX
-latex = ["% GraphRCA Results - " + datetime.now().strftime("%Y-%m-%d"), ""]
+latex = []
+latex.append("% GraphRCA Results - " + datetime.now().strftime("%Y-%m-%d"))
+latex.append("")
 if drain and llm:
     d, l = drain["metrics"], llm["metrics"]
-    latex.append(r"""
-\begin{table}[t]
-\centering
-\caption{Parser Comparison on LogHub BGL}
-\begin{tabular}{lccc}
-\toprule
-\textbf{Metric} & \textbf{Drain} & \textbf{GraphRCA} & \textbf{Winner} \\
-\midrule""")
-    latex.append(f"Parse Rate & {d['parse_rate']}\\% & {l['severity_accuracy']}\\% & {'GraphRCA' if l['severity_accuracy'] > d['parse_rate'] else 'Drain'} \\\\")
-    latex.append(f"Latency & {d['avg_latency_ms']:.2f}ms & {l['avg_latency_s']*1000:.0f}ms & Drain \\\\")
-    latex.append(f"Throughput & {d['throughput_logs_per_sec']:.0f}/s & {l['throughput_logs_per_sec']:.2f}/s & Drain \\\\")
-    latex.append(r"Templates & Yes & No & GraphRCA \\")
-    latex.append(r"""\bottomrule
-\end{tabular}
-\end{table}""")
+    winner_parse = "GraphRCA" if l["severity_accuracy"] > d["parse_rate"] else "Drain"
+    latex.append("\\begin{table}[t]")
+    latex.append("\\centering")
+    latex.append("\\caption{Parser Comparison on LogHub BGL}")
+    latex.append("\\begin{tabular}{lccc}")
+    latex.append("\\toprule")
+    latex.append("\\textbf{Metric} & \\textbf{Drain} & \\textbf{GraphRCA} & \\textbf{Winner} \\\\")
+    latex.append("\\midrule")
+    latex.append("Parse Rate & " + str(d["parse_rate"]) + "\\% & " + str(l["severity_accuracy"]) + "\\% & " + winner_parse + " \\\\")
+    latex.append("Latency & " + f"{d['avg_latency_ms']:.2f}" + "ms & " + f"{l['avg_latency_s']*1000:.0f}" + "ms & Drain \\\\")
+    latex.append("Throughput & " + f"{d['throughput_logs_per_sec']:.0f}" + "/s & " + f"{l['throughput_logs_per_sec']:.2f}" + "/s & Drain \\\\")
+    latex.append("Templates & Yes & No & GraphRCA \\\\")
+    latex.append("\\bottomrule")
+    latex.append("\\end{tabular}")
+    latex.append("\\end{table}")
 
 if rca:
-    latex.append(r"""
-\begin{table}[t]
-\centering
-\caption{Root Cause Identification}
-\begin{tabular}{lc}
-\toprule
-\textbf{Scenario} & \textbf{Result} \\
-\midrule""")
+    latex.append("")
+    latex.append("\\begin{table}[t]")
+    latex.append("\\centering")
+    latex.append("\\caption{Root Cause Identification}")
+    latex.append("\\begin{tabular}{lc}")
+    latex.append("\\toprule")
+    latex.append("\\textbf{Scenario} & \\textbf{Result} \\\\")
+    latex.append("\\midrule")
     for s in rca["scenarios"]:
-        latex.append(f"{s['name']} & {'\\checkmark' if s['success'] else '$\\times$'} \\\\")
-    latex.append(f"\\midrule\n\\textbf{{Overall}} & {rca['summary']['accuracy']}\\% \\\\")
-    latex.append(r"""\bottomrule
-\end{tabular}
-\end{table}""")
+        mark = "\\checkmark" if s["success"] else "$\\times$"
+        latex.append(s["name"] + " & " + mark + " \\\\")
+    latex.append("\\midrule")
+    latex.append("\\textbf{Overall} & " + str(rca["summary"]["accuracy"]) + "\\% \\\\")
+    latex.append("\\bottomrule")
+    latex.append("\\end{tabular}")
+    latex.append("\\end{table}")
 
 with open(rd/"latex_tables.tex", "w") as f:
     f.write("\n".join(latex))
