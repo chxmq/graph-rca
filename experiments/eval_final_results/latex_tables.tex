@@ -1,0 +1,89 @@
+% GraphRCA Evaluation Results - Publication Ready
+% Generated: 2026-01-29
+% Dataset: LogHub BGL + HDFS
+% Statistical Runs: 3 per configuration
+
+%===============================================================================
+% TABLE 1: Parser Performance Comparison
+%===============================================================================
+\begin{table}[t]
+\centering
+\caption{Parser Performance Comparison on LogHub Datasets}
+\label{tab:parser_comparison}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Dataset} & \textbf{Metric} & \textbf{Drain} & \textbf{GraphRCA} \\
+\midrule
+BGL & Throughput (logs/s) & 131,154 & 0.45 \\
+    & Avg Latency & 0.01ms & 2,210ms \\
+\midrule
+HDFS & Throughput (logs/s) & 12,954 & 0.36 \\
+     & Avg Latency & 0.08ms & 2,759ms \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%===============================================================================
+% TABLE 2: Field-Level Parsing Accuracy
+%===============================================================================
+\begin{table}[t]
+\centering
+\caption{Field-Level Parsing Accuracy (mean $\pm$ std, n=400 samples, 3 runs)}
+\label{tab:field_accuracy}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Field} & \textbf{BGL} & \textbf{HDFS} \\
+\midrule
+Timestamp & 100.0\% $\pm$ 0.0 & 100.0\% $\pm$ 0.0 \\
+Severity Level & 99.8\% $\pm$ 0.0 & 96.8\% $\pm$ 0.1 \\
+Component & 98.7\% $\pm$ 0.0 & 100.0\% $\pm$ 0.0 \\
+Message & 100.0\% $\pm$ 0.0 & 100.0\% $\pm$ 0.0 \\
+\midrule
+\textbf{Overall} & \textbf{99.6\%} & \textbf{99.2\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%===============================================================================
+% TABLE 3: Root Cause Identification Results
+%===============================================================================
+\begin{table}[t]
+\centering
+\caption{Root Cause Identification by Failure Category (20 scenarios, 3 runs each)}
+\label{tab:rca_results}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Category} & \textbf{Scenarios} & \textbf{Success Rate} \\
+\midrule
+Database & 4 & 100.0\% \\
+Security & 3 & 100.0\% \\
+Application & 4 & 100.0\% \\
+Monitoring & 2 & 100.0\% \\
+Infrastructure & 4 & 91.7\% \\
+Memory & 3 & 88.9\% \\
+\midrule
+\textbf{Overall} & \textbf{20} & \textbf{96.7\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%===============================================================================
+% TABLE 4: DAG Construction Scalability
+%===============================================================================
+\begin{table}[t]
+\centering
+\caption{DAG Construction Scalability (20 runs per size)}
+\label{tab:dag_scalability}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Log Entries} & \textbf{Time (ms)} & \textbf{Std Dev} \\
+\midrule
+10 & 0.10 & $\pm$ 0.02 \\
+100 & 0.93 & $\pm$ 0.03 \\
+500 & 4.71 & $\pm$ 0.06 \\
+1,000 & 9.71 & $\pm$ 0.51 \\
+2,000 & 19.68 & $\pm$ 0.53 \\
+\bottomrule
+\multicolumn{3}{l}{\textit{Complexity: O(n) - Linear}} \\
+\end{tabular}
+\end{table}

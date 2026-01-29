@@ -1,0 +1,27 @@
+{
+  "method": "Drain",
+  "datasets": [
+    {
+      "dataset": "BGL",
+      "total_logs": 2000,
+      "unique_templates": 105,
+      "avg_latency_ms": 0.0076,
+      "std_latency_ms": 0.0065,
+      "p50_latency_ms": 0.0066,
+      "p95_latency_ms": 0.0115,
+      "p99_latency_ms": 0.0208,
+      "throughput_per_sec": 131153.7
+    },
+    {
+      "dataset": "HDFS",
+      "total_logs": 2000,
+      "unique_templates": 637,
+      "avg_latency_ms": 0.0772,
+      "std_latency_ms": 0.1083,
+      "p50_latency_ms": 0.0077,
+      "p95_latency_ms": 0.3107,
+      "p99_latency_ms": 0.3907,
+      "throughput_per_sec": 12954.5
+    }
+  ]
+}
