@@ -100,12 +100,27 @@ class RAGEvaluator:
         return random.sample(eligible, count)
 
     def _identify_rca(self, logs: str, context: str) -> str:
-        prompt = f"""Identify the ROOT CAUSE of the following incident based on the log evidence.
+        if context:
+            prompt = f"""[INSTRUCTIONS]
+Identify the ROOT CAUSE of the CURRENT INCIDENT based ONLY on the provided logs.
+We have provided historical incidents for reference. 
+Use the historical context ONLY to understand similar failure patterns (e.g., if a similar DB timeout led to a pool exhaustion).
+DO NOT attribute the historical root causes to the current incident unless the logs explicitly support it.
+
+[CURRENT INCIDENT LOGS]
+{logs[:2000]}
+
+[HISTORICAL CONTEXT (FOR REFERENCE ONLY)]
+{context}
+
+[RESPONSE]
+Return the Root Cause of the CURRENT INCIDENT in one concise sentence.
+Root Cause:"""
+        else:
+            prompt = f"""Identify the ROOT CAUSE of the following incident based on the log evidence.
         
 Logs:
 {logs[:2000]}
-
-{f"Similar Historical Incidents for context:\n{context}" if context else ""}
 
 Return the Root Cause in one concise sentence. If unknown, say 'Unknown'.
 Root Cause:"""
