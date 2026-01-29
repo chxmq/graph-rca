@@ -10,8 +10,10 @@ from typing import List, Dict
 # Configuration
 OLLAMA_HOST = "http://localhost:11434"
 MODEL = "llama3.2:3b"
-INCIDENT_DIR = Path("../data/real_incidents")
-RESULTS_DIR = Path("./eval_final_results")
+# Discover directories relative to this script (experiments/evaluate_rag_accuracy.py)
+SCRIPT_DIR = Path(__file__).parent.absolute()
+INCIDENT_DIR = SCRIPT_DIR.parent / "data" / "real_incidents"
+RESULTS_DIR = SCRIPT_DIR / "eval_final_results"
 
 class RAGEvaluator:
     def __init__(self):

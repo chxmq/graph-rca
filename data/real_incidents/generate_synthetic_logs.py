@@ -59,8 +59,9 @@ Example output:
         print(f"  Incident {incident_id}: Failed to generate logs: {e}")
 
 def main():
-    # Change to the directory where incidents are located
-    base_dir = Path("/Users/champ/Developer/graph-rca/data/real_incidents")
+    # Use relative path to the directory where incidents are located
+    # This script is located in data/real_incidents/
+    base_dir = Path(__file__).parent.absolute()
     os.chdir(base_dir)
     
     incident_dirs = sorted([d.name for d in base_dir.glob("incident_*") if d.is_dir()])
