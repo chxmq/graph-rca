@@ -1,0 +1,70 @@
+{
+  "overall": {
+    "accuracy": 96.7,
+    "successes": 58,
+    "total": 60,
+    "std_dev": 18.1,
+    "ci_95_lower": 88.6,
+    "ci_95_upper": 99.1,
+    "ci_95": "88.6%--99.1%"
+  },
+  "by_category": {
+    "Database": {
+      "accuracy": 100.0,
+      "successes": 12,
+      "total": 12,
+      "ci_95_lower": 75.7,
+      "ci_95_upper": 100.0
+    },
+    "Memory": {
+      "accuracy": 88.9,
+      "successes": 8,
+      "total": 9,
+      "ci_95_lower": 56.5,
+      "ci_95_upper": 98.0
+    },
+    "Infrastructure": {
+      "accuracy": 91.7,
+      "successes": 11,
+      "total": 12,
+      "ci_95_lower": 64.6,
+      "ci_95_upper": 98.5
+    },
+    "Security": {
+      "accuracy": 100.0,
+      "successes": 9,
+      "total": 9,
+      "ci_95_lower": 70.1,
+      "ci_95_upper": 100
+    },
+    "Application": {
+      "accuracy": 100.0,
+      "successes": 12,
+      "total": 12,
+      "ci_95_lower": 75.7,
+      "ci_95_upper": 100.0
+    },
+    "Monitoring": {
+      "accuracy": 100.0,
+      "successes": 6,
+      "total": 6,
+      "ci_95_lower": 61.0,
+      "ci_95_upper": 100.0
+    }
+  },
+  "documentation_dependency": {
+    "with_documentation": {
+      "accuracy": 100.0,
+      "successes": 18,
+      "total": 18,
+      "ci_95": "82.4%--100%"
+    },
+    "without_documentation": {
+      "accuracy": 95.2,
+      "successes": 40,
+      "total": 42,
+      "ci_95": "84.2%--98.7%"
+    },
+    "difference": 4.8
+  }
+}
