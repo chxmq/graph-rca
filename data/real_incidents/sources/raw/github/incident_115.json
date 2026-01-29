@@ -1,0 +1,6 @@
+{
+  "company": "GitHub",
+  "url": "https://githubengineering.com/ddos-incident-report/",
+  "description": "On February 28th 2018, GitHub experienced a DDoS attack, hitting the website with 1.35Tbps of traffic.",
+  "source": "GitHub post-mortems list"
+}

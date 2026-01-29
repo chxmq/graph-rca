@@ -1,0 +1,6 @@
+{
+  "company": "PagerDuty",
+  "url": "https://status.pagerduty.com/incidents/vbp7ht2647l8",
+  "description": "On December 15th, 2021 at 00:17 UTC, we deployed a DNS configuration change in PagerDuty\u2019s infrastructure that impacted our container orchestration cluster. The change contained a defect, that we did not detect in our testing environments, which immediately caused all services running in the container orchestration cluster to be unable to resolve DNS.",
+  "source": "GitHub post-mortems list"
+}

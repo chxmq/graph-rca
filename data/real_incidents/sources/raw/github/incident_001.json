@@ -1,0 +1,6 @@
+{
+  "company": "Config Errors",
+  "url": "#config-errors)**\n - **[Hardware/Power Failures](#hardwarepower-failures)**\n - **[Conflicts](#conflicts)**\n - **[Time](#time)**\n - **[Database](#database)**\n - **[Uncategorized](#uncategorized)**\n - **[Other lists of postmortems](#other-lists-of-postmortems)**\n - **[Analysis](#analysis)**\n - **[Contributors](#contributors)**\n\n<br/><br/>\n\n## Config Errors\n\n[Allegro](https://allegro.tech/2018/08/postmortem-why-allegro-went-down.html",
+  "description": "E-commerce site went down after a sudden traffic spike caused by a marketing campaign. The outage was caused by a configuration error in cluster resource management which prevented more service instances from starting even though hardware resources were available.",
+  "source": "GitHub post-mortems list"
+}

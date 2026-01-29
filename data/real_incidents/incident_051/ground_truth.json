@@ -1,0 +1,10 @@
+{
+  "incident_id": "051",
+  "source": "https://blog.heroku.com/how-i-broke-git-push-heroku-main",
+  "root_cause": "Incorrect deployment process caused new configuration variables not to be used by the code that required them, breaking git push.",
+  "root_cause_timestamp": "2021-01-01T00:00:00Z",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

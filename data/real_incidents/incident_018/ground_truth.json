@@ -1,0 +1,10 @@
+{
+  "incident_id": "018",
+  "source": "https://help.salesforce.com/s/articleView?id=000396429&type=1",
+  "root_cause": "A security policy change inadvertently blocked access to resources beyond its intended scope, preventing logins.",
+  "root_cause_timestamp": "2023-09-20T14:48:00Z",
+  "category": "Security",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

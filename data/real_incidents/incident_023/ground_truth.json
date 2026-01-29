@@ -1,0 +1,10 @@
+{
+  "incident_id": "023",
+  "source": "https://www.fastly.com/blog/summary-of-june-8-outage",
+  "root_cause": "An undiscovered software bug in Fastly's edge cloud was triggered by a valid customer configuration change, causing a global outage.",
+  "root_cause_timestamp": "2021-06-08T00:00:00Z",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,6 @@
+{
+  "company": "Razorpay",
+  "url": "https://web.archive.org/web/20250207075402/https://razorpay.com/blog/day-of-rds-multi-az-failover/",
+  "description": "A RDS hardware failure highlighted an incorrect MySQL configuration which resulted in major data loss in a financial system.",
+  "source": "GitHub post-mortems list"
+}

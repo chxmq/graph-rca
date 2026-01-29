@@ -1,0 +1,6 @@
+{
+  "company": "Stack Exchange",
+  "url": "https://meta.stackoverflow.com/q/340960/2422776",
+  "description": "Porting old Careers 2.0 code to the new Developer Story caused a leak of users' information.",
+  "source": "GitHub post-mortems list"
+}

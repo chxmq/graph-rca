@@ -1,0 +1,6 @@
+{
+  "company": "Elastic",
+  "url": "https://www.elastic.co/blog/elastic-cloud-incident-report-feburary-4-2019",
+  "description": "Elastic Cloud customers with deployments in the AWS us-east-1 region experienced degraded access to their clusters.",
+  "source": "GitHub post-mortems list"
+}

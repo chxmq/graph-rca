@@ -1,0 +1,10 @@
+{
+  "incident_id": "053",
+  "source": "https://status.cloud.google.com/incident/compute/16007",
+  "root_cause": "An automated configuration generation tool removed all Google Compute Engine IP blocks from BGP announcements, leading to massive reachability issues.",
+  "root_cause_timestamp": "2016-04-11T00:00:00Z",
+  "category": "Network",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

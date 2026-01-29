@@ -1,0 +1,6 @@
+{
+  "company": "DataDog",
+  "url": "https://www.datadoghq.com/blog/2020-09-25-infrastructure-connectivity-issue/",
+  "description": "A bad service discovery config in one of the clients brought down service discovery globally when a dependent client went down.",
+  "source": "GitHub post-mortems list"
+}

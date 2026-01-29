@@ -1,0 +1,10 @@
+{
+  "incident_id": "025",
+  "source": "https://www.flowdock.com/blog/2020/03/17/incident-report-2020-03-16/",
+  "root_cause": "Unexpected traffic spike due to remote work shift (COVID-19) overloaded backend components.",
+  "root_cause_timestamp": "2020-03-16T15:00:00Z",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

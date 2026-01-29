@@ -1,0 +1,10 @@
+{
+  "incident_id": "058",
+  "source": "https://status.heroku.com/incidents/1042",
+  "root_cause": "An upstream 'apt' update broke pinned packages, causing write permission failures to /dev on customer dynos.",
+  "root_cause_timestamp": "2018-05-01T00:00:00Z",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "024",
+  "source": "https://web.archive.org/web/20230602082218/https://news.ycombinator.com/item?id=1769761",
+  "root_cause": "MongoDB ran out of memory due to a query pattern with low locality (fetching full history for every check-in), leading to catastrophic failure.",
+  "root_cause_timestamp": "2010-10-04T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

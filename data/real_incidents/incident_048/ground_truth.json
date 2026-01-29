@@ -1,0 +1,10 @@
+{
+  "incident_id": "048",
+  "source": "https://sreweekly.com/sre-weekly-issue-500/",
+  "root_cause": "Predictive autoscaling algorithm miscalculated the required capacity for a surge in demand, leading to resource exhaustion.",
+  "root_cause_timestamp": "2024-01-15T00:00:00Z",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "026",
+  "source": "https://blog.heroku.com/april-2022-incident-review",
+  "root_cause": "Leaked private tokens allowed attackers to access internal databases and private repositories.",
+  "root_cause_timestamp": "2022-04-01T00:00:00Z",
+  "category": "Security",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

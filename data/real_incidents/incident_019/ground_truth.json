@@ -1,0 +1,10 @@
+{
+  "incident_id": "019",
+  "source": "https://slack.engineering/slacks-outage-on-january-4th-2021/",
+  "root_cause": "Network saturation in AWS transit gateways caused massive packet loss and connection drops.",
+  "root_cause_timestamp": "2021-01-04T15:00:00Z",
+  "category": "Network",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

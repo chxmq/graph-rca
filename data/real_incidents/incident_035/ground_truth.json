@@ -1,0 +1,10 @@
+{
+  "incident_id": "035",
+  "source": "https://stackstatus.net/post/156407746074/outage-postmortem-january-24-2017",
+  "root_cause": "Primary SQL Server triggered a kernel bugcheck/crash, forcing sites into read-only mode and eventual outage.",
+  "root_cause_timestamp": "2017-01-24T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

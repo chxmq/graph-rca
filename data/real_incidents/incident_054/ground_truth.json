@@ -1,0 +1,10 @@
+{
+  "incident_id": "054",
+  "source": "https://status.cloud.google.com/incidents/1xkAB1KmLrh5g3v9ZEZ7",
+  "root_cause": "A new infrastructure feature triggered a latent issue within the internal network load balancer code in Europe regions.",
+  "root_cause_timestamp": "2021-08-24T00:00:00Z",
+  "category": "Infrastructure",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "030",
+  "source": "https://keepthescore.co/blog/postmortem-how-i-deleted-the-production-database/",
+  "root_cause": "Developing on production: running a script locally that was connected to the production database and executing a drop command.",
+  "root_cause_timestamp": "2020-04-10T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

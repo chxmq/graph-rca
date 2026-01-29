@@ -1,0 +1,6 @@
+{
+  "company": "Amazon",
+  "url": "https://aws.amazon.com/message/5467D2/",
+  "description": "A \"network disruption\" caused metadata services to experience load that caused response times to exceed timeout values, causing storage nodes to take themselves down. Nodes that took themselves down continued to retry, ensuring that load on metadata services couldn't decrease.",
+  "source": "GitHub post-mortems list"
+}

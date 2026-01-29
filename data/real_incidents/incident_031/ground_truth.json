@@ -1,0 +1,10 @@
+{
+  "incident_id": "031",
+  "source": "https://www.pagerduty.com/blog/outage-post-mortem-april-13-2013/",
+  "root_cause": "Common peering point failure across two 'independent' cloud deployments caused high latency and prevented the application from establishing quorum.",
+  "root_cause_timestamp": "2013-04-13T00:00:00Z",
+  "category": "Network",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

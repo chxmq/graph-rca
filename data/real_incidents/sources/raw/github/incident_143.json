@@ -1,0 +1,6 @@
+{
+  "company": "Launchdarkly",
+  "url": "https://status.launchdarkly.com/incidents/yltrp45vtxm2",
+  "description": "Rule attribute selector causing flag targeting web interface to crash.",
+  "source": "GitHub post-mortems list"
+}

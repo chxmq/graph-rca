@@ -1,0 +1,10 @@
+{
+  "incident_id": "004",
+  "source": "https://www.traviscistatus.com/incidents/sxrh0l46czqn",
+  "root_cause": "Worker v2.6.2 change in bash exit code handling (login shell) caused false failures; rollback to v2.5.0 failed due to missing Docker Hub tag.",
+  "root_cause_timestamp": "2017-02-02T12:00:00Z",
+  "category": "CI-CD",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

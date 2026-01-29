@@ -1,0 +1,6 @@
+{
+  "company": "Sentry",
+  "url": "https://blog.sentry.io/2015/07/23/transaction-id-wraparound-in-postgres",
+  "description": "Transaction ID Wraparound in Postgres caused Sentry to go down for most of a working day.",
+  "source": "GitHub post-mortems list"
+}

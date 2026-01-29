@@ -1,0 +1,10 @@
+{
+  "incident_id": "036",
+  "source": "https://aws.amazon.com/message/11201/",
+  "root_cause": "Scaling the Kinesis front-end fleet exceeded OS thread limits due to memory-intensive configuration, breaking Cognito/Lambda.",
+  "root_cause_timestamp": "2020-11-25T05:15:00Z",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

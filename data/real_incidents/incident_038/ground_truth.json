@@ -1,0 +1,10 @@
+{
+  "incident_id": "038",
+  "source": "https://zerodha.com/marketintel/bulletin/229363/post-mortem-of-technical-issue-august-29-2019",
+  "root_cause": "Single order for 1M penny stock units generated 100k+ individual trades, overwhelming the Order Management System's limit.",
+  "root_cause_timestamp": "2019-08-29T00:00:00Z",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

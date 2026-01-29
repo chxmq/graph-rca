@@ -1,0 +1,6 @@
+{
+  "company": "PagerDuty",
+  "url": "https://status.pagerduty.com/incidents/70m30bh7qfmx",
+  "description": "A third party service for sending SMS and making voice calls experienced an outage due to AWS having issues in a region.",
+  "source": "GitHub post-mortems list"
+}

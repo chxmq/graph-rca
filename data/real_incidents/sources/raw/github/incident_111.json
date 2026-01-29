@@ -1,0 +1,6 @@
+{
+  "company": "Fastly",
+  "url": "https://www.fastly.com/blog/summary-of-june-8-outage",
+  "description": "Global outage due to an undiscovered software bug that surfaced on June 8 when it was triggered by a valid customer configuration change.",
+  "source": "GitHub post-mortems list"
+}

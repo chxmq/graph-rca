@@ -1,0 +1,6 @@
+{
+  "company": "GoCardless",
+  "url": "https://gocardless.com/blog/incident-review-api-and-dashboard-outage-on-10th-october/",
+  "description": "A bad config combined with an uncommon set of failures led to an outage of a database cluster, taking the API and Dashboard offline.",
+  "source": "GitHub post-mortems list"
+}

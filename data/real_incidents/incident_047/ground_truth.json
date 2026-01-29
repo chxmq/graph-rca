@@ -1,0 +1,10 @@
+{
+  "incident_id": "047",
+  "source": "https://openai.com/blog/march-20-chatgpt-outage",
+  "root_cause": "Redis request/response queues became corrupted and out-of-sequence, revealing user data to other users.",
+  "root_cause_timestamp": "2023-03-20T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

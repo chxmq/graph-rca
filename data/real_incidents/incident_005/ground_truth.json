@@ -1,0 +1,10 @@
+{
+  "incident_id": "005",
+  "source": "https://blog.railway.com/p/incident-report-oct-28th-2025",
+  "root_cause": "Database index creation on a 1B record table without CONCURRENTLY option locked the table, exhausting all connection slots.",
+  "root_cause_timestamp": "2025-10-28T18:34:00Z",
+  "category": "Database",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

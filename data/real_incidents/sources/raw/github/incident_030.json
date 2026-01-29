@@ -1,0 +1,6 @@
+{
+  "company": "Microsoft",
+  "url": "https://azure.microsoft.com/en-us/blog/update-on-azure-storage-service-interruption/",
+  "description": "A bad config took down Azure storage.",
+  "source": "GitHub post-mortems list"
+}

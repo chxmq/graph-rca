@@ -1,0 +1,10 @@
+{
+  "incident_id": "010",
+  "source": "https://aws.amazon.com/message/41926/",
+  "root_cause": "Human error: A typo in a command intended to remove a few billing servers inadvertently removed a large set of critical S3 storage systems.",
+  "root_cause_timestamp": "2017-02-28T09:37:00Z",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

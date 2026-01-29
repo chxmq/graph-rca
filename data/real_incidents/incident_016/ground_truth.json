@@ -1,0 +1,10 @@
+{
+  "incident_id": "016",
+  "source": "https://blog.etsy.com/news/2012/demystifying-site-outages/",
+  "root_cause": "Signed 32-bit integer overflow in database IDs caused operations to fail.",
+  "root_cause_timestamp": "2012-01-01T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

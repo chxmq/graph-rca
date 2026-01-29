@@ -1,0 +1,6 @@
+{
+  "company": "Duo",
+  "url": "https://status.duo.com/incidents/4w07bmvnt359",
+  "description": "Cascading failure due to a request queue overloading the existing, insufficient database capacity. Inadequate capacity planning and monitoring could be attributed as well.",
+  "source": "GitHub post-mortems list"
+}

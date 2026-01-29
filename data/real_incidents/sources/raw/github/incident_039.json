@@ -1,0 +1,6 @@
+{
+  "company": "TravisCI",
+  "url": "https://www.traviscistatus.com/incidents/khzk8bg4p9sy",
+  "description": "A configuration issue (incomplete password rotation) led to \"leaking\" VMs, leading to elevated build queue times.",
+  "source": "GitHub post-mortems list"
+}

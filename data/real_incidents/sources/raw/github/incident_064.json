@@ -1,0 +1,6 @@
+{
+  "company": "WebKit code repository",
+  "url": "https://web.archive.org/web/20210306015541/https://digital.ai/catalyst-blog/subversion-sha1-collision-problem-statement-prevention-and-remediation-options",
+  "description": "The WebKit repository, a Subversion repository configured to use deduplication, became unavailable after two files with the same SHA-1 hash were checked in as test data, with the intention of implementing a safety check for collisions. The two files had different md5 sums and so a checkout would fail a consistency check. For context, the first public SHA-1 hash collision had very recently been announced, with an example of two colliding files.",
+  "source": "GitHub post-mortems list"
+}

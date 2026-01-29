@@ -1,0 +1,10 @@
+{
+  "incident_id": "056",
+  "source": "https://engineering.strava.com/the-upload-outage-of-july-29-2014/",
+  "root_cause": "Signed 32-bit integer limit hit on a primary key in the uploads database, causing all new uploads to fail.",
+  "root_cause_timestamp": "2014-07-29T00:00:00Z",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,6 @@
+{
+  "company": "Cloudflare",
+  "url": "https://blog.cloudflare.com/1-1-1-1-lookup-failures-on-october-4th-2023/",
+  "description": "On 4 October 2023, Cloudflare experienced DNS resolution problems starting at 07:00 UTC and ending at 11:00 UTC. Some users of 1.1.1.1 or products like WARP, Zero Trust, or third party DNS resolvers which use 1.1.1.1 may have received SERVFAIL DNS responses to valid queries. We\u2019re very sorry for this outage. This outage was an internal software error and not the result of an attack. In this blog, we\u2019re going to talk about what the failure was, why it occurred, and what we\u2019re doing to make sure this doesn\u2019t happen again.",
+  "source": "GitHub post-mortems list"
+}

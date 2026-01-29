@@ -1,0 +1,10 @@
+{
+  "incident_id": "060",
+  "source": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+  "root_cause": "Configuration changes to Facebook's backbone routers also took down WhatsApp and Instagram globally.",
+  "root_cause_timestamp": "2021-10-04T15:00:00Z",
+  "category": "Network",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

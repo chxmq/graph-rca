@@ -1,0 +1,6 @@
+{
+  "company": "Slack",
+  "url": "https://slack.engineering/slacks-outage-on-january-4th-2021/",
+  "description": "Network saturation in AWS's traffic gateways caused packet loss. An attempt to scale up caused more issues.",
+  "source": "GitHub post-mortems list"
+}

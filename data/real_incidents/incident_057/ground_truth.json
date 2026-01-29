@@ -1,0 +1,10 @@
+{
+  "incident_id": "057",
+  "source": "https://support.stripe.com/questions/outage-postmortem-2015-10-08-utc",
+  "root_cause": "Incorrectly executed manual database operation (missing dependency) caused the Stripe API to go down for 90 minutes.",
+  "root_cause_timestamp": "2015-10-08T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "042",
+  "source": "https://cloud.google.com/blog/products/infrastructure/details-of-google-cloud-gcve-incident",
+  "root_cause": "GCVE provisioning used a legacy option that created a 'fixed-term' contract, leading to automatic deletion of the environment upon expiry.",
+  "root_cause_timestamp": "2023-01-01T00:00:00Z",
+  "category": "Infrastructure",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

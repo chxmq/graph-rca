@@ -1,0 +1,6 @@
+{
+  "company": "Facebook",
+  "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+  "description": "Configuration changes to Facebook's backbone routers caused a global outage of all Facebook properties and internal tools.",
+  "source": "GitHub post-mortems list"
+}

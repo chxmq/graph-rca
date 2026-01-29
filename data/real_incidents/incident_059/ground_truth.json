@@ -1,0 +1,10 @@
+{
+  "incident_id": "059",
+  "source": "https://status.aws.amazon.com/s3-20080720.html",
+  "root_cause": "Single corrupted bit in a gossip message caused distributed server state to overwhelm the S3 request processing fleet.",
+  "root_cause_timestamp": "2008-07-20T00:00:00Z",
+  "category": "Software",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

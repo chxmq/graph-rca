@@ -1,0 +1,6 @@
+{
+  "company": "Mandrill",
+  "url": "https://mailchimp.com/what-we-learned-from-the-recent-mandrill-outage/",
+  "description": "Transaction ID wraparound in Postgres caused a partial outage lasting a day and a half.",
+  "source": "GitHub post-mortems list"
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "037",
+  "source": "https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html",
+  "root_cause": "Redis network partition caused resync storm, crashing the master and leaving billing in read-only mode, causing retry over-billing.",
+  "root_cause_timestamp": "2013-07-19T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}
