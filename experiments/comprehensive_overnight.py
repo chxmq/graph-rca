@@ -1076,8 +1076,25 @@ def main():
         ("category", lambda: run_category_experiment(client, logger)),
     ]
     
+    # helper: load results if exist
+    def load_if_exists(name):
+        p = results_dir / f"{name}_results.json"
+        if p.exists():
+            try:
+                with open(p, "r") as f:
+                    return json.load(f)
+            except: return None
+        return None
+
     for name, exp_fn in experiments:
         try:
+            # Check if already done (Resume capability)
+            existing = load_if_exists(name)
+            if existing and "error" not in existing:
+                logger.info(f"\nSkipping {name} (already completed found in {name}_results.json)")
+                all_results[name] = existing
+                continue
+
             logger.info(f"\n{'='*70}")
             logger.info(f"Starting: {name}")
             all_results[name] = exp_fn()
@@ -1090,6 +1107,9 @@ def main():
             logger.error(f"Experiment {name} failed: {e}")
             logger.error(traceback.format_exc())
             all_results[name] = {"error": str(e)}
+            # Save error state so we know it tried and failed
+            with open(results_dir / f"{name}_results.json", "w") as f:
+                json.dump(all_results[name], f, indent=2)
     
     # Generate reports
     logger.info("\n" + "=" * 70)
