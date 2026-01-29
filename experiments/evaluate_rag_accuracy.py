@@ -6,10 +6,14 @@ import statistics
 import ollama
 from pathlib import Path
 from typing import List, Dict
+from openai import OpenAI
 
 # Configuration
 OLLAMA_HOST = "http://localhost:11434"
 MODEL = "llama3.2:3b"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")  # Set via environment variable
+JUDGE_MODEL = "gpt-4o-mini"  # Cheap and reliable for evaluation
+
 # Discover directories relative to this script (experiments/evaluate_rag_accuracy.py)
 SCRIPT_DIR = Path(__file__).parent.absolute()
 INCIDENT_DIR = SCRIPT_DIR.parent / "data" / "real_incidents"
@@ -18,7 +22,13 @@ RESULTS_DIR = SCRIPT_DIR / "eval_final_results"
 class RAGEvaluator:
     def __init__(self):
         self.client = ollama.Client(host=OLLAMA_HOST)
+        self.openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
         RESULTS_DIR.mkdir(exist_ok=True)
+        
+        if not self.openai_client:
+            print("⚠️  OPENAI_API_KEY not set. Scoring will use local 3B model (less reliable).")
+        else:
+            print(f"✓ Using {JUDGE_MODEL} for reliable scoring.")
         
     def get_all_incidents(self) -> List[Dict]:
         incidents = []
@@ -132,23 +142,55 @@ Root Cause:"""
             return "Unknown"
 
     def _verify_rca(self, prediction: str, ground_truth: str) -> float:
-        """Evaluates if the prediction captures the meaning of the ground truth using LLM."""
-        if not prediction or prediction.lower() == "unknown": return 0.0
+        """Evaluates if the prediction captures the meaning of the ground truth using GPT-4o-mini."""
+        if not prediction or prediction.lower() == "unknown": 
+            return 0.0
         
-        prompt = f"""Compare the 'Prediction' against the 'Ground Truth' root cause.
-        
+        # Use OpenAI if available (much more reliable)
+        if self.openai_client:
+            try:
+                response = self.openai_client.chat.completions.create(
+                    model=JUDGE_MODEL,
+                    messages=[{
+                        "role": "system",
+                        "content": "You are an expert evaluator for incident root cause analysis. Score how well a prediction matches the ground truth."
+                    }, {
+                        "role": "user",
+                        "content": f"""Compare the Prediction against the Ground Truth root cause.
+
 Ground Truth: {ground_truth}
 Prediction: {prediction}
 
-Does the Prediction capture the core issue described in the Ground Truth?
-Return a JSON object with a single key 'score' between 0.0 and 1.0.
-{{ "score": 0.0 to 1.0 }}"""
+Scoring criteria:
+- 1.0: Prediction correctly identifies the same root cause
+- 0.7-0.9: Prediction is on the right track but missing some details
+- 0.4-0.6: Prediction identifies related issues but not the core root cause
+- 0.1-0.3: Prediction is tangentially related
+- 0.0: Completely wrong or unrelated
 
+Return ONLY a JSON object: {{"score": <float between 0.0 and 1.0>}}"""
+                    }],
+                    response_format={"type": "json_object"},
+                    temperature=0.0
+                )
+                
+                data = json.loads(response.choices[0].message.content)
+                return float(data.get('score', 0.0))
+            except Exception as e:
+                print(f"    ⚠️  OpenAI scoring failed: {e}, falling back to local model")
+        
+        # Fallback to local 3B model (less reliable)
         try:
+            prompt = f"""Compare the 'Prediction' against the 'Ground Truth' root cause.
+Ground Truth: {ground_truth}
+Prediction: {prediction}
+
+Return a JSON object with score 0.0-1.0: {{"score": 0.5}}"""
+            
             response = self.client.generate(model=MODEL, prompt=prompt, format="json", options={"temperature": 0.0})
             data = json.loads(response['response'])
             return float(data.get('score', 0.0))
-        except Exception as e:
+        except Exception:
             return 0.0
 
 def main():
