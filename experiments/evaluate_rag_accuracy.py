@@ -98,16 +98,43 @@ class RAGEvaluator:
             
         return results
 
-    def _get_similar_incidents(self, test_case: Dict, train_set: List[Dict], count=3):
-        """Simulates semantic search by picking incidents from the same category or random ones."""
-        # Realistic simulation: prioritize same category
-        category = test_case['metadata']['category'].split("/")[0]
-        eligible = [inc for inc in train_set if inc['metadata']['category'].startswith(category)]
-        if len(eligible) < count:
-            remaining = [inc for inc in train_set if inc not in eligible]
-            eligible += random.sample(remaining, min(len(remaining), count - len(eligible)))
+    def _embed_incident(self, incident: Dict) -> List[float]:
+        """Create embedding for incident using metadata + ground truth."""
+        # Combine category and root cause for semantic representation
+        text = f"Category: {incident['metadata']['category']}. Root Cause: {incident['ground_truth']['root_cause']}"
+        try:
+            response = self.client.embeddings(model="nomic-embed-text", prompt=text)
+            return response['embedding']
+        except Exception as e:
+            # Fallback: return zero vector if embedding fails
+            print(f"    Warning: Embedding failed for incident {incident['id']}: {e}")
+            return [0.0] * 768  # nomic-embed-text dimension
+    
+    def _cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        """Calculate cosine similarity between two vectors."""
+        import math
+        dot_product = sum(a * b for a, b in zip(vec1, vec2))
+        magnitude1 = math.sqrt(sum(a * a for a in vec1))
+        magnitude2 = math.sqrt(sum(b * b for b in vec2))
+        if magnitude1 == 0 or magnitude2 == 0:
+            return 0.0
+        return dot_product / (magnitude1 * magnitude2)
+    
+    def _get_similar_incidents(self, test_case: Dict, train_set: List[Dict], count=1):
+        """Retrieve top-K most similar incidents using semantic embeddings."""
+        # Get embedding for test case
+        test_embedding = self._embed_incident(test_case)
         
-        return random.sample(eligible, count)
+        # Calculate similarity with all training incidents
+        similarities = []
+        for train_incident in train_set:
+            train_embedding = self._embed_incident(train_incident)
+            similarity = self._cosine_similarity(test_embedding, train_embedding)
+            similarities.append((similarity, train_incident))
+        
+        # Sort by similarity (descending) and return top-K
+        similarities.sort(reverse=True, key=lambda x: x[0])
+        return [inc for score, inc in similarities[:count]]
 
     def _identify_rca(self, logs: str, context: str) -> str:
         if context:
