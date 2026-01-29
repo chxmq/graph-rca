@@ -59,7 +59,6 @@ class RAGEvaluator:
             baseline_rca = self._identify_rca(test_case['logs'], context="")
             
             # 2. RAG: Retrieve top-3 similar incidents manually (simulating vector search)
-            # In a real system, this uses the vector DB. Here we simulate for the benchmark script.
             similar_incidents = self._get_similar_incidents(test_case, train_set)
             rag_context = "\n\n".join([
                 f"Historical Incident ID: {inc['id']}\nCompany: {inc['metadata']['company']}\nCategory: {inc['metadata']['category']}\nRoot Cause: {inc['ground_truth']['root_cause']}"
@@ -73,6 +72,9 @@ class RAGEvaluator:
             baseline_score = self._verify_rca(baseline_rca, test_case['ground_truth']['root_cause'])
             rag_score = self._verify_rca(rag_rca, test_case['ground_truth']['root_cause'])
             
+            print(f"    Baseline Accuracy: {baseline_score*100:.1f}%")
+            print(f"    RAG Accuracy:      {rag_score*100:.1f}%")
+
             results.append({
                 "incident_id": test_case['id'],
                 "company": test_case['metadata']['company'],
@@ -92,7 +94,8 @@ class RAGEvaluator:
         category = test_case['metadata']['category'].split("/")[0]
         eligible = [inc for inc in train_set if inc['metadata']['category'].startswith(category)]
         if len(eligible) < count:
-            eligible += [inc for inc in train_set if inc not in eligible]
+            remaining = [inc for inc in train_set if inc not in eligible]
+            eligible += random.sample(remaining, min(len(remaining), count - len(eligible)))
         
         return random.sample(eligible, count)
 
@@ -111,23 +114,26 @@ Root Cause:"""
             response = self.client.generate(model=MODEL, prompt=prompt, options={"temperature": 0.1})
             return response['response'].strip()
         except Exception:
-            return "Error in LLM call"
+            return "Unknown"
 
     def _verify_rca(self, prediction: str, ground_truth: str) -> float:
-        """Simple fuzzy match for benchmark scoring."""
-        if prediction.lower() == "unknown": return 0.0
+        """Evaluates if the prediction captures the meaning of the ground truth using LLM."""
+        if not prediction or prediction.lower() == "unknown": return 0.0
         
-        prompt = f"""Evaluate if the 'Prediction' captures the core meaning of the 'Ground Truth' root cause.
+        prompt = f"""Compare the 'Prediction' against the 'Ground Truth' root cause.
+        
 Ground Truth: {ground_truth}
 Prediction: {prediction}
 
-Respond with a single number from 0.0 to 1.0 (where 1.0 is exact match, 0.0 is completely wrong).
-Score:"""
+Does the Prediction capture the core issue described in the Ground Truth?
+Return a JSON object with a single key 'score' between 0.0 and 1.0.
+{{ "score": 0.0 to 1.0 }}"""
+
         try:
-            response = self.client.generate(model=MODEL, prompt=prompt, options={"temperature": 0.0})
-            score_str = "".join(filter(lambda x: x.isdigit() or x == '.', response['response']))
-            return float(score_str) if score_str else 0.0
-        except:
+            response = self.client.generate(model=MODEL, prompt=prompt, format="json", options={"temperature": 0.0})
+            data = json.loads(response['response'])
+            return float(data.get('score', 0.0))
+        except Exception as e:
             return 0.0
 
 def main():
