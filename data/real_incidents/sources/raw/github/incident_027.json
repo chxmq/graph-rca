@@ -1,0 +1,6 @@
+{
+  "company": "Heroku",
+  "url": "https://status.heroku.com/incidents/1091",
+  "description": "An automated remote configuration change did not propagate fully. Web dynos could not be started.",
+  "source": "GitHub post-mortems list"
+}

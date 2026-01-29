@@ -1,0 +1,10 @@
+{
+  "incident_id": "008",
+  "source": "https://stackstatus.net/post/115305251014/outage-postmortem-march-31-2015",
+  "root_cause": "Enabling the 'StackEgg' feature globally caused a massive traffic spike to load balancers, effectively behaving like a self-inflicted DDoS.",
+  "root_cause_timestamp": "2015-03-31T00:00:00Z",
+  "category": "Network",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

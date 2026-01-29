@@ -1,0 +1,10 @@
+{
+  "incident_id": "028",
+  "source": "https://blog.bitly.com/post/85260908544/more-detail",
+  "root_cause": "Hosted source code repository contained plaintext credentials granting access to Bitly's database backups.",
+  "root_cause_timestamp": "2014-05-08T00:00:00Z",
+  "category": "Security",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

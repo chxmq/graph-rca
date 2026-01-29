@@ -1,0 +1,10 @@
+{
+  "incident_id": "052",
+  "source": "https://azure.microsoft.com/en-us/blog/update-on-azure-storage-service-interruption/",
+  "root_cause": "A configuration change intended to improve performance across the storage service was deployed incorrectly, taking down Azure Storage globally.",
+  "root_cause_timestamp": "2014-11-18T00:00:00Z",
+  "category": "Configuration",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

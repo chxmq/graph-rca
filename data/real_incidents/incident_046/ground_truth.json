@@ -1,0 +1,10 @@
+{
+  "incident_id": "046",
+  "source": "https://en.wikipedia.org/wiki/Priority_inversion",
+  "root_cause": "Priority inversion in VxWorks OS where a low-priority task held a mutex needed by a high-priority task, while a medium-priority task blocked the low-priority one.",
+  "root_cause_timestamp": "1997-07-04T00:00:00Z",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

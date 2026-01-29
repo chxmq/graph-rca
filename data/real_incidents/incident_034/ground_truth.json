@@ -1,0 +1,10 @@
+{
+  "incident_id": "034",
+  "source": "https://slackhq.com/this-was-not-normal-really",
+  "root_cause": "Massive reconnection spike following a network glitch overwhelmed database capacity, leading to cascading connection failures.",
+  "root_cause_timestamp": "2018-06-27T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

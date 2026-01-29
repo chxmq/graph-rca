@@ -1,0 +1,10 @@
+{
+  "incident_id": "012",
+  "source": "https://blog.npmjs.org/post/74949623024/2014-01-28-outage-postmortem.html",
+  "root_cause": "Fastly/Varnish 'restart' command reset the request backend to the first one in the VCL list (Manta) instead of the intended pool.",
+  "root_cause_timestamp": "2014-01-28T00:00:00Z",
+  "category": "Configuration",
+  "severity": "High",
+  "logs_available": true,
+  "root_cause_in_logs": true
+}

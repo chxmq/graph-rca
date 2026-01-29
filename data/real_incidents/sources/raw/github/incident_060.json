@@ -1,0 +1,6 @@
+{
+  "company": "GoCardless",
+  "url": "https://gocardless.com/blog/zero-downtime-postgres-migrations-the-hard-parts/",
+  "description": "All queries on a critical PostgreSQL table were blocked by the combination of an extremely fast database migration and a long-running read query, causing 15 seconds of downtime.",
+  "source": "GitHub post-mortems list"
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "020",
+  "source": "https://status.cloud.google.com/incidents/ow5i3PPK96RduMcb1SsW",
+  "root_cause": "A policy change with blank fields triggered a null pointer exception in Service Control, causing global crash loops.",
+  "root_cause_timestamp": "2022-12-15T00:00:00Z",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

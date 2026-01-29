@@ -1,0 +1,6 @@
+{
+  "company": "Spotify",
+  "url": "https://labs.spotify.com/2013/06/04/incident-management-at-spotify/",
+  "description": "Lack of exponential backoff in a microservice caused a cascading failure, leading to notable service degradation.",
+  "source": "GitHub post-mortems list"
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "044",
+  "source": "https://www.bbc.co.uk/blogs/internet/entries/a37b0470-47d4-3991-82bb-a7d5b8803771",
+  "root_cause": "Database backend overload caused throttling; services without local caching timed out and failed completely.",
+  "root_cause_timestamp": "2014-07-01T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

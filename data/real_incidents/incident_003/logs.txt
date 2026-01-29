@@ -1,0 +1,7 @@
+# Incident Logs
+# Paste or extract log entries here, one per line
+# Format: TIMESTAMP LEVEL MESSAGE
+# Example:
+# 2024-01-15T10:23:45Z ERROR Connection pool exhausted - no available connections
+# 2024-01-15T10:23:46Z WARN Query timeout after 30s
+

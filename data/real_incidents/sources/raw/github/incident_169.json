@@ -1,0 +1,6 @@
+{
+  "company": "Slack",
+  "url": "https://slack.engineering/slacks-incident-on-2-22-22/",
+  "description": "Cache nodes removal caused the high workload on the vitness cluster, which in turn cased the service outage.",
+  "source": "GitHub post-mortems list"
+}

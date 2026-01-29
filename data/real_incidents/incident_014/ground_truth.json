@@ -1,0 +1,10 @@
+{
+  "incident_id": "014",
+  "source": "https://www.crowdstrike.com/falcon-content-update-remediation-and-guidance-hub/",
+  "root_cause": "A buggy content update in Falcon sensor triggered an out-of-bounds memory read in the kernel driver, causing Windows BSOD.",
+  "root_cause_timestamp": "2024-07-19T04:09:00Z",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

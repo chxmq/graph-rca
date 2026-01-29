@@ -1,0 +1,6 @@
+{
+  "company": "Homebrew",
+  "url": "https://web.archive.org/web/20210813020247/https://brew.sh/2018/08/05/security-incident-disclosure/",
+  "description": "A GitHub personal access token with recently elevated scopes was leaked from Homebrew\u2019s Jenkins that allowed access to `git push` on several Homebrew repositories.",
+  "source": "GitHub post-mortems list"
+}

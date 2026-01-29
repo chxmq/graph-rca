@@ -1,0 +1,10 @@
+{
+  "incident_id": "033",
+  "source": "https://labs.spotify.com/2013/06/04/incident-management-at-spotify/",
+  "root_cause": "Lack of exponential backoff in internal microservices caused retry storms and cascading service degradation.",
+  "root_cause_timestamp": "2013-06-04T00:00:00Z",
+  "category": "Software",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

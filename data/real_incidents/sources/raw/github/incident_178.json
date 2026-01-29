@@ -1,0 +1,6 @@
+{
+  "company": "Stripe",
+  "url": "https://support.stripe.com/questions/outage-postmortem-2015-10-08-utc",
+  "description": "Manual operations are regularly executed on production databases. A manual operation was done incorrectly (missing dependency), causing the Stripe API to go down for 90 minutes.",
+  "source": "GitHub post-mortems list"
+}

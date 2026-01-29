@@ -1,0 +1,10 @@
+{
+  "incident_id": "003",
+  "source": "https://blog.cloudflare.com/cloudflare-outage-on-july-17-2020/",
+  "root_cause": "Configuration typo in Atlanta router: deactivating a prefix-list instead of the term leaked all BGP routes with high local-preference.",
+  "root_cause_timestamp": "2020-07-17T21:12:00Z",
+  "category": "Network",
+  "severity": "Critical",
+  "logs_available": true,
+  "root_cause_in_logs": true
+}
