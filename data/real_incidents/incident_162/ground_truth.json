@@ -1,0 +1,10 @@
+{
+  "incident_id": "162",
+  "source": "https://help.salesforce.com/apex/HTViewSolution?urlname=Root-Cause-Message-for-Disruption-of-Service-on-NA14-May-2016&language=en_US",
+  "root_cause": "Power failure in one datacenter led to cascading failures with a database cluster and file discrepancies resulting in cross data center failover issues",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

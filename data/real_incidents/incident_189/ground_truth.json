@@ -1,0 +1,10 @@
+{
+  "incident_id": "189",
+  "source": "https://zerodha.com/marketintel/bulletin/229363/post-mortem-of-technical-issue-august-29-2019",
+  "root_cause": "The Order Management System (OMS) provided to Zerodha, a stock broker, collapsed when an order for 1M units of a penny stock was divided into more than 0",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

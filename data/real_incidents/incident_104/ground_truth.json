@@ -1,0 +1,10 @@
+{
+  "incident_id": "104",
+  "source": "https://status.duo.com/incidents/4w07bmvnt359",
+  "root_cause": "A request queue overloading the existing, insufficient database capacity",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

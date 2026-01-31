@@ -1,0 +1,10 @@
+{
+  "incident_id": "096",
+  "source": "https://circleci.com/blog/jan-4-2023-incident-report/",
+  "root_cause": "By January 4, 2023, our internal investigation had determined the scope of the intrusion by the unauthorized third party and the entry path of the attack",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

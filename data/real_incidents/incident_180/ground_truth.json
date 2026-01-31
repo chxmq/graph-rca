@@ -1,0 +1,10 @@
+{
+  "incident_id": "180",
+  "source": "https://mail.tarsnap.com/tarsnap-announce/msg00035.html",
+  "root_cause": "A batch job which scans for unused blocks in Amazon S3 and marks them to be freed encountered a condition where all retries for freeing certain blocks would fail",
+  "root_cause_timestamp": "Unknown",
+  "category": "Cloud",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "190",
+  "source": "https://zerodha.com/marketintel/bulletin/105569/postmortem-trading-and-hanging-orders-on-12th-april-2018",
+  "root_cause": "A failure of the primary leased line to a CTCL between a stock broker and a stock exchange led to the activation of a backup leased line that was operating sporadically over the following hour, affect...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

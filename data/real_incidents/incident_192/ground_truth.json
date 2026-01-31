@@ -1,0 +1,10 @@
+{
+  "incident_id": "192",
+  "source": "https://www.fastly.com/blog/summary-of-june-8-outage",
+  "root_cause": "Software bug triggered by valid customer configuration change",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

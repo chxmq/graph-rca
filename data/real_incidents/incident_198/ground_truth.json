@@ -1,0 +1,10 @@
+{
+  "incident_id": "198",
+  "source": "https://eng.uber.com/schemaless-part-one-mysql-datastore/",
+  "root_cause": "Mysql table growth exceeding operational limits, requiring emergency sharding",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

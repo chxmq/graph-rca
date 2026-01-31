@@ -1,0 +1,10 @@
+{
+  "incident_id": "099",
+  "source": "https://www.crowdstrike.com/falcon-content-update-remediation-and-guidance-hub/",
+  "root_cause": "A bug in the content validator in the deployment stage",
+  "root_cause_timestamp": "Unknown",
+  "category": "Memory",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

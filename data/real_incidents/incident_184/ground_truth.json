@@ -1,0 +1,10 @@
+{
+  "incident_id": "184",
+  "source": "https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html",
+  "root_cause": "In 2013, a temporary network partition in the redis cluster used for billing operations, caused a massive resynchronization from slaves",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "107",
+  "source": "https://www.elastic.co/blog/elastic-cloud-january-18-2019-incident-report",
+  "root_cause": "Elastic Cloud customers with deployments in the AWS eu-west-1 (Ireland) region experienced severely degraded access to their clusters for roughly 3 hours",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

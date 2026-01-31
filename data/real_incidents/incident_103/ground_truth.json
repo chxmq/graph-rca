@@ -1,0 +1,10 @@
+{
+  "incident_id": "103",
+  "source": "https://blogs.dropbox.com/tech/2014/01/outage-post-mortem/",
+  "root_cause": "This postmortem is pretty thin and I'm not sure what happened",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

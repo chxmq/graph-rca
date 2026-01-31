@@ -1,0 +1,10 @@
+{
+  "incident_id": "176",
+  "source": "http://web.archive.org/web/20170130231315/https://stackstatus.net/post/156407746074/outage-postmortem-january-24-2017",
+  "root_cause": "The primary SQL-Server triggered a bugcheck on the SQL Server process, causing the Stack Exchange sites to go into read only mode, and eventually a complete outage",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

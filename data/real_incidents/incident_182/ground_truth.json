@@ -1,0 +1,10 @@
+{
+  "incident_id": "182",
+  "source": "http://sunnyday.mit.edu/papers/therac.pdf",
+  "root_cause": "The Therac-25 was a radiation therapy machine involved in at least six accidents between 1985 and 1987 in which patients were given massive overdoses of radiation",
+  "root_cause_timestamp": "Unknown",
+  "category": "Memory",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

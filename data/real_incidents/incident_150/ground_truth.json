@@ -1,0 +1,10 @@
+{
+  "incident_id": "150",
+  "source": "https://web.archive.org/web/20161230103247/https://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/Authoritative_Account.html",
+  "root_cause": "NASA's Mars Pathfinder spacecraft experienced system resets a few days after landing on Mars (1997)",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

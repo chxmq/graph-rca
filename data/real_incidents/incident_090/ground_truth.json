@@ -1,0 +1,10 @@
+{
+  "incident_id": "090",
+  "source": "https://building.buildkite.com/outage-post-mortem-for-august-23rd-82b619a3679b",
+  "root_cause": "Database capacity downgrade in an attempt to minimise AWS spend resulted in lack of capacity to support Buildkite customers at peak, leading to cascading collapse of dependent servers",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

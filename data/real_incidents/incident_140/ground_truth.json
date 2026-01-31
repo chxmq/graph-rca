@@ -1,0 +1,10 @@
+{
+  "incident_id": "140",
+  "source": "https://web.archive.org/web/20220406095752/https://www.joyent.com/blog/postmortem-for-outage-of-us-east-1-may-27-2014",
+  "root_cause": "An operator used a tool with lax input validation to reboot a small number of servers undergoing maintenance but forgot to type `-n` and instead rebooted all servers in the datacenter",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "070",
+  "source": "https://github.blog/2021-12-01-github-availability-report-november-2021/",
+  "root_cause": "The cascading nature of this scenario, there were not enough active read replicas to handle production requests which impacted the availability of core github services",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

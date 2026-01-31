@@ -1,0 +1,10 @@
+{
+  "incident_id": "102",
+  "source": "https://status.discordapp.com/incidents/qk9cdgnqnhcn",
+  "root_cause": "\"At approximately 14:01, a Redis instance acting as the primary for a highly-available cluster used by Discord's API services was migrated automatically by Google\u2019s Cloud Platform",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

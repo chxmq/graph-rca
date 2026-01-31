@@ -1,0 +1,10 @@
+{
+  "incident_id": "084",
+  "source": "https://signalvnoise.com/posts/3729-basecamp-network-attack-postmortem), [see also](https://signalvnoise.com/posts/3728-basecamp-was-under-network-attack-this-morning",
+  "root_cause": "Basecamp's network was under a DDoS attack during a 100-minute window on March 24, 2014",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

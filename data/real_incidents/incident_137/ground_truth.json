@@ -1,0 +1,10 @@
+{
+  "incident_id": "137",
+  "source": "https://web.archive.org/web/20211124170124/https://medium.com/making-instapaper/instapaper-outage-cause-recovery-3c32a7e9cc5f",
+  "root_cause": "Also [this](https://web",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

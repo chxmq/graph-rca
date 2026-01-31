@@ -1,0 +1,10 @@
+{
+  "incident_id": "073",
+  "source": "https://aws.amazon.com/message/41926/",
+  "root_cause": "Human error",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}
