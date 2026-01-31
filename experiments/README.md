@@ -1,64 +1,36 @@
-# Experiments Directory
+# GraphRCA Experiments
 
-This directory contains evaluation scripts and results for the GraphRCA system.
+Organized experiment results for the paper.
 
-## Core Scripts
+## Folder Structure
 
-### `evaluate_rag_accuracy.py`
-**Purpose**: Evaluates RAG-enhanced RCA accuracy on real-world incidents
-
-**How it works**:
-1. Loads 60 curated incidents
-2. Splits into 75% training (knowledge base) / 25% testing
-3. For each test case:
-   - **Baseline**: Identify RCA using logs only (no RAG)
-   - **RAG**: Retrieve similar incidents + identify RCA with context
-4. Scores predictions using GPT-4o-mini as judge
-5. Outputs results to `eval_final_results/real_incident_bench.json`
-
-**Usage**:
-```bash
-export OPENAI_API_KEY='your-key-here'
-python evaluate_rag_accuracy.py
+```
+experiments_organized/
+├── 01_batch_inference/      # LLM batching performance (5.7× speedup)
+├── 02_scalability/          # O(n) linear complexity proof
+├── 03_baseline_comparison/  # 96.7% RCA accuracy across 20 scenarios
+├── 04_rag_noise/            # (Failed - sqlite version issue)
+├── 05_doc_ablation/         # Documentation dependency analysis
+├── 06_category_rca/         # Per-category breakdown
+├── 07_parser_accuracy/      # 99.6% BGL, 99.2% HDFS
+├── figures/                 # Publication-ready PDF & PNG
+├── scripts/                 # comprehensive_overnight.py + run log
+├── latex_tables.tex         # Parser & RCA tables
+├── statistical_tables.tex   # Confidence interval tables
+└── EVALUATION_REPORT.md     # Full summary report
 ```
 
-### `run_gpu_eval.sh`
-**Purpose**: Automated evaluation pipeline for remote GPU servers
+## Key Results
 
-**Steps**:
-1. Checks dependencies and Ollama service
-2. Generates synthetic logs for all incidents
-3. Runs the RAG accuracy benchmark
-4. Generates final report
+| Metric | Value | Source |
+|--------|-------|--------|
+| Batch 32 Throughput | 2.27 logs/s (5.7× speedup) | 01_batch_inference |
+| RCA Overall Accuracy | 96.7% (88.6–99.1% CI) | 03_baseline_comparison |
+| Parsing Accuracy (BGL) | 99.6% | 07_parser_accuracy |
+| Parsing Accuracy (HDFS) | 99.2% | 07_parser_accuracy |
+| DAG Scalability | O(n) linear | 02_scalability |
 
-**Usage**:
-```bash
-chmod +x run_gpu_eval.sh
-./run_gpu_eval.sh
-```
+## Run Date
 
-## Results Directory
-
-### `eval_final_results/`
-Contains all evaluation outputs:
-- `real_incident_bench.json`: RAG vs. Baseline accuracy results
-- Previous experiment results (Drain baseline, LLM parsing, etc.)
-- Statistical analysis and LaTeX tables
-
-## Legacy Scripts (Archive)
-
-- `overnight_evaluation.sh`: Old evaluation script (superseded)
-- `run_real_evaluation.sh`: Original evaluation approach (superseded)
-- `statistical_analysis.py`: Statistical tests for experiment results
-
-## Dependencies
-
-```bash
-pip install ollama openai
-```
-
-## For the Paper
-
-The key result for your IEEE Access paper comes from:
-- `evaluate_rag_accuracy.py` → quantitative evaluation
-- `real_incident_bench.json` → accuracy metrics and improvement percentages
+- Comprehensive overnight: 2026-01-31 (5h 00m 56s)
+- Eval final results: 2026-01-29

@@ -1,0 +1,61 @@
+{
+  "batch_results": [
+    {
+      "batch_size": 1,
+      "throughput": 0.398,
+      "latency_ms": 2514.9,
+      "std_dev": 4.092,
+      "speedup": 1.0,
+      "runs": [
+        320.82267665863037,
+        315.8631098270416,
+        321.86244559288025,
+        324.17735052108765,
+        326.8167669773102
+      ]
+    },
+    {
+      "batch_size": 8,
+      "throughput": 0.483,
+      "latency_ms": 2068.8,
+      "std_dev": 11.551,
+      "speedup": 1.22,
+      "runs": [
+        259.3587441444397,
+        256.79017519950867,
+        273.31694197654724,
+        253.94132804870605,
+        280.5938444137573
+      ]
+    },
+    {
+      "batch_size": 16,
+      "throughput": 0.817,
+      "latency_ms": 1223.7,
+      "std_dev": 48.788,
+      "speedup": 2.06,
+      "runs": [
+        157.04086709022522,
+        178.77743101119995,
+        225.9134213924408,
+        113.1843888759613,
+        108.23000741004944
+      ]
+    },
+    {
+      "batch_size": 32,
+      "throughput": 2.269,
+      "latency_ms": 440.8,
+      "std_dev": 60.99,
+      "speedup": 5.71,
+      "runs": [
+        2.823038101196289,
+        53.42393159866333,
+        2.731438636779785,
+        72.61430549621582,
+        150.5101399421692
+      ]
+    }
+  ],
+  "latex": "% Batch Inference Results - 2026-01-31T02:41:01.227261\n\\begin{table}[t]\n\\centering\n\\caption{Batch Inference Performance (Llama 3.2 3B, GPU)}\n\\label{tab:batching}\n\\begin{tabular}{lcccc}\n\\toprule\n\\textbf{Batch Size} & \\textbf{Throughput} & \\textbf{Latency} & \\textbf{Std Dev} & \\textbf{Speedup} \\\\\n\\midrule\n1 (baseline) & 0.40 logs/s & 2515 ms & $\\pm$4.1s & 1.0$\\times$ \\\\\n8 & 0.48 logs/s & 2069 ms & $\\pm$11.6s & 1.2$\\times$ \\\\\n16 & 0.82 logs/s & 1224 ms & $\\pm$48.8s & 2.1$\\times$ \\\\\n32 & 2.27 logs/s & 441 ms & $\\pm$61.0s & 5.7$\\times$ \\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}\n"
+}
