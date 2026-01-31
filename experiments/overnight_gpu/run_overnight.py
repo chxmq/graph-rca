@@ -454,8 +454,7 @@ def run_rag_comparison(
     logger: logging.Logger,
     checkpoint: CheckpointManager,
     incidents: List[Dict],
-    ollama_client,
-    openai_client
+    ollama_client
 ) -> Dict:
     """Compare Baseline vs RAG accuracy."""
     
@@ -498,13 +497,13 @@ def run_rag_comparison(
         try:
             # Baseline
             baseline_pred = get_prediction(ollama_client, input_text, context="")
-            baseline_score = score_with_gpt(openai_client, baseline_pred, test_case["root_cause"], logger)
+            baseline_score = score_with_ollama(ollama_client, baseline_pred, test_case["root_cause"], logger)
             
             # RAG - find similar
             similar = find_similar(ollama_client, test_case, train_set)
             rag_context = f"Historical: {similar['category']} - {similar['root_cause']}"
             rag_pred = get_prediction(ollama_client, input_text, context=rag_context)
-            rag_score = score_with_gpt(openai_client, rag_pred, test_case["root_cause"], logger)
+            rag_score = score_with_ollama(ollama_client, rag_pred, test_case["root_cause"], logger)
             
             results["tests"].append({
                 "id": test_case["id"],
@@ -768,7 +767,7 @@ def main():
     try:
         # Exp 1: RCA Accuracy
         all_results["rca_accuracy"] = run_rca_accuracy(
-            logger, checkpoint, incidents, ollama_client, openai_client
+            logger, checkpoint, incidents, ollama_client
         )
     except Exception as e:
         logger.error(f"Experiment 1 failed: {e}\n{traceback.format_exc()}")
@@ -777,7 +776,7 @@ def main():
     try:
         # Exp 2: RAG Comparison
         all_results["rag_comparison"] = run_rag_comparison(
-            logger, checkpoint, incidents, ollama_client, openai_client
+            logger, checkpoint, incidents, ollama_client
         )
     except Exception as e:
         logger.error(f"Experiment 2 failed: {e}\n{traceback.format_exc()}")
