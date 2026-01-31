@@ -1,0 +1,10 @@
+{
+  "incident_id": "088",
+  "source": "https://blog.bitly.com/post/85260908544/more-detail",
+  "root_cause": "Hosted source code repo contained credentials granting access to bitly backups, including hashed passwords",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

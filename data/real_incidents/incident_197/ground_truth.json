@@ -1,0 +1,10 @@
+{
+  "incident_id": "197",
+  "source": "https://netflixtechblog.com/chaos-engineering-upgraded-878d341f15fa",
+  "root_cause": "Regional availability issues exposed by Chaos Monkey testing, revealing hidden dependencies in microservice mesh",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

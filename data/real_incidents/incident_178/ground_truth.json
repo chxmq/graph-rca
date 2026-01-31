@@ -1,0 +1,10 @@
+{
+  "incident_id": "178",
+  "source": "https://support.stripe.com/questions/outage-postmortem-2015-10-08-utc",
+  "root_cause": "Manual operations are regularly executed on production databases",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

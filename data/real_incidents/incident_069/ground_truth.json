@@ -1,0 +1,10 @@
+{
+  "incident_id": "069",
+  "source": "https://web.archive.org/web/20250303152906/https://hacks.mozilla.org/2019/07/add-ons-outage-post-mortem-result/",
+  "root_cause": "Most Firefox add-ons stopped working around May 4th 2019 when a certificate expired",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "105",
+  "source": "https://web.archive.org/web/20220430011642/https://www.epicgames.com/fortnite/en-US/news/postmortem-of-service-outage-at-3-4m-ccu",
+  "root_cause": "Extreme load (a new peak of 3",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

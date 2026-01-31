@@ -1,0 +1,10 @@
+{
+  "incident_id": "194",
+  "source": "https://engineering.atspotify.com/2013/06/incident-management-at-spotify/",
+  "root_cause": "Cascading failures in microservices when circuit breakers failed to activate properly",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

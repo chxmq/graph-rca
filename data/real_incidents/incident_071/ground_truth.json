@@ -1,0 +1,10 @@
+{
+  "incident_id": "071",
+  "source": "https://status.heroku.com/incidents/2558",
+  "root_cause": "At 15:05 UTC on June 8, 2023, a database error occurred where a foreign key used a smaller data type than the primary key that it referenced",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

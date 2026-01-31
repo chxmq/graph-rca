@@ -1,0 +1,10 @@
+{
+  "incident_id": "110",
+  "source": "https://blog.etsy.com/news/2012/demystifying-site-outages/",
+  "root_cause": "First, a deploy that was supposed to be a small bugfix deploy also caused live databases to get upgraded on running production machines",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

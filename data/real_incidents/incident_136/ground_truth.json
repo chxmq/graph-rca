@@ -1,0 +1,10 @@
+{
+  "incident_id": "136",
+  "source": "https://web.archive.org/web/20220124104632/https://cercind.gov.in/2012/orders/Final_Report_Grid_Disturbance.pdf",
+  "root_cause": "The absence of islanding mechanisms",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

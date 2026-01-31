@@ -1,0 +1,10 @@
+{
+  "incident_id": "183",
+  "source": "https://tech.trivago.com/2021/10/05/postmortem-removing-all-users-from-github.com/trivago/",
+  "root_cause": "A human error, all engineers lost access to the central source code management platform (github organization)",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

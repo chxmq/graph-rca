@@ -1,0 +1,10 @@
+{
+  "incident_id": "077",
+  "source": "https://aws.amazon.com/message/680587/",
+  "root_cause": "Elastic Load Balancer ran into problems when \"a maintenance process that was inadvertently run against the production ELB state data\"",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

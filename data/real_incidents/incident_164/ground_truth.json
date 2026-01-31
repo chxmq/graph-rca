@@ -1,0 +1,10 @@
+{
+  "incident_id": "164",
+  "source": "https://blog.sentry.io/2015/07/23/transaction-id-wraparound-in-postgres",
+  "root_cause": "Transaction ID Wraparound in Postgres caused Sentry to go down for most of a working day",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

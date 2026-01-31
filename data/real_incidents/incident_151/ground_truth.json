@@ -1,0 +1,10 @@
+{
+  "incident_id": "151",
+  "source": "https://netflixtechblog.com/post-mortem-of-october-22-2012-aws-degradation-efcee3ab40d5",
+  "root_cause": "An EBS outage in one availability zone was mitigated by migrating to other availability zones",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

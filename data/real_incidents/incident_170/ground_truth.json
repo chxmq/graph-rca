@@ -1,0 +1,10 @@
+{
+  "incident_id": "170",
+  "source": "https://labs.spotify.com/2013/06/04/incident-management-at-spotify/",
+  "root_cause": "Lack of exponential backoff in a microservice caused a cascading failure, leading to notable service degradation",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "196",
+  "source": "https://dropbox.tech/infrastructure/making-magic-pocket-sustainable",
+  "root_cause": "Disk hot spots and uneven data distribution across shards",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

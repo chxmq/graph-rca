@@ -1,0 +1,10 @@
+{
+  "incident_id": "132",
+  "source": "https://www.honeycomb.io/blog/incident-review-designed-failing/",
+  "root_cause": "Another story of multiple incidents that ended up impacting [query performance](https://status",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

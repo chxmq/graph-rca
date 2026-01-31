@@ -1,0 +1,10 @@
+{
+  "incident_id": "068",
+  "source": "https://web.archive.org/web/20220320100036/https://lkml.org/lkml/2012/7/1/203",
+  "root_cause": "When a leap second occurred, `CLOCK_REALTIME` was rewound by one second",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

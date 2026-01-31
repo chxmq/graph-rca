@@ -1,0 +1,10 @@
+{
+  "incident_id": "152",
+  "source": "https://www3.epa.gov/region1/npdes/merrimackstation/pdfs/ar/AR-1165.pdf",
+  "root_cause": "A power outage in Ohio around 1600h EDT cascaded up through a web of systemic vulnerabilities and process failures and resulted in an outage in the power grid affecting ~50,000,000 people for ~4 days ...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

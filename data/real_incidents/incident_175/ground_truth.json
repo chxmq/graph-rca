@@ -1,0 +1,10 @@
+{
+  "incident_id": "175",
+  "source": "https://meta.stackoverflow.com/q/340960/2422776",
+  "root_cause": "Porting old Careers 2",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

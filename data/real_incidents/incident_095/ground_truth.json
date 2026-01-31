@@ -1,0 +1,10 @@
+{
+  "incident_id": "095",
+  "source": "https://circleci.statuspage.io/incidents/hr0mm9xmm3x6",
+  "root_cause": "A GitHub outage and recovery caused an unexpectedly large incoming load",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

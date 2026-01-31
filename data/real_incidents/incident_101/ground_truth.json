@@ -1,0 +1,10 @@
+{
+  "incident_id": "101",
+  "source": "https://status.discordapp.com/incidents/dj3l6lw926kl",
+  "root_cause": "Internal queues filling up",
+  "root_cause_timestamp": "Unknown",
+  "category": "Memory",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

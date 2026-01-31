@@ -1,0 +1,13 @@
+# Slack Incident
+
+**Category:** Database
+**Severity:** Medium
+**Source:** https://web.archive.org/web/20181208123409/https://slackhq.com/this-was-not-normal-really
+
+## Description
+
+A combination of factor results in a large number of Slack's users being disconnected to the server. The subsequent massive disconnection-reconnection process exceeded the database capacity and caused cascading connection failures, leading to 5% of Slack's users not being able to connect to the server for up to 2 hours.
+
+## Root Cause
+
+A combination of factor results in a large number of Slack's users being disconnected to the server

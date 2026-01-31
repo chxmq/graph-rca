@@ -1,0 +1,10 @@
+{
+  "incident_id": "094",
+  "source": "https://www.chef.io/blog/2014/07/10/supermarket-intermittent-unresponsiveness-postmortem/",
+  "root_cause": "Intermittent unresponsiveness and increased latency",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

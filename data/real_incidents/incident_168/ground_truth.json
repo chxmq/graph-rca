@@ -1,0 +1,10 @@
+{
+  "incident_id": "168",
+  "source": "https://slack.engineering/slacks-outage-on-january-4th-2021/",
+  "root_cause": "Network saturation in AWS's traffic gateways caused packet loss",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

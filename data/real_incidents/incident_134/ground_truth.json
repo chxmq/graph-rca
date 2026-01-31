@@ -1,0 +1,10 @@
+{
+  "incident_id": "134",
+  "source": "https://www.honeycomb.io/blog/incident-review-what-comes-up-must-first-go-down/",
+  "root_cause": "On July 25th, 2023, we experienced a total Honeycomb outage",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

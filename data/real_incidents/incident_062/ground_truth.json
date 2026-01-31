@@ -1,0 +1,10 @@
+{
+  "incident_id": "062",
+  "source": "https://status.cloud.google.com/incidents/eo76pxZiDgWVz4z3kmUv",
+  "root_cause": "A failure of a component on a fiber path from one of the central US gateway campuses in Google\u2019s production backbone led to a decrease in available network bandwidth between the gateway and multiple e...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

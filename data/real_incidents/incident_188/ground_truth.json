@@ -1,0 +1,10 @@
+{
+  "incident_id": "188",
+  "source": "https://web.archive.org/web/20201018145502/http://yellerapp.com/posts/2014-08-04-postmortem1.html",
+  "root_cause": "Cached routes, but there wasn't enough logging information to tell for sure",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

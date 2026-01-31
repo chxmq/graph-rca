@@ -1,0 +1,10 @@
+{
+  "incident_id": "087",
+  "source": "https://web.archive.org/web/20210421222929/https://status.bintray.com/incidents/w4dfr0rpznkt",
+  "root_cause": "In July 2017 several malicious Maven packages were included in JCenter with an impersonation attack",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

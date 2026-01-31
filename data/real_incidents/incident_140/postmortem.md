@@ -1,0 +1,13 @@
+# Joyent Incident
+
+**Category:** Infrastructure
+**Severity:** Medium
+**Source:** https://web.archive.org/web/20220406095752/https://www.joyent.com/blog/postmortem-for-outage-of-us-east-1-may-27-2014
+
+## Description
+
+An operator used a tool with lax input validation to reboot a small number of servers undergoing maintenance but forgot to type `-n` and instead rebooted all servers in the datacenter. This caused an outage that lasted 2.5 hours, rebooted all customer instances, put tremendous load on DHCP/TFTP PXE boot systems, and left API systems requiring manual intervention. See also [Bryan Cantrill's talk](https://www.youtube.com/watch?v=30jNsCVLpAE).
+
+## Root Cause
+
+An operator used a tool with lax input validation to reboot a small number of servers undergoing maintenance but forgot to type `-n` and instead rebooted all servers in the datacenter

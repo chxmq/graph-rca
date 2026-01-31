@@ -1,0 +1,13 @@
+# Gitlab Incident
+
+**Category:** Infrastructure
+**Severity:** Critical
+**Source:** https://docs.google.com/document/d/1ScqXAdb6BjhsDzCo3qdPYbt1uULzgZqPO8zHeHHarS0/preview?sle=true&hl=en&forcehl=1#heading=h.dfbilqgnc5sf
+
+## Description
+
+After the primary locked up and was restarted, it was brought back up with the wrong filesystem, causing a global outage. See also [HN discussion](https://web.archive.org/web/20220127094354/https://news.ycombinator.com/item?id=8003601).
+
+## Root Cause
+
+After the primary locked up and was restarted, it was brought back up with the wrong filesystem, causing a global outage

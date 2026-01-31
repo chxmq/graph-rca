@@ -1,0 +1,10 @@
+{
+  "incident_id": "186",
+  "source": "https://github.com/valvesoftware/steam-for-linux/issues/3671",
+  "root_cause": "Steam's desktop client deleted all local files and directories",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

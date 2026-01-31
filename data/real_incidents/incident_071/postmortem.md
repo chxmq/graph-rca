@@ -1,0 +1,13 @@
+# Heroku Incident
+
+**Category:** Database
+**Severity:** Medium
+**Source:** https://status.heroku.com/incidents/2558
+
+## Description
+
+At 15:05 UTC on June 8, 2023, a database error occurred where a foreign key used a smaller data type than the primary key that it referenced. This error caused an overflow when the primary key exceeded the allowable value, resulting in an inability to create new authorizations within Heroku. This error also prevented customers from creating new deployments. The oncall operations then triggered the Heroku API full outage.
+
+## Root Cause
+
+At 15:05 UTC on June 8, 2023, a database error occurred where a foreign key used a smaller data type than the primary key that it referenced

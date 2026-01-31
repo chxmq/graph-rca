@@ -1,0 +1,10 @@
+{
+  "incident_id": "163",
+  "source": "https://help.salesforce.com/s/articleView?id=000396429&type=1",
+  "root_cause": "On September 20, 2023, a service disruption affected a subset of customers across multiple services beginning at 14:48 Coordinated Universal Time (UTC)",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

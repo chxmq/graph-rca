@@ -1,0 +1,10 @@
+{
+  "incident_id": "155",
+  "source": "https://web.archive.org/web/20211019062735/https://www.pagerduty.com/blog/outage-post-mortem-april-13-2013/",
+  "root_cause": "To high network latency and hence failed in their ability to send notifications",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

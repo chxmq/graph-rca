@@ -1,0 +1,10 @@
+{
+  "incident_id": "111",
+  "source": "https://www.fastly.com/blog/summary-of-june-8-outage",
+  "root_cause": "An undiscovered software bug that surfaced on june 8 when it was triggered by a valid customer configuration change",
+  "root_cause_timestamp": "Unknown",
+  "category": "Configuration",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

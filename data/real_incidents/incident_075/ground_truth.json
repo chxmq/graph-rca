@@ -1,0 +1,10 @@
+{
+  "incident_id": "075",
+  "source": "https://aws.amazon.com/message/65648/",
+  "root_cause": "Human error during a routine networking upgrade led to a resource crunch, exacerbated by software bugs, that ultimately resulted in an outage across all US East Availability Zones as well as a loss of...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

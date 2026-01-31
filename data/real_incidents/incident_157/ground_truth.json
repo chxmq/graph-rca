@@ -1,0 +1,10 @@
+{
+  "incident_id": "157",
+  "source": "https://paritytech.io/the-multi-sig-hack-a-postmortem/",
+  "root_cause": "$30 million of cryptocurrency value was diverted (stolen) with another $150 million diverted to a safe place (rescued), after a 4000-line software change containing a security bug was mistakenly label...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

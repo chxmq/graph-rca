@@ -1,0 +1,10 @@
+{
+  "incident_id": "159",
+  "source": "https://web.archive.org/web/20221029203405/https://www.reddit.com/r/announcements/comments/4y0m56/why_reddit_was_down_on_aug_11/",
+  "root_cause": "An error during a migration of a critical backend system",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "092",
+  "source": "https://community.eveonline.com/news/dev-blogs/behind-the-scenes-of-a-long-eve-online-downtime/",
+  "root_cause": "A problematic logging channel caused cluster nodes dying off during the cluster start sequence after rolling out a new game patch",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

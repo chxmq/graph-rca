@@ -1,0 +1,10 @@
+{
+  "incident_id": "130",
+  "source": "https://web.archive.org/web/20210813020247/https://brew.sh/2018/08/05/security-incident-disclosure/",
+  "root_cause": "A GitHub personal access token with recently elevated scopes was leaked from Homebrew\u2019s Jenkins that allowed access to `git push` on several Homebrew repositories",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

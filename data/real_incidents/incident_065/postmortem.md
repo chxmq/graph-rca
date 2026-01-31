@@ -1,0 +1,13 @@
+# Azure Incident
+
+**Category:** Security
+**Severity:** Critical
+**Source:** https://azure.microsoft.com/en-us/blog/summary-of-windows-azure-service-disruption-on-feb-29th-2012/
+
+## Description
+
+Certificates that were valid for one year were created. Instead of using an appropriate library, someone wrote code that computed one year to be the current date plus one year. On February 29th 2012, this resulted in the creation of certificates with an expiration date of February 29th 2013, which were rejected because of the invalid date. This caused an Azure global outage that lasted for most of a day.
+
+## Root Cause
+
+Certificates that were valid for one year were created

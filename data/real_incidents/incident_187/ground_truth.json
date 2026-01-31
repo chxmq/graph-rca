@@ -1,0 +1,10 @@
+{
+  "incident_id": "187",
+  "source": "https://lists.ubuntu.com/archives/xubuntu-users/2025-November/012210.html",
+  "root_cause": "The website for Xubuntu, a derivative of Ubuntu Linux that uses Xfce as its desktop environment, was compromised by an attacker who changed download links to a malicious zip file",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

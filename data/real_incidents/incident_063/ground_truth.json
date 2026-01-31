@@ -1,0 +1,10 @@
+{
+  "incident_id": "063",
+  "source": "https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/",
+  "root_cause": "A combination of conflicting deployed versions and re-using a previously used bit caused a $460M loss",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

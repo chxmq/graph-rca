@@ -1,0 +1,10 @@
+{
+  "incident_id": "179",
+  "source": "https://www.pri.org/stories/2012-02-23/new-clues-emerge-centuries-old-swedish-shipwreck",
+  "root_cause": "Use of different rulers by builders caused the _Vasa_ to be more heavily built on its port side and the ship's designer, not having built a ship with two gun decks before, overbuilt the upper decks, l...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

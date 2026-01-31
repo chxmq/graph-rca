@@ -1,0 +1,10 @@
+{
+  "incident_id": "097",
+  "source": "https://web.archive.org/web/20211029020126/https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/",
+  "root_cause": "A parser bug caused Cloudflare edge servers to return memory that contained private information such as HTTP cookies, authentication tokens, HTTP POST bodies, and other sensitive data",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

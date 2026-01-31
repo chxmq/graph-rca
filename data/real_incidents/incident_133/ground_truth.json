@@ -1,0 +1,10 @@
+{
+  "incident_id": "133",
+  "source": "https://www.honeycomb.io/blog/incident-review-shepherd-cache-delays/",
+  "root_cause": "On September 8th, 2022, our ingest system went down repeatedly and caused interruptions for over eight hours",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

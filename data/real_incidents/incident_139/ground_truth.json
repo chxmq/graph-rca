@@ -1,0 +1,10 @@
+{
+  "incident_id": "139",
+  "source": "https://web.archive.org/web/20220528044329/https://www.joyent.com/blog/manta-postmortem-7-27-2015",
+  "root_cause": "A combination of postgresql's transaction wraparound maintenance taking a lock on something, and a joyent query that unnecessarily tried to take a global lock",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

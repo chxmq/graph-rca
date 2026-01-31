@@ -14,9 +14,10 @@ MODEL = "llama3.2:3b"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")  # Set via environment variable
 JUDGE_MODEL = "gpt-4o-mini"  # Cheap and reliable for evaluation
 
-# Discover directories relative to this script (experiments/evaluate_rag_accuracy.py)
+# Discover directories relative to this script (experiments/scripts/evaluate_rag_accuracy.py)
 SCRIPT_DIR = Path(__file__).parent.absolute()
-INCIDENT_DIR = SCRIPT_DIR.parent / "data" / "real_incidents"
+PROJECT_ROOT = SCRIPT_DIR.parent.parent  # Go up from scripts/ -> experiments/ -> project root
+INCIDENT_DIR = PROJECT_ROOT / "data" / "real_incidents"
 RESULTS_DIR = SCRIPT_DIR / "eval_final_results"
 
 class RAGEvaluator:

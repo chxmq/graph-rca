@@ -1,0 +1,10 @@
+{
+  "incident_id": "144",
+  "source": "https://status.mailgun.com/incidents/p9nxxql8g9rh",
+  "root_cause": "Secondary MongoDB servers became overloaded and while troubleshooting accidentally pushed a change that sent all secondary traffic to the primary MongoDB server, overloading it as well and exacerbatin...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "148",
+  "source": "https://www.doneyles.com/LM/Tales.html",
+  "root_cause": "A design flaw in the Apollo 11 rendezvous radar produced excess CPU load, causing the spacecraft computer to restart during lunar landing",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

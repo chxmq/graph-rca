@@ -1,0 +1,10 @@
+{
+  "incident_id": "067",
+  "source": "https://web.archive.org/web/20220427012208/https://lkml.org/lkml/2009/1/2/373",
+  "root_cause": "Leap second code was called from the timer interrupt handler, which held `xtime_lock`",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "141",
+  "source": "https://web.archive.org/web/20170728131458/https://kickstarter.engineering/the-day-the-replication-died-e543ba45f262",
+  "root_cause": "A mysql bug which sometimes caused `order by` to be ignored",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "153",
+  "source": "https://www.okta.com/blog/2022/03/oktas-investigation-of-the-january-2022-compromise/",
+  "root_cause": "A hackers group got access to a third-party support engineer's laptop",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

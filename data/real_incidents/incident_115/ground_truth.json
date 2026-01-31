@@ -1,0 +1,10 @@
+{
+  "incident_id": "115",
+  "source": "https://githubengineering.com/ddos-incident-report/",
+  "root_cause": "On February 28th 2018, GitHub experienced a DDoS attack, hitting the website with 1",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

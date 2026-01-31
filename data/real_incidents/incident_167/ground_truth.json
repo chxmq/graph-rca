@@ -1,0 +1,10 @@
+{
+  "incident_id": "167",
+  "source": "https://web.archive.org/web/20181208123409/https://slackhq.com/this-was-not-normal-really",
+  "root_cause": "A combination of factor results in a large number of Slack's users being disconnected to the server",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "098",
+  "source": "https://web.archive.org/web/20211006055154/https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/",
+  "root_cause": "A single waf rule that contained a poorly written regular expression that ended up creating excessive backtracking",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}
