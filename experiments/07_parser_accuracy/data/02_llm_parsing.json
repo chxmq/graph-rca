@@ -1,0 +1,72 @@
+{
+  "method": "GraphRCA LLM Parser",
+  "model": "llama3.2:3b",
+  "num_runs": 3,
+  "samples_per_run": 400,
+  "datasets": {
+    "BGL": {
+      "samples": 400,
+      "runs": 3,
+      "field_accuracy": {
+        "timestamp": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "level": {
+          "mean": 99.8,
+          "std": 0.0
+        },
+        "component": {
+          "mean": 98.7,
+          "std": 0.0
+        },
+        "message": {
+          "mean": 100.0,
+          "std": 0.0
+        }
+      },
+      "latency": {
+        "mean_s": 2.21,
+        "std_s": 0.593,
+        "p50_s": 1.972,
+        "p95_s": 3.137,
+        "p99_s": 3.929
+      },
+      "throughput_per_sec": 0.452,
+      "total_errors": 0,
+      "overall_accuracy": 99.6
+    },
+    "HDFS": {
+      "samples": 400,
+      "runs": 3,
+      "field_accuracy": {
+        "timestamp": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "level": {
+          "mean": 96.8,
+          "std": 0.1
+        },
+        "component": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "message": {
+          "mean": 100.0,
+          "std": 0.0
+        }
+      },
+      "latency": {
+        "mean_s": 2.759,
+        "std_s": 2.567,
+        "p50_s": 2.661,
+        "p95_s": 3.103,
+        "p99_s": 3.405
+      },
+      "throughput_per_sec": 0.362,
+      "total_errors": 3,
+      "overall_accuracy": 99.2
+    }
+  }
+}
