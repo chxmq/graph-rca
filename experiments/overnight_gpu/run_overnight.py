@@ -55,7 +55,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 CONFIG = {
     # Models (all local via Ollama - no external APIs)
     "ollama_host": "http://localhost:11434",
-    "model": "llama3.2:3b",
+    "model": "llama3.2:3b",           # For RCA inference (the system being tested)
+    "judge_model": "llama3.1:70b",    # For scoring (larger model = more rigorous evaluation)
     "embed_model": "nomic-embed-text",
     "temperature": 0.2,
     
@@ -369,7 +370,7 @@ Root Cause:"""
 
 
 def score_with_ollama(ollama_client, prediction: str, ground_truth: str, logger) -> float:
-    """Score prediction using local Ollama (100% on-premises)."""
+    """Score prediction using local Ollama with larger judge model for rigorous evaluation."""
     if not prediction or len(prediction.strip()) < 5:
         return 0.0
     
@@ -388,8 +389,9 @@ Scoring guide:
 
 Respond with ONLY a number between 0.0 and 1.0:"""
         
+        # Use larger judge model for scoring (more rigorous evaluation)
         response = ollama_client.generate(
-            model=CONFIG["model"],
+            model=CONFIG["judge_model"],
             prompt=prompt,
             options={"temperature": 0.0}
         )
