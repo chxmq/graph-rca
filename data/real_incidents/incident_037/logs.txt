@@ -1,0 +1,13 @@
+2013-07-19 09:30:00 [INFO] Master instance: Receiving sync requests from slaves
+2013-07-19 09:31:00 [WARNING] Master instance: Slave replication lag increasing, 10.5 seconds
+2013-07-19 09:32:00 [INFO] Redis client: Attempting to synchronize data with master
+2013-07-19 09:33:00 [ERROR] Redis client: Connection to master lost due to network partition
+2013-07-19 09:34:00 [WARNING] Master instance: Resync storm detected, retrying synchronization attempts
+2013-07-19 09:35:00 [INFO] Billing service: Entering read-only mode due to resync issue
+2013-07-19 09:36:00 [ERROR] Billing service: Retry error: unable to sync data with master
+2013-07-19 09:37:00 [CRITICAL] Master instance: Crashed due to resync storm, leaving billing in read-only mode
+2013-07-19 09:38:00 [WARNING] Redis client: Network partition detected, unable to recover connection
+2013-07-19 09:39:00 [INFO] Incident detection system: Billing service is in read-only mode, triggering incident response
+2013-07-19 09:40:00 [ERROR] Incident response system: Unable to resolve resync issue, retrying billing operations
+2013-07-19 09:41:00 [WARNING] Master instance: Slave replication lag increasing, 30.1 seconds
+2013-07-19 09:42:00 [INFO] IT team notified of incident and beginning troubleshooting process

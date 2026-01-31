@@ -1,0 +1,11 @@
+2023-06-15 09:45:00 [INFO] Service-ApolloRadar: Initializing rendezvous radar system
+2023-06-15 09:46:30 [WARNING] Service-SpacecraftComputer: CPU usage increasing, 40% threshold reached
+2023-06-15 09:47:10 [INFO] Service-ApolloRadar: Calculating orbital trajectory
+2023-06-15 09:47:45 [CRITICAL] Service-SpacecraftComputer: CPU usage critical, 60% threshold exceeded
+2023-06-15 09:48:00 [ERROR] Service-SpacecraftComputer: Restarting due to excessive CPU load
+2023-06-15 09:48:10 [INFO] Service-SpacecraftComputer: Rebooting spacecraft computer
+2023-06-15 09:49:20 [WARNING] Service-ApolloRadar: Rendezvous radar system not responding after reboot
+2023-06-15 09:50:00 [CRITICAL] Service-SpacecraftComputer: Another CPU overload, restarting again
+2023-06-15 09:50:10 [ERROR] Service-SpacecraftComputer: Failed to restart spacecraft computer due to critical failure
+2023-06-15 09:51:30 [INFO] Service-MissionControl: Launch abort sequence initiated
+2023-06-15 09:52:00 [WARNING] Service-ApolloRadar: Rendezvous radar system not functioning after second reboot attempt

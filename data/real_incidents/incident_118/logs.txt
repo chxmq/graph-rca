@@ -1,0 +1,15 @@
+Here is a semi-realistic log snippet for the IT incident:
+
+2023-12-25 08:45:00 [INFO] mail-service: Initiating batch email job
+2023-12-25 08:45:10 [WARNING] mail-service: Marking 100 users as waiting for mail
+2023-12-25 08:45:20 [WARNING] cron-service: Running batch job to send emails
+2023-12-25 08:46:00 [INFO] mail-service: Sending email to user X
+2023-12-25 08:46:15 [INFO] mail-service: Sending email to user Y
+2023-12-25 08:48:30 [ERROR] cron-service: Error sending email to 50 users (max 20 attempts)
+2023-12-25 08:49:00 [WARNING] mail-service: Marking 50 users as not waiting for mail
+2023-12-25 09:02:45 [INFO] mail-service: Sending email to user Z
+2023-12-25 09:03:10 [INFO] mail-service: Sending email to user W
+2023-12-25 09:05:20 [ERROR] cron-service: Error sending email to remaining users (non-atomic operation)
+2023-12-25 09:06:00 [CRITICAL] mail-service: Email sent to 57 users, exceeding maximum attempts
+2023-12-25 09:10:30 [INFO] audit-log: Incident logged for non-atomic batch email job
+2023-12-25 09:20:00 [WARNING] incident-manager: Alerting on-going incident to team leads

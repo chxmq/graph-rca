@@ -1,0 +1,12 @@
+Here's a semi-realistic log snippet for the incident:
+
+2023-12-31 23:59:55 [INFO] dns-service: Receiving notification of leap second event
+2023-12-31 23:59:56 [INFO] dns-service: Updating timekeeping mechanisms to account for leap second
+2023-12-31 23:59:57 [WARNING] rrdns-service: Unusual timestamp value detected in system clock
+2023-12-31 23:59:58 [WARNING] rrdns-service: Weighted round-robin DNS resolver selection algorithm triggering warning flags
+2023-12-31 23:59:59 [ERROR] rrdns-service: Algorithm panicking on invalid timestamp value, attempting to recover
+2023-12-31 23:59:60 [ERROR] rrdns-service: Panic detected, attempting to log error message
+2023-12-31 23:59:61 [WARNING] service-a: Unexpected panic from RRDNS service, triggering retry mechanisms
+2023-12-31 23:59:62 [INFO] service-b: Starting recovery sequence for affected DNS services
+2023-12-31 23:59:63 [ERROR] rrdns-service: Panic resolved, but error messages persisted due to incorrect assumptions about system timekeeping
+2023-01-01 00:00:00 [CRITICAL] dns-service: Global panic detected across all DNS services; attempting to initiate emergency shutdown procedures

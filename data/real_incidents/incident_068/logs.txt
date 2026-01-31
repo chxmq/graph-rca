@@ -1,0 +1,14 @@
+2022-06-30 23:59:58 [INFO] hrtimer: Receiving notification of upcoming leap second
+2022-06-30 23:59:59 [WARNING] clock: CLOCK_REALTIME rewound by one second due to leap second
+2022-06-30 23:59:59 [INFO] hrtimer: Updating timer base offset
+2022-06-30 00:00:00 [INFO] service-c: Starting update of system clocks
+2022-06-30 00:00:01 [ERROR] web-service-d: Timer interrupt occurred, triggering spinwait loop
+2022-06-30 00:00:02 [WARNING] hrtimer: TIMER_ABSTIME CLOCK_REALTIME timer expired one second early
+2022-06-30 00:00:03 [INFO] system: Received report of high load on multiple systems
+2022-06-30 00:00:05 [CRITICAL] web-service-e: Web service down due to excessive CPU usage
+2022-06-30 00:00:10 [INFO] hrtimer: Investigating root cause of high load and spinwait loop
+2022-06-30 00:00:15 [WARNING] clock: CLOCK_REALTIME still rewound by one second, indicating ongoing issue
+2022-06-30 00:00:20 [ERROR] system: Multiple web services down due to excessive CPU usage
+2022-06-30 00:00:25 [INFO] hrtimer: Revisiting timer base offset update mechanism
+2022-06-30 00:00:30 [CRITICAL] web-service-f: Another web service down due to high load
+2022-07-01 08:00:00 [INFO] developers: Identified root cause of issue as CLOCK_REALTIME rewound by one second during leap second

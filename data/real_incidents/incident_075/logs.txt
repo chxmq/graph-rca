@@ -1,0 +1,12 @@
+2023-12-15 14:30:00 [INFO] network-upgrade-service: Beginning routine networking upgrade
+2023-12-15 14:30:02 [WARNING] network-upgrade-service: Insufficient resources detected, increasing allocations
+2023-12-15 14:30:05 [ERROR] network-upgrade-service: Failed to allocate resources for zone us-east-1a
+2023-12-15 14:30:10 [INFO] network-monitoring-service: Notifying team lead of potential issue
+2023-12-15 14:30:15 [WARNING] network-monitoring-service: Zone us-east-1a is experiencing resource crunch
+2023-12-15 14:30:20 [ERROR] network-upgrade-service: Unexpected software bug encountered during resource allocation
+2023-12-15 14:30:25 [CRITICAL] network-upgrade-service: Outage across all US East Availability Zones declared
+2023-12-15 14:30:30 [INFO] incident-response-service: Notifying emergency team of critical outage
+2023-12-15 14:30:35 [WARNING] incident-response-service: Loss of 0.07% volumes detected
+2023-12-15 14:30:40 [ERROR] network-upgrade-service: Unable to roll back changes and restore resources
+2023-12-15 14:30:45 [INFO] incident-response-service: Sending alert notification to Amazon support team
+2023-12-15 14:30:50 [CRITICAL] incident-response-service: Critical outage across all US East Availability Zones persisting

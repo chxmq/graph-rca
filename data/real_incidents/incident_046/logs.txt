@@ -1,0 +1,11 @@
+2024-01-02 14:30:00 [INFO] System Monitor: VxWorks version 5.2.0 initialized
+2024-01-02 14:30:05 [INFO] Service-c: Starting data synchronization
+2024-01-02 14:31:10 [WARNING] System Monitor: High-priority task "task-x" waiting on mutex held by low-priority task "task-y"
+2024-01-02 14:31:15 [INFO] Service-d: Attempting to acquire mutex for high-priority task "task-z"
+2024-01-02 14:32:20 [WARNING] System Monitor: Medium-priority task "task-w" blocked low-priority task "task-y"
+2024-01-02 14:33:25 [ERROR] Service-d: Failed to acquire mutex for high-priority task "task-z", error code 5
+2024-01-02 14:34:30 [CRITICAL] System Monitor: Priority inversion detected, multiple tasks blocked due to insufficient resources
+2024-01-02 14:35:00 [INFO] Service-e: Attempting to recover from priority inversion
+2024-01-02 14:36:15 [WARNING] System Monitor: High-priority task "task-x" still waiting on mutex held by low-priority task "task-y"
+2024-01-02 14:37:20 [ERROR] Service-f: Unable to recover from priority inversion, system instability detected
+2024-01-02 14:40:00 [INFO] System Monitor: VxWorks version 5.2.0 shutdown initiated

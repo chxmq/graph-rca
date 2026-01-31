@@ -1,0 +1,18 @@
+Here is a semi-realistic log snippet for the incident:
+
+2023-12-15 08:45:00 [INFO] Service-c: Initializing Mars Pathfinder module
+2023-12-15 08:45:02 [WARNING] Service-d: Anomaly detected in VxWorks task scheduler
+2023-12-15 08:45:03 [INFO] Service-e: Sending remote debug request to Earth control
+2023-12-15 08:45:05 [ERROR] Service-f: Priority inversion issue reported by VxWorks logging
+2023-12-15 08:45:10 [CRITICAL] Service-g: System reset detected on Mars Pathfinder spacecraft
+2023-12-15 08:45:15 [INFO] Service-h: Remote patching of VxWorks OS initiated
+2023-12-15 08:45:20 [WARNING] Service-i: Patch transfer to Mars spacecraft encountered errors
+2023-12-15 08:45:25 [ERROR] Service-j: Patch update failed due to insufficient disk space
+2023-12-15 08:45:30 [CRITICAL] Service-k: Mars Pathfinder system reset imminent, deploying emergency shutdown protocol
+2023-12-15 08:45:35 [INFO] Service-l: Emergency shutdown sequence initiated on Mars Pathfinder spacecraft
+2023-12-15 08:45:40 [WARNING] Service-m: System reset confirmed on Mars Pathfinder spacecraft
+2023-12-15 08:45:42 [ERROR] Service-n: VxWorks OS still experiencing priority inversion issues despite patching
+2023-12-15 08:45:50 [CRITICAL] Service-o: System reset repeat detected, escalating to critical level
+2023-12-15 08:45:55 [INFO] Service-p: Activating backup diagnostic protocols on Earth control
+2023-12-15 08:46:00 [WARNING] Service-q: Backup diagnostics failed due to communication loss with Mars spacecraft
+2023-12-15 08:46:05 [ERROR] Service-r: Mars Pathfinder system reset confirmed, mission parameters compromised

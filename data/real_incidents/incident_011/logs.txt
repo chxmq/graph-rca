@@ -1,0 +1,12 @@
+Here is a semi-realistic log snippet for the IT incident:
+
+2018-08-05 14:30:00 [INFO] jenkins-server: Jenkins job 'homebrew-release' started successfully
+2018-08-05 14:31:15 [WARNING] jenkins-server: Jenkins API request detected from unknown IP address
+2018-08-05 14:31:20 [INFO] jenkins-server: Found GitHub personal access token in build log with write scopes
+2018-08-05 14:31:25 [ERROR] jenkins-server: Jenkins API request using leaked token to push changes to homebrew repositories
+2018-08-05 14:31:30 [CRITICAL] jenkins-server: Malicious commits detected and pushed to production branch
+2018-08-05 14:31:35 [INFO] security-alerts-service: New incident triggered - Security Incident detected
+2018-08-05 14:31:40 [WARNING] security-alerts-service: Potential token leak in Jenkins build logs
+2018-08-05 14:31:45 [ERROR] security-alerts-service: Token not properly secured, access revoked
+2018-08-05 14:32:00 [INFO] logging-service: Incident logged with severity Medium
+2018-08-05 14:32:10 [INFO] incident-response-team: Incident team notified and responding to the issue

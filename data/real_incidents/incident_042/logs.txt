@@ -1,0 +1,13 @@
+2023-01-01 14:30:00 [INFO] gcve-provisioning: Initiating GCVE environment setup
+2023-01-01 14:31:00 [WARNING] gcve-provisioning: Detected legacy provisioning option for fixed-term contract
+2023-01-01 14:32:00 [INFO] gcve-provisioning: Creating environment with default settings
+2023-01-01 14:33:00 [INFO] service-a: Starting request handling
+2023-01-01 14:34:00 [INFO] service-b: Initializing database connection
+2023-01-01 14:35:00 [WARNING] gcve-provisioning: Contract term approaching expiry
+2023-01-01 14:36:00 [ERROR] gcve-provisioning: Automatic deletion of environment initiated due to contract expiry
+2023-01-01 14:37:00 [CRITICAL] gcve-provisioning: Environment deleted, all services failed
+2023-01-01 14:38:00 [INFO] gcve-monitoring: Notifying incident response team of environment deletion
+2023-01-01 14:39:00 [WARNING] service-c: Failed to connect to deleted environment
+2023-01-01 14:40:00 [ERROR] service-d: Request handling failed due to environment loss
+2023-01-01 14:41:00 [CRITICAL] gcve-provisioning: Root cause identified as legacy provisioning option with fixed-term contract
+2023-01-01 14:42:00 [INFO] gcve-admin: Updating provisioning settings to prevent future incidents

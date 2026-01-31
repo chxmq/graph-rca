@@ -1,0 +1,14 @@
+2023-12-15 14:30:00 [INFO] 3PAR-svc: Initializing storage pool
+2023-12-15 14:31:00 [WARNING] 3PAR-svc: Warning: Disk space low, 10% remaining
+2023-12-15 14:32:00 [INFO] 3PAR-svc: Starting nightly backup
+2023-12-15 14:33:00 [ERROR] 3PAR-svc: Backup failed due to disk errors
+2023-12-15 14:34:00 [WARNING] 3PAR-svc: Warning: Storage pool not fully utilized
+2023-12-15 14:35:00 [INFO] ITOps-svc: Notifying storage team of issues
+2023-12-15 14:36:00 [ERROR] 3PAR-svc: Storage team notified, but no fix implemented
+2023-12-15 14:37:00 [CRITICAL] 3PAR-svc: System failure, 3PAR storage pool offline
+2023-12-15 14:38:00 [WARNING] 3PAR-svc: Warning: No backup available due to system failure
+2023-12-15 14:39:00 [INFO] ITOps-svc: Initiating emergency procedures
+2023-12-15 14:40:00 [ERROR] 3PAR-svc: Emergency procedures failed, system still offline
+2023-12-15 14:41:00 [CRITICAL] 3PAR-svc: System failure confirmed, catastrophic outage initiated
+2023-12-15 14:42:00 [INFO] ITOps-svc: Notification of incident sent to management
+2023-12-15 14:43:00 [WARNING] 3PAR-svc: Warning: No fix in sight, estimated downtime extended

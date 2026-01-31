@@ -1,0 +1,16 @@
+2023-12-20 14:30:00 [INFO]twilio-sms-filtering: Initiating check on SMS filtering rules
+2023-12-20 14:31:00 [WARNING]twilio-sms-filtering: High filtering detected on AT&T network in US
+2023-12-20 14:32:00 [INFO]twilio-incident-management: Incident logged, category=Network, severity=Medium
+2023-12-20 14:33:00 [CRITICAL]twilio-sms-filtering: High filtering impacting SMS send failures to AT&T
+2023-12-20 14:34:00 [ERROR]twilio-api-gateway: Error sending SMS to AT&T, error message='Filtering blocked'
+2023-12-20 14:35:00 [INFO]twilio-incident-management: Sending alert notification to support team
+2023-12-20 14:36:00 [WARNING]twilio-operations: Twilio status page updated with new incident details
+2023-12-20 14:37:00 [CRITICAL]twilio-sms-filtering: High filtering still active on AT&T network in US, no resolution yet
+2023-12-20 14:38:00 [ERROR]twilio-api-gateway: Error retrying failed SMS send attempts to AT&T
+2023-12-20 14:40:00 [INFO]twilio-incident-management: Running diagnostic checks on Twilio infrastructure
+2023-12-20 14:41:00 [WARNING]twilio-diagnostics: High filtering still present on AT&T network in US, possible root cause identified
+2023-12-20 14:42:00 [CRITICAL]twilio-sms-filtering: Found high filtering on SMS rules towards AT&T network in US as root cause
+2023-12-20 14:43:00 [INFO]twilio-incident-management: Posting incident update to Twilio status page
+2023-12-20 14:44:00 [ERROR]twilio-api-gateway: Error sending SMS test message to AT&T, error message='Filtering blocked'
+2023-12-20 14:45:00 [WARNING]twilio-operations: Resolving incident, Twilio support team notified
+2023-12-20 14:46:00 [INFO]twilio-sms-filtering: High filtering lifted on SMS rules towards AT&T network in US

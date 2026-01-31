@@ -1,0 +1,13 @@
+2024-01-02 08:45:00 [INFO] zookeeper: Received notification of scheduled maintenance window
+2024-01-02 08:50:00 [INFO] service-c: Started request handling
+2024-01-02 09:05:00 [WARNING] zookeeper: Insufficient disk space reported
+2024-01-02 09:10:00 [INFO] zookeeper: Attempting to boot with increased configuration
+2024-01-02 09:15:00 [ERROR] service-d: Unable to connect to ZooKeeper
+2024-01-02 09:20:00 [WARNING] service-e: Request handling failed due to ZooKeeper unavailability
+2024-01-02 09:25:00 [CRITICAL] service-f: System services unavailable due to ZooKeeper outage
+2024-01-02 09:30:00 [INFO] ops-team: Notified of incident and initiated troubleshooting
+2024-01-02 09:35:00 [INFO] zookeeper: Insufficient data size reported as root cause
+2024-01-02 09:40:00 [WARNING] ops-team: Data cleansing process initiated to reduce ZooKeeper load
+2024-01-02 09:45:00 [INFO] zookeeper: Data reduction successful, rebooting service
+2024-01-02 09:50:00 [INFO] service-g: Request handling resumed after ZooKeeper reboot
+2024-01-02 10:00:00 [INFO] ops-team: Incident resolved, maintenance completed

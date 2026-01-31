@@ -1,0 +1,14 @@
+2024-01-01 09:45:00 [INFO] service-c: Incoming load detected, normalizing to expected levels
+2024-01-01 09:46:00 [WARNING] GitHub.statuspage.io: Outage detected, recovery in progress (20% complete)
+2024-01-01 09:47:05 [INFO] service-a: Queue system initialized
+2024-01-01 09:48:00 [ERROR] CircleCI: Unhandled requests piling up due to increased load
+2024-01-01 09:50:10 [WARNING] GitHub.statuspage.io: Recovery complete, status page updated
+2024-01-01 09:51:15 [INFO] service-b: Database connection timeout resolved
+2024-01-01 09:52:00 [CRITICAL] CircleCI: Queue system overwhelmed, handling transactions at rate of 1/minute
+2024-01-01 09:53:10 [ERROR] service-c: Unexpected spike in load causing queue slowdown
+2024-01-01 09:54:30 [WARNING] GitHub.statuspage.io: Load on CircleCI is now within normal limits
+2024-01-01 09:55:00 [INFO] service-a: Queue system handling transactions at rate of 1/minute
+2024-01-01 10:00:05 [ERROR] service-b: Database connection timeout (again)
+2024-01-01 10:01:15 [WARNING] CircleCI: Unhandled requests still piling up despite normal load
+2024-01-01 10:02:30 [CRITICAL] CircleCI: Queue system failing to handle transactions, users affected
+2024-01-01 10:03:00 [INFO] GitHub.statuspage.io: Load on CircleCI is now within critical limits

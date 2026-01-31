@@ -1,0 +1,11 @@
+2022-02-22 14:30:00 [INFO] Witness Cluster: Cache nodes removal initiated for maintenance
+2022-02-22 14:31:00 [WARNING] Witness Cluster: High workload detected on witness nodes due to cache removal
+2022-02-22 14:32:00 [ERROR] Service-a: Request handling overload, responding with error messages
+2022-02-22 14:33:00 [CRITICAL] Service-b: Database connection timeout occurred, unable to retrieve data
+2022-02-22 14:34:00 [WARNING] Service-c: High latency detected due to witness cluster overload
+2022-02-22 14:35:00 [ERROR] Service-d: Unable to connect to database, service unavailable
+2022-02-22 14:36:00 [CRITICAL] Witness Cluster: Cache nodes removal completed, witness cluster is under heavy load
+2022-02-22 14:37:00 [INFO] Operations Team: Incident detected, investigating cause
+2022-02-22 14:38:00 [WARNING] Operations Team: High workload on witness cluster suspected as root cause
+2022-02-22 14:39:00 [ERROR] Operations Team: Cache nodes removal confirmed as root cause of service outage
+2022-02-22 14:40:00 [CRITICAL] Operations Team: Root cause analysis in progress, estimated fix time is 30 minutes

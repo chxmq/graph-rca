@@ -1,0 +1,16 @@
+2023-12-31 14:30:00 [INFO] metadata-service: Started with new version 1.2.3
+2023-12-31 14:32:00 [WARNING] metadata-service: High CPU usage detected (80%)
+2023-12-31 14:35:00 [INFO] storage-node-1: Ready for operations
+2023-12-31 14:37:10 [ERROR] metadata-service: Response time exceeded timeout value (5s)
+2023-12-31 14:37:15 [WARNING] storage-node-1: Retrying operation after timeout
+2023-12-31 14:40:00 [INFO] metadata-service: Load increased to 90% capacity
+2023-12-31 14:42:30 [ERROR] storage-node-2: Response time exceeded timeout value (5s)
+2023-12-31 14:43:15 [WARNING] storage-node-2: Retrying operation after timeout
+2023-12-31 14:45:00 [INFO] metadata-service: High CPU usage increased to 100%
+2023-12-31 14:47:10 [CRITICAL] storage-node-1: Took itself down due to excessive load
+2023-12-31 14:48:30 [ERROR] metadata-service: Response time exceeded timeout value (5s)
+2023-12-31 14:49:15 [WARNING] storage-node-2: Retrying operation after timeout
+2023-12-31 14:50:00 [INFO] metadata-service: Load decreased to 80% capacity
+2023-12-31 14:52:10 [ERROR] storage-node-1: Took itself down due to excessive load (retry)
+2023-12-31 14:53:30 [CRITICAL] metadata-service: High CPU usage increased to 100%
+2023-12-31 14:54:00 [INFO] network-disruption-detector: Detected potential network disruption

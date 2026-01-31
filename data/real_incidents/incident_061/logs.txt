@@ -1,0 +1,16 @@
+2023-12-15 14:30:00 [INFO] load-balancer: New configuration received from API
+2023-12-15 14:30:02 [WARNING] load-balancer: Slow code path detected for applying changes
+2023-12-15 14:32:01 [INFO] load-balancer: Applying changes to internal state
+2023-12-15 14:34:05 [ERROR] load-balancer: Internal state update timed out, attempting retry
+2023-12-15 14:36:02 [WARNING] service-a: Public addressing change request queued for processing
+2023-12-15 14:38:01 [INFO] load-balancer: Processing public addressing changes
+2023-12-15 14:40:00 [ERROR] load-balancer: Slow code path update complete, but pending changes not applied yet
+2023-12-15 14:42:05 [WARNING] service-b: Database connection timeout ( retrying )
+2023-12-15 14:45:01 [INFO] load-balancer: Forced re-apply of pending public addressing changes due to slow code path issue
+2023-12-15 14:47:02 [ERROR] load-balancer: Re-apply operation failed, current configuration still in use
+2023-12-15 14:50:00 [CRITICAL] service-a: Public addressing change request timed out, all requests rejected
+2023-12-15 14:55:01 [INFO] load-balancer: System recovery initiated due to slow code path issue
+2023-12-15 14:57:05 [WARNING] system-recovery: Slow code path fix in progress
+2023-12-15 15:00:02 [INFO] load-balancer: Public addressing changes applied successfully, all pending requests processed
+2023-12-15 15:02:01 [ERROR] service-b: Database connection timeout ( resolved )
+2023-12-15 15:05:00 [INFO] system-recovery: Slow code path fix complete, system recovered to normal state

@@ -1,0 +1,10 @@
+2023-12-15 09:45:00 [INFO] careers-service: Service startup initiated
+2023-12-15 09:45:02 [INFO] developer-story-service: Service startup initiated
+2023-12-15 09:45:03 [WARNING] migrations-controller: Migration of Careers 2.0 to Developer Story detected
+2023-12-15 09:45:05 [INFO] migration-executor: Starting porting process for Careers 2.0
+2023-12-15 09:46:00 [INFO] database-service: Database connection established
+2023-12-15 09:46:10 [ERROR] developer-story-service: Exception occurred during porting (User info leak)
+2023-12-15 09:46:15 [WARNING] migrations-controller: Error detected in ported Careers 2.0 code
+2023-12-15 09:46:20 [INFO] error-handler: Handling exception for developer-story-service
+2023-12-15 09:46:25 [CRITICAL] careers-service: User info leak reported, alerting team
+2023-12-15 09:46:30 [ERROR] security-team: Security incident notified and escalation initiated

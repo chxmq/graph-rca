@@ -1,0 +1,13 @@
+2021-10-25 04:00:00 [INFO] livestream-service: Initiating livestream operation for event X123
+2021-10-25 04:00:02 [WARNING] network-svc: Network latency spike detected
+2021-10-25 04:00:05 [CRITICAL] livestream-service: Error initializing video encoder for user U456
+2021-10-25 04:01:00 [INFO] monitoring-system: Alert triggered for service livestream-service due to error in livestream-video-playback
+2021-10-25 04:02:00 [ERROR] network-svc: Packet loss detected on connection from viewer V789
+2021-10-25 04:03:00 [WARNING] livestream-service: Warning: user U456 experiencing rebuffer rate above threshold
+2021-10-25 04:05:00 [INFO] alert-system: Sending notification to support team for service livestream-service
+2021-10-25 08:30:00 [CRITICAL] livestream-service: Video playback interrupted for user U456 due to network connectivity issues
+2021-10-26 02:30:00 [WARNING] monitoring-system: Service livestream-service returning to normal operation
+2021-10-26 04:00:00 [INFO] livestream-service: Resuming livestream operation for event X123
+2021-10-26 05:59:00 [ERROR] network-svc: Error detected in network connection from viewer V789
+2021-10-26 09:50:00 [CRITICAL] livestream-service: Video playback interrupted for user U456 due to rebuffer rate above threshold
+2021-10-26 10:00:00 [INFO] support-team: Investigating issue with service livestream-service

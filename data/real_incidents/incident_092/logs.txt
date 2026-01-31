@@ -1,0 +1,13 @@
+2024-01-01 09:30:00 [INFO] cluster-service: Initializing cluster nodes for patch deployment
+2024-01-01 09:30:15 [INFO] logging-channel: Starting log collection and aggregation
+2024-01-01 09:31:00 [WARNING] service-a: High CPU usage detected, possible thread exhaustion
+2024-01-01 09:31:05 [INFO] cluster-service: Cluster start sequence initiated
+2024-01-01 09:32:30 [CRITICAL] logging-channel: Log channel errors exceeding threshold (max 5)
+2024-01-01 09:33:00 [ERROR] service-b: Database connection failed, unable to authenticate
+2024-01-01 09:33:10 [INFO] cluster-service: Node failure detected on node 'node-123'
+2024-01-01 09:34:20 [CRITICAL] logging-channel: Error rate exceeded (60% in last minute)
+2024-01-01 09:35:00 [WARNING] service-c: Service not responding to cluster requests
+2024-01-01 09:36:15 [ERROR] cluster-service: Cluster start sequence failed, unable to recover from node failure
+2024-01-01 09:37:30 [INFO] logging-channel: Log collection and aggregation terminated due to errors
+2024-01-01 09:38:00 [CRITICAL] cluster-service: All nodes dead, cluster unavailable
+2024-01-01 09:40:15 [INFO] monitoring-service: Alert triggered for high error rates in cluster services

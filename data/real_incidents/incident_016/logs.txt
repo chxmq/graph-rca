@@ -1,0 +1,14 @@
+2022-12-30 14:45:00 [INFO] database-1: Initializing new record with ID 2147483647
+2022-12-30 14:45:01 [WARNING] database-1: High value for primary key detected, but not immediately flagged
+2022-12-30 14:45:02 [INFO] database-1: Attempting to insert record with ID 2147483647 into 'items' table
+2022-12-30 14:45:03 [ERROR] database-1: Error inserting record, primary key too large for signed 32-bit integer
+2022-12-30 14:45:04 [INFO] database-1: Checking other tables for affected records due to ID overflows
+2022-12-30 14:45:05 [WARNING] database-2: Error retrieving list of user IDs from 'users' table, primary key too large
+2022-12-30 14:45:06 [INFO] database-1: Finding alternative data types for affected records
+2022-12-30 14:45:07 [CRITICAL] services-a-b: Database stopped accepting new records due to ID overflow issue
+2022-12-30 14:45:08 [INFO] migration-tool: Migrating records from signed 32-bit integers to BigInt data type
+2022-12-30 14:45:10 [WARNING] services-a-b: Error reconnecting to database, cannot migrate data due to failed connection attempts
+2022-12-30 14:45:11 [INFO] migration-tool: Attempting to recover from failed connection and resume migration process
+2022-12-30 14:45:12 [ERROR] services-a-b: Recovery attempt failed, unable to migrate data due to primary key overflow
+2022-12-30 14:45:13 [CRITICAL] services-a-b: Etsy Outage - Database stopped functioning properly
+2022-12-30 14:50:00 [INFO] ops-team: Database administrators alerted and migration process initiated manually

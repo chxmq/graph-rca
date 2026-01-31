@@ -1,0 +1,16 @@
+2024-01-01 14:30:00 [INFO] Service-waf: Processing incoming request
+2024-01-01 14:30:02 [WARNING] Service-dns: High CPU usage reported
+2024-01-01 14:30:03 [INFO] Service-a: Handling request from IP 192.168.1.100
+2024-01-01 14:30:05 [ERROR] Service-waf: Excessive backtracking detected on /regex-rule/* path
+2024-01-01 14:30:06 [WARNING] Service-mysql: Increased query volume reported
+2024-01-01 14:30:10 [CRITICAL] Service-waf: WAF rule causing CPU exhaustion detected
+2024-01-01 14:30:11 [ERROR] Service-cpu: High CPU usage reached 90%
+2024-01-01 14:30:12 [WARNING] Service-dns: DNS resolution failure reported for 192.168.1.100
+2024-01-01 14:30:15 [INFO] Service-waf: Shutting down WAF rule with id 12345
+2024-01-01 14:30:16 [CRITICAL] Service-waf: WAF service unavailable due to excessive CPU usage
+2024-01-01 14:31:00 [ERROR] Service-web: Connection timeout reported for all users
+2024-01-01 14:32:00 [INFO] Service-admin: Initiating emergency shutdown sequence
+2024-01-01 14:33:00 [CRITICAL] Service-all: Global 27-minute downtime initiated due to WAF rule issue
+2024-01-01 15:57:00 [INFO] Service-waf: WAF rule with id 12345 deleted from database
+2024-01-01 16:00:00 [WARNING] Service-mysql: Query volume returned to normal
+2024-01-01 16:05:00 [INFO] Service-a: Request handling resumed

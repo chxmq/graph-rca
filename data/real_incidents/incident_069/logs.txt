@@ -1,0 +1,15 @@
+2023-12-15 09:00:00 [INFO] firefox-addon-store: Loading add-on metadata from disk
+2023-12-15 09:00:02 [WARNING] firefox-addon-store: Certificate chain validation failed for 'add-on-certificate'
+2023-12-15 09:00:05 [ERROR] firefox-addon-store: Add-ons disabled due to expired certificate
+2023-12-15 09:01:00 [INFO] firefox-addon-store: Notifying add-on developers of issue
+2023-12-15 09:02:00 [INFO] firefox-addon-store: Privileged add-on push scheduled for May 4th, 2019
+2023-12-15 14:00:00 [WARNING] firefox-addon-store: Privileged add-on deployed successfully
+2023-12-15 14:05:00 [INFO] firefox-addon-store: Injecting valid certificate into Firefox's certificate store
+2023-12-15 14:10:00 [ERROR] firefox-addon-store: Unblocking of add-ons failed due to invalid chain validation
+2023-12-15 14:15:00 [WARNING] firefox-addon-store: User data loss reported for affected users
+2023-12-15 17:00:00 [INFO] firefox-addon-store: Post-mortem analysis initiated
+2023-12-15 18:00:00 [INFO] firefox-addon-store: Root cause investigation underway
+2023-12-15 20:00:00 [ERROR] firefox-addon-store: Investigation reveals certificate expiration on May 4th, 2019
+2023-12-15 21:00:00 [WARNING] firefox-addon-store: Privileged add-on deployed as workaround but failed to resolve issue
+2023-12-16 08:00:00 [INFO] firefox-addon-store: Temporary fix deployed for affected users
+2023-12-16 10:00:00 [INFO] firefox-addon-store: Resolution effort initiated

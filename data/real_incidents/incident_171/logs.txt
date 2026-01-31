@@ -1,0 +1,13 @@
+2024-01-01 08:45:00 [INFO] merchant-authentication-service: Receiving normal traffic
+2024-01-01 09:15:00 [WARNING] adjacent-service-x: Request spike detected
+2024-01-01 09:20:00 [INFO] adjacent-service-y: Noticing increased load on service-b
+2024-01-01 09:25:00 [ERROR] merchant-authentication-service: Overloaded with requests from adjacent service-b
+2024-01-01 09:30:00 [CRITICAL] merchant-authentication-service: Service response time exceeded threshold
+2024-01-01 09:35:00 [INFO] incident-response-team: Alert triggered for merchant authentication service overload
+2024-01-01 09:40:00 [WARNING] adjacent-service-x: Request spike continues, unable to recover
+2024-01-01 10:05:00 [ERROR] merchant-authentication-service: Connection timeout due to excessive load
+2024-01-01 10:10:00 [INFO] incident-response-team: Escalation notice sent to adjacent service developers
+2024-01-01 10:20:00 [CRITICAL] merchant-authentication-service: Service is still overloaded, users affected
+2024-01-01 11:15:00 [INFO] incident-response-team: Request spike has subsided, monitoring services for recovery
+2024-01-01 12:00:00 [WARNING] adjacent-service-x: Possible underlying issue, further investigation required
+2024-01-01 13:00:00 [INFO] merchant-authentication-service: Service is recovering, normal traffic resumed

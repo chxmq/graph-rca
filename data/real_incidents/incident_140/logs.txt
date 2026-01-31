@@ -1,0 +1,14 @@
+2023-12-25 14:30:00 [INFO] maintenance-check: Beginning server reboot process
+2023-12-25 14:30:02 [WARNING] tool-log: Warning: input validation for reboot command was disabled
+2023-12-25 14:30:05 [INFO] service-c: Server c1 restarting due to scheduled maintenance
+2023-12-25 14:30:10 [INFO] service-d: Server d2 restarting due to scheduled maintenance
+2023-12-25 14:30:15 [WARNING] maintenance-check: Number of servers to reboot not specified, defaulting to all servers
+2023-12-25 14:30:20 [ERROR] service-e: Reboot error: command line option -n missing
+2023-12-25 14:30:25 [CRITICAL] dhcp-boot: DHCP/TFTP PXE boot systems overloaded due to sudden reboot of all servers
+2023-12-25 14:31:00 [INFO] api-systems: Manual intervention required for API system maintenance
+2023-12-25 14:40:00 [WARNING] customer-instances: Customer instances experiencing high latency
+2023-12-25 14:50:00 [ERROR] database-system: Database systems failing to connect due to excessive load
+2023-12-25 15:10:00 [INFO] monitoring-systems: System monitoring indicating critical services impacted
+2023-12-25 15:20:00 [CRITICAL] customer-instances: All customer instances down, API system unavailable for 1.5 hours
+2023-12-25 15:30:00 [INFO] operations-team: Operations team notified of incident
+2023-12-25 16:00:00 [INFO] operations-team: Root cause identified: lax input validation on reboot command used by operator

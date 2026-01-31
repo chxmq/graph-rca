@@ -1,0 +1,12 @@
+2023-12-15 14:30:00 [INFO] rule-manager: Initializing flag targeting configuration
+2023-12-15 14:30:05 [WARNING] web-interface: Request received for /flags
+2023-12-15 14:30:10 [DEBUG] service-c: Retrieving flag data from database
+2023-12-15 14:30:15 [INFO] rule-manager: Evaluating attribute selector for flag
+2023-12-15 14:30:20 [WARNING] web-interface: Attribute selector validation failed
+2023-12-15 14:30:25 [ERROR] service-d: Flag targeting request to web interface failed
+2023-12-15 14:30:30 [CRITICAL] web-interface: Web interface crash detected, error message: "Invalid attribute selector"
+2023-12-15 14:30:35 [DEBUG] rule-manager: Error in rule manager for flag targeting configuration
+2023-12-15 14:30:40 [INFO] rule-manager: Re-initializing flag targeting configuration
+2023-12-15 14:30:45 [WARNING] service-e: Request handling failed after reinitialization
+2023-12-15 14:30:50 [ERROR] web-interface: Request received for /flags, error message: "Invalid attribute selector"
+2023-12-15 14:31:00 [CRITICAL] service-f: Rule manager is not responding

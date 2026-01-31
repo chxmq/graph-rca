@@ -1,0 +1,11 @@
+2014-01-28 08:45:00 [INFO] varnish: Received request to restart from VCL
+2014-01-28 08:45:15 [WARNING] varnish: Attempting to restart varnish service
+2014-01-28 08:45:30 [INFO] varnish: Restart complete, backend configuration reloaded
+2014-01-28 08:46:00 [ERROR] service-d: Request timeout exceeded
+2014-01-28 08:47:05 [WARNING] varnish: Backend request distribution not as expected
+2014-01-28 08:47:30 [INFO] varnish: Inspecting backend configuration for req.backend
+2014-01-28 08:48:00 [ERROR] service-e: Connection refused from Manta backend
+2014-01-28 08:49:15 [CRITICAL] varnish: Error detected in VCL, resetting to default backend config
+2014-01-28 08:50:00 [WARNING] varnish: Request backend reloaded with incorrect configuration
+2014-01-28 09:05:00 [INFO] service-f: Pool selected for incoming requests
+2014-01-28 09:10:30 [ERROR] service-g: Manta backend not responding to requests

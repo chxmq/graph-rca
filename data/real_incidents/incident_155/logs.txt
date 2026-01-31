@@ -1,0 +1,12 @@
+2024-01-01 08:00:00 [INFO] pagerduty-service: Starting monitoring checks
+2024-01-01 08:02:00 [WARNING] peering-point-1: High latency detected on incoming traffic (2.5ms)
+2024-01-01 08:03:00 [WARNING] peering-point-1: High latency detected on outgoing traffic (3.1ms)
+2024-01-01 08:05:00 [INFO] pagerduty-service: Establishing quorum failed
+2024-01-01 08:06:00 [WARNING] service-c: Notification attempt failed due to high latency
+2024-01-01 08:07:00 [ERROR] pagerduty-service: Failed to send notification to client A
+2024-01-01 08:10:00 [CRITICAL] peering-point-1: Peering point instability reported by monitoring system
+2024-01-01 08:11:00 [CRITICAL] pagerduty-service: High latency across all deployments causing service failure
+2024-01-01 08:12:00 [INFO] pagerduty-team: Alert triggered for high latency issue
+2024-01-01 08:15:00 [WARNING] pagerduty-team: Attempting to isolate affected deployment
+2024-01-01 08:17:00 [ERROR] pagerduty-service: Notification attempt failed due to high latency (second attempt)
+2024-01-01 08:20:00 [INFO] pagerduty-team: Deployment isolation complete, investigation underway

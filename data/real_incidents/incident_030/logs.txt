@@ -1,0 +1,15 @@
+2020-04-10 14:30:00 [INFO] database-service: Connecting to production database
+2020-04-10 14:30:02 [WARNING] script-runner: Running local script "drop_database.sh"
+2020-04-10 14:30:03 [INFO] database-service: Database connection established
+2020-04-10 14:30:05 [ERROR] script-runner: Executing drop command on production database
+2020-04-10 14:30:06 [CRITICAL] database-service: Database dropped, data loss expected
+2020-04-10 14:30:08 [WARNING] log-aggregator: Elevated error logs detected
+2020-04-10 14:30:09 [INFO] incident-alert: Incident triggered - High Severity
+2020-04-10 14:30:10 [ERROR] incident-alert: Sending alert to DevOps team
+2020-04-10 14:30:11 [CRITICAL] incident-alert: Alert sent, but no response received
+2020-04-10 14:30:12 [WARNING] IT-Service-Desk: No support available due to holiday
+2020-04-10 14:30:13 [INFO] backup-service: Restoring database from backup
+2020-04-10 14:30:15 [ERROR] backup-service: Backup restore failed, error code 1234
+2020-04-10 14:30:16 [CRITICAL] Keepthescore Incident (2020-04-10)
+2020-04-10 14:30:17 [INFO] database-service: Database restored from backup
+2020-04-10 14:30:20 [WARNING] log-aggregator: Temporary error logs detected

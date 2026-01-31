@@ -1,0 +1,13 @@
+2023-12-25 14:00:00 [INFO] apt-service: Started update cycle
+2023-12-25 14:00:20 [WARNING] apt-service: Package conflict detected, attempting to resolve
+2023-12-25 14:00:30 [INFO] apt-service: Resolved conflicts, updating packages
+2023-12-25 14:01:15 [ERROR] service-c: Write permission denied to /dev/loop0
+2023-12-25 14:01:20 [WARNING] service-d: Unable to mount /dev/sr0, write access denied
+2023-12-25 14:01:30 [CRITICAL] apt-service: Root cause identified - upstream apt update broke pinned packages
+2023-12-25 14:01:40 [INFO] infra-monitoring: Notifying Heroku ops team of critical issue
+2023-12-25 14:02:00 [WARNING] heroku-database: Write operations failing to database due to /dev access issues
+2023-12-25 14:02:10 [ERROR] service-e: Failed to write log file, causing service to fail
+2023-12-25 14:02:20 [INFO] infra-monitoring: Updating incident status to 'in progress'
+2023-12-25 14:03:00 [WARNING] heroku-cms: Content write operations failing due to /dev access issues
+2023-12-25 14:03:10 [CRITICAL] apt-service: Attempting to revert affected packages, but may cause further instability
+2023-12-25 14:04:00 [INFO] infra-monitoring: Incidential status updated to 'resolved', but service still unavailable

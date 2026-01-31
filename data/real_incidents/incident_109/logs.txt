@@ -1,0 +1,13 @@
+2023-12-15 09:00:00 [INFO] eslint-scraper: Starting package fetch process
+2023-12-15 09:00:02 [INFO] eslint-scraper: Fetching packages from npm registry
+2023-12-15 09:00:03 [WARNING] npm-registry-checker: Unexpected package signature for 'eslint-plugin-react'
+2023-12-15 09:00:04 [WARNING] npm-registry-checker: Unexpected package signature for 'eslint-plugin-jsx'
+2023-12-15 09:00:05 [ERROR] eslint-scraper: Failed to validate package signatures
+2023-12-15 09:00:06 [INFO] security-team: Alerting security team to potential npm compromise
+2023-12-15 09:00:07 [CRITICAL] security-team: npm account of ESLint maintainer compromised, malicious packages published to registry
+2023-12-15 09:00:08 [CRITICAL] incident-response-team: Incident categorized as 'ESLint Malicious Package Publish'
+2023-12-15 09:00:10 [INFO] esbuild: Disabling package publishing in ES build process
+2023-12-15 09:00:11 [INFO] eslint-loader: Updating ESLint configuration to prevent malicious package usage
+2023-12-15 09:00:12 [INFO] npm-registry-cleaner: Cleaning npm registry of malicious packages
+2023-12-15 09:00:13 [INFO] security-team: Collaborating with npm to implement additional security measures
+2023-12-15 09:00:14 [INFO] incident-response-team: Incident response team notified and on-site at ESLint HQ

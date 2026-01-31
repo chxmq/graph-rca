@@ -1,0 +1,13 @@
+2023-12-15 14:30:00 [INFO] fastly-cdn: Service startup complete
+2023-12-15 14:30:15 [INFO] fastly-cdn: Checking for configuration updates
+2023-12-15 14:31:45 [WARNING] fastly-cdn: Configuration update detected, applying changes
+2023-12-15 14:32:10 [INFO] fastly-cdn: New configuration applied successfully
+2023-12-15 14:32:20 [INFO] service-a: Starting request handling
+2023-12-15 14:33:00 [WARNING] service-b: Increased load expected due to new configuration
+2023-12-15 14:33:05 [ERROR] service-b: Database connection timeout, retrying in 30 seconds
+2023-12-15 14:33:35 [ERROR] service-b: Database connection timeout (retry 2), escalating incident
+2023-12-15 14:34:00 [CRITICAL] fastly-cdn: Global CDN outage detected, investigating root cause
+2023-12-15 14:34:20 [INFO] fastly-cdn: Retrieving configuration data for affected services
+2023-12-15 14:35:05 [WARNING] fastly-cdn: Configuration update found in affected service configurations
+2023-12-15 14:35:10 [ERROR] fastly-cdn: Believing configuration update to be root cause of outage
+2023-12-15 14:36:00 [CRITICAL] fastly-cdn: Root cause identified, preparing for incident resolution

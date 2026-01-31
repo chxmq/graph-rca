@@ -1,0 +1,12 @@
+2023-12-31 23:59:45 [INFO] sql-server-1: Server initialization completed
+2023-12-31 23:59:50 [WARNING] sql-server-1: Memory allocation failure reported by Windows
+2023-12-31 23:59:55 [ERROR] sql-server-1: System crash detected, kernel bugcheck triggered
+2023-12-31 23:59:56 [CRITICAL] sql-server-1: All sites entering read-only mode due to server crash
+2023-12-31 23:59:57 [INFO] incident-management: Incident notified, alert sent to teams
+2023-12-31 23:59:58 [WARNING] web-servers: Unexpected increase in request traffic
+2023-12-31 23:59:59 [ERROR] web-servers: Possible cause: primary SQL server failure
+2023-12-31 23:59:60 [CRITICAL] incident-management: All sites now offline, incident classified as high severity
+2023-12-31 23:59:61 [INFO] sql-server-1: Crash dump collected and sent for analysis
+2023-12-31 00:00:01 [WARNING] database-replication: Replication service unavailable due to primary server failure
+2023-12-31 00:00:02 [ERROR] database-replication: Loss of data synchronization across sites
+2023-12-31 00:00:03 [CRITICAL] incident-management: Incident investigation underway, teams on standby for root cause analysis

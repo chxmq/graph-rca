@@ -1,0 +1,12 @@
+2013-04-13 08:45:00 [INFO] service-c: Normal quorum establishment detected for cluster-1
+2013-04-13 08:45:02 [INFO] service-d: Normal quorum establishment detected for cluster-2
+2013-04-13 09:10:00 [WARNING] network-a: High latency detected on peering point to cluster-1
+2013-04-13 09:10:05 [WARNING] network-b: High latency detected on peering point to cluster-2
+2013-04-13 09:20:00 [INFO] service-c: Quorum establishment failed for cluster-1 due to high latency
+2013-04-13 09:20:02 [INFO] service-d: Quorum establishment failed for cluster-2 due to high latency
+2013-04-13 09:25:00 [CRITICAL] network-a: Error establishing quorum for cluster-1, possible peering point failure detected
+2013-04-13 09:25:05 [CRITICAL] network-b: Error establishing quorum for cluster-2, possible peering point failure detected
+2013-04-13 09:30:00 [INFO] pagerduty: Alert sent to PagerDuty team due to critical quorum failure
+2013-04-13 09:35:00 [WARNING] pagerduty: Attempting to establish quorum via secondary connection
+2013-04-13 09:40:00 [ERROR] pagerduty: Secondary connection failed, primary peering point still unavailable
+2013-04-13 09:50:00 [CRITICAL] pagerduty: Application unable to establish quorum due to persistent peering point failure across cloud deployments

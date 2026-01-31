@@ -1,0 +1,16 @@
+2023-12-31 22:00:00 [INFO] honeycomb-api: Received new user registration request
+2023-12-31 22:00:05 [INFO] honeycomb-api: Updated user data in database
+2023-12-31 22:00:10 [WARNING] honeycomb-db: High CPU usage detected
+2023-12-31 22:00:15 [INFO] honeycomb-api: New user login request received
+2023-12-31 22:00:20 [ERROR] honeycomb-db: Connection to database timed out
+2023-12-31 22:00:25 [WARNING] honeycomb-api: Request handling rate exceeded threshold
+2023-12-31 22:00:30 [CRITICAL] honeycomb-system: System resources overloading
+2023-12-31 22:00:35 [ERROR] honeycomb-db: Data corruption detected due to unhandled write requests
+2023-12-31 22:00:40 [WARNING] honeycomb-api: Unhandled exception in request handling loop
+2023-12-31 22:00:45 [INFO] honeycomb-system: System crash detected
+2023-12-31 22:01:00 [ERROR] honeycomb-sysadmin: Attempting to recover from system crash
+2023-12-31 22:01:05 [WARNING] honeycomb-db: Partial database recovery failed
+2023-12-31 22:01:10 [CRITICAL] honeycomb-api: Service unavailable due to database corruption
+2023-12-31 22:01:15 [INFO] honeycomb-system: System shutdown initiated
+2023-12-31 22:01:20 [ERROR] honeycomb-sysadmin: Failed to recover from system crash
+2023-12-31 22:01:25 [CRITICAL] honeycomb-api: Root cause analysis started

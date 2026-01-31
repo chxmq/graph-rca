@@ -1,0 +1,13 @@
+2020-07-21 14:30:00 [INFO] system-upgrade-service: Starting system upgrade process
+2020-07-21 14:31:00 [WARNING] weight-calculator-service: Unexpected passenger weight calculation for Miss Johnson
+2020-07-21 14:32:00 [INFO] weight-calculator-service: Adjusting passenger weights due to potential issue
+2020-07-21 14:33:00 [ERROR] weight-calculator-service: Female passengers with 'Miss' title being identified as children in takeoff mass calculations
+2020-07-21 14:35:00 [CRITICAL] flight-planner-service: Critical error occurred in flight planning due to incorrect passenger weights
+2020-07-21 14:36:00 [INFO] flight-planner-service: Stopping and restarting flight planning process
+2020-07-21 14:37:00 [WARNING] system-upgrade-service: System upgrade failed to resolve issue
+2020-07-21 14:38:00 [ERROR] weight-calculator-service: Failed to revert passenger weights to correct values after system restart
+2020-07-21 14:40:00 [CRITICAL] system-upgrade-service: System upgrade process terminated due to critical error
+2020-07-21 14:41:00 [INFO] system-upgrade-service: Rolling back to previous version
+2020-07-21 14:42:00 [WARNING] weight-calculator-service: Still detecting female passengers with 'Miss' title being identified as children in takeoff mass calculations
+2020-07-21 14:45:00 [INFO] system-upgrade-service: System upgrade process completed successfully, reverting to previous version
+2020-07-21 14:50:00 [ERROR] flight-planner-service: Error still present after system restart, investigation ongoing

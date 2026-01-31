@@ -622,16 +622,18 @@ def run_noise_sensitivity(
     total = len(incidents) + len(decoys)
     logger.info(f"Corpus: {len(incidents)} targets + {len(decoys)} decoys = {total}")
     
-    # Setup ChromaDB
+    # Setup ChromaDB (in-memory mode - no server needed)
     try:
-        client = chromadb.HttpClient(host=CONFIG["chroma_host"], port=CONFIG["chroma_port"])
+        # Try in-memory first (no server required)
+        client = chromadb.Client()
         try:
             client.delete_collection("overnight_noise_test")
         except:
             pass
         collection = client.create_collection("overnight_noise_test", metadata={"hnsw:space": "cosine"})
+        logger.info("Using ChromaDB in-memory mode")
     except Exception as e:
-        logger.error(f"ChromaDB connection failed: {e}")
+        logger.error(f"ChromaDB setup failed: {e}")
         return {"status": "error", "reason": str(e)}
     
     # Index all documents

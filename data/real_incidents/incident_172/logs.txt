@@ -1,0 +1,15 @@
+2023-09-15 14:30:00 [INFO] cassandra-cluster: Initializing cluster
+2023-09-15 14:30:02 [WARNING] message-bus: New connection established to Cassandra cluster
+2023-09-15 14:30:03 [INFO] service-c: Starting data ingestion process
+2023-09-15 14:30:05 [CRITICAL] cassandra-cluster: Connection error detected, retrying in 5 seconds
+2023-09-15 14:30:10 [ERROR] message-bus: Cassandra connection timeout after 2 retries
+2023-09-15 14:30:11 [WARNING] service-d: Queue insert operation timed out, checking Cassandra cluster status
+2023-09-15 14:30:12 [CRITICAL] cassandra-cluster: Connection reset detected, retrying in 10 seconds
+2023-09-15 14:30:17 [ERROR] message-bus: Failed to ingest data into Cassandra cluster
+2023-09-15 14:30:18 [WARNING] service-e: Application failed due to queue insert operation failure
+2023-09-15 14:30:20 [CRITICAL] cassandra-cluster: Cluster is down, investigating root cause
+2023-09-15 14:30:25 [INFO] incident-detection: Alert raised for Cassandra cluster downtime
+2023-09-15 14:30:30 [WARNING] operations-team: Reviewing Cassandra cluster logs for error details
+2023-09-15 14:30:35 [ERROR] cassandra-cluster: Root cause identified as misconfigured replication factor
+2023-09-15 14:30:40 [CRITICAL] incident-detection: Incident classified as Medium severity due to data loss potential
+2023-09-15 14:31:00 [INFO] operations-team: Rolling out fix for Cassandra cluster configuration
