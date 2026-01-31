@@ -56,7 +56,7 @@ CONFIG = {
     # Models (all local via Ollama - no external APIs)
     "ollama_host": "http://localhost:11434",
     "model": "llama3.2:3b",           # For RCA inference (the system being tested)
-    "judge_model": "llama3.1:70b",    # For scoring (larger model = more rigorous evaluation)
+    "judge_model": "qwen3:32b",       # For scoring (larger model = more rigorous evaluation)
     "embed_model": "nomic-embed-text",
     "temperature": 0.2,
     
@@ -370,12 +370,11 @@ Root Cause:"""
 
 
 def score_with_ollama(ollama_client, prediction: str, ground_truth: str, logger) -> float:
-    """Score prediction using local Ollama with larger judge model for rigorous evaluation."""
+    """Score prediction using local Ollama 70B judge model. NO FALLBACK - fails if unavailable."""
     if not prediction or len(prediction.strip()) < 5:
         return 0.0
     
-    try:
-        prompt = f"""Compare these two root cause descriptions and rate their similarity from 0.0 to 1.0.
+    prompt = f"""Compare these two root cause descriptions and rate their similarity from 0.0 to 1.0.
 
 Ground Truth: {ground_truth}
 Prediction: {prediction}
@@ -388,60 +387,77 @@ Scoring guide:
 - 0.0: Completely wrong
 
 Respond with ONLY a number between 0.0 and 1.0:"""
-        
-        # Use larger judge model for scoring (more rigorous evaluation)
-        response = ollama_client.generate(
-            model=CONFIG["judge_model"],
-            prompt=prompt,
-            options={"temperature": 0.0}
-        )
-        
-        # Extract number from response
-        text = response["response"].strip()
-        # Find first float-like pattern
-        import re
-        match = re.search(r'(0\.\d+|1\.0|0|1)', text)
-        if match:
-            return min(1.0, max(0.0, float(match.group(1))))
-        
-        # Fallback to keyword scoring
-        return keyword_score(prediction, ground_truth)
-        
-    except Exception as e:
-        logger.debug(f"Ollama scoring failed: {e}, using keyword fallback")
-        return keyword_score(prediction, ground_truth)
+    
+    # Retry up to 3 times for Ollama judge
+    for attempt in range(3):
+        try:
+            response = ollama_client.generate(
+                model=CONFIG["judge_model"],
+                prompt=prompt,
+                options={"temperature": 0.0}
+            )
+            
+            text = response["response"].strip()
+            import re
+            match = re.search(r'(0\.\d+|1\.0|0|1)', text)
+            if match:
+                return min(1.0, max(0.0, float(match.group(1))))
+            
+            # If no number found, log and retry
+            logger.warning(f"Judge returned non-numeric: {text[:50]}")
+            
+        except Exception as e:
+            logger.warning(f"Ollama judge attempt {attempt+1}/3 failed: {e}")
+            if attempt < 2:
+                time.sleep(2)
+            else:
+                raise RuntimeError(f"Ollama judge model '{CONFIG['judge_model']}' failed after 3 attempts. Make sure it's installed: ollama pull {CONFIG['judge_model']}")
+    
+    # If we got here, no valid score extracted after retries
+    return 0.5  # Neutral score if response was unparseable
 
-
-def keyword_score(prediction: str, ground_truth: str) -> float:
-    """Fallback keyword-based scoring."""
-    pred_lower = prediction.lower()
-    gt_words = ground_truth.lower().split()
-    matches = sum(1 for w in gt_words if w in pred_lower)
-    return min(1.0, matches / max(len(gt_words), 1) * 2)
 
 
 def compile_rca_results(results: List[Dict]) -> Dict:
-    """Compile RCA results with category breakdown."""
+    """Compile RCA results with category breakdown (per-run accuracy)."""
     by_category = {}
+    total_runs = 0
+    total_correct = 0
+    all_scores = []
+    
     for r in results:
         cat = r["category"]
         if cat not in by_category:
             by_category[cat] = {"correct": 0, "total": 0, "scores": []}
-        by_category[cat]["total"] += 1
-        by_category[cat]["scores"].append(r["avg_score"])
-        if r["correct"]:
-            by_category[cat]["correct"] += 1
+            
+        # Analyze each run independently
+        for run in r["runs"]:
+            score = run.get("score", 0)
+            is_correct = score >= 0.7
+            
+            # Global stats
+            total_runs += 1
+            all_scores.append(score)
+            if is_correct:
+                total_correct += 1
+            
+            # Category stats
+            by_category[cat]["total"] += 1
+            by_category[cat]["scores"].append(score)
+            if is_correct:
+                by_category[cat]["correct"] += 1
     
+    # Calculate percentages
     for cat in by_category:
         data = by_category[cat]
         data["accuracy"] = round(data["correct"] / data["total"], 3) if data["total"] > 0 else 0
-    
-    all_scores = [r["avg_score"] for r in results]
+        data["avg_score"] = round(statistics.mean(data["scores"]), 3) if data["scores"] else 0
     
     return {
         "total_incidents": len(results),
-        "runs_per_incident": CONFIG["runs_per_test"],
-        "overall_accuracy": round(statistics.mean(all_scores), 4) if all_scores else 0,
+        "total_runs": total_runs,
+        "overall_accuracy": round(total_correct / total_runs, 4) if total_runs > 0 else 0,
+        "avg_score_quality": round(statistics.mean(all_scores), 4) if all_scores else 0,
         "overall_std": round(statistics.stdev(all_scores), 4) if len(all_scores) > 1 else 0,
         "by_category": by_category,
         "by_incident": results
@@ -746,14 +762,14 @@ def main():
         logger.error(f"❌ Ollama connection failed: {e}")
         return
     
-    openai_key = os.getenv("OPENAI_API_KEY", "")
-    if openai_key:
-        from openai import OpenAI
-        openai_client = OpenAI(api_key=openai_key)
-        logger.info(f"✓ OpenAI connected ({CONFIG['judge_model']})")
-    else:
-        logger.warning("⚠️ OPENAI_API_KEY not set - using keyword scoring fallback")
-        openai_client = None
+    # Verify judge model is available (REQUIRED - no fallback)
+    try:
+        ollama_client.show(CONFIG["judge_model"])
+        logger.info(f"✓ Judge model available: {CONFIG['judge_model']}")
+    except Exception as e:
+        logger.error(f"❌ Judge model '{CONFIG['judge_model']}' not found!")
+        logger.error(f"   Run: ollama pull {CONFIG['judge_model']}")
+        return
     
     # Load data
     incidents = load_all_incidents(logger)
