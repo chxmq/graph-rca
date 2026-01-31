@@ -1,0 +1,9 @@
+2023-12-15 14:30:00 [INFO] instance-123: EBS volume detected as unhealthy in AZ1
+2023-12-15 14:30:05 [WARNING] service-c: Alert sent to ops team for potential EBS outage in AZ1
+2023-12-15 14:31:00 [ERROR] ec2-api: Request failed for instance-123, error code 503 (Service Unavailable)
+2023-12-15 14:32:00 [INFO] service-d: Initiating migration of data to other AZs
+2023-12-15 14:33:00 [INFO] instance-456: EBS volume successfully migrated to AZ2
+2023-12-15 14:34:00 [INFO] ec2-api: Request successful for instance-456, error code 200 (OK)
+2023-12-15 14:35:00 [INFO] service-e: Service restored after migration completion
+2023-12-15 14:36:00 [INFO] ops-team: Notification sent to team members of incident resolution
+2023-12-15 14:37:00 [INFO] incident-manager: Incident classification as Medium Severity due to data loss and downtime

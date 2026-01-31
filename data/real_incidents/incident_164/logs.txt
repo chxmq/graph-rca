@@ -1,0 +1,12 @@
+2023-12-15 09:00:00 [INFO] sentry-service: Starting database query
+2023-12-15 09:00:02 [WARNING] sentry-service: High transaction volume detected (1000+ concurrent queries)
+2023-12-15 09:05:01 [INFO] sentry-postgres: Received large batch of queries from service-a
+2023-12-15 09:05:03 [ERROR] sentry-postgres: Transaction ID wraparound detected in database
+2023-12-15 09:05:04 [CRITICAL] sentry-service: Database connection lost, Sentry unavailable
+2023-12-15 09:10:00 [INFO] sentry-operator: Received alert from Sentry service, investigating cause
+2023-12-15 09:20:02 [WARNING] sentry-postgres: Attempting to recover from transaction ID wraparound
+2023-12-15 09:30:05 [ERROR] sency-service: Failed to recover database connection
+2023-12-15 09:40:01 [INFO] sency-operator: Running Postgres maintenance task to repair damage
+2023-12-15 10:00:03 [WARNING] sency-postgres: Repair process taking longer than expected (30% complete)
+2023-12-15 11:00:05 [ERROR] sency-service: Database still unavailable after maintenance, Sentry down for most of the day
+2023-12-15 11:10:02 [INFO] sency-operator: Investigating potential causes for database unavailability

@@ -1,0 +1,15 @@
+2023-03-08 14:30:00 [INFO] cilium-kubernetes-service: Received automatic upgrade notification for network rules.
+2023-03-08 14:31:00 [WARNING] cilium-kubernetes-service: Warning: Network rules removed during upgrade. Checking cluster connectivity...
+2023-03-08 14:32:00 [ERROR] cilium-kubernetes-service: Error: No network connectivity found for Cilium protected Kubernetes clusters in Region A.
+2023-03-08 14:33:00 [CRITICAL] cilium-kubernetes-service: Critical: All Cilium protected Kubernetes clusters in all regions and cloud providers are down due to removed network rules.
+2023-03-08 14:34:00 [INFO] alert-system: Alert triggered for network outage. Investigating root cause...
+2023-03-08 14:35:00 [WARNING] investigation-team: Warning: Network rules removal detected as potential root cause.
+2023-03-08 14:36:00 [ERROR] investigation-team: Error: Unable to locate upgrade logs for network rules.
+2023-03-08 14:37:00 [CRITICAL] investigation-team: Critical: Root cause confirmed - all network rules were removed during automatic upgrade, causing 24h duration outage of Cilium protected Kubernetes clusters in all regions and cloud providers.
+2023-03-08 14:38:00 [INFO] incident-response: Incident triggered for medium severity network outage. Sending notification to stakeholders...
+2023-03-08 14:39:00 [WARNING] incident-response: Warning: Notification sent to stakeholders, but no response received yet.
+2023-03-08 14:40:00 [ERROR] incident-response: Error: Unable to resolve root cause with stakeholders.
+2023-03-08 14:41:00 [CRITICAL] incident-response: Critical: Root cause analysis complete. Post-mortem summary will be sent to stakeholders shortly.
+2023-03-08 14:42:00 [INFO] post-mortem-team: Post-mortem summary generated and uploaded to Datadog Incident System...
+2023-03-08 14:43:00 [WARNING] post-mortem-team: Warning: Summary uploaded, but review process has not started yet.
+2023-03-08 14:44:00 [ERROR] post-mortem-team: Error: Unable to complete review of post-mortem summary with stakeholders.

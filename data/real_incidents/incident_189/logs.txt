@@ -1,0 +1,13 @@
+2023-08-29 14:15:00 [INFO] oms-service: Receiving new order for 1M units of penny stock (PENNY_123)
+2023-08-29 14:15:05 [WARNING] oms-service: Order quantity exceeds maximum allowed limit for individual trades (0.1M)
+2023-08-29 14:15:10 [INFO] oms-service: Attempting to split order into multiple trades
+2023-08-29 14:15:12 [ERROR] oms-service: Splitting logic encountering division by zero error in trade calculation
+2023-08-29 14:15:13 [CRITICAL] oms-service: Order Management System collapsing due to internal logic failure
+2023-08-29 14:15:15 [INFO] monitoring-service: Alert triggered for OMS service
+2023-08-29 14:15:20 [WARNING] oms-service: Losing main process connection attempt #1
+2023-08-29 14:15:25 [ERROR] oms-service: Losing main process connection attempt #2
+2023-08-29 14:15:30 [CRITICAL] oms-service: All attempts to recover failed, service is down for permanent recovery
+2023-08-29 14:15:35 [INFO] incident-response-service: Incident reported with ID ZDH-1234
+2023-08-29 14:15:40 [WARNING] incident-response-service: No prior incidents of this type found in OMS service history
+2023-08-29 14:15:45 [ERROR] incident-response-service: Unable to establish communication with Refinitiv support for root cause analysis
+2023-08-29 14:15:50 [CRITICAL] oms-service: Permanent failure, awaiting further investigation and resolution

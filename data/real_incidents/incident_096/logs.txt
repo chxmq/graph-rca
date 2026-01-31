@@ -1,0 +1,17 @@
+Here is a semi-realistic log snippet for the IT incident:
+
+2022-12-16 14:30:00 [INFO] service-c: New employee engineer-123 created
+2022-12-16 14:30:15 [WARNING] antivirus-scan: Malware detected on engineer-123's laptop (scan ID: #001)
+2022-12-16 14:30:20 [INFO] service-d: SSO session creation initiated for engineer-123
+2023-01-04 08:00:00 [CRITICAL] sso-session-a: Unauthorized access detected on February 1, 2023 (IP address: 192.168.0.100)
+2023-01-04 08:00:05 [INFO] service-e: Remote system impersonation attempt logged
+2023-01-04 08:00:10 [ERROR] service-f: Production system escalation detected on February 2, 2023 (user ID: 1234)
+2023-01-04 08:00:15 [WARNING] security-a: Unauthorized access to production system confirmed
+2023-01-04 08:00:20 [INFO] incident-response: Incident report initiated
+2023-01-04 08:00:25 [INFO] investigation-team: Internal investigation team assembled
+2023-01-04 08:00:30 [INFO] security-a: Malware removal and cleanup in progress
+2023-01-04 08:00:35 [INFO] incident-response: Incident report update (status: in-progress)
+2023-01-04 08:00:40 [INFO] investigation-team: Root cause analysis initiated
+2023-01-04 08:00:45 [INFO] security-a: Malware root cause identified
+2023-01-04 08:00:50 [INFO] incident-response: Incident report update (status: resolved)
+2023-01-04 08:01:00 [INFO] investigation-team: Post-mortem analysis initiated

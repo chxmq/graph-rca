@@ -1,0 +1,13 @@
+Here is a semi-realistic log snippet for the IT incident:
+
+2023-12-31 14:30:00 [INFO] service-c: Received 500 requests in last 5 minutes, starting to show signs of overload
+2023-12-31 15:10:00 [WARNING] replication-a: Replication lag detected at 10 seconds
+2023-12-31 16:20:00 [INFO] admin-user: Deleting unnecessary directory /var/gitlab/data
+2023-12-31 16:25:05 [ERROR] service-d: Directory deletion failed, log rotation disabled
+2023-12-31 16:25:10 [CRITICAL] replication-a: Replication stopped due to disk space issues
+2023-12-31 16:30:00 [WARNING] admin-user: Realized mistake in deleting directory, 30 minutes too late
+2023-12-31 16:40:00 [INFO] service-e: Data replication attempted after directory restoration
+2023-12-31 17:05:00 [ERROR] admin-user: Database connection refused due to replication lag
+2023-12-31 18:30:00 [CRITICAL] service-f: Overloaded database causing replication failure, six hours of data loss detected
+2023-12-31 19:15:00 [INFO] support-team: Notified on incident and investigation started
+2023-12-31 20:10:00 [WARNING] service-g: Service availability affected due to database issues

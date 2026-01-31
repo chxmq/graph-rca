@@ -1,0 +1,9 @@
+2025-10-28 18:34:00 [INFO] Migration-service: Live migration initiated
+2025-10-28 18:36:02 [WARNING] Monitoring-service: High CPU usage detected on monitoring server
+2025-10-28 19:00:01 [ERROR] Postgres-service: Table lock acquired by Postgres, connection slots exhausted
+2025-10-28 19:00:05 [INFO] Postgres-service: Attempting to release table lock
+2025-10-28 19:00:15 [WARNING] Postgres-service: Connection pool slots still exhausted after table lock release attempt
+2025-10-28 19:00:30 [ERROR] Postgres-service: Administrative connection slots overflow due to PgBouncer, system unavailable
+2025-10-28 19:05:00 [INFO] Postgres-service: Recovery process initiated to restore services
+2025-10-28 19:15:00 [INFO] Postgres-service: Table lock released after recovery process completed
+2025-10-28 20:00:00 [WARNING] Monitoring-service: Low CPU usage detected on monitoring server

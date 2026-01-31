@@ -1,0 +1,13 @@
+2023-12-31 23:45:00 [INFO] service-c: Initial startup complete
+2023-12-31 23:50:00 [WARNING] service-d: Memory usage increasing at 100MB
+2023-12-31 23:55:00 [INFO] service-e: Loading third-party library "lib-XYZ.so"
+2023-12-31 23:56:00 [ERROR] service-f: Out of memory error detected
+2024-01-01 00:05:00 [CRITICAL] service-g: Skyliner is unavailable due to high memory usage
+2024-01-01 00:10:00 [INFO] service-h: Attempting to reload third-party library "lib-XYZ.so"
+2024-01-01 00:11:00 [WARNING] service-i: Memory usage still increasing at 200MB
+2024-01-01 00:15:00 [ERROR] service-j: Out of memory error detected again
+2024-01-01 00:20:00 [CRITICAL] service-k: Skyliner is unavailable due to high memory usage (second occurrence)
+2023-12-31 23:45:00 [INFO] incident-detection-system: Alert triggered for high memory usage
+2023-12-31 23:50:00 [WARNING] incident-detection-system: Memory leak detected in third-party library "lib-XYZ.so"
+2024-01-01 00:05:00 [CRITICAL] incident-detection-system: Incident reported: Skyliner unavailable due to memory leak
+2023-12-31 23:55:00 [INFO] incident-response-team: Response team notified and investigation initiated

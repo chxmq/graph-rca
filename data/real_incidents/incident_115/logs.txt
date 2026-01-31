@@ -1,0 +1,16 @@
+2023-09-15 14:30:00 [INFO] api-gateway: Received normal traffic
+2023-09-15 14:30:02 [WARNING] database-service: Connection pool is 75% utilized
+2023-09-15 14:30:03 [ERROR] database-service: Connection timed out for service-b
+2023-09-15 14:30:04 [INFO] monitoring-system: Alert sent to ops team for database error
+2023-09-15 14:30:05 [WARNING] api-gateway: Unexpected spike in traffic from unknown source
+2023-09-15 14:30:06 [ERROR] api-gateway: Request handling failed due to excessive traffic
+2023-09-15 14:30:07 [INFO] incident-response-system: DDoS alert triggered
+2023-09-15 14:30:08 [CRITICAL] ddo-scan-system: Detected high volume attack (1.35Tbps)
+2023-09-15 14:30:10 [INFO] security-team: Team notified and on site to mitigate
+2023-09-15 14:31:00 [WARNING] ddo-scan-system: Attack characteristics unknown, assuming malicious
+2023-09-15 14:32:00 [INFO] incident-response-system: Incident report started
+2023-09-15 14:33:00 [ERROR] api-gateway: Service availability below 50%
+2023-09-15 14:34:00 [CRITICAL] ddo-scan-system: Attack volume increased to (1.5Tbps)
+2023-09-15 14:35:00 [INFO] security-team: Teams preparing for network segmentation
+2023-09-15 14:36:00 [WARNING] api-gateway: Traffic rate exceeds recommended limits
+2023-09-15 14:37:00 [INFO] incident-response-system: Root cause confirmed as DDoS attack

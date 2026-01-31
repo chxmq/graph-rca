@@ -1,0 +1,15 @@
+Here is a semi-realistic log snippet for the IT incident:
+
+2021-01-01 14:00:30 [INFO] heroku-main: Service started successfully
+2021-01-01 14:00:35 [WARNING] heroku-main: Configuration variables not loaded from environment
+2021-01-01 14:00:40 [INFO] deployment-bot: Deploying new code version to main branch
+2021-01-01 14:00:45 [ERROR] heroku-main: git push failed with error message "No such file or directory"
+2021-01-01 14:00:50 [WARNING] deployment-bot: Deployment failed due to unexpected output from heroku-main
+2021-01-01 14:00:55 [INFO] deployment-bot: Checking configuration variables for main branch
+2021-01-01 14:01:00 [ERROR] heroku-main: Configuration variables not found in code, trying alternative methods
+2021-01-01 14:01:05 [WARNING] heroku-main: Alternative method failed to load required configuration variables
+2021-01-01 14:01:10 [INFO] deployment-bot: Reviewing log output for main branch to identify root cause
+2021-01-01 14:01:15 [ERROR] deployment-bot: Deployment process failed due to incorrect application of new configuration variables
+2021-01-01 14:01:20 [CRITICAL] heroku-main: Service is currently unavailable and unable to push changes to main branch
+2021-01-01 14:01:25 [INFO] incident-response-team: Notifying Heroku support team regarding critical deployment issue
+2021-01-01 14:01:30 [WARNING] heroku-main: Critical error reported to Heroku, investigation underway
