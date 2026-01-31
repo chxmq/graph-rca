@@ -608,9 +608,9 @@ def run_noise_sensitivity(
     
     try:
         import chromadb
-    except ImportError:
-        logger.error("ChromaDB not installed!")
-        return {"status": "skipped", "reason": "chromadb not installed"}
+    except (ImportError, RuntimeError) as e:
+        logger.error(f"ChromaDB unavailable: {e}")
+        return {"status": "skipped", "reason": f"ChromaDB error: {str(e)[:100]}"}
     
     checkpoint.set_current(EXPERIMENT_NAME)
     
