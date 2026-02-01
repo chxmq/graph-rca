@@ -1,64 +1,66 @@
-# Real Incidents Dataset
+# Real-World Incidents Dataset
 
-This directory contains 60 manually curated real-world incidents from production systems.
+A curated dataset of **200 real-world production incidents** from 50+ companies, used to evaluate GraphRCA's root cause analysis capabilities.
 
 ## Dataset Structure
 
-Each incident is stored in a directory `incident_XXX/` with the following files:
-
-- **`metadata.json`**: Company name, incident category, date, severity
-- **`ground_truth.json`**: Root cause, timestamp, source URL, logs availability
-- **`postmortem.md`**: Human-readable summary of the incident
-- **`logs.txt`** (if available): Synthetic or real log evidence
-
-## Dataset Statistics
-
-- **Total Incidents**: 60
-- **Categories**: Database, Software, Network, Infrastructure, Security, Hardware
-- **Date Range**: 2009-2024
-- **Companies**: GitHub, Cloudflare, AWS, Google, Microsoft, and 40+ others
-
-## Generation Scripts
-
-### Data Collection
-- `collect_data.sh`: Automated scraping from GitHub and SRE Weekly
-- `collect_incidents.py`: Python library for organizing incident data
-
-### Manual Curation
-- `populate_initial_incidents.py`: Batch 1 (incidents 001-010)
-- `populate_batch_2.py`: Batch 2 (incidents 011-020)
-- `populate_batch_3.py`: Batch 3 (incidents 021-030)
-- `populate_batch_4.py`: Batch 4 (incidents 031-040)
-- `populate_batch_5.py`: Batch 5 (incidents 041-050)
-- `populate_batch_6.py`: Batch 6 (incidents 051-060)
-
-### Log Synthesis
-- `generate_synthetic_logs.py`: Generates semi-realistic logs for incidents
-
-## Raw Sources
-
-The `sources/` directory contains:
-- `raw/github/`: 190 incident post-mortems from GitHub repositories
-- `raw/sre_weekly/`: 49 incidents from SRE Weekly archives
+```
+real_incidents/
+├── manage.py              # Dataset management utility
+├── README.md
+├── incident_001/
+│   ├── logs.txt           # Synthetic log entries (LLM-generated)
+│   ├── postmortem.md      # Incident summary from public postmortem
+│   ├── metadata.json      # Company, date, severity, category
+│   └── ground_truth.json  # Annotated root cause
+├── incident_002/
+│   └── ...
+└── incident_200/
+```
 
 ## Usage
 
-```python
-from collect_incidents import IncidentDataCollector
+```bash
+# Show dataset statistics
+python manage.py stats
 
-collector = IncidentDataCollector()
-# Access incident data programmatically
+# Validate all incident files
+python manage.py validate
+
+# Generate synthetic logs for incidents missing them
+python manage.py generate-logs
+
+# Export dataset summary
+python manage.py export
 ```
 
-## Citation
+## Categories
 
-If you use this dataset in your research, please cite:
+| Category | Count |
+|----------|-------|
+| Infrastructure | 66 |
+| Database | 46 |
+| Software | 31 |
+| Network | 24 |
+| Security | 17 |
+| Configuration | 6 |
+| Memory | 6 |
+| Cloud | 3 |
+| CI-CD | 1 |
 
-```
-@dataset{graphrca_incidents_2024,
-  title={Real-World Production Incidents Dataset},
-  author={GraphRCA Project},
-  year={2024},
-  url={https://github.com/chxmq/graph-rca}
-}
-```
+## Data Sources
+
+Incidents curated from public postmortems including:
+- GitHub, Cloudflare, AWS, Google Cloud
+- Microsoft Azure, Datadog, Roblox
+- Stack Exchange, Stripe, Etsy, and others
+
+## Methodology
+
+1. **Source identification**: Locate public postmortem/incident report
+2. **Metadata extraction**: Record company, date, category, severity
+3. **Ground truth annotation**: Extract root cause statement
+4. **Log synthesis**: Generate logs using LLM (Llama 3.2 3B)
+5. **Quality validation**: Verify logs contain root cause evidence
+
+See the paper for full methodology details.
