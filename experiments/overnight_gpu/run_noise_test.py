@@ -77,14 +77,17 @@ def load_incidents(logger) -> list:
     incidents = []
     incident_dir = CONFIG["incident_dir"]
     
-    for f in sorted(incident_dir.glob("incident_*.json")):
-        try:
-            with open(f) as fp:
-                data = json.load(fp)
-                data["id"] = f.stem
-                incidents.append(data)
-        except Exception as e:
-            logger.warning(f"Failed to load {f}: {e}")
+    # Look for incident_*/incident.json pattern
+    for folder in sorted(incident_dir.glob("incident_*")):
+        json_file = folder / "incident.json"
+        if json_file.exists():
+            try:
+                with open(json_file) as fp:
+                    data = json.load(fp)
+                    data["id"] = folder.name
+                    incidents.append(data)
+            except Exception as e:
+                logger.warning(f"Failed to load {json_file}: {e}")
     
     logger.info(f"Loaded {len(incidents)} incidents")
     return incidents
