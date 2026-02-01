@@ -2,7 +2,7 @@
 """
 Batch Inference Experiment
 Tests batch sizes 1, 8, 16, 32 for LLM parsing performance.
-From comprehensive_overnight.py - Experiment 1
+Matches paper methodology: 128 logs, 5 runs per batch size.
 """
 
 import os
@@ -13,23 +13,18 @@ import statistics
 from pathlib import Path
 from datetime import datetime
 
-# Fix SSL
 if 'SSL_CERT_FILE' in os.environ:
     del os.environ['SSL_CERT_FILE']
 
 import ollama
-
-# =============================================================================
-# CONFIGURATION
-# =============================================================================
 
 CONFIG = {
     "ollama_host": "http://localhost:11434",
     "model": "llama3.2:3b",
     "temperature": 0.2,
     "batch_sizes": [1, 8, 16, 32],
-    "batch_runs": 5,
-    "batch_logs": 128,
+    "num_runs": 5,
+    "num_logs": 128,
 }
 
 SAMPLE_LOGS = [
@@ -58,12 +53,13 @@ SAMPLE_LOGS = [
 
 
 def run_batch_experiment(client: ollama.Client) -> dict:
-    """Run batch inference benchmark - matches comprehensive_overnight.py logic."""
+    """Run batch inference benchmark."""
     print("=" * 70)
-    print("EXPERIMENT 1: Batch Inference Benchmark")
+    print("EXPERIMENT: Batch Inference Benchmark")
+    print(f"Config: {CONFIG['num_logs']} logs, {CONFIG['num_runs']} runs per batch size")
     print("=" * 70)
     
-    logs = (SAMPLE_LOGS * 10)[:CONFIG["batch_logs"]]
+    logs = (SAMPLE_LOGS * 10)[:CONFIG["num_logs"]]
     options = ollama.Options(temperature=CONFIG["temperature"])
     results = {"batch_results": [], "latex": ""}
     baseline_throughput = None
@@ -72,7 +68,7 @@ def run_batch_experiment(client: ollama.Client) -> dict:
         print(f"\nBatch size: {batch_size}")
         run_times = []
         
-        for run in range(1, CONFIG["batch_runs"] + 1):
+        for run in range(1, CONFIG["num_runs"] + 1):
             start = time.time()
             
             if batch_size == 1:
@@ -117,38 +113,16 @@ def run_batch_experiment(client: ollama.Client) -> dict:
             "runs": run_times
         })
         
-        print(f"  → Avg: {throughput:.2f} logs/s, {latency:.0f}ms/log")
+        print(f"  → Avg: {throughput:.2f} logs/s, {latency:.0f}ms/log, {throughput/baseline_throughput:.1f}× speedup")
     
-    # Generate LaTeX
-    results["latex"] = generate_batch_latex(results["batch_results"])
     results["timestamp"] = datetime.now().isoformat()
     return results
-
-
-def generate_batch_latex(batch_results: list) -> str:
-    latex = f"""% Batch Inference Results - {datetime.now().isoformat()}
-\\begin{{table}}[t]
-\\centering
-\\caption{{Batch Inference Performance (Llama 3.2 3B, GPU)}}
-\\label{{tab:batching}}
-\\begin{{tabular}}{{lcccc}}
-\\toprule
-\\textbf{{Batch Size}} & \\textbf{{Throughput}} & \\textbf{{Latency}} & \\textbf{{Std Dev}} & \\textbf{{Speedup}} \\\\
-\\midrule
-"""
-    for r in batch_results:
-        label = " (baseline)" if r["batch_size"] == 1 else ""
-        latex += f"{r['batch_size']}{label} & {r['throughput']:.2f} logs/s & {r['latency_ms']:.0f} ms & $\\pm${r['std_dev']:.1f}s & {r['speedup']:.1f}$\\times$ \\\\\n"
-    
-    latex += "\\bottomrule\n\\end{tabular}\n\\end{table}\n"
-    return latex
 
 
 def main():
     client = ollama.Client(host=CONFIG["ollama_host"])
     results = run_batch_experiment(client)
     
-    # Save results
     output_path = Path(__file__).parent / "data" / "batch_results.json"
     output_path.parent.mkdir(exist_ok=True)
     with open(output_path, "w") as f:

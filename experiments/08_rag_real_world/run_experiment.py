@@ -2,7 +2,7 @@
 """
 RAG Real-World Evaluation Experiment
 Compares baseline (no RAG) vs RAG accuracy on real-world incidents.
-From run_overnight.py - Experiment 2
+Matches paper methodology: 75/25 train/test split, all incidents.
 """
 
 import os
@@ -35,12 +35,13 @@ INCIDENT_DIR = PROJECT_ROOT / "data" / "real_incidents"
 
 
 def load_incidents() -> list:
-    """Load real-world incidents."""
+    """Load all real-world incidents."""
     incidents = []
     if not INCIDENT_DIR.exists():
-        print(f"Warning: {INCIDENT_DIR} not found, using synthetic")
+        print(f"⚠ {INCIDENT_DIR} not found, using synthetic data")
         return get_synthetic_incidents()
     
+    print(f"Loading incidents from {INCIDENT_DIR}...")
     for folder in sorted(INCIDENT_DIR.glob("incident_*")):
         try:
             with open(folder / "ground_truth.json") as f:
@@ -60,6 +61,7 @@ def load_incidents() -> list:
         except:
             pass
     
+    print(f"Loaded {len(incidents)} incidents")
     return incidents if incidents else get_synthetic_incidents()
 
 
@@ -99,7 +101,7 @@ def find_similar(client: ollama.Client, test_case: dict, train_set: list) -> dic
         best = train_set[0]
         best_sim = -1
         
-        for train in train_set[:20]:  # Limit for speed
+        for train in train_set[:20]:
             train_emb = client.embeddings(
                 model=CONFIG["embed_model"],
                 prompt=f"{train['category']} {train['root_cause']}"
@@ -139,10 +141,11 @@ Score:"""
     return 0.5
 
 
-def run_rag_comparison(client: ollama.Client) -> dict:
+def run_experiment(client: ollama.Client) -> dict:
     """Compare baseline vs RAG."""
     print("=" * 70)
-    print("EXPERIMENT 8: RAG vs Baseline Comparison")
+    print("EXPERIMENT: RAG vs Baseline Comparison")
+    print(f"Config: {CONFIG['train_ratio']*100:.0f}% train / {(1-CONFIG['train_ratio'])*100:.0f}% test split")
     print("=" * 70)
     
     incidents = load_incidents()
@@ -201,7 +204,7 @@ def run_rag_comparison(client: ollama.Client) -> dict:
 
 def main():
     client = ollama.Client(host=CONFIG["ollama_host"])
-    results = run_rag_comparison(client)
+    results = run_experiment(client)
     
     output_path = Path(__file__).parent / "data" / "rag_comparison_results.json"
     output_path.parent.mkdir(exist_ok=True)
