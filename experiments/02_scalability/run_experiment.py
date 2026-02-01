@@ -2,7 +2,6 @@
 """
 Scalability Analysis Experiment
 Tests O(n) complexity of DAG construction.
-From comprehensive_overnight.py - Experiment 2
 """
 
 import os

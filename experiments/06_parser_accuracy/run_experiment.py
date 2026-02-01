@@ -3,6 +3,8 @@
 Parser Accuracy Experiment
 Tests LLM parsing accuracy on LogHub datasets (BGL, HDFS).
 Matches paper methodology: 400 samples per dataset, 3 runs each.
+
+Auto-downloads LogHub if not present.
 """
 
 import os
@@ -11,6 +13,7 @@ import json
 import time
 import re
 import statistics
+import urllib.request
 from pathlib import Path
 from datetime import datetime
 
@@ -24,11 +27,17 @@ CONFIG = {
     "model": "llama3.2:3b",
     "temperature": 0.1,
     "runs_per_log": 3,
-    "samples_per_dataset": 400,
+    "samples_per_dataset": 2000,  # Matches paper: 2000 entries each
 }
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 LOGHUB_DIR = PROJECT_ROOT / "data" / "loghub"
+
+# LogHub download URLs
+LOGHUB_URLS = {
+    "BGL": "https://raw.githubusercontent.com/logpai/loghub/master/BGL/BGL_2k.log",
+    "HDFS": "https://raw.githubusercontent.com/logpai/loghub/master/HDFS/HDFS_2k.log",
+}
 
 # Fallback sample logs if LogHub not available
 BGL_SAMPLE = [
@@ -42,9 +51,37 @@ HDFS_SAMPLE = [
 ]
 
 
+def download_loghub_dataset(dataset_name: str) -> bool:
+    """Download LogHub dataset if not present."""
+    dataset_dir = LOGHUB_DIR / dataset_name
+    dataset_path = dataset_dir / f"{dataset_name}_2k.log"
+    
+    if dataset_path.exists():
+        return True
+    
+    url = LOGHUB_URLS.get(dataset_name)
+    if not url:
+        print(f"  ⚠ No URL for {dataset_name}")
+        return False
+    
+    print(f"  Downloading {dataset_name} from LogHub...")
+    try:
+        dataset_dir.mkdir(parents=True, exist_ok=True)
+        urllib.request.urlretrieve(url, dataset_path)
+        print(f"  ✓ Downloaded to {dataset_path}")
+        return True
+    except Exception as e:
+        print(f"  ✗ Download failed: {e}")
+        return False
+
+
 def load_loghub_dataset(dataset_name: str, max_samples: int) -> list:
-    """Load LogHub dataset."""
+    """Load LogHub dataset, downloading if necessary."""
     dataset_path = LOGHUB_DIR / dataset_name / f"{dataset_name}_2k.log"
+    
+    # Try to download if not present
+    if not dataset_path.exists():
+        download_loghub_dataset(dataset_name)
     
     if not dataset_path.exists():
         print(f"  ⚠ {dataset_path} not found")
