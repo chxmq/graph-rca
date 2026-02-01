@@ -1,0 +1,299 @@
+{
+  "train_size": 150,
+  "test_size": 50,
+  "tests": [
+    {
+      "id": "incident_138",
+      "baseline_score": 0.7,
+      "rag_score": 0.0,
+      "improvement": -0.7
+    },
+    {
+      "id": "incident_118",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_012",
+      "baseline_score": 0.7,
+      "rag_score": 0.7,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_068",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_089",
+      "error": "Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"
+    },
+    {
+      "id": "incident_092",
+      "error": "Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"
+    },
+    {
+      "id": "incident_025",
+      "error": "Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"
+    },
+    {
+      "id": "incident_098",
+      "error": "Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"
+    },
+    {
+      "id": "incident_183",
+      "error": "Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"
+    },
+    {
+      "id": "incident_191",
+      "baseline_score": 0.9,
+      "rag_score": 0.9,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_087",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_182",
+      "baseline_score": 1.0,
+      "rag_score": 0.0,
+      "improvement": -1.0
+    },
+    {
+      "id": "incident_040",
+      "baseline_score": 0.7,
+      "rag_score": 1.0,
+      "improvement": 0.30000000000000004
+    },
+    {
+      "id": "incident_169",
+      "baseline_score": 1.0,
+      "rag_score": 0.7,
+      "improvement": -0.30000000000000004
+    },
+    {
+      "id": "incident_088",
+      "baseline_score": 1.0,
+      "rag_score": 0.7,
+      "improvement": -0.30000000000000004
+    },
+    {
+      "id": "incident_186",
+      "baseline_score": 0.0,
+      "rag_score": 1.0,
+      "improvement": 1.0
+    },
+    {
+      "id": "incident_041",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_002",
+      "baseline_score": 0.0,
+      "rag_score": 0.7,
+      "improvement": 0.7
+    },
+    {
+      "id": "incident_072",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_151",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_115",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_057",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_108",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_192",
+      "baseline_score": 0.7,
+      "rag_score": 0.8,
+      "improvement": 0.10000000000000009
+    },
+    {
+      "id": "incident_167",
+      "baseline_score": 0.7,
+      "rag_score": 0.8,
+      "improvement": 0.10000000000000009
+    },
+    {
+      "id": "incident_051",
+      "baseline_score": 0.9,
+      "rag_score": 0.8,
+      "improvement": -0.09999999999999998
+    },
+    {
+      "id": "incident_144",
+      "baseline_score": 0.7,
+      "rag_score": 0.4,
+      "improvement": -0.29999999999999993
+    },
+    {
+      "id": "incident_198",
+      "baseline_score": 0.7,
+      "rag_score": 0.0,
+      "improvement": -0.7
+    },
+    {
+      "id": "incident_155",
+      "baseline_score": 0.8,
+      "rag_score": 0.8,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_130",
+      "baseline_score": 0.8,
+      "rag_score": 0.7,
+      "improvement": -0.10000000000000009
+    },
+    {
+      "id": "incident_060",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_056",
+      "baseline_score": 0.7,
+      "rag_score": 0.7,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_024",
+      "baseline_score": 0.7,
+      "rag_score": 0.4,
+      "improvement": -0.29999999999999993
+    },
+    {
+      "id": "incident_008",
+      "baseline_score": 0.9,
+      "rag_score": 0.7,
+      "improvement": -0.20000000000000007
+    },
+    {
+      "id": "incident_009",
+      "baseline_score": 0.8,
+      "rag_score": 0.7,
+      "improvement": -0.10000000000000009
+    },
+    {
+      "id": "incident_109",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_152",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_023",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_140",
+      "baseline_score": 0.7,
+      "rag_score": 0.9,
+      "improvement": 0.20000000000000007
+    },
+    {
+      "id": "incident_174",
+      "baseline_score": 1.0,
+      "rag_score": 0.8,
+      "improvement": -0.19999999999999996
+    },
+    {
+      "id": "incident_027",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_189",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_036",
+      "baseline_score": 0.8,
+      "rag_score": 0.6,
+      "improvement": -0.20000000000000007
+    },
+    {
+      "id": "incident_058",
+      "baseline_score": 1.0,
+      "rag_score": 0.0,
+      "improvement": -1.0
+    },
+    {
+      "id": "incident_063",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_071",
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "id": "incident_190",
+      "baseline_score": 1.0,
+      "rag_score": 0.4,
+      "improvement": -0.6
+    },
+    {
+      "id": "incident_007",
+      "baseline_score": 0.85,
+      "rag_score": 1.0,
+      "improvement": 0.15000000000000002
+    },
+    {
+      "id": "incident_029",
+      "baseline_score": 0.9,
+      "rag_score": 1.0,
+      "improvement": 0.09999999999999998
+    },
+    {
+      "id": "incident_164",
+      "baseline_score": 1.0,
+      "rag_score": 1.0,
+      "improvement": 0.0
+    }
+  ],
+  "baseline_avg": 0.7256,
+  "rag_avg": 0.6489,
+  "improvement": -0.0767
+}

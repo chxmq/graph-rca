@@ -1,24 +1,26 @@
 # Experiment 3: RCA Baseline Comparison
 
-**Objective:** Evaluate root cause identification accuracy across failure categories.
+**Objective:** Compare GraphRCA accuracy against baseline methods.
 
-## Results (20 scenarios × 3 runs = 60 tests)
+## Results
 
-| Category | Scenarios | Success Rate | 95% CI |
-|----------|-----------|--------------|--------|
-| Database | 4 | 100.0% | (75.7–100%) |
-| Security | 3 | 100.0% | (70.1–100%) |
-| Application | 4 | 100.0% | (75.7–100%) |
-| Monitoring | 2 | 100.0% | (61.0–100%) |
-| Infrastructure | 4 | 91.7% | (64.6–98.5%) |
-| Memory | 3 | 88.9% | (56.5–98.0%) |
-| **Overall** | **20** | **96.7%** | **(88.6–99.1%)** |
+| Category | Accuracy | Runs |
+|----------|----------|------|
+| Database | 100.0% | 12 |
+| Security | 100.0% | 9 |
+| Application | 100.0% | 12 |
+| Monitoring | 100.0% | 6 |
+| Infrastructure | 91.7% | 12 |
+| Memory | 88.9% | 9 |
+| **Overall** | **96.7%** | **60** |
 
-## Paper Claim
+## How to Run
 
-> "GraphRCA achieves 96.7% RCA accuracy across 20 diverse failure scenarios spanning 6 categories."
+```bash
+python run_experiment.py
+```
 
 ## Files
 
-- `data/04_pipeline_rca.json` - Full RCA results (60 tests)
-- `data/06_statistical_analysis.json` - Statistical analysis with CIs
+- `run_experiment.py` - Experiment script
+- `data/` - All result JSON files

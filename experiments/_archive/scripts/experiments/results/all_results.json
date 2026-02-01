@@ -1,0 +1,1160 @@
+{
+  "batch": {
+    "batch_results": [
+      {
+        "batch_size": 1,
+        "throughput": 1.897,
+        "latency_ms": 527.3,
+        "std_dev": 0.687,
+        "speedup": 1.0,
+        "runs": [
+          66.67256784439087,
+          68.08564162254333,
+          66.86821866035461,
+          68.15825486183167,
+          67.6680428981781
+        ]
+      },
+      {
+        "batch_size": 8,
+        "throughput": 2.66,
+        "latency_ms": 376.0,
+        "std_dev": 5.286,
+        "speedup": 1.4,
+        "runs": [
+          52.02757692337036,
+          48.08583879470825,
+          41.432748317718506,
+          54.43303847312927,
+          44.66643667221069
+        ]
+      },
+      {
+        "batch_size": 16,
+        "throughput": 4.666,
+        "latency_ms": 214.3,
+        "std_dev": 11.852,
+        "speedup": 2.46,
+        "runs": [
+          36.14824175834656,
+          29.425248861312866,
+          15.64256477355957,
+          41.056158781051636,
+          14.889476299285889
+        ]
+      },
+      {
+        "batch_size": 32,
+        "throughput": 12.181,
+        "latency_ms": 82.1,
+        "std_dev": 11.195,
+        "speedup": 6.42,
+        "runs": [
+          1.9168660640716553,
+          19.39574384689331,
+          25.531715631484985,
+          1.2019894123077393,
+          4.492552757263184
+        ]
+      }
+    ],
+    "latex": "% Batch Inference Results - 2026-02-01T06:00:16.664379\n\\begin{table}[t]\n\\centering\n\\caption{Batch Inference Performance (Llama 3.2 3B, GPU)}\n\\label{tab:batching}\n\\begin{tabular}{lcccc}\n\\toprule\n\\textbf{Batch Size} & \\textbf{Throughput} & \\textbf{Latency} & \\textbf{Std Dev} & \\textbf{Speedup} \\\\\n\\midrule\n1 (baseline) & 1.90 logs/s & 527 ms & $\\pm$0.7s & 1.0$\\times$ \\\\\n8 & 2.66 logs/s & 376 ms & $\\pm$5.3s & 1.4$\\times$ \\\\\n16 & 4.67 logs/s & 214 ms & $\\pm$11.9s & 2.5$\\times$ \\\\\n32 & 12.18 logs/s & 82 ms & $\\pm$11.2s & 6.4$\\times$ \\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}\n"
+  },
+  "scale": {
+    "scale_results": [
+      {
+        "log_count": 50,
+        "avg_time_sec": 28.04,
+        "throughput": 1.783,
+        "time_per_log_ms": 560.8
+      },
+      {
+        "log_count": 100,
+        "avg_time_sec": 55.71,
+        "throughput": 1.795,
+        "time_per_log_ms": 557.1
+      },
+      {
+        "log_count": 250,
+        "avg_time_sec": 138.7,
+        "throughput": 1.802,
+        "time_per_log_ms": 554.8
+      },
+      {
+        "log_count": 500,
+        "avg_time_sec": 277.53,
+        "throughput": 1.802,
+        "time_per_log_ms": 555.1
+      },
+      {
+        "log_count": 1000,
+        "avg_time_sec": 553.3,
+        "throughput": 1.807,
+        "time_per_log_ms": 553.3
+      }
+    ]
+  },
+  "baseline": {
+    "GraphRCA": {
+      "correct": 17,
+      "total": 36,
+      "per_scenario": [
+        {
+          "scenario": "db_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "app_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "app_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "app_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "infra_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mem_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mem_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 3,
+          "correct": false
+        }
+      ],
+      "accuracy": 0.4722
+    },
+    "Simple_LLM": {
+      "correct": 24,
+      "total": 36,
+      "per_scenario": [
+        {
+          "scenario": "db_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "sec_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "infra_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mem_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mem_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mem_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 3,
+          "correct": false
+        }
+      ],
+      "accuracy": 0.6667
+    },
+    "Temporal_Heuristic": {
+      "correct": 21,
+      "total": 36,
+      "per_scenario": [
+        {
+          "scenario": "db_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "infra_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mem_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mem_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mem_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 3,
+          "correct": false
+        }
+      ],
+      "accuracy": 0.5833
+    },
+    "Frequency_Anomaly": {
+      "correct": 15,
+      "total": 36,
+      "per_scenario": [
+        {
+          "scenario": "db_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "db_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "db_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "sec_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "infra_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mon_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "mon_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 3,
+          "correct": false
+        }
+      ],
+      "accuracy": 0.4167
+    },
+    "Random": {
+      "correct": 13,
+      "total": 36,
+      "per_scenario": [
+        {
+          "scenario": "db_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "db_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "db_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "sec_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "sec_002",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "sec_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "app_001",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "app_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "app_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "app_002",
+          "run": 3,
+          "correct": true
+        },
+        {
+          "scenario": "infra_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "infra_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "infra_002",
+          "run": 2,
+          "correct": true
+        },
+        {
+          "scenario": "infra_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mem_002",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mon_001",
+          "run": 1,
+          "correct": true
+        },
+        {
+          "scenario": "mon_001",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_001",
+          "run": 3,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 1,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 2,
+          "correct": false
+        },
+        {
+          "scenario": "mon_002",
+          "run": 3,
+          "correct": false
+        }
+      ],
+      "accuracy": 0.3611
+    },
+    "statistical_tests": {
+      "Simple_LLM": {
+        "chi2": 5.143,
+        "p_value": 0.05,
+        "significance": "*",
+        "graphrca_only_correct": 0,
+        "method_only_correct": 7
+      },
+      "Temporal_Heuristic": {
+        "chi2": 2.25,
+        "p_value": 0.1,
+        "significance": "ns",
+        "graphrca_only_correct": 0,
+        "method_only_correct": 4
+      },
+      "Frequency_Anomaly": {
+        "chi2": 0.071,
+        "p_value": 0.1,
+        "significance": "ns",
+        "graphrca_only_correct": 8,
+        "method_only_correct": 6
+      },
+      "Random": {
+        "chi2": 0.75,
+        "p_value": 0.1,
+        "significance": "ns",
+        "graphrca_only_correct": 8,
+        "method_only_correct": 4
+      }
+    }
+  },
+  "rag_noise": {
+    "noise_levels": [
+      {
+        "decoys": 100,
+        "total_docs": 103,
+        "accuracy": 1.0,
+        "queries": 3,
+        "correct": 3
+      },
+      {
+        "decoys": 500,
+        "total_docs": 503,
+        "accuracy": 1.0,
+        "queries": 3,
+        "correct": 3
+      },
+      {
+        "decoys": 1000,
+        "total_docs": 1003,
+        "accuracy": 1.0,
+        "queries": 3,
+        "correct": 3
+      },
+      {
+        "decoys": 2000,
+        "total_docs": 2003,
+        "accuracy": 1.0,
+        "queries": 3,
+        "correct": 3
+      }
+    ]
+  },
+  "doc_ablation": {
+    "full_docs": {
+      "num_docs": 3,
+      "accuracy": 0.933,
+      "correct": 14,
+      "total": 15
+    },
+    "partial_docs": {
+      "num_docs": 1,
+      "accuracy": 0.867,
+      "correct": 13,
+      "total": 15
+    },
+    "no_docs": {
+      "num_docs": 0,
+      "accuracy": 1.0,
+      "correct": 15,
+      "total": 15
+    }
+  },
+  "category": {
+    "Database": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 3,
+      "accuracy": 0.5
+    },
+    "Security": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 3,
+      "accuracy": 0.5
+    },
+    "Application": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 3,
+      "accuracy": 0.5
+    },
+    "Infrastructure": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 3,
+      "accuracy": 0.5
+    },
+    "Memory": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 2,
+      "accuracy": 0.333
+    },
+    "Monitoring": {
+      "scenarios": 2,
+      "runs_per_scenario": 3,
+      "total_tests": 6,
+      "correct": 3,
+      "accuracy": 0.5
+    }
+  }
+}

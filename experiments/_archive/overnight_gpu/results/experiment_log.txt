@@ -1,0 +1,14 @@
+2026-02-01 20:47:06,926 | INFO     | ======================================================================
+2026-02-01 20:47:06,926 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 20:47:06,926 | INFO     | ======================================================================
+2026-02-01 20:47:06,926 | INFO     | Started: 2026-02-01T20:47:06.926917
+2026-02-01 20:47:06,926 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 20:47:07,304 | INFO     | ✓ Ollama connected
+2026-02-01 20:47:07,398 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 20:47:07,398 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 20:47:07,414 | INFO     | Loaded 200 incidents
+2026-02-01 20:47:07,415 | INFO     | Loaded 1 decoy documents
+2026-02-01 20:47:07,415 | INFO     | ======================================================================
+2026-02-01 20:47:07,415 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 20:47:07,415 | INFO     | ======================================================================
+2026-02-01 20:47:07,415 | INFO     | [1/200] incident_001 - Allegro

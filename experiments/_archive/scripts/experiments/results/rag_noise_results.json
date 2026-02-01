@@ -1,0 +1,32 @@
+{
+  "noise_levels": [
+    {
+      "decoys": 100,
+      "total_docs": 103,
+      "accuracy": 1.0,
+      "queries": 3,
+      "correct": 3
+    },
+    {
+      "decoys": 500,
+      "total_docs": 503,
+      "accuracy": 1.0,
+      "queries": 3,
+      "correct": 3
+    },
+    {
+      "decoys": 1000,
+      "total_docs": 1003,
+      "accuracy": 1.0,
+      "queries": 3,
+      "correct": 3
+    },
+    {
+      "decoys": 2000,
+      "total_docs": 2003,
+      "accuracy": 1.0,
+      "queries": 3,
+      "correct": 3
+    }
+  ]
+}

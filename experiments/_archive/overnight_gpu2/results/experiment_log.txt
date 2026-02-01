@@ -1,0 +1,1287 @@
+2026-02-01 05:39:04,583 | INFO     | ======================================================================
+2026-02-01 05:39:04,583 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 05:39:04,583 | INFO     | ======================================================================
+2026-02-01 05:39:04,583 | INFO     | Started: 2026-02-01T05:39:04.583814
+2026-02-01 05:39:04,583 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 05:39:04,896 | INFO     | ✓ Ollama connected
+2026-02-01 05:39:04,898 | ERROR    | ❌ Judge model 'qwen3:32b' not found!
+2026-02-01 05:39:04,898 | ERROR    |    Run: ollama pull qwen3:32b
+2026-02-01 05:43:21,406 | INFO     | ======================================================================
+2026-02-01 05:43:21,406 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 05:43:21,406 | INFO     | ======================================================================
+2026-02-01 05:43:21,406 | INFO     | Started: 2026-02-01T05:43:21.406718
+2026-02-01 05:43:21,406 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 05:43:21,727 | INFO     | ✓ Ollama connected
+2026-02-01 05:43:21,813 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 05:43:21,814 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 05:43:21,848 | INFO     | Loaded 200 incidents
+2026-02-01 05:43:21,848 | INFO     | Loaded 1 decoy documents
+2026-02-01 05:43:21,849 | INFO     | ======================================================================
+2026-02-01 05:43:21,849 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 05:43:21,849 | INFO     | ======================================================================
+2026-02-01 05:43:21,849 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 05:43:36,873 | ERROR    |   Run 1 failed: model 'llama3.2:3b' not found (status code: 404)
+2026-02-01 05:44:36,210 | INFO     | ======================================================================
+2026-02-01 05:44:36,210 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 05:44:36,210 | INFO     | ======================================================================
+2026-02-01 05:44:36,210 | INFO     | Started: 2026-02-01T05:44:36.210676
+2026-02-01 05:44:36,210 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 05:44:36,547 | INFO     | ✓ Ollama connected
+2026-02-01 05:44:36,632 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 05:44:36,632 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 05:44:36,661 | INFO     | Loaded 200 incidents
+2026-02-01 05:44:36,662 | INFO     | Loaded 1 decoy documents
+2026-02-01 05:44:36,662 | INFO     | ======================================================================
+2026-02-01 05:44:36,662 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 05:44:36,662 | INFO     | ======================================================================
+2026-02-01 05:44:36,662 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 05:45:09,650 | DEBUG    |   Run 1: score=0.40
+2026-02-01 05:45:22,629 | DEBUG    |   Run 2: score=0.40
+2026-02-01 05:45:35,668 | DEBUG    |   Run 3: score=0.40
+2026-02-01 05:45:35,668 | INFO     | [2/200] incident_002 - Cloudflare
+2026-02-01 05:45:48,476 | DEBUG    |   Run 1: score=0.00
+2026-02-01 05:45:59,661 | DEBUG    |   Run 2: score=0.00
+2026-02-01 05:46:16,782 | DEBUG    |   Run 3: score=0.00
+2026-02-01 05:46:16,782 | INFO     | [3/200] incident_003 - Cloudflare
+2026-02-01 05:46:28,944 | DEBUG    |   Run 1: score=0.00
+2026-02-01 05:46:40,753 | DEBUG    |   Run 2: score=0.10
+2026-02-01 16:25:05,340 | INFO     | ======================================================================
+2026-02-01 16:25:05,340 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 16:25:05,340 | INFO     | ======================================================================
+2026-02-01 16:25:05,340 | INFO     | Started: 2026-02-01T16:25:05.340421
+2026-02-01 16:25:05,340 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 16:25:05,698 | ERROR    | ❌ Ollama connection failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:26:01,860 | INFO     | ======================================================================
+2026-02-01 16:26:01,860 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 16:26:01,860 | INFO     | ======================================================================
+2026-02-01 16:26:01,860 | INFO     | Started: 2026-02-01T16:26:01.860226
+2026-02-01 16:26:01,860 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 16:26:02,228 | INFO     | ✓ Ollama connected
+2026-02-01 16:26:02,288 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 16:26:02,288 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 16:26:02,305 | INFO     | Loaded 200 incidents
+2026-02-01 16:26:02,306 | INFO     | Loaded 1 decoy documents
+2026-02-01 16:26:02,306 | INFO     | ======================================================================
+2026-02-01 16:26:02,306 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 16:26:02,306 | INFO     | ======================================================================
+2026-02-01 16:26:02,306 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 16:26:28,415 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:26:37,856 | DEBUG    |   Run 2: score=0.40
+2026-02-01 16:26:47,426 | DEBUG    |   Run 3: score=0.40
+2026-02-01 16:26:47,426 | INFO     | [2/200] incident_002 - Cloudflare
+2026-02-01 16:26:57,080 | DEBUG    |   Run 1: score=0.00
+2026-02-01 16:27:17,106 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:27:34,679 | DEBUG    |   Run 3: score=0.00
+2026-02-01 16:27:34,679 | INFO     | [3/200] incident_003 - Cloudflare
+2026-02-01 16:27:47,608 | DEBUG    |   Run 1: score=0.00
+2026-02-01 16:28:04,021 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:28:19,660 | DEBUG    |   Run 3: score=0.00
+2026-02-01 16:28:19,660 | INFO     | [4/200] incident_004 - TravisCI
+2026-02-01 16:28:42,558 | DEBUG    |   Run 1: score=0.00
+2026-02-01 16:29:00,618 | DEBUG    |   Run 2: score=0.00
+2026-02-01 16:29:25,046 | DEBUG    |   Run 3: score=0.00
+2026-02-01 16:29:25,046 | INFO     | [5/200] incident_005 - Railway
+2026-02-01 16:29:57,882 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:30:16,139 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:30:39,262 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:30:39,264 | DEBUG    | Checkpoint saved at incident 5
+2026-02-01 16:30:39,264 | INFO     | [6/200] incident_006 - Azure
+2026-02-01 16:30:56,475 | DEBUG    |   Run 1: score=0.00
+2026-02-01 16:31:13,396 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:31:31,617 | DEBUG    |   Run 3: score=0.00
+2026-02-01 16:31:31,618 | INFO     | [7/200] incident_007 - Joyent
+2026-02-01 16:31:50,034 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:32:10,808 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:32:36,144 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:32:36,144 | INFO     | [8/200] incident_008 - Stack Exchange
+2026-02-01 16:32:55,607 | DEBUG    |   Run 1: score=0.90
+2026-02-01 16:33:09,835 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:33:28,922 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:33:28,922 | INFO     | [9/200] incident_009 - Facebook
+2026-02-01 16:33:44,206 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:34:00,677 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:34:15,559 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:34:15,559 | INFO     | [10/200] incident_010 - Amazon
+2026-02-01 16:34:33,596 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:34:56,803 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:35:19,047 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:35:19,049 | DEBUG    | Checkpoint saved at incident 10
+2026-02-01 16:35:19,049 | INFO     | [11/200] incident_011 - Homebrew
+2026-02-01 16:35:35,881 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:35:50,930 | DEBUG    |   Run 2: score=0.90
+2026-02-01 16:36:05,796 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:36:05,796 | INFO     | [12/200] incident_012 - NPM
+2026-02-01 16:36:22,961 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:36:47,379 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:37:03,773 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:37:03,774 | INFO     | [13/200] incident_013 - Gitlab
+2026-02-01 16:37:17,217 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:37:32,245 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:37:46,086 | DEBUG    |   Run 3: score=0.80
+2026-02-01 16:37:46,086 | INFO     | [14/200] incident_014 - CrowdStrike
+2026-02-01 16:38:05,560 | DEBUG    |   Run 1: score=0.00
+2026-02-01 16:38:23,824 | DEBUG    |   Run 2: score=0.00
+2026-02-01 16:38:44,527 | DEBUG    |   Run 3: score=0.00
+2026-02-01 16:38:44,527 | INFO     | [15/200] incident_015 - GitHub
+2026-02-01 16:38:57,272 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:39:08,966 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:39:21,874 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:39:21,876 | DEBUG    | Checkpoint saved at incident 15
+2026-02-01 16:39:21,876 | INFO     | [16/200] incident_016 - Etsy
+2026-02-01 16:39:38,452 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:39:52,503 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:40:10,519 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:40:10,520 | INFO     | [17/200] incident_017 - Sentry
+2026-02-01 16:40:31,728 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:40:46,535 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:40:54,823 | INFO     | ======================================================================
+2026-02-01 16:40:54,823 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 16:40:54,823 | INFO     | ======================================================================
+2026-02-01 16:40:54,823 | INFO     | Started: 2026-02-01T16:40:54.823264
+2026-02-01 16:40:54,823 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 16:40:55,210 | INFO     | ✓ Ollama connected
+2026-02-01 16:40:55,323 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 16:40:55,323 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 16:40:55,340 | INFO     | Loaded 200 incidents
+2026-02-01 16:40:55,341 | INFO     | Loaded 1 decoy documents
+2026-02-01 16:40:55,341 | INFO     | ======================================================================
+2026-02-01 16:40:55,341 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 16:40:55,341 | INFO     | ======================================================================
+2026-02-01 16:40:55,341 | INFO     | Resuming from incident 15
+2026-02-01 16:40:55,341 | INFO     | [16/200] incident_016 - Etsy
+2026-02-01 16:41:13,721 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:41:13,721 | INFO     | [18/200] incident_018 - Salesforce
+2026-02-01 16:41:20,996 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:41:30,804 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:41:42,350 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:41:51,254 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:41:59,233 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:41:59,233 | INFO     | [17/200] incident_017 - Sentry
+2026-02-01 16:42:10,230 | DEBUG    |   Run 3: score=0.90
+2026-02-01 16:42:10,230 | INFO     | [19/200] incident_019 - Slack
+2026-02-01 16:42:27,557 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:42:35,307 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:42:50,992 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:42:52,310 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:43:08,802 | DEBUG    |   Run 3: score=0.80
+2026-02-01 16:43:08,803 | INFO     | [20/200] incident_020 - Google
+2026-02-01 16:43:16,801 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:43:16,801 | INFO     | [18/200] incident_018 - Salesforce
+2026-02-01 16:43:29,265 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:43:41,497 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:43:51,383 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:44:09,920 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:44:09,923 | DEBUG    | Checkpoint saved at incident 20
+2026-02-01 16:44:09,923 | INFO     | [21/200] incident_021 - CircleCI
+2026-02-01 16:44:10,397 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:44:27,967 | DEBUG    |   Run 3: score=0.80
+2026-02-01 16:44:27,968 | INFO     | [19/200] incident_019 - Slack
+2026-02-01 16:44:28,850 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:44:48,965 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:44:51,589 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:45:09,794 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:45:09,795 | INFO     | [22/200] incident_022 - Discord
+2026-02-01 16:45:10,467 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:45:27,253 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:45:27,254 | INFO     | [20/200] incident_020 - Google
+2026-02-01 16:45:34,219 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:45:47,962 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:46:00,306 | DEBUG    |   Run 2: score=0.80
+2026-02-01 16:46:13,622 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:46:26,707 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:46:26,707 | INFO     | [23/200] incident_023 - Fastly
+2026-02-01 16:46:34,999 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:46:35,002 | DEBUG    | Checkpoint saved at incident 20
+2026-02-01 16:46:35,002 | INFO     | [21/200] incident_021 - CircleCI
+2026-02-01 16:46:42,686 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:46:55,057 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:46:57,511 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:47:14,646 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:47:14,986 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:47:14,986 | INFO     | [24/200] incident_024 - Foursquare
+2026-02-01 16:47:35,212 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:47:35,212 | INFO     | [22/200] incident_022 - Discord
+2026-02-01 16:47:39,170 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:47:55,714 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:48:00,075 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:48:18,457 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:48:19,526 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:48:19,527 | INFO     | [25/200] incident_025 - Flowdock
+2026-02-01 16:48:37,686 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:48:43,897 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:48:43,897 | INFO     | [23/200] incident_023 - Fastly
+2026-02-01 16:48:56,704 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:48:58,354 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:49:12,328 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:49:17,044 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:49:17,047 | DEBUG    | Checkpoint saved at incident 25
+2026-02-01 16:49:17,047 | INFO     | [26/200] incident_026 - Heroku
+2026-02-01 16:49:26,892 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:49:26,892 | INFO     | [24/200] incident_024 - Foursquare
+2026-02-01 16:49:38,484 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:49:44,729 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:50:03,486 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:50:04,935 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:50:25,465 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:50:25,465 | INFO     | [27/200] incident_027 - Basecamp
+2026-02-01 16:50:27,219 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:50:27,220 | INFO     | [25/200] incident_025 - Flowdock
+2026-02-01 16:50:42,490 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:50:59,874 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:51:08,773 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:51:28,925 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:51:45,145 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:51:45,147 | DEBUG    | Checkpoint saved at incident 25
+2026-02-01 16:51:45,148 | INFO     | [26/200] incident_026 - Heroku
+2026-02-01 16:52:10,185 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:52:14,659 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:52:14,659 | INFO     | [28/200] incident_028 - Bitly
+2026-02-01 16:52:30,041 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:52:33,573 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:52:49,981 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:53:08,165 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:53:08,165 | INFO     | [29/200] incident_029 - Knight Capital
+2026-02-01 16:53:13,960 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:53:13,960 | INFO     | [27/200] incident_027 - Basecamp
+2026-02-01 16:53:30,585 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:53:31,643 | DEBUG    |   Run 1: score=1.00
+2026-02-01 16:53:51,024 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:54:10,553 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:54:10,553 | INFO     | [30/200] incident_030 - Keepthescore
+2026-02-01 16:54:23,932 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:54:27,957 | DEBUG    |   Run 1: score=0.40
+2026-02-01 16:54:46,571 | DEBUG    |   Run 3: score=1.00
+2026-02-01 16:54:46,571 | INFO     | [28/200] incident_028 - Bitly
+2026-02-01 16:54:58,771 | DEBUG    |   Run 2: score=1.00
+2026-02-01 16:55:15,096 | DEBUG    |   Run 1: score=0.70
+2026-02-01 16:55:25,254 | WARNING  | Ollama judge attempt 1/3 failed: Server disconnected without sending a response.
+2026-02-01 16:55:27,258 | WARNING  | Ollama judge attempt 2/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:55:29,262 | WARNING  | Ollama judge attempt 3/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:55:44,280 | ERROR    |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:55:59,299 | ERROR    |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:55:59,299 | INFO     | [29/200] incident_029 - Knight Capital
+2026-02-01 16:56:14,318 | ERROR    |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 16:56:50,640 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:56:58,813 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:56:58,813 | INFO     | [30/200] incident_030 - Keepthescore
+2026-02-01 16:57:17,322 | DEBUG    |   Run 1: score=0.40
+2026-02-01 16:57:32,129 | DEBUG    |   Run 2: score=0.40
+2026-02-01 16:57:45,596 | DEBUG    |   Run 3: score=0.40
+2026-02-01 16:57:45,600 | DEBUG    | Checkpoint saved at incident 30
+2026-02-01 16:57:45,600 | INFO     | [31/200] incident_031 - PagerDuty
+2026-02-01 16:58:01,462 | DEBUG    |   Run 1: score=0.80
+2026-02-01 16:58:16,201 | DEBUG    |   Run 2: score=0.90
+2026-02-01 16:58:33,789 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:58:33,790 | INFO     | [32/200] incident_032 - Roblox
+2026-02-01 16:58:49,861 | DEBUG    |   Run 1: score=0.90
+2026-02-01 16:59:11,632 | DEBUG    |   Run 2: score=0.70
+2026-02-01 16:59:29,606 | DEBUG    |   Run 3: score=0.70
+2026-02-01 16:59:29,607 | INFO     | [33/200] incident_033 - Spotify
+2026-02-01 16:59:47,916 | DEBUG    |   Run 1: score=0.40
+2026-02-01 17:00:03,355 | DEBUG    |   Run 2: score=0.40
+2026-02-01 17:00:34,885 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:00:34,885 | INFO     | [34/200] incident_034 - Slack
+2026-02-01 17:00:48,718 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:01:12,263 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:01:29,272 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:01:29,272 | INFO     | [35/200] incident_035 - Stack Exchange
+2026-02-01 17:02:01,347 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:02:29,363 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:02:43,928 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:02:43,933 | DEBUG    | Checkpoint saved at incident 35
+2026-02-01 17:02:43,933 | INFO     | [36/200] incident_036 - Amazon
+2026-02-01 17:03:00,661 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:03:20,009 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:03:44,185 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:03:44,186 | INFO     | [37/200] incident_037 - Twilio
+2026-02-01 17:04:03,382 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:04:20,921 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:04:37,106 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:04:37,107 | INFO     | [38/200] incident_038 - Zerodha
+2026-02-01 17:04:51,440 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:05:10,331 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:05:29,070 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:05:29,070 | INFO     | [39/200] incident_039 - Cloudflare
+2026-02-01 17:05:47,605 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:06:05,965 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:06:23,028 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:06:23,029 | INFO     | [40/200] incident_040 - Sentry
+2026-02-01 17:06:39,196 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:06:53,050 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:07:08,072 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:07:08,077 | DEBUG    | Checkpoint saved at incident 40
+2026-02-01 17:07:08,077 | INFO     | [41/200] incident_041 - Google
+2026-02-01 17:07:21,566 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:07:35,051 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:07:49,141 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:07:49,141 | INFO     | [42/200] incident_042 - Google
+2026-02-01 17:08:05,614 | DEBUG    |   Run 1: score=0.90
+2026-02-01 17:08:35,656 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:09:07,370 | DEBUG    |   Run 3: score=0.90
+2026-02-01 17:09:07,370 | INFO     | [43/200] incident_043 - TUI
+2026-02-01 17:09:29,303 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:09:46,295 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:10:04,960 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:10:04,961 | INFO     | [44/200] incident_044 - BBC
+2026-02-01 17:10:22,532 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:10:41,039 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:10:56,057 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:10:56,057 | INFO     | [45/200] incident_045 - Buildkite
+2026-02-01 17:11:15,813 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:11:33,698 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:11:50,978 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:11:50,983 | DEBUG    | Checkpoint saved at incident 45
+2026-02-01 17:11:50,983 | INFO     | [46/200] incident_046 - NASA
+2026-02-01 17:12:07,029 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:12:26,209 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:12:45,606 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:12:45,607 | INFO     | [47/200] incident_047 - OpenAI
+2026-02-01 17:13:01,090 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:13:14,532 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:13:29,172 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:13:29,173 | INFO     | [48/200] incident_048 - Grab
+2026-02-01 17:13:40,995 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:13:52,321 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:14:03,259 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:14:03,259 | INFO     | [49/200] incident_049 - Microsoft
+2026-02-01 17:14:20,601 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:14:38,829 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:15:09,668 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:15:09,668 | INFO     | [50/200] incident_050 - Atlassian
+2026-02-01 17:15:32,338 | DEBUG    |   Run 1: score=0.40
+2026-02-01 17:16:19,042 | DEBUG    |   Run 2: score=0.40
+2026-02-01 17:16:46,382 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:16:46,388 | DEBUG    | Checkpoint saved at incident 50
+2026-02-01 17:16:46,388 | INFO     | [51/200] incident_051 - Heroku
+2026-02-01 17:17:02,528 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:17:19,279 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:17:40,405 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:17:40,406 | INFO     | [52/200] incident_052 - Microsoft
+2026-02-01 17:18:07,547 | DEBUG    |   Run 1: score=0.90
+2026-02-01 17:18:18,647 | INFO     | ======================================================================
+2026-02-01 17:18:18,647 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 17:18:18,647 | INFO     | ======================================================================
+2026-02-01 17:18:18,647 | INFO     | Started: 2026-02-01T17:18:18.647726
+2026-02-01 17:18:18,647 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 17:18:19,016 | INFO     | ✓ Ollama connected
+2026-02-01 17:18:19,111 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 17:18:19,111 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 17:18:19,131 | INFO     | Loaded 200 incidents
+2026-02-01 17:18:19,132 | INFO     | Loaded 1 decoy documents
+2026-02-01 17:18:19,132 | INFO     | ======================================================================
+2026-02-01 17:18:19,132 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 17:18:19,132 | INFO     | ======================================================================
+2026-02-01 17:18:19,132 | INFO     | Resuming from incident 50
+2026-02-01 17:18:19,133 | INFO     | [51/200] incident_051 - Heroku
+2026-02-01 17:18:27,544 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:18:39,165 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:18:51,621 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:18:51,621 | INFO     | [53/200] incident_053 - Google
+2026-02-01 17:19:01,828 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:19:13,153 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:19:28,471 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:19:28,471 | INFO     | [52/200] incident_052 - Microsoft
+2026-02-01 17:19:30,846 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:19:47,815 | DEBUG    |   Run 1: score=0.90
+2026-02-01 17:19:53,577 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:19:53,578 | INFO     | [54/200] incident_054 - Google
+2026-02-01 17:20:11,278 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:20:14,477 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:20:29,357 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:20:46,677 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:20:46,677 | INFO     | [55/200] incident_055 - Reddit
+2026-02-01 17:20:51,600 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:20:51,600 | INFO     | [53/200] incident_053 - Google
+2026-02-01 17:21:12,358 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:21:13,474 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:21:33,398 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:21:34,229 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:21:57,805 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:21:57,811 | DEBUG    | Checkpoint saved at incident 55
+2026-02-01 17:21:57,812 | INFO     | [56/200] incident_056 - Strava
+2026-02-01 17:22:22,875 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:22:31,576 | DEBUG    |   Run 3: score=0.90
+2026-02-01 17:22:31,577 | INFO     | [54/200] incident_054 - Google
+2026-02-01 17:22:48,020 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:22:48,513 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:23:06,566 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:23:20,713 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:23:20,713 | INFO     | [57/200] incident_057 - Stripe
+2026-02-01 17:23:23,498 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:23:23,498 | INFO     | [55/200] incident_055 - Reddit
+2026-02-01 17:23:38,609 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:23:47,607 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:24:09,810 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:24:27,292 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:24:27,292 | INFO     | [58/200] incident_058 - Heroku
+2026-02-01 17:24:36,066 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:24:50,162 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:24:57,256 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:24:57,262 | DEBUG    | Checkpoint saved at incident 55
+2026-02-01 17:24:57,263 | INFO     | [56/200] incident_056 - Strava
+2026-02-01 17:25:11,303 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:25:24,928 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:25:26,970 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:25:26,970 | INFO     | [59/200] incident_059 - Amazon
+2026-02-01 17:25:44,805 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:25:53,438 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:26:07,750 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:26:07,750 | INFO     | [57/200] incident_057 - Stripe
+2026-02-01 17:26:24,031 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:26:36,982 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:26:52,621 | DEBUG    |   Run 3: score=0.40
+2026-02-01 17:26:52,621 | INFO     | [60/200] incident_060 - WhatsApp
+2026-02-01 17:26:53,778 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:27:10,699 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:27:10,699 | INFO     | [58/200] incident_058 - Heroku
+2026-02-01 17:27:18,807 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:27:33,187 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:27:37,355 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:27:52,992 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:27:52,999 | DEBUG    | Checkpoint saved at incident 60
+2026-02-01 17:27:52,999 | INFO     | [61/200] incident_061 - Google
+2026-02-01 17:27:54,551 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:28:16,213 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:28:16,214 | INFO     | [59/200] incident_059 - Amazon
+2026-02-01 17:28:19,668 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:28:37,553 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:28:50,939 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:29:00,293 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:29:00,293 | INFO     | [62/200] incident_062 - Google
+2026-02-01 17:29:08,097 | DEBUG    |   Run 2: score=0.40
+2026-02-01 17:29:23,186 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:29:38,118 | DEBUG    |   Run 3: score=0.40
+2026-02-01 17:29:38,118 | INFO     | [60/200] incident_060 - WhatsApp
+2026-02-01 17:29:42,808 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:30:01,237 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:30:07,032 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:30:07,033 | INFO     | [63/200] incident_063 - Knight Capital
+2026-02-01 17:30:17,692 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:30:25,284 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:30:37,163 | DEBUG    |   Run 3: score=0.90
+2026-02-01 17:30:37,170 | DEBUG    | Checkpoint saved at incident 60
+2026-02-01 17:30:37,170 | INFO     | [61/200] incident_061 - Google
+2026-02-01 17:30:45,689 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:31:00,513 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:31:04,490 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:31:04,490 | INFO     | [64/200] incident_064 - WebKit code repository
+2026-02-01 17:31:23,626 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:31:27,925 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:31:47,223 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:31:47,223 | INFO     | [62/200] incident_062 - Google
+2026-02-01 17:31:50,029 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:32:08,958 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:32:08,958 | INFO     | [65/200] incident_065 - Azure
+2026-02-01 17:32:13,437 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:32:36,322 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:32:53,727 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:32:53,727 | INFO     | [63/200] incident_063 - Knight Capital
+2026-02-01 17:33:08,140 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:33:10,334 | WARNING  | Ollama judge attempt 1/3 failed: Server disconnected without sending a response.
+2026-02-01 17:33:12,338 | WARNING  | Ollama judge attempt 2/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:33:14,341 | WARNING  | Ollama judge attempt 3/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:33:29,355 | ERROR    |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:33:44,375 | ERROR    |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:33:44,375 | INFO     | [64/200] incident_064 - WebKit code repository
+2026-02-01 17:33:59,394 | ERROR    |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:34:14,414 | ERROR    |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:34:29,433 | ERROR    |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:34:29,433 | INFO     | [65/200] incident_065 - Azure
+2026-02-01 17:34:44,450 | ERROR    |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:34:59,470 | ERROR    |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:35:14,489 | ERROR    |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:35:14,496 | DEBUG    | Checkpoint saved at incident 65
+2026-02-01 17:35:14,496 | INFO     | [66/200] incident_066 - Cloudflare
+2026-02-01 17:35:29,516 | ERROR    |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:35:44,535 | ERROR    |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:35:59,554 | ERROR    |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 17:35:59,555 | INFO     | [67/200] incident_067 - Linux
+2026-02-01 17:36:38,736 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:36:49,743 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:36:59,844 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:36:59,845 | INFO     | [68/200] incident_068 - Linux
+2026-02-01 17:37:14,250 | DEBUG    |   Run 1: score=0.90
+2026-02-01 17:37:25,968 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:37:39,847 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:37:39,848 | INFO     | [69/200] incident_069 - Mozilla
+2026-02-01 17:37:57,613 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:38:17,891 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:38:43,888 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:38:43,889 | INFO     | [70/200] incident_070 - Github
+2026-02-01 17:38:56,138 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:39:13,225 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:39:26,787 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:39:26,795 | DEBUG    | Checkpoint saved at incident 70
+2026-02-01 17:39:26,796 | INFO     | [71/200] incident_071 - Heroku
+2026-02-01 17:39:46,761 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:40:09,550 | DEBUG    |   Run 2: score=0.80
+2026-02-01 17:40:30,512 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:40:30,512 | INFO     | [72/200] incident_072 - Allegro
+2026-02-01 17:40:52,462 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:40:59,928 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:41:06,616 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:41:06,616 | INFO     | [73/200] incident_073 - Amazon
+2026-02-01 17:41:22,535 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:41:40,881 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:42:01,633 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:42:01,633 | INFO     | [74/200] incident_074 - Amazon
+2026-02-01 17:42:20,093 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:42:40,179 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:42:57,644 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:42:57,644 | INFO     | [75/200] incident_075 - Amazon
+2026-02-01 17:43:15,341 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:43:30,083 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:43:50,270 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:43:50,279 | DEBUG    | Checkpoint saved at incident 75
+2026-02-01 17:43:50,279 | INFO     | [76/200] incident_076 - Amazon
+2026-02-01 17:44:26,842 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:44:46,587 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:45:14,847 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:45:14,847 | INFO     | [77/200] incident_077 - Amazon
+2026-02-01 17:45:28,447 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:45:45,537 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:46:02,636 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:46:02,636 | INFO     | [78/200] incident_078 - Amazon
+2026-02-01 17:46:20,247 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:46:45,237 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:47:01,682 | DEBUG    |   Run 3: score=0.40
+2026-02-01 17:47:01,682 | INFO     | [79/200] incident_079 - Amazon
+2026-02-01 17:47:19,242 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:47:36,204 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:47:57,840 | DEBUG    |   Run 3: score=0.90
+2026-02-01 17:47:57,840 | INFO     | [80/200] incident_080 - Amazon
+2026-02-01 17:48:13,144 | DEBUG    |   Run 1: score=0.50
+2026-02-01 17:48:28,612 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:48:49,965 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:48:49,973 | DEBUG    | Checkpoint saved at incident 80
+2026-02-01 17:48:49,974 | INFO     | [81/200] incident_081 - AppNexus
+2026-02-01 17:49:07,882 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:49:40,119 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:49:57,147 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:49:57,148 | INFO     | [82/200] incident_082 - AT&T
+2026-02-01 17:50:20,014 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:50:45,035 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:51:18,601 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:51:18,601 | INFO     | [83/200] incident_083 - Atlassian
+2026-02-01 17:52:05,598 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:52:21,526 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:52:44,823 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:52:44,823 | INFO     | [84/200] incident_084 - Basecamp
+2026-02-01 17:52:59,345 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:53:16,375 | DEBUG    |   Run 2: score=0.30
+2026-02-01 17:53:35,856 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:53:35,857 | INFO     | [85/200] incident_085 - Basecamp
+2026-02-01 17:53:51,892 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:54:09,176 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:54:39,080 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:54:39,090 | DEBUG    | Checkpoint saved at incident 85
+2026-02-01 17:54:39,090 | INFO     | [86/200] incident_086 - BBC Online
+2026-02-01 17:54:56,755 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:55:18,873 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:55:36,593 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:55:36,594 | INFO     | [87/200] incident_087 - Bintray
+2026-02-01 17:55:51,694 | DEBUG    |   Run 1: score=0.00
+2026-02-01 17:56:10,221 | DEBUG    |   Run 2: score=0.00
+2026-02-01 17:56:25,919 | DEBUG    |   Run 3: score=0.00
+2026-02-01 17:56:25,919 | INFO     | [88/200] incident_088 - Bitly
+2026-02-01 17:56:33,597 | DEBUG    |   Run 1: score=1.00
+2026-02-01 17:56:40,328 | DEBUG    |   Run 2: score=1.00
+2026-02-01 17:56:48,028 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:56:48,029 | INFO     | [89/200] incident_089 - BrowserStack
+2026-02-01 17:57:01,609 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:57:14,329 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:57:30,479 | DEBUG    |   Run 3: score=1.00
+2026-02-01 17:57:30,479 | INFO     | [90/200] incident_090 - Buildkite
+2026-02-01 17:57:54,615 | DEBUG    |   Run 1: score=0.80
+2026-02-01 17:58:16,519 | DEBUG    |   Run 2: score=0.90
+2026-02-01 17:58:33,581 | DEBUG    |   Run 3: score=0.80
+2026-02-01 17:58:33,591 | DEBUG    | Checkpoint saved at incident 90
+2026-02-01 17:58:33,591 | INFO     | [91/200] incident_091 - Bungie
+2026-02-01 17:58:50,798 | DEBUG    |   Run 1: score=0.70
+2026-02-01 17:59:08,813 | DEBUG    |   Run 2: score=0.70
+2026-02-01 17:59:24,760 | DEBUG    |   Run 3: score=0.70
+2026-02-01 17:59:24,760 | INFO     | [92/200] incident_092 - CCP Games
+2026-02-01 17:59:46,999 | DEBUG    |   Run 1: score=0.40
+2026-02-01 18:00:11,898 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:00:32,533 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:00:32,533 | INFO     | [93/200] incident_093 - CCP Games
+2026-02-01 18:00:46,892 | DEBUG    |   Run 1: score=0.90
+2026-02-01 18:00:59,191 | DEBUG    |   Run 2: score=0.90
+2026-02-01 18:01:10,741 | DEBUG    |   Run 3: score=0.90
+2026-02-01 18:01:10,741 | INFO     | [94/200] incident_094 - Chef.io
+2026-02-01 18:01:28,331 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:01:58,067 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:02:47,200 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:02:47,200 | INFO     | [95/200] incident_095 - CircleCI
+2026-02-01 18:03:00,519 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:03:17,314 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:03:33,631 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:03:33,642 | DEBUG    | Checkpoint saved at incident 95
+2026-02-01 18:03:33,642 | INFO     | [96/200] incident_096 - CircleCI
+2026-02-01 18:03:56,084 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:04:12,581 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:04:24,793 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:04:24,793 | INFO     | [97/200] incident_097 - Cloudflare
+2026-02-01 18:04:43,619 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:05:03,011 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:05:18,506 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:05:18,507 | INFO     | [98/200] incident_098 - Cloudflare
+2026-02-01 18:05:35,510 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:05:48,211 | DEBUG    |   Run 2: score=0.80
+2026-02-01 18:06:03,985 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:06:03,986 | INFO     | [99/200] incident_099 - CrowdStrike
+2026-02-01 18:06:21,933 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:06:35,543 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:06:52,293 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:06:52,293 | INFO     | [100/200] incident_100 - Datadog
+2026-02-01 18:07:08,050 | DEBUG    |   Run 1: score=0.90
+2026-02-01 18:07:24,403 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:07:42,711 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:07:42,722 | DEBUG    | Checkpoint saved at incident 100
+2026-02-01 18:07:42,722 | INFO     | [101/200] incident_101 - Discord
+2026-02-01 18:07:57,737 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:08:13,154 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:08:28,705 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:08:28,705 | INFO     | [102/200] incident_102 - Discord
+2026-02-01 18:08:45,655 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:09:01,524 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:09:19,480 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:09:19,481 | INFO     | [103/200] incident_103 - Dropbox
+2026-02-01 18:09:38,894 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:10:18,494 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:10:48,019 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:10:48,019 | INFO     | [104/200] incident_104 - Duo
+2026-02-01 18:11:03,506 | DEBUG    |   Run 1: score=0.90
+2026-02-01 18:11:17,107 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:11:29,648 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:11:29,648 | INFO     | [105/200] incident_105 - Epic Games
+2026-02-01 18:11:56,802 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:12:26,690 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:12:44,640 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:12:44,652 | DEBUG    | Checkpoint saved at incident 105
+2026-02-01 18:12:44,652 | INFO     | [106/200] incident_106 - European Space Agency
+2026-02-01 18:12:59,581 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:13:19,375 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:13:35,639 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:13:35,639 | INFO     | [107/200] incident_107 - Elastic
+2026-02-01 18:13:56,429 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:14:43,709 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:15:11,698 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:15:11,698 | INFO     | [108/200] incident_108 - Elastic
+2026-02-01 18:15:35,089 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:15:53,088 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:16:16,075 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:16:16,075 | INFO     | [109/200] incident_109 - ESLint
+2026-02-01 18:16:32,590 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:16:53,416 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:17:15,802 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:17:15,802 | INFO     | [110/200] incident_110 - Etsy
+2026-02-01 18:17:34,546 | DEBUG    |   Run 1: score=0.10
+2026-02-01 18:18:07,825 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:18:34,353 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:18:34,365 | DEBUG    | Checkpoint saved at incident 110
+2026-02-01 18:18:34,365 | INFO     | [111/200] incident_111 - Fastly
+2026-02-01 18:18:49,760 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:19:04,205 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:19:20,698 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:19:20,698 | INFO     | [112/200] incident_112 - Flowdock
+2026-02-01 18:19:45,364 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:20:50,032 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:21:55,641 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:21:55,642 | INFO     | [113/200] incident_113 - Foursquare
+2026-02-01 18:22:13,034 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:22:37,003 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:22:54,888 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:22:54,888 | INFO     | [114/200] incident_114 - Gentoo
+2026-02-01 18:23:08,726 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:23:22,607 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:23:39,279 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:23:39,280 | INFO     | [115/200] incident_115 - GitHub
+2026-02-01 18:23:54,725 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:24:13,523 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:24:27,442 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:24:27,446 | DEBUG    | Checkpoint saved at incident 115
+2026-02-01 18:24:27,446 | INFO     | [116/200] incident_116 - Gitlab
+2026-02-01 18:24:46,884 | DEBUG    |   Run 1: score=0.80
+2026-02-01 18:25:10,754 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:25:28,912 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:25:28,912 | INFO     | [117/200] incident_117 - Gitlab
+2026-02-01 18:25:49,762 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:26:06,576 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:26:26,259 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:26:26,260 | INFO     | [118/200] incident_118 - Google
+2026-02-01 18:26:49,603 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:27:14,211 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:27:37,093 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:27:37,093 | INFO     | [119/200] incident_119 - Google
+2026-02-01 18:28:09,039 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:28:23,296 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:28:44,581 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:28:44,582 | INFO     | [120/200] incident_120 - Google
+2026-02-01 18:28:57,771 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:29:12,769 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:29:31,060 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:29:31,072 | DEBUG    | Checkpoint saved at incident 120
+2026-02-01 18:29:31,073 | INFO     | [121/200] incident_121 - Google
+2026-02-01 18:29:46,534 | DEBUG    |   Run 1: score=0.90
+2026-02-01 18:30:07,746 | DEBUG    |   Run 2: score=0.80
+2026-02-01 18:30:21,339 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:30:21,339 | INFO     | [122/200] incident_122 - Google
+2026-02-01 18:30:37,575 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:30:55,994 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:31:20,042 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:31:20,042 | INFO     | [123/200] incident_123 - GPS/GLONASS
+2026-02-01 18:32:00,112 | DEBUG    |   Run 1: score=0.40
+2026-02-01 18:32:23,236 | DEBUG    |   Run 2: score=0.90
+2026-02-01 18:33:22,984 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:33:22,984 | INFO     | [124/200] incident_124 - Healthcare.gov
+2026-02-01 18:33:39,275 | DEBUG    |   Run 1: score=0.40
+2026-02-01 18:33:51,570 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:34:02,489 | DEBUG    |   Run 3: score=0.30
+2026-02-01 18:34:02,489 | INFO     | [125/200] incident_125 - Heroku
+2026-02-01 18:34:25,528 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:34:46,413 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:35:15,696 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:35:15,710 | DEBUG    | Checkpoint saved at incident 125
+2026-02-01 18:35:15,710 | INFO     | [126/200] incident_126 - Heroku
+2026-02-01 18:35:30,780 | DEBUG    |   Run 1: score=0.90
+2026-02-01 18:35:46,073 | DEBUG    |   Run 2: score=0.90
+2026-02-01 18:35:57,347 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:35:57,347 | INFO     | [127/200] incident_127 - Heroku
+2026-02-01 18:36:10,005 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:36:27,869 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:36:41,185 | DEBUG    |   Run 3: score=0.90
+2026-02-01 18:36:41,186 | INFO     | [128/200] incident_128 - Heroku
+2026-02-01 18:36:58,017 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:37:14,382 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:37:29,721 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:37:29,722 | INFO     | [129/200] incident_129 - Heroku
+2026-02-01 18:37:59,343 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:38:19,084 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:38:53,570 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:38:53,570 | INFO     | [130/200] incident_130 - Homebrew
+2026-02-01 18:39:07,967 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:39:28,810 | DEBUG    |   Run 2: score=0.90
+2026-02-01 18:39:53,228 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:39:53,242 | DEBUG    | Checkpoint saved at incident 130
+2026-02-01 18:39:53,242 | INFO     | [131/200] incident_131 - Honeycomb
+2026-02-01 18:40:07,376 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:40:20,985 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:40:28,019 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:40:28,019 | INFO     | [132/200] incident_132 - Honeycomb
+2026-02-01 18:40:47,518 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:41:03,999 | DEBUG    |   Run 2: score=0.80
+2026-02-01 18:41:14,945 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:41:14,945 | INFO     | [133/200] incident_133 - Honeycomb
+2026-02-01 18:41:56,042 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:42:21,009 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:42:45,259 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:42:45,260 | INFO     | [134/200] incident_134 - Honeycomb
+2026-02-01 18:43:15,102 | DEBUG    |   Run 1: score=0.00
+2026-02-01 18:43:38,819 | DEBUG    |   Run 2: score=0.00
+2026-02-01 18:44:14,671 | DEBUG    |   Run 3: score=0.00
+2026-02-01 18:44:14,671 | INFO     | [135/200] incident_135 - incident.io
+2026-02-01 18:44:31,187 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:44:45,399 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:45:01,985 | DEBUG    |   Run 3: score=0.90
+2026-02-01 18:45:01,993 | DEBUG    | Checkpoint saved at incident 135
+2026-02-01 18:45:01,993 | INFO     | [136/200] incident_136 - Indian Electricity Grid
+2026-02-01 18:45:13,615 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:45:29,837 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:45:43,830 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:45:43,831 | INFO     | [137/200] incident_137 - Instapaper
+2026-02-01 18:45:59,828 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:46:52,067 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:47:02,432 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:47:02,432 | INFO     | [138/200] incident_138 - Intel
+2026-02-01 18:47:20,286 | DEBUG    |   Run 1: score=0.80
+2026-02-01 18:47:48,118 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:48:05,722 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:48:05,722 | INFO     | [139/200] incident_139 - Joyent
+2026-02-01 18:48:21,840 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:48:39,372 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:48:55,510 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:48:55,510 | INFO     | [140/200] incident_140 - Joyent
+2026-02-01 18:49:16,575 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:49:39,103 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:50:01,860 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:50:01,875 | DEBUG    | Checkpoint saved at incident 140
+2026-02-01 18:50:01,875 | INFO     | [141/200] incident_141 - Kickstarter
+2026-02-01 18:50:16,826 | DEBUG    |   Run 1: score=0.40
+2026-02-01 18:50:33,616 | DEBUG    |   Run 2: score=0.40
+2026-02-01 18:50:49,386 | DEBUG    |   Run 3: score=0.40
+2026-02-01 18:50:49,386 | INFO     | [142/200] incident_142 - Kings College London
+2026-02-01 18:51:05,341 | DEBUG    |   Run 1: score=0.80
+2026-02-01 18:51:19,335 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:51:32,877 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:51:32,878 | INFO     | [143/200] incident_143 - Launchdarkly
+2026-02-01 18:51:50,851 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:52:19,368 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:52:34,147 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:52:34,147 | INFO     | [144/200] incident_144 - Mailgun
+2026-02-01 18:52:49,717 | DEBUG    |   Run 1: score=0.40
+2026-02-01 18:53:04,019 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:53:18,829 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:53:18,830 | INFO     | [145/200] incident_145 - Mandrill
+2026-02-01 18:53:36,814 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:53:54,176 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:54:13,311 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:54:13,326 | DEBUG    | Checkpoint saved at incident 145
+2026-02-01 18:54:13,326 | INFO     | [146/200] incident_146 - Medium
+2026-02-01 18:54:30,910 | DEBUG    |   Run 1: score=0.70
+2026-02-01 18:56:53,356 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:57:10,264 | DEBUG    |   Run 3: score=0.80
+2026-02-01 18:57:10,264 | INFO     | [147/200] incident_147 - Metrist
+2026-02-01 18:57:32,851 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:57:46,763 | DEBUG    |   Run 2: score=0.70
+2026-02-01 18:58:04,079 | DEBUG    |   Run 3: score=0.70
+2026-02-01 18:58:04,079 | INFO     | [148/200] incident_148 - NASA
+2026-02-01 18:58:22,650 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:58:38,809 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:58:56,119 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:58:56,119 | INFO     | [149/200] incident_149 - NASA
+2026-02-01 18:59:11,276 | DEBUG    |   Run 1: score=1.00
+2026-02-01 18:59:25,866 | DEBUG    |   Run 2: score=1.00
+2026-02-01 18:59:39,056 | DEBUG    |   Run 3: score=1.00
+2026-02-01 18:59:39,057 | INFO     | [150/200] incident_150 - NASA
+2026-02-01 18:59:58,902 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:00:12,386 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:00:30,891 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:00:30,907 | DEBUG    | Checkpoint saved at incident 150
+2026-02-01 19:00:30,907 | INFO     | [151/200] incident_151 - Netflix
+2026-02-01 19:00:47,303 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:01:04,744 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:01:18,293 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:01:18,293 | INFO     | [152/200] incident_152 - North American Electric Power System
+2026-02-01 19:01:40,134 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:02:05,711 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:02:22,761 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:02:22,761 | INFO     | [153/200] incident_153 - Okta
+2026-02-01 19:02:36,998 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:02:50,664 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:03:04,933 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:03:04,933 | INFO     | [154/200] incident_154 - OpenAI
+2026-02-01 19:03:17,956 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:03:27,348 | DEBUG    |   Run 2: score=0.60
+2026-02-01 19:03:38,607 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:03:38,608 | INFO     | [155/200] incident_155 - Pagerduty
+2026-02-01 19:03:53,408 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:04:08,236 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:04:23,497 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:04:23,513 | DEBUG    | Checkpoint saved at incident 155
+2026-02-01 19:04:23,514 | INFO     | [156/200] incident_156 - PagerDuty
+2026-02-01 19:04:36,902 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:04:55,492 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:05:10,819 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:05:10,819 | INFO     | [157/200] incident_157 - Parity
+2026-02-01 19:05:26,965 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:05:43,923 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:06:11,718 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:06:11,718 | INFO     | [158/200] incident_158 - Platform.sh
+2026-02-01 19:06:31,494 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:06:55,504 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:07:20,984 | DEBUG    |   Run 3: score=0.30
+2026-02-01 19:07:20,985 | INFO     | [159/200] incident_159 - Reddit
+2026-02-01 19:07:48,426 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:08:11,542 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:08:32,104 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:08:32,105 | INFO     | [160/200] incident_160 - Reddit
+2026-02-01 19:08:44,564 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:09:05,038 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:09:17,467 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:09:17,484 | DEBUG    | Checkpoint saved at incident 160
+2026-02-01 19:09:17,485 | INFO     | [161/200] incident_161 - Roblox
+2026-02-01 19:09:34,285 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:09:53,873 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:10:11,376 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:10:11,376 | INFO     | [162/200] incident_162 - Salesforce
+2026-02-01 19:10:28,993 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:10:49,515 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:11:09,249 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:11:09,250 | INFO     | [163/200] incident_163 - Salesforce
+2026-02-01 19:11:58,147 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:12:26,531 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:14:06,666 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:14:06,666 | INFO     | [164/200] incident_164 - Sentry
+2026-02-01 19:14:36,432 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:14:52,257 | DEBUG    |   Run 2: score=0.90
+2026-02-01 19:15:08,221 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:15:08,221 | INFO     | [165/200] incident_165 - Shapeshift
+2026-02-01 19:15:21,777 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:15:41,855 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:16:01,222 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:16:01,240 | DEBUG    | Checkpoint saved at incident 165
+2026-02-01 19:16:01,240 | INFO     | [166/200] incident_166 - Skyliner
+2026-02-01 19:16:17,630 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:16:31,304 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:16:44,167 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:16:44,168 | INFO     | [167/200] incident_167 - Slack
+2026-02-01 19:16:59,620 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:17:16,908 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:17:31,996 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:17:31,996 | INFO     | [168/200] incident_168 - Slack
+2026-02-01 19:17:43,994 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:17:57,738 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:18:16,894 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:18:16,895 | INFO     | [169/200] incident_169 - Slack
+2026-02-01 19:18:38,770 | DEBUG    |   Run 1: score=0.90
+2026-02-01 19:19:00,193 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:19:19,084 | DEBUG    |   Run 3: score=0.90
+2026-02-01 19:19:19,084 | INFO     | [170/200] incident_170 - Spotify
+2026-02-01 19:19:42,234 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:20:00,896 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:20:19,477 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:20:19,495 | DEBUG    | Checkpoint saved at incident 170
+2026-02-01 19:20:19,496 | INFO     | [171/200] incident_171 - Square
+2026-02-01 19:20:36,378 | DEBUG    |   Run 1: score=0.90
+2026-02-01 19:20:53,010 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:21:12,620 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:21:12,620 | INFO     | [172/200] incident_172 - Stackdriver
+2026-02-01 19:22:13,664 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:22:50,770 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:23:34,304 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:23:34,304 | INFO     | [173/200] incident_173 - Stack Exchange
+2026-02-01 19:23:48,765 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:24:08,361 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:24:22,366 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:24:22,366 | INFO     | [174/200] incident_174 - Stack Exchange
+2026-02-01 19:24:39,533 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:24:54,585 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:25:12,145 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:25:12,145 | INFO     | [175/200] incident_175 - Stack Exchange
+2026-02-01 19:25:26,880 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:25:43,722 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:26:06,345 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:26:06,363 | DEBUG    | Checkpoint saved at incident 175
+2026-02-01 19:26:06,363 | INFO     | [176/200] incident_176 - Stack Exchange
+2026-02-01 19:26:26,911 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:26:55,544 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:27:15,813 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:27:15,814 | INFO     | [177/200] incident_177 - Strava
+2026-02-01 19:27:29,018 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:27:39,883 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:27:51,446 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:27:51,446 | INFO     | [178/200] incident_178 - Stripe
+2026-02-01 19:28:10,020 | DEBUG    |   Run 1: score=0.40
+2026-02-01 19:28:33,648 | DEBUG    |   Run 2: score=0.40
+2026-02-01 19:28:49,852 | DEBUG    |   Run 3: score=0.60
+2026-02-01 19:28:49,852 | INFO     | [179/200] incident_179 - Sweden
+2026-02-01 19:29:03,898 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:29:21,161 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:29:34,925 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:29:34,926 | INFO     | [180/200] incident_180 - Tarsnap
+2026-02-01 19:29:53,056 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:30:06,645 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:30:27,231 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:30:27,251 | DEBUG    | Checkpoint saved at incident 180
+2026-02-01 19:30:27,251 | INFO     | [181/200] incident_181 - Telstra
+2026-02-01 19:30:39,218 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:30:56,399 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:31:09,819 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:31:09,819 | INFO     | [182/200] incident_182 - Therac-25
+2026-02-01 19:31:30,775 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:34:26,440 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:34:51,144 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:34:51,144 | INFO     | [183/200] incident_183 - trivago
+2026-02-01 19:35:06,076 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:35:22,459 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:35:45,066 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:35:45,066 | INFO     | [184/200] incident_184 - Twilio
+2026-02-01 19:36:04,116 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:36:18,828 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:36:40,799 | DEBUG    |   Run 3: score=0.40
+2026-02-01 19:36:40,800 | INFO     | [185/200] incident_185 - Twilio
+2026-02-01 19:36:58,512 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:37:12,482 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:37:23,350 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:37:23,370 | DEBUG    | Checkpoint saved at incident 185
+2026-02-01 19:37:23,371 | INFO     | [186/200] incident_186 - Valve
+2026-02-01 19:37:42,539 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:37:57,356 | DEBUG    |   Run 2: score=0.00
+2026-02-01 19:38:18,764 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:38:18,764 | INFO     | [187/200] incident_187 - Xubuntu
+2026-02-01 19:38:34,833 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:38:59,560 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:39:18,329 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:39:18,329 | INFO     | [188/200] incident_188 - Yeller
+2026-02-01 19:39:35,148 | DEBUG    |   Run 1: score=0.00
+2026-02-01 19:40:03,289 | DEBUG    |   Run 2: score=0.10
+2026-02-01 19:40:34,340 | DEBUG    |   Run 3: score=0.00
+2026-02-01 19:40:34,341 | INFO     | [189/200] incident_189 - Zerodha
+2026-02-01 19:40:53,057 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:41:11,965 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:41:28,895 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:41:28,895 | INFO     | [190/200] incident_190 - Zerodha
+2026-02-01 19:41:41,986 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:42:01,562 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:42:13,712 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:42:13,732 | DEBUG    | Checkpoint saved at incident 190
+2026-02-01 19:42:13,732 | INFO     | [191/200] incident_191 - Roblox
+2026-02-01 19:42:29,527 | DEBUG    |   Run 1: score=1.00
+2026-02-01 19:42:51,473 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:43:07,466 | DEBUG    |   Run 3: score=0.90
+2026-02-01 19:43:07,466 | INFO     | [192/200] incident_192 - Fastly
+2026-02-01 19:43:28,388 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:43:41,703 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:43:56,196 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:43:56,196 | INFO     | [193/200] incident_193 - GitLab
+2026-02-01 19:44:12,249 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:44:42,293 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:45:09,045 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:45:09,045 | INFO     | [194/200] incident_194 - Spotify
+2026-02-01 19:46:22,990 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:46:37,027 | INFO     | ======================================================================
+2026-02-01 19:46:37,027 | INFO     | GraphRCA OVERNIGHT GPU Experiment Suite
+2026-02-01 19:46:37,027 | INFO     | ======================================================================
+2026-02-01 19:46:37,027 | INFO     | Started: 2026-02-01T19:46:37.027424
+2026-02-01 19:46:37,027 | INFO     | Results dir: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 19:46:37,386 | INFO     | ✓ Ollama connected
+2026-02-01 19:46:37,445 | INFO     | ✓ Judge model available: qwen3:32b
+2026-02-01 19:46:37,445 | INFO     | Loading incidents from /media/rvcse22/CSERV/graph-rca/data/real_incidents
+2026-02-01 19:46:37,462 | INFO     | Loaded 200 incidents
+2026-02-01 19:46:37,463 | INFO     | Loaded 1 decoy documents
+2026-02-01 19:46:37,463 | INFO     | ======================================================================
+2026-02-01 19:46:37,463 | INFO     | EXPERIMENT 1: RCA Accuracy on 60 Real Incidents
+2026-02-01 19:46:37,463 | INFO     | ======================================================================
+2026-02-01 19:46:37,463 | INFO     | Resuming from incident 190
+2026-02-01 19:46:37,463 | INFO     | [191/200] incident_191 - Roblox
+2026-02-01 19:46:38,959 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:46:56,685 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:47:01,345 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:47:01,346 | INFO     | [195/200] incident_195 - LinkedIn
+2026-02-01 19:47:20,047 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:47:39,158 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:47:41,202 | DEBUG    |   Run 2: score=0.90
+2026-02-01 19:47:57,461 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:47:57,481 | DEBUG    | Checkpoint saved at incident 195
+2026-02-01 19:47:57,481 | INFO     | [196/200] incident_196 - Dropbox
+2026-02-01 19:48:03,500 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:48:03,500 | INFO     | [192/200] incident_192 - Fastly
+2026-02-01 19:48:17,876 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:48:19,979 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:48:34,539 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:48:36,607 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:48:51,494 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:48:51,494 | INFO     | [197/200] incident_197 - Netflix
+2026-02-01 19:48:52,046 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:48:52,047 | INFO     | [193/200] incident_193 - GitLab
+2026-02-01 19:49:07,885 | DEBUG    |   Run 1: score=0.90
+2026-02-01 19:49:08,276 | DEBUG    |   Run 1: score=0.40
+2026-02-01 19:49:24,340 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:49:28,727 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:49:49,057 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:49:49,057 | INFO     | [194/200] incident_194 - Spotify
+2026-02-01 19:49:50,962 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:49:50,962 | INFO     | [198/200] incident_198 - Uber
+2026-02-01 19:50:05,714 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:50:08,184 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:50:32,040 | DEBUG    |   Run 2: score=0.40
+2026-02-01 19:50:41,858 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:51:03,031 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:51:03,031 | INFO     | [199/200] incident_199 - Pinterest
+2026-02-01 19:51:06,155 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:51:06,155 | INFO     | [195/200] incident_195 - LinkedIn
+2026-02-01 19:51:25,755 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:51:26,146 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:51:44,844 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:51:47,929 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:52:01,157 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:52:01,178 | DEBUG    | Checkpoint saved at incident 195
+2026-02-01 19:52:01,178 | INFO     | [196/200] incident_196 - Dropbox
+2026-02-01 19:52:05,293 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:52:05,293 | INFO     | [200/200] incident_200 - Airbnb
+2026-02-01 19:52:18,853 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:52:23,166 | DEBUG    |   Run 1: score=0.90
+2026-02-01 19:52:33,556 | DEBUG    |   Run 2: score=0.70
+2026-02-01 19:52:38,695 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:52:56,463 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:52:56,463 | INFO     | [197/200] incident_197 - Netflix
+2026-02-01 19:52:56,882 | DEBUG    |   Run 3: score=1.00
+2026-02-01 19:52:56,903 | DEBUG    | Checkpoint saved at incident 200
+2026-02-01 19:52:56,929 | INFO     | ✅ 01_rca_accuracy complete: 77.3%
+2026-02-01 19:52:56,929 | INFO     | ======================================================================
+2026-02-01 19:52:56,929 | INFO     | EXPERIMENT 2: RAG vs Baseline Comparison
+2026-02-01 19:52:56,929 | INFO     | ======================================================================
+2026-02-01 19:52:56,930 | INFO     | Train: 150, Test: 50
+2026-02-01 19:52:56,994 | INFO     | [1/50] incident_138
+2026-02-01 19:53:16,031 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:53:32,466 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:53:45,134 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:53:45,135 | INFO     | [198/200] incident_198 - Uber
+2026-02-01 19:53:54,293 | DEBUG    |   Baseline: 0.80, RAG: 0.70
+2026-02-01 19:53:54,294 | INFO     | [2/50] incident_118
+2026-02-01 19:54:13,318 | DEBUG    |   Run 1: score=0.70
+2026-02-01 19:54:32,959 | DEBUG    |   Run 2: score=1.00
+2026-02-01 19:54:50,316 | DEBUG    |   Run 3: score=0.80
+2026-02-01 19:54:50,316 | INFO     | [199/200] incident_199 - Pinterest
+2026-02-01 19:54:50,955 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 19:54:50,955 | INFO     | [3/50] incident_012
+2026-02-01 19:55:10,972 | DEBUG    |   Run 1: score=0.80
+2026-02-01 19:55:32,284 | DEBUG    |   Run 2: score=0.80
+2026-02-01 19:55:48,016 | DEBUG    |   Baseline: 0.70, RAG: 0.70
+2026-02-01 19:55:48,017 | INFO     | [4/50] incident_068
+2026-02-01 19:55:50,451 | DEBUG    |   Run 3: score=0.70
+2026-02-01 19:55:50,451 | INFO     | [200/200] incident_200 - Airbnb
+2026-02-01 19:56:08,664 | DEBUG    |   Run 1: score=0.90
+2026-02-01 19:56:27,558 | DEBUG    |   Run 2: score=0.90
+2026-02-01 19:56:40,435 | DEBUG    |   Baseline: 1.00, RAG: 0.80
+2026-02-01 19:56:40,435 | INFO     | [5/50] incident_089
+2026-02-01 19:56:44,855 | DEBUG    |   Run 3: score=0.90
+2026-02-01 19:56:44,876 | DEBUG    | Checkpoint saved at incident 200
+2026-02-01 19:56:44,901 | INFO     | ✅ 01_rca_accuracy complete: 77.3%
+2026-02-01 19:56:44,902 | INFO     | ======================================================================
+2026-02-01 19:56:44,902 | INFO     | EXPERIMENT 2: RAG vs Baseline Comparison
+2026-02-01 19:56:44,902 | INFO     | ======================================================================
+2026-02-01 19:56:44,902 | INFO     | Train: 150, Test: 50
+2026-02-01 19:56:44,930 | INFO     | [1/50] incident_138
+2026-02-01 19:57:31,262 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 19:57:31,262 | INFO     | [6/50] incident_092
+2026-02-01 19:57:34,330 | DEBUG    |   Baseline: 0.70, RAG: 0.00
+2026-02-01 19:57:34,330 | INFO     | [2/50] incident_118
+2026-02-01 19:58:29,946 | DEBUG    |   Baseline: 0.70, RAG: 0.40
+2026-02-01 19:58:29,946 | INFO     | [7/50] incident_025
+2026-02-01 19:58:36,163 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 19:58:36,163 | INFO     | [3/50] incident_012
+2026-02-01 19:59:20,993 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 19:59:20,993 | INFO     | [8/50] incident_098
+2026-02-01 19:59:24,841 | DEBUG    |   Baseline: 0.70, RAG: 0.70
+2026-02-01 19:59:24,842 | INFO     | [4/50] incident_068
+2026-02-01 20:00:03,771 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:00:03,771 | INFO     | [5/50] incident_089
+2026-02-01 20:00:13,950 | DEBUG    |   Baseline: 0.70, RAG: 0.70
+2026-02-01 20:00:13,950 | INFO     | [9/50] incident_183
+2026-02-01 20:00:37,706 | WARNING  | Ollama judge attempt 1/3 failed: Server disconnected without sending a response.
+2026-02-01 20:00:39,710 | WARNING  | Ollama judge attempt 2/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:00:41,714 | WARNING  | Ollama judge attempt 3/3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:00:41,714 | ERROR    |   Failed: Ollama judge model 'qwen3:32b' failed after 3 attempts. Make sure it's installed: ollama pull qwen3:32b
+2026-02-01 20:00:41,714 | INFO     | [10/50] incident_191
+2026-02-01 20:00:52,724 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:00:52,724 | INFO     | [6/50] incident_092
+2026-02-01 20:00:56,733 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:00:56,734 | INFO     | [11/50] incident_087
+2026-02-01 20:01:07,743 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:07,743 | INFO     | [7/50] incident_025
+2026-02-01 20:01:11,753 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:11,753 | INFO     | [12/50] incident_182
+2026-02-01 20:01:22,753 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:22,754 | INFO     | [8/50] incident_098
+2026-02-01 20:01:26,772 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:26,773 | INFO     | [13/50] incident_040
+2026-02-01 20:01:37,773 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:37,773 | INFO     | [9/50] incident_183
+2026-02-01 20:01:41,792 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:41,792 | INFO     | [14/50] incident_169
+2026-02-01 20:01:52,792 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 20:01:52,792 | INFO     | [10/50] incident_191
+2026-02-01 20:02:55,490 | DEBUG    |   Baseline: 0.90, RAG: 0.90
+2026-02-01 20:02:55,490 | INFO     | [11/50] incident_087
+2026-02-01 20:03:22,780 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 20:03:22,780 | INFO     | [12/50] incident_182
+2026-02-01 20:04:27,747 | DEBUG    |   Baseline: 1.00, RAG: 0.00
+2026-02-01 20:04:27,747 | INFO     | [13/50] incident_040
+2026-02-01 20:05:31,181 | DEBUG    |   Baseline: 0.70, RAG: 1.00
+2026-02-01 20:05:31,182 | INFO     | [14/50] incident_169
+2026-02-01 20:06:10,427 | DEBUG    |   Baseline: 1.00, RAG: 0.70
+2026-02-01 20:06:10,427 | INFO     | [15/50] incident_088
+2026-02-01 20:06:32,823 | DEBUG    |   Baseline: 1.00, RAG: 0.70
+2026-02-01 20:06:32,823 | INFO     | [16/50] incident_186
+2026-02-01 20:07:05,874 | DEBUG    |   Baseline: 0.00, RAG: 1.00
+2026-02-01 20:07:05,874 | INFO     | [17/50] incident_041
+2026-02-01 20:07:28,659 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:07:28,659 | INFO     | [18/50] incident_002
+2026-02-01 20:08:00,368 | DEBUG    |   Baseline: 0.00, RAG: 0.70
+2026-02-01 20:08:00,368 | INFO     | [19/50] incident_072
+2026-02-01 20:09:09,212 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:09:09,212 | INFO     | [20/50] incident_151
+2026-02-01 20:09:48,105 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:09:48,105 | INFO     | [21/50] incident_115
+2026-02-01 20:10:28,766 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 20:10:28,766 | INFO     | [22/50] incident_057
+2026-02-01 20:11:04,687 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 20:11:04,687 | INFO     | [23/50] incident_108
+2026-02-01 20:11:40,677 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:11:40,677 | INFO     | [24/50] incident_192
+2026-02-01 20:12:25,543 | DEBUG    |   Baseline: 0.70, RAG: 0.80
+2026-02-01 20:12:25,543 | INFO     | [25/50] incident_167
+2026-02-01 20:13:09,161 | DEBUG    |   Baseline: 0.70, RAG: 0.80
+2026-02-01 20:13:09,162 | INFO     | [26/50] incident_051
+2026-02-01 20:13:40,954 | DEBUG    |   Baseline: 0.90, RAG: 0.80
+2026-02-01 20:13:40,954 | INFO     | [27/50] incident_144
+2026-02-01 20:14:20,779 | DEBUG    |   Baseline: 0.70, RAG: 0.40
+2026-02-01 20:14:20,779 | INFO     | [28/50] incident_198
+2026-02-01 20:14:56,521 | DEBUG    |   Baseline: 0.70, RAG: 0.00
+2026-02-01 20:14:56,521 | INFO     | [29/50] incident_155
+2026-02-01 20:15:29,292 | DEBUG    |   Baseline: 0.80, RAG: 0.80
+2026-02-01 20:15:29,293 | INFO     | [30/50] incident_130
+2026-02-01 20:16:00,761 | DEBUG    |   Baseline: 0.80, RAG: 0.70
+2026-02-01 20:16:00,761 | INFO     | [31/50] incident_060
+2026-02-01 20:16:26,394 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:16:26,395 | INFO     | [32/50] incident_056
+2026-02-01 20:17:02,075 | DEBUG    |   Baseline: 0.70, RAG: 0.70
+2026-02-01 20:17:02,075 | INFO     | [33/50] incident_024
+2026-02-01 20:17:44,975 | DEBUG    |   Baseline: 0.70, RAG: 0.40
+2026-02-01 20:17:44,976 | INFO     | [34/50] incident_008
+2026-02-01 20:18:19,275 | DEBUG    |   Baseline: 0.90, RAG: 0.70
+2026-02-01 20:18:19,275 | INFO     | [35/50] incident_009
+2026-02-01 20:18:47,012 | DEBUG    |   Baseline: 0.80, RAG: 0.70
+2026-02-01 20:18:47,012 | INFO     | [36/50] incident_109
+2026-02-01 20:19:24,982 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:19:24,982 | INFO     | [37/50] incident_152
+2026-02-01 20:20:11,078 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:20:11,078 | INFO     | [38/50] incident_023
+2026-02-01 20:20:36,772 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:20:36,772 | INFO     | [39/50] incident_140
+2026-02-01 20:21:10,675 | DEBUG    |   Baseline: 0.70, RAG: 0.90
+2026-02-01 20:21:10,675 | INFO     | [40/50] incident_174
+2026-02-01 20:21:45,809 | DEBUG    |   Baseline: 1.00, RAG: 0.80
+2026-02-01 20:21:45,810 | INFO     | [41/50] incident_027
+2026-02-01 20:22:16,897 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:22:16,897 | INFO     | [42/50] incident_189
+2026-02-01 20:22:53,225 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:22:53,225 | INFO     | [43/50] incident_036
+2026-02-01 20:23:31,946 | DEBUG    |   Baseline: 0.80, RAG: 0.60
+2026-02-01 20:23:31,946 | INFO     | [44/50] incident_058
+2026-02-01 20:24:15,544 | DEBUG    |   Baseline: 1.00, RAG: 0.00
+2026-02-01 20:24:15,544 | INFO     | [45/50] incident_063
+2026-02-01 20:24:45,427 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 20:24:45,428 | INFO     | [46/50] incident_071
+2026-02-01 20:25:33,136 | DEBUG    |   Baseline: 0.00, RAG: 0.00
+2026-02-01 20:25:33,136 | INFO     | [47/50] incident_190
+2026-02-01 20:26:13,184 | DEBUG    |   Baseline: 1.00, RAG: 0.40
+2026-02-01 20:26:13,185 | INFO     | [48/50] incident_007
+2026-02-01 20:26:57,676 | DEBUG    |   Baseline: 0.85, RAG: 1.00
+2026-02-01 20:26:57,676 | INFO     | [49/50] incident_029
+2026-02-01 20:27:28,717 | DEBUG    |   Baseline: 0.90, RAG: 1.00
+2026-02-01 20:27:28,718 | INFO     | [50/50] incident_164
+2026-02-01 20:28:04,195 | DEBUG    |   Baseline: 1.00, RAG: 1.00
+2026-02-01 20:28:04,197 | INFO     | ✅ 02_rag_comparison complete: Baseline=72.6%, RAG=64.9%
+2026-02-01 20:28:04,198 | INFO     | ======================================================================
+2026-02-01 20:28:04,198 | INFO     | EXPERIMENT 3: Noise Sensitivity (1000+ Decoys)
+2026-02-01 20:28:04,198 | INFO     | ======================================================================
+2026-02-01 20:28:04,665 | INFO     | Generating 999 synthetic decoys...
+2026-02-01 20:28:04,667 | INFO     | Corpus: 200 targets + 1000 decoys = 1200
+2026-02-01 20:28:04,837 | INFO     | Using ChromaDB in-memory mode
+2026-02-01 20:28:04,837 | INFO     | Indexing documents...
+2026-02-01 20:28:07,782 | INFO     |   Indexed 100/1200
+2026-02-01 20:28:10,835 | INFO     |   Indexed 200/1200
+2026-02-01 20:28:12,727 | INFO     |   Indexed 300/1200
+2026-02-01 20:28:14,617 | INFO     |   Indexed 400/1200
+2026-02-01 20:28:16,748 | INFO     |   Indexed 500/1200
+2026-02-01 20:28:20,010 | INFO     |   Indexed 600/1200
+2026-02-01 20:28:22,107 | INFO     |   Indexed 700/1200
+2026-02-01 20:28:24,691 | INFO     |   Indexed 800/1200
+2026-02-01 20:28:27,464 | INFO     |   Indexed 900/1200
+2026-02-01 20:28:30,064 | INFO     |   Indexed 1000/1200
+2026-02-01 20:28:32,442 | INFO     |   Indexed 1100/1200
+2026-02-01 20:28:36,306 | INFO     |   Indexed 1200/1200
+2026-02-01 20:28:36,306 | INFO     | Testing retrieval...
+2026-02-01 20:28:42,028 | INFO     | ✅ 03_noise_sensitivity complete: Recall@3=89.5%
+2026-02-01 20:28:42,029 | INFO     | 
+======================================================================
+2026-02-01 20:28:42,029 | INFO     | COMPLETE!
+2026-02-01 20:28:42,029 | INFO     | ======================================================================
+2026-02-01 20:28:42,029 | INFO     | Results saved to: /media/rvcse22/CSERV/graph-rca/experiments/overnight_gpu/results
+2026-02-01 20:28:42,029 | INFO     |   rca_accuracy: 77.3%
+2026-02-01 20:28:42,029 | INFO     |   baseline_avg: 72.6%
+2026-02-01 20:28:42,029 | INFO     |   rag_avg: 64.9%
+2026-02-01 20:28:42,029 | INFO     |   noise_recall_3: 89.5%
