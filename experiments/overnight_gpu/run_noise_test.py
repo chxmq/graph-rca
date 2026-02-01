@@ -77,17 +77,44 @@ def load_incidents(logger) -> list:
     incidents = []
     incident_dir = CONFIG["incident_dir"]
     
-    # Look for incident_*/incident.json pattern
+    # Look for incident_*/ground_truth.json pattern
     for folder in sorted(incident_dir.glob("incident_*")):
-        json_file = folder / "incident.json"
-        if json_file.exists():
+        if not folder.is_dir():
+            continue
+        gt_file = folder / "ground_truth.json"
+        meta_file = folder / "metadata.json"
+        logs_file = folder / "logs.txt"
+        postmortem_file = folder / "postmortem.md"
+        
+        if gt_file.exists():
             try:
-                with open(json_file) as fp:
-                    data = json.load(fp)
-                    data["id"] = folder.name
-                    incidents.append(data)
+                with open(gt_file) as fp:
+                    gt = json.load(fp)
+                
+                meta = {}
+                if meta_file.exists():
+                    with open(meta_file) as fp:
+                        meta = json.load(fp)
+                
+                logs = ""
+                if logs_file.exists():
+                    logs = logs_file.read_text()
+                
+                postmortem = ""
+                if postmortem_file.exists():
+                    postmortem = postmortem_file.read_text()
+                
+                data = {
+                    "id": folder.name,
+                    "root_cause": gt.get("root_cause", ""),
+                    "category": gt.get("category", meta.get("category", "Unknown")),
+                    "company": meta.get("company", "Unknown"),
+                    "logs": logs,
+                    "postmortem": postmortem
+                }
+                incidents.append(data)
             except Exception as e:
-                logger.warning(f"Failed to load {json_file}: {e}")
+                logger.warning(f"Failed to load {folder}: {e}")
     
     logger.info(f"Loaded {len(incidents)} incidents")
     return incidents
