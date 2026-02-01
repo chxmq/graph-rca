@@ -1,0 +1,15 @@
+% orcidlink.sty - ORCID link package with official logo
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{orcidlink}[2024/01/01 ORCID link with logo]
+
+\RequirePackage{hyperref}
+\RequirePackage{graphicx}
+
+% ORCID icon using PNG image
+\newcommand{\orcidlink}[1]{%
+  \href{https://orcid.org/#1}{%
+    \includegraphics[height=10pt]{orcid.png}%
+  }%
+}
+
+\endinput
