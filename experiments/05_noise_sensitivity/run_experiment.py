@@ -27,11 +27,10 @@ import chromadb
 from chromadb.config import Settings
 
 # Configuration
-CHROMA_HOST = os.getenv("CHROMA_HOST", "localhost")
-CHROMA_PORT = int(os.getenv("CHROMA_PORT", "8000"))
 EMBEDDING_MODEL = "nomic-embed-text"
 COLLECTION_NAME = "noise_sensitivity_test"
 TARGET_DECOY_COUNT = 1000  # Senior's requirement: 1000+ decoys
+CHROMA_PERSIST_DIR = Path(__file__).parent / "data" / "chroma_db"
 
 # Paths
 DATA_DIR = PROJECT_ROOT / "data" / "real_incidents"
@@ -168,7 +167,9 @@ def generate_synthetic_decoys(count: int, seed: int = 42) -> List[Dict]:
 
 def create_test_collection(targets: List[Dict], decoys: List[Dict]) -> chromadb.Collection:
     """Create ChromaDB collection with all documents."""
-    client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+    # Use persistent local storage - no server needed
+    CHROMA_PERSIST_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(path=str(CHROMA_PERSIST_DIR))
     
     # Delete existing collection if exists
     try:

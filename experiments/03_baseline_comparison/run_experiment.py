@@ -2,7 +2,6 @@
 """
 RCA Baseline Comparison Experiment
 Compares GraphRCA against baseline methods.
-From comprehensive_overnight.py - Experiment 3
 """
 
 import os

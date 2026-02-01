@@ -1,23 +1,43 @@
-# Experiment 8: RAG Real-World Evaluation
+# Experiment 08: RAG Real-World Evaluation with Multi-Judge Validation
 
-**Objective:** Evaluate RAG vs baseline on 200 real-world incidents.
+Compares baseline (no RAG) vs RAG-enhanced RCA accuracy on real-world incidents.
 
-## Results (50 test incidents)
+## Multi-Judge Support
 
-| Condition | Accuracy | Change |
-|-----------|----------|--------|
-| Baseline (no RAG) | 72.6% | - |
-| With RAG | 64.9% | -7.7% |
+Uses three independent LLM judges for cross-validation:
+- **Qwen 32B** (local via Ollama) - default
+- **Llama 3.3 70B** (Groq API) - requires `GROQ_API_KEY`
+- **GPT-4o-mini** (OpenAI API) - requires `OPENAI_API_KEY`
 
-> **Finding:** RAG shows heterogeneous effects - helps ambiguous cases, hurts clear ones.
-
-## How to Run
+## Usage
 
 ```bash
-python run_experiment.py
+# Single judge (default: qwen)
+python run_experiment.py --judge qwen
+
+# Run all judges
+python run_experiment.py --judge all
+
+# API judges (require keys)
+export GROQ_API_KEY="your-key"
+python run_experiment.py --judge groq
+
+export OPENAI_API_KEY="your-key"
+python run_experiment.py --judge gpt
 ```
 
-## Files
+## Key Finding
 
-- `run_experiment.py` - Experiment script
-- `data/02_rag_comparison.json` - Per-incident results
+RAG shows **heterogeneous effects**:
+- Helps when logs are ambiguous (up to +100pp)
+- Hurts when logs already contain clear evidence (up to -100pp)
+- Average degradation of ~14pp across all judges
+
+## Additional Scripts
+
+- `enrich_with_companies.py` - Adds company names to results for analysis
+
+## Output
+
+- `data/rag_comparison_qwen.json` - Per-judge results
+- `data/rag_comparison_all_judges.json` - Combined summary
