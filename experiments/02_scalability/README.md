@@ -1,28 +1,23 @@
 # Experiment 2: Scalability Analysis
 
-**Objective:** Prove O(n) linear complexity for log processing.
+**Objective:** Demonstrate O(n) linear DAG construction complexity.
 
 ## Results
 
-| Log Count | Total Time | Throughput |
-|-----------|------------|------------|
-| 50 | 123.5s | 0.41 logs/s |
-| 100 | 244.6s | 0.41 logs/s |
-| 250 | 608.4s | 0.41 logs/s |
-| 500 | 1,211.6s | 0.41 logs/s |
-| 1,000 | 2,420.1s | 0.41 logs/s |
+| Log Entries | Time (ms) | Std Dev |
+|-------------|-----------|---------|
+| 10 | 0.10 | ±0.02 |
+| 100 | 0.93 | ±0.03 |
+| 1,000 | 9.71 | ±0.51 |
+| 2,000 | 19.68 | ±0.53 |
 
-**Constant 0.41 logs/s throughput = O(n) linear complexity confirmed**
+## How to Run
 
-## DAG Construction
-
-| Log Entries | Time (ms) | Note |
-|-------------|-----------|------|
-| 100 | 0.93 | |
-| 1,000 | 9.71 | |
-| 2,000 | 19.68 | O(n) |
+```bash
+python run_experiment.py
+```
 
 ## Files
 
-- `data/scale_results.json` - Scalability test data
-- `data/dag_scalability.json` - DAG construction timing
+- `run_experiment.py` - Experiment script
+- `data/dag_scalability.json` - Raw measurements

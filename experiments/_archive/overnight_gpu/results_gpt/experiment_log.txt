@@ -1,0 +1,352 @@
+2026-02-01 20:47:19,623 | INFO     | ======================================================================
+2026-02-01 20:47:19,623 | INFO     | GraphRCA GPU Experiment Suite (GPT-4o-mini Judge)
+2026-02-01 20:47:19,623 | INFO     | ======================================================================
+2026-02-01 20:47:40,953 | INFO     | ======================================================================
+2026-02-01 20:47:40,954 | INFO     | GraphRCA GPU Experiment Suite (GPT-4o-mini Judge)
+2026-02-01 20:47:40,954 | INFO     | ======================================================================
+2026-02-01 20:47:41,634 | INFO     | ✓ Ollama connected
+2026-02-01 20:47:41,655 | INFO     | Loaded 200 incidents
+2026-02-01 20:47:41,655 | INFO     | ======================================================================
+2026-02-01 20:47:41,655 | INFO     | EXPERIMENT 1: RCA Accuracy (GPT-4o-mini Judge)
+2026-02-01 20:47:41,655 | INFO     | ======================================================================
+2026-02-01 20:47:41,655 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 20:47:47,867 | INFO     | [2/200] incident_002 - Cloudflare
+2026-02-01 20:47:52,151 | INFO     | [3/200] incident_003 - Cloudflare
+2026-02-01 20:47:56,336 | INFO     | [4/200] incident_004 - TravisCI
+2026-02-01 20:48:00,340 | INFO     | [5/200] incident_005 - Railway
+2026-02-01 20:48:07,075 | INFO     | [6/200] incident_006 - Azure
+2026-02-01 20:48:10,855 | INFO     | [7/200] incident_007 - Joyent
+2026-02-01 20:48:15,329 | INFO     | [8/200] incident_008 - Stack Exchange
+2026-02-01 20:48:19,614 | INFO     | [9/200] incident_009 - Facebook
+2026-02-01 20:48:24,951 | INFO     | [10/200] incident_010 - Amazon
+2026-02-01 20:48:29,396 | INFO     | [11/200] incident_011 - Homebrew
+2026-02-01 20:48:33,727 | INFO     | [12/200] incident_012 - NPM
+2026-02-01 20:48:39,121 | INFO     | [13/200] incident_013 - Gitlab
+2026-02-01 20:48:44,113 | INFO     | [14/200] incident_014 - CrowdStrike
+2026-02-01 20:48:49,193 | INFO     | [15/200] incident_015 - GitHub
+2026-02-01 20:48:53,125 | INFO     | [16/200] incident_016 - Etsy
+2026-02-01 20:48:57,324 | INFO     | [17/200] incident_017 - Sentry
+2026-02-01 20:49:02,392 | INFO     | [18/200] incident_018 - Salesforce
+2026-02-01 20:49:05,991 | INFO     | [19/200] incident_019 - Slack
+2026-02-01 20:49:10,471 | INFO     | [20/200] incident_020 - Google
+2026-02-01 20:49:14,672 | INFO     | [21/200] incident_021 - CircleCI
+2026-02-01 20:49:18,846 | INFO     | [22/200] incident_022 - Discord
+2026-02-01 20:49:24,571 | INFO     | [23/200] incident_023 - Fastly
+2026-02-01 20:49:29,146 | INFO     | [24/200] incident_024 - Foursquare
+2026-02-01 20:49:34,247 | INFO     | [25/200] incident_025 - Flowdock
+2026-02-01 20:49:37,981 | INFO     | [26/200] incident_026 - Heroku
+2026-02-01 20:49:42,011 | INFO     | [27/200] incident_027 - Basecamp
+2026-02-01 20:49:46,681 | INFO     | [28/200] incident_028 - Bitly
+2026-02-01 20:49:51,277 | INFO     | [29/200] incident_029 - Knight Capital
+2026-02-01 20:49:55,735 | INFO     | [30/200] incident_030 - Keepthescore
+2026-02-01 20:50:01,333 | INFO     | [31/200] incident_031 - PagerDuty
+2026-02-01 20:50:06,030 | INFO     | [32/200] incident_032 - Roblox
+2026-02-01 20:50:11,632 | INFO     | [33/200] incident_033 - Spotify
+2026-02-01 20:50:16,630 | INFO     | [34/200] incident_034 - Slack
+2026-02-01 20:50:20,474 | INFO     | [35/200] incident_035 - Stack Exchange
+2026-02-01 20:50:24,779 | INFO     | [36/200] incident_036 - Amazon
+2026-02-01 20:50:29,894 | INFO     | [37/200] incident_037 - Twilio
+2026-02-01 20:50:33,878 | INFO     | [38/200] incident_038 - Zerodha
+2026-02-01 20:50:37,921 | INFO     | [39/200] incident_039 - Cloudflare
+2026-02-01 20:50:41,669 | INFO     | [40/200] incident_040 - Sentry
+2026-02-01 20:50:45,565 | INFO     | [41/200] incident_041 - Google
+2026-02-01 20:50:50,603 | INFO     | [42/200] incident_042 - Google
+2026-02-01 20:50:54,065 | INFO     | [43/200] incident_043 - TUI
+2026-02-01 20:50:58,075 | INFO     | [44/200] incident_044 - BBC
+2026-02-01 20:51:01,934 | INFO     | [45/200] incident_045 - Buildkite
+2026-02-01 20:51:06,850 | INFO     | [46/200] incident_046 - NASA
+2026-02-01 20:51:12,078 | INFO     | [47/200] incident_047 - OpenAI
+2026-02-01 20:51:17,194 | INFO     | [48/200] incident_048 - Grab
+2026-02-01 20:51:20,731 | INFO     | [49/200] incident_049 - Microsoft
+2026-02-01 20:51:26,621 | INFO     | [50/200] incident_050 - Atlassian
+2026-02-01 20:51:31,592 | INFO     | [51/200] incident_051 - Heroku
+2026-02-01 20:51:36,800 | INFO     | [52/200] incident_052 - Microsoft
+2026-02-01 20:51:41,229 | INFO     | [53/200] incident_053 - Google
+2026-02-01 20:51:46,837 | INFO     | [54/200] incident_054 - Google
+2026-02-01 20:51:50,449 | INFO     | [55/200] incident_055 - Reddit
+2026-02-01 20:51:55,767 | INFO     | [56/200] incident_056 - Strava
+2026-02-01 20:51:59,726 | INFO     | [57/200] incident_057 - Stripe
+2026-02-01 20:52:03,597 | INFO     | [58/200] incident_058 - Heroku
+2026-02-01 20:52:08,651 | INFO     | [59/200] incident_059 - Amazon
+2026-02-01 20:52:13,627 | INFO     | [60/200] incident_060 - WhatsApp
+2026-02-01 20:52:17,015 | INFO     | [61/200] incident_061 - Google
+2026-02-01 20:52:20,421 | INFO     | [62/200] incident_062 - Google
+2026-02-01 20:52:24,072 | INFO     | [63/200] incident_063 - Knight Capital
+2026-02-01 20:52:27,719 | INFO     | [64/200] incident_064 - WebKit code repository
+2026-02-01 20:52:32,966 | INFO     | [65/200] incident_065 - Azure
+2026-02-01 20:52:37,099 | INFO     | [66/200] incident_066 - Cloudflare
+2026-02-01 20:52:42,033 | INFO     | [67/200] incident_067 - Linux
+2026-02-01 20:52:46,086 | INFO     | [68/200] incident_068 - Linux
+2026-02-01 20:52:49,886 | INFO     | [69/200] incident_069 - Mozilla
+2026-02-01 20:52:53,678 | INFO     | [70/200] incident_070 - Github
+2026-02-01 20:52:57,499 | INFO     | [71/200] incident_071 - Heroku
+2026-02-01 20:53:02,467 | INFO     | [72/200] incident_072 - Allegro
+2026-02-01 20:53:06,300 | INFO     | [73/200] incident_073 - Amazon
+2026-02-01 20:53:10,580 | INFO     | [74/200] incident_074 - Amazon
+2026-02-01 20:53:14,377 | INFO     | [75/200] incident_075 - Amazon
+2026-02-01 20:53:18,833 | INFO     | [76/200] incident_076 - Amazon
+2026-02-01 20:53:25,103 | INFO     | [77/200] incident_077 - Amazon
+2026-02-01 20:53:29,998 | INFO     | [78/200] incident_078 - Amazon
+2026-02-01 20:53:34,045 | INFO     | [79/200] incident_079 - Amazon
+2026-02-01 20:53:38,373 | INFO     | [80/200] incident_080 - Amazon
+2026-02-01 20:53:42,355 | INFO     | [81/200] incident_081 - AppNexus
+2026-02-01 20:53:48,428 | INFO     | [82/200] incident_082 - AT&T
+2026-02-01 20:53:52,635 | INFO     | [83/200] incident_083 - Atlassian
+2026-02-01 20:53:57,983 | INFO     | [84/200] incident_084 - Basecamp
+2026-02-01 20:54:02,124 | INFO     | [85/200] incident_085 - Basecamp
+2026-02-01 20:54:06,560 | INFO     | [86/200] incident_086 - BBC Online
+2026-02-01 20:54:12,490 | INFO     | [87/200] incident_087 - Bintray
+2026-02-01 20:54:18,180 | INFO     | [88/200] incident_088 - Bitly
+2026-02-01 20:54:22,598 | INFO     | [89/200] incident_089 - BrowserStack
+2026-02-01 20:54:26,211 | INFO     | [90/200] incident_090 - Buildkite
+2026-02-01 20:54:30,066 | INFO     | [91/200] incident_091 - Bungie
+2026-02-01 20:54:35,491 | INFO     | [92/200] incident_092 - CCP Games
+2026-02-01 20:54:40,322 | INFO     | [93/200] incident_093 - CCP Games
+2026-02-01 20:54:44,179 | INFO     | [94/200] incident_094 - Chef.io
+2026-02-01 20:54:48,067 | INFO     | [95/200] incident_095 - CircleCI
+2026-02-01 20:54:52,779 | INFO     | [96/200] incident_096 - CircleCI
+2026-02-01 20:54:56,981 | INFO     | [97/200] incident_097 - Cloudflare
+2026-02-01 20:55:01,672 | INFO     | [98/200] incident_098 - Cloudflare
+2026-02-01 20:55:05,618 | INFO     | [99/200] incident_099 - CrowdStrike
+2026-02-01 20:55:12,406 | INFO     | [100/200] incident_100 - Datadog
+2026-02-01 20:55:17,743 | INFO     | [101/200] incident_101 - Discord
+2026-02-01 20:55:23,455 | INFO     | [102/200] incident_102 - Discord
+2026-02-01 20:55:31,572 | INFO     | [103/200] incident_103 - Dropbox
+2026-02-01 20:55:39,771 | INFO     | [104/200] incident_104 - Duo
+2026-02-01 20:55:45,836 | INFO     | [105/200] incident_105 - Epic Games
+2026-02-01 20:55:51,260 | INFO     | [106/200] incident_106 - European Space Agency
+2026-02-01 20:56:00,222 | INFO     | [107/200] incident_107 - Elastic
+2026-02-01 20:56:03,867 | INFO     | [108/200] incident_108 - Elastic
+2026-02-01 20:56:13,094 | INFO     | [109/200] incident_109 - ESLint
+2026-02-01 20:56:17,614 | INFO     | [110/200] incident_110 - Etsy
+2026-02-01 20:56:21,701 | INFO     | [111/200] incident_111 - Fastly
+2026-02-01 20:56:25,457 | INFO     | [112/200] incident_112 - Flowdock
+2026-02-01 20:56:31,132 | INFO     | [113/200] incident_113 - Foursquare
+2026-02-01 20:56:38,776 | INFO     | [114/200] incident_114 - Gentoo
+2026-02-01 20:56:44,674 | INFO     | [115/200] incident_115 - GitHub
+2026-02-01 20:56:50,309 | INFO     | [116/200] incident_116 - Gitlab
+2026-02-01 20:56:54,770 | INFO     | [117/200] incident_117 - Gitlab
+2026-02-01 20:56:58,994 | INFO     | [118/200] incident_118 - Google
+2026-02-01 20:57:04,269 | INFO     | [119/200] incident_119 - Google
+2026-02-01 20:57:08,173 | INFO     | [120/200] incident_120 - Google
+2026-02-01 20:57:12,853 | INFO     | [121/200] incident_121 - Google
+2026-02-01 20:57:16,523 | INFO     | [122/200] incident_122 - Google
+2026-02-01 20:57:20,324 | INFO     | [123/200] incident_123 - GPS/GLONASS
+2026-02-01 20:57:26,241 | INFO     | [124/200] incident_124 - Healthcare.gov
+2026-02-01 20:57:29,867 | INFO     | [125/200] incident_125 - Heroku
+2026-02-01 20:57:34,297 | INFO     | [126/200] incident_126 - Heroku
+2026-02-01 20:57:38,537 | INFO     | [127/200] incident_127 - Heroku
+2026-02-01 20:57:43,019 | INFO     | [128/200] incident_128 - Heroku
+2026-02-01 20:57:48,053 | INFO     | [129/200] incident_129 - Heroku
+2026-02-01 20:57:52,688 | INFO     | [130/200] incident_130 - Homebrew
+2026-02-01 20:57:56,671 | INFO     | [131/200] incident_131 - Honeycomb
+2026-02-01 20:58:00,934 | INFO     | [132/200] incident_132 - Honeycomb
+2026-02-01 20:58:06,355 | INFO     | [133/200] incident_133 - Honeycomb
+2026-02-01 20:58:17,129 | INFO     | [134/200] incident_134 - Honeycomb
+2026-02-01 20:58:21,070 | INFO     | [135/200] incident_135 - incident.io
+2026-02-01 20:58:24,818 | INFO     | [136/200] incident_136 - Indian Electricity Grid
+2026-02-01 20:58:29,033 | INFO     | [137/200] incident_137 - Instapaper
+2026-02-01 20:58:36,315 | INFO     | [138/200] incident_138 - Intel
+2026-02-01 20:58:39,975 | INFO     | [139/200] incident_139 - Joyent
+2026-02-01 20:58:44,085 | INFO     | [140/200] incident_140 - Joyent
+2026-02-01 20:58:47,735 | INFO     | [141/200] incident_141 - Kickstarter
+2026-02-01 20:58:52,272 | INFO     | [142/200] incident_142 - Kings College London
+2026-02-01 20:58:56,003 | INFO     | [143/200] incident_143 - Launchdarkly
+2026-02-01 20:59:00,162 | INFO     | [144/200] incident_144 - Mailgun
+2026-02-01 20:59:05,630 | INFO     | [145/200] incident_145 - Mandrill
+2026-02-01 20:59:11,696 | INFO     | [146/200] incident_146 - Medium
+2026-02-01 20:59:15,898 | INFO     | [147/200] incident_147 - Metrist
+2026-02-01 20:59:19,599 | INFO     | [148/200] incident_148 - NASA
+2026-02-01 20:59:23,456 | INFO     | [149/200] incident_149 - NASA
+2026-02-01 20:59:27,144 | INFO     | [150/200] incident_150 - NASA
+2026-02-01 20:59:32,803 | INFO     | [151/200] incident_151 - Netflix
+2026-02-01 20:59:37,632 | INFO     | [152/200] incident_152 - North American Electric Power System
+2026-02-01 20:59:41,752 | INFO     | [153/200] incident_153 - Okta
+2026-02-01 20:59:46,099 | INFO     | [154/200] incident_154 - OpenAI
+2026-02-01 20:59:53,125 | INFO     | [155/200] incident_155 - Pagerduty
+2026-02-01 20:59:56,674 | INFO     | [156/200] incident_156 - PagerDuty
+2026-02-01 21:00:02,491 | INFO     | [157/200] incident_157 - Parity
+2026-02-01 21:00:06,280 | INFO     | [158/200] incident_158 - Platform.sh
+2026-02-01 21:00:10,168 | INFO     | [159/200] incident_159 - Reddit
+2026-02-01 21:00:14,106 | INFO     | [160/200] incident_160 - Reddit
+2026-02-01 21:00:18,331 | INFO     | [161/200] incident_161 - Roblox
+2026-02-01 21:00:22,908 | INFO     | [162/200] incident_162 - Salesforce
+2026-02-01 21:00:27,813 | INFO     | [163/200] incident_163 - Salesforce
+2026-02-01 21:00:32,724 | INFO     | [164/200] incident_164 - Sentry
+2026-02-01 21:00:38,093 | INFO     | [165/200] incident_165 - Shapeshift
+2026-02-01 21:00:43,124 | INFO     | [166/200] incident_166 - Skyliner
+2026-02-01 21:00:47,029 | INFO     | [167/200] incident_167 - Slack
+2026-02-01 21:00:52,388 | INFO     | [168/200] incident_168 - Slack
+2026-02-01 21:00:56,110 | INFO     | [169/200] incident_169 - Slack
+2026-02-01 21:00:59,641 | INFO     | [170/200] incident_170 - Spotify
+2026-02-01 21:01:04,592 | INFO     | [171/200] incident_171 - Square
+2026-02-01 21:01:08,592 | INFO     | [172/200] incident_172 - Stackdriver
+2026-02-01 21:01:11,849 | INFO     | [173/200] incident_173 - Stack Exchange
+2026-02-01 21:01:16,005 | INFO     | [174/200] incident_174 - Stack Exchange
+2026-02-01 21:01:20,900 | INFO     | [175/200] incident_175 - Stack Exchange
+2026-02-01 21:01:25,201 | INFO     | [176/200] incident_176 - Stack Exchange
+2026-02-01 21:01:30,528 | INFO     | [177/200] incident_177 - Strava
+2026-02-01 21:01:34,694 | INFO     | [178/200] incident_178 - Stripe
+2026-02-01 21:01:38,683 | INFO     | [179/200] incident_179 - Sweden
+2026-02-01 21:01:41,991 | INFO     | [180/200] incident_180 - Tarsnap
+2026-02-01 21:01:46,149 | INFO     | [181/200] incident_181 - Telstra
+2026-02-01 21:01:50,564 | INFO     | [182/200] incident_182 - Therac-25
+2026-02-01 21:01:54,371 | INFO     | [183/200] incident_183 - trivago
+2026-02-01 21:01:58,374 | INFO     | [184/200] incident_184 - Twilio
+2026-02-01 21:02:03,878 | INFO     | [185/200] incident_185 - Twilio
+2026-02-01 21:02:08,054 | INFO     | [186/200] incident_186 - Valve
+2026-02-01 21:02:12,021 | INFO     | [187/200] incident_187 - Xubuntu
+2026-02-01 21:02:16,095 | INFO     | [188/200] incident_188 - Yeller
+2026-02-01 21:02:20,987 | INFO     | [189/200] incident_189 - Zerodha
+2026-02-01 21:02:25,686 | INFO     | [190/200] incident_190 - Zerodha
+2026-02-01 21:02:30,822 | INFO     | [191/200] incident_191 - Roblox
+2026-02-01 21:02:35,627 | INFO     | [192/200] incident_192 - Fastly
+2026-02-01 21:02:39,512 | INFO     | [193/200] incident_193 - GitLab
+2026-02-01 21:02:43,294 | INFO     | [194/200] incident_194 - Spotify
+2026-02-01 21:02:47,450 | INFO     | [195/200] incident_195 - LinkedIn
+2026-02-01 21:02:51,365 | INFO     | [196/200] incident_196 - Dropbox
+2026-02-01 21:02:55,287 | INFO     | [197/200] incident_197 - Netflix
+2026-02-01 21:02:59,570 | INFO     | [198/200] incident_198 - Uber
+2026-02-01 21:03:01,473 | WARNING  |   Run 2 failed: Server disconnected without sending a response.
+2026-02-01 21:03:01,475 | WARNING  |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,475 | INFO     | [199/200] incident_199 - Pinterest
+2026-02-01 21:03:01,476 | WARNING  |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,477 | WARNING  |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,478 | WARNING  |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,478 | INFO     | [200/200] incident_200 - Airbnb
+2026-02-01 21:03:01,479 | WARNING  |   Run 1 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,480 | WARNING  |   Run 2 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,482 | WARNING  |   Run 3 failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,487 | INFO     | ✅ RCA Accuracy complete: 84.9%
+2026-02-01 21:03:01,487 | INFO     | ======================================================================
+2026-02-01 21:03:01,487 | INFO     | EXPERIMENT 2: RAG vs Baseline (GPT-4o-mini Judge)
+2026-02-01 21:03:01,487 | INFO     | ======================================================================
+2026-02-01 21:03:01,488 | INFO     | Train: 150, Test: 50
+2026-02-01 21:03:01,488 | INFO     | [1/50] incident_138
+2026-02-01 21:03:01,489 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,489 | INFO     | [2/50] incident_118
+2026-02-01 21:03:01,490 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,490 | INFO     | [3/50] incident_012
+2026-02-01 21:03:01,491 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,491 | INFO     | [4/50] incident_068
+2026-02-01 21:03:01,492 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,493 | INFO     | [5/50] incident_089
+2026-02-01 21:03:01,494 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,494 | INFO     | [6/50] incident_092
+2026-02-01 21:03:01,495 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,495 | INFO     | [7/50] incident_025
+2026-02-01 21:03:01,496 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,496 | INFO     | [8/50] incident_098
+2026-02-01 21:03:01,497 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,497 | INFO     | [9/50] incident_183
+2026-02-01 21:03:01,498 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,499 | INFO     | [10/50] incident_191
+2026-02-01 21:03:01,500 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,500 | INFO     | [11/50] incident_087
+2026-02-01 21:03:01,501 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,501 | INFO     | [12/50] incident_182
+2026-02-01 21:03:01,502 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,502 | INFO     | [13/50] incident_040
+2026-02-01 21:03:01,503 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,503 | INFO     | [14/50] incident_169
+2026-02-01 21:03:01,504 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,505 | INFO     | [15/50] incident_088
+2026-02-01 21:03:01,506 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,506 | INFO     | [16/50] incident_186
+2026-02-01 21:03:01,507 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,507 | INFO     | [17/50] incident_041
+2026-02-01 21:03:01,508 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,508 | INFO     | [18/50] incident_002
+2026-02-01 21:03:01,509 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,509 | INFO     | [19/50] incident_072
+2026-02-01 21:03:01,510 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,511 | INFO     | [20/50] incident_151
+2026-02-01 21:03:01,512 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,512 | INFO     | [21/50] incident_115
+2026-02-01 21:03:01,513 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,513 | INFO     | [22/50] incident_057
+2026-02-01 21:03:01,514 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,514 | INFO     | [23/50] incident_108
+2026-02-01 21:03:01,515 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,515 | INFO     | [24/50] incident_192
+2026-02-01 21:03:01,516 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,516 | INFO     | [25/50] incident_167
+2026-02-01 21:03:01,517 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,518 | INFO     | [26/50] incident_051
+2026-02-01 21:03:01,519 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,519 | INFO     | [27/50] incident_144
+2026-02-01 21:03:01,520 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,520 | INFO     | [28/50] incident_198
+2026-02-01 21:03:01,521 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,521 | INFO     | [29/50] incident_155
+2026-02-01 21:03:01,522 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,522 | INFO     | [30/50] incident_130
+2026-02-01 21:03:01,523 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,523 | INFO     | [31/50] incident_060
+2026-02-01 21:03:01,524 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,524 | INFO     | [32/50] incident_056
+2026-02-01 21:03:01,525 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,525 | INFO     | [33/50] incident_024
+2026-02-01 21:03:01,526 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,526 | INFO     | [34/50] incident_008
+2026-02-01 21:03:01,527 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,527 | INFO     | [35/50] incident_009
+2026-02-01 21:03:01,528 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,528 | INFO     | [36/50] incident_109
+2026-02-01 21:03:01,529 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,529 | INFO     | [37/50] incident_152
+2026-02-01 21:03:01,529 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,530 | INFO     | [38/50] incident_023
+2026-02-01 21:03:01,530 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,530 | INFO     | [39/50] incident_140
+2026-02-01 21:03:01,531 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,531 | INFO     | [40/50] incident_174
+2026-02-01 21:03:01,532 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,532 | INFO     | [41/50] incident_027
+2026-02-01 21:03:01,533 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,533 | INFO     | [42/50] incident_189
+2026-02-01 21:03:01,534 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,534 | INFO     | [43/50] incident_036
+2026-02-01 21:03:01,535 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,535 | INFO     | [44/50] incident_058
+2026-02-01 21:03:01,536 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,536 | INFO     | [45/50] incident_063
+2026-02-01 21:03:01,536 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,537 | INFO     | [46/50] incident_071
+2026-02-01 21:03:01,537 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,537 | INFO     | [47/50] incident_190
+2026-02-01 21:03:01,538 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,538 | INFO     | [48/50] incident_007
+2026-02-01 21:03:01,539 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,539 | INFO     | [49/50] incident_029
+2026-02-01 21:03:01,540 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,540 | INFO     | [50/50] incident_164
+2026-02-01 21:03:01,540 | ERROR    |   Failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-01 21:03:01,541 | INFO     | ✅ RAG Comparison complete: Baseline=0.0%, RAG=0.0%
+2026-02-01 21:03:01,541 | INFO     | 
+======================================================================
+2026-02-01 21:03:01,541 | INFO     | COMPLETE!
+2026-02-01 21:03:01,541 | INFO     | ======================================================================
+2026-02-01 21:03:01,541 | INFO     |   RCA Accuracy: 84.9%
+2026-02-01 21:03:01,541 | INFO     |   Baseline: 0.0%
+2026-02-01 21:03:01,542 | INFO     |   RAG: 0.0%
+2026-02-01 21:04:51,180 | INFO     | ======================================================================
+2026-02-01 21:04:51,180 | INFO     | GraphRCA GPU Experiment Suite (GPT-4o-mini Judge)
+2026-02-01 21:04:51,180 | INFO     | ======================================================================
+2026-02-01 21:04:51,812 | INFO     | ✓ Ollama connected
+2026-02-01 21:04:51,829 | INFO     | Loaded 200 incidents
+2026-02-01 21:04:51,830 | INFO     | ======================================================================
+2026-02-01 21:04:51,830 | INFO     | EXPERIMENT 1: RCA Accuracy (GPT-4o-mini Judge)
+2026-02-01 21:04:51,830 | INFO     | ======================================================================
+2026-02-01 21:04:51,830 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 21:04:58,998 | INFO     | [2/200] incident_002 - Cloudflare
+2026-02-01 21:05:03,117 | INFO     | [3/200] incident_003 - Cloudflare
+2026-02-01 21:05:07,059 | INFO     | [4/200] incident_004 - TravisCI
+2026-02-01 21:05:10,566 | INFO     | [5/200] incident_005 - Railway
+2026-02-01 21:05:15,740 | INFO     | [6/200] incident_006 - Azure
+2026-02-01 21:05:19,506 | INFO     | [7/200] incident_007 - Joyent
+2026-02-01 21:05:23,581 | INFO     | [8/200] incident_008 - Stack Exchange
+2026-02-01 21:05:27,447 | INFO     | [9/200] incident_009 - Facebook
+2026-02-01 21:05:31,443 | INFO     | [10/200] incident_010 - Amazon
+2026-02-01 21:05:35,317 | INFO     | [11/200] incident_011 - Homebrew
+2026-02-01 21:05:39,297 | INFO     | [12/200] incident_012 - NPM

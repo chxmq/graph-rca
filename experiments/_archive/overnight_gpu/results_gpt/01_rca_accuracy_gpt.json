@@ -1,0 +1,1429 @@
+{
+  "incidents": [
+    {
+      "id": "incident_001",
+      "category": "Configuration",
+      "correct": 0,
+      "avg_score": 0.2333,
+      "runs": 3
+    },
+    {
+      "id": "incident_002",
+      "category": "Network",
+      "correct": 0,
+      "avg_score": 0.1333,
+      "runs": 3
+    },
+    {
+      "id": "incident_003",
+      "category": "Network",
+      "correct": 0,
+      "avg_score": 0.0,
+      "runs": 3
+    },
+    {
+      "id": "incident_004",
+      "category": "CI-CD",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_005",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6,
+      "runs": 3
+    },
+    {
+      "id": "incident_006",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_007",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_008",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_009",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_010",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_011",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_012",
+      "category": "Configuration",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_013",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6333,
+      "runs": 3
+    },
+    {
+      "id": "incident_014",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_015",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_016",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_017",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.5667,
+      "runs": 3
+    },
+    {
+      "id": "incident_018",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_019",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_020",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_021",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_022",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_023",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_024",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_025",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_026",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_027",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_028",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_029",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_030",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_031",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_032",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_033",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_034",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_035",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_036",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_037",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_038",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_039",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_040",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_041",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_042",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_043",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_044",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_045",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_046",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_047",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_048",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_049",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_050",
+      "category": "Software",
+      "correct": 0,
+      "avg_score": 0.2667,
+      "runs": 3
+    },
+    {
+      "id": "incident_051",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_052",
+      "category": "Configuration",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_053",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_054",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_055",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_056",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_057",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_058",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_059",
+      "category": "Software",
+      "correct": 0,
+      "avg_score": 0.2333,
+      "runs": 3
+    },
+    {
+      "id": "incident_060",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_061",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_062",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_063",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_064",
+      "category": "Configuration",
+      "correct": 1,
+      "avg_score": 0.5,
+      "runs": 3
+    },
+    {
+      "id": "incident_065",
+      "category": "Security",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_066",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_067",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_068",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_069",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_070",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_071",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_072",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.0,
+      "runs": 3
+    },
+    {
+      "id": "incident_073",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_074",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_075",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_076",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_077",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_078",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_079",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_080",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_081",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_082",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_083",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6,
+      "runs": 3
+    },
+    {
+      "id": "incident_084",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_085",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_086",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_087",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_088",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_089",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.9333,
+      "runs": 3
+    },
+    {
+      "id": "incident_090",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_091",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_092",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_093",
+      "category": "Memory",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_094",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_095",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_096",
+      "category": "Security",
+      "correct": 0,
+      "avg_score": 0.4333,
+      "runs": 3
+    },
+    {
+      "id": "incident_097",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_098",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_099",
+      "category": "Memory",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_100",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_101",
+      "category": "Memory",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_102",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_103",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.1,
+      "runs": 3
+    },
+    {
+      "id": "incident_104",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_105",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_106",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_107",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.5,
+      "runs": 3
+    },
+    {
+      "id": "incident_108",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_109",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_110",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.5,
+      "runs": 3
+    },
+    {
+      "id": "incident_111",
+      "category": "Configuration",
+      "correct": 1,
+      "avg_score": 0.6333,
+      "runs": 3
+    },
+    {
+      "id": "incident_112",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.3,
+      "runs": 3
+    },
+    {
+      "id": "incident_113",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_114",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_115",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_116",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_117",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_118",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_119",
+      "category": "Memory",
+      "correct": 0,
+      "avg_score": 0.3667,
+      "runs": 3
+    },
+    {
+      "id": "incident_120",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_121",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_122",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_123",
+      "category": "Software",
+      "correct": 0,
+      "avg_score": 0.2,
+      "runs": 3
+    },
+    {
+      "id": "incident_124",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.2667,
+      "runs": 3
+    },
+    {
+      "id": "incident_125",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_126",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_127",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_128",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8667,
+      "runs": 3
+    },
+    {
+      "id": "incident_129",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_130",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_131",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.2,
+      "runs": 3
+    },
+    {
+      "id": "incident_132",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_133",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_134",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.4,
+      "runs": 3
+    },
+    {
+      "id": "incident_135",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_136",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_137",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.0333,
+      "runs": 3
+    },
+    {
+      "id": "incident_138",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_139",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_140",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_141",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_142",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.4333,
+      "runs": 3
+    },
+    {
+      "id": "incident_143",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_144",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.5667,
+      "runs": 3
+    },
+    {
+      "id": "incident_145",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_146",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_147",
+      "category": "Cloud",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_148",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_149",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_150",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_151",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_152",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_153",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_154",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_155",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_156",
+      "category": "Cloud",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_157",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_158",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.5,
+      "runs": 3
+    },
+    {
+      "id": "incident_159",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_160",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_161",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.4,
+      "runs": 3
+    },
+    {
+      "id": "incident_162",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_163",
+      "category": "Security",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_164",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_165",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_166",
+      "category": "Memory",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_167",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_168",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_169",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_170",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.4,
+      "runs": 3
+    },
+    {
+      "id": "incident_171",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_172",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.2667,
+      "runs": 3
+    },
+    {
+      "id": "incident_173",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6333,
+      "runs": 3
+    },
+    {
+      "id": "incident_174",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_175",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_176",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 3
+    },
+    {
+      "id": "incident_177",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_178",
+      "category": "Database",
+      "correct": 0,
+      "avg_score": 0.4667,
+      "runs": 3
+    },
+    {
+      "id": "incident_179",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_180",
+      "category": "Cloud",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_181",
+      "category": "Infrastructure",
+      "correct": 0,
+      "avg_score": 0.3333,
+      "runs": 3
+    },
+    {
+      "id": "incident_182",
+      "category": "Memory",
+      "correct": 1,
+      "avg_score": 0.5,
+      "runs": 3
+    },
+    {
+      "id": "incident_183",
+      "category": "Security",
+      "correct": 1,
+      "avg_score": 0.5333,
+      "runs": 3
+    },
+    {
+      "id": "incident_184",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6,
+      "runs": 3
+    },
+    {
+      "id": "incident_185",
+      "category": "Network",
+      "correct": 1,
+      "avg_score": 0.9,
+      "runs": 3
+    },
+    {
+      "id": "incident_186",
+      "category": "Software",
+      "correct": 0,
+      "avg_score": 0.2667,
+      "runs": 3
+    },
+    {
+      "id": "incident_187",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_188",
+      "category": "Network",
+      "correct": 0,
+      "avg_score": 0.1333,
+      "runs": 3
+    },
+    {
+      "id": "incident_189",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_190",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.7667,
+      "runs": 3
+    },
+    {
+      "id": "incident_191",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_192",
+      "category": "Software",
+      "correct": 0,
+      "avg_score": 0.4,
+      "runs": 3
+    },
+    {
+      "id": "incident_193",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.6667,
+      "runs": 3
+    },
+    {
+      "id": "incident_194",
+      "category": "Software",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_195",
+      "category": "Configuration",
+      "correct": 1,
+      "avg_score": 0.7333,
+      "runs": 3
+    },
+    {
+      "id": "incident_196",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8333,
+      "runs": 3
+    },
+    {
+      "id": "incident_197",
+      "category": "Infrastructure",
+      "correct": 1,
+      "avg_score": 0.8,
+      "runs": 3
+    },
+    {
+      "id": "incident_198",
+      "category": "Database",
+      "correct": 1,
+      "avg_score": 0.7,
+      "runs": 1
+    }
+  ],
+  "by_category": {
+    "Configuration": {
+      "correct": 5,
+      "total": 6
+    },
+    "Network": {
+      "correct": 21,
+      "total": 24
+    },
+    "CI-CD": {
+      "correct": 1,
+      "total": 1
+    },
+    "Database": {
+      "correct": 37,
+      "total": 46
+    },
+    "Software": {
+      "correct": 25,
+      "total": 30
+    },
+    "Infrastructure": {
+      "correct": 57,
+      "total": 65
+    },
+    "Security": {
+      "correct": 14,
+      "total": 17
+    },
+    "Memory": {
+      "correct": 5,
+      "total": 6
+    },
+    "Cloud": {
+      "correct": 3,
+      "total": 3
+    }
+  },
+  "accuracy": 0.8485
+}

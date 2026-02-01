@@ -1,0 +1,10 @@
+{
+  "total_targets": 200,
+  "total_decoys": 1000,
+  "recall_at_1": 160,
+  "recall_at_3": 179,
+  "recall_at_5": 180,
+  "recall_at_1_pct": 80.0,
+  "recall_at_3_pct": 89.5,
+  "recall_at_5_pct": 90.0
+}

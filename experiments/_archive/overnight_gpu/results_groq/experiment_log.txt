@@ -1,0 +1,305 @@
+2026-02-01 21:08:42,783 | INFO     | ======================================================================
+2026-02-01 21:08:42,783 | INFO     | GraphRCA GPU Experiment Suite (Llama-70B via Groq)
+2026-02-01 21:08:42,783 | INFO     | ======================================================================
+2026-02-01 21:08:42,783 | INFO     | Started: 2026-02-01T21:08:42.783962
+2026-02-01 21:09:06,031 | INFO     | ======================================================================
+2026-02-01 21:09:06,032 | INFO     | GraphRCA GPU Experiment Suite (Llama-70B via Groq)
+2026-02-01 21:09:06,032 | INFO     | ======================================================================
+2026-02-01 21:09:06,032 | INFO     | Started: 2026-02-01T21:09:06.032199
+2026-02-01 21:09:06,547 | INFO     | ✓ Ollama connected
+2026-02-01 21:09:06,854 | INFO     | ✓ Groq connected
+2026-02-01 21:09:06,874 | INFO     | Loaded 200 incidents
+2026-02-01 21:09:06,874 | INFO     | ======================================================================
+2026-02-01 21:09:06,874 | INFO     | EXPERIMENT 1: RCA Accuracy (Llama-70B Judge via Groq)
+2026-02-01 21:09:06,874 | INFO     | ======================================================================
+2026-02-01 21:09:06,874 | INFO     | [1/200] incident_001 - Allegro
+2026-02-01 21:09:09,316 | INFO     | [2/200] incident_002 - Cloudflare
+2026-02-01 21:09:11,253 | INFO     | [3/200] incident_003 - Cloudflare
+2026-02-01 21:09:13,215 | INFO     | [4/200] incident_004 - TravisCI
+2026-02-01 21:09:15,670 | INFO     | [5/200] incident_005 - Railway
+2026-02-01 21:09:18,434 | INFO     | [6/200] incident_006 - Azure
+2026-02-01 21:09:20,639 | INFO     | [7/200] incident_007 - Joyent
+2026-02-01 21:09:23,300 | INFO     | [8/200] incident_008 - Stack Exchange
+2026-02-01 21:09:25,389 | INFO     | [9/200] incident_009 - Facebook
+2026-02-01 21:09:28,170 | INFO     | [10/200] incident_010 - Amazon
+2026-02-01 21:09:33,277 | INFO     | [11/200] incident_011 - Homebrew
+2026-02-01 21:09:42,144 | INFO     | [12/200] incident_012 - NPM
+2026-02-01 21:09:51,348 | INFO     | [13/200] incident_013 - Gitlab
+2026-02-01 21:10:00,242 | INFO     | [14/200] incident_014 - CrowdStrike
+2026-02-01 21:10:09,139 | INFO     | [15/200] incident_015 - GitHub
+2026-02-01 21:10:18,567 | INFO     | [16/200] incident_016 - Etsy
+2026-02-01 21:10:27,522 | INFO     | [17/200] incident_017 - Sentry
+2026-02-01 21:10:36,946 | INFO     | [18/200] incident_018 - Salesforce
+2026-02-01 21:10:45,421 | INFO     | [19/200] incident_019 - Slack
+2026-02-01 21:10:54,662 | INFO     | [20/200] incident_020 - Google
+2026-02-01 21:11:03,770 | INFO     | [21/200] incident_021 - CircleCI
+2026-02-01 21:11:12,263 | INFO     | [22/200] incident_022 - Discord
+2026-02-01 21:11:22,355 | INFO     | [23/200] incident_023 - Fastly
+2026-02-01 21:11:29,362 | INFO     | [24/200] incident_024 - Foursquare
+2026-02-01 21:11:38,337 | INFO     | [25/200] incident_025 - Flowdock
+2026-02-01 21:11:47,199 | INFO     | [26/200] incident_026 - Heroku
+2026-02-01 21:11:55,848 | INFO     | [27/200] incident_027 - Basecamp
+2026-02-01 21:12:05,474 | INFO     | [28/200] incident_028 - Bitly
+2026-02-01 21:12:14,277 | INFO     | [29/200] incident_029 - Knight Capital
+2026-02-01 21:12:22,780 | INFO     | [30/200] incident_030 - Keepthescore
+2026-02-01 21:12:34,261 | INFO     | [31/200] incident_031 - PagerDuty
+2026-02-01 21:12:42,855 | INFO     | [32/200] incident_032 - Roblox
+2026-02-01 21:12:50,578 | INFO     | [33/200] incident_033 - Spotify
+2026-02-01 21:13:00,097 | INFO     | [34/200] incident_034 - Slack
+2026-02-01 21:13:08,764 | INFO     | [35/200] incident_035 - Stack Exchange
+2026-02-01 21:13:17,391 | INFO     | [36/200] incident_036 - Amazon
+2026-02-01 21:13:27,342 | INFO     | [37/200] incident_037 - Twilio
+2026-02-01 21:13:37,074 | INFO     | [38/200] incident_038 - Zerodha
+2026-02-01 21:13:45,933 | INFO     | [39/200] incident_039 - Cloudflare
+2026-02-01 21:13:54,451 | INFO     | [40/200] incident_040 - Sentry
+2026-02-01 21:14:03,123 | INFO     | [41/200] incident_041 - Google
+2026-02-01 21:14:11,891 | INFO     | [42/200] incident_042 - Google
+2026-02-01 21:14:20,222 | INFO     | [43/200] incident_043 - TUI
+2026-02-01 21:14:28,771 | INFO     | [44/200] incident_044 - BBC
+2026-02-01 21:14:38,693 | INFO     | [45/200] incident_045 - Buildkite
+2026-02-01 21:14:49,328 | INFO     | [46/200] incident_046 - NASA
+2026-02-01 21:14:57,907 | INFO     | [47/200] incident_047 - OpenAI
+2026-02-01 21:15:06,348 | INFO     | [48/200] incident_048 - Grab
+2026-02-01 21:15:14,692 | INFO     | [49/200] incident_049 - Microsoft
+2026-02-01 21:15:24,262 | INFO     | [50/200] incident_050 - Atlassian
+2026-02-01 21:15:32,853 | INFO     | [51/200] incident_051 - Heroku
+2026-02-01 21:15:43,701 | INFO     | [52/200] incident_052 - Microsoft
+2026-02-01 21:15:52,349 | INFO     | [53/200] incident_053 - Google
+2026-02-01 21:16:00,938 | INFO     | [54/200] incident_054 - Google
+2026-02-01 21:16:09,417 | INFO     | [55/200] incident_055 - Reddit
+2026-02-01 21:16:18,125 | INFO     | [56/200] incident_056 - Strava
+2026-02-01 21:16:27,100 | INFO     | [57/200] incident_057 - Stripe
+2026-02-01 21:16:36,015 | INFO     | [58/200] incident_058 - Heroku
+2026-02-01 21:16:46,125 | INFO     | [59/200] incident_059 - Amazon
+2026-02-01 21:16:55,425 | INFO     | [60/200] incident_060 - WhatsApp
+2026-02-01 21:17:03,684 | INFO     | [61/200] incident_061 - Google
+2026-02-01 21:17:12,441 | INFO     | [62/200] incident_062 - Google
+2026-02-01 21:17:20,840 | INFO     | [63/200] incident_063 - Knight Capital
+2026-02-01 21:17:29,496 | INFO     | [64/200] incident_064 - WebKit code repository
+2026-02-01 21:17:39,383 | INFO     | [65/200] incident_065 - Azure
+2026-02-01 21:17:47,716 | INFO     | [66/200] incident_066 - Cloudflare
+2026-02-01 21:17:56,739 | INFO     | [67/200] incident_067 - Linux
+2026-02-01 21:18:05,379 | INFO     | [68/200] incident_068 - Linux
+2026-02-01 21:18:13,887 | INFO     | [69/200] incident_069 - Mozilla
+2026-02-01 21:18:22,324 | INFO     | [70/200] incident_070 - Github
+2026-02-01 21:18:31,641 | INFO     | [71/200] incident_071 - Heroku
+2026-02-01 21:18:40,854 | INFO     | [72/200] incident_072 - Allegro
+2026-02-01 21:18:49,505 | INFO     | [73/200] incident_073 - Amazon
+2026-02-01 21:18:58,641 | INFO     | [74/200] incident_074 - Amazon
+2026-02-01 21:19:07,251 | INFO     | [75/200] incident_075 - Amazon
+2026-02-01 21:19:16,985 | INFO     | [76/200] incident_076 - Amazon
+2026-02-01 21:19:26,327 | INFO     | [77/200] incident_077 - Amazon
+2026-02-01 21:19:34,865 | INFO     | [78/200] incident_078 - Amazon
+2026-02-01 21:19:43,528 | INFO     | [79/200] incident_079 - Amazon
+2026-02-01 21:19:52,288 | INFO     | [80/200] incident_080 - Amazon
+2026-02-01 21:20:01,080 | INFO     | [81/200] incident_081 - AppNexus
+2026-02-01 21:20:10,722 | INFO     | [82/200] incident_082 - AT&T
+2026-02-01 21:20:19,360 | INFO     | [83/200] incident_083 - Atlassian
+2026-02-01 21:20:30,231 | INFO     | [84/200] incident_084 - Basecamp
+2026-02-01 21:20:39,877 | INFO     | [85/200] incident_085 - Basecamp
+2026-02-01 21:20:49,118 | INFO     | [86/200] incident_086 - BBC Online
+2026-02-01 21:20:58,820 | INFO     | [87/200] incident_087 - Bintray
+2026-02-01 21:21:08,267 | INFO     | [88/200] incident_088 - Bitly
+2026-02-01 21:21:17,004 | INFO     | [89/200] incident_089 - BrowserStack
+2026-02-01 21:21:25,699 | INFO     | [90/200] incident_090 - Buildkite
+2026-02-01 21:21:34,294 | INFO     | [91/200] incident_091 - Bungie
+2026-02-01 21:21:41,912 | INFO     | [92/200] incident_092 - CCP Games
+2026-02-01 21:21:50,839 | INFO     | [93/200] incident_093 - CCP Games
+2026-02-01 21:21:59,148 | INFO     | [94/200] incident_094 - Chef.io
+2026-02-01 21:22:07,878 | INFO     | [95/200] incident_095 - CircleCI
+2026-02-01 21:22:16,916 | INFO     | [96/200] incident_096 - CircleCI
+2026-02-01 21:22:26,241 | INFO     | [97/200] incident_097 - Cloudflare
+2026-02-01 21:22:36,147 | INFO     | [98/200] incident_098 - Cloudflare
+2026-02-01 21:22:45,048 | INFO     | [99/200] incident_099 - CrowdStrike
+2026-02-01 21:22:53,516 | INFO     | [100/200] incident_100 - Datadog
+2026-02-01 21:23:02,773 | INFO     | [101/200] incident_101 - Discord
+2026-02-01 21:23:10,680 | INFO     | [102/200] incident_102 - Discord
+2026-02-01 21:23:21,409 | INFO     | [103/200] incident_103 - Dropbox
+2026-02-01 21:23:29,893 | INFO     | [104/200] incident_104 - Duo
+2026-02-01 21:23:38,427 | INFO     | [105/200] incident_105 - Epic Games
+2026-02-01 21:23:46,950 | INFO     | [106/200] incident_106 - European Space Agency
+2026-02-01 21:23:56,003 | INFO     | [107/200] incident_107 - Elastic
+2026-02-01 21:24:04,759 | INFO     | [108/200] incident_108 - Elastic
+2026-02-01 21:24:14,095 | INFO     | [109/200] incident_109 - ESLint
+2026-02-01 21:24:23,554 | INFO     | [110/200] incident_110 - Etsy
+2026-02-01 21:24:33,579 | INFO     | [111/200] incident_111 - Fastly
+2026-02-01 21:24:42,434 | INFO     | [112/200] incident_112 - Flowdock
+2026-02-01 21:24:51,189 | INFO     | [113/200] incident_113 - Foursquare
+2026-02-01 21:25:00,103 | INFO     | [114/200] incident_114 - Gentoo
+2026-02-01 21:25:09,764 | INFO     | [115/200] incident_115 - GitHub
+2026-02-01 21:25:19,045 | INFO     | [116/200] incident_116 - Gitlab
+2026-02-01 21:25:27,668 | INFO     | [117/200] incident_117 - Gitlab
+2026-02-01 21:25:36,564 | INFO     | [118/200] incident_118 - Google
+2026-02-01 21:25:46,360 | INFO     | [119/200] incident_119 - Google
+2026-02-01 21:25:55,010 | INFO     | [120/200] incident_120 - Google
+2026-02-01 21:26:04,617 | INFO     | [121/200] incident_121 - Google
+2026-02-01 21:26:13,267 | INFO     | [122/200] incident_122 - Google
+2026-02-01 21:26:22,385 | INFO     | [123/200] incident_123 - GPS/GLONASS
+2026-02-01 21:26:31,862 | INFO     | [124/200] incident_124 - Healthcare.gov
+2026-02-01 21:26:40,937 | INFO     | [125/200] incident_125 - Heroku
+2026-02-01 21:26:50,255 | INFO     | [126/200] incident_126 - Heroku
+2026-02-01 21:27:43,343 | WARNING  | Groq attempt 1/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99999, Requested 233. Please try again in 3m20.448s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:27:48,416 | WARNING  | Groq attempt 2/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99993, Requested 233. Please try again in 3m15.263999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:27:53,487 | WARNING  | Groq attempt 3/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99987, Requested 233. Please try again in 3m10.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:02,403 | WARNING  | Groq attempt 1/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99977, Requested 238. Please try again in 3m5.76s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:07,478 | WARNING  | Groq attempt 2/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99971, Requested 238. Please try again in 3m0.576s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:12,550 | WARNING  | Groq attempt 3/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99965, Requested 238. Please try again in 2m55.392s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:17,555 | INFO     | [127/200] incident_127 - Heroku
+2026-02-01 21:28:18,338 | WARNING  | Groq attempt 1/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99958, Requested 239. Please try again in 2m50.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:26,414 | WARNING  | Groq attempt 2/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99949, Requested 239. Please try again in 2m42.432s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:31,489 | WARNING  | Groq attempt 3/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99943, Requested 239. Please try again in 2m37.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:37,312 | WARNING  | Groq attempt 1/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99936, Requested 244. Please try again in 2m35.519999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:42,385 | WARNING  | Groq attempt 2/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99930, Requested 244. Please try again in 2m30.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:47,456 | WARNING  | Groq attempt 3/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99924, Requested 244. Please try again in 2m25.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:53,450 | WARNING  | Groq attempt 1/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99918, Requested 268. Please try again in 2m40.704s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:28:58,525 | WARNING  | Groq attempt 2/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99912, Requested 268. Please try again in 2m35.519999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:29:03,597 | WARNING  | Groq attempt 3/3 failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jeasa7yrfsvahhssq9r475th` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99906, Requested 268. Please try again in 2m30.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+2026-02-01 21:31:41,643 | INFO     | ======================================================================
+2026-02-01 21:31:41,643 | INFO     | GraphRCA GPU Experiment Suite (Llama-70B via Groq)
+2026-02-01 21:31:41,643 | INFO     | ======================================================================
+2026-02-01 21:31:41,643 | INFO     | Started: 2026-02-01T21:31:41.643248
+2026-02-01 21:31:42,090 | INFO     | ✓ Ollama connected
+2026-02-01 21:31:42,282 | INFO     | ✓ Groq connected
+2026-02-01 21:31:42,299 | INFO     | Loaded 200 incidents
+2026-02-01 21:31:42,299 | INFO     | ======================================================================
+2026-02-01 21:31:42,299 | INFO     | EXPERIMENT 1: RCA Accuracy (Llama-70B Judge via Groq)
+2026-02-01 21:31:42,299 | INFO     | ======================================================================
+2026-02-01 21:31:42,300 | INFO     | Resuming from incident 125
+2026-02-01 21:31:42,300 | INFO     | [126/200] incident_126 - Heroku
+2026-02-01 21:31:44,916 | INFO     | [127/200] incident_127 - Heroku
+2026-02-01 21:31:47,070 | INFO     | [128/200] incident_128 - Heroku
+2026-02-01 21:31:50,791 | INFO     | [129/200] incident_129 - Heroku
+2026-02-01 21:31:53,916 | INFO     | [130/200] incident_130 - Homebrew
+2026-02-01 21:31:56,066 | INFO     | [131/200] incident_131 - Honeycomb
+2026-02-01 21:31:59,957 | INFO     | [132/200] incident_132 - Honeycomb
+2026-02-01 21:32:03,753 | INFO     | [133/200] incident_133 - Honeycomb
+2026-02-01 21:32:09,282 | INFO     | [134/200] incident_134 - Honeycomb
+2026-02-01 21:32:12,016 | INFO     | [135/200] incident_135 - incident.io
+2026-02-01 21:32:14,754 | INFO     | [136/200] incident_136 - Indian Electricity Grid
+2026-02-01 21:32:23,053 | INFO     | [137/200] incident_137 - Instapaper
+2026-02-01 21:32:31,747 | INFO     | [138/200] incident_138 - Intel
+2026-02-01 21:32:41,396 | INFO     | [139/200] incident_139 - Joyent
+2026-02-01 21:32:50,446 | INFO     | [140/200] incident_140 - Joyent
+2026-02-01 21:32:58,924 | INFO     | [141/200] incident_141 - Kickstarter
+2026-02-01 21:33:08,091 | INFO     | [142/200] incident_142 - Kings College London
+2026-02-01 21:33:16,908 | INFO     | [143/200] incident_143 - Launchdarkly
+2026-02-01 21:33:25,882 | INFO     | [144/200] incident_144 - Mailgun
+2026-02-01 21:33:35,947 | INFO     | [145/200] incident_145 - Mandrill
+2026-02-01 21:33:45,108 | INFO     | [146/200] incident_146 - Medium
+2026-02-01 21:33:54,045 | INFO     | [147/200] incident_147 - Metrist
+2026-02-01 21:34:02,959 | INFO     | [148/200] incident_148 - NASA
+2026-02-01 21:34:12,609 | INFO     | [149/200] incident_149 - NASA
+2026-02-01 21:34:21,561 | INFO     | [150/200] incident_150 - NASA
+2026-02-01 21:34:31,433 | INFO     | [151/200] incident_151 - Netflix
+2026-02-01 21:34:40,312 | INFO     | [152/200] incident_152 - North American Electric Power System
+2026-02-01 21:34:49,164 | INFO     | [153/200] incident_153 - Okta
+2026-02-01 21:34:58,273 | INFO     | [154/200] incident_154 - OpenAI
+2026-02-01 21:35:09,122 | INFO     | [155/200] incident_155 - Pagerduty
+2026-02-01 21:35:18,325 | INFO     | [156/200] incident_156 - PagerDuty
+2026-02-01 21:35:27,566 | INFO     | [157/200] incident_157 - Parity
+2026-02-01 21:35:37,683 | INFO     | [158/200] incident_158 - Platform.sh
+2026-02-01 21:35:46,182 | INFO     | [159/200] incident_159 - Reddit
+2026-02-01 21:35:54,626 | INFO     | [160/200] incident_160 - Reddit
+2026-02-01 21:36:03,112 | INFO     | [161/200] incident_161 - Roblox
+2026-02-01 21:36:12,776 | INFO     | [162/200] incident_162 - Salesforce
+2026-02-01 21:36:22,237 | INFO     | [163/200] incident_163 - Salesforce
+2026-02-01 21:36:32,935 | INFO     | [164/200] incident_164 - Sentry
+2026-02-01 21:36:41,785 | INFO     | [165/200] incident_165 - Shapeshift
+2026-02-01 21:36:51,391 | INFO     | [166/200] incident_166 - Skyliner
+2026-02-01 21:37:00,160 | INFO     | [167/200] incident_167 - Slack
+2026-02-01 21:37:10,348 | INFO     | [168/200] incident_168 - Slack
+2026-02-01 21:37:19,115 | INFO     | [169/200] incident_169 - Slack
+2026-02-01 21:37:27,779 | INFO     | [170/200] incident_170 - Spotify
+2026-02-01 21:37:36,463 | INFO     | [171/200] incident_171 - Square
+2026-02-01 21:37:45,104 | INFO     | [172/200] incident_172 - Stackdriver
+2026-02-01 21:37:53,378 | INFO     | [173/200] incident_173 - Stack Exchange
+2026-02-01 21:38:02,819 | INFO     | [174/200] incident_174 - Stack Exchange
+2026-02-01 21:38:12,099 | INFO     | [175/200] incident_175 - Stack Exchange
+2026-02-01 21:38:21,242 | INFO     | [176/200] incident_176 - Stack Exchange
+2026-02-01 21:38:30,296 | INFO     | [177/200] incident_177 - Strava
+2026-02-01 21:38:39,018 | INFO     | [178/200] incident_178 - Stripe
+2026-02-01 21:38:47,485 | INFO     | [179/200] incident_179 - Sweden
+2026-02-01 21:38:56,170 | INFO     | [180/200] incident_180 - Tarsnap
+2026-02-01 21:39:04,947 | INFO     | [181/200] incident_181 - Telstra
+2026-02-01 21:39:13,760 | INFO     | [182/200] incident_182 - Therac-25
+2026-02-01 21:39:22,616 | INFO     | [183/200] incident_183 - trivago
+2026-02-01 21:39:31,467 | INFO     | [184/200] incident_184 - Twilio
+2026-02-01 21:39:41,991 | INFO     | [185/200] incident_185 - Twilio
+2026-02-01 21:39:50,552 | INFO     | [186/200] incident_186 - Valve
+2026-02-01 21:39:59,049 | INFO     | [187/200] incident_187 - Xubuntu
+2026-02-01 21:40:07,676 | INFO     | [188/200] incident_188 - Yeller
+2026-02-01 21:40:16,765 | INFO     | [189/200] incident_189 - Zerodha
+2026-02-01 21:40:26,322 | INFO     | [190/200] incident_190 - Zerodha
+2026-02-01 21:40:35,982 | INFO     | [191/200] incident_191 - Roblox
+2026-02-01 21:40:46,255 | INFO     | [192/200] incident_192 - Fastly
+2026-02-01 21:40:54,806 | INFO     | [193/200] incident_193 - GitLab
+2026-02-01 21:41:02,783 | INFO     | [194/200] incident_194 - Spotify
+2026-02-01 21:41:11,491 | INFO     | [195/200] incident_195 - LinkedIn
+2026-02-01 21:41:20,572 | INFO     | [196/200] incident_196 - Dropbox
+2026-02-01 21:41:29,451 | INFO     | [197/200] incident_197 - Netflix
+2026-02-01 21:41:38,784 | INFO     | [198/200] incident_198 - Uber
+2026-02-01 21:41:47,210 | INFO     | [199/200] incident_199 - Pinterest
+2026-02-01 21:41:57,737 | INFO     | [200/200] incident_200 - Airbnb
+2026-02-01 21:42:07,356 | INFO     | ✅ RCA Accuracy complete: 81.5%
+2026-02-01 21:42:07,356 | INFO     | ======================================================================
+2026-02-01 21:42:07,357 | INFO     | EXPERIMENT 2: RAG vs Baseline (Llama-70B Judge via Groq)
+2026-02-01 21:42:07,357 | INFO     | ======================================================================
+2026-02-01 21:42:07,357 | INFO     | Train: 150, Test: 50
+2026-02-01 21:42:07,357 | INFO     | [1/50] incident_138
+2026-02-01 21:42:14,804 | INFO     | [2/50] incident_118
+2026-02-01 21:42:20,205 | INFO     | [3/50] incident_012
+2026-02-01 21:42:24,885 | INFO     | [4/50] incident_068
+2026-02-01 21:42:30,308 | INFO     | [5/50] incident_089
+2026-02-01 21:42:36,245 | INFO     | [6/50] incident_092
+2026-02-01 21:42:43,052 | INFO     | [7/50] incident_025
+2026-02-01 21:42:49,208 | INFO     | [8/50] incident_098
+2026-02-01 21:42:53,958 | INFO     | [9/50] incident_183
+2026-02-01 21:43:01,437 | INFO     | [10/50] incident_191
+2026-02-01 21:43:08,955 | INFO     | [11/50] incident_087
+2026-02-01 21:43:15,911 | INFO     | [12/50] incident_182
+2026-02-01 21:43:22,957 | INFO     | [13/50] incident_040
+2026-02-01 21:43:30,358 | INFO     | [14/50] incident_169
+2026-02-01 21:43:35,623 | INFO     | [15/50] incident_088
+2026-02-01 21:43:41,920 | INFO     | [16/50] incident_186
+2026-02-01 21:43:47,794 | INFO     | [17/50] incident_041
+2026-02-01 21:43:53,751 | INFO     | [18/50] incident_002
+2026-02-01 21:44:01,363 | INFO     | [19/50] incident_072
+2026-02-01 21:44:08,465 | INFO     | [20/50] incident_151
+2026-02-01 21:44:13,612 | INFO     | [21/50] incident_115
+2026-02-01 21:44:19,853 | INFO     | [22/50] incident_057
+2026-02-01 21:44:24,714 | INFO     | [23/50] incident_108
+2026-02-01 21:44:30,279 | INFO     | [24/50] incident_192
+2026-02-01 21:44:36,344 | INFO     | [25/50] incident_167
+2026-02-01 21:44:43,797 | INFO     | [26/50] incident_051
+2026-02-01 21:44:47,939 | INFO     | [27/50] incident_144
+2026-02-01 21:44:54,448 | INFO     | [28/50] incident_198
+2026-02-01 21:45:01,663 | INFO     | [29/50] incident_155
+2026-02-01 21:45:08,705 | INFO     | [30/50] incident_130
+2026-02-01 21:45:15,070 | INFO     | [31/50] incident_060
+2026-02-01 21:45:21,331 | INFO     | [32/50] incident_056
+2026-02-01 21:45:26,251 | INFO     | [33/50] incident_024
+2026-02-01 21:45:33,673 | INFO     | [34/50] incident_008
+2026-02-01 21:45:39,060 | INFO     | [35/50] incident_009
+2026-02-01 21:45:44,539 | INFO     | [36/50] incident_109
+2026-02-01 21:45:50,097 | INFO     | [37/50] incident_152
+2026-02-01 21:45:55,790 | INFO     | [38/50] incident_023
+2026-02-01 21:46:01,894 | INFO     | [39/50] incident_140
+2026-02-01 21:46:08,611 | INFO     | [40/50] incident_174
+2026-02-01 21:46:14,339 | INFO     | [41/50] incident_027
+2026-02-01 21:46:21,912 | INFO     | [42/50] incident_189
+2026-02-01 21:46:27,455 | INFO     | [43/50] incident_036
+2026-02-01 21:46:33,635 | INFO     | [44/50] incident_058
+2026-02-01 21:46:39,358 | INFO     | [45/50] incident_063
+2026-02-01 21:46:45,717 | INFO     | [46/50] incident_071
+2026-02-01 21:46:51,733 | INFO     | [47/50] incident_190
+2026-02-01 21:46:58,835 | INFO     | [48/50] incident_007
+2026-02-01 21:47:03,822 | INFO     | [49/50] incident_029
+2026-02-01 21:47:11,269 | INFO     | [50/50] incident_164
+2026-02-01 21:47:17,149 | INFO     | ✅ RAG Comparison complete: Baseline=73.4%, RAG=52.2%
+2026-02-01 21:47:17,149 | INFO     | 
+======================================================================
+2026-02-01 21:47:17,149 | INFO     | COMPLETE!
+2026-02-01 21:47:17,150 | INFO     | ======================================================================
+2026-02-01 21:47:17,150 | INFO     |   RCA Accuracy: 81.5%
+2026-02-01 21:47:17,150 | INFO     |   Baseline: 73.4%
+2026-02-01 21:47:17,150 | INFO     |   RAG: 52.2%
