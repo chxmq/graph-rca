@@ -59,6 +59,7 @@ CONFIG = {
     "judge_model": "qwen3:32b",       # For scoring (larger model = more rigorous evaluation)
     "embed_model": "nomic-embed-text",
     "temperature": 0.2,
+    "timeout": 300.0,       # 5 minute timeout for preventing hangs
     
     # ChromaDB
     "chroma_host": "localhost",
@@ -754,7 +755,7 @@ def main():
     # Initialize clients
     try:
         import ollama
-        ollama_client = ollama.Client(host=CONFIG["ollama_host"])
+        ollama_client = ollama.Client(host=CONFIG["ollama_host"], timeout=CONFIG["timeout"])
         # Test connection
         ollama_client.list()
         logger.info("✓ Ollama connected")
