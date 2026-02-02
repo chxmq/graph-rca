@@ -57,6 +57,7 @@ def run_batch_experiment(client: ollama.Client) -> dict:
     print("=" * 70)
     print("EXPERIMENT: Batch Inference Benchmark")
     print(f"Config: {CONFIG['num_logs']} logs, {CONFIG['num_runs']} runs per batch size")
+    print(f"Device: {CONFIG.get('device', 'Unknown')}")
     print("=" * 70)
     
     logs = (SAMPLE_LOGS * 10)[:CONFIG["num_logs"]]
@@ -116,14 +117,27 @@ def run_batch_experiment(client: ollama.Client) -> dict:
         print(f"  → Avg: {throughput:.2f} logs/s, {latency:.0f}ms/log, {throughput/baseline_throughput:.1f}× speedup")
     
     results["timestamp"] = datetime.now().isoformat()
+    results["hardware"] = CONFIG.get("device", "Unknown")
     return results
 
 
+import argparse
+
 def main():
+    parser = argparse.ArgumentParser(description="Run Batch Inference Experiment")
+    parser.add_argument("--device", type=str, required=True, help="Device name (e.g., 'Quadro GV100', 'NVIDIA A100-40GB')")
+    args = parser.parse_args()
+    
+    CONFIG["device"] = args.device
+
     client = ollama.Client(host=CONFIG["ollama_host"])
     results = run_batch_experiment(client)
     
-    output_path = Path(__file__).parent / "data" / "batch_results.json"
+    # Create filename safe string
+    device_slug = args.device.lower().replace(" ", "_").replace("-", "_")
+    output_filename = f"batch_results_{device_slug}.json"
+    
+    output_path = Path(__file__).parent / "data" / output_filename
     output_path.parent.mkdir(exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
