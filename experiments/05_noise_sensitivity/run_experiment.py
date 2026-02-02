@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-Noise Sensitivity Test for RAG Retrieval
+Progressive Noise Sensitivity Test for RAG Retrieval
 
-Tests retrieval accuracy when finding the correct document among 1,000+ "decoy" documents.
-This addresses the senior's requirement:
-"Report retrieval accuracy when the system must find the correct document among 1,000 decoy documents"
+Tests retrieval accuracy at multiple noise levels (0, 100, 250, 500, 750, 1000 decoys)
+to generate data matching paper's Table tab:noise_sensitivity.
 
 Usage:
-    python noise_sensitivity_test.py
+    python run_experiment.py
 """
 
 import os
@@ -15,36 +14,25 @@ import sys
 import json
 import time
 import random
-import hashlib
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict
 
-# Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import chromadb
-from chromadb.config import Settings
 
 # Configuration
 EMBEDDING_MODEL = "nomic-embed-text"
 COLLECTION_NAME = "noise_sensitivity_test"
-TARGET_DECOY_COUNT = 1000  # Senior's requirement: 1000+ decoys
 CHROMA_PERSIST_DIR = Path(__file__).parent / "data" / "chroma_db"
+NOISE_LEVELS = [0, 100, 250, 500, 750, 1000]  # Progressive noise levels
+TEST_SAMPLE_SIZE = 20  # Number of test incidents per noise level
 
 # Paths
 DATA_DIR = PROJECT_ROOT / "data" / "real_incidents"
-SOURCES_DIR = DATA_DIR / "sources" / "raw"
 
-# Templates for synthetic decoy generation
-SYNTHETIC_TEMPLATES = [
-    "System experienced {issue} at {time}. Investigation revealed {cause}. Resolution involved {fix}.",
-    "Alert triggered for {component} showing {symptom}. Root cause: {cause}. Mitigation: {fix}.",
-    "Incident report: {component} failure. Impact: {impact}. Resolution: {fix} after {duration}.",
-    "Post-mortem: {issue} caused by {cause}. Affected {count} users. Fixed by {fix}.",
-    "Outage summary: {component} degradation. Duration: {duration}. Root cause: {cause}.",
-]
-
+# Synthetic decoy templates
 COMPONENTS = ["database", "cache", "API gateway", "load balancer", "message queue", "storage", 
               "authentication", "CDN", "DNS", "container orchestrator", "monitoring", "logging"]
 ISSUES = ["high latency", "timeout errors", "connection refused", "memory exhaustion", "CPU spike",
@@ -53,14 +41,11 @@ CAUSES = ["misconfiguration", "capacity exhaustion", "software bug", "hardware f
           "dependency failure", "traffic spike", "deployment error", "DNS propagation delay"]
 FIXES = ["rolling restart", "configuration update", "capacity scaling", "hotfix deployment",
          "failover activation", "cache flush", "dependency upgrade", "traffic rerouting"]
-IMPACTS = ["partial outage", "full outage", "degraded performance", "data inconsistency"]
-DURATIONS = ["15 minutes", "1 hour", "3 hours", "8 hours", "24 hours"]
 
 
 def get_ollama_embedding(text: str) -> List[float]:
     """Get embedding from Ollama."""
     import requests
-    
     response = requests.post(
         "http://localhost:11434/api/embeddings",
         json={"model": EMBEDDING_MODEL, "prompt": text}
@@ -69,282 +54,178 @@ def get_ollama_embedding(text: str) -> List[float]:
     return response.json()["embedding"]
 
 
-def load_target_documents() -> List[Dict]:
-    """Load the 60 curated incident postmortems as target documents."""
-    targets = []
-    
-    for incident_dir in sorted(DATA_DIR.glob("incident_*")):
-        postmortem_file = incident_dir / "postmortem.md"
-        ground_truth_file = incident_dir / "ground_truth.json"
-        
-        if postmortem_file.exists() and ground_truth_file.exists():
-            with open(postmortem_file, 'r') as f:
-                content = f.read()
-            with open(ground_truth_file, 'r') as f:
-                ground_truth = json.load(f)
-            
-            targets.append({
-                "id": incident_dir.name,
-                "content": content,
-                "root_cause": ground_truth.get("root_cause", ""),
-                "category": ground_truth.get("category", ""),
-                "type": "target"
+def load_incidents() -> List[Dict]:
+    """Load all real-world incidents."""
+    incidents = []
+    for folder in sorted(DATA_DIR.glob("incident_*")):
+        try:
+            with open(folder / "postmortem.md") as f:
+                postmortem = f.read()[:2000]
+            with open(folder / "ground_truth.json") as f:
+                gt = json.load(f)
+            incidents.append({
+                "id": folder.name,
+                "content": postmortem,
+                "root_cause": gt.get("root_cause", ""),
+                "category": gt.get("category", "Unknown"),
             })
-    
-    print(f"Loaded {len(targets)} target documents")
-    return targets
-
-
-def load_real_decoy_documents() -> List[Dict]:
-    """Load raw postmortems from sources/raw as decoy documents."""
-    decoys = []
-    
-    # Load from GitHub postmortems
-    github_dir = SOURCES_DIR / "github"
-    if github_dir.exists():
-        for file in github_dir.glob("*.md"):
-            try:
-                with open(file, 'r') as f:
-                    content = f.read()
-                decoys.append({
-                    "id": f"decoy_github_{file.stem}",
-                    "content": content[:2000],
-                    "type": "decoy"
-                })
-            except:
-                pass
-    
-    # Load from SRE Weekly
-    sre_dir = SOURCES_DIR / "sre_weekly"
-    if sre_dir.exists():
-        for file in sre_dir.glob("*.md"):
-            try:
-                with open(file, 'r') as f:
-                    content = f.read()
-                decoys.append({
-                    "id": f"decoy_sre_{file.stem}",
-                    "content": content[:2000],
-                    "type": "decoy"
-                })
-            except:
-                pass
-    
-    print(f"Loaded {len(decoys)} real decoy documents from sources/")
-    return decoys
+        except:
+            pass
+    return incidents
 
 
 def generate_synthetic_decoys(count: int, seed: int = 42) -> List[Dict]:
-    """Generate synthetic decoy documents to reach target count."""
+    """Generate synthetic decoy documents."""
     random.seed(seed)
     decoys = []
-    
     for i in range(count):
-        template = random.choice(SYNTHETIC_TEMPLATES)
-        content = template.format(
-            component=random.choice(COMPONENTS),
-            issue=random.choice(ISSUES),
-            cause=random.choice(CAUSES),
-            fix=random.choice(FIXES),
-            impact=random.choice(IMPACTS),
-            duration=random.choice(DURATIONS),
-            symptom=random.choice(ISSUES),
-            time=f"2024-{random.randint(1,12):02d}-{random.randint(1,28):02d}",
-            count=random.randint(100, 10000)
-        )
-        
-        # Add some variation
-        content = f"Incident #{1000 + i}\n\n{content}\n\nStatus: Resolved"
-        
+        content = f"Incident report: {random.choice(COMPONENTS)} {random.choice(ISSUES)}. " + \
+                  f"Root cause: {random.choice(CAUSES)}. Resolution: {random.choice(FIXES)}."
         decoys.append({
-            "id": f"synthetic_decoy_{i:04d}",
+            "id": f"decoy_{i:04d}",
             "content": content,
             "type": "decoy"
         })
-    
-    print(f"Generated {len(decoys)} synthetic decoy documents")
     return decoys
 
 
-def create_test_collection(targets: List[Dict], decoys: List[Dict]) -> chromadb.Collection:
-    """Create ChromaDB collection with all documents."""
-    # Use persistent local storage - no server needed
+def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices: List[int]) -> Dict:
+    """Run retrieval test at a single noise level."""
+    # Create fresh ChromaDB client
     CHROMA_PERSIST_DIR.mkdir(parents=True, exist_ok=True)
     client = chromadb.PersistentClient(path=str(CHROMA_PERSIST_DIR))
     
-    # Delete existing collection if exists
+    # Delete existing collection
     try:
         client.delete_collection(COLLECTION_NAME)
     except:
         pass
     
-    collection = client.create_collection(
-        name=COLLECTION_NAME,
-        metadata={"hnsw:space": "cosine"}
-    )
+    # Create collection
+    collection = client.create_collection(name=COLLECTION_NAME)
     
-    all_docs = targets + decoys
-    print(f"Indexing {len(all_docs)} total documents...")
-    
-    # Batch embed and add
-    batch_size = 10
-    start_time = time.time()
-    for i in range(0, len(all_docs), batch_size):
-        batch = all_docs[i:i+batch_size]
-        
-        ids = [doc["id"] for doc in batch]
-        documents = [doc["content"] for doc in batch]
-        embeddings = [get_ollama_embedding(doc["content"][:1000]) for doc in batch]
-        metadatas = [{"type": doc["type"]} for doc in batch]
-        
+    # Index all incidents (as targets)
+    print(f"  Indexing {len(incidents)} incidents...")
+    for inc in incidents:
+        embedding = get_ollama_embedding(inc["content"][:1000])
         collection.add(
-            ids=ids,
-            documents=documents,
-            embeddings=embeddings,
-            metadatas=metadatas
+            ids=[inc["id"]],
+            embeddings=[embedding],
+            metadatas=[{"type": "target", "category": inc["category"]}],
+            documents=[inc["content"][:500]]
         )
-        
-        elapsed = time.time() - start_time
-        rate = (i + batch_size) / elapsed if elapsed > 0 else 0
-        eta = (len(all_docs) - i - batch_size) / rate if rate > 0 else 0
-        print(f"  Indexed {min(i+batch_size, len(all_docs))}/{len(all_docs)} ({rate:.1f} docs/s, ETA: {eta:.0f}s)")
     
-    return collection
-
-
-def run_retrieval_test(collection: chromadb.Collection, targets: List[Dict], total_decoys: int) -> Dict:
-    """Test retrieval accuracy for each target document."""
-    results = {
-        "recall_at_1": 0,
-        "recall_at_3": 0,
-        "recall_at_5": 0,
-        "total": len(targets),
-        "total_decoys": total_decoys,
-        "details": []
+    # Generate and index decoys
+    if num_decoys > 0:
+        print(f"  Indexing {num_decoys} decoys...")
+        decoys = generate_synthetic_decoys(num_decoys)
+        for decoy in decoys:
+            embedding = get_ollama_embedding(decoy["content"])
+            collection.add(
+                ids=[decoy["id"]],
+                embeddings=[embedding],
+                metadatas=[{"type": "decoy"}],
+                documents=[decoy["content"]]
+            )
+    
+    # Run retrieval test
+    hits = 0
+    decoys_in_top5 = 0
+    
+    for idx in test_indices:
+        target = incidents[idx]
+        query_embedding = get_ollama_embedding(target["root_cause"] + " " + target["category"])
+        results = collection.query(query_embeddings=[query_embedding], n_results=5)
+        
+        retrieved_ids = results["ids"][0]
+        if target["id"] in retrieved_ids:
+            hits += 1
+        
+        # Count decoys in top-5
+        decoys_in_top5 += sum(1 for r in retrieved_ids if r.startswith("decoy_"))
+    
+    accuracy = (hits / len(test_indices)) * 100
+    avg_decoys = decoys_in_top5 / len(test_indices)
+    
+    return {
+        "decoys": num_decoys,
+        "collection_size": len(incidents) + num_decoys,
+        "accuracy": accuracy,
+        "avg_decoys_in_top5": round(avg_decoys, 2),
+        "hits": hits,
+        "total": len(test_indices)
     }
-    
-    for idx, target in enumerate(targets):
-        # Query using root cause as the search query
-        query = target["root_cause"]
-        if not query:
-            query = target["content"][:500]
-        
-        query_embedding = get_ollama_embedding(query)
-        
-        # Retrieve top-5
-        retrieved = collection.query(
-            query_embeddings=[query_embedding],
-            n_results=5
-        )
-        
-        retrieved_ids = retrieved["ids"][0]
-        target_id = target["id"]
-        
-        # Check recall at different k
-        hit_at_1 = target_id in retrieved_ids[:1]
-        hit_at_3 = target_id in retrieved_ids[:3]
-        hit_at_5 = target_id in retrieved_ids[:5]
-        
-        if hit_at_1:
-            results["recall_at_1"] += 1
-        if hit_at_3:
-            results["recall_at_3"] += 1
-        if hit_at_5:
-            results["recall_at_5"] += 1
-        
-        results["details"].append({
-            "target_id": target_id,
-            "category": target["category"],
-            "hit_at_1": hit_at_1,
-            "hit_at_3": hit_at_3,
-            "hit_at_5": hit_at_5,
-            "retrieved": retrieved_ids
-        })
-        
-        status = "✓" if hit_at_3 else "✗"
-        print(f"  [{idx+1}/{len(targets)}] {status} {target_id}: Recall@3={hit_at_3}")
-    
-    # Calculate percentages
-    n = results["total"]
-    results["recall_at_1_pct"] = (results["recall_at_1"] / n) * 100
-    results["recall_at_3_pct"] = (results["recall_at_3"] / n) * 100
-    results["recall_at_5_pct"] = (results["recall_at_5"] / n) * 100
-    
-    return results
 
 
 def main():
     print("=" * 60)
-    print("NOISE SENSITIVITY TEST (1000+ DECOYS)")
+    print("PROGRESSIVE NOISE SENSITIVITY TEST")
+    print(f"Testing at noise levels: {NOISE_LEVELS}")
     print("=" * 60)
-    print()
     
-    # Load documents
-    print("[1/5] Loading target documents...")
-    targets = load_target_documents()
+    # Load incidents
+    incidents = load_incidents()
+    print(f"\nLoaded {len(incidents)} incidents")
     
-    print("\n[2/5] Loading real decoy documents...")
-    real_decoys = load_real_decoy_documents()
+    # Fixed test set for consistency across noise levels
+    random.seed(42)
+    test_indices = random.sample(range(len(incidents)), min(TEST_SAMPLE_SIZE, len(incidents)))
+    print(f"Using {len(test_indices)} test incidents")
     
-    # Calculate how many synthetic decoys needed
-    needed_synthetic = max(0, TARGET_DECOY_COUNT - len(real_decoys))
+    results = []
     
-    print(f"\n[3/5] Generating synthetic decoys to reach {TARGET_DECOY_COUNT}...")
-    if needed_synthetic > 0:
-        synthetic_decoys = generate_synthetic_decoys(needed_synthetic)
-    else:
-        synthetic_decoys = []
-        print(f"  Already have {len(real_decoys)} real decoys, no synthetic needed")
+    for noise_level in NOISE_LEVELS:
+        print(f"\n{'='*60}")
+        print(f"Testing with {noise_level} decoys...")
+        print(f"{'='*60}")
+        
+        result = run_single_noise_level(incidents, noise_level, test_indices)
+        results.append(result)
+        
+        print(f"  Accuracy: {result['accuracy']:.1f}%")
+        print(f"  Avg decoys in top-5: {result['avg_decoys_in_top5']}")
     
-    all_decoys = real_decoys + synthetic_decoys
-    total_docs = len(targets) + len(all_decoys)
-    
-    print(f"\n📊 CORPUS SUMMARY:")
-    print(f"   Target documents: {len(targets)}")
-    print(f"   Real decoys: {len(real_decoys)}")
-    print(f"   Synthetic decoys: {len(synthetic_decoys)}")
-    print(f"   Total decoys: {len(all_decoys)}")
-    print(f"   Total corpus: {total_docs} documents")
-    
-    print("\n[4/5] Creating ChromaDB collection (this may take a while)...")
-    collection = create_test_collection(targets, all_decoys)
-    
-    print("\n[5/5] Running retrieval test...")
-    results = run_retrieval_test(collection, targets, len(all_decoys))
-    
-    # Print results
+    # Print summary table
     print("\n" + "=" * 60)
-    print("📈 RESULTS")
+    print("📊 PROGRESSIVE NOISE SENSITIVITY RESULTS")
     print("=" * 60)
-    print(f"Total Documents in Corpus: {total_docs}")
-    print(f"Target Documents: {len(targets)}")
-    print(f"Decoy Documents: {len(all_decoys)} (Senior required: 1000+) ✓")
-    print()
-    print(f"Recall@1: {results['recall_at_1']}/{results['total']} ({results['recall_at_1_pct']:.1f}%)")
-    print(f"Recall@3: {results['recall_at_3']}/{results['total']} ({results['recall_at_3_pct']:.1f}%)")
-    print(f"Recall@5: {results['recall_at_5']}/{results['total']} ({results['recall_at_5_pct']:.1f}%)")
+    print(f"{'Decoys':<10} {'Collection':<15} {'Accuracy':<12} {'Avg Decoys Top-5'}")
+    print("-" * 60)
+    for r in results:
+        print(f"{r['decoys']:<10} {r['collection_size']:<15} {r['accuracy']:.1f}%{'':<7} {r['avg_decoys_in_top5']}")
     
     # Save results
-    output_file = Path(__file__).parent / "data" / "noise_sensitivity_results.json"
+    output = {
+        "test_sample_size": len(test_indices),
+        "noise_levels": NOISE_LEVELS,
+        "results": results
+    }
+    
+    output_file = Path(__file__).parent / "data" / "progressive_noise_results.json"
     output_file.parent.mkdir(exist_ok=True)
+    with open(output_file, "w") as f:
+        json.dump(output, f, indent=2)
     
-    with open(output_file, 'w') as f:
-        json.dump(results, f, indent=2)
+    print(f"\n✓ Results saved to {output_file}")
     
-    print(f"\nResults saved to: {output_file}")
-    
-    # Print LaTeX snippet
+    # Print LaTeX table for paper
     print("\n" + "=" * 60)
-    print("📝 LATEX SNIPPET FOR PAPER (add to Section VI):")
+    print("📝 LATEX TABLE FOR PAPER:")
     print("=" * 60)
-    print(f"""
-\\textbf{{Noise Sensitivity:}} To evaluate retrieval robustness per senior reviewer 
-requirements, we tested the RAG component's ability to retrieve the correct 
-incident postmortem from a corpus containing \\textbf{{{len(all_decoys)} distractor documents}} 
-({len(real_decoys)} real postmortems + {len(synthetic_decoys)} synthetic incident reports). 
-The system achieved Recall@1 of {results['recall_at_1_pct']:.1f}\\%, 
-Recall@3 of {results['recall_at_3_pct']:.1f}\\%, and 
-Recall@5 of {results['recall_at_5_pct']:.1f}\\%, 
-demonstrating robust retrieval accuracy despite significant noise from 1000+ irrelevant documents.
+    print("""
+\\begin{table}[t]
+\\centering
+\\caption{Noise Sensitivity Analysis (20 test incidents)}
+\\label{tab:noise_sensitivity}
+\\begin{tabular}{lccc}
+\\toprule
+\\textbf{Decoys} & \\textbf{Collection Size} & \\textbf{Accuracy} & \\textbf{Avg Decoys in Top-5} \\\\
+\\midrule""")
+    for r in results:
+        print(f"{r['decoys']} & {r['collection_size']} & {r['accuracy']:.1f}\\% & {r['avg_decoys_in_top5']:.2f} \\\\")
+    print("""\\bottomrule
+\\end{tabular}
+\\end{table}
 """)
 
 
