@@ -175,13 +175,13 @@ def check_api_keys():
         print("  ✓ OPENAI_API_KEY set (for GPT judge in experiment 7)")
     else:
         print("  ⚠ OPENAI_API_KEY not set (optional, for GPT judge in experiment 7)")
-        print("    To set: export OPENAI_API_KEY='your-key-here'")
+        print("    To set: export OPENAI_API_KEY='key1,key2,key3' (supports multiple for rotation)")
     
     if "GROQ_API_KEY" in os.environ:
         print("  ✓ GROQ_API_KEY set (for Llama-70B judge in experiment 7)")
     else:
         print("  ⚠ GROQ_API_KEY not set (optional, for Llama-70B judge in experiment 7)")
-        print("    To set: export GROQ_API_KEY='your-key-here'")
+        print("    To set: export GROQ_API_KEY='key1,key2,key3' (supports multiple for rotation)")
 
 
 def main():
