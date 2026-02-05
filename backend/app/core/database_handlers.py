@@ -5,6 +5,7 @@ from chromadb.utils.embedding_functions import EmbeddingFunction
 from typing import List
 from dataclasses import dataclass
 import requests
+import os
 
 @dataclass
 class Document:
