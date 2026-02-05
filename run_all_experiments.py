@@ -218,6 +218,7 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             missing.append(f"Real incidents data not found at {incident_dir}")
     
     if "loghub data" in exp.get("requires", []):
+        loghub_dir = PROJECT_ROOT / "data" / "loghub"
         if not loghub_dir.exists():
             # Warn but don't fail, experiment script will auto-download
             log(f"⚠️ LogHub data not found, trusting experiment script to auto-download.", "WARN")
