@@ -83,9 +83,17 @@ def check_models():
                 available_models.append(name)
         
         for model_name, exp_nums in REQUIRED_MODELS.items():
-            # Loose matching to handle tags like 'latest' if needed, but exact is better for repro
-            if model_name in available_models:
-                print(f"  ✓ {model_name} (needed for experiments: {exp_nums})")
+            # Loose matching to handle tags like 'latest' if needed
+            # We check if required name is a substring of any available model
+            found = False
+            for avail in available_models:
+                if model_name in avail:
+                    found = True
+                    print(f"  ✓ {avail} (matches '{model_name}', needed for experiments: {exp_nums})")
+                    break
+            
+            if found:
+                pass # Already printed success
             else:
                 print(f"  ✗ {model_name} NOT FOUND (needed for experiments: {exp_nums})")
                 print(f"    Install: ollama pull {model_name}")
