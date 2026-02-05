@@ -185,20 +185,22 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             import ollama
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
             
-            # Robust model extraction (exact match to check_prerequisites.py)
+            # Robust model extraction
             try:
                 # Handle different versions of ollama python client
                 resp = client.list()
-                models_list = resp.get("models", [])
+                if isinstance(resp, dict):
+                    models_list = resp.get("models", [])
+                else:
+                    # Try attribute access first, then fallback to treating as list
+                    models_list = getattr(resp, "models", resp)
             except:
                 models_list = client.list()
-                
+
             models = []
             for m in models_list:
-                # Try dict access (newer/older mismatch)
                 if isinstance(m, dict):
                     name = m.get("name") or m.get("model")
-                # Try object attribute checks
                 else:
                     name = getattr(m, "name", None) or getattr(m, "model", None)
                 if name: models.append(name)
@@ -216,9 +218,10 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             missing.append(f"Real incidents data not found at {incident_dir}")
     
     if "loghub data" in exp.get("requires", []):
-        loghub_dir = PROJECT_ROOT / "data" / "loghub"
         if not loghub_dir.exists():
-            missing.append(f"LogHub data directory not found at {loghub_dir}")
+            # Warn but don't fail, experiment script will auto-download
+            log(f"⚠️ LogHub data not found, trusting experiment script to auto-download.", "WARN")
+            # missing.append(f"LogHub data directory not found at {loghub_dir}")
     
     # Check backend dependencies
     if "backend dependencies" in exp.get("requires", []):
