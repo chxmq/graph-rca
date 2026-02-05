@@ -64,15 +64,32 @@ def check_models():
     try:
         import ollama
         client = ollama.Client(host="http://localhost:11434", timeout=10.0)
-        available_models = [m["name"] for m in client.list()["models"]]
-        
-        for model, exp_nums in REQUIRED_MODELS.items():
-            if model in available_models:
-                print(f"  ✓ {model} (needed for experiments: {exp_nums})")
+        try:
+            # Handle different versions of ollama python client
+            raw_models = client.list().get("models", [])
+        except:
+            raw_models = client.list()
+
+        available_models = []
+        for m in raw_models:
+            # Try dict access (newer/older mismatch)
+            if isinstance(m, dict):
+                name = m.get("name") or m.get("model")
+            # Try object attribute checks
             else:
-                print(f"  ✗ {model} NOT FOUND (needed for experiments: {exp_nums})")
-                print(f"    Install: ollama pull {model}")
-                missing.append(model)
+                 name = getattr(m, "name", None) or getattr(m, "model", None)
+            
+            if name:
+                available_models.append(name)
+        
+        for model_name, exp_nums in REQUIRED_MODELS.items():
+            # Loose matching to handle tags like 'latest' if needed, but exact is better for repro
+            if model_name in available_models:
+                print(f"  ✓ {model_name} (needed for experiments: {exp_nums})")
+            else:
+                print(f"  ✗ {model_name} NOT FOUND (needed for experiments: {exp_nums})")
+                print(f"    Install: ollama pull {model_name}")
+                missing.append(model_name)
         
         return len(missing) == 0, missing
     except Exception as e:
@@ -158,11 +175,13 @@ def check_api_keys():
         print("  ✓ OPENAI_API_KEY set (for GPT judge in experiment 7)")
     else:
         print("  ⚠ OPENAI_API_KEY not set (optional, for GPT judge in experiment 7)")
+        print("    To set: export OPENAI_API_KEY='your-key-here'")
     
     if "GROQ_API_KEY" in os.environ:
         print("  ✓ GROQ_API_KEY set (for Llama-70B judge in experiment 7)")
     else:
         print("  ⚠ GROQ_API_KEY not set (optional, for Llama-70B judge in experiment 7)")
+        print("    To set: export GROQ_API_KEY='your-key-here'")
 
 
 def main():
