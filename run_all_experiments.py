@@ -171,6 +171,7 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
 
             if "llama3.2:3b" not in models:
                 missing.append("Model 'llama3.2:3b' not found in Ollama")
+                log(f"DEBUG: Found models: {models}", "ERROR")
         except:
             missing.append("Cannot check Ollama models")
     
@@ -192,6 +193,7 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
 
             if "qwen3:32b" not in models:
                 missing.append("Model 'qwen3:32b' not found in Ollama")
+                log(f"DEBUG: Found models: {models}", "ERROR")
         except:
             missing.append("Cannot check Ollama models")
     
