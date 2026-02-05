@@ -149,6 +149,10 @@ def run_doc_ablation(client: ollama.Client) -> dict:
     shuffled = incidents.copy()
     random.shuffle(shuffled)
     
+    if os.environ.get("SMOKE_TEST"):
+        print("  Using reduced dataset (10 incidents) for smoke test")
+        shuffled = shuffled[:10]
+    
     split = len(shuffled) // 2
     doc_pool = shuffled[:split]  # Incidents to use as documentation
     test_set = shuffled[split:]  # Incidents to test on
