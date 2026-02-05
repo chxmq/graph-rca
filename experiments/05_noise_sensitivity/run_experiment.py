@@ -114,7 +114,14 @@ def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices:
     for i in range(0, len(all_docs), chunk_size):
         chunk = all_docs[i:i+chunk_size]
         embeddings = embedder.create_batch_embeddings(chunk)
-        vdb.add_documents(documents=chunk, embeddings=embeddings)
+        try:
+            print(f"DEBUG: Adding {len(chunk)} docs to VDB. Embeddings len: {len(embeddings) if embeddings else 'None'}")
+            vdb.add_documents(documents=chunk, embeddings=embeddings)
+        except Exception as e:
+            print(f"CRITICAL ERROR adding documents: {e}")
+            import traceback
+            traceback.print_exc()
+            raise e
         
     # Run retrieval test
     hits = 0
