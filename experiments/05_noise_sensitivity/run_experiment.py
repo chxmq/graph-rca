@@ -125,9 +125,13 @@ def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices:
         # "File .../database_handlers.py, line 85, in add_documents: collection.add(..."
         chunk = chunk_dicts # it is strings.
         embeddings = embedder.create_batch_embeddings(chunk)
+        
+        # Generate unique IDs to prevent collisions
+        chunk_ids = [f"{noise_level}_chunk_{i}_{j}" for j in range(len(chunk))]
+        
         try:
             print(f"DEBUG: Adding {len(chunk)} docs to VDB. Embeddings len: {len(embeddings) if embeddings else 'None'}")
-            vdb.add_documents(documents=chunk, embeddings=embeddings)
+            vdb.add_documents(documents=chunk, embeddings=embeddings, ids=chunk_ids)
         except Exception as e:
             print(f"CRITICAL ERROR adding documents: {e}")
             import traceback
