@@ -158,7 +158,17 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
         try:
             import ollama
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
-            models = [m["name"] for m in client.list()["models"]]
+            # Robust model extraction
+            resp = client.list()
+            models_list = resp.get("models", []) if isinstance(resp, dict) else resp
+            models = []
+            for m in models_list:
+                if isinstance(m, dict):
+                    name = m.get("name") or m.get("model")
+                else:
+                    name = getattr(m, "name", None) or getattr(m, "model", None)
+                if name: models.append(name)
+
             if "llama3.2:3b" not in models:
                 missing.append("Model 'llama3.2:3b' not found in Ollama")
         except:
@@ -168,7 +178,18 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
         try:
             import ollama
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
-            models = [m["name"] for m in client.list()["models"]]
+            
+            # Robust model extraction
+            resp = client.list()
+            models_list = resp.get("models", []) if isinstance(resp, dict) else resp
+            models = []
+            for m in models_list:
+                if isinstance(m, dict):
+                    name = m.get("name") or m.get("model")
+                else:
+                    name = getattr(m, "name", None) or getattr(m, "model", None)
+                if name: models.append(name)
+
             if "qwen3:32b" not in models:
                 missing.append("Model 'qwen3:32b' not found in Ollama")
         except:
