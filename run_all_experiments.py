@@ -156,24 +156,20 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
     # Check models
     if "llama3.2:3b" in exp.get("requires", []):
         try:
-            import ollama
-            client = ollama.Client(host="http://localhost:11434", timeout=5.0)
-            # Robust model extraction
+            # Robust model extraction (exact match to check_prerequisites.py)
             try:
                 # Handle different versions of ollama python client
                 resp = client.list()
-                if isinstance(resp, dict):
-                    models_list = resp.get("models", [])
-                else:
-                    # Try attribute access first, then fallback to treating as list
-                    models_list = getattr(resp, "models", resp)
+                models_list = resp.get("models", [])
             except:
                 models_list = client.list()
-
+                
             models = []
             for m in models_list:
+                # Try dict access (newer/older mismatch)
                 if isinstance(m, dict):
                     name = m.get("name") or m.get("model")
+                # Try object attribute checks
                 else:
                     name = getattr(m, "name", None) or getattr(m, "model", None)
                 if name: models.append(name)
@@ -189,22 +185,20 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             import ollama
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
             
-            # Robust model extraction
+            # Robust model extraction (exact match to check_prerequisites.py)
             try:
                 # Handle different versions of ollama python client
                 resp = client.list()
-                if isinstance(resp, dict):
-                    models_list = resp.get("models", [])
-                else:
-                    # Try attribute access first, then fallback to treating as list
-                    models_list = getattr(resp, "models", resp)
+                models_list = resp.get("models", [])
             except:
                 models_list = client.list()
-
+                
             models = []
             for m in models_list:
+                # Try dict access (newer/older mismatch)
                 if isinstance(m, dict):
                     name = m.get("name") or m.get("model")
+                # Try object attribute checks
                 else:
                     name = getattr(m, "name", None) or getattr(m, "model", None)
                 if name: models.append(name)
