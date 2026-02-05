@@ -59,6 +59,10 @@ class JudgeClient:
         self.client = None
         self._init_client()
     
+        self.api_keys = []
+        self.current_key_idx = 0
+        self._init_client()
+    
     def _init_client(self):
         judge_type = self.judge_config["type"]
         
@@ -66,20 +70,40 @@ class JudgeClient:
             self.client = ollama.Client(host=CONFIG["ollama_host"])
             
         elif judge_type == "openai":
-            api_key = os.environ.get("OPENAI_API_KEY", "")
-            if not api_key:
+            keys = os.environ.get("OPENAI_API_KEY", "").split(",")
+            self.api_keys = [k.strip() for k in keys if k.strip()]
+            if not self.api_keys:
                  self.client = None
             else:
                 from openai import OpenAI
-                self.client = OpenAI(api_key=api_key)
+                self.client = OpenAI(api_key=self.api_keys[0])
             
         elif judge_type == "groq":
-            api_key = os.environ.get("GROQ_API_KEY", "")
-            if not api_key:
+            keys = os.environ.get("GROQ_API_KEY", "").split(",")
+            self.api_keys = [k.strip() for k in keys if k.strip()]
+            if not self.api_keys:
                 self.client = None
             else:
                 from groq import Groq
-                self.client = Groq(api_key=api_key)
+                self.client = Groq(api_key=self.api_keys[0])
+    
+    def _rotate_key(self):
+        """Rotate to next API key if available."""
+        if not self.api_keys or len(self.api_keys) <= 1:
+            return False
+        
+        self.current_key_idx = (self.current_key_idx + 1) % len(self.api_keys)
+        new_key = self.api_keys[self.current_key_idx]
+        print(f"  ↻ Rotating API key to index {self.current_key_idx}...")
+        
+        judge_type = self.judge_config["type"]
+        if judge_type == "openai":
+            from openai import OpenAI
+            self.client = OpenAI(api_key=new_key)
+        elif judge_type == "groq":
+            from groq import Groq
+            self.client = Groq(api_key=new_key)
+        return True
     
     def score(self, prediction: str, ground_truth: str) -> float:
         """Score prediction against ground truth."""
@@ -111,26 +135,42 @@ Respond with ONLY a number between 0.0 and 1.0:"""
         judge_type = self.judge_config["type"]
         model = self.judge_config["model"]
         
-        if judge_type == "ollama":
-            response = self.client.generate(
-                model=model,
-                prompt=prompt,
-                options={"temperature": 0.0}
-            )
-            text = response.response.strip()
-            
-        elif judge_type in ["openai", "groq"]:
-            response = self.client.chat.completions.create(
-                model=model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.0,
-                max_tokens=10
-            )
-            text = response.choices[0].message.content.strip()
+        # Retry logic with key rotation
+        max_retries = len(self.api_keys) if self.api_keys else 1
+        # Cap retries to avoid infinite loops but allow at least one full rotation + extra
+        retries = max(3, max_retries + 1)
         
-        match = re.search(r'(0\.\d+|1\.0|0|1)', text)
-        if match:
-            return min(1.0, max(0.0, float(match.group(1))))
+        for attempt in range(retries):
+            try:
+                if judge_type == "ollama":
+                    response = self.client.generate(
+                        model=model,
+                        prompt=prompt,
+                        options={"temperature": 0.0}
+                    )
+                    text = response.response.strip()
+                    
+                elif judge_type in ["openai", "groq"]:
+                    response = self.client.chat.completions.create(
+                        model=model,
+                        messages=[{"role": "user", "content": prompt}],
+                        temperature=0.0,
+                        max_tokens=10
+                    )
+                    text = response.choices[0].message.content.strip()
+                
+                match = re.search(r'(0\.\d+|1\.0|0|1)', text)
+                if match:
+                    return min(1.0, max(0.0, float(match.group(1))))
+                return None
+                
+            except Exception as e:
+                # If we have multiple keys, rotate and retry
+                if (judge_type in ["openai", "groq"]) and self._rotate_key():
+                    time.sleep(1) # Brief pause
+                    continue
+                else:
+                    raise e # Re-raise if rotation didn't happen (or not supported)
         return None
 
 
