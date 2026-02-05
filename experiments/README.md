@@ -2,6 +2,12 @@
 
 Each folder contains `run_experiment.py` + `data/` with results.
 
+## Run All Experiments
+
+```bash
+python run_all_experiments.py
+```
+
 ## Experiments
 
 | # | Folder | Experiment | Key Finding |

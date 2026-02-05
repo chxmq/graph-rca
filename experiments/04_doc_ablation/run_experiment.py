@@ -2,11 +2,7 @@
 """
 Documentation Ablation Experiment
 Tests impact of documentation on RCA accuracy using real-world incidents.
-
-Compares:
-- full_docs: All postmortems in RAG corpus
-- half_docs: 50% of postmortems
-- no_docs: No documentation (LLM knowledge only)
+CORRECTED: Uses actual VectorDatabaseHandler for RAG retrieval instead of string concatenation.
 """
 
 import os
@@ -14,8 +10,18 @@ import sys
 import json
 import random
 import statistics
+import shutil
 from pathlib import Path
 from datetime import datetime
+
+# --- Backend Integration ---
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
+try:
+    from app.core.database_handlers import VectorDatabaseHandler
+except ImportError as e:
+    print(f"Error importing backend modules: {e}")
+    sys.exit(1)
+# ---------------------------
 
 if 'SSL_CERT_FILE' in os.environ:
     del os.environ['SSL_CERT_FILE']
@@ -31,8 +37,16 @@ CONFIG = {
     "random_seed": 42,
 }
 
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: 1 run only")
+    CONFIG["runs_per_incident"] = 1
+
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 INCIDENT_DIR = PROJECT_ROOT / "data" / "real_incidents"
+
+# Setup local ChromaDB for experiment
+EXP_CHROMA_DIR = Path(__file__).parent / "data" / "chroma_db_ablation"
+os.environ["CHROMADB_PATH"] = str(EXP_CHROMA_DIR.absolute())
 
 
 def load_incidents() -> list:
@@ -47,9 +61,9 @@ def load_incidents() -> list:
             with open(folder / "ground_truth.json") as f:
                 gt = json.load(f)
             with open(folder / "postmortem.md") as f:
-                postmortem = f.read()[:2000]
+                postmortem = f.read()
             logs_file = folder / "logs.txt"
-            logs = logs_file.read_text()[:2000] if logs_file.exists() else ""
+            logs = logs_file.read_text() if logs_file.exists() else ""
             
             incidents.append({
                 "id": folder.name,
@@ -81,7 +95,7 @@ Score (just the number):"""
             options={"temperature": 0.0}
         )
         import re
-        match = re.search(r'(0\.\d+|1\.0|0|1)', response["response"])
+        match = re.search(r'(0\.\d+|1\.0|0|1)', response.response)
         if match:
             return float(match.group(1))
     except:
@@ -89,10 +103,38 @@ Score (just the number):"""
     return 0.5
 
 
+def setup_ablation_db(docs: list):
+    """Setup ChromaDB with a specific set of documentation."""
+    # Clean previous
+    if EXP_CHROMA_DIR.exists():
+        shutil.rmtree(EXP_CHROMA_DIR)
+    EXP_CHROMA_DIR.mkdir(parents=True)
+    
+    if not docs:
+        return None
+        
+    vdb = VectorDatabaseHandler()
+    documents = []
+    
+    print(f"  Indexing {len(docs)} documents...")
+    for d in docs:
+        # Index as documentation
+        doc_text = f"Incident: {d['category']}\nRoot Cause: {d['root_cause']}\n{d['postmortem']}"
+        documents.append(doc_text)
+        
+    # Generate embeddings (VectorDatabaseHandler's EF handles this if configured correctly,
+    # but based on our analysis of database_handlers.py, add_documents expects embeddings)
+    # So we used the EF attached to the vdb instance
+    embeddings = vdb.ef(documents)
+    vdb.add_documents(documents=documents, embeddings=embeddings)
+    
+    return vdb
+
+
 def run_doc_ablation(client: ollama.Client) -> dict:
     """Documentation ablation using real incidents."""
     print("\n" + "=" * 70)
-    print("EXPERIMENT 4: Documentation Ablation (Real Incidents)")
+    print("EXPERIMENT 4: Documentation Ablation (CORRECTED)")
     print("=" * 70)
     
     incidents = load_incidents()
@@ -123,27 +165,35 @@ def run_doc_ablation(client: ollama.Client) -> dict:
     
     for config_name, docs in configs.items():
         print(f"\nConfig: {config_name} ({len(docs)} docs)")
+        
+        # Setup Vector DB for this ablation level
+        vdb = setup_ablation_db(docs)
         scores = []
         
-        # Build documentation context
-        doc_context = ""
-        if docs:
-            doc_texts = [f"Incident: {d['category']}\nRoot Cause: {d['root_cause']}\n{d['postmortem'][:500]}" 
-                        for d in docs[:10]]  # Limit context size
-            doc_context = "\n---\n".join(doc_texts)
-        
-        for idx, test_case in enumerate(test_set[:20]):  # Test on subset for speed
+        for idx, test_case in enumerate(test_set):
+            # Only log every 5th item to reduce clutter
+            if (idx + 1) % 5 == 0:
+                print(f"  Progress: {idx+1}/{len(test_set)}")
+            
             for run in range(CONFIG["runs_per_incident"]):
-                input_text = test_case["logs"][:1500] if test_case["logs"] else test_case["postmortem"][:1500]
+                input_text = test_case["logs"] if test_case["logs"] else test_case["postmortem"]
                 
-                if doc_context:
-                    prompt = f"""Historical Incidents:
-{doc_context}
+                context_str = ""
+                if vdb:
+                     # Retrieve relevant docs
+                    query = f"Incident logs: {input_text[:500]}"
+                    retrieved = vdb.search(query=query, context="", top_k=3) # Retrieve top 3
+                    if retrieved:
+                         context_str = "\n---\n".join([d.text for d in retrieved])
 
-Current Logs:
+                if context_str:
+                    prompt = f"""Using this documentation of past incidents:
+{context_str}
+
+Identify the root cause for these logs:
 {input_text}
 
-Based on the historical incidents, identify the root cause:"""
+Root Cause:"""
                 else:
                     prompt = f"""Logs:
 {input_text}
@@ -156,14 +206,11 @@ Identify the root cause:"""
                         prompt=prompt, 
                         options={"temperature": CONFIG["temperature"]}
                     )
-                    prediction = response["response"].strip()
+                    prediction = response.response.strip()
                     score = score_prediction(client, prediction, test_case["root_cause"])
                     scores.append(score)
                 except Exception as e:
                     print(f"  Error: {e}")
-            
-            if (idx + 1) % 5 == 0:
-                print(f"  Progress: {idx+1}/{min(len(test_set), 20)}")
         
         accuracy = statistics.mean(scores) if scores else 0
         results["configs"][config_name] = {
@@ -191,9 +238,9 @@ def main():
     
     print(f"\n✓ Results saved to {output_path}")
     
-    full = results["configs"]["full_docs"]["accuracy"]
-    none = results["configs"]["no_docs"]["accuracy"]
-    print(f"\nDifference (full - none): {(full - none) * 100:.1f} percentage points")
+    # Clean up
+    if EXP_CHROMA_DIR.exists():
+        shutil.rmtree(EXP_CHROMA_DIR)
 
 
 if __name__ == "__main__":
