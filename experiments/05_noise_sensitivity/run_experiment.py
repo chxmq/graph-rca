@@ -84,7 +84,7 @@ def generate_synthetic_decoys(count: int, seed: int = 42) -> List[Dict]:
     return decoys
 
 
-def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices: List[int], embedder: EmbeddingCreator) -> Dict:
+def run_single_noise_level(incidents: List[Dict], noise_level: int, num_decoys: int, test_indices: List[int], embedder: EmbeddingCreator) -> Dict:
     """Run retrieval test at a single noise level."""
     # Reset DB
     if EXP_CHROMA_DIR.exists():
@@ -203,7 +203,7 @@ def main():
         print(f"Testing with {noise_level} decoys...")
         print(f"{'='*60}")
         
-        result = run_single_noise_level(incidents, noise_level, test_indices, embedder)
+        result = run_single_noise_level(incidents, noise_level, noise_level, test_indices, embedder)
         results.append(result)
         
         print(f"  Accuracy: {result['accuracy']:.1f}%")
