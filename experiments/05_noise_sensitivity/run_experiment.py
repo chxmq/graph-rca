@@ -112,7 +112,18 @@ def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices:
     # We do it in chunks to be safe with memory
     chunk_size = 100
     for i in range(0, len(all_docs), chunk_size):
-        chunk = all_docs[i:i+chunk_size]
+        chunk_dicts = all_docs[i:i+chunk_size]
+        # vdb.add_documents expects strings, but we might have appending full objects?
+        # Check generate_synthetic_decoys: returns list of dicts.
+        # Check load_incidents: returns list of dicts.
+        # But wait, run_experiment.py lines 101/107 append `inc["content"]` (string)
+        # So chunk IS a list of strings?
+        # Line 101: all_docs.append(inc["content"]) -> string
+        # Line 107: all_docs.append(d["content"]) -> string
+        # So chunk is strings.
+        # Why did it crash on collection.add?
+        # "File .../database_handlers.py, line 85, in add_documents: collection.add(..."
+        chunk = chunk_dicts # it is strings.
         embeddings = embedder.create_batch_embeddings(chunk)
         try:
             print(f"DEBUG: Adding {len(chunk)} docs to VDB. Embeddings len: {len(embeddings) if embeddings else 'None'}")
