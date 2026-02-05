@@ -159,8 +159,17 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             import ollama
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
             # Robust model extraction
-            resp = client.list()
-            models_list = resp.get("models", []) if isinstance(resp, dict) else resp
+            try:
+                # Handle different versions of ollama python client
+                resp = client.list()
+                if isinstance(resp, dict):
+                    models_list = resp.get("models", [])
+                else:
+                    # Try attribute access first, then fallback to treating as list
+                    models_list = getattr(resp, "models", resp)
+            except:
+                models_list = client.list()
+
             models = []
             for m in models_list:
                 if isinstance(m, dict):
@@ -181,8 +190,17 @@ def check_prerequisites(exp: Dict) -> tuple[bool, List[str]]:
             client = ollama.Client(host="http://localhost:11434", timeout=5.0)
             
             # Robust model extraction
-            resp = client.list()
-            models_list = resp.get("models", []) if isinstance(resp, dict) else resp
+            try:
+                # Handle different versions of ollama python client
+                resp = client.list()
+                if isinstance(resp, dict):
+                    models_list = resp.get("models", [])
+                else:
+                    # Try attribute access first, then fallback to treating as list
+                    models_list = getattr(resp, "models", resp)
+            except:
+                models_list = client.list()
+
             models = []
             for m in models_list:
                 if isinstance(m, dict):
