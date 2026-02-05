@@ -77,13 +77,14 @@ class VectorDatabaseHandler:
         except Exception as e:
             return None
     
-    def add_documents(self, documents: List[str], embeddings: List[List[float]]):
+    def add_documents(self, documents: List[str], embeddings: List[List[float]], ids: List[str] = None):
         collection = self.get_collection()
-        # Generate unique ID for each document chunk
-        ids = [str(hash(doc)) for doc in documents]  # Now using the actual chunks
+        # Generate unique ID for each document chunk if not provided
+        if ids is None:
+            ids = [str(hash(doc)) for doc in documents] 
         
         collection.add(
-            documents=documents,  # Should be the chunks not original docs
+            documents=documents,
             ids=ids,
             embeddings=embeddings
         )
