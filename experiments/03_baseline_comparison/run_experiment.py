@@ -20,12 +20,26 @@ if 'SSL_CERT_FILE' in os.environ:
 
 import ollama
 
+# --- Backend Integration ---
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
+try:
+    from app.models.parsing_data_models import LogEntry, LogChain
+    from app.utils.graph_generator import GraphGenerator
+except ImportError as e:
+    print(f"Error importing backend modules: {e}")
+    sys.exit(1)
+# ---------------------------
+
 CONFIG = {
     "ollama_host": "http://localhost:11434",
     "model": "llama3.2:3b",
     "temperature": 0.2,
     "baseline_runs": 3,
 }
+
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: 1 run only")
+    CONFIG["baseline_runs"] = 1
 
 RCA_SCENARIOS = [
     {"id": "db_001", "category": "Database", "root_cause": "Connection pool exhausted",
@@ -116,12 +130,7 @@ def frequency_based_anomaly(logs: list) -> str:
 
 def simple_llm_rca(client: ollama.Client, logs: list, options) -> str:
     """Simple LLM baseline: direct prompt, no graph/RAG."""
-    prompt = f"""Analyze these logs and identify the root cause.
-
-Logs:
-{chr(10).join(logs)}
-
-Return ONLY the log entry that is the root cause."""
+    prompt = f"Analyze these logs and identify the root cause.\n\nLogs:\n{chr(10).join(logs)}\n\nReturn ONLY the log entry that is the root cause."
     
     try:
         response = client.generate(model=CONFIG["model"], prompt=prompt, options=options)
@@ -130,24 +139,49 @@ Return ONLY the log entry that is the root cause."""
         return logs[0]
 
 
+def parse_logs_to_chain(logs: list) -> LogChain:
+    """Helper to convert string logs to LogChain."""
+    entries = []
+    for log in logs:
+        parts = log.split(" ", 2)
+        if len(parts) >= 3:
+            ts, level, msg = parts[0], parts[1], parts[2]
+            # Simple heuristic cleaning
+            level = level.replace("[", "").replace("]", "")
+        else:
+            ts, level, msg = "unknown", "INFO", log
+            
+        entries.append(LogEntry(
+            timestamp=ts,
+            level=level,
+            message=msg,
+            pid="", component="", error_code="", username="", ip_address="", group="", trace_id="", request_id=""
+        ))
+    return LogChain(log_chain=entries)
+
+
 def graphrca_identify(client: ollama.Client, logs: list, options) -> str:
-    """GraphRCA: LLM parsing + DAG + first node identification."""
-    prompt = f"""You are analyzing a system incident. Given these logs in temporal order, identify the ROOT CAUSE.
-
-The root cause is:
-- The EARLIEST error that triggered all subsequent errors
-- Usually the first ERROR or CRITICAL level log
-- The event that, if prevented, would have prevented all other errors
-
-Logs (in temporal order):
-{chr(10).join([f"[{i+1}] {log}" for i, log in enumerate(logs)])}
-
-Return ONLY the log number and the log text of the root cause."""
-    
+    """
+    GraphRCA: OFFICIAL ALGORITHM
+    1. Parse logs
+    2. Build DAG using GraphGenerator (O(n))
+    3. Traverse DAG to find root cause
+    """
     try:
-        response = client.generate(model=CONFIG["model"], prompt=prompt, options=options)
-        return response.response.strip() if response else logs[0]
-    except:
+        # 1. Parse
+        log_chain = parse_logs_to_chain(logs)
+        
+        # 2. Build DAG
+        generator = GraphGenerator(log_chain)
+        dag = generator.generate_dag()
+        
+        # 3. Find Root Cause using graph traversal
+        # The GraphGenerator already has the Logic: find_root_cause() -> _find_root_cause_helper()
+        # This returns the MESSAGE of the root cause node
+        return dag.root_cause
+        
+    except Exception as e:
+        print(f"GraphRCA Error: {e}")
         return logs[0]
 
 
@@ -163,7 +197,7 @@ def check_rca_correct(predicted: str, ground_truth: str) -> bool:
 def run_baseline_experiment(client: ollama.Client) -> dict:
     """Baseline comparison experiment - matches comprehensive_overnight.py."""
     print("\n" + "=" * 70)
-    print("EXPERIMENT 3: Baseline Comparisons")
+    print("EXPERIMENT 3: Baseline Comparisons (CORRECTED)")
     print("=" * 70)
     
     options = ollama.Options(temperature=CONFIG["temperature"])
@@ -181,6 +215,9 @@ def run_baseline_experiment(client: ollama.Client) -> dict:
     for scenario in RCA_SCENARIOS:
         print(f"\nScenario: {scenario['id']} ({scenario['category']})")
         
+        # GraphRCA is deterministic (algorithmic), so we act accordingly
+        # But we'll run 1x for deterministic methods effectively
+        
         for run in range(CONFIG["baseline_runs"]):
             for method_name, method_fn in methods.items():
                 try:
@@ -191,6 +228,11 @@ def run_baseline_experiment(client: ollama.Client) -> dict:
                     if correct:
                         results[method_name]["correct"] += 1
                     
+                    # Only print 1st run to reduce noise
+                    if run == 0: 
+                        # print(f"  {method_name}: {predicted[:50]}...")
+                        pass
+
                     results[method_name]["per_scenario"].append({
                         "scenario": scenario["id"],
                         "run": run + 1,

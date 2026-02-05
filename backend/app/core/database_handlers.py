@@ -39,11 +39,14 @@ class OllamaEmbeddingFunction(EmbeddingFunction):
 class VectorDatabaseHandler:
     def __init__(self):
         try:
+            # Use environment variable for persist directory (useful for experiments/testing)
+            persist_dir = os.environ.get("CHROMADB_PATH", "/chroma/data")
+            
             self.client = chromadb.HttpClient(
                 host='localhost', 
                 port=8000,
                 settings=chromadb.Settings(
-                    persist_directory="/chroma/data",
+                    persist_directory=persist_dir,
                     is_persistent=True
                 )
             )

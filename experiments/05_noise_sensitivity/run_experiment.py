@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 """
 Progressive Noise Sensitivity Test for RAG Retrieval
-
-Tests retrieval accuracy at multiple noise levels (0, 100, 250, 500, 750, 1000 decoys)
-to generate data matching paper's Table tab:noise_sensitivity.
-
-Usage:
-    python run_experiment.py
+Tests retrieval accuracy at multiple noise levels using Project Infrastructure.
+CORRECTED: Uses app.core.embedding.EmbeddingCreator and app.core.database_handlers.VectorDatabaseHandler
 """
 
 import os
@@ -14,25 +10,35 @@ import sys
 import json
 import time
 import random
+import shutil
 from pathlib import Path
 from typing import List, Dict
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
-
-import chromadb
+# --- Backend Integration ---
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
+try:
+    from app.core.database_handlers import VectorDatabaseHandler
+    from app.core.embedding import EmbeddingCreator
+except ImportError as e:
+    print(f"Error importing backend modules: {e}")
+    sys.exit(1)
+# ---------------------------
 
 # Configuration
-EMBEDDING_MODEL = "nomic-embed-text"
 COLLECTION_NAME = "noise_sensitivity_test"
-CHROMA_PERSIST_DIR = Path(__file__).parent / "data" / "chroma_db"
-NOISE_LEVELS = [0, 100, 250, 500, 750, 1000]  # Progressive noise levels
-TEST_SAMPLE_SIZE = 20  # Number of test incidents per noise level
+EXP_CHROMA_DIR = Path(__file__).parent / "data" / "chroma_db_noise"
+os.environ["CHROMADB_PATH"] = str(EXP_CHROMA_DIR.absolute())
 
-# Paths
+NOISE_LEVELS = [0, 100, 250, 500, 750, 1000]
+
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: Reduced noise levels")
+    NOISE_LEVELS = [0, 100]
+
+PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data" / "real_incidents"
 
-# Synthetic decoy templates
+# Templates for synthetic decoys
 COMPONENTS = ["database", "cache", "API gateway", "load balancer", "message queue", "storage", 
               "authentication", "CDN", "DNS", "container orchestrator", "monitoring", "logging"]
 ISSUES = ["high latency", "timeout errors", "connection refused", "memory exhaustion", "CPU spike",
@@ -43,24 +49,13 @@ FIXES = ["rolling restart", "configuration update", "capacity scaling", "hotfix 
          "failover activation", "cache flush", "dependency upgrade", "traffic rerouting"]
 
 
-def get_ollama_embedding(text: str) -> List[float]:
-    """Get embedding from Ollama."""
-    import requests
-    response = requests.post(
-        "http://localhost:11434/api/embeddings",
-        json={"model": EMBEDDING_MODEL, "prompt": text}
-    )
-    response.raise_for_status()
-    return response.json()["embedding"]
-
-
 def load_incidents() -> List[Dict]:
     """Load all real-world incidents."""
     incidents = []
     for folder in sorted(DATA_DIR.glob("incident_*")):
         try:
             with open(folder / "postmortem.md") as f:
-                postmortem = f.read()[:2000]
+                postmortem = f.read()
             with open(folder / "ground_truth.json") as f:
                 gt = json.load(f)
             incidents.append({
@@ -84,65 +79,75 @@ def generate_synthetic_decoys(count: int, seed: int = 42) -> List[Dict]:
         decoys.append({
             "id": f"decoy_{i:04d}",
             "content": content,
-            "type": "decoy"
+            "category": "Decoy"
         })
     return decoys
 
 
-def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices: List[int]) -> Dict:
+def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices: List[int], embedder: EmbeddingCreator) -> Dict:
     """Run retrieval test at a single noise level."""
-    # Create fresh ChromaDB client
-    CHROMA_PERSIST_DIR.mkdir(parents=True, exist_ok=True)
-    client = chromadb.PersistentClient(path=str(CHROMA_PERSIST_DIR))
+    # Reset DB
+    if EXP_CHROMA_DIR.exists():
+        shutil.rmtree(EXP_CHROMA_DIR)
+    EXP_CHROMA_DIR.mkdir(parents=True)
     
-    # Delete existing collection
-    try:
-        client.delete_collection(COLLECTION_NAME)
-    except:
-        pass
+    vdb = VectorDatabaseHandler()
     
-    # Create collection
-    collection = client.create_collection(name=COLLECTION_NAME)
+    # Prepare all documents (Targets + Decoys)
+    all_docs = []
     
-    # Index all incidents (as targets)
-    print(f"  Indexing {len(incidents)} incidents...")
+    # Add targets
     for inc in incidents:
-        embedding = get_ollama_embedding(inc["content"][:1000])
-        collection.add(
-            ids=[inc["id"]],
-            embeddings=[embedding],
-            metadatas=[{"type": "target", "category": inc["category"]}],
-            documents=[inc["content"][:500]]
-        )
+        all_docs.append(inc["content"])
     
-    # Generate and index decoys
+    # Add decoys
     if num_decoys > 0:
-        print(f"  Indexing {num_decoys} decoys...")
         decoys = generate_synthetic_decoys(num_decoys)
-        for decoy in decoys:
-            embedding = get_ollama_embedding(decoy["content"])
-            collection.add(
-                ids=[decoy["id"]],
-                embeddings=[embedding],
-                metadatas=[{"type": "decoy"}],
-                documents=[decoy["content"]]
-            )
+        for d in decoys:
+            all_docs.append(d["content"])
+            
+    print(f"  Indexing {len(all_docs)} documents (Targets: {len(incidents)}, Decoys: {num_decoys})...")
     
+    # Batch embeddings via EmbeddingCreator (as per plan)
+    # We do it in chunks to be safe with memory
+    chunk_size = 100
+    for i in range(0, len(all_docs), chunk_size):
+        chunk = all_docs[i:i+chunk_size]
+        embeddings = embedder.create_batch_embeddings(chunk)
+        vdb.add_documents(documents=chunk, embeddings=embeddings)
+        
     # Run retrieval test
     hits = 0
     decoys_in_top5 = 0
     
+    # To count decoys accurately, we need to know what we retrieved.
+    # The VectorDatabaseHandler.search returns Document objects. 
+    # But it doesn't return IDs directly in the Document object as defined in database_handlers.py
+    # However, the textual content of our decoys is unique enough.
+    # Decoys start with "Incident report: [Component]..."
+    
     for idx in test_indices:
         target = incidents[idx]
-        query_embedding = get_ollama_embedding(target["root_cause"] + " " + target["category"])
-        results = collection.query(query_embeddings=[query_embedding], n_results=5)
+        query = target["root_cause"] + " " + target["category"]
         
-        retrieved_ids = results["ids"][0]
-        if target["id"] in retrieved_ids:
+        # Use vdb.search
+        results = vdb.search(query=query, context="", top_k=5)
+        
+        # Check hits
+        # A hit is if the target content is in the results
+        # We compare content because IDs are hashed in vdb
+        target_found = False
+        decoy_count = 0
+        
+        for res in results:
+            if res.text == target["content"]:
+                target_found = True
+            if res.text.startswith("Incident report:"):
+                decoy_count += 1
+                
+        if target_found:
             hits += 1
-        
-        # Count decoys in top-5
-        decoys_in_top5 += sum(1 for r in retrieved_ids if r.startswith("decoy_"))
+        decoys_in_top5 += decoy_count
     
     accuracy = (hits / len(test_indices)) * 100
     avg_decoys = decoys_in_top5 / len(test_indices)
@@ -159,18 +164,15 @@ def run_single_noise_level(incidents: List[Dict], num_decoys: int, test_indices:
 
 def main():
     print("=" * 60)
-    print("PROGRESSIVE NOISE SENSITIVITY TEST")
+    print("PROGRESSIVE NOISE SENSITIVITY TEST (CORRECTED)")
     print(f"Testing at noise levels: {NOISE_LEVELS}")
     print("=" * 60)
     
-    # Load incidents
+    embedder = EmbeddingCreator()
     incidents = load_incidents()
     print(f"\nLoaded {len(incidents)} incidents")
     
-    # Fixed test set for consistency across noise levels
-    random.seed(42)
-    test_indices = random.sample(range(len(incidents)), min(TEST_SAMPLE_SIZE, len(incidents)))
-    print(f"Using {len(test_indices)} test incidents")
+    test_indices = list(range(len(incidents)))
     
     results = []
     
@@ -179,55 +181,33 @@ def main():
         print(f"Testing with {noise_level} decoys...")
         print(f"{'='*60}")
         
-        result = run_single_noise_level(incidents, noise_level, test_indices)
+        result = run_single_noise_level(incidents, noise_level, test_indices, embedder)
         results.append(result)
         
         print(f"  Accuracy: {result['accuracy']:.1f}%")
         print(f"  Avg decoys in top-5: {result['avg_decoys_in_top5']}")
     
-    # Print summary table
-    print("\n" + "=" * 60)
-    print("📊 PROGRESSIVE NOISE SENSITIVITY RESULTS")
-    print("=" * 60)
-    print(f"{'Decoys':<10} {'Collection':<15} {'Accuracy':<12} {'Avg Decoys Top-5'}")
-    print("-" * 60)
-    for r in results:
-        print(f"{r['decoys']:<10} {r['collection_size']:<15} {r['accuracy']:.1f}%{'':<7} {r['avg_decoys_in_top5']}")
-    
     # Save results
-    output = {
-        "test_sample_size": len(test_indices),
-        "noise_levels": NOISE_LEVELS,
-        "results": results
+    output_file = Path(__file__).parent / "data" / "03_noise_sensitivity.json"
+    output_file.parent.mkdir(exist_ok=True)
+    
+    noise_results = {
+        "noise_levels": {str(r["decoys"]): {
+            "accuracy": r["accuracy"] / 100,
+            "avg_decoys_in_top5": r["avg_decoys_in_top5"],
+            "collection_size": r["collection_size"]
+        } for r in results},
+        "test_count": len(test_indices)
     }
     
-    output_file = Path(__file__).parent / "data" / "progressive_noise_results.json"
-    output_file.parent.mkdir(exist_ok=True)
     with open(output_file, "w") as f:
-        json.dump(output, f, indent=2)
+        json.dump(noise_results, f, indent=2)
     
     print(f"\n✓ Results saved to {output_file}")
     
-    # Print LaTeX table for paper
-    print("\n" + "=" * 60)
-    print("📝 LATEX TABLE FOR PAPER:")
-    print("=" * 60)
-    print("""
-\\begin{table}[t]
-\\centering
-\\caption{Noise Sensitivity Analysis (20 test incidents)}
-\\label{tab:noise_sensitivity}
-\\begin{tabular}{lccc}
-\\toprule
-\\textbf{Decoys} & \\textbf{Collection Size} & \\textbf{Accuracy} & \\textbf{Avg Decoys in Top-5} \\\\
-\\midrule""")
-    for r in results:
-        print(f"{r['decoys']} & {r['collection_size']} & {r['accuracy']:.1f}\\% & {r['avg_decoys_in_top5']:.2f} \\\\")
-    print("""\\bottomrule
-\\end{tabular}
-\\end{table}
-""")
-
+    # Clean up
+    if EXP_CHROMA_DIR.exists():
+        shutil.rmtree(EXP_CHROMA_DIR)
 
 if __name__ == "__main__":
     main()

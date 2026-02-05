@@ -27,6 +27,12 @@ CONFIG = {
     "num_logs": 128,
 }
 
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: Reducing dataset size and runs")
+    CONFIG["num_runs"] = 1
+    CONFIG["num_logs"] = 16
+    CONFIG["batch_sizes"] = [1, 8]
+
 SAMPLE_LOGS = [
     "2024-01-15T10:23:45.123Z ERROR [db-pool] Connection pool exhausted - no available connections after 30s timeout",
     "2024-01-15T10:23:46.001Z WARN [mysql] Slow query detected: SELECT * FROM users took 5.2s",
@@ -122,19 +128,33 @@ def run_batch_experiment(client: ollama.Client) -> dict:
 
 
 import argparse
+import platform
+
+def detect_device():
+    """Auto-detect device name."""
+    try:
+        import subprocess
+        result = subprocess.run(["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"], 
+                              capture_output=True, text=True, timeout=5)
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip().split('\n')[0]
+    except:
+        pass
+    return platform.processor() or "Unknown"
 
 def main():
     parser = argparse.ArgumentParser(description="Run Batch Inference Experiment")
-    parser.add_argument("--device", type=str, required=True, help="Device name (e.g., 'Quadro GV100', 'NVIDIA A100-40GB')")
+    parser.add_argument("--device", type=str, default=None, help="Device name (auto-detected if not provided)")
     args = parser.parse_args()
     
-    CONFIG["device"] = args.device
+    CONFIG["device"] = args.device or detect_device()
 
     client = ollama.Client(host=CONFIG["ollama_host"])
     results = run_batch_experiment(client)
     
     # Create filename safe string
-    device_slug = args.device.lower().replace(" ", "_").replace("-", "_")
+    device_name = CONFIG.get("device", "Unknown")
+    device_slug = device_name.lower().replace(" ", "_").replace("-", "_")
     output_filename = f"batch_results_{device_slug}.json"
     
     output_path = Path(__file__).parent / "data" / output_filename

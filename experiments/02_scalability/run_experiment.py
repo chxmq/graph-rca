@@ -32,6 +32,11 @@ CONFIG = {
     "num_runs_per_size": 20,
 }
 
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: Reducing scale sizes")
+    CONFIG["scale_sizes"] = [10, 50, 100]
+    CONFIG["num_runs_per_size"] = 2
+
 SAMPLE_ENTRIES = [
     ("2024-01-15T10:23:45.123Z", "Connection pool exhausted", "ERROR"),
     ("2024-01-15T10:23:46.001Z", "Slow query: took 5.2s", "WARN"),

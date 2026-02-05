@@ -29,16 +29,16 @@ def load_company_map() -> dict:
     return company_map
 
 
-def main():
-    # Load RAG comparison data
-    rag_file = DATA_DIR / "02_rag_comparison.json"
+def analyze_results(rag_file: Path):
+    """Run analysis on specific result file."""
     if not rag_file.exists():
-        print(f"✗ {rag_file} not found. Run the RAG experiment first.")
+        print(f"✗ {rag_file} not found.")
         return
     
     rag_data = json.load(open(rag_file))
     company_map = load_company_map()
     
+    print(f"\nAnalyzing {rag_file.name}...")
     print(f"Loaded {len(company_map)} company mappings")
     print(f"Processing {len(rag_data.get('tests', []))} test results...")
     
@@ -105,9 +105,28 @@ def main():
         "all_companies": summary
     }
     
-    out_path = DATA_DIR / "03_heterogeneous_effects.json"
+    out_path = DATA_DIR / f"heterogeneous_effects_{rag_file.stem}.json"
     json.dump(output, open(out_path, "w"), indent=2)
-    print(f"\n✓ Saved to {out_path}")
+    print(f"✓ Saved to {out_path}")
+
+def main():
+    import sys
+    
+    # Default file or argument
+    if len(sys.argv) > 1:
+        files = [Path(sys.argv[1])]
+    else:
+        files = list(DATA_DIR.glob("rag_comparison_*.json"))
+        
+    if not files:
+        # Fallback to old name if verified
+        files = [DATA_DIR / "02_rag_comparison.json"]
+        
+    for f in files:
+        if f.exists():
+            analyze_results(f)
+        else:
+             print(f"No result files found in {DATA_DIR}")
 
 
 if __name__ == "__main__":

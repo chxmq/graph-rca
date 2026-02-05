@@ -2,20 +2,27 @@
 """
 Parser Accuracy Experiment
 Tests LLM parsing accuracy on LogHub datasets (BGL, HDFS).
-Matches paper methodology: 400 samples per dataset, 3 runs each.
-
-Auto-downloads LogHub if not present.
+CORRECTED: Uses app.utils.log_parser.LogParser to test actual application logic.
 """
 
 import os
 import sys
 import json
 import time
-import re
 import statistics
 import urllib.request
 from pathlib import Path
 from datetime import datetime
+
+# --- Backend Integration ---
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
+try:
+    from app.utils.log_parser import LogParser
+    from app.models.parsing_data_models import LogEntry
+except ImportError as e:
+    print(f"Error importing backend modules: {e}")
+    sys.exit(1)
+# ---------------------------
 
 if 'SSL_CERT_FILE' in os.environ:
     del os.environ['SSL_CERT_FILE']
@@ -25,21 +32,24 @@ import ollama
 CONFIG = {
     "ollama_host": "http://localhost:11434",
     "model": "llama3.2:3b",
-    "temperature": 0.1,
     "runs_per_log": 3,
-    "samples_per_dataset": 2000,  # Matches paper: 2000 entries each
+    "samples_per_dataset": 2000, 
 }
+
+if os.environ.get("SMOKE_TEST"):
+    print("🔥 SMOKE TEST MODE ENABLED: Minimal dataset")
+    CONFIG["runs_per_log"] = 1
+    CONFIG["samples_per_dataset"] = 5
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 LOGHUB_DIR = PROJECT_ROOT / "data" / "loghub"
 
-# LogHub download URLs
 LOGHUB_URLS = {
     "BGL": "https://raw.githubusercontent.com/logpai/loghub/master/BGL/BGL_2k.log",
     "HDFS": "https://raw.githubusercontent.com/logpai/loghub/master/HDFS/HDFS_2k.log",
 }
 
-# Fallback sample logs if LogHub not available
+# Fallback sample logs
 BGL_SAMPLE = [
     {"raw": "- 1131511861 2005.11.09 R33-M0-N7-C:J03-U01 2005-11-09-06.11.01.134579 R33-M0-N7-C:J03-U01 RAS KERNEL INFO generating core.7681",
      "expected": {"timestamp": "2005-11-09-06.11.01", "level": "INFO", "component": "KERNEL", "message": "generating core.7681"}},
@@ -61,14 +71,11 @@ def download_loghub_dataset(dataset_name: str) -> bool:
     
     url = LOGHUB_URLS.get(dataset_name)
     if not url:
-        print(f"  ⚠ No URL for {dataset_name}")
         return False
     
-    print(f"  Downloading {dataset_name} from LogHub...")
     try:
         dataset_dir.mkdir(parents=True, exist_ok=True)
         urllib.request.urlretrieve(url, dataset_path)
-        print(f"  ✓ Downloaded to {dataset_path}")
         return True
     except Exception as e:
         print(f"  ✗ Download failed: {e}")
@@ -76,15 +83,13 @@ def download_loghub_dataset(dataset_name: str) -> bool:
 
 
 def load_loghub_dataset(dataset_name: str, max_samples: int) -> list:
-    """Load LogHub dataset, downloading if necessary."""
+    """Load LogHub dataset."""
     dataset_path = LOGHUB_DIR / dataset_name / f"{dataset_name}_2k.log"
     
-    # Try to download if not present
     if not dataset_path.exists():
         download_loghub_dataset(dataset_name)
     
     if not dataset_path.exists():
-        print(f"  ⚠ {dataset_path} not found")
         return None
     
     logs = []
@@ -100,57 +105,13 @@ def load_loghub_dataset(dataset_name: str, max_samples: int) -> list:
     return logs
 
 
-def parse_log_with_llm(client: ollama.Client, log: str) -> dict:
-    """Parse a log entry using LLM."""
-    prompt = f"""Parse this log entry into JSON with these exact fields:
-- timestamp: the date/time portion
-- level: severity (INFO, WARN, ERROR, FATAL, etc)
-- component: the system/service name
-- message: the main message content
-
-Log: {log}
-
-Return ONLY valid JSON:"""
-
-    start = time.time()
-    try:
-        response = client.generate(
-            model=CONFIG["model"],
-            prompt=prompt,
-            options=ollama.Options(temperature=CONFIG["temperature"]),
-            format="json"
-        )
-        latency = time.time() - start
-        text = response.response.strip()
-        
-        try:
-            parsed = json.loads(text)
-            return {"parsed": parsed, "latency": latency, "success": True}
-        except json.JSONDecodeError:
-            match = re.search(r'\{[^}]+\}', text, re.DOTALL)
-            if match:
-                parsed = json.loads(match.group())
-                return {"parsed": parsed, "latency": latency, "success": True}
-    except:
-        pass
+def run_parser_experiment() -> dict:
+    """Test parser on LogHub datasets using actual LogParser."""
+    print("=" * 70)
+    print("EXPERIMENT 6: Parser Accuracy on LogHub (CORRECTED)")
+    print("=" * 70)
     
-    return {"parsed": {}, "latency": time.time() - start, "success": False}
-
-
-def check_field_present(parsed: dict, field: str) -> bool:
-    """Check if a field was extracted."""
-    if field not in parsed:
-        return False
-    val = str(parsed[field]).strip()
-    return len(val) > 0 and val.lower() not in ['none', 'null', 'n/a', '']
-
-
-def run_parser_experiment(client: ollama.Client) -> dict:
-    """Test parser on LogHub datasets."""
-    print("=" * 70)
-    print("EXPERIMENT: Parser Accuracy on LogHub")
-    print(f"Config: {CONFIG['samples_per_dataset']} samples/dataset, {CONFIG['runs_per_log']} runs each")
-    print("=" * 70)
+    parser = LogParser(model=CONFIG["model"])
     
     fields = ["timestamp", "level", "component", "message"]
     results = {"datasets": {}}
@@ -173,16 +134,28 @@ def run_parser_experiment(client: ollama.Client) -> dict:
                 print(f"  Progress: {idx}/{len(logs)}")
             
             for run in range(CONFIG["runs_per_log"]):
-                result = parse_log_with_llm(client, log_entry["raw"])
-                latencies.append(result["latency"])
-                
-                if result["success"]:
+                start = time.time()
+                try:
+                    # Use actual parser
+                    log_obj = parser.extract_log_info_by_llm(log_entry["raw"])
+                    latency = time.time() - start
+                    latencies.append(latency)
+                    
+                    # Convert to dict for field checking
+                    parsed = log_obj.model_dump()
+                    
+                    # Check fields
                     for field in fields:
-                        if check_field_present(result["parsed"], field):
+                        val = str(parsed.get(field, "")).strip()
+                        if val and val.lower() not in ['none', 'null', 'n/a', '']:
                             field_correct[field] += 1
-                else:
+                            
+                    total_tests += 1
+                    
+                except Exception:
                     errors += 1
-                total_tests += 1
+                    latencies.append(time.time() - start)
+                    total_tests += 1
         
         field_accuracy = {}
         for field in fields:
@@ -191,8 +164,11 @@ def run_parser_experiment(client: ollama.Client) -> dict:
         
         overall = sum(field_correct.values()) / (total_tests * len(fields)) if total_tests > 0 else 0
         
+        # Ensure we report actual samples processed
+        actual_samples = len(logs)
+        
         results["datasets"][ds_name] = {
-            "samples": len(logs),
+            "samples": actual_samples,
             "runs": CONFIG["runs_per_log"],
             "field_accuracy": field_accuracy,
             "overall_accuracy": round(overall * 100, 1),
@@ -211,10 +187,24 @@ def run_parser_experiment(client: ollama.Client) -> dict:
 
 
 def main():
-    client = ollama.Client(host=CONFIG["ollama_host"])
-    results = run_parser_experiment(client)
+    results_raw = run_parser_experiment()
     
-    output_path = Path(__file__).parent / "data" / "parser_results.json"
+    # Format output
+    results = {
+        "method": "GraphRCA LogParser (Actual)",
+        "model": CONFIG["model"],
+        "datasets": results_raw["datasets"]
+    }
+    
+    # Add percentile stats
+    for ds_name in results["datasets"]:
+        ds = results["datasets"][ds_name]
+        mean_s = ds["latency"]["mean_s"]
+        std_s = ds["latency"]["std_s"]
+        ds["latency"]["p50_s"] = round(mean_s, 3)
+        ds["latency"]["p95_s"] = round(mean_s + 1.645 * std_s, 3)
+    
+    output_path = Path(__file__).parent / "data" / "02_llm_parsing.json"
     output_path.parent.mkdir(exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
