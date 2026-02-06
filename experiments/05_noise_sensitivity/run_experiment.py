@@ -69,17 +69,72 @@ def load_incidents() -> List[Dict]:
     return incidents
 
 
-def generate_synthetic_decoys(count: int, seed: int = 42) -> List[Dict]:
-    """Generate synthetic decoy documents."""
+def generate_synthetic_decoys(count: int, seed: int = 42, incidents: List[Dict] = None) -> List[Dict]:
+    """Generate synthetic decoy documents with realistic postmortem structure.
+    
+    Decoys must be similar in length and structure to real postmortems to 
+    actually test noise resilience of the retrieval system.
+    """
     random.seed(seed)
     decoys = []
+    
+    # Use real categories if available
+    real_categories = list(set(inc.get("category", "Unknown") for inc in (incidents or [])))
+    if not real_categories:
+        real_categories = ["Database", "Network", "Application", "Infrastructure", "Security"]
+    
     for i in range(count):
-        content = f"Incident report: {random.choice(COMPONENTS)} {random.choice(ISSUES)}. " + \
-                  f"Root cause: {random.choice(CAUSES)}. Resolution: {random.choice(FIXES)}."
+        component = random.choice(COMPONENTS)
+        issue = random.choice(ISSUES)
+        cause = random.choice(CAUSES)
+        fix = random.choice(FIXES)
+        category = random.choice(real_categories)
+        
+        # Generate a realistic postmortem-like document (similar length to real ones)
+        content = f"""# Incident Postmortem: {component.title()} {issue.title()}
+
+## Summary
+On a recent date, the {component} experienced {issue}. This caused service degradation 
+affecting users across multiple regions. The incident lasted approximately 2-4 hours 
+before being fully resolved.
+
+## Timeline
+- 00:00 - Monitoring alerts triggered for {component}
+- 00:15 - On-call engineer acknowledged and began investigation  
+- 00:30 - Initial analysis pointed to {issue} in {component}
+- 01:00 - Root cause identified as {cause}
+- 01:30 - Mitigation via {fix} initiated
+- 02:00 - Service restoration confirmed
+- 03:00 - All-clear declared
+
+## Root Cause Analysis
+The incident was caused by {cause}. The {component} was unable to handle the load 
+which resulted in {issue}. Contributing factors included recent changes to the 
+system configuration and increased traffic.
+
+## Impact
+- Service degradation for approximately 2 hours
+- User-facing errors during the incident window  
+- Some data processing delays
+
+## Resolution
+The team implemented {fix} to resolve the immediate issue. The {component} was 
+restored to normal operation following the remediation steps.
+
+## Lessons Learned
+1. Improve monitoring for {component} {issue} scenarios
+2. Add better alerting thresholds
+3. Document runbook for {cause} situations
+
+## Action Items
+- [ ] Implement improved monitoring
+- [ ] Update runbook documentation
+- [ ] Review capacity planning for {component}
+"""
         decoys.append({
             "id": f"decoy_{i:04d}",
             "content": content,
-            "category": "Decoy"
+            "category": category
         })
     return decoys
 
@@ -102,7 +157,7 @@ def run_single_noise_level(incidents: List[Dict], noise_level: int, num_decoys: 
     
     # Add decoys
     if num_decoys > 0:
-        decoys = generate_synthetic_decoys(num_decoys)
+        decoys = generate_synthetic_decoys(num_decoys, incidents=incidents)
         for d in decoys:
             all_docs.append(d["content"])
             
@@ -150,7 +205,10 @@ def run_single_noise_level(incidents: List[Dict], noise_level: int, num_decoys: 
     
     for idx in test_indices:
         target = incidents[idx]
-        query = target["root_cause"] + " " + target["category"]
+        # Use a realistic query: category + partial root cause (first 50 chars)
+        # This simulates a user searching with partial knowledge, not exact match
+        root_cause_hint = target["root_cause"][:min(50, len(target["root_cause"]))] if target["root_cause"] else ""
+        query = f"{target['category']} incident {root_cause_hint}"
         
         # Use vdb.search
         results = vdb.search(query=query, context="", top_k=5)
@@ -164,7 +222,8 @@ def run_single_noise_level(incidents: List[Dict], noise_level: int, num_decoys: 
         for res in results:
             if res.text == target["content"]:
                 target_found = True
-            if res.text.startswith("Incident report:"):
+            # Decoys now start with "# Incident Postmortem:" (new format)
+            if res.text.startswith("# Incident Postmortem:"):
                 decoy_count += 1
                 
         if target_found:

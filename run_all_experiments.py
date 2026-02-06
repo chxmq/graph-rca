@@ -288,16 +288,13 @@ def run_experiment(exp: Dict, results_dir: Path) -> Dict:
         log(f"Running: python {script_path}")
         start_time = time.time()
         
-        # Run with timeout (estimated_time * 2 + 30 minutes buffer)
-        timeout_seconds = (exp["estimated_time_min"] * 2 + 30) * 60
-        
+        # No timeout - let experiments run to completion
         cmd = [sys.executable, script_path]
         
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=timeout_seconds,
             env={**os.environ, "PYTHONPATH": str(PROJECT_ROOT), "SMOKE_TEST": "1" if os.environ.get("SMOKE_TEST") else ""},
         )
         
