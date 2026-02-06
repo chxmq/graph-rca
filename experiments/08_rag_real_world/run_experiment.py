@@ -180,11 +180,10 @@ Respond with ONLY a number between 0.0 and 1.0:"""
 
 def load_incidents() -> List[Dict]:
     """Load all real-world incidents."""
-    incidents = []
     if not INCIDENT_DIR.exists():
-        print(f"⚠ {INCIDENT_DIR} not found, using synthetic data")
-        return get_synthetic_incidents()
+        raise FileNotFoundError(f"Incident directory not found: {INCIDENT_DIR}")
     
+    incidents = []
     print(f"Loading incidents from {INCIDENT_DIR}...")
     for folder in sorted(INCIDENT_DIR.glob("incident_*")):
         try:
@@ -212,18 +211,11 @@ def load_incidents() -> List[Dict]:
         except Exception as e:
             pass
     
+    if not incidents:
+        raise RuntimeError(f"No incidents could be loaded from {INCIDENT_DIR}")
+    
     print(f"Loaded {len(incidents)} incidents")
-    return incidents if incidents else get_synthetic_incidents()
-
-
-def get_synthetic_incidents() -> List[Dict]:
-    """Fallback synthetic incidents."""
-    return [
-        {"id": "syn_001", "company": "ACME", "root_cause": "Connection pool exhausted", "category": "Database",
-         "logs": "ERROR [db-pool] Connection exhausted", "postmortem": "DB connection pool failed due to high load."},
-        {"id": "syn_002", "company": "ACME", "root_cause": "Certificate expired", "category": "Security",
-         "logs": "ERROR [ssl] Certificate expired", "postmortem": "TLS handshake failed because cert expired."},
-    ]
+    return incidents
 
 
 def get_prediction(client: ollama.Client, logs: str, context: str = "") -> str:
