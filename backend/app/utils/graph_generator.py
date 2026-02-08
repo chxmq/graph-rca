@@ -98,17 +98,25 @@ class GraphGenerator:
             # Identify candidate root causes (ERROR/CRITICAL logs near the start)
             candidates = self._identify_root_cause_candidates()
             
+            # DEBUG: Show candidate detection
+            print(f"  [DEBUG] GraphGenerator: Found {len(candidates)} root cause candidates")
+            for c in candidates:
+                print(f"    - [{c['level']}] {c['message'][:60]}...")
+            
             if not candidates:
                 # Fallback to first log if no clear candidates
+                print(f"  [DEBUG] GraphGenerator: No candidates, using first log as root cause")
                 root_node = next(n for n in self.dag_nodes if n.id == self.root_id)
                 return root_node.log_entry.message
             
             # Use LLM to analyze and synthesize root cause
+            print(f"  [DEBUG] GraphGenerator: Using LLM analysis path")
             root_cause = self._analyze_with_llm(causal_chain, candidates)
             return root_cause
             
         except Exception as e:
             logger.warning(f"LLM analysis failed, falling back to heuristic: {e}")
+            print(f"  [DEBUG] GraphGenerator: Exception in find_root_cause: {e}, using fallback")
             # Fallback: return first ERROR/CRITICAL message or first message
             return self._fallback_root_cause()
     
@@ -157,22 +165,36 @@ Respond with ONLY a concise root cause statement (1-2 sentences), nothing else."
 
             # Use configured model or fallback
             model = "llama3.2:3b"
+            
+            # DEBUG: Show that LLM analysis is being attempted
+            print(f"  [DEBUG] GraphGenerator: Calling LLM ({model}) for root cause analysis...")
+            
             response = ollama.generate(model=model, prompt=prompt, options={"temperature": 0.1})
             
             result = response.response.strip() if response and response.response else ""
+            
+            # DEBUG: Show LLM response
+            if result:
+                print(f"  [DEBUG] GraphGenerator: LLM returned: {result[:100]}...")
+            else:
+                print(f"  [DEBUG] GraphGenerator: LLM returned empty response")
+            
             if result and len(result) > 10:
                 return result
             
             # If LLM response is too short, use first candidate
+            print(f"  [DEBUG] GraphGenerator: LLM response too short, using first candidate")
             if candidates:
                 return candidates[0]["message"]
             return self.dag_nodes[0].log_entry.message
             
         except ImportError:
             logger.warning("ollama not available, using heuristic fallback")
+            print(f"  [DEBUG] GraphGenerator: ollama not installed, using heuristic fallback")
             return self._fallback_root_cause()
         except Exception as e:
             logger.warning(f"LLM call failed: {e}")
+            print(f"  [DEBUG] GraphGenerator: LLM call failed: {e}, using fallback")
             return self._fallback_root_cause()
     
     def _fallback_root_cause(self) -> str:

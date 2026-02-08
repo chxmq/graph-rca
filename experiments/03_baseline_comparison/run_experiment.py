@@ -167,23 +167,80 @@ def simple_llm_rca(client: ollama.Client, logs: list, options) -> str:
 
 
 def parse_logs_to_chain(logs: list) -> LogChain:
-    """Helper to convert string logs to LogChain."""
+    """Convert string logs to LogChain with proper parsing of various log formats."""
     entries = []
+    
+    # Patterns for common log formats
+    import re
+    
+    # ISO timestamp pattern: 2024-01-15T10:00:00Z or 2024-01-15T10:00:00.123Z
+    iso_pattern = re.compile(r'^(\d{4}-\d{2}-\d{2}T[\d:\.]+Z?)\s+(\w+)\s+(.+)$')
+    
+    # Bracketed level pattern: 2024-01-15T10:00:00Z [ERROR] message or timestamp [component] level message
+    bracketed_pattern = re.compile(r'^(\S+)\s+\[?(\w+)\]?\s+\[?(\w+)?\]?\s*(.+)$')
+    
+    # Syslog pattern: Jan 15 10:23:48 server sshd[1234]: message
+    syslog_pattern = re.compile(r'^(\w{3}\s+\d+\s+[\d:]+)\s+\S+\s+\S+:\s+(.+)$')
+    
     for log in logs:
-        parts = log.split(" ", 2)
-        if len(parts) >= 3:
-            ts, level, msg = parts[0], parts[1], parts[2]
-            # Simple heuristic cleaning
-            level = level.replace("[", "").replace("]", "")
-        else:
-            ts, level, msg = "unknown", "INFO", log
+        log = log.strip()
+        if not log:
+            continue
             
+        ts = "unknown"
+        level = "INFO"
+        msg = log
+        
+        # Try ISO timestamp format first (most common)
+        match = iso_pattern.match(log)
+        if match:
+            ts = match.group(1)
+            level_candidate = match.group(2).upper()
+            msg = match.group(3)
+            # Check if it's actually a log level
+            if level_candidate in ["ERROR", "WARN", "WARNING", "INFO", "DEBUG", "CRITICAL", "FATAL"]:
+                level = level_candidate
+            else:
+                # The second word might be a component, look for level in brackets
+                level_match = re.search(r'\[(\w+)\]', msg)
+                if level_match:
+                    candidate = level_match.group(1).upper()
+                    if candidate in ["ERROR", "WARN", "WARNING", "INFO", "DEBUG", "CRITICAL", "FATAL"]:
+                        level = candidate
+        else:
+            # Try syslog format
+            match = syslog_pattern.match(log)
+            if match:
+                ts = match.group(1)
+                msg = match.group(2)
+                # Infer level from content
+                if any(word in msg.upper() for word in ["FAILED", "ERROR", "DENIED"]):
+                    level = "ERROR"
+                elif any(word in msg.upper() for word in ["WARN", "WARNING"]):
+                    level = "WARNING"
+            else:
+                # Generic fallback: look for level keywords anywhere
+                upper_log = log.upper()
+                if "CRITICAL" in upper_log or "FATAL" in upper_log:
+                    level = "CRITICAL"
+                elif "ERROR" in upper_log:
+                    level = "ERROR"
+                elif "WARN" in upper_log:
+                    level = "WARNING"
+                
+                # Try to extract timestamp from start
+                ts_match = re.match(r'^(\S+)', log)
+                if ts_match:
+                    ts = ts_match.group(1)
+                    msg = log[len(ts):].strip()
+        
         entries.append(LogEntry(
             timestamp=ts,
             level=level,
-            message=msg,
+            message=msg if msg else log,
             pid="", component="", error_code="", username="", ip_address="", group="", trace_id="", request_id=""
         ))
+    
     return LogChain(log_chain=entries)
 
 
