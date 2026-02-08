@@ -1,0 +1,54 @@
+{
+  "scale_results": [
+    {
+      "log_count": 10,
+      "avg_time_ms": 581.573,
+      "std_ms": 114.082,
+      "throughput_logs_per_sec": 17.19
+    },
+    {
+      "log_count": 25,
+      "avg_time_ms": 540.294,
+      "std_ms": 51.231,
+      "throughput_logs_per_sec": 46.27
+    },
+    {
+      "log_count": 50,
+      "avg_time_ms": 598.31,
+      "std_ms": 82.077,
+      "throughput_logs_per_sec": 83.57
+    },
+    {
+      "log_count": 100,
+      "avg_time_ms": 597.222,
+      "std_ms": 107.221,
+      "throughput_logs_per_sec": 167.44
+    },
+    {
+      "log_count": 250,
+      "avg_time_ms": 1549.733,
+      "std_ms": 112.589,
+      "throughput_logs_per_sec": 161.32
+    },
+    {
+      "log_count": 500,
+      "avg_time_ms": 1719.194,
+      "std_ms": 68.83,
+      "throughput_logs_per_sec": 290.83
+    },
+    {
+      "log_count": 1000,
+      "avg_time_ms": 1835.187,
+      "std_ms": 115.366,
+      "throughput_logs_per_sec": 544.9
+    },
+    {
+      "log_count": 2000,
+      "avg_time_ms": 1904.986,
+      "std_ms": 98.131,
+      "throughput_logs_per_sec": 1049.88
+    }
+  ],
+  "timestamp": "2026-02-06T23:22:06.330378",
+  "complexity": "O(n) - Linear"
+}

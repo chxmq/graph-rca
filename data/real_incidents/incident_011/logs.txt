@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2018-08-05 14:30:00 [INFO] jenkins-server: Jenkins job 'homebrew-release' started successfully
 2018-08-05 14:31:15 [WARNING] jenkins-server: Jenkins API request detected from unknown IP address
 2018-08-05 14:31:20 [INFO] jenkins-server: Found GitHub personal access token in build log with write scopes

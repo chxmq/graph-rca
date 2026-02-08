@@ -1,0 +1,81 @@
+{
+  "experiment": "DAG Construction Scalability",
+  "num_runs_per_size": 20,
+  "measurements": [
+    {
+      "size": 10,
+      "mean_ms": 581.573,
+      "std_ms": 114.082,
+      "min_ms": 483.104,
+      "max_ms": 937.286,
+      "nodes_created": 10,
+      "valid": true
+    },
+    {
+      "size": 25,
+      "mean_ms": 540.294,
+      "std_ms": 51.231,
+      "min_ms": 482.425,
+      "max_ms": 678.079,
+      "nodes_created": 25,
+      "valid": true
+    },
+    {
+      "size": 50,
+      "mean_ms": 598.31,
+      "std_ms": 82.077,
+      "min_ms": 481.115,
+      "max_ms": 849.934,
+      "nodes_created": 50,
+      "valid": true
+    },
+    {
+      "size": 100,
+      "mean_ms": 597.222,
+      "std_ms": 107.221,
+      "min_ms": 511.671,
+      "max_ms": 1000.901,
+      "nodes_created": 100,
+      "valid": true
+    },
+    {
+      "size": 250,
+      "mean_ms": 1549.733,
+      "std_ms": 112.589,
+      "min_ms": 1413.526,
+      "max_ms": 1828.92,
+      "nodes_created": 250,
+      "valid": true
+    },
+    {
+      "size": 500,
+      "mean_ms": 1719.194,
+      "std_ms": 68.83,
+      "min_ms": 1561.235,
+      "max_ms": 1818.219,
+      "nodes_created": 500,
+      "valid": true
+    },
+    {
+      "size": 1000,
+      "mean_ms": 1835.187,
+      "std_ms": 115.366,
+      "min_ms": 1587.32,
+      "max_ms": 2000.339,
+      "nodes_created": 1000,
+      "valid": true
+    },
+    {
+      "size": 2000,
+      "mean_ms": 1904.986,
+      "std_ms": 98.131,
+      "min_ms": 1733.968,
+      "max_ms": 2086.9,
+      "nodes_created": 2000,
+      "valid": true
+    }
+  ],
+  "complexity": "O(n) - Linear",
+  "max_tested": 2000,
+  "timestamp": "2026-02-06T23:22:06.330378"
+}

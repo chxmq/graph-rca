@@ -1,0 +1,35 @@
+{
+  "noise_levels": {
+    "0": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 200
+    },
+    "100": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 300
+    },
+    "250": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 450
+    },
+    "500": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 700
+    },
+    "750": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 950
+    },
+    "1000": {
+      "accuracy": 0.36,
+      "avg_decoys_in_top5": 0.0,
+      "collection_size": 1200
+    }
+  },
+  "test_count": 200
+}

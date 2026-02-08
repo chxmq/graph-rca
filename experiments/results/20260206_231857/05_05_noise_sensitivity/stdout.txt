@@ -1,0 +1,89 @@
+============================================================
+PROGRESSIVE NOISE SENSITIVITY TEST (CORRECTED)
+Testing at noise levels: [0, 100, 250, 500, 750, 1000]
+============================================================
+
+Loaded 200 incidents
+
+============================================================
+Testing with 0 decoys...
+============================================================
+  Indexing 200 documents (Targets: 200, Decoys: 0)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+============================================================
+Testing with 100 decoys...
+============================================================
+  Indexing 300 documents (Targets: 200, Decoys: 100)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+============================================================
+Testing with 250 decoys...
+============================================================
+  Indexing 450 documents (Targets: 200, Decoys: 250)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 50 docs to VDB. Embeddings len: 50
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+============================================================
+Testing with 500 decoys...
+============================================================
+  Indexing 700 documents (Targets: 200, Decoys: 500)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+============================================================
+Testing with 750 decoys...
+============================================================
+  Indexing 950 documents (Targets: 200, Decoys: 750)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 50 docs to VDB. Embeddings len: 50
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+============================================================
+Testing with 1000 decoys...
+============================================================
+  Indexing 1200 documents (Targets: 200, Decoys: 1000)...
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+DEBUG: Adding 100 docs to VDB. Embeddings len: 100
+  Accuracy: 36.0%
+  Avg decoys in top-5: 0.0
+
+✓ Results saved to /home/rvce/finaltest/graph-rca/experiments/05_noise_sensitivity/data/03_noise_sensitivity.json

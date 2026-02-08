@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2023-12-31 23:45:00 [INFO] service-a: Postgres database connection established
 2023-12-31 23:45:10 [WARNING] service-c: High transaction volume detected (90% above average)
 2023-12-31 23:50:05 [INFO] service-d: Transaction ID generation enabled

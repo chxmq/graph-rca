@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the incident:
-
 2023-12-15 08:45:00 [INFO] Service-c: Initializing Mars Pathfinder module
 2023-12-15 08:45:02 [WARNING] Service-d: Anomaly detected in VxWorks task scheduler
 2023-12-15 08:45:03 [INFO] Service-e: Sending remote debug request to Earth control

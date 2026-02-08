@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2023-12-25 08:45:00 [INFO] mail-service: Initiating batch email job
 2023-12-25 08:45:10 [WARNING] mail-service: Marking 100 users as waiting for mail
 2023-12-25 08:45:20 [WARNING] cron-service: Running batch job to send emails

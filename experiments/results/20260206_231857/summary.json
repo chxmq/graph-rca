@@ -1,0 +1,101 @@
+{
+  "run_id": "20260206_231857",
+  "start_time": "2026-02-06T23:18:57.533403",
+  "experiments": [
+    {
+      "num": 2,
+      "name": "DAG Scalability",
+      "status": "success",
+      "duration_seconds": 187.86658334732056,
+      "output_files": [
+        "scalability_results.json",
+        "stderr.txt",
+        "dag_scalability.json",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 3,
+      "name": "Baseline Comparison",
+      "status": "success",
+      "duration_seconds": 1533.964409828186,
+      "output_files": [
+        "baseline_results.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 4,
+      "name": "Documentation Ablation",
+      "status": "success",
+      "duration_seconds": 19985.277597427368,
+      "output_files": [
+        "doc_ablation_results.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 5,
+      "name": "Noise Sensitivity",
+      "status": "success",
+      "duration_seconds": 267.1394934654236,
+      "output_files": [
+        "03_noise_sensitivity.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 6,
+      "name": "Parser Accuracy",
+      "status": "success",
+      "duration_seconds": 42719.705626010895,
+      "output_files": [
+        "02_llm_parsing.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 7,
+      "name": "Multi-Judge Validation",
+      "status": "success",
+      "duration_seconds": 5055.73094534874,
+      "output_files": [
+        "results_qwen.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    },
+    {
+      "num": 8,
+      "name": "RAG Real-World",
+      "status": "success",
+      "duration_seconds": 3534.8537063598633,
+      "output_files": [
+        "rag_comparison_qwen.json",
+        "stderr.txt",
+        "stdout.txt",
+        "heterogeneous_effects_rag_comparison_qwen.json"
+      ]
+    },
+    {
+      "num": 9,
+      "name": "Latency Profiling",
+      "status": "success",
+      "duration_seconds": 23.88188099861145,
+      "output_files": [
+        "latency_breakdown.json",
+        "stderr.txt",
+        "stdout.txt"
+      ]
+    }
+  ],
+  "total_time_seconds": 73308.42024278641,
+  "successful": 8,
+  "failed": 0,
+  "skipped": 0,
+  "end_time": "2026-02-07T19:41:03.281804"
+}

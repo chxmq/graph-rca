@@ -1,0 +1,21 @@
+{
+  "configs": {
+    "full_docs": {
+      "accuracy": 0.8045,
+      "num_docs": 100,
+      "tests": 300
+    },
+    "half_docs": {
+      "accuracy": 0.7961,
+      "num_docs": 50,
+      "tests": 300
+    },
+    "no_docs": {
+      "accuracy": 0.7617,
+      "num_docs": 0,
+      "tests": 300
+    }
+  },
+  "test_size": 100,
+  "timestamp": "2026-02-07T05:20:49.117880"
+}
