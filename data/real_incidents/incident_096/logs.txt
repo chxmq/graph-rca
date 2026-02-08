@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2022-12-16 14:30:00 [INFO] service-c: New employee engineer-123 created
 2022-12-16 14:30:15 [WARNING] antivirus-scan: Malware detected on engineer-123's laptop (scan ID: #001)
 2022-12-16 14:30:20 [INFO] service-d: SSO session creation initiated for engineer-123

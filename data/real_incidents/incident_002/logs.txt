@@ -1,7 +1,12 @@
-# Incident Logs
-# Paste or extract log entries here, one per line
-# Format: TIMESTAMP LEVEL MESSAGE
-# Example:
-# 2024-01-15T10:23:45Z ERROR Connection pool exhausted - no available connections
-# 2024-01-15T10:23:46Z WARN Query timeout after 30s
-
+2019-07-02 13:40:00 [INFO] waf-service: Deploying new WAF rule update to edge routers
+2019-07-02 13:41:00 [INFO] waf-service: WAF rule deployment completed across all edge locations
+2019-07-02 13:42:00 [WARNING] edge-router-001: High CPU utilization detected - 89%
+2019-07-02 13:42:15 [ERROR] edge-router-001: CPU exhaustion - regex processing taking excessive time
+2019-07-02 13:42:30 [CRITICAL] waf-service: Catastrophic backtracking detected in regex pattern .*(?:.*=.*)* 
+2019-07-02 13:42:45 [ERROR] edge-router-002: CPU at 100% - WAF rule regex causing infinite loop
+2019-07-02 13:43:00 [CRITICAL] load-balancer: Multiple edge routers unresponsive - activating failover
+2019-07-02 13:43:30 [ERROR] edge-router-003: WAF regex evaluation timeout exceeded
+2019-07-02 13:44:00 [WARNING] incident-response: Global traffic impact detected - 50% of requests failing
+2019-07-02 13:45:00 [INFO] ops-team: Initiating WAF rule rollback on all edge routers
+2019-07-02 13:46:00 [INFO] edge-router-001: WAF rule rollback completed - CPU normalizing
+2019-07-02 13:47:00 [INFO] monitoring: Edge router fleet recovering - traffic resuming

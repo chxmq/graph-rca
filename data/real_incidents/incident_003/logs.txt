@@ -1,7 +1,12 @@
-# Incident Logs
-# Paste or extract log entries here, one per line
-# Format: TIMESTAMP LEVEL MESSAGE
-# Example:
-# 2024-01-15T10:23:45Z ERROR Connection pool exhausted - no available connections
-# 2024-01-15T10:23:46Z WARN Query timeout after 30s
-
+2020-07-17 21:10:00 [INFO] network-ops: Initiating maintenance on Atlanta router ATL-01
+2020-07-17 21:11:00 [INFO] bgp-service: Preparing prefix-list update for router ATL-01
+2020-07-17 21:12:00 [WARNING] network-ops: Configuration command executed - deactivating prefix-list on ATL-01
+2020-07-17 21:12:15 [ERROR] bgp-service: Configuration typo detected - deactivated prefix-list instead of term
+2020-07-17 21:12:30 [CRITICAL] bgp-service: All BGP routes leaked with high local-preference from ATL-01
+2020-07-17 21:12:45 [ERROR] route-monitor: Unexpected BGP route propagation - 50000+ routes announced
+2020-07-17 21:13:00 [CRITICAL] network-core: Global BGP table corruption - traffic blackholed
+2020-07-17 21:13:30 [WARNING] incident-alert: Multiple PoPs reporting connectivity loss
+2020-07-17 21:14:00 [ERROR] traffic-monitor: 78% traffic drop detected across all regions
+2020-07-17 21:15:00 [INFO] ops-team: Emergency rollback initiated on ATL-01 router
+2020-07-17 21:16:00 [INFO] bgp-service: Prefix-list reactivated - BGP announcements withdrawing
+2020-07-17 21:18:00 [INFO] network-core: BGP table converging - traffic recovery in progress

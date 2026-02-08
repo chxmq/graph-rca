@@ -1,294 +1,287 @@
 #!/usr/bin/env python3
 """
-Progressive Noise Sensitivity Test for RAG Retrieval
-Tests retrieval accuracy at multiple noise levels using Project Infrastructure.
-CORRECTED: Uses app.core.embedding.EmbeddingCreator and app.core.database_handlers.VectorDatabaseHandler
+===============================================================================
+GraphRCA Noise Sensitivity Test
+===============================================================================
+
+Tests RAG retrieval accuracy with increasing noise levels (decoy documents).
+This measures how well the system maintains retrieval quality as the corpus grows.
+
+Usage:
+    python run_experiment.py
+
+Requirements:
+    - Ollama with nomic-embed-text
+    - SQLite >= 3.35.0 (for ChromaDB)
 """
 
 import os
 import sys
 import json
-import time
 import random
-import shutil
+import logging
+import statistics
 from pathlib import Path
-from typing import List, Dict
+from datetime import datetime
 
-# --- Backend Integration ---
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
-try:
-    from app.core.database_handlers import VectorDatabaseHandler
-    from app.core.embedding import EmbeddingCreator
-except ImportError as e:
-    print(f"Error importing backend modules: {e}")
-    sys.exit(1)
-# ---------------------------
+# Setup paths
+SCRIPT_DIR = Path(__file__).parent.absolute()
+PROJECT_ROOT = SCRIPT_DIR.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
 
-# Configuration
-COLLECTION_NAME = "noise_sensitivity_test"
-EXP_CHROMA_DIR = Path(__file__).parent / "data" / "chroma_db_noise"
-os.environ["CHROMADB_PATH"] = str(EXP_CHROMA_DIR.absolute())
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
 
-NOISE_LEVELS = [0, 100, 250, 500, 750, 1000]
+SMOKE_TEST = os.environ.get("SMOKE_TEST", "").lower() in ("1", "true", "yes")
 
-if os.environ.get("SMOKE_TEST"):
-    print("🔥 SMOKE TEST MODE ENABLED: Reduced noise levels")
-    NOISE_LEVELS = [0, 100]
+CONFIG = {
+    "ollama_host": "http://localhost:11434",
+    "embed_model": "nomic-embed-text",
+    "incident_dir": PROJECT_ROOT / "data" / "real_incidents",
+    "results_dir": SCRIPT_DIR / "data",
+    "target_decoys": 1000,
+    "test_incidents": 20 if not SMOKE_TEST else 5,
+    "noise_levels": [0, 100, 250, 500, 750, 1000] if not SMOKE_TEST else [0, 100],
+    "random_seed": 42,
+}
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-DATA_DIR = PROJECT_ROOT / "data" / "real_incidents"
+# ============================================================================
+# LOGGING
+# ============================================================================
 
-# Templates for synthetic decoys
-COMPONENTS = ["database", "cache", "API gateway", "load balancer", "message queue", "storage", 
-              "authentication", "CDN", "DNS", "container orchestrator", "monitoring", "logging"]
-ISSUES = ["high latency", "timeout errors", "connection refused", "memory exhaustion", "CPU spike",
-          "disk full", "network partition", "certificate expiry", "rate limiting", "deadlock"]
-CAUSES = ["misconfiguration", "capacity exhaustion", "software bug", "hardware failure", 
-          "dependency failure", "traffic spike", "deployment error", "DNS propagation delay"]
-FIXES = ["rolling restart", "configuration update", "capacity scaling", "hotfix deployment",
-         "failover activation", "cache flush", "dependency upgrade", "traffic rerouting"]
+def setup_logging() -> logging.Logger:
+    CONFIG["results_dir"].mkdir(parents=True, exist_ok=True)
+    
+    logger = logging.getLogger("NoiseTest")
+    logger.setLevel(logging.DEBUG)
+    logger.handlers = []
+    
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    ch.setFormatter(logging.Formatter('%(asctime)s | %(message)s', datefmt='%H:%M:%S'))
+    logger.addHandler(ch)
+    
+    fh = logging.FileHandler(CONFIG["results_dir"] / "noise_test_log.txt", mode='a')
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(logging.Formatter('%(asctime)s | %(levelname)-8s | %(message)s'))
+    logger.addHandler(fh)
+    
+    return logger
 
+# ============================================================================
+# DATA LOADING
+# ============================================================================
 
-def load_incidents() -> List[Dict]:
-    """Load all real-world incidents."""
+def load_incidents(logger) -> list:
+    """Load all incidents from the data directory."""
     incidents = []
-    for folder in sorted(DATA_DIR.glob("incident_*")):
-        try:
-            with open(folder / "postmortem.md") as f:
-                postmortem = f.read()
-            with open(folder / "ground_truth.json") as f:
-                gt = json.load(f)
-            incidents.append({
-                "id": folder.name,
-                "content": postmortem,
-                "root_cause": gt.get("root_cause", ""),
-                "category": gt.get("category", "Unknown"),
-            })
-        except:
-            pass
+    incident_dir = CONFIG["incident_dir"]
+    
+    for folder in sorted(incident_dir.glob("incident_*")):
+        if not folder.is_dir():
+            continue
+        gt_file = folder / "ground_truth.json"
+        meta_file = folder / "metadata.json"
+        logs_file = folder / "logs.txt"
+        postmortem_file = folder / "postmortem.md"
+        
+        if gt_file.exists():
+            try:
+                with open(gt_file) as fp:
+                    gt = json.load(fp)
+                
+                meta = {}
+                if meta_file.exists():
+                    with open(meta_file) as fp:
+                        meta = json.load(fp)
+                
+                logs = ""
+                if logs_file.exists():
+                    logs = logs_file.read_text()
+                
+                postmortem = ""
+                if postmortem_file.exists():
+                    postmortem = postmortem_file.read_text()
+                
+                data = {
+                    "id": folder.name,
+                    "root_cause": gt.get("root_cause", ""),
+                    "category": gt.get("category", meta.get("category", "Unknown")),
+                    "company": meta.get("company", "Unknown"),
+                    "logs": logs,
+                    "postmortem": postmortem
+                }
+                incidents.append(data)
+            except Exception as e:
+                logger.warning(f"Failed to load {folder}: {e}")
+    
+    logger.info(f"Loaded {len(incidents)} incidents")
     return incidents
 
 
-def generate_synthetic_decoys(count: int, seed: int = 42, incidents: List[Dict] = None) -> List[Dict]:
-    """Generate synthetic decoy documents with realistic postmortem structure.
-    
-    Decoys must be similar in length and structure to real postmortems to 
-    actually test noise resilience of the retrieval system.
-    """
-    random.seed(seed)
+def generate_decoys(incidents: list, target: int) -> list:
+    """Generate decoy documents by mixing incident data."""
     decoys = []
+    random.seed(CONFIG["random_seed"])
     
-    # Use real categories if available
-    real_categories = list(set(inc.get("category", "Unknown") for inc in (incidents or [])))
-    if not real_categories:
-        real_categories = ["Database", "Network", "Application", "Infrastructure", "Security"]
+    while len(decoys) < target:
+        i1, i2 = random.sample(incidents, 2)
+        decoy = {
+            "title": f"Mixed: {i1.get('company', 'Unknown')} + {i2.get('company', 'Unknown')}",
+            "content": f"{i1.get('postmortem', '')[:500]} ... {i2.get('root_cause', '')}",
+            "is_decoy": True
+        }
+        decoys.append(decoy)
     
-    for i in range(count):
-        component = random.choice(COMPONENTS)
-        issue = random.choice(ISSUES)
-        cause = random.choice(CAUSES)
-        fix = random.choice(FIXES)
-        category = random.choice(real_categories)
-        
-        # Generate a realistic postmortem-like document (similar length to real ones)
-        content = f"""# Incident Postmortem: {component.title()} {issue.title()}
-
-## Summary
-On a recent date, the {component} experienced {issue}. This caused service degradation 
-affecting users across multiple regions. The incident lasted approximately 2-4 hours 
-before being fully resolved.
-
-## Timeline
-- 00:00 - Monitoring alerts triggered for {component}
-- 00:15 - On-call engineer acknowledged and began investigation  
-- 00:30 - Initial analysis pointed to {issue} in {component}
-- 01:00 - Root cause identified as {cause}
-- 01:30 - Mitigation via {fix} initiated
-- 02:00 - Service restoration confirmed
-- 03:00 - All-clear declared
-
-## Root Cause Analysis
-The incident was caused by {cause}. The {component} was unable to handle the load 
-which resulted in {issue}. Contributing factors included recent changes to the 
-system configuration and increased traffic.
-
-## Impact
-- Service degradation for approximately 2 hours
-- User-facing errors during the incident window  
-- Some data processing delays
-
-## Resolution
-The team implemented {fix} to resolve the immediate issue. The {component} was 
-restored to normal operation following the remediation steps.
-
-## Lessons Learned
-1. Improve monitoring for {component} {issue} scenarios
-2. Add better alerting thresholds
-3. Document runbook for {cause} situations
-
-## Action Items
-- [ ] Implement improved monitoring
-- [ ] Update runbook documentation
-- [ ] Review capacity planning for {component}
-"""
-        decoys.append({
-            "id": f"decoy_{i:04d}",
-            "content": content,
-            "category": category
-        })
     return decoys
 
 
-def run_single_noise_level(incidents: List[Dict], noise_level: int, num_decoys: int, test_indices: List[int], embedder: EmbeddingCreator) -> Dict:
-    """Run retrieval test at a single noise level."""
-    # Reset DB
-    if EXP_CHROMA_DIR.exists():
-        shutil.rmtree(EXP_CHROMA_DIR)
-    EXP_CHROMA_DIR.mkdir(parents=True)
+def get_embedding(ollama_client, text: str) -> list:
+    """Get embedding from Ollama."""
+    response = ollama_client.embeddings(
+        model=CONFIG["embed_model"],
+        prompt=text[:2000]
+    )
+    return response["embedding"]
+
+# ============================================================================
+# NOISE SENSITIVITY TEST
+# ============================================================================
+
+def run_noise_test(logger, ollama_client, incidents: list) -> dict:
+    """Test RAG accuracy with increasing noise levels."""
+    import chromadb
     
-    vdb = VectorDatabaseHandler()
+    logger.info("=" * 70)
+    logger.info("NOISE SENSITIVITY TEST")
+    if SMOKE_TEST:
+        logger.info("🔥 SMOKE TEST MODE - Reduced dataset")
+    logger.info("=" * 70)
     
-    # Prepare all documents (Targets + Decoys)
-    all_docs = []
+    # Generate decoys
+    decoys = generate_decoys(incidents, CONFIG["target_decoys"])
+    logger.info(f"Generated {len(decoys)} decoy documents")
     
-    # Add targets
-    for inc in incidents:
-        all_docs.append(inc["content"])
+    # Select test incidents
+    random.seed(CONFIG["random_seed"])
+    test_incidents = random.sample(incidents, min(CONFIG["test_incidents"], len(incidents)))
+    logger.info(f"Testing with {len(test_incidents)} incidents")
     
-    # Add decoys
-    if num_decoys > 0:
-        decoys = generate_synthetic_decoys(num_decoys, incidents=incidents)
-        for d in decoys:
-            all_docs.append(d["content"])
+    results = {"noise_levels": {}, "test_count": len(test_incidents)}
+    
+    for noise_count in CONFIG["noise_levels"]:
+        logger.info(f"\n--- Noise Level: {noise_count} decoys ---")
+        
+        # Create fresh ChromaDB for each noise level
+        client = chromadb.Client()
+        collection = client.create_collection(
+            name=f"noise_test_{noise_count}",
+            metadata={"hnsw:space": "cosine"}
+        )
+        
+        # Add real incidents
+        for inc in incidents:
+            doc_text = f"{inc.get('company', '')} {inc.get('category', '')} {inc.get('root_cause', '')}"
+            embedding = get_embedding(ollama_client, doc_text)
+            collection.add(
+                ids=[inc["id"]],
+                embeddings=[embedding],
+                documents=[doc_text],
+                metadatas=[{"root_cause": inc.get("root_cause", ""), "is_decoy": False}]
+            )
+        
+        # Add decoys
+        for i, decoy in enumerate(decoys[:noise_count]):
+            embedding = get_embedding(ollama_client, decoy["content"][:1000])
+            collection.add(
+                ids=[f"decoy_{i}"],
+                embeddings=[embedding],
+                documents=[decoy["content"][:1000]],
+                metadatas=[{"root_cause": "", "is_decoy": True}]
+            )
+        
+        logger.info(f"Collection size: {collection.count()}")
+        
+        # Test retrieval accuracy
+        correct = 0
+        decoy_retrieved = 0
+        
+        for test in test_incidents:
+            query_text = test.get("logs", test.get("postmortem", ""))[:1000]
+            query_embedding = get_embedding(ollama_client, query_text)
             
-    print(f"  Indexing {len(all_docs)} documents (Targets: {len(incidents)}, Decoys: {num_decoys})...")
-    
-    # Batch embeddings via EmbeddingCreator (as per plan)
-    # We do it in chunks to be safe with memory
-    chunk_size = 100
-    for i in range(0, len(all_docs), chunk_size):
-        chunk_dicts = all_docs[i:i+chunk_size]
-        # vdb.add_documents expects strings, but we might have appending full objects?
-        # Check generate_synthetic_decoys: returns list of dicts.
-        # Check load_incidents: returns list of dicts.
-        # But wait, run_experiment.py lines 101/107 append `inc["content"]` (string)
-        # So chunk IS a list of strings?
-        # Line 101: all_docs.append(inc["content"]) -> string
-        # Line 107: all_docs.append(d["content"]) -> string
-        # So chunk is strings.
-        # Why did it crash on collection.add?
-        # "File .../database_handlers.py, line 85, in add_documents: collection.add(..."
-        chunk = chunk_dicts # it is strings.
-        embeddings = embedder.create_batch_embeddings(chunk)
+            results_query = collection.query(
+                query_embeddings=[query_embedding],
+                n_results=5
+            )
+            
+            top_ids = results_query["ids"][0] if results_query["ids"] else []
+            top_metadatas = results_query["metadatas"][0] if results_query["metadatas"] else []
+            
+            # Check if correct incident is in top-5
+            if test["id"] in top_ids:
+                correct += 1
+            
+            # Count decoys in top-5
+            decoy_retrieved += sum(1 for m in top_metadatas if m.get("is_decoy", False))
         
-        # Generate unique IDs to prevent collisions
-        chunk_ids = [f"{noise_level}_chunk_{i}_{j}" for j in range(len(chunk))]
+        accuracy = correct / len(test_incidents)
+        avg_decoys_in_top5 = decoy_retrieved / len(test_incidents)
         
-        try:
-            print(f"DEBUG: Adding {len(chunk)} docs to VDB. Embeddings len: {len(embeddings) if embeddings else 'None'}")
-            vdb.add_documents(documents=chunk, embeddings=embeddings, ids=chunk_ids)
-        except Exception as e:
-            print(f"CRITICAL ERROR adding documents: {e}")
-            import traceback
-            traceback.print_exc()
-            raise e
+        results["noise_levels"][str(noise_count)] = {
+            "accuracy": round(accuracy, 4),
+            "avg_decoys_in_top5": round(avg_decoys_in_top5, 2),
+            "collection_size": collection.count()
+        }
         
-    # Run retrieval test
-    hits = 0
-    decoys_in_top5 = 0
-    
-    # To count decoys accurately, we need to know what we retrieved.
-    # The VectorDatabaseHandler.search returns Document objects. 
-    # But it doesn't return IDs directly in the Document object as defined in database_handlers.py
-    # However, the textual content of our decoys is unique enough.
-    # Decoys start with "Incident report: [Component]..."
-    
-    for idx in test_indices:
-        target = incidents[idx]
-        # Use a realistic query: category + partial root cause (first 50 chars)
-        # This simulates a user searching with partial knowledge, not exact match
-        root_cause_hint = target["root_cause"][:min(50, len(target["root_cause"]))] if target["root_cause"] else ""
-        query = f"{target['category']} incident {root_cause_hint}"
-        
-        # Use vdb.search
-        results = vdb.search(query=query, context="", top_k=5)
-        
-        # Check hits
-        # A hit is if the target content is in the results
-        # We compare content because IDs are hashed in vdb
-        target_found = False
-        decoy_count = 0
-        
-        for res in results:
-            if res.text == target["content"]:
-                target_found = True
-            # Decoys now start with "# Incident Postmortem:" (new format)
-            if res.text.startswith("# Incident Postmortem:"):
-                decoy_count += 1
-                
-        if target_found:
-            hits += 1
-        decoys_in_top5 += decoy_count
-    
-    accuracy = (hits / len(test_indices)) * 100
-    avg_decoys = decoys_in_top5 / len(test_indices)
-    
-    return {
-        "decoys": num_decoys,
-        "collection_size": len(incidents) + num_decoys,
-        "accuracy": accuracy,
-        "avg_decoys_in_top5": round(avg_decoys, 2),
-        "hits": hits,
-        "total": len(test_indices)
-    }
-
-
-def main():
-    print("=" * 60)
-    print("PROGRESSIVE NOISE SENSITIVITY TEST (CORRECTED)")
-    print(f"Testing at noise levels: {NOISE_LEVELS}")
-    print("=" * 60)
-    
-    embedder = EmbeddingCreator()
-    incidents = load_incidents()
-    print(f"\nLoaded {len(incidents)} incidents")
-    
-    test_indices = list(range(len(incidents)))
-    
-    results = []
-    
-    for noise_level in NOISE_LEVELS:
-        print(f"\n{'='*60}")
-        print(f"Testing with {noise_level} decoys...")
-        print(f"{'='*60}")
-        
-        result = run_single_noise_level(incidents, noise_level, noise_level, test_indices, embedder)
-        results.append(result)
-        
-        print(f"  Accuracy: {result['accuracy']:.1f}%")
-        print(f"  Avg decoys in top-5: {result['avg_decoys_in_top5']}")
+        logger.info(f"  Accuracy: {accuracy*100:.1f}%, Avg decoys in top-5: {avg_decoys_in_top5:.2f}")
     
     # Save results
-    output_file = Path(__file__).parent / "data" / "03_noise_sensitivity.json"
-    output_file.parent.mkdir(exist_ok=True)
+    output_file = CONFIG["results_dir"] / "03_noise_sensitivity.json"
+    with open(output_file, 'w') as f:
+        json.dump(results, f, indent=2)
     
-    noise_results = {
-        "noise_levels": {str(r["decoys"]): {
-            "accuracy": r["accuracy"] / 100,
-            "avg_decoys_in_top5": r["avg_decoys_in_top5"],
-            "collection_size": r["collection_size"]
-        } for r in results},
-        "test_count": len(test_indices)
-    }
+    logger.info(f"\n✅ Noise test complete! Results saved to {output_file}")
+    return results
+
+# ============================================================================
+# MAIN
+# ============================================================================
+
+def main():
+    logger = setup_logging()
     
-    with open(output_file, "w") as f:
-        json.dump(noise_results, f, indent=2)
+    logger.info("=" * 70)
+    logger.info("GraphRCA Noise Sensitivity Test")
+    logger.info("=" * 70)
+    logger.info(f"Started: {datetime.now().isoformat()}")
     
-    print(f"\n✓ Results saved to {output_file}")
+    # Connect to Ollama
+    import ollama
+    ollama_client = ollama.Client(host=CONFIG["ollama_host"])
     
-    # Clean up
-    if EXP_CHROMA_DIR.exists():
-        shutil.rmtree(EXP_CHROMA_DIR)
+    try:
+        ollama_client.list()
+        logger.info("✓ Ollama connected")
+    except Exception as e:
+        logger.error(f"❌ Ollama connection failed: {e}")
+        return
+    
+    # Load data
+    incidents = load_incidents(logger)
+    if not incidents:
+        logger.error("❌ No incidents found!")
+        return
+    
+    # Run test
+    try:
+        results = run_noise_test(logger, ollama_client, incidents)
+    except Exception as e:
+        logger.error(f"❌ Test failed: {e}")
+        import traceback
+        traceback.print_exc()
+
 
 if __name__ == "__main__":
     main()

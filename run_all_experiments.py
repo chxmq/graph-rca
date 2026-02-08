@@ -92,6 +92,7 @@ EXPERIMENTS = [
         "name": "Multi-Judge Validation",
         "dir": "07_multi_judge_validation",
         "script": "run_experiment.py",
+        "script_args": ["--judge", "all"],  # Run with all judges: qwen, gpt, groq
         "description": "Cross-validates RCA accuracy using multiple LLM judges",
         "estimated_time_min": 180,  # ~3 hours
         "requires": ["ollama", "qwen3:32b", "real_incidents data"],
@@ -102,6 +103,7 @@ EXPERIMENTS = [
         "name": "RAG Real-World",
         "dir": "08_rag_real_world",
         "script": "run_experiment.py",
+        "script_args": ["--judge", "all"],  # Run with all judges: qwen, gpt, groq
         "description": "Compares baseline vs RAG accuracy on real-world incidents",
         "estimated_time_min": 90,
         "requires": ["ollama", "llama3.2:3b", "chromadb", "real_incidents data"],
@@ -285,11 +287,12 @@ def run_experiment(exp: Dict, results_dir: Path) -> Dict:
     
     try:
         # Run experiment script
-        log(f"Running: python {script_path}")
+        script_args = exp.get("script_args", [])
+        log(f"Running: python {script_path} {' '.join(script_args) if script_args else ''}")
         start_time = time.time()
         
         # No timeout - let experiments run to completion
-        cmd = [sys.executable, script_path]
+        cmd = [sys.executable, script_path] + script_args
         
         result = subprocess.run(
             cmd,

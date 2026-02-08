@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2023-12-31 13:45:00 [INFO] api-service: Checking Redis primary instance status
 2023-12-31 14:01:00 [WARNING] api-service: Redis primary instance detected as 'at risk' due to maintenance schedule
 2023-12-31 14:01:05 [ERROR] api-service: Failed to migrate Redis primary instance, error: "Migration failed, node not available"

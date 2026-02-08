@@ -1,0 +1,28 @@
+============================================================
+End-to-End Latency Profiling Experiment (CORRECTED)
+============================================================
+Warming up...
+Run 1/3...
+  LLM: 4391ms
+  DAG: 1.2ms
+  RAG: 80ms
+Run 2/3...
+  LLM: 4530ms
+  DAG: 1.2ms
+  RAG: 58ms
+Run 3/3...
+  LLM: 4503ms
+  DAG: 1.1ms
+  RAG: 77ms
+
+============================================================
+RESULTS
+============================================================
+
+Latency Breakdown (ms):
+  llm_parsing: 4474.6ms
+  dag_construction: 1.1ms
+  rag_retrieval: 71.8ms
+  TOTAL: 4547.6ms
+
+Results saved to: /home/rvce/finaltest/graph-rca/experiments/09_latency_profiling/data/latency_breakdown.json

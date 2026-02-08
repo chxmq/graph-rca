@@ -1,7 +1,12 @@
-# Incident Logs
-# Paste or extract log entries here, one per line
-# Format: TIMESTAMP LEVEL MESSAGE
-# Example:
-# 2024-01-15T10:23:45Z ERROR Connection pool exhausted - no available connections
-# 2024-01-15T10:23:46Z WARN Query timeout after 30s
-
+2018-07-18 11:50:00 [INFO] cluster-manager: Starting scheduled capacity check for production cluster
+2018-07-18 11:51:30 [WARNING] cluster-manager: High resource reservation detected - services requesting 95% of cluster capacity
+2018-07-18 11:52:00 [INFO] monitoring-svc: CPU allocation ratio: 87%, Memory allocation ratio: 92%
+2018-07-18 11:53:00 [ERROR] cluster-manager: Unable to schedule new service instance - insufficient resources
+2018-07-18 11:53:30 [WARNING] autoscaler: Scaling event blocked due to resource constraints
+2018-07-18 11:54:00 [ERROR] cluster-manager: Resource allocation mismatch detected - reserved > actual usage by 340%
+2018-07-18 11:55:00 [CRITICAL] cluster-manager: Misconfiguration detected in resource management - services reserving excessive CPU/RAM
+2018-07-18 11:55:30 [ERROR] service-deployer: New instance deployment failed - no available capacity despite 45% physical resources free
+2018-07-18 11:56:00 [WARNING] incident-alert: Service degradation detected - multiple deployment failures
+2018-07-18 11:57:00 [INFO] ops-team: Investigating cluster resource allocation issue
+2018-07-18 11:58:00 [ERROR] cluster-manager: Resource quota configuration error confirmed - services over-reserving resources
+2018-07-18 12:00:00 [INFO] ops-team: Applying resource quota fix to cluster configuration

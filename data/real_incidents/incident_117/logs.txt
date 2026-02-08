@@ -1,5 +1,3 @@
-Here is a semi-realistic log snippet for the IT incident:
-
 2023-12-31 14:30:00 [INFO] service-c: Received 500 requests in last 5 minutes, starting to show signs of overload
 2023-12-31 15:10:00 [WARNING] replication-a: Replication lag detected at 10 seconds
 2023-12-31 16:20:00 [INFO] admin-user: Deleting unnecessary directory /var/gitlab/data

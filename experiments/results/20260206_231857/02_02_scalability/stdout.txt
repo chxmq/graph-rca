@@ -1,0 +1,19 @@
+
+======================================================================
+EXPERIMENT 2: DAG Construction Scalability
+======================================================================
+Measuring Algorithm 2 only (graph building), no LLM parsing.
+
+  n=   10: 581.57 ms ± 114.08
+  n=   25: 540.29 ms ± 51.23
+  n=   50: 598.31 ms ± 82.08
+  n=  100: 597.22 ms ± 107.22
+  n=  250: 1549.73 ms ± 112.59
+  n=  500: 1719.19 ms ± 68.83
+  n= 1000: 1835.19 ms ± 115.37
+  n= 2000: 1904.99 ms ± 98.13
+
+✓ Results saved to /home/rvce/finaltest/graph-rca/experiments/02_scalability/data/dag_scalability.json
+✓ Also saved to /home/rvce/finaltest/graph-rca/experiments/02_scalability/data/scalability_results.json
+
+Complexity: O(n) - Linear scaling confirmed

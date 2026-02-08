@@ -200,18 +200,48 @@ def load_incidents() -> List[Dict]:
 
 
 def parse_logs_to_chain(logs_str: str) -> LogChain:
-    """Helper to convert string logs to LogChain."""
+    """Helper to convert string logs to LogChain using robust parsing."""
     logs = logs_str.split("\n")
     entries = []
+    
+    # Robust patterns for various log formats
+    patterns = [
+        # ISO timestamp with brackets: 2023-03-08 14:30:00 [INFO] component: msg
+        re.compile(r'^(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})\s+\[(\w+)\]\s+(.+)$'),
+        # ISO timestamp plain: 2024-01-15T10:23:45.123Z ERROR msg
+        re.compile(r'^(\d{4}-\d{2}-\d{2}T[\d:.]+Z?)\s+(\w+)\s+(.+)$'),
+        # Syslog: Jan 15 10:23:48 server01 sshd[1234]: msg
+        re.compile(r'^(\w{3}\s+\d+\s+[\d:]+)\s+\S+\s+\S+:\s+(.+)$'),
+    ]
+    
     for log in logs:
-        if not log.strip(): continue
-        parts = log.split(" ", 2)
-        if len(parts) >= 3:
-            ts, level, msg = parts[0], parts[1], parts[2]
-            level = level.replace("[", "").replace("]", "")
-        else:
-            ts, level, msg = "unknown", "INFO", log
-            
+        log = log.strip()
+        if not log or log.startswith('#'):
+            continue
+        
+        ts, level, msg = "unknown", "INFO", log
+        parsed = False
+        
+        for pattern in patterns:
+            match = pattern.match(log)
+            if match:
+                groups = match.groups()
+                if len(groups) == 3:
+                    ts, level, msg = groups
+                elif len(groups) == 2:
+                    ts, msg = groups
+                    level = "INFO"
+                parsed = True
+                break
+        
+        if not parsed:
+            # Fallback: try to extract level from anywhere in log
+            level_match = re.search(r'\b(CRITICAL|ERROR|WARN(?:ING)?|INFO|DEBUG)\b', log, re.I)
+            if level_match:
+                level = level_match.group(1).upper()
+                if level == "WARNING":
+                    level = "WARN"
+        
         entries.append(LogEntry(
             timestamp=ts,
             level=level,
