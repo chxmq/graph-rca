@@ -352,7 +352,7 @@ def run_experiment(exp: Dict, results_dir: Path) -> Dict:
     
     except subprocess.TimeoutExpired:
         duration = time.time() - start_time
-        error_msg = f"Experiment timed out after {timeout_seconds/60:.1f} minutes"
+        error_msg = f"Experiment timed out after {duration/60:.1f} minutes"
         log(f"❌ TIMEOUT: {error_msg}", "ERROR")
         return {
             "num": exp_num,

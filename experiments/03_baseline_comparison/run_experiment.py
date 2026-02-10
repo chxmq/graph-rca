@@ -269,19 +269,29 @@ def graphrca_identify(client: ollama.Client, logs: list, options) -> str:
         return logs[0]
 
 
+def _get_judge_client():
+    """Get a dedicated qwen3:32b judge client for reliable scoring.
+    
+    Using a larger model (qwen3:32b) as judge prevents the self-evaluation
+    bias that occurs when llama3.2:3b judges its own output.
+    """
+    return ollama.Client(host=CONFIG["ollama_host"])
+
+JUDGE_MODEL = "qwen3:32b"
+
 def check_rca_correct(predicted: str, ground_truth: str, client: ollama.Client = None) -> bool:
     """Check if prediction semantically matches the ground truth root cause.
     
-    Uses LLM-based semantic similarity scoring for accurate validation,
+    Uses qwen3:32b as an independent judge for reliable scoring,
     with fallback to keyword matching if LLM unavailable.
     """
     if not predicted or not ground_truth:
         return False
     
-    # Try LLM-based semantic comparison first
-    if client:
-        try:
-            prompt = f"""Compare these two root cause descriptions and determine if they identify the same issue.
+    # Use dedicated larger judge model (not the same model that made the prediction)
+    judge = _get_judge_client()
+    try:
+        prompt = f"""Compare these two root cause descriptions and determine if they identify the same issue.
 
 Ground Truth: {ground_truth}
 Prediction: {predicted}
@@ -294,19 +304,23 @@ Rate similarity from 0.0 to 1.0:
 
 Respond with ONLY a number between 0.0 and 1.0:"""
 
-            response = client.generate(
-                model=CONFIG["model"], 
-                prompt=prompt, 
-                options=ollama.Options(temperature=0.0)
-            )
-            
-            if response and response.response:
-                match = re.search(r'(0\.\d+|1\.0|0|1)', response.response.strip())
-                if match:
-                    score = float(match.group(1))
-                    return score >= 0.7  # Threshold for "correct"
-        except Exception as e:
-            pass  # Fall back to keyword matching
+        response = judge.generate(
+            model=JUDGE_MODEL, 
+            prompt=prompt, 
+            options=ollama.Options(temperature=0.0)
+        )
+        
+        if response and response.response:
+            # Extract score - handle /think tags from qwen3
+            response_text = response.response.strip()
+            # Remove any <think>...</think> blocks
+            response_text = re.sub(r'<think>.*?</think>', '', response_text, flags=re.DOTALL).strip()
+            match = re.search(r'(0\.\d+|1\.0|0|1)', response_text)
+            if match:
+                score = float(match.group(1))
+                return score >= 0.7  # Threshold for "correct"
+    except Exception as e:
+        pass  # Fall back to keyword matching
     
     # Fallback: improved keyword matching
     gt_lower = ground_truth.lower()
@@ -320,7 +334,7 @@ Respond with ONLY a number between 0.0 and 1.0:"""
         return False
     
     matches = sum(1 for phrase in key_phrases if phrase in pred_lower)
-    return matches >= len(key_phrases) * 0.6  # Stricter threshold
+    return matches >= len(key_phrases) * 0.6
 
 
 def run_baseline_experiment(client: ollama.Client) -> dict:

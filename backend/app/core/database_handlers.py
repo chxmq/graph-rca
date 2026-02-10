@@ -43,27 +43,21 @@ class VectorDatabaseHandler:
             # Use environment variable for persist directory (useful for experiments/testing)
             persist_dir = os.environ.get("CHROMADB_PATH", "/chroma/data")
             
-            self.client = chromadb.HttpClient(
-                host='localhost', 
-                port=8000,
+            self.client = chromadb.PersistentClient(
+                path=persist_dir,
                 settings=chromadb.Settings(
-                    persist_directory=persist_dir,
-                    is_persistent=True
+                    anonymized_telemetry=False
                 )
             )
-            
-            # Test connection
-            self.client.heartbeat()
                 
             self.ef = OllamaEmbeddingFunction(
                 model_name="nomic-embed-text",
-                url="http://localhost:11435/api/embeddings",
+                url="http://localhost:11434/api/embeddings",
             )
             
         except Exception as e:
             raise ConnectionError(
-                f"Failed to connect to ChromaDB at localhost:8000. "
-                f"Make sure the ChromaDB service is running. "
+                f"Failed to initialize ChromaDB at persist directory. "
                 f"Error: {str(e)}"
             )
     

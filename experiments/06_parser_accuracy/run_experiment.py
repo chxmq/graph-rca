@@ -9,6 +9,7 @@ import os
 import sys
 import json
 import time
+import re
 import statistics
 import urllib.request
 from pathlib import Path
@@ -105,15 +106,110 @@ def load_loghub_dataset(dataset_name: str, max_samples: int) -> list:
     return logs
 
 
+def extract_ground_truth_bgl(raw_line: str) -> dict:
+    """Extract expected fields from BGL log format.
+    
+    BGL format: - epoch date node timestamp node facility level message
+    Example: - 1131511861 2005.11.09 R33-M0-N7-C:J03-U01 2005-11-09-06.11.01.134579 R33-M0-N7-C:J03-U01 RAS KERNEL INFO generating core.7681
+    """
+    # BGL pattern: starts with -, then epoch, date, node, timestamp, node, facility, component, level, message
+    pattern = re.compile(
+        r'^-\s+'                           # Leading dash
+        r'\d+\s+'                          # Epoch timestamp
+        r'[\d.]+\s+'                       # Date
+        r'\S+\s+'                          # Node
+        r'(\S+)\s+'                        # Timestamp (group 1)
+        r'\S+\s+'                          # Node again
+        r'\w+\s+'                          # Facility (e.g., RAS)
+        r'(\w+)\s+'                        # Component (group 2, e.g., KERNEL)
+        r'(INFO|WARN|WARNING|ERROR|CRITICAL|FATAL|DEBUG)\s+'  # Level (group 3)
+        r'(.+)$'                           # Message (group 4)
+    )
+    match = pattern.match(raw_line)
+    if match:
+        return {
+            "timestamp": match.group(1),
+            "component": match.group(2),
+            "level": match.group(3),
+            "message": match.group(4).strip()
+        }
+    return None
+
+
+def extract_ground_truth_hdfs(raw_line: str) -> dict:
+    """Extract expected fields from HDFS log format.
+    
+    HDFS format: date time pid level component: message
+    Example: 081109 203615 148 INFO dfs.DataNode$DataXceiver: Receiving block blk_-16089...
+    """
+    pattern = re.compile(
+        r'^(\d{6}\s+\d{6})\s+'            # Date+time (group 1)
+        r'\d+\s+'                          # PID
+        r'(INFO|WARN|WARNING|ERROR|CRITICAL|FATAL|DEBUG)\s+'  # Level (group 2)
+        r'(\S+?):\s+'                      # Component (group 3)
+        r'(.+)$'                           # Message (group 4)
+    )
+    match = pattern.match(raw_line)
+    if match:
+        component = match.group(3)
+        # Simplify component: dfs.DataNode$DataXceiver -> DataNode
+        if '.' in component:
+            component = component.split('.')[-1]
+        if '$' in component:
+            component = component.split('$')[0]
+        return {
+            "timestamp": match.group(1),
+            "level": match.group(2),
+            "component": component,
+            "message": match.group(4).strip()
+        }
+    return None
+
+
+def check_field_match(parsed_val: str, expected_val: str, field: str) -> bool:
+    """Check if a parsed field matches the expected value.
+    
+    Uses flexible matching: substring/containment for messages,
+    case-insensitive for levels, prefix match for timestamps.
+    """
+    if not parsed_val or not expected_val:
+        return False
+    
+    parsed_val = str(parsed_val).strip()
+    expected_val = str(expected_val).strip()
+    
+    if field == "level":
+        # Normalize: WARN == WARNING
+        p = parsed_val.upper().replace("WARNING", "WARN")
+        e = expected_val.upper().replace("WARNING", "WARN")
+        return p == e
+    elif field == "timestamp":
+        # Check if one contains the other (timestamp formats vary)
+        return expected_val[:6] in parsed_val or parsed_val[:6] in expected_val
+    elif field == "component":
+        # Case-insensitive containment
+        return expected_val.lower() in parsed_val.lower() or parsed_val.lower() in expected_val.lower()
+    elif field == "message":
+        # First 30 chars overlap (messages may be truncated/reformatted)
+        p_prefix = parsed_val[:30].lower()
+        e_prefix = expected_val[:30].lower()
+        return p_prefix in e_prefix or e_prefix in p_prefix
+    return parsed_val == expected_val
+
+
 def run_parser_experiment() -> dict:
-    """Test parser on LogHub datasets using actual LogParser."""
+    """Test parser on LogHub datasets using actual LogParser with ground truth comparison."""
     print("=" * 70)
-    print("EXPERIMENT 6: Parser Accuracy on LogHub (CORRECTED)")
+    print("EXPERIMENT 6: Parser Accuracy on LogHub (WITH GROUND TRUTH)")
     print("=" * 70)
     
     parser = LogParser(model=CONFIG["model"])
     
     fields = ["timestamp", "level", "component", "message"]
+    gt_extractors = {
+        "BGL": extract_ground_truth_bgl,
+        "HDFS": extract_ground_truth_hdfs,
+    }
     results = {"datasets": {}}
     
     for ds_name, fallback in [("BGL", BGL_SAMPLE), ("HDFS", HDFS_SAMPLE)]:
@@ -124,14 +220,21 @@ def run_parser_experiment() -> dict:
             print(f"  Using fallback sample data")
             logs = fallback
         
+        gt_extractor = gt_extractors[ds_name]
+        
         field_correct = {f: 0 for f in fields}
+        field_tested = {f: 0 for f in fields}
         total_tests = 0
+        total_with_gt = 0
         latencies = []
         errors = 0
         
         for idx, log_entry in enumerate(logs):
             if idx % 100 == 0:
                 print(f"  Progress: {idx}/{len(logs)}")
+            
+            # Extract ground truth from known format
+            gt = gt_extractor(log_entry["raw"])
             
             for run in range(CONFIG["runs_per_log"]):
                 start = time.time()
@@ -144,11 +247,21 @@ def run_parser_experiment() -> dict:
                     # Convert to dict for field checking
                     parsed = log_obj.model_dump()
                     
-                    # Check fields
-                    for field in fields:
-                        val = str(parsed.get(field, "")).strip()
-                        if val and val.lower() not in ['none', 'null', 'n/a', '']:
-                            field_correct[field] += 1
+                    if gt:
+                        # Ground truth available: compare against it
+                        total_with_gt += 1
+                        for field in fields:
+                            if field in gt:
+                                field_tested[field] += 1
+                                if check_field_match(str(parsed.get(field, "")), gt[field], field):
+                                    field_correct[field] += 1
+                    else:
+                        # No ground truth: fall back to presence check
+                        for field in fields:
+                            field_tested[field] += 1
+                            val = str(parsed.get(field, "")).strip()
+                            if val and val.lower() not in ['none', 'null', 'n/a', '']:
+                                field_correct[field] += 1
                             
                     total_tests += 1
                     
@@ -159,10 +272,11 @@ def run_parser_experiment() -> dict:
         
         field_accuracy = {}
         for field in fields:
-            acc = field_correct[field] / total_tests if total_tests > 0 else 0
+            tested = field_tested[field]
+            acc = field_correct[field] / tested if tested > 0 else 0
             field_accuracy[field] = {"mean": round(acc * 100, 1), "std": 0.0}
         
-        overall = sum(field_correct.values()) / (total_tests * len(fields)) if total_tests > 0 else 0
+        overall = sum(field_correct.values()) / sum(field_tested.values()) if sum(field_tested.values()) > 0 else 0
         
         # Ensure we report actual samples processed
         actual_samples = len(logs)
@@ -172,6 +286,7 @@ def run_parser_experiment() -> dict:
             "runs": CONFIG["runs_per_log"],
             "field_accuracy": field_accuracy,
             "overall_accuracy": round(overall * 100, 1),
+            "ground_truth_coverage": f"{total_with_gt}/{total_tests}",
             "latency": {
                 "mean_s": round(statistics.mean(latencies), 3) if latencies else 0,
                 "std_s": round(statistics.stdev(latencies), 3) if len(latencies) > 1 else 0,
@@ -180,7 +295,7 @@ def run_parser_experiment() -> dict:
             "total_errors": errors
         }
         
-        print(f"  Overall: {overall*100:.1f}%")
+        print(f"  Overall: {overall*100:.1f}% (GT coverage: {total_with_gt}/{total_tests})")
     
     results["timestamp"] = datetime.now().isoformat()
     return results

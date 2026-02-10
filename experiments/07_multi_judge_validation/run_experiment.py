@@ -57,8 +57,6 @@ class JudgeClient:
         self.judge_name = judge_name
         self.judge_config = CONFIG["judges"][judge_name]
         self.client = None
-        self._init_client()
-    
         self.api_keys = []
         self.current_key_idx = 0
         self._init_client()
@@ -149,6 +147,8 @@ Respond with ONLY a number between 0.0 and 1.0:"""
                         options={"temperature": 0.0}
                     )
                     text = response.response.strip()
+                    # Strip <think>...</think> blocks from qwen3 responses
+                    text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
                     
                 elif judge_type in ["openai", "groq"]:
                     response = self.client.chat.completions.create(

@@ -95,7 +95,10 @@ Score (just the number):"""
             options={"temperature": 0.0}
         )
         import re
-        match = re.search(r'(0\.\d+|1\.0|0|1)', response.response)
+        text = response.response.strip()
+        # Strip <think>...</think> blocks from qwen3 responses
+        text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+        match = re.search(r'(0\.\d+|1\.0|0|1)', text)
         if match:
             return float(match.group(1))
     except:
