@@ -44,10 +44,7 @@ class VectorDatabaseHandler:
             persist_dir = os.environ.get("CHROMADB_PATH", "/chroma/data")
             
             self.client = chromadb.PersistentClient(
-                path=persist_dir,
-                settings=chromadb.Settings(
-                    anonymized_telemetry=False
-                )
+                path=persist_dir
             )
                 
             self.ef = OllamaEmbeddingFunction(
