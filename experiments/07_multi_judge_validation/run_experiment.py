@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 try:
     from app.models.parsing_data_models import LogEntry, LogChain
     from app.utils.graph_generator import GraphGenerator
+    from app.utils.log_parser import LogParser
 except ImportError as e:
     print(f"Error importing backend modules: {e}")
     sys.exit(1)
@@ -199,72 +200,20 @@ def load_incidents() -> List[Dict]:
     return incidents
 
 
-def parse_logs_to_chain(logs_str: str) -> LogChain:
-    """Helper to convert string logs to LogChain using robust parsing."""
-    logs = logs_str.split("\n")
-    entries = []
-    
-    # Robust patterns for various log formats
-    patterns = [
-        # ISO timestamp with brackets: 2023-03-08 14:30:00 [INFO] component: msg
-        re.compile(r'^(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})\s+\[(\w+)\]\s+(.+)$'),
-        # ISO timestamp plain: 2024-01-15T10:23:45.123Z ERROR msg
-        re.compile(r'^(\d{4}-\d{2}-\d{2}T[\d:.]+Z?)\s+(\w+)\s+(.+)$'),
-        # Syslog: Jan 15 10:23:48 server01 sshd[1234]: msg
-        re.compile(r'^(\w{3}\s+\d+\s+[\d:]+)\s+\S+\s+\S+:\s+(.+)$'),
-    ]
-    
-    for log in logs:
-        log = log.strip()
-        if not log or log.startswith('#'):
-            continue
-        
-        ts, level, msg = "unknown", "INFO", log
-        parsed = False
-        
-        for pattern in patterns:
-            match = pattern.match(log)
-            if match:
-                groups = match.groups()
-                if len(groups) == 3:
-                    ts, level, msg = groups
-                elif len(groups) == 2:
-                    ts, msg = groups
-                    level = "INFO"
-                parsed = True
-                break
-        
-        if not parsed:
-            # Fallback: try to extract level from anywhere in log
-            level_match = re.search(r'\b(CRITICAL|ERROR|WARN(?:ING)?|INFO|DEBUG)\b', log, re.I)
-            if level_match:
-                level = level_match.group(1).upper()
-                if level == "WARNING":
-                    level = "WARN"
-        
-        entries.append(LogEntry(
-            timestamp=ts,
-            level=level,
-            message=msg,
-            pid="", component="", error_code="", username="", ip_address="", group="", trace_id="", request_id=""
-        ))
-    return LogChain(log_chain=entries)
-
-
 def run_graphrca(logs: str) -> str:
-    """Run actual GraphRCA algorithm."""
+    """Run actual GraphRCA algorithm using the real LogParser + GraphGenerator pipeline."""
     try:
         if not logs or len(logs) < 10:
              return "Insufficient logs"
 
-        # 1. Parse
-        log_chain = parse_logs_to_chain(logs)
+        # 1. Parse using actual LLM-based LogParser
+        parser = LogParser(model=CONFIG["model"])
+        log_chain = parser.parse_log(logs)
         
-        # 2. Build DAG
+        # 2. Build DAG and find root cause
         generator = GraphGenerator(log_chain)
         dag = generator.generate_dag()
         
-        # 3. Find Root Cause using graph traversal
         return dag.root_cause
         
     except Exception as e:
@@ -294,12 +243,6 @@ def run_validation(judge_name: str) -> Dict:
         print(f"[{idx+1}/{len(incidents)}] {incident['id']} ({incident['category']})")
         
         logs = incident["logs"]
-        
-        # For GraphRCA, we only need 1 run because it's deterministic given the same logs
-        # (Assuming the log parsing part is handled consistently or simple heuristic here)
-        # Note: The 'parse_logs_to_chain' is a simple splitter. 
-        # If we wanted full fidelity we'd use LogParser (LLM), but for this val script
-        # keeping it deterministic is often preferred for algorithmic validation.
         
         prediction = run_graphrca(logs)
         
