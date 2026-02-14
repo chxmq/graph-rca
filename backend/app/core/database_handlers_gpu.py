@@ -4,7 +4,7 @@ Uses in-process ChromaDB and connects to local Ollama.
 """
 
 import chromadb
-
+from chromadb.config import Settings
 import ollama
 from pymongo import MongoClient
 from typing import Optional
@@ -34,7 +34,11 @@ class VectorDatabaseHandler:
         os.makedirs(persist_directory, exist_ok=True)
         
         self.client = chromadb.PersistentClient(
-            path=persist_directory
+            path=persist_directory,
+            settings=Settings(
+                anonymized_telemetry=False,
+                allow_reset=True
+            )
         )
         
         print(f"✓ ChromaDB initialized (persistent mode: {persist_directory})")

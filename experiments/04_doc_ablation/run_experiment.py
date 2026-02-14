@@ -106,25 +106,17 @@ Score (just the number):"""
     return 0.5
 
 
-def setup_ablation_db(vdb: VectorDatabaseHandler, docs: list):
-    """Setup ChromaDB collection with a specific set of documentation.
-    
-    Reuses a single VectorDatabaseHandler instance and clears/repopulates
-    the collection between ablation configs. This avoids destroying the
-    ChromaDB directory mid-run, which causes 'no such table' errors in
-    ChromaDB 1.x where the Rust/SQLite engine caches internal state.
-    """
-    # Delete the old collection and create a fresh one
-    collection_name = "docs"
-    try:
-        vdb.client.delete_collection(name=collection_name)
-    except Exception:
-        pass  # Collection may not exist yet
+def setup_ablation_db(docs: list):
+    """Setup ChromaDB with a specific set of documentation."""
+    # Clean previous
+    if EXP_CHROMA_DIR.exists():
+        shutil.rmtree(EXP_CHROMA_DIR)
+    EXP_CHROMA_DIR.mkdir(parents=True)
     
     if not docs:
-        # For no_docs config, return None so the caller skips retrieval
         return None
-    
+        
+    vdb = VectorDatabaseHandler()
     documents = []
     
     print(f"  Indexing {len(docs)} documents...")
@@ -133,10 +125,11 @@ def setup_ablation_db(vdb: VectorDatabaseHandler, docs: list):
         doc_text = f"Incident: {d['category']}\nRoot Cause: {d['root_cause']}\n{d['postmortem']}"
         documents.append(doc_text)
         
-    # Generate embeddings using the handler's embedding function
+    # Generate embeddings (VectorDatabaseHandler's EF handles this if configured correctly,
+    # but based on our analysis of database_handlers.py, add_documents expects embeddings)
+    # So we used the EF attached to the vdb instance
     embeddings = vdb.ef(documents)
-    ids = [f"ablation_doc_{i}" for i in range(len(documents))]
-    vdb.add_documents(documents=documents, embeddings=embeddings, ids=ids)
+    vdb.add_documents(documents=documents, embeddings=embeddings)
     
     return vdb
 
@@ -177,17 +170,11 @@ def run_doc_ablation(client: ollama.Client) -> dict:
     
     results = {"configs": {}, "test_size": len(test_set)}
     
-    # Create ONE VectorDatabaseHandler for the entire experiment
-    # This avoids ChromaDB 1.x "no such table: databases" errors
-    # that occur when the data directory is destroyed mid-process
-    EXP_CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-    shared_vdb = VectorDatabaseHandler()
-    
     for config_name, docs in configs.items():
         print(f"\nConfig: {config_name} ({len(docs)} docs)")
         
-        # Setup Vector DB collection for this ablation level
-        vdb = setup_ablation_db(shared_vdb, docs)
+        # Setup Vector DB for this ablation level
+        vdb = setup_ablation_db(docs)
         scores = []
         
         for idx, test_case in enumerate(test_set):
@@ -258,7 +245,7 @@ def main():
     
     print(f"\n✓ Results saved to {output_path}")
     
-    # Clean up experiment ChromaDB data
+    # Clean up
     if EXP_CHROMA_DIR.exists():
         shutil.rmtree(EXP_CHROMA_DIR)
 
