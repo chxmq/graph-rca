@@ -23,6 +23,8 @@ from typing import List, Dict, Optional
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 try:
     from app.core.database_handlers import VectorDatabaseHandler, Document
+    from app.utils.log_parser import LogParser
+    from app.utils.graph_generator import GraphGenerator
 except ImportError as e:
     print(f"Error importing backend modules: {e}")
     sys.exit(1)
@@ -218,19 +220,40 @@ def load_incidents() -> List[Dict]:
     return incidents
 
 
-def get_prediction(client: ollama.Client, logs: str, context: str = "") -> str:
-    """Get RCA prediction."""
-    if context:
-        prompt = f"Using this context: {context}\n\nIdentify root cause:\n{logs}\n\nRoot Cause:"
-    else:
-        prompt = f"Identify root cause:\n{logs}\n\nRoot Cause:"
-    
-    response = client.generate(
-        model=CONFIG["model"],
-        prompt=prompt,
-        options={"temperature": CONFIG["temperature"]}
-    )
-    return response.response.strip()
+def run_graphrca(logs: str, rag_context: str = "") -> str:
+    """Run actual GraphRCA pipeline (LogParser + GraphGenerator), optionally with RAG context."""
+    try:
+        if not logs or len(logs) < 10:
+            return "Insufficient logs"
+        
+        # 1. Parse using actual LLM-based LogParser
+        parser = LogParser(model=CONFIG["model"])
+        log_chain = parser.parse_log(logs)
+        
+        # 2. Build DAG and find root cause
+        generator = GraphGenerator(log_chain)
+        dag = generator.generate_dag()
+        prediction = dag.root_cause
+        
+        # 3. If RAG context available, refine prediction with context
+        if rag_context and prediction:
+            client = ollama.Client(host=CONFIG["ollama_host"])
+            prompt = (
+                f"Using this context from a similar past incident:\n{rag_context}\n\n"
+                f"Refine this root cause analysis:\n{prediction}\n\n"
+                f"Refined Root Cause:"
+            )
+            response = client.generate(
+                model=CONFIG["model"],
+                prompt=prompt,
+                options={"temperature": CONFIG["temperature"]}
+            )
+            return response.response.strip()
+        
+        return prediction
+        
+    except Exception as e:
+        return f"GraphRCA failed: {str(e)}"
 
 
 def setup_vector_db(train_set: List[Dict]) -> VectorDatabaseHandler:
@@ -268,7 +291,7 @@ def setup_vector_db(train_set: List[Dict]) -> VectorDatabaseHandler:
     return vdb
 
 
-def run_experiment(ollama_client: ollama.Client, judge: JudgeClient) -> dict:
+def run_experiment(judge: JudgeClient) -> dict:
     """Compare baseline vs RAG using a specific judge."""
     print("=" * 70)
     print(f"EXPERIMENT: RAG vs Baseline Comparison (CORRECTED)")
@@ -305,23 +328,20 @@ def run_experiment(ollama_client: ollama.Client, judge: JudgeClient) -> dict:
         input_text = test_case["logs"] if test_case["logs"] else test_case["postmortem"]
         
         try:
-            # Baseline (no RAG)
-            baseline_pred = get_prediction(ollama_client, input_text, context="")
+            # Baseline: GraphRCA without RAG context
+            baseline_pred = run_graphrca(input_text, rag_context="")
             baseline_score = judge.score(baseline_pred, test_case["root_cause"])
             
-            # RAG - retrieve from Vector DB
-            # We query with the logs/symptoms
-            query = f"Incident logs: {input_text[:500]}" # Truncate query if too long
-            
-            # Use backend search logic
-            # Signature: search(query, context, top_k)
+            # RAG: retrieve similar past incident from Vector DB
+            query = f"Incident logs: {input_text[:500]}"
             retrieved_docs = vdb.search(query=query, context="", top_k=1)
             
             rag_context = ""
             if retrieved_docs:
                 rag_context = f"Similar Past Incident:\n{retrieved_docs[0].text}"
             
-            rag_pred = get_prediction(ollama_client, input_text, context=rag_context)
+            # GraphRCA with RAG context
+            rag_pred = run_graphrca(input_text, rag_context=rag_context)
             rag_score = judge.score(rag_pred, test_case["root_cause"])
             
             results["tests"].append({
@@ -357,7 +377,6 @@ def main():
     parser.add_argument("--judge", choices=["qwen", "gpt", "groq", "all"], default="qwen")
     args = parser.parse_args()
     
-    ollama_client = ollama.Client(host=CONFIG["ollama_host"])
     output_dir = Path(__file__).parent / "data"
     output_dir.mkdir(exist_ok=True)
     
@@ -366,7 +385,7 @@ def main():
     for j in judges:
         try:
             judge = JudgeClient(j)
-            results = run_experiment(ollama_client, judge)
+            results = run_experiment(judge)
             output_file = output_dir / f"rag_comparison_{j}.json"
             with open(output_file, "w") as f:
                 json.dump(results, f, indent=2)
