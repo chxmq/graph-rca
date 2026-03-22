@@ -1,0 +1,13 @@
+2023-12-31 23:59:00 [INFO] mysql_service: MySQL connection established
+2023-12-31 23:59:15 [WARNING] mysql_service: Table 'uber_data' reached 90% of operational limit (1000 MB)
+2023-12-31 23:59:30 [INFO] mysql_service: Initiating table partitioning to reduce load
+2023-12-31 23:59:45 [ERROR] mysql_service: Failed to perform table partitioning, skipping
+2023-12-31 23:59:50 [WARNING] mysql_service: Table 'uber_data' exceeded operational limit (1000 MB), triggering emergency sharding protocol
+2023-12-31 23:59:55 [CRITICAL] mysql_shard_service: Sharding service initiated, redirecting queries to shard 1
+2023-12-31 23:59:58 [WARNING] mysql_shard_service: Shard 1 under heavy load, requesting additional resources
+2023-12-31 23:59:60 [ERROR] mysql_shard_service: Shard 1 connection timeout, attempting to reconnect
+2023-12-31 23:59:62 [CRITICAL] mysql_shard_service: Sharding failed, redirecting all queries to shard 2
+2023-12-31 23:59:65 [INFO] mysql_shard_service: Shard 2 online, accepting new connections
+2023-12-31 23:59:70 [WARNING] mysql_shard_service: Shard 1 still under heavy load, monitoring for recovery
+2023-12-31 23:59:75 [INFO] mysql_shard_service: Shard 1 connection timeout cleared, resuming normal operation
+2023-12-31 23:59:80 [ERROR] mysql_shard_service: Unexpected sharding failure, investigating root cause

@@ -1,0 +1,10 @@
+{
+  "incident_id": "061",
+  "source": "https://status.cloud.google.com/incident/compute/17003#5660850647990272",
+  "root_cause": "Many changes to a rarely modified load balancer were applied through a very slow code path",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

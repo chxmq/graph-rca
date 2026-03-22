@@ -1,0 +1,10 @@
+{
+  "incident_id": "066",
+  "source": "https://web.archive.org/web/20211104160742/https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/",
+  "root_cause": "Backwards time flow from tracking [the 27th leap second on 2016-12-31T23:59:60Z](https://hpiers",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "181",
+  "source": "https://web.archive.org/web/20170202055452/https://www.businessinsider.com.au/a-fire-in-a-telstra-exchange-is-causing-flight-delays-and-network-outages-2017-2",
+  "root_cause": "A fire in a datacenter caused SMS text messages to be sent to random destinations",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

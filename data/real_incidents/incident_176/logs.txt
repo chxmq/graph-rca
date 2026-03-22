@@ -1,0 +1,15 @@
+2024-02-20 14:30:00 [INFO] sql-server-primary: Service startup initiated
+2024-02-20 14:31:00 [WARNING] sql-server-primary: Warning: Index rebuild operation in progress on database 'StackExchangeDB'
+2024-02-20 14:32:00 [CRITICAL] sql-server-primary: Bugcheck detected: 0xc0000005 (Access violation) on SQL Server process
+2024-02-20 14:33:00 [INFO] sql-server-primary: Attempting to restart SQL Server process
+2024-02-20 14:34:00 [ERROR] site-a: Database connection failed, going into read-only mode
+2024-02-20 14:35:00 [WARNING] site-b: Site unavailable, attempting fallback to read-only mode
+2024-02-20 14:36:00 [CRITICAL] site-c: All sites unavailable, complete outage declared
+2024-02-20 14:37:00 [INFO] operations-team: Alert sent to ops team for investigation
+2024-02-20 14:38:00 [WARNING] sql-server-primary: SQL Server process failed to restart after 10 attempts
+2024-02-20 14:39:00 [ERROR] site-a: Read-only mode timeout, attempting to recover from read-only state
+2024-02-20 14:40:00 [INFO] site-b: Site recovery successful, read-write mode restored
+2024-02-20 14:41:00 [WARNING] sql-server-primary: Warning: Corruption detected in SQL Server database
+2024-02-20 14:42:00 [CRITICAL] sql-server-primary: Primary SQL Server process terminated due to corruption
+2024-02-20 14:43:00 [INFO] operations-team: Investigation team notified for further analysis
+2024-02-20 14:45:00 [ERROR] site-c: Site recovery attempt failed, permanent data loss suspected

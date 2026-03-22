@@ -1,0 +1,10 @@
+{
+  "incident_id": "146",
+  "source": "https://web.archive.org/web/20160426163728/https://medium.com/medium-eng/the-curious-case-of-disappearing-polish-s-fa398313d4df",
+  "root_cause": "Polish users were unable to use their \"\u015a\" key on Medium",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

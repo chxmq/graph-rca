@@ -1,0 +1,12 @@
+2023-12-15 14:30:00 [INFO] om_service: Received large order for 1M penny stock units
+2023-12-15 14:30:02 [WARNING] om_service: Order total value exceeded expected threshold, but processing allowed
+2023-12-15 14:30:10 [INFO] om_service: Generating individual trades for order...
+2023-12-15 14:30:20 [INFO] om_service: Trades generated: 90,123
+2023-12-15 14:30:25 [WARNING] om_service: Trade volume approaching maximum allowed limit
+2023-12-15 14:30:30 [INFO] om_service: Triggering rate limiting on trades...
+2023-12-15 14:30:35 [ERROR] om_service: Rate limiting exceeded, unable to process additional trades
+2023-12-15 14:30:40 [WARNING] om_service: System overload detected, attempting to reduce trade volume
+2023-12-15 14:30:45 [INFO] om_service: Reducing trade volume by 75%
+2023-12-15 14:31:00 [CRITICAL] om_service: Order Management System is overwhelmed, unable to process further trades
+2023-12-15 14:31:05 [ERROR] db-service: Database connection timeout due to system overload
+2023-12-15 14:31:10 [INFO] alert-service: Incident triggered, alert sent to support team

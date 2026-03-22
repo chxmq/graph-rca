@@ -1,0 +1,10 @@
+{
+  "incident_id": "041",
+  "source": "https://googleblog.blogspot.com/2009/01/this-site-may-harm-your-computer-on.html",
+  "root_cause": "The '/' character was accidentally checked into the malicious URL blacklist, causing every site on the internet to be flagged as harmful.",
+  "root_cause_timestamp": "2009-01-31T00:00:00Z",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

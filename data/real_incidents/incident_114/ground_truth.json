@@ -1,0 +1,10 @@
+{
+  "incident_id": "114",
+  "source": "https://wiki.gentoo.org/wiki/Github/2018-06-28",
+  "root_cause": "An entity gained access to the Gentoo GitHub organization, removed access to all developers and started adding commits in various repositories",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

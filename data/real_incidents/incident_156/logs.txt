@@ -1,0 +1,16 @@
+2023-12-31 23:59:00 [INFO] PagerDuty Cloud Service Monitoring: Initializing monitoring script
+2023-12-31 23:59:30 [WARNING] PagerDuty Cloud Service Monitoring: Received alert from third party service (SMS/voice calls)
+2023-12-31 23:59:45 [INFO] PagerDuty Cloud Service Monitoring: Parsing alert message for region and severity
+2023-12-31 23:59:50 [ERROR] PagerDuty Cloud Service Monitoring: Unable to resolve region due to AWS outage in us-west-2
+2023-12-31 23:59:55 [INFO] PagerDuty Cloud Service Monitoring: Checking alternative routes for SMS/voice calls
+2023-12-31 23:59:59 [WARNING] PagerDuty Cloud Service Monitoring: Alternative route unavailable due to AWS outage in us-west-2
+2023-12-31 23:60:00 [CRITICAL] PagerDuty Cloud Service Monitoring: Incident created for AWS outage in us-west-2 region
+2023-12-31 23:60:05 [INFO] PagerDuty Cloud Service Monitoring: Notifying PagerDuty Ops Team of incident
+2023-12-31 23:60:10 [ERROR] PagerDuty Cloud Service Monitoring: Unable to contact AWS for outage details
+2023-12-31 23:60:15 [WARNING] PagerDuty Cloud Service Monitoring: Estimated time to resolution exceeds expected threshold
+2023-12-31 23:60:20 [INFO] PagerDuty Cloud Service Monitoring: Updating incident status to "In Progress"
+2023-12-31 23:60:25 [CRITICAL] PagerDude Cloud Service Monitoring: AWS outage in us-west-2 region still ongoing after 10 minutes
+2023-12-31 23:60:30 [INFO] PagerDuty Cloud Service Monitoring: Notifying affected services of AWS outage
+2023-12-31 23:60:35 [ERROR] service-a: Unable to connect to AWS region due to outage
+2023-12-31 23:60:40 [WARNING] service-b: Error sending SMS/voice calls due to AWS outage in us-west-2 region
+2023-12-31 23:60:45 [INFO] PagerDuty Cloud Service Monitoring: Incident status updated to "Resolved"

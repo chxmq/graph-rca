@@ -1,0 +1,10 @@
+{
+  "incident_id": "125",
+  "source": "https://status.heroku.com/incidents/642?postmortem",
+  "root_cause": "Having a system that requires scheduled manual updates resulted in an error which caused US customers to be unable to scale, stop or restart dynos, or route HTTP traffic, and also prevented all custom...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

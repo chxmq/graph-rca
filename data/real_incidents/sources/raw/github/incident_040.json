@@ -1,0 +1,6 @@
+{
+  "company": "TravisCI",
+  "url": "https://web.archive.org/web/20221220114914/https://blog.travis-ci.com/2016-09-30-the-day-we-deleted-our-vm-images/",
+  "description": "A configuration issue (automated age-based Google Compute Engine VM image cleanup job) caused stable base VM images to be deleted.",
+  "source": "GitHub post-mortems list"
+}

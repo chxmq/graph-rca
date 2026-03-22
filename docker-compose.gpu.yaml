@@ -1,0 +1,12 @@
+# GPU-enabled version for Linux systems with NVIDIA GPUs
+# Usage: docker-compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d
+
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

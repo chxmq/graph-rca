@@ -1,0 +1,13 @@
+2023-12-15 14:30:00 [INFO] supermarket-service: Service startup complete
+2023-12-15 14:30:03 [WARNING] health-checker: Initial health check passed with minor latency
+2023-12-15 14:30:10 [INFO] supermarket-service: Received first request
+2023-12-15 14:31:00 [INFO] supermarket-service: Response sent to client
+2023-12-15 14:31:02 [WARNING] health-checker: Second health check failed due to high latency
+2023-12-15 14:32:30 [ERROR] supermarket-service: Unresponsive client detected, retrying request
+2023-12-15 14:32:45 [INFO] supermarket-service: Request re-sent with increased timeout
+2023-12-15 14:33:00 [WARNING] health-checker: Third health check failed due to high latency
+2023-12-15 14:40:00 [ERROR] chef-distributed-systems: System heartbeat failed, assuming node is down
+2023-12-15 14:45:00 [CRITICAL] supermarket-service: Maximum retries exceeded, service terminated
+2023-12-15 14:46:00 [INFO] chef-distributed-systems: Node restart initiated for affected service
+2023-12-15 14:50:00 [WARNING] health-checker: Initial health check passed with minor latency after node restart
+2023-12-15 14:55:00 [INFO] supermarket-service: Service startup complete, but high latency detected

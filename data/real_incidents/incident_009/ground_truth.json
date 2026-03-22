@@ -1,0 +1,10 @@
+{
+  "incident_id": "009",
+  "source": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+  "root_cause": "A routine maintenance audit command inadvertently disconnected all Facebook data centers from the Internet by withdrawing all BGP routes.",
+  "root_cause_timestamp": "2021-10-04T15:39:00Z",
+  "category": "Network",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

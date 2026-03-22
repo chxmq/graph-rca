@@ -1,0 +1,10 @@
+{
+  "incident_id": "112",
+  "source": "https://web.archive.org/web/20220704223244/https://flowdock-resources.s3.amazonaws.com/legal/Flowdock-RCA-For-Incident-On-2020-04-21.pdf",
+  "root_cause": "Flowdock instant messaging was unavailable for approx 24 hrs between April 21-22 2020",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

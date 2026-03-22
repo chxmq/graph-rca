@@ -1,0 +1,10 @@
+{
+  "incident_id": "032",
+  "source": "https://blog.roblox.com/2022/01/roblox-return-to-service-10-28-10-31-2021/",
+  "root_cause": "Consul streaming feature enabled higher-than-expected load on BoltDB, leading to 73-hour global outage.",
+  "root_cause_timestamp": "2021-10-28T00:00:00Z",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

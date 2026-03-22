@@ -1,0 +1,10 @@
+{
+  "incident_id": "200",
+  "source": "https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-11b38f2f6185",
+  "root_cause": "Network partitions and idempotency key failures",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "165",
+  "source": "http://web.archive.org/web/20160610080136/https://www.scribd.com/doc/309574927/ShapeShift-Post-Mortem-Public",
+  "root_cause": "Poor security practices enabled an employee to steal $200,000 in cryptocurrency in 3 separate hacks over a 1 month period",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

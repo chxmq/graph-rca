@@ -1,0 +1,13 @@
+2024-03-24 14:00:00 [INFO] service-c: Normal traffic detected on port 80
+2024-03-24 14:02:15 [WARNING] service-d: Increased traffic spike on port 80
+2024-03-24 14:05:30 [INFO] alert-system: DDoS detection triggered for IP 192.168.1.100
+2024-03-24 14:06:00 [ERROR] service-e: Connection refused to IP 192.168.1.100
+2024-03-24 14:10:15 [WARNING] firewall: Unexpected traffic from IP 192.168.1.100 blocked
+2024-03-24 14:20:30 [INFO] incident-system: DDoS attack detected, escalating to team
+2024-03-24 14:25:00 [CRITICAL] service-f: Service unavailable due to network congestion
+2024-03-24 14:35:15 [WARNING] team-incident: Investigating possible botnet origin of traffic
+2024-03-24 14:40:30 [INFO] team-incident: IP 192.168.1.100 flagged as malicious by firewall rule
+2024-03-24 14:45:00 [ERROR] service-g: Persistent network issues detected, attempting to reconnect
+2024-03-24 15:20:15 [WARNING] system-monitoring: Network congestion levels remain high after 80 minutes
+2024-03-24 16:00:00 [INFO] incident-system: DDoS attack concluded, services restored
+2024-03-24 16:10:30 [INFO] service-h: Service now fully operational

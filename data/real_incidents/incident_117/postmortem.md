@@ -1,0 +1,13 @@
+# Gitlab Incident
+
+**Category:** Database
+**Severity:** Medium
+**Source:** https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/
+
+## Description
+
+Influx of requests overloaded the database, caused replication to lag, tired admin deleted the wrong directory, six hours of data lost. See also [earlier report](https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident) and [HN discussion](https://web.archive.org/web/20240918153505/https://news.ycombinator.com/item?id=13537052).
+
+## Root Cause
+
+Influx of requests overloaded the database, caused replication to lag, tired admin deleted the wrong directory, six hours of data lost

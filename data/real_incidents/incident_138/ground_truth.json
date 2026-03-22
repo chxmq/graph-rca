@@ -1,0 +1,10 @@
+{
+  "incident_id": "138",
+  "source": "https://web.archive.org/web/20241105190743/http://42gems.com/blog/?p=735",
+  "root_cause": "A scripting bug caused the generation of the divider logic in the Pentium to very occasionally produce incorrect results",
+  "root_cause_timestamp": "Unknown",
+  "category": "Software",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

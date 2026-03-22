@@ -1,0 +1,10 @@
+{
+  "incident_id": "079",
+  "source": "https://aws.amazon.com/message/11201/",
+  "root_cause": "Scaling the front-end cache fleet for Kinesis caused all of the servers in the fleet to exceed the maximum number of threads allowed by an operating system configuration",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,14 @@
+2022-09-08 14:30:00 [INFO] Service-ingest: Received request to ingest data
+2022-09-08 14:30:15 [WARNING] Service-ingest: High CPU utilization (80%)
+2022-09-08 14:30:20 [ERROR] Service-ingest: Memory leak detected
+2022-09-08 14:30:25 [INFO] Service-mq: Received message to trigger ingestion
+2022-09-08 14:30:30 [WARNING] Service-ingest: Connection to database failed
+2022-09-08 14:31:00 [ERROR] Service-ingest: Crashed with error 'Database connection timeout'
+2022-09-08 14:31:10 [INFO] Service-mq: Resent message to trigger ingestion
+2022-09-08 14:31:15 [WARNING] Service-ingest: Ingestion attempt failed, retrying in 30 seconds
+2022-09-08 14:32:00 [ERROR] Service-ingest: Retrying ingestion attempt failed due to high CPU utilization
+2022-09-08 14:35:00 [INFO] Service-mq: Resent message to trigger ingestion (second attempt)
+2022-09-08 14:36:15 [WARNING] Service-ingest: Connection to database still failed, escalating issue
+2022-09-08 14:40:00 [ERROR] Service-ingest: Escalation triggered, sending alert to support team
+2022-09-08 14:50:30 [INFO] Service-mq: Resent message to trigger ingestion (third attempt)
+2022-09-08 15:01:00 [CRITICAL] Service-ingest: System crashed, ingesting data unavailable for over 8 hours

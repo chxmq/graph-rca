@@ -1,0 +1,10 @@
+{
+  "incident_id": "002",
+  "source": "https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/",
+  "root_cause": "A poorly written regular expression in a WAF rule caused CPU exhaustion (catastrophic backtracking) on edge routers.",
+  "root_cause_timestamp": "2019-07-02T13:42:00Z",
+  "category": "Network",
+  "severity": "Critical",
+  "logs_available": true,
+  "root_cause_in_logs": true
+}

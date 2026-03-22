@@ -1,0 +1,6 @@
+{
+  "company": "Google",
+  "url": "https://status.cloud.google.com/incidents/eo76pxZiDgWVz4z3kmUv",
+  "description": "A failure of a component on a fiber path from one of the central US gateway campuses in Google\u2019s production backbone led to a decrease in available network bandwidth between the gateway and multiple edge locations, causing packet loss while the backbone automatically moved traffic onto remaining paths.",
+  "source": "GitHub post-mortems list"
+}

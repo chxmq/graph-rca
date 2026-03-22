@@ -1,0 +1,45 @@
+======================================================================
+EXPERIMENT: Batch Inference Benchmark
+Config: 128 logs, 5 runs per batch size
+Device: Quadro GV100
+======================================================================
+
+Batch size: 1
+  Run 1: 275.8s (0.46 logs/s)
+  Run 2: 272.8s (0.47 logs/s)
+  Run 3: 279.3s (0.46 logs/s)
+  Run 4: 277.0s (0.46 logs/s)
+  Run 5: 269.8s (0.47 logs/s)
+  → Avg: 0.47 logs/s, 2148ms/log, 1.0× speedup
+
+Batch size: 8
+  Run 1: 212.0s (0.60 logs/s)
+  Run 2: 232.4s (0.55 logs/s)
+  Run 3: 222.7s (0.57 logs/s)
+  Run 4: 236.6s (0.54 logs/s)
+  Run 5: 231.3s (0.55 logs/s)
+  → Avg: 0.56 logs/s, 1774ms/log, 1.2× speedup
+
+Batch size: 16
+  Run 1: 127.6s (1.00 logs/s)
+  Run 2: 132.0s (0.97 logs/s)
+  Run 3: 128.7s (0.99 logs/s)
+  Run 4: 158.5s (0.81 logs/s)
+  Run 5: 226.7s (0.56 logs/s)
+  → Avg: 0.83 logs/s, 1209ms/log, 1.8× speedup
+
+Batch size: 32
+  Run 1: 2.2s (58.54 logs/s)
+  Run 2: 122.7s (1.04 logs/s)
+  Run 3: 80.3s (1.59 logs/s)
+  Run 4: 2.1s (59.80 logs/s)
+  Run 5: 65.8s (1.95 logs/s)
+  → Avg: 2.34 logs/s, 427ms/log, 5.0× speedup
+
+✓ Results saved to /home/rvce/finaltest/graph-rca/experiments/01_batch_inference/data/batch_results_quadro_gv100.json
+
+Summary:
+  Batch  1: 0.47 logs/s (1.0× speedup)
+  Batch  8: 0.56 logs/s (1.2× speedup)
+  Batch 16: 0.83 logs/s (1.8× speedup)
+  Batch 32: 2.34 logs/s (5.0× speedup)

@@ -1,0 +1,10 @@
+{
+  "incident_id": "022",
+  "source": "https://status.discordapp.com/incidents/qk9cdgnqnhcn",
+  "root_cause": "Automated GCP migration of a Redis primary caused it to drop offline, triggering cascading failures in how Discord handles Redis failover.",
+  "root_cause_timestamp": "2020-01-01T14:01:00Z",
+  "category": "Infrastructure",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

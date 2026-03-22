@@ -1,0 +1,10 @@
+{
+  "incident_id": "106",
+  "source": "https://en.wikipedia.org/wiki/Cluster_%28spacecraft%29?oldid=217305667",
+  "root_cause": "An overflow occurred when converting a 16-bit number to a 64-bit numer in the Ariane 5 intertial guidance system, causing the rocket to crash",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

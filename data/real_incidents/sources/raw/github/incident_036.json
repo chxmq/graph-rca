@@ -1,0 +1,6 @@
+{
+  "company": "rust-lang",
+  "url": "https://blog.rust-lang.org/inside-rust/2023/07/21/crates-io-postmortem.html",
+  "description": "On 2023-07-20 between 12:17 and 12:30 UTC all crate downloads from crates.io were broken due to a deployment that contained a bug in the download URL generation. During this time we had an average of 4.71K requests per second to crates.io, resulting in about 3.7M failed requests, including the retry attempts from cargo.",
+  "source": "GitHub post-mortems list"
+}

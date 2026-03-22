@@ -1,0 +1,10 @@
+{
+  "incident_id": "027",
+  "source": "https://signalvnoise.com/posts/3729-basecamp-network-attack-postmortem",
+  "root_cause": "Sustained DDoS attack on Basecamp's network infrastructure during a 100-minute window.",
+  "root_cause_timestamp": "2014-03-24T00:00:00Z",
+  "category": "Network",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

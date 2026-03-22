@@ -1,0 +1,23 @@
+{
+  "experiment": "latency_profiling",
+  "timestamp": "2026-02-14T20:31:15.431450",
+  "latency_ms": {
+    "llm_parsing": {
+      "mean": 3049.2
+    },
+    "dag_construction": {
+      "mean": 1.2
+    },
+    "rag_retrieval": {
+      "mean": 62.2
+    },
+    "total": {
+      "mean": 3112.5
+    }
+  },
+  "breakdown_percentage": {
+    "llm_parsing": 98.0,
+    "rag_retrieval": 2.0,
+    "dag_construction": 0.0
+  }
+}

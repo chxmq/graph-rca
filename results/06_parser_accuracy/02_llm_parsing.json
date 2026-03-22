@@ -1,0 +1,70 @@
+{
+  "method": "GraphRCA LogParser (Actual)",
+  "model": "llama3.2:3b",
+  "datasets": {
+    "BGL": {
+      "samples": 2000,
+      "runs": 3,
+      "field_accuracy": {
+        "timestamp": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "level": {
+          "mean": 94.6,
+          "std": 0.0
+        },
+        "component": {
+          "mean": 15.4,
+          "std": 0.0
+        },
+        "message": {
+          "mean": 10.4,
+          "std": 0.0
+        }
+      },
+      "overall_accuracy": 55.1,
+      "ground_truth_coverage": "5550/6000",
+      "latency": {
+        "mean_s": 3.107,
+        "std_s": 1.082,
+        "p50_s": 3.107,
+        "p95_s": 4.887
+      },
+      "throughput_per_sec": 0.322,
+      "total_errors": 0
+    },
+    "HDFS": {
+      "samples": 2000,
+      "runs": 3,
+      "field_accuracy": {
+        "timestamp": {
+          "mean": 0.3,
+          "std": 0.0
+        },
+        "level": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "component": {
+          "mean": 25.5,
+          "std": 0.0
+        },
+        "message": {
+          "mean": 26.0,
+          "std": 0.0
+        }
+      },
+      "overall_accuracy": 37.9,
+      "ground_truth_coverage": "5994/6000",
+      "latency": {
+        "mean_s": 3.087,
+        "std_s": 1.161,
+        "p50_s": 3.087,
+        "p95_s": 4.997
+      },
+      "throughput_per_sec": 0.324,
+      "total_errors": 6
+    }
+  }
+}

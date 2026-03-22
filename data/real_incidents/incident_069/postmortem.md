@@ -1,0 +1,13 @@
+# Mozilla Incident
+
+**Category:** Security
+**Severity:** Medium
+**Source:** https://web.archive.org/web/20250303152906/https://hacks.mozilla.org/2019/07/add-ons-outage-post-mortem-result/
+
+## Description
+
+Most Firefox add-ons stopped working around May 4th 2019 when a certificate expired. Firefox requires a valid certificate chain to prevent malware. About nine hours later, Mozilla pushed a privileged add-on that injected a valid certificate into Firefox's certificate store, creating a valid chain and unblocking add-ons. This disabled effectively all add-ons, about 15,000, and the resolution took approximately 15-21 hours for most users. Some user data was lost. Previously Mozilla [posted](https://web.archive.org/web/20250408175304/https://hacks.mozilla.org/2019/05/technical-details-on-the-recent-firefox-add-on-outage/) about the technical details.
+
+## Root Cause
+
+Most Firefox add-ons stopped working around May 4th 2019 when a certificate expired

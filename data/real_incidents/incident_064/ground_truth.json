@@ -1,0 +1,10 @@
+{
+  "incident_id": "064",
+  "source": "https://web.archive.org/web/20210306015541/https://digital.ai/catalyst-blog/subversion-sha1-collision-problem-statement-prevention-and-remediation-options",
+  "root_cause": "The WebKit repository, a Subversion repository configured to use deduplication, became unavailable after two files with the same SHA-1 hash were checked in as test data, with the intention of implemen...",
+  "root_cause_timestamp": "Unknown",
+  "category": "Configuration",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,13 @@
+# Etsy Incident
+
+**Category:** Database
+**Severity:** Medium
+**Source:** https://blog.etsy.com/news/2012/demystifying-site-outages/
+
+## Description
+
+First, a deploy that was supposed to be a small bugfix deploy also caused live databases to get upgraded on running production machines. To make sure that this didn't cause any corruption, Etsy stopped serving traffic to run integrity checks. Second, an overflow in ids (signed 32-bit ints) caused some database operations to fail. Etsy didn't trust that this wouldn't result in data corruption and took down the site while the upgrade got pushed.
+
+## Root Cause
+
+First, a deploy that was supposed to be a small bugfix deploy also caused live databases to get upgraded on running production machines

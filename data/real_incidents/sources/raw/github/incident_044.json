@@ -1,0 +1,6 @@
+{
+  "company": "Turso",
+  "url": "https://blog.turso.tech/incident-2023-12-04-data-leak-and-loss-in-some-free-tier-databases-7cba5bc7",
+  "description": "Incorrectly configured DB backup identifiers led to data leaks for free tier customers, and the subsequent fix resulted in possible data loss.",
+  "source": "GitHub post-mortems list"
+}

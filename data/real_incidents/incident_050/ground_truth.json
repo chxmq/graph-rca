@@ -1,0 +1,10 @@
+{
+  "incident_id": "050",
+  "source": "https://www.atlassian.com/engineering/post-incident-review-april-2022-outage",
+  "root_cause": "Faulty script intended to decommission a legacy app inadvertently targeted active customer environments for deletion.",
+  "root_cause_timestamp": "2022-04-05T07:38:00Z",
+  "category": "Software",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

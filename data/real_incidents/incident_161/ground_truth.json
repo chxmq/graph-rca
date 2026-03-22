@@ -1,0 +1,10 @@
+{
+  "incident_id": "161",
+  "source": "https://blog.roblox.com/2022/01/roblox-return-to-service-10-28-10-31-2021/",
+  "root_cause": "Roblox end Oct 2021 73 hours outage",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

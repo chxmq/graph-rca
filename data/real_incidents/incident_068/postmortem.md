@@ -1,0 +1,13 @@
+# Linux Incident
+
+**Category:** Infrastructure
+**Severity:** Medium
+**Source:** https://web.archive.org/web/20220320100036/https://lkml.org/lkml/2012/7/1/203
+
+## Description
+
+When a leap second occurred, `CLOCK_REALTIME` was rewound by one second. This was not done via a mechanism that would update `hrtimer base.offset`. This meant that when a timer interrupt happened, TIMER_ABSTIME CLOCK_REALTIME timers got expired one second early, including timers set for less than one second. This caused applications that used sleep for less than one second in a loop to spinwait without sleeping, causing high load on many systems. This caused a large number of web services to go down in 2012.
+
+## Root Cause
+
+When a leap second occurred, `CLOCK_REALTIME` was rewound by one second
