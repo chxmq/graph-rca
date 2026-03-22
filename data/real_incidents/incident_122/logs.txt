@@ -1,0 +1,11 @@
+2023-12-15 14:30:00 [INFO] service-control: Policy update initiated for global replication
+2023-12-15 14:30:20 [WARNING] service-control: Exception encountered during policy data processing (com.google.api.server.core.ApiException)
+2023-12-15 14:31:00 [ERROR] service-control: Service Control binaries crashed loop across all regions
+2023-12-15 14:31:05 [INFO] monitoring-system: Alert sent to incident response team for critical infrastructure issue
+2023-12-15 14:32:00 [WARNING] spanner: Excessive load detected on region us-central-1
+2023-12-15 14:35:00 [ERROR] service-control: Red-button fix deployed globally
+2023-12-15 14:36:00 [INFO] incident-response: Incident acknowledged by Google Support team
+2023-12-15 14:40:00 [WARNING] spanner: Region us-central-1 still experiencing elevated load
+2023-12-15 14:50:00 [CRITICAL] service-control: Recovery time exceeded for region us-central-1 (2h 40m)
+2023-12-15 14:55:00 [INFO] incident-response: Incident status updated to 'resolved' by Google Support team
+2023-12-15 15:10:00 [WARNING] monitoring-system: Region us-central-1 is still recovering from previous overload

@@ -1,0 +1,10 @@
+{
+  "incident_id": "116",
+  "source": "https://docs.google.com/document/d/1ScqXAdb6BjhsDzCo3qdPYbt1uULzgZqPO8zHeHHarS0/preview?sle=true&hl=en&forcehl=1#heading=h.dfbilqgnc5sf",
+  "root_cause": "After the primary locked up and was restarted, it was brought back up with the wrong filesystem, causing a global outage",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

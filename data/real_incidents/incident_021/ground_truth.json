@@ -1,0 +1,10 @@
+{
+  "incident_id": "021",
+  "source": "https://circleci.com/blog/jan-4-2023-incident-report/",
+  "root_cause": "Malware on an engineer's laptop stole a valid, 2FA-backed SSO session cookie, allowing unauthorized access to production systems.",
+  "root_cause_timestamp": "2022-12-16T00:00:00Z",
+  "category": "Security",
+  "severity": "Critical",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

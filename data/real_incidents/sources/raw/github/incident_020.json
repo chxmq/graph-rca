@@ -1,0 +1,6 @@
+{
+  "company": "Google",
+  "url": "https://googleblog.blogspot.com/2009/01/this-site-may-harm-your-computer-on.html",
+  "description": "`/` was checked into the URL blacklist, causing every URL to show a warning.",
+  "source": "GitHub post-mortems list"
+}

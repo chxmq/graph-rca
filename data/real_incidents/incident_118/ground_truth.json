@@ -1,0 +1,10 @@
+{
+  "incident_id": "118",
+  "source": "https://gist.github.com/jomo/2bae3821acb433d0446d",
+  "root_cause": "A mail system emailed people more than 20 times",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

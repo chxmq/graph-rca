@@ -1,0 +1,10 @@
+{
+  "incident_id": "127",
+  "source": "https://status.heroku.com/incidents/1042",
+  "root_cause": "An upstream `apt` update broke pinned packages which lead to customers experiencing write permission failures to `/dev`",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

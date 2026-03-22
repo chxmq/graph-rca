@@ -1,0 +1,13 @@
+# Twilio Incident
+
+**Category:** Database
+**Severity:** Medium
+**Source:** https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html
+
+## Description
+
+In 2013, a temporary network partition in the redis cluster used for billing operations, caused a massive resynchronization from slaves. The overloaded master crashed and when it was restarted, it started up in read-only mode. The auto-recharge component in This resulted in failed transactions from Twilio's auto-recharge service, which unfortunately billed the customers before updating their balance internally. So the auto-recharge system continued to retry the transaction again and again, resulting in multiple charges to customer's credit cards.
+
+## Root Cause
+
+In 2013, a temporary network partition in the redis cluster used for billing operations, caused a massive resynchronization from slaves

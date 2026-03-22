@@ -1,0 +1,10 @@
+{
+  "incident_id": "017",
+  "source": "https://blog.sentry.io/2015/07/23/transaction-id-wraparound-in-postgres",
+  "root_cause": "PostgreSQL transaction ID wraparound forced the database into read-only mode to prevent data loss.",
+  "root_cause_timestamp": "2015-07-23T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

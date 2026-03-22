@@ -1,0 +1,10 @@
+{
+  "incident_id": "015",
+  "source": "https://github.blog/2021-12-01-github-availability-report-november-2021/",
+  "root_cause": "MySQL read replicas entered a semaphore deadlock during the final 'rename' step of a massive schema migration.",
+  "root_cause_timestamp": "2021-11-20T00:00:00Z",
+  "category": "Database",
+  "severity": "High",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

@@ -1,0 +1,15 @@
+2022-04-05 07:38:00 [INFO] service-a: Initial startup sequence complete
+2022-04-05 07:38:03 [WARNING] service-c: Connection to database failed
+2022-04-05 07:38:10 [ERROR] service-d: Failed to establish API connection
+2022-04-05 07:38:15 [CRITICAL] service-e: Critical service failure - Database query timeout
+2022-04-05 07:38:20 [INFO] service-f: Attempting to recover from critical service failure
+2022-04-05 07:38:25 [WARNING] service-g: Error retrieving customer data
+2022-04-05 07:38:30 [ERROR] service-h: Failed to authenticate user session
+2022-04-05 07:38:35 [CRITICAL] service-i: Critical failure - Customer session lost
+2022-04-05 07:38:40 [INFO] support-team: Alert sent to incident response team
+2022-04-05 07:38:45 [WARNING] infrastructure: Service i is in critical state
+2022-04-05 07:38:50 [ERROR] infrastructure: Error propagating recovery attempts
+2022-04-05 07:39:00 [CRITICAL] infrastructure: Critical failure - Recovery attempts failed
+2022-04-06 08:00:00 [INFO] support-team: First set of customers restored
+2022-04-06 08:30:00 [WARNING] infrastructure: Service i is still in degraded state
+2022-04-18 14:00:00 [INFO] support-team: Final customer sites restored

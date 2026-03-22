@@ -1,4 +1,68 @@
-env
-data/chroma
-data/db
-data/ollama
+# --- Environment variables ---
+.env
+.env.local
+.env.production
+
+# --- Python environments & dependencies ---
+env/
+venv/
+.venv/
+*.egg-info/
+*.egg
+dist/
+build/
+
+# --- Python bytecode & cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- IDE & editor settings ---
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# --- Test & coverage artifacts ---
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# --- Logs & local data ---
+*.log
+logs/
+
+# Project-specific data volumes (created by Docker/start.sh)
+data/chroma/
+data/db/
+data/ollama/
+app/data/chroma/
+app/data/db/
+app/data/ollama/
+
+# --- Notebooks & checkpoints (if any) ---
+.ipynb_checkpoints/
+
+# --- Misc cache ---
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# --- Frontend (Node.js) ---
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Auto-generated scripts ---
+start-backend.sh
+start-frontend.sh

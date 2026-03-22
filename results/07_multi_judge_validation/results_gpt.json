@@ -1,0 +1,1245 @@
+{
+  "incidents": [
+    {
+      "id": "incident_001",
+      "prediction": "The root cause of the incident is an incorrect or overly restrictive resource quota configuration in...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_002",
+      "prediction": "The root cause of the incident was an excessively complex WAF rule that caused catastrophic backtrac...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_003",
+      "prediction": "The root cause of the incident is a configuration typo that led to the premature deactivation of a p...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_004",
+      "prediction": "The root cause of the incident is that the TravisCI Worker incorrectly detected a false failure for ...",
+      "avg_score": 0.5,
+      "correct": false
+    },
+    {
+      "id": "incident_005",
+      "prediction": "The root cause of the incident is that the high CPU usage detected in the monitoring server led to a...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_006",
+      "prediction": "The root cause of the incident was an incorrect or incomplete rotation of Azure certificates, which ...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_007",
+      "prediction": "The autovacuum process failed to release its lock on index 1234 in a timely manner, causing a prolon...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_008",
+      "prediction": "The root cause of the incident is likely due to an unintended consequence of enabling the StackEgg f...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_009",
+      "prediction": "The root cause of the incident was an unexpected error in route processing during a routine maintena...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_010",
+      "prediction": "The root cause of the incident is an incorrect command syntax in the initial server removal process,...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_011",
+      "prediction": "The root cause of the incident is that an unknown IP address made an API request to Jenkins using a ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_012",
+      "prediction": "The root cause of the incident is that the Varnish cache service attempted to restart itself while b...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_013",
+      "prediction": "The root cause of the incident is that an administrator attempted to wipe the staging database witho...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_014",
+      "prediction": "The root cause is likely due to a faulty or corrupted kernel driver that caused an out-of-bounds mem...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_015",
+      "prediction": "The root cause of the incident is that MySQL read replicas entered a semaphore deadlock during the f...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_016",
+      "prediction": "The root cause of the incident is an ID overflow due to using a signed 32-bit integer as the primary...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_017",
+      "prediction": "The root cause of the incident is a database write volume surge that led to a TXID wraparound, causi...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_018",
+      "prediction": "The root cause of the incident was an incorrectly configured security policy update that blocked leg...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_019",
+      "prediction": "The root cause is an unexpected surge in incoming packet volume exceeding the AWS Transit Gateway's ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_020",
+      "prediction": "The root cause of the incident is a null pointer exception in the Policy Replication Service that pr...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_021",
+      "prediction": "The root cause of the incident is that malware was introduced to the system through an engineer's co...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_022",
+      "prediction": "The root cause of the incident is that the automated GCP migration process for the Redis primary nod...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_023",
+      "prediction": "The root cause of the incident was an undiscovered software bug in Fastly's edge cloud triggered by ...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_024",
+      "prediction": "The root cause of the incident is that the system's memory usage exceeded the threshold, causing Mon...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_025",
+      "prediction": "The root cause of the incident is a sudden and unexpected traffic spike that overwhelmed the backend...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_026",
+      "prediction": "The root cause of the incident was a hardcoded private token in the configuration file, which led to...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_027",
+      "prediction": "The root cause of the incident is a sustained Distributed Denial of Service (DDoS) attack that overw...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_028",
+      "prediction": "The root cause of the incident is that credentials were exposed in the source code repository, leadi...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_029",
+      "prediction": "The root cause of the incident is that the outdated Power Peg code path was re-enabled during deploy...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_030",
+      "prediction": "The root cause of the incident is that the script \"drop_database.sh\" was executed prematurely, causi...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_031",
+      "prediction": "The root cause of the incident is a persistent peering point failure across cloud deployments, likel...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_032",
+      "prediction": "The root cause of the incident was an unhandled error in the Consul streaming feature that led to ex...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_033",
+      "prediction": "The root cause of the incident was an inadequate configuration of exponential backoff mechanisms acr...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_034",
+      "prediction": "The root cause of the incident was a network packet loss event at the east coast data center, which ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_035",
+      "prediction": "The primary server failure caused a cascade of events leading to data loss synchronization across si...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_036",
+      "prediction": "The root cause of the incident is that the Lambda function 'lambda-123' was unable to handle increas...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_037",
+      "prediction": "The root cause of the incident is a network partition that caused a Redis connection loss, triggerin...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_038",
+      "prediction": "The root cause of the incident is that the system was unable to process trades within the expected t...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_039",
+      "prediction": "The root cause of the incident was a bug in ClickHouse query logic for Bot Management that caused re...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_040",
+      "prediction": "The root cause of the incident was a misconfigured bucket permission that allowed public read access...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_041",
+      "prediction": "The root cause of the incident was an incorrect or incomplete update of the URL filtering module's b...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_042",
+      "prediction": "The root cause of the incident is that the system was provisioned with a legacy provisioning option ...",
+      "avg_score": 1.0,
+      "correct": true
+    },
+    {
+      "id": "incident_043",
+      "prediction": "The root cause of the incident is that the system's weight calculation service incorrectly identifie...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_044",
+      "prediction": "The root cause of the incident is an overload in the database backend due to excessive query load, w...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_045",
+      "prediction": "The root cause of the incident is that the application scaling was activated too early, causing an i...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_046",
+      "prediction": "The root cause of the incident is that a high-priority task was waiting for a mutex held by a low-pr...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_047",
+      "prediction": "The root cause of the incident is a corrupted data issue in the Redis database that led to out-of-se...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_048",
+      "prediction": "The predictive autoscaling algorithm miscalculated the required capacity for a surge in demand, lead...",
+      "avg_score": 1.0,
+      "correct": true
+    },
+    {
+      "id": "incident_049",
+      "prediction": "The root cause of the incident is a cascade of failures in the cooling systems, which led to overhea...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_050",
+      "prediction": "The root cause of the incident is that the script was attempting to delete an application without ch...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_051",
+      "prediction": "The root cause of the incident is that the deployment process attempted to push changes to the main ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_052",
+      "prediction": "The root cause of the incident was an incorrect configuration change deployed to Azure Storage, whic...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_053",
+      "prediction": "The root cause of the incident was an incorrect configuration update in the automated configuration ...",
+      "avg_score": 1.0,
+      "correct": true
+    },
+    {
+      "id": "incident_054",
+      "prediction": "The root cause was a latent issue with the load balancer code that caused an internal network traffi...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_055",
+      "prediction": "The root cause of the incident is a node metadata version mismatch between control plane and worker ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_056",
+      "prediction": "The root cause of the incident is that the database schema was not updated to accommodate the increa...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_057",
+      "prediction": "The root cause of the incident was an unexpected spike in API request rate that led to a database co...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_058",
+      "prediction": "The root cause of the incident is an upstream issue with the APT package manager that caused write p...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_059",
+      "prediction": "The root cause of the incident is an overload of the system due to excessive request processing, tri...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_060",
+      "prediction": "The root cause of the incident was configuration changes to Facebook's backbone routers that took do...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_061",
+      "prediction": "The root cause of the incident is a slow code path in the load balancer's configuration update proce...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_062",
+      "prediction": "The root cause of the incident is a failed component on the fiber path US-W1, leading to high packet...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_063",
+      "prediction": "The root cause of the incident is that conflicting deployed versions between services c and d led to...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_064",
+      "prediction": "The root cause of the incident is a configuration issue in the WebKit repository that caused an inco...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_065",
+      "prediction": "The root cause of the incident is that hardcoded expiration dates were used in the certificate creat...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_066",
+      "prediction": "The root cause of the incident is an incorrect assumption about system timekeeping by the RRDNS serv...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_067",
+      "prediction": "The root cause of the incident is a deadlock in the system's time synchronization mechanism, caused ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_068",
+      "prediction": "The root cause of the incident was the CLOCK_REALTIME timer rewinding by one second during the upcom...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_069",
+      "prediction": "The root cause of the incident is that the privileged add-on's certificate had expired on May 4th, 2...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_070",
+      "prediction": "The root cause of the incident is a semaphore deadlock between two read replicas, causing an increas...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_071",
+      "prediction": "The root cause of the incident is a data type mismatch in the database that triggered a primary key ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_072",
+      "prediction": "The root cause of the incident is a connection timeout in the task queue database, which led to a ca...",
+      "avg_score": 0.0,
+      "correct": false
+    },
+    {
+      "id": "incident_073",
+      "prediction": "The root cause of the incident was a typo in the server list command that triggered an unconfirmed r...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_074",
+      "prediction": "The root cause of the incident is that a corrupted message from service-a triggered an exponential i...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_075",
+      "prediction": "The root cause of the incident was an unexpected software bug encountered during resource allocation...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_076",
+      "prediction": "The root cause of the incident is a memory leak in the reporting agent process on storage server 'sr...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_077",
+      "prediction": "The root cause of the incident is that an unexpected error occurred during the nightly maintenance p...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_078",
+      "prediction": "The root cause is that the metadata-service experienced high CPU usage due to an unexpected surge in...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_079",
+      "prediction": "The root cause of the incident is that scaling Kinesis cache fleet for front-end caused thread count...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_080",
+      "prediction": "The root cause of the incident is that an unexpected surge in traffic to service 'service-x' trigger...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_081",
+      "prediction": "The root cause of the incident is a database connection issue that led to a double free error in one...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_082",
+      "prediction": "The root cause of the incident is a race hazard in C code that led to an unexpected reboot of multip...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_083",
+      "prediction": "The root cause of the incident is a database connection issue that propagated through multiple servi...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_084",
+      "prediction": "The root cause of the incident was an unexpected increase in traffic to port 80, which triggered a D...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_085",
+      "prediction": "The root cause of the incident is that the database's max_id value exceeded its integer limit, causi...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_086",
+      "prediction": "The root cause of the incident is an overload of the database due to high load from service-c, which...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_087",
+      "prediction": "The root cause of the incident is a malicious package uploaded to JCenter by an unknown user, which ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_088",
+      "prediction": "The root cause of the incident is that unrecognized credentials were found in the repository configu...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_089",
+      "prediction": "The root cause of the incident is that a Shellshock vulnerability was detected on the prototype mach...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_090",
+      "prediction": "The root cause of the incident is that the capacity reduction attempt in log position 4 caused an un...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_091",
+      "prediction": "The root cause of the incident is a misconfigured hotfix deployment that caused data loss due to inc...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_092",
+      "prediction": "The root cause of the incident is that high CPU usage in service A led to thread exhaustion, which t...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_093",
+      "prediction": "The root cause of the incident was a memory reuse issue in Stackless Python, which led to a critical...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_094",
+      "prediction": "The root cause of the incident is a prolonged initial latency issue that led to repeated health chec...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_095",
+      "prediction": "The root cause of the incident was an unexpected spike in load that caused a queue slowdown, which l...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_096",
+      "prediction": "The root cause of the incident is that engineer-123's laptop was compromised by malware, which led t...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_097",
+      "prediction": "The root cause of the incident is a memory leak in the parser code that allowed sensitive HTTP POST ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_098",
+      "prediction": "The root cause of the incident was an excessively complex WAF rule that caused CPU exhaustion, leadi...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_099",
+      "prediction": "The root cause of the incident is a bug in the content validator that caused validation checks to fa...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_100",
+      "prediction": "The root cause of the incident is that the automatic upgrade of network rules resulted in the remova...",
+      "avg_score": 1.0,
+      "correct": true
+    },
+    {
+      "id": "incident_101",
+      "prediction": "The root cause of the incident is an unexpected increase in internal queue size due to rapid growth,...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_102",
+      "prediction": "The root cause of the incident is that the Redis primary instance was not properly migrated before m...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_103",
+      "prediction": "The root cause of the incident is that the scheduled OS upgrade on node-1 caused high disk usage, wh...",
+      "avg_score": 0.0,
+      "correct": false
+    },
+    {
+      "id": "incident_104",
+      "prediction": "The root cause of the incident is an unexpected surge in high-volume login requests that overwhelmed...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_105",
+      "prediction": "The root cause of the incident was an extreme load exceeding 3.4 million concurrent users, likely du...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_106",
+      "prediction": "The root cause of the incident is an overflow error in the conversion process that triggered a casca...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_107",
+      "prediction": "The root cause of the incident is that the region logger process experienced high CPU usage due to a...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_108",
+      "prediction": "The root cause was a misconfiguration in the AWS regions that led to network unavailability, causing...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_109",
+      "prediction": "The root cause of the incident is that a malicious npm account compromised the ESLint maintainer's a...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_110",
+      "prediction": "The root cause of the incident is an unexpected database upgrade that triggered a cascade of failure...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_111",
+      "prediction": "The root cause of the incident was an unidentified software bug that caused an internal server error...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_112",
+      "prediction": "The root cause of the incident was an unexpected surge in incoming traffic that overwhelmed the serv...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_113",
+      "prediction": "The root cause of the incident is that the MongoDB service was unable to handle the high load caused...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_114",
+      "prediction": "The root cause of the incident was an unauthorized user who successfully gained access to the Gentoo...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_115",
+      "prediction": "The root cause of the incident was an unexpected DDoS attack that overwhelmed the API gateway, causi...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_116",
+      "prediction": "The root cause of the incident is that the primary instance attempted to mount an unknown filesystem...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_117",
+      "prediction": "The root cause of the incident is that the deletion of an unnecessary directory caused a disk space ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_118",
+      "prediction": "The root cause of the incident is that the non-atomic operation in the mail-service failed due to ex...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_119",
+      "prediction": "The root cause of the incident is an unexpected surge in CPU usage due to unmanaged GCP projects, wh...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_120",
+      "prediction": "The root cause of the incident is a network connectivity issue that caused packet loss and latency s...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_121",
+      "prediction": "The root cause of the incident is that the patch for the deadlock issue was not thoroughly tested be...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_122",
+      "prediction": "The root cause of the incident is an excessive load on the region us-central-1, which led to a casca...",
+      "avg_score": 0.5,
+      "correct": false
+    },
+    {
+      "id": "incident_123",
+      "prediction": "The root cause of the incident is a misconfigured dependency between software updates, which led to ...",
+      "avg_score": 0.1,
+      "correct": false
+    },
+    {
+      "id": "incident_124",
+      "prediction": "The root cause of the incident is that the website build process failed due to an issue with the SSL...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_125",
+      "prediction": "The root cause of the incident is a database connection timeout that prevented the scheduled updates...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_126",
+      "prediction": "The root cause of the incident is that a recent upgrade disabled a critical filesystem check, allowi...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_127",
+      "prediction": "The root cause of the incident is that an upstream apt update broke pinned packages, causing subsequ...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_128",
+      "prediction": "The root cause of the incident is that a private token was leaked from the system logs, allowing una...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_129",
+      "prediction": "The root cause is that the system experienced an initial failure in initializing router instances fo...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_130",
+      "prediction": "The root cause of the incident is an unauthorized token leak from Jenkins to GitHub, which led to mu...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_131",
+      "prediction": "The root cause of the incident is that high CPU usage in the database led to a connection timeout, r...",
+      "avg_score": 0.1,
+      "correct": false
+    },
+    {
+      "id": "incident_132",
+      "prediction": "The root cause of the incident is a failure in the database connection to backend services, causing ...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_133",
+      "prediction": "The root cause of the incident is a memory leak that led to high CPU utilization, causing a connecti...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_134",
+      "prediction": "The root cause of the incident was a database connection attempt failure by service-f, which trigger...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_135",
+      "prediction": "The root cause of the incident was a \"poison pill\" event in the async workers' queue that triggered ...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_136",
+      "prediction": "The root cause of the incident is that the islanding mechanism was not enabled on the western grid, ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_137",
+      "prediction": "The root cause of the incident is that the database migration process was unable to complete due to ...",
+      "avg_score": 0.0,
+      "correct": false
+    },
+    {
+      "id": "incident_138",
+      "prediction": "The root cause of the incident is a scripting bug in the division logic calculation that resulted in...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_139",
+      "prediction": "The root cause of the incident is that the PostgreSQL metadata maintenance process was not properly ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_140",
+      "prediction": "The lax input validation on the reboot command used by the operator was the root cause of the incide...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_141",
+      "prediction": "The root cause of the incident is a database connection timeout due to a failed recovery attempt, wh...",
+      "avg_score": 0.0,
+      "correct": false
+    },
+    {
+      "id": "incident_142",
+      "prediction": "The root cause of the incident is that disk space was insufficient to perform backups, leading to a ...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_143",
+      "prediction": "The root cause of the incident is that an invalid attribute selector was used in the flag targeting ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_144",
+      "prediction": "The root cause of the incident is that the MongoDB primary node experienced an overload due to low d...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_145",
+      "prediction": "The root cause of the incident is an invalid transaction ID generated by service-d, which triggered ...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_146",
+      "prediction": "The root cause of the incident is an outdated dependency in the system's patching mechanism, which p...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_147",
+      "prediction": "The root cause of the incident is a breaking change in Azure that affects downstream services like M...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_148",
+      "prediction": "The root cause of the incident is an unexpected software bug in the ApolloRadar system that caused i...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_149",
+      "prediction": "The root cause of the incident is an incompatible metric/English unit measurement mismatch in the na...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_150",
+      "prediction": "The root cause of the incident is an insufficient disk space issue that caused a patch update to fai...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_151",
+      "prediction": "The root cause of the incident is that an EBS volume in AZ1 was detected as unhealthy, causing a cas...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_152",
+      "prediction": "The root cause of the incident was an unexpected maintenance window scheduled by the Scheduling Serv...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_153",
+      "prediction": "The root cause of the incident is that a compromised support engineer's laptop was used by an unauth...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_154",
+      "prediction": "The root cause of the incident is a Redis cache corruption issue that led to a cascade of errors and...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_155",
+      "prediction": "The root cause of the incident is a peering point instability that led to high latency across all de...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_156",
+      "prediction": "The root cause of the incident is an AWS outage in the us-west-2 region that caused PagerDuty's moni...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_157",
+      "prediction": "The root cause of the incident is an inadequate review of a UI change by Service-d, which led to an ...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_158",
+      "prediction": "The root cause of the incident was an insufficient disk space reported by ZooKeeper at 09:05:00, whi...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_159",
+      "prediction": "The root cause of the incident was an incorrect database configuration that led to a cascade of fail...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_160",
+      "prediction": "The root cause of the incident is that the Kubernetes cluster upgrade failed due to an issue with up...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_161",
+      "prediction": "The root cause of the incident is a failure in Consul's write operations to its cluster, leading to ...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_162",
+      "prediction": "The root cause of the incident is a failure in the automated failover process that initiated prematu...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_163",
+      "prediction": "The root cause of the incident is an unexpected policy change that triggered a cascade of authentica...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_164",
+      "prediction": "The root cause of the incident is a database transaction ID wraparound caused by an unexpected high ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_165",
+      "prediction": "The root cause of the incident is an unauthorized user attempting to access sensitive systems, leadi...",
+      "avg_score": 0.5,
+      "correct": false
+    },
+    {
+      "id": "incident_166",
+      "prediction": "The root cause of the incident is that the system loaded a third-party library (\"lib-XYZ.so\") that c...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_167",
+      "prediction": "The root cause of the incident was an unexpected surge in user login attempts that overwhelmed the d...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_168",
+      "prediction": "The root cause of the incident is that the system was unable to handle the initial surge in traffic ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_169",
+      "prediction": "The root cause of the incident is that the cache nodes removal initiated for maintenance caused a hi...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_170",
+      "prediction": "The root cause of the incident is that high CPU usage in service-b led to increased load on its depe...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_171",
+      "prediction": "The root cause of the incident is an unexpected surge in requests from adjacent service B, which ove...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_172",
+      "prediction": "The root cause of the incident is a misconfigured replication factor in the Cassandra cluster, which...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_173",
+      "prediction": "The root cause of the incident is an unexpected surge in traffic to the StackEgg endpoint, which ove...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_174",
+      "prediction": "The root cause of the incident is an unoptimized regular expression implementation in the regex engi...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_175",
+      "prediction": "The root cause is that the migration process for Careers 2.0 to Developer Story introduced a user in...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_176",
+      "prediction": "The root cause of the incident is a corruption in the SQL Server database that caused a chain reacti...",
+      "avg_score": 0.3,
+      "correct": false
+    },
+    {
+      "id": "incident_177",
+      "prediction": "The root cause of the incident is an integer overflow in the primary key column, which exceeded the ...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_178",
+      "prediction": "The root cause of the incident was a manual operation initiated on the production database without p...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_179",
+      "prediction": "The root cause of the incident is an uneven construction design that led to excessive stress on the ...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_180",
+      "prediction": "The root cause of the incident is that the tarsnap-s3-scanner service was unable to free a block in ...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_181",
+      "prediction": "The root cause of the incident was an incorrect configuration in the SMS service that led to a casca...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_182",
+      "prediction": "The root cause of the incident is a concurrent programming error that led to incorrect indexing in t...",
+      "avg_score": 0.1,
+      "correct": false
+    },
+    {
+      "id": "incident_183",
+      "prediction": "The root cause of the incident is that the security group associated with the GitHub organization wa...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_184",
+      "prediction": "The root cause of the incident is that the auto-recharge component's initialization caused an excess...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_185",
+      "prediction": "The root cause of the incident is that high filtering was detected on AT&T's network in the US, whic...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_186",
+      "prediction": "The root cause of the incident is that the Steam desktop client attempted to load user configuration...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_187",
+      "prediction": "The root cause of the incident was an exploited vulnerability in an outdated PHP version, which allo...",
+      "avg_score": 0.4,
+      "correct": false
+    },
+    {
+      "id": "incident_188",
+      "prediction": "The root cause of the incident is likely due to an initial database connection failure in service B,...",
+      "avg_score": 0.2,
+      "correct": false
+    },
+    {
+      "id": "incident_189",
+      "prediction": "The root cause of the incident is a division by zero error in trade calculation during order splitti...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_190",
+      "prediction": "The root cause of the incident is that the backup leased line on CTCL was activated prematurely, cau...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_191",
+      "prediction": "The root cause of the incident is that the Consul cluster failed due to insufficient preparation for...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_192",
+      "prediction": "The root cause of the incident is that an incorrect configuration update was applied to service B, c...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_193",
+      "prediction": "The root cause of the incident is that the database backup process failed due to an issue with the d...",
+      "avg_score": 0.6,
+      "correct": false
+    },
+    {
+      "id": "incident_194",
+      "prediction": "The root cause of the incident is that the circuit breaker in service D failed to activate due to re...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_195",
+      "prediction": "The root cause of the incident is that the configuration reload command for service-b was not proper...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_196",
+      "prediction": "The root cause of the incident is an overheating disk hot spot in Shard-c, which led to uneven data ...",
+      "avg_score": 0.9,
+      "correct": true
+    },
+    {
+      "id": "incident_197",
+      "prediction": "The root cause of the incident is that the Chaos Monkey's random failures in services A and C trigge...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_198",
+      "prediction": "The root cause of the incident is that the table 'uber_data' reached its operational limit of 1000 M...",
+      "avg_score": 0.8,
+      "correct": true
+    },
+    {
+      "id": "incident_199",
+      "prediction": "The root cause is that the message queue was not properly configured or monitored, leading to an unc...",
+      "avg_score": 0.7,
+      "correct": true
+    },
+    {
+      "id": "incident_200",
+      "prediction": "The root cause of the incident is a network partition that caused an idempotency key generation fail...",
+      "avg_score": 0.9,
+      "correct": true
+    }
+  ],
+  "by_category": {
+    "Configuration": {
+      "correct": 4,
+      "total": 6
+    },
+    "Network": {
+      "correct": 19,
+      "total": 24
+    },
+    "CI-CD": {
+      "correct": 0,
+      "total": 1
+    },
+    "Database": {
+      "correct": 24,
+      "total": 46
+    },
+    "Software": {
+      "correct": 21,
+      "total": 31
+    },
+    "Infrastructure": {
+      "correct": 43,
+      "total": 66
+    },
+    "Security": {
+      "correct": 11,
+      "total": 17
+    },
+    "Memory": {
+      "correct": 4,
+      "total": 6
+    },
+    "Cloud": {
+      "correct": 2,
+      "total": 3
+    }
+  },
+  "total_incidents": 200,
+  "overall_accuracy": 0.64,
+  "judge": "gpt"
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "185",
+  "source": "https://status.twilio.com/incidents/wdrlk4qps0z1",
+  "root_cause": "Twilio's incident of having high filtering on SMS towards AT&T Network In United States",
+  "root_cause_timestamp": "Unknown",
+  "category": "Network",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

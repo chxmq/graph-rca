@@ -1,0 +1,10 @@
+{
+  "incident_id": "171",
+  "source": "https://web.archive.org/web/20210818034431/https://medium.com/square-corner-blog/incident-summary-2017-03-16-2f65be39297",
+  "root_cause": "A cascading error from an adjacent service lead to merchant authentication service being overloaded",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

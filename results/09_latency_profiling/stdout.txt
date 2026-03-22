@@ -1,0 +1,34 @@
+============================================================
+End-to-End Latency Profiling Experiment (CORRECTED)
+============================================================
+Warming up...
+Run 1/3...
+  LLM: 3001ms
+  [DEBUG] GraphGenerator: Found 0 root cause candidates
+  [DEBUG] GraphGenerator: No candidates, using first log as root cause
+  DAG: 1.3ms
+  RAG: 81ms
+Run 2/3...
+  LLM: 3094ms
+  [DEBUG] GraphGenerator: Found 0 root cause candidates
+  [DEBUG] GraphGenerator: No candidates, using first log as root cause
+  DAG: 1.1ms
+  RAG: 45ms
+Run 3/3...
+  LLM: 3052ms
+  [DEBUG] GraphGenerator: Found 0 root cause candidates
+  [DEBUG] GraphGenerator: No candidates, using first log as root cause
+  DAG: 1.1ms
+  RAG: 61ms
+
+============================================================
+RESULTS
+============================================================
+
+Latency Breakdown (ms):
+  llm_parsing: 3049.2ms
+  dag_construction: 1.2ms
+  rag_retrieval: 62.2ms
+  TOTAL: 3112.5ms
+
+Results saved to: /home/rvce/finaltest/graph-rca/experiments/09_latency_profiling/data/latency_breakdown.json

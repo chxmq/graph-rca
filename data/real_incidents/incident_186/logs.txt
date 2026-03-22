@@ -1,0 +1,16 @@
+2023-12-15 14:45:30 [INFO] steam-desktop-client: Service started, version 1.0.1462
+2023-12-15 14:45:50 [INFO] steam-desktop-client: Loaded user configuration from /home/user/.steam/config
+2023-12-15 14:46:10 [WARNING] steam-desktop-client: Warning: missing dependency 'libvdpau.so' detected
+2023-12-15 14:46:20 [INFO] steam-desktop-client: Attempting to resolve dependency...
+2023-12-15 14:46:30 [ERROR] steam-desktop-client: Failed to resolve dependency, skipping update
+2023-12-15 14:47:00 [CRITICAL] steam-desktop-client: Deleted all local files and directories due to unknown error
+2023-12-15 14:47:05 [INFO] systemd: Steam desktop client terminated with signal 15
+2023-12-15 14:47:10 [WARNING] steam-desktop-client: Warning: failed to initialize Steam services
+2023-12-15 14:47:20 [ERROR] steam-desktop-client: Error loading user configuration due to missing directories
+2023-12-15 14:47:30 [INFO] systemd: Attempting to recover from service termination
+2023-12-15 14:48:00 [WARNING] steam-desktop-client: Warning: unable to restore user configuration
+2023-12-15 14:48:10 [CRITICAL] steam-desktop-client: Steam desktop client terminated unexpectedly, please reinstall
+2023-12-15 14:50:00 [INFO] steam-desktop-client: Receiving error report from user
+2023-12-15 14:50:05 [WARNING] steam-desktop-client: Warning: error report indicates missing dependencies
+2023-12-15 14:50:10 [ERROR] steam-desktop-client: Failed to resolve dependency, skipping update
+2023-12-15 14:51:00 [INFO] systemd: Steam desktop client terminated with signal 15

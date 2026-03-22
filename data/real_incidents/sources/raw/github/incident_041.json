@@ -1,0 +1,6 @@
+{
+  "company": "TravisCI",
+  "url": "https://www.traviscistatus.com/incidents/sxrh0l46czqn",
+  "description": "A configuration change made builds start to fail. Manual rollback broke.",
+  "source": "GitHub post-mortems list"
+}

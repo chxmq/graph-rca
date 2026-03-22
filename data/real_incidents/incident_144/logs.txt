@@ -1,0 +1,15 @@
+2023-12-15 14:30:00 [INFO] service-c: MongoDB replication started
+2023-12-15 14:31:00 [INFO] service-d: Starting request handling
+2023-12-15 14:32:05 [WARNING] mongod: Warning: disk space low on /var/lib/mongod
+2023-12-15 14:33:00 [INFO] service-e: MongoDB replication check initiated
+2023-12-15 14:34:00 [ERROR] mongod: Error: unable to connect to primary node
+2023-12-15 14:35:00 [INFO] service-f: Secondary nodes load balancing detected
+2023-12-15 14:36:05 [WARNING] mongos: Warning: high connection count from client
+2023-12-15 14:37:00 [ERROR] mongod: Error: unable to handle incoming requests
+2023-12-15 14:38:00 [INFO] service-g: Request handling paused due to error
+2023-12-15 14:39:00 [WARNING] mongos: Warning: connection limit exceeded
+2023-12-15 14:40:05 [ERROR] mongod: Error: primary node overloaded
+2023-12-15 14:41:00 [INFO] service-h: Alert sent to ops team due to MongoDB overload
+2023-12-15 14:42:00 [CRITICAL] mongod: CRITICAL: all secondary nodes sending traffic to primary node
+2023-12-15 14:43:05 [ERROR] mongos: Error: unable to recover from primary node failure
+2023-12-15 14:44:00 [INFO] service-i: Request handling paused due to MongoDB error

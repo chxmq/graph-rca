@@ -1,0 +1,10 @@
+{
+  "incident_id": "199",
+  "source": "https://medium.com/pinterest-engineering/building-a-real-time-notification-system-f2cec7a6be95",
+  "root_cause": "Message queue overflow during traffic spike, leading to delayed alerts",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

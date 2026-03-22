@@ -1,0 +1,10 @@
+{
+  "incident_id": "147",
+  "source": "https://web.archive.org/web/20230927050430/https://metrist.io/blog/how-we-found-azures-unannounced-breaking-change/",
+  "root_cause": "Azure published a breaking change that affected downstream systems like Metrist's service without warning them, the post covers how to identify the issue and how to recover from it",
+  "root_cause_timestamp": "Unknown",
+  "category": "Cloud",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

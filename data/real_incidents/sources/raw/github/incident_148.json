@@ -1,0 +1,6 @@
+{
+  "company": "NASA",
+  "url": "https://www.doneyles.com/LM/Tales.html",
+  "description": "A design flaw in the Apollo 11 rendezvous radar produced excess CPU load, causing the spacecraft computer to restart during lunar landing.",
+  "source": "GitHub post-mortems list"
+}

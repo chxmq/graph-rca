@@ -1,0 +1,13 @@
+# Therac-25 Incident
+
+**Category:** Memory
+**Severity:** Medium
+**Source:** http://sunnyday.mit.edu/papers/therac.pdf
+
+## Description
+
+The Therac-25 was a radiation therapy machine involved in at least six accidents between 1985 and 1987 in which patients were given massive overdoses of radiation. Because of concurrent programming errors, it sometimes gave its patients radiation doses that were thousands of times greater than normal, resulting in death or serious injury.
+
+## Root Cause
+
+The Therac-25 was a radiation therapy machine involved in at least six accidents between 1985 and 1987 in which patients were given massive overdoses of radiation

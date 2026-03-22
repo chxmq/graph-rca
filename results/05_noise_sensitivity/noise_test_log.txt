@@ -1,0 +1,37 @@
+2026-02-09 16:38:36,048 | INFO     | ======================================================================
+2026-02-09 16:38:36,048 | INFO     | GraphRCA Noise Sensitivity Test
+2026-02-09 16:38:36,048 | INFO     | ======================================================================
+2026-02-09 16:38:36,048 | INFO     | Started: 2026-02-09T16:38:36.048412
+2026-02-09 16:38:36,466 | INFO     | ✓ Ollama connected
+2026-02-09 16:38:36,514 | INFO     | Loaded 200 incidents
+2026-02-09 16:38:37,106 | INFO     | ======================================================================
+2026-02-09 16:38:37,106 | INFO     | NOISE SENSITIVITY TEST
+2026-02-09 16:38:37,106 | INFO     | ======================================================================
+2026-02-09 16:38:37,109 | INFO     | Generated 1000 decoy documents
+2026-02-09 16:38:37,109 | INFO     | Testing with 20 incidents
+2026-02-09 16:38:37,109 | INFO     | 
+--- Noise Level: 0 decoys ---
+2026-02-09 16:38:49,593 | INFO     | Collection size: 200
+2026-02-09 16:38:50,639 | INFO     |   Accuracy: 90.0%, Avg decoys in top-5: 0.00
+2026-02-09 16:38:50,639 | INFO     | 
+--- Noise Level: 100 decoys ---
+2026-02-09 16:39:08,816 | INFO     | Collection size: 300
+2026-02-09 16:39:09,876 | INFO     |   Accuracy: 85.0%, Avg decoys in top-5: 3.60
+2026-02-09 16:39:09,877 | INFO     | 
+--- Noise Level: 250 decoys ---
+2026-02-09 16:39:38,823 | INFO     | Collection size: 450
+2026-02-09 16:39:39,963 | INFO     |   Accuracy: 70.0%, Avg decoys in top-5: 4.15
+2026-02-09 16:39:39,963 | INFO     | 
+--- Noise Level: 500 decoys ---
+2026-02-09 16:40:28,412 | INFO     | Collection size: 700
+2026-02-09 16:40:29,486 | INFO     |   Accuracy: 55.0%, Avg decoys in top-5: 4.40
+2026-02-09 16:40:29,486 | INFO     | 
+--- Noise Level: 750 decoys ---
+2026-02-09 16:41:40,079 | INFO     | Collection size: 950
+2026-02-09 16:41:41,201 | INFO     |   Accuracy: 40.0%, Avg decoys in top-5: 4.55
+2026-02-09 16:41:41,201 | INFO     | 
+--- Noise Level: 1000 decoys ---
+2026-02-09 16:43:11,575 | INFO     | Collection size: 1200
+2026-02-09 16:43:12,638 | INFO     |   Accuracy: 20.0%, Avg decoys in top-5: 4.80
+2026-02-09 16:43:12,640 | INFO     | 
+✅ Noise test complete! Results saved to /home/rvce/finaltest/graph-rca/experiments/05_noise_sensitivity/data/03_noise_sensitivity.json

@@ -1,0 +1,6 @@
+{
+  "company": "Cloudflare",
+  "url": "https://blog.cloudflare.com/18-november-2025-outage/",
+  "description": "On 18 Nov. 2025, a change in permissions in a database in Cloudflare's bot-detection systems caused a file to be output that exceeded the limits of the software that runs that system. That file was propagated througout Cloudflare's network, causing a systemwide outage.",
+  "source": "GitHub post-mortems list"
+}

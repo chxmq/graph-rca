@@ -1,0 +1,10 @@
+{
+  "incident_id": "011",
+  "source": "https://brew.sh/2018/08/05/security-incident-disclosure/",
+  "root_cause": "A GitHub personal access token with write scopes was leaked in Jenkins build logs, allowing an attacker to push malicious commits.",
+  "root_cause_timestamp": "2018-08-05T00:00:00Z",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": true,
+  "root_cause_in_logs": true
+}

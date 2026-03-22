@@ -1,0 +1,12 @@
+2023-12-31 14:30:00 [INFO] ariane-5-gsmc: Service started, initialization complete
+2023-12-31 14:30:15 [INFO] ariane-5-gsmc: Converting 16-bit number to 64-bit numerical value
+2023-12-31 14:30:20 [WARNING] ariane-5-gsmc: Potential overflow detected in conversion process (num=65535)
+2023-12-31 14:30:25 [INFO] ariane-5-gsmc: Ignoring warning, proceeding with calculation
+2023-12-31 14:30:30 [CRITICAL] ariane-5-gsmc: Overflow occurred, invalid data detected (num=4294967295)
+2023-12-31 14:30:35 [ERROR] ariane-5-gsmc: Unhandled exception in diagnostic processing
+2023-12-31 14:30:40 [INFO] ariane-5-gsmc: Diagnostic error message printed to console
+2023-12-31 14:30:45 [WARNING] ariane-5-gsmc: Interpretation of diagnostic error message as valid data detected
+2023-12-31 14:30:50 [CRITICAL] ariane-5-gsmc: Rocket crash imminent, aborting launch sequence
+2023-12-31 14:30:55 [ERROR] ariane-5-gsmc: System failure, unable to recover from error
+2023-12-31 14:31:00 [INFO] ariane-5-gsmc: System shutdown initiated
+2023-12-31 14:31:05 [WARNING] ariane-5-gsmc: Post-launch analysis of system failure underway

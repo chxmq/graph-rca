@@ -1,0 +1,10 @@
+{
+  "incident_id": "081",
+  "source": "https://web.archive.org/web/20250505112812/https://medium.com/xandr-tech/2013-09-17-outage-postmortem-586b19ae4307",
+  "root_cause": "A double free revealed by a database update caused all \"impression bus\" servers to crash simultaneously",
+  "root_cause_timestamp": "Unknown",
+  "category": "Database",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

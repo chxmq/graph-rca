@@ -1,0 +1,16 @@
+2023-12-15 14:30:00 [INFO] CloudWatch Monitor checking for any unusual activity
+2023-12-15 14:35:00 [INFO] Checking Azure service status, no issues reported
+2023-12-15 14:40:00 [WARNING] Service-a: Unusual spike in requests, 100% CPU usage detected
+2023-12-15 14:42:00 [INFO] Investigating cause of unusual CPU usage on Service-a
+2023-12-15 14:45:00 [ERROR] Checking logs for errors related to Service-a, unexpected error found
+2023-12-15 14:46:00 [CRITICAL] Error in database connection, unable to connect to Azure database
+2023-12-15 14:47:00 [INFO] Investigating reason for failure, searching Azure documentation
+2023-12-15 14:50:00 [WARNING] Azure documentation search yields results of recent breaking change
+2023-12-15 14:52:00 [CRITICAL] Breaking change in Azure affects downstream services like Metrist's service
+2023-12-15 14:55:00 [INFO] Verifying impact on downstream systems, Service-b experiencing connection timeout
+2023-12-15 14:57:00 [ERROR] Unable to recover from Azure breaking change, attempting workaround
+2023-12-15 15:02:00 [INFO] Workaround implemented, service-a stable again
+2023-12-15 15:05:00 [WARNING] Service-b still experiencing issues after workaround implementation
+2023-12-15 15:10:00 [INFO] Investigating further error in Service-b, searching logs for clues
+2023-12-15 15:12:00 [ERROR] Unable to resolve issue with Service-b, escalating incident to support team
+2023-12-15 15:15:00 [CRITICAL] Incident escalating to support team due to lack of progress on resolving issues

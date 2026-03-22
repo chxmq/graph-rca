@@ -6,7 +6,7 @@ This documentation covers the main components and APIs of the Log Analysis Syste
 
 ## Core Components
 
-### 1. Embedding Creation (`core/embedding.py`)
+### 1. Embedding Creation (`app/core/embedding.py`)
 
 #### EmbeddingCreator
 
@@ -22,7 +22,7 @@ Methods:
 - `create_batch_embeddings(texts: List[str]) -> List[List[float]]`: Generate embeddings for multiple texts
 - `get_similarity(embedding1: List[float], embedding2: List[float]) -> float`: Calculate cosine similarity between embeddings
 
-### 2. Database Handlers (`core/database_handlers.py`)
+### 2. Database Handlers (`app/core/database_handlers.py`)
 
 #### VectorDatabaseHandler
 
@@ -53,9 +53,9 @@ Methods:
 - `get_context(dag_id: str = None)`: Retrieve context by DAG ID
 - `save_context(context_data: dict)`: Save context data
 
-### 3. Log Analysis (`utilz/`)
+### 3. Log Analysis (`app/utils/`)
 
-#### LogParser (`utilz/log_parser.py`)
+#### LogParser (`app/utils/log_parser.py`)
 
 Parses log entries using LLM-based extraction.
 
@@ -69,7 +69,7 @@ Methods:
 - `parse_log(log_data: str) -> LogChain`: Parse logs from string
 - `extract_log_info_by_llm(log_entry: str) -> LogEntry`: Extract structured info from log entry
 
-#### GraphGenerator (`utilz/graph_generator.py`)
+#### GraphGenerator (`app/utils/graph_generator.py`)
 
 Generates DAG from parsed log entries.
 
@@ -82,7 +82,7 @@ Methods:
 - `generate_dag() -> DAG`: Generate DAG from log chain
 - `find_root_cause() -> str`: Identify root cause from DAG
 
-#### ContextBuilder (`utilz/context_builder.py`)
+#### ContextBuilder (`app/utils/context_builder.py`)
 
 Builds context from DAG for analysis.
 
@@ -94,7 +94,7 @@ Methods:
 
 - `build_context(dag: DAG) -> Context`: Generate context from DAG
 
-### 4. Health Monitoring (`utilz/database_healthcheck.py`)
+### 4. Health Monitoring (`app/utils/database_healthcheck.py`)
 
 #### ServerHealthCheck
 
@@ -111,7 +111,7 @@ Methods:
 
 ## Data Models
 
-### Parsing Models (`models/parsing_data_models.py`)
+### Parsing Models (`app/models/parsing_data_models.py`)
 
 - `LogEntry`: Complete log entry information
 - `LogChain`: Collection of log entries
@@ -120,17 +120,17 @@ Methods:
 - `UserInfo`: User-related information
 - `TraceInfo`: Tracing information
 
-### Graph Models (`models/graph_data_models.py`)
+### Graph Models (`app/models/graph_data_models.py`)
 
 - `DAGNode`: Node in the Directed Acyclic Graph
 - `DAG`: Complete graph structure
 
-### Context Models (`models/context_data_models.py`)
+### Context Models (`app/models/context_data_models.py`)
 
 - `Context`: Context information from log analysis
 - `Solution`: Solution response with sources
 
-### RAG Response Models (`models/rag_response_data_models.py`)
+### RAG Response Models (`app/models/rag_response_data_models.py`)
 
 - `SummaryResponse`: Summary of log analysis
 - `SolutionQuery`: Query and response structure

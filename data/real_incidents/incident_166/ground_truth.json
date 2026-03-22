@@ -1,0 +1,10 @@
+{
+  "incident_id": "166",
+  "source": "https://blog.skyliner.io/post-mortem-outages-on-1-19-17-and-1-23-17-3f65cc6f693e",
+  "root_cause": "A memory leak in a third party library lead to Skyliner being unavailable on two occasions",
+  "root_cause_timestamp": "Unknown",
+  "category": "Memory",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

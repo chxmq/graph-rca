@@ -1,0 +1,10 @@
+{
+  "incident_id": "089",
+  "source": "https://www.browserstack.com/attack-and-downtime-on-9-November",
+  "root_cause": "An old prototype machine with the [Shellshock](https://en",
+  "root_cause_timestamp": "Unknown",
+  "category": "Security",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

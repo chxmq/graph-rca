@@ -1,0 +1,6 @@
+{
+  "company": "Google",
+  "url": "https://status.cloud.google.com/incidents/6PM5mNd43NbMqjCZ5REh",
+  "description": "Google Cloud Networking experienced issues with Google Cloud Load Balancing (GCLB) service resulting in impact to several downstream Google Cloud services. Impacted customers observed Google 404 errors on their websites. From preliminary analysis, the root cause of the issue was a latent bug in a network configuration service which was triggered during routine system operation.",
+  "source": "GitHub post-mortems list"
+}

@@ -1,0 +1,10 @@
+{
+  "incident_id": "109",
+  "source": "https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes",
+  "root_cause": "On July 12th, 2018, an attacker compromised the npm account of an ESLint maintainer and published malicious packages to the npm registry",
+  "root_cause_timestamp": "Unknown",
+  "category": "Infrastructure",
+  "severity": "Medium",
+  "logs_available": false,
+  "root_cause_in_logs": false
+}

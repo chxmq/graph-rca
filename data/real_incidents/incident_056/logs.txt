@@ -1,0 +1,15 @@
+2014-07-29 14:30:00 [INFO] uploads-service: Receiving new upload data from user
+2014-07-29 14:30:01 [INFO] uploads-service: Preparing to store new upload data in database
+2014-07-29 14:30:02 [WARNING] uploads-service: Database query failed with error code 22
+2014-07-29 14:30:03 [ERROR] uploads-service: Database connection timeout
+2014-07-29 14:30:04 [CRITICAL] uploads-service: Failed to store new upload data in database
+2014-07-29 14:30:05 [INFO] db-maintenance: Running database maintenance task
+2014-07-29 14:30:10 [WARNING] db-maintenance: Detected signed integer limit hit on primary key 'upload_id'
+2014-07-29 14:30:15 [ERROR] db-maintenance: Failed to update primary key data type due to size limit exceeded
+2014-07-29 14:30:20 [CRITICAL] uploads-service: All new uploads failed with error code 22
+2014-07-29 14:31:00 [INFO] incident-reporter: Incident started, logging and notification procedures engaged
+2014-07-29 14:31:15 [WARNING] incident-reporter: Sending email to development team for assistance
+2014-07-29 14:32:00 [INFO] db-admin: Running database schema update to resolve issue
+2014-07-29 14:35:30 [ERROR] db-admin: Failed to update primary key data type due to compatibility issues
+2014-07-29 14:40:00 [CRITICAL] uploads-service: All new uploads failed with error code 22, waiting for database resolution
+2014-07-29 15:05:00 [INFO] incident-reporter: Database issue resolved, all new uploads resumed
