@@ -1,10 +1,12 @@
+import os
 from typing import List
 from .database_handlers import OllamaEmbeddingFunction
 
 class EmbeddingCreator:
     def __init__(self):
+        ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11435")
         self.ef = OllamaEmbeddingFunction(
-            url="http://localhost:11435/api/embeddings",
+            url=f"{ollama_host}/api/embeddings",
             model_name="nomic-embed-text"
         )
     
