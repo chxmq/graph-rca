@@ -23,12 +23,13 @@ class LogParser:
         try:
             self.model = model
             self.timeout = timeout
-            self.ollama_client = ollama.Client(host='http://localhost:11434', timeout=timeout)
+            ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11435")
+            self.ollama_client = ollama.Client(host=ollama_host, timeout=timeout)
             self.ollama_options = ollama.Options(temperature=0.2)
-            self.system_prompt = f"You are an expert in log parsing. You are given a log entry and a pydantic model. Extract and fill the fields of the model with the information from the log entry."
+            self.system_prompt = "You are an expert in log parsing. You are given a log entry and a pydantic model. Extract and fill the fields of the model with the information from the log entry."
         except Exception as e:
             raise ConnectionError(
-                f"Failed to connect to Ollama at localhost:11434. "
+                f"Failed to connect to Ollama at {os.environ.get('OLLAMA_HOST', 'http://localhost:11435')}. "
                 f"Make sure the Ollama service is running and the model '{model}' is installed. "
                 f"Error: {str(e)}"
             )

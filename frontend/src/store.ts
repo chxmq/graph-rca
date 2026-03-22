@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type LogStatus = {
   analysed: boolean;
@@ -52,60 +53,70 @@ interface AppState {
   setProcessingProgress: (progress: number) => void;
 }
 
-export const useAppStore = create<AppState>((set) => ({
-  logStatus: { analysed: false },
-  docsStatus: { uploaded: false },
-  analysisResult: null,
-  analysisHistory: [],
-  isProcessing: false,
-  processingLogs: [],
-  processingProgress: 0,
-  setLogStatus: (status) =>
-    set((state) => ({ logStatus: { ...state.logStatus, ...status } })),
-  setDocsStatus: (status) =>
-    set((state) => ({ docsStatus: { ...state.docsStatus, ...status } })),
-  setAnalysisResult: (result) => set({ analysisResult: result }),
-  addToHistory: (fileName, result) =>
-    set((state) => {
-      const newEntry: AnalysisHistory = {
-        id: Date.now().toString(),
-        timestamp: new Date().toISOString(),
-        fileName,
-        ...result,
-      };
-      // Keep only last 10 analyses
-      const updatedHistory = [newEntry, ...state.analysisHistory].slice(0, 10);
-      return { analysisHistory: updatedHistory };
+export const useAppStore = create<AppState>()(
+  persist(
+    (set) => ({
+      logStatus: { analysed: false },
+      docsStatus: { uploaded: false },
+      analysisResult: null,
+      analysisHistory: [],
+      isProcessing: false,
+      processingLogs: [],
+      processingProgress: 0,
+      setLogStatus: (status) =>
+        set((state) => ({ logStatus: { ...state.logStatus, ...status } })),
+      setDocsStatus: (status) =>
+        set((state) => ({ docsStatus: { ...state.docsStatus, ...status } })),
+      setAnalysisResult: (result) => set({ analysisResult: result }),
+      addToHistory: (fileName, result) =>
+        set((state) => {
+          const newEntry: AnalysisHistory = {
+            id: Date.now().toString(),
+            timestamp: new Date().toISOString(),
+            fileName,
+            ...result,
+          };
+          // Keep only last 10 analyses
+          const updatedHistory = [newEntry, ...state.analysisHistory].slice(0, 10);
+          return { analysisHistory: updatedHistory };
+        }),
+      loadFromHistory: (id) =>
+        set((state) => {
+          const entry = state.analysisHistory.find((h) => h.id === id);
+          if (entry) {
+            return {
+              analysisResult: {
+                severity: entry.severity,
+                root_cause: entry.root_cause,
+                summary: entry.summary,
+              },
+              logStatus: {
+                analysed: true,
+                severity: entry.severity,
+                rootCause: entry.root_cause,
+              },
+            };
+          }
+          return state;
+        }),
+      clearHistory: () => set({ analysisHistory: [] }),
+      setProcessing: (isProcessing) => set({ isProcessing }),
+      addProcessingLog: (log) =>
+        set((state) => ({
+          processingLogs: [
+            ...state.processingLogs,
+            { ...log, timestamp: new Date().toISOString() },
+          ],
+        })),
+      clearProcessingLogs: () => set({ processingLogs: [], processingProgress: 0 }),
+      setProcessingProgress: (progress) => set({ processingProgress: progress }),
     }),
-  loadFromHistory: (id) =>
-    set((state) => {
-      const entry = state.analysisHistory.find((h) => h.id === id);
-      if (entry) {
-        return {
-          analysisResult: {
-            severity: entry.severity,
-            root_cause: entry.root_cause,
-            summary: entry.summary,
-          },
-          logStatus: {
-            analysed: true,
-            severity: entry.severity,
-            rootCause: entry.root_cause,
-          },
-        };
-      }
-      return state;
-    }),
-  clearHistory: () => set({ analysisHistory: [] }),
-  setProcessing: (isProcessing) => set({ isProcessing }),
-  addProcessingLog: (log) =>
-    set((state) => ({
-      processingLogs: [
-        ...state.processingLogs,
-        { ...log, timestamp: new Date().toISOString() },
-      ],
-    })),
-  clearProcessingLogs: () => set({ processingLogs: [], processingProgress: 0 }),
-  setProcessingProgress: (progress) => set({ processingProgress: progress }),
-}));
+    {
+      name: "graph-rca-store",
+      storage: createJSONStorage(() => localStorage),
+      // Only persist history — transient UI state is always reset on load
+      partialize: (state) => ({ analysisHistory: state.analysisHistory }),
+    }
+  )
+);
 

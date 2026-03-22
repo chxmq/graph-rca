@@ -72,19 +72,25 @@ class JudgeClient:
             keys = os.environ.get("OPENAI_API_KEY", "").split(",")
             self.api_keys = [k.strip() for k in keys if k.strip()]
             if not self.api_keys:
-                 self.client = None
-            else:
-                from openai import OpenAI
-                self.client = OpenAI(api_key=self.api_keys[0])
+                raise ValueError(
+                    "OPENAI_API_KEY environment variable is not set or is empty. "
+                    "Run: export OPENAI_API_KEY=your_key_here\n"
+                    "Without a valid key, judge scores would be fabricated. Aborting."
+                )
+            from openai import OpenAI
+            self.client = OpenAI(api_key=self.api_keys[0])
             
         elif judge_type == "groq":
             keys = os.environ.get("GROQ_API_KEY", "").split(",")
             self.api_keys = [k.strip() for k in keys if k.strip()]
             if not self.api_keys:
-                self.client = None
-            else:
-                from groq import Groq
-                self.client = Groq(api_key=self.api_keys[0])
+                raise ValueError(
+                    "GROQ_API_KEY environment variable is not set or is empty. "
+                    "Run: export GROQ_API_KEY=your_key_here\n"
+                    "Without a valid key, judge scores would be fabricated. Aborting."
+                )
+            from groq import Groq
+            self.client = Groq(api_key=self.api_keys[0])
     
     def _rotate_key(self):
         """Rotate to next API key if available."""
@@ -109,9 +115,6 @@ class JudgeClient:
         if not prediction or len(prediction.strip()) < 5:
             return 0.0
         
-        if not self.client: # Mock
-            return 0.5
-        
         prompt = f"""Compare these two root cause descriptions and rate their similarity from 0.0 to 1.0.
 
 Ground Truth: {ground_truth}
@@ -128,7 +131,10 @@ Respond with ONLY a number between 0.0 and 1.0:"""
                 print(f"  Judge attempt {attempt+1}/3 failed: {e}")
                 time.sleep(2)
         
-        return 0.5
+        # All retries exhausted — return 0.0 and warn rather than silently return 0.5
+        print(f"  ⚠ WARNING: all scoring attempts failed for judge '{self.judge_name}'. "
+              f"Returning 0.0 (not a mock). Check API key and connectivity.")
+        return 0.0
     
     def _call_judge(self, prompt: str) -> Optional[float]:
         judge_type = self.judge_config["type"]

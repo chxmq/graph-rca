@@ -2,8 +2,6 @@
 
 An AI-powered system for automated log analysis and incident resolution. Features a modern React frontend with a FastAPI backend, leveraging LLMs for root cause analysis and solution generation.
 
-> 🎓 **Running on Remote GPU Server?** See [REMOTE_SETUP.md](REMOTE_SETUP.md) for SSH tunnel and network access setup!
-
 ## 🎯 Features
 
 - 📊 **Automated log file analysis** with causal chain generation
@@ -18,28 +16,79 @@ An AI-powered system for automated log analysis and incident resolution. Feature
 
 ```
 graph-rca/
-├── backend/                 # Python FastAPI backend
+├── backend/                        # Python FastAPI backend
 │   ├── app/
-│   │   ├── api/            # API routes
-│   │   ├── core/           # Database handlers, embeddings, RAG engine
-│   │   ├── models/         # Pydantic data models
-│   │   └── utils/          # Log parser, graph generator, context builder
-│   ├── tests/              # Backend tests
-│   ├── main.py             # FastAPI application entry point
-│   └── requirements.txt    # Python dependencies
+│   │   ├── api/
+│   │   │   └── routes.py           # API route handlers
+│   │   ├── core/
+│   │   │   ├── database_handlers.py     # MongoDB + ChromaDB clients
+│   │   │   ├── database_handlers_gpu.py # GPU-accelerated variant
+│   │   │   ├── embedding.py             # Embedding utilities
+│   │   │   └── rag.py                   # RAG engine
+│   │   ├── models/
+│   │   │   ├── context_data_models.py
+│   │   │   ├── graph_data_models.py
+│   │   │   ├── parsing_data_models.py
+│   │   │   └── rag_response_data_models.py
+│   │   └── utils/
+│   │       ├── context_builder.py       # DAG traversal & context extraction
+│   │       ├── database_healthcheck.py  # Service health checks
+│   │       ├── graph_generator.py       # DAG construction
+│   │       └── log_parser.py            # LLM-based log parser
+│   ├── tests/                      # Backend unit tests (5 files)
+│   ├── main.py                     # FastAPI application entry point
+│   └── requirements.txt            # Python dependencies
 │
-├── frontend/               # React TypeScript frontend
+├── frontend/                       # React TypeScript frontend
 │   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── api.ts         # API client
-│   │   ├── store.ts       # State management (Zustand)
-│   │   └── App.tsx        # Main application
-│   └── package.json       # Node dependencies
+│   │   ├── components/
+│   │   │   ├── AnalysisHistory.tsx
+│   │   │   ├── DocsUploadPanel.tsx
+│   │   │   ├── IncidentResolutionPanel.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   ├── LogUploadPanel.tsx
+│   │   │   ├── StatusSidebar.tsx
+│   │   │   └── StepTabs.tsx
+│   │   ├── api.ts                  # API client
+│   │   ├── App.tsx                 # Main application
+│   │   ├── main.tsx                # Entry point
+│   │   ├── store.ts                # Zustand state (persisted to localStorage)
+│   │   └── styles.css
+│   └── package.json
 │
-├── docs/                  # Documentation and samples
-├── data/                  # Docker volume mounts (auto-created)
-├── docker-compose.yaml    # Docker services (MongoDB, ChromaDB, Ollama)
-└── run.sh                 # Master setup script (run this first!)
+├── experiments/                    # 9 reproducible experiment scripts
+│   ├── 01_batch_inference/
+│   ├── 02_scalability/
+│   ├── 03_baseline_comparison/
+│   ├── 04_doc_ablation/
+│   ├── 05_noise_sensitivity/
+│   ├── 06_parser_accuracy/
+│   ├── 07_multi_judge_validation/
+│   ├── 08_rag_real_world/
+│   ├── 09_latency_profiling/
+│   └── README.md
+│
+├── results/                        # Raw JSON outputs from experiment runs
+├── data/
+│   ├── real_incidents/             # 200 annotated production incidents
+│   ├── chroma/                     # ChromaDB persistence (auto-created)
+│   ├── db/                         # MongoDB persistence (auto-created)
+│   └── ollama/                     # Ollama model cache (auto-created)
+├── docs/                           # Sample documentation corpus
+│   ├── API.md
+│   ├── sample_documentation.txt
+│   ├── sample_log.log
+│   └── sample_log_2.log
+│
+├── .env.example                    # Environment variable template (copy to .env)
+├── docker-compose.yaml             # Docker services (MongoDB, ChromaDB, Ollama)
+├── docker-compose.gpu.yaml         # GPU-accelerated deployment variant
+├── run.sh                          # One-command setup script
+├── run-gpu-server.sh               # Setup for remote GPU servers
+├── run_all_experiments.py          # Run all 9 experiments sequentially
+├── check_prerequisites.py          # Pre-flight dependency checker
+├── start-backend.sh                # Start FastAPI backend
+└── start-frontend.sh               # Start Vite dev server
 ```
 
 ## 🚀 Quick Start
@@ -47,11 +96,17 @@ graph-rca/
 ### Prerequisites
 
 - **Docker & Docker Compose**
-- **Python 3.13+**
+- **Python 3.11+** (3.11, 3.12, or 3.13 — auto-detected by `run.sh`)
 - **Node.js 18+**
-- **NVIDIA GPU** (optional, for faster LLM inference - Linux only)
+- **NVIDIA GPU** (optional, for faster LLM inference — Linux only)
 
 ### One-Command Setup
+
+> ⚠️ **Before first run:** copy the environment template and fill in your values:
+> ```bash
+> cp .env.example .env
+> # Edit .env — at minimum set MONGO_URI and OLLAMA_HOST
+> ```
 
 ```bash
 git clone https://github.com/KTS-o7/graph-rca.git
@@ -59,7 +114,7 @@ cd graph-rca
 ./run.sh
 ```
 
-That's it! The script will:
+The script will:
 - ✓ Check Docker
 - ✓ Start all Docker services (MongoDB, ChromaDB, Ollama)
 - ✓ Download the LLM model if needed
@@ -91,7 +146,7 @@ Then open your browser to `http://localhost:5173`
 | **Frontend** | http://localhost:5173 | React UI |
 | **Backend API** | http://localhost:8010 | FastAPI server |
 | **API Docs** | http://localhost:8010/docs | Interactive API documentation |
-| MongoDB | localhost:27017 | Database |
+| MongoDB | localhost:27017 | Document store |
 | ChromaDB | localhost:8000 | Vector database |
 | Ollama | localhost:11435 | LLM inference |
 
@@ -101,7 +156,7 @@ Then open your browser to `http://localhost:5173`
 
 1. **Analyse Log File**
    - Navigate to the "1. Log Analysis" tab
-   - Upload a `.log` or `.txt` file
+   - Upload a `.log` or `.txt` file (**max 5 MB, 500 lines** — larger files are truncated)
    - Click "Analyse log"
    - View severity, root cause, and summary
 
@@ -121,11 +176,44 @@ Then open your browser to `http://localhost:5173`
 |--------|----------|-------------|
 | `GET` | `/` | API information |
 | `GET` | `/api/health` | Health check |
-| `POST` | `/api/log/analyse` | Analyse uploaded log file |
-| `POST` | `/api/docs/upload` | Upload documentation |
-| `POST` | `/api/incident/resolve` | Generate incident resolution |
+| `POST` | `/api/log/analyse` | Analyse uploaded log file (returns context + root cause) |
+| `POST` | `/api/docs/upload` | Upload documentation files |
+| `POST` | `/api/incident/resolve` | Generate incident resolution (requires context from `/analyse`) |
 
 Full API docs: `http://localhost:8010/docs`
+
+## ⚙️ Environment Variables
+
+Create a `.env` file (copy from `.env.example`) and set the following variables before running:
+
+| Variable | Required | Default | Description |
+|---|---|---|---|
+| `MONGO_URI` | **Yes** | `mongodb://localhost:27017/` | MongoDB connection string. Use `mongodb://admin:changeme@localhost:27017/` for the bundled Docker Compose setup. |
+| `OLLAMA_HOST` | **Yes** | `http://localhost:11435` | Ollama service URL. Port 11435 matches the Docker Compose host mapping. |
+| `ALLOWED_ORIGINS` | No | `http://localhost:5173,http://localhost:3000` | Comma-separated CORS origins. Override for production deployments. |
+| `OPENAI_API_KEY` | For exp 07/08 | — | Required for multi-judge validation experiments with GPT-4o-mini. |
+| `GROQ_API_KEY` | For exp 07/08 | — | Required for multi-judge validation experiments with Groq Llama-70B. |
+
+```bash
+cp .env.example .env
+# Edit .env with your values
+```
+
+## 🧪 Running Experiments
+
+To reproduce all paper results:
+
+```bash
+# Run all 9 experiments sequentially
+python run_all_experiments.py
+
+# Or run a specific experiment
+python experiments/01_batch_inference/run_experiment.py
+python experiments/07_multi_judge_validation/run_experiment.py
+# ... etc
+```
+
+Results are saved as JSON in `results/`. Pre-computed outputs are already included for verification without re-execution.
 
 ## 🐳 Docker Services
 
@@ -165,19 +253,12 @@ cd frontend
 npm run dev
 ```
 
-### Run Tests
+### Run Backend Tests
 
 ```bash
 cd backend
 source venv/bin/activate
 pytest tests/
-```
-
-### Stop All Services
-
-```bash
-docker-compose down
-# Kill backend/frontend with Ctrl+C in their terminals
 ```
 
 ## 🎨 Tech Stack
@@ -186,28 +267,37 @@ docker-compose down
 - React 18 + TypeScript
 - Vite (build tool)
 - Tailwind CSS (styling)
-- Zustand (state management)
+- Zustand (state management with localStorage persistence)
 - React Icons
 
 **Backend:**
 - FastAPI (Python web framework)
 - Pydantic (data validation)
-- Ollama (local LLM inference)
-- LangChain (text processing)
+- Ollama (local LLM inference — Llama 3.2 3B, Qwen 2.5-Coder)
+- LangChain (text processing & chunking)
 
 **Databases:**
-- ChromaDB (vector embeddings)
-- MongoDB (structured data)
+- ChromaDB (vector embeddings, HNSW index)
+- MongoDB (DAG structures & analysis contexts)
+
+**Experiment LLM Judges:**
+- Qwen3:32b (local via Ollama)
+- GPT-4o-mini (OpenAI API)
+- Llama-3.1-70B (Groq API)
 
 ## 🔍 Troubleshooting
 
 **Backend won't start:**
 - Ensure Docker services are running: `docker ps`
+- Run the pre-flight checker: `python check_prerequisites.py`
 - Check Ollama has the model: `docker exec -it $(docker ps -qf "name=ollama") ollama list`
 
 **Frontend can't connect:**
 - Verify backend is running on port 8010
-- Check CORS settings in `backend/main.py`
+- For CORS errors in production, set the `ALLOWED_ORIGINS` environment variable:
+  ```bash
+  ALLOWED_ORIGINS=https://yourdomain.com ./start-backend.sh
+  ```
 
 **GPU Support (Optional):**
 - By default, Ollama runs on CPU (works on all systems)
@@ -215,11 +305,8 @@ docker-compose down
   ```bash
   docker-compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d
   ```
-- Requires: NVIDIA drivers, CUDA, and nvidia-docker2 installed
-
-## 📄 License
-
-MIT License - see LICENSE file for details
+- For remote GPU servers, use `./run-gpu-server.sh` instead of `./run.sh`
+- Requires: NVIDIA drivers, CUDA 12.x, and nvidia-docker2 installed
 
 ## 🤝 Contributing
 

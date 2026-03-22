@@ -1,5 +1,6 @@
 # Fix for ChromaDB SQLite issue on older systems
 import sys
+import os
 try:
     __import__('pysqlite3')
     sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -24,10 +25,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS middleware for frontend
+# CORS: read from env var so any deployment works without code changes.
+# e.g. ALLOWED_ORIGINS=https://myrca.example.com,http://localhost:5173
+_default_origins = "http://localhost:5173,http://localhost:3000"
+origins = os.environ.get("ALLOWED_ORIGINS", _default_origins).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=[o.strip() for o in origins],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

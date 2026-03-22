@@ -56,17 +56,32 @@ echo ""
 echo -e "${BLUE}[5/6]${NC} Setting up Python backend..."
 cd backend
 
-# Check if python3.13 is available
-if ! command -v python3.13 &> /dev/null; then
-    echo -e "${RED}❌ Python 3.13 not found!${NC}"
-    echo "   Please install Python 3.13 first."
+# Detect the best available Python (3.11, 3.12, or 3.13)
+PYTHON_CMD=""
+for ver in python3.13 python3.12 python3.11 python3; do
+    if command -v "$ver" &>/dev/null; then
+        PYVER=$("$ver" -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null)
+        MAJOR=${PYVER%%.*}
+        MINOR=${PYVER##*.}
+        if [ "$MAJOR" -ge 3 ] && [ "$MINOR" -ge 11 ]; then
+            PYTHON_CMD="$ver"
+            break
+        fi
+    fi
+done
+
+if [ -z "$PYTHON_CMD" ]; then
+    echo -e "${RED}❌ Python 3.11+ not found!${NC}"
+    echo "   Please install Python 3.11 or newer."
     echo "   Visit: https://www.python.org/downloads/"
     exit 1
 fi
 
+echo -e "${GREEN}✓${NC} Using $("$PYTHON_CMD" --version)"
+
 if [ ! -d "venv" ]; then
-    echo "   Creating Python 3.13 virtual environment..."
-    python3.13 -m venv venv
+    echo "   Creating virtual environment with $PYTHON_CMD..."
+    "$PYTHON_CMD" -m venv venv
 fi
 
 # Source the venv for dependency installation
@@ -113,7 +128,7 @@ echo "║          Setup Complete! 🚀                ║"
 echo "╚════════════════════════════════════════════╝"
 echo ""
 echo -e "${GREEN}Python Environment:${NC}"
-echo "  • Version:  Python 3.13"
+echo "  • Version:  Python 3.11+ (auto-detected: $PYTHON_CMD)"
 echo "  • Location: backend/venv (auto-activated by start script)"
 echo ""
 echo -e "${GREEN}Docker Services:${NC}"

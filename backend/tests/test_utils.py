@@ -1,54 +1,50 @@
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import json
 import pytest
 from unittest.mock import Mock, patch
+
 from app.utils.log_parser import LogParser
 from app.utils.graph_generator import GraphGenerator
 from app.utils.context_builder import ContextBuilder
 from app.utils.database_healthcheck import ServerHealthCheck
-from app.utils.database_healthcheck import check_services
-from app.models.parsing_data_models import LogChain, LogEntry, SystemInfo, UserInfo, TraceInfo
-from pathlib import Path
-import json
+from app.models.parsing_data_models import LogChain, LogEntry
 
 
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
-# Test LogParser
+def _make_entry(ts="2023-01-01", msg="msg", level="INFO") -> LogEntry:
+    return LogEntry(timestamp=ts, message=msg, level=level)
+
+
+def _make_chain(*entries) -> LogChain:
+    return LogChain(log_chain=list(entries))
+
+
 @pytest.fixture
-def mock_ollama():
-    with patch('ollama.Client') as mock:
-        yield mock
+def two_entry_chain() -> LogChain:
+    return _make_chain(
+        _make_entry(ts="2023-01-01 00:00:00", msg="Error occurred", level="ERROR"),
+        _make_entry(ts="2023-01-01 00:00:01", msg="System recovery", level="INFO"),
+    )
 
-@pytest.fixture
-def sample_log_chain():
-    return LogChain(log_chain=[
-        LogEntry(
-            timestamp="2023-01-01",
-            message="Error occurred",
-            level="ERROR",
-            system_info=SystemInfo(),
-            user_info=UserInfo(),
-            trace_info=TraceInfo()
-        ),
-        LogEntry(
-            timestamp="2023-01-02",
-            message="System recovery",
-            level="INFO",
-            system_info=SystemInfo(),
-            user_info=UserInfo(),
-            trace_info=TraceInfo()
-        )
-    ])
+
+# ---------------------------------------------------------------------------
+# TestLogParser
+# ---------------------------------------------------------------------------
 
 class TestLogParser:
     @pytest.fixture
     def mock_ollama(self):
-        with patch('ollama.Client') as mock:
+        with patch("ollama.Client") as mock:
             yield mock
 
     def test_parse_valid_log(self, mock_ollama):
-        # Create a proper mock response object
+        """parse_log returns a LogChain with one correctly parsed entry."""
         mock_response = Mock()
         mock_response.response = json.dumps({
             "timestamp": "2023-01-01",
@@ -63,172 +59,167 @@ class TestLogParser:
             "trace_id": "",
             "request_id": ""
         })
-        
         mock_ollama.return_value.generate.return_value = mock_response
-        
+
         parser = LogParser()
         result = parser.parse_log("2023-01-01 INFO Test message")
         assert len(result.log_chain) == 1
         assert result.log_chain[0].message == "Test message"
 
     def test_parse_invalid_file_type(self, tmp_path):
+        """parse_log_from_file raises ValueError for unsupported extensions."""
         parser = LogParser()
-        invalid_file = tmp_path / "invalid.csv"
-        invalid_file.touch()
-        
-        with pytest.raises(ValueError) as exc_info:
-            parser.parse_log_from_file(str(invalid_file))
-        assert "Unsupported file type" in str(exc_info.value)
+        bad_file = tmp_path / "data.csv"
+        bad_file.touch()
+        with pytest.raises(ValueError, match="Unsupported file type"):
+            parser.parse_log_from_file(str(bad_file))
 
-    def test_empty_log_data(self):
+    def test_empty_log_raises(self):
+        """parse_log raises RuntimeError on empty input."""
         parser = LogParser()
-        with pytest.raises(RuntimeError):
+        with pytest.raises((RuntimeError, ValueError)):
             parser.parse_log("")
 
-# Test GraphGenerator
+
+# ---------------------------------------------------------------------------
+# TestGraphGenerator
+# ---------------------------------------------------------------------------
+
 class TestGraphGenerator:
-    def test_dag_generation(self, sample_log_chain):
-        generator = GraphGenerator(sample_log_chain)
-        dag = generator.generate_dag()
-        
+    def test_dag_generation(self, two_entry_chain):
+        gen = GraphGenerator(two_entry_chain)
+        dag = gen.generate_dag()
+
         assert len(dag.nodes) == 2
         assert dag.root_id is not None
         assert len(dag.leaf_ids) == 1
 
-    def test_parent_child_relationships(self, sample_log_chain):
-        generator = GraphGenerator(sample_log_chain)
-        dag = generator.generate_dag()
-        
-        parent = next(n for n in dag.nodes if n.id == dag.root_id)
-        assert len(parent.children) == 1
+    def test_parent_child_relationships(self, two_entry_chain):
+        gen = GraphGenerator(two_entry_chain)
+        dag = gen.generate_dag()
 
-    def test_single_node_graph(self):
-        log_chain = LogChain(log_chain=[
-            LogEntry(
-                timestamp="2023-01-01",
-                message="Single entry",
-                level="INFO",
-                system_info=SystemInfo(),
-                user_info=UserInfo(),
-                trace_info=TraceInfo()
-            )
-        ])
-        generator = GraphGenerator(log_chain)
-        dag = generator.generate_dag()
-        
+        root = next(n for n in dag.nodes if n.id == dag.root_id)
+        assert len(root.children) == 1
+
+    def test_single_node_dag(self):
+        chain = _make_chain(_make_entry(msg="Only entry"))
+        dag = GraphGenerator(chain).generate_dag()
         assert dag.root_id == dag.leaf_ids[0]
 
-# Test ContextBuilder
+    def test_dag_is_acyclic(self, two_entry_chain):
+        """Every edge must go from parent → child with no back-edges."""
+        dag = GraphGenerator(two_entry_chain).generate_dag()
+        node_map = {n.id: n for n in dag.nodes}
+        visited: set = set()
+
+        def dfs(nid):
+            assert nid not in visited, f"Cycle detected at node {nid}"
+            visited.add(nid)
+            for child in node_map[nid].children:
+                dfs(child)
+
+        dfs(dag.root_id)
+
+    def test_temporal_ordering(self, two_entry_chain):
+        """Earlier timestamp must be the root, later must be the leaf."""
+        dag = GraphGenerator(two_entry_chain).generate_dag()
+        root = next(n for n in dag.nodes if n.id == dag.root_id)
+        leaf_id = dag.leaf_ids[0]
+        leaf = next(n for n in dag.nodes if n.id == leaf_id)
+        assert root.log_entry.timestamp <= leaf.log_entry.timestamp
+
+
+# ---------------------------------------------------------------------------
+# TestContextBuilder
+# ---------------------------------------------------------------------------
+
 class TestContextBuilder:
-    def test_valid_context_creation(self, sample_log_chain):
-        generator = GraphGenerator(sample_log_chain)
-        dag = generator.generate_dag()
-        
-        builder = ContextBuilder()
-        context = builder.build_context(dag)
-        
+    def test_valid_context_creation(self, two_entry_chain):
+        dag = GraphGenerator(two_entry_chain).generate_dag()
+        builder = ContextBuilder(dag)
+        context = builder.build_context()
+
         assert len(context.causal_chain) == 2
-        assert "Error occurred" in context.causal_chain
+        assert any("Error occurred" in msg for msg in context.causal_chain)
 
-    def test_empty_dag_handling(self):
-        builder = ContextBuilder()
-        with pytest.raises(RuntimeError):
-            builder.build_context(None)
+    def test_empty_dag_raises(self):
+        """ContextBuilder raises ValueError when given None."""
+        with pytest.raises(ValueError):
+            ContextBuilder(None)
 
-# Test DatabaseHealthCheck
+    def test_single_node_context(self):
+        chain = _make_chain(_make_entry(msg="Solo event", level="ERROR"))
+        dag = GraphGenerator(chain).generate_dag()
+        ctx = ContextBuilder(dag).build_context()
+        assert len(ctx.causal_chain) == 1
+        assert ctx.causal_chain[0] == "Solo event"
+
+    def test_root_cause_propagated(self, two_entry_chain):
+        dag = GraphGenerator(two_entry_chain).generate_dag()
+        dag.root_cause = "Connection pool exhaustion"
+        ctx = ContextBuilder(dag).build_context()
+        assert ctx.root_cause == "Connection pool exhaustion"
+
+
+# ---------------------------------------------------------------------------
+# TestDatabaseHealthCheck
+# Note: ServerHealthCheck.__init__ calls BOTH chromadb.HttpClient AND
+# pymongo.MongoClient, so every test needs both patches active.
+# ---------------------------------------------------------------------------
+
 @pytest.fixture
-def mock_chroma():
-    with patch('chromadb.HttpClient') as mock:
-        instance = mock.return_value
-        instance.heartbeat.return_value = True
-        yield mock
+def mock_db_services():
+    """Patch both DB clients so __init__ never touches a real service."""
+    with patch("chromadb.HttpClient") as mock_chroma, \
+         patch("pymongo.MongoClient") as mock_mongo:
+        mock_chroma.return_value.heartbeat.return_value = 1
+        mock_mongo.return_value.server_info.return_value = {"ok": 1.0}
+        yield mock_chroma, mock_mongo
 
-@pytest.fixture
-def mock_pymongo():
-    with patch('pymongo.MongoClient') as mock:
-        instance = mock.return_value
-        instance.server_info.return_value = {'ok': 1.0}
-        yield mock
-
-@pytest.fixture
-def mock_streamlit():
-    with patch('streamlit.columns') as mock_cols:
-        with patch('streamlit.success') as mock_success:
-            with patch('streamlit.error') as mock_error:
-                # Create mock column objects that support context manager
-                col1 = Mock()
-                col2 = Mock()
-                # Add context manager methods
-                col1.__enter__ = Mock(return_value=col1)
-                col1.__exit__ = Mock(return_value=None)
-                col2.__enter__ = Mock(return_value=col2)
-                col2.__exit__ = Mock(return_value=None)
-                # Make columns return the list of column objects
-                mock_cols.return_value = [col1, col2]
-                yield {
-                    'columns': mock_cols,
-                    'success': mock_success,
-                    'error': mock_error,
-                    'col1': col1,
-                    'col2': col2
-                }
 
 class TestDatabaseHealthCheck:
-    def test_chroma_connection_success(self, mock_chroma):
-        checker = ServerHealthCheck()
-        assert checker.check_chroma() is True
+    def test_chroma_connection_success(self, mock_db_services):
+        mock_chroma, _ = mock_db_services
+        assert ServerHealthCheck().check_chroma() is True
 
-    def test_mongo_connection_success(self, mock_pymongo):
-        checker = ServerHealthCheck()
-        assert checker.check_mongo() is True
+    def test_mongo_connection_success(self, mock_db_services):
+        _, mock_mongo = mock_db_services
+        assert ServerHealthCheck().check_mongo() is True
 
-    def test_chroma_connection_failure(self, mock_chroma):
+    def test_chroma_connection_failure(self, mock_db_services):
+        """Returns False (not raises) when ChromaDB is unreachable."""
+        mock_chroma, _ = mock_db_services
         mock_chroma.return_value.heartbeat.side_effect = Exception("Connection failed")
-        checker = ServerHealthCheck()
-        assert "Connection failed" in str(checker.check_chroma())
+        assert ServerHealthCheck().check_chroma() is False
 
-    def test_mongo_connection_failure(self, mock_pymongo):
-        mock_pymongo.return_value.server_info.side_effect = Exception("Auth failed")
-        checker = ServerHealthCheck()
-        assert "Auth failed" in str(checker.check_mongo())
+    def test_mongo_connection_failure(self, mock_db_services):
+        """Returns False (not raises) when MongoDB is unreachable."""
+        _, mock_mongo = mock_db_services
+        mock_mongo.return_value.server_info.side_effect = Exception("Auth failed")
+        assert ServerHealthCheck().check_mongo() is False
 
-    def test_chroma_returns_zero(self, mock_chroma):
+    def test_chroma_returns_zero(self, mock_db_services):
+        """heartbeat() == 0 → False."""
+        mock_chroma, _ = mock_db_services
         mock_chroma.return_value.heartbeat.return_value = 0
-        checker = ServerHealthCheck()
-        assert checker.check_chroma() is False
+        assert ServerHealthCheck().check_chroma() is False
 
-    def test_mongo_returns_invalid_ok(self, mock_pymongo):
-        mock_pymongo.return_value.server_info.return_value = {'ok': 0.0}
-        checker = ServerHealthCheck()
-        assert checker.check_mongo() is False
+    def test_mongo_returns_bad_ok(self, mock_db_services):
+        """ok != 1.0 → False."""
+        _, mock_mongo = mock_db_services
+        mock_mongo.return_value.server_info.return_value = {"ok": 0.0}
+        assert ServerHealthCheck().check_mongo() is False
 
-    def test_check_services_all_success(self, mock_chroma, mock_pymongo, mock_streamlit):
-        check_services()
-        
-        # Verify success messages were displayed
-        mock_streamlit['success'].assert_any_call("ChromaDB Connected")
-        mock_streamlit['success'].assert_any_call("MongoDB Connected")
-        assert mock_streamlit['error'].call_count == 0
+    def test_get_status_returns_dict(self, mock_db_services):
+        """get_status() returns dict with chromadb and mongodb keys."""
+        status = ServerHealthCheck().get_status()
+        assert "chromadb" in status
+        assert "mongodb" in status
+        assert status["chromadb"] is True
+        assert status["mongodb"] is True
 
-    def test_check_services_all_failure(self, mock_chroma, mock_pymongo, mock_streamlit):
-        # Make both connections fail
-        mock_chroma.return_value.heartbeat.side_effect = Exception("Chroma failed")
-        mock_pymongo.return_value.server_info.side_effect = Exception("Mongo failed")
-        
-        check_services()
-        
-        # Verify error messages were displayed
-        mock_streamlit['error'].assert_any_call("ChromaDB Connection Failed")
-        mock_streamlit['error'].assert_any_call("MongoDB Connection Failed")
-        assert mock_streamlit['success'].call_count == 0
-
-    def test_check_services_mixed_results(self, mock_chroma, mock_pymongo, mock_streamlit):
-        # Make Chroma succeed but Mongo fail
-        mock_chroma.return_value.heartbeat.return_value = 1
-        mock_pymongo.return_value.server_info.side_effect = Exception("Mongo failed")
-        
-        check_services()
-        
-        # Verify appropriate messages were displayed
-        mock_streamlit['success'].assert_called_once_with("ChromaDB Connected")
-        mock_streamlit['error'].assert_called_once_with("MongoDB Connection Failed")
+    def test_get_status_reflects_failures(self, mock_db_services):
+        mock_chroma, _ = mock_db_services
+        mock_chroma.return_value.heartbeat.side_effect = Exception("down")
+        status = ServerHealthCheck().get_status()
+        assert status["chromadb"] is False

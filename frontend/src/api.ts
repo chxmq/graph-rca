@@ -25,7 +25,10 @@ export async function uploadLog(file: File): Promise<LogAnalysisResponse> {
     body: formData,
   });
 
-  if (!res.ok) throw new Error("Failed to analyse log");
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail ?? "Failed to analyse log");
+  }
   return res.json();
 }
 
@@ -38,16 +41,27 @@ export async function uploadDocs(files: File[]): Promise<DocsUploadResponse> {
     body: formData,
   });
 
-  if (!res.ok) throw new Error("Failed to upload documentation");
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail ?? "Failed to upload documentation");
+  }
   return res.json();
 }
 
-export async function runIncidentResolution(): Promise<IncidentResolutionResponse> {
+export async function runIncidentResolution(
+  context: Record<string, unknown>,
+  rootCauseExpln: string
+): Promise<IncidentResolutionResponse> {
   const res = await fetch("/api/incident/resolve", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ _context: context, _root_cause_expln: rootCauseExpln }),
   });
 
-  if (!res.ok) throw new Error("Failed to generate incident resolution");
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail ?? "Failed to generate incident resolution");
+  }
   return res.json();
 }
 

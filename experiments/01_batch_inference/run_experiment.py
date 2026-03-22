@@ -74,9 +74,11 @@ def run_batch_experiment(client: ollama.Client) -> dict:
     for batch_size in CONFIG["batch_sizes"]:
         print(f"\nBatch size: {batch_size}")
         run_times = []
+        total_failures_for_batch_size = 0 # Track failures across all runs for this batch size
         
         for run in range(1, CONFIG["num_runs"] + 1):
             start = time.time()
+            batch_failures = 0
             
             if batch_size == 1:
                 for log in logs:
@@ -86,7 +88,9 @@ def run_batch_experiment(client: ollama.Client) -> dict:
                             prompt=f"Parse log to JSON: {log}",
                             options=options, format="json"
                         )
-                    except: pass
+                    except Exception as e:
+                        batch_failures += 1
+                        print(f"  [warn] Single-log inference failed: {type(e).__name__}: {e}")
             else:
                 for i in range(0, len(logs), batch_size):
                     batch = logs[i:i+batch_size]
@@ -97,11 +101,15 @@ def run_batch_experiment(client: ollama.Client) -> dict:
                                    "\n".join([f"[{j+1}]: {l}" for j,l in enumerate(batch)]),
                             options=options, format="json"
                         )
-                    except: pass
+                    except Exception as e:
+                        batch_failures += 1
+                        print(f"  [warn] Batch inference failed (batch {i//batch_size + 1}): {type(e).__name__}: {e}")
             
             elapsed = time.time() - start
             run_times.append(elapsed)
-            print(f"  Run {run}: {elapsed:.1f}s ({len(logs)/elapsed:.2f} logs/s)")
+            total_failures_for_batch_size += batch_failures
+            status = f" ({batch_failures} failures)" if batch_failures else ""
+            print(f"  Run {run}: {elapsed:.1f}s ({len(logs)/elapsed:.2f} logs/s){status}")
         
         avg_time = statistics.mean(run_times)
         throughput = len(logs) / avg_time
@@ -117,7 +125,8 @@ def run_batch_experiment(client: ollama.Client) -> dict:
             "latency_ms": round(latency, 1),
             "std_dev": round(std, 3),
             "speedup": round(throughput / baseline_throughput, 2),
-            "runs": run_times
+            "runs": run_times,
+            "warnings": "failures detected — check output above" if any(t == 0 for t in run_times) else None,
         })
         
         print(f"  → Avg: {throughput:.2f} logs/s, {latency:.0f}ms/log, {throughput/baseline_throughput:.1f}× speedup")

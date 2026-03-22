@@ -98,19 +98,16 @@ class GraphGenerator:
             # Identify candidate root causes (ERROR/CRITICAL logs near the start)
             candidates = self._identify_root_cause_candidates()
             
-            # DEBUG: Show candidate detection
-            print(f"  [DEBUG] GraphGenerator: Found {len(candidates)} root cause candidates")
+            logger.debug("GraphGenerator: Found %d root cause candidates", len(candidates))
             for c in candidates:
-                print(f"    - [{c['level']}] {c['message'][:60]}...")
+                logger.debug("  - [%s] %s...", c['level'], c['message'][:60])
             
             if not candidates:
-                # Fallback to first log if no clear candidates
-                print(f"  [DEBUG] GraphGenerator: No candidates, using first log as root cause")
+                logger.debug("GraphGenerator: No candidates, using first log as root cause")
                 root_node = next(n for n in self.dag_nodes if n.id == self.root_id)
                 return root_node.log_entry.message
             
-            # Use LLM to analyze and synthesize root cause
-            print(f"  [DEBUG] GraphGenerator: Using LLM analysis path")
+            logger.debug("GraphGenerator: Using LLM analysis path")
             root_cause = self._analyze_with_llm(causal_chain, candidates)
             return root_cause
             
@@ -190,11 +187,11 @@ Respond with ONLY a concise root cause statement (1-2 sentences), nothing else."
             
         except ImportError:
             logger.warning("ollama not available, using heuristic fallback")
-            print(f"  [DEBUG] GraphGenerator: ollama not installed, using heuristic fallback")
+            logger.debug("GraphGenerator: ollama not installed, using heuristic fallback")
             return self._fallback_root_cause()
         except Exception as e:
             logger.warning(f"LLM call failed: {e}")
-            print(f"  [DEBUG] GraphGenerator: LLM call failed: {e}, using fallback")
+            logger.debug("GraphGenerator: LLM call failed: %s, using fallback", e)
             return self._fallback_root_cause()
     
     def _fallback_root_cause(self) -> str:
@@ -202,12 +199,7 @@ Respond with ONLY a concise root cause statement (1-2 sentences), nothing else."
         for node in self.dag_nodes:
             if node.log_entry.level.upper() in ["ERROR", "CRITICAL", "FATAL"]:
                 return node.log_entry.message
-        # Default to first log message
         if self.dag_nodes:
             return self.dag_nodes[0].log_entry.message
         return "Unable to determine root cause"
-    
-    def _find_root_cause_helper(self, node_id: str) -> str:
-        """Legacy helper - kept for backwards compatibility."""
-        return self._fallback_root_cause()
         

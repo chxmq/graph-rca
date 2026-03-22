@@ -1,3 +1,4 @@
+import os
 from typing import List
 from app.models.rag_response_data_models import SummaryResponse, SolutionQuery
 from .embedding import EmbeddingCreator
@@ -13,7 +14,8 @@ class RAG_Engine:
             self.embedder = EmbeddingCreator()
             self.vector_db = VectorDatabaseHandler()
             self.mongo_db = MongoDBHandler()
-            self.ollama_client = ollama.Client(host="http://localhost:11435", timeout=timeout)
+            ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11435")
+            self.ollama_client = ollama.Client(host=ollama_host, timeout=timeout)
         except Exception as e:
             raise ConnectionError(
                 f"Failed to initialize RAG engine. "

@@ -50,9 +50,10 @@ class VectorDatabaseHandler:
                 )
             )
                 
+            ollama_host = os.environ.get("OLLAMA_HOST", "http://localhost:11435")
             self.ef = OllamaEmbeddingFunction(
                 model_name="nomic-embed-text",
-                url="http://localhost:11434/api/embeddings",
+                url=f"{ollama_host}/api/embeddings",
             )
             
         except Exception as e:
@@ -135,7 +136,8 @@ class VectorDatabaseHandler:
 
 class MongoDBHandler:
     def __init__(self):
-        self.client = MongoClient('mongodb://admin:password@localhost:27017/')
+        mongo_uri = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+        self.client = MongoClient(mongo_uri)
         self.db = self.client["log_analysis"]
     
     def save_dag(self, dag_data: dict):

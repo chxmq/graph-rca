@@ -1,6 +1,6 @@
 services:
   chroma:
-    image: chromadb/chroma:latest
+    image: chromadb/chroma:0.6.3
     ports:
       - "8000:8000"
     volumes:
@@ -13,19 +13,19 @@ services:
       - rca-network
 
   mongodb:
-    image: mongo:latest
+    image: mongo:8.0.5
     ports:
       - "27017:27017"
     volumes:
       - ./data/db:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-changeme}
     networks:
       - rca-network
 
   ollama:
-    image: ollama/ollama
+    image: ollama/ollama:0.7.0
     ports:
       - "11435:11434"
     volumes:

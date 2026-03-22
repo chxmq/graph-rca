@@ -19,31 +19,28 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api")
 
-# Initialize components (shared across requests)
+# Upload limits
+MAX_UPLOAD_BYTES = 5 * 1024 * 1024   # 5 MB
+MAX_LOG_LINES    = 500
+
+# Initialize shared components (stateless — no session_data dict)
 mongo = MongoDBHandler()
 rag = RAG_Engine()
 
-# Session storage (in production, use Redis or similar)
-session_data = {
-    "processed_log": {
-        "file_hash": None,
-        "dag": None,
-        "context": None,
-        "summary": None,
-        "severity": None,
-        "root_cause": None,
-    },
-    "stored_docs": {
-        "file_hash": None,
-        "docs": None,
-    },
-}
+# ---------------------------------------------------------------------------
+# Shared doc store — this is safe because it is only written by /docs/upload
+# and is read-only during /incident/resolve.  It does not carry per-request
+# state across the /analyse → /resolve boundary.
+# ---------------------------------------------------------------------------
+_docs_hash: int | None = None
 
 
 @router.post("/log/analyse")
 async def analyse_log(file: UploadFile = File(...)):
     """
-    Analyse a log file and return severity, root cause, and summary.
+    Analyse a log file and return severity, root cause, summary, and the
+    serialised graph/context so that the client can supply them back on
+    the /incident/resolve call (keeping the API stateless).
     """
     if not file.filename.endswith((".log", ".txt")):
         raise HTTPException(
@@ -51,33 +48,40 @@ async def analyse_log(file: UploadFile = File(...)):
         )
 
     try:
-        # Save uploaded file temporarily
         content = await file.read()
-        current_file_hash = hash(content)
 
-        # Check cache
-        if session_data["processed_log"]["file_hash"] == current_file_hash:
-            return {
-                "severity": session_data["processed_log"]["severity"],
-                "root_cause": session_data["processed_log"]["root_cause"],
-                "summary": session_data["processed_log"]["summary"].summary,
-            }
+        # --- size guard ---
+        if len(content) > MAX_UPLOAD_BYTES:
+            raise HTTPException(
+                status_code=413,
+                detail=f"File too large. Maximum allowed size is {MAX_UPLOAD_BYTES // (1024*1024)} MB."
+            )
 
         file_extension = os.path.splitext(file.filename)[1]
 
-        with tempfile.NamedTemporaryFile(
-            suffix=file_extension, delete=False
-        ) as tmp:
+        with tempfile.NamedTemporaryFile(suffix=file_extension, delete=False) as tmp:
             tmp.write(content)
             tmp_path = tmp.name
 
         try:
-            # Parse log
             logger.info(f"[▶] Starting log analysis for file: {file.filename}")
             logger.info(f"[►] File size: {len(content)} bytes")
-            
-            parser = LogParser()
+
+            # --- line count guard ---
+            text = content.decode("utf-8", errors="ignore")
+            lines = [l for l in text.splitlines() if l.strip()]
+            if len(lines) > MAX_LOG_LINES:
+                logger.warning(
+                    f"[⚠] Log has {len(lines)} lines; truncating to {MAX_LOG_LINES}"
+                )
+                lines = lines[:MAX_LOG_LINES]
+                # write truncated version back to tmp file so LogParser reads it
+                with open(tmp_path, "w", encoding="utf-8") as f:
+                    f.write("\n".join(lines))
+
+            # Parse log
             logger.info("[◆] Parsing log entries...")
+            parser = LogParser()
             log_chain = parser.parse_log_from_file(tmp_path)
             logger.info(f"[✓] Parsed {len(log_chain.log_chain)} log entries")
 
@@ -99,31 +103,27 @@ async def analyse_log(file: UploadFile = File(...)):
             summary = rag.generate_summary(context.causal_chain)
             logger.info(f"[✓] Analysis complete - Severity: {summary.severity}")
 
-            # Store in session
-            session_data["processed_log"] = {
-                "file_hash": current_file_hash,
-                "dag": dag,
-                "context": context,
-                "summary": summary,
-                "severity": summary.severity,
-                "root_cause": summary.root_cause_expln,
-            }
-
-            # Store in MongoDB
+            # Persist to MongoDB
             mongo.save_dag(dag.model_dump())
             mongo.save_context(context.model_dump())
 
+            # Return graph data so the client can supply it back on /resolve
+            # (API is stateless — no server-side session)
             return {
                 "severity": summary.severity,
                 "root_cause": summary.root_cause_expln,
                 "summary": summary.summary,
+                # Serialised for the client to echo back:
+                "_context": context.model_dump(),
+                "_root_cause_expln": summary.root_cause_expln,
             }
 
         finally:
-            # Clean up temp file
             if os.path.exists(tmp_path):
                 os.unlink(tmp_path)
 
+    except HTTPException:
+        raise
     except ConnectionError as e:
         raise HTTPException(status_code=503, detail=f"Service unavailable: {str(e)}")
     except Exception as e:
@@ -135,16 +135,22 @@ async def upload_docs(files: List[UploadFile] = File(...)):
     """
     Upload documentation files and store them in the vector database.
     """
+    global _docs_hash
+
     if not files:
         raise HTTPException(status_code=400, detail="No files provided")
 
     try:
-        # Read all files
         docs = []
         for f in files:
             if not f.filename.endswith((".txt", ".md")):
                 continue
             content = await f.read()
+            if len(content) > MAX_UPLOAD_BYTES:
+                raise HTTPException(
+                    status_code=413,
+                    detail=f"File '{f.filename}' too large (max {MAX_UPLOAD_BYTES // (1024*1024)} MB)."
+                )
             docs.append(content.decode("utf-8", errors="ignore"))
 
         if not docs:
@@ -153,63 +159,57 @@ async def upload_docs(files: List[UploadFile] = File(...)):
                 detail="No valid documentation found. Supported formats: .txt, .md",
             )
 
-        current_docs_hash = hash(tuple(docs))
-
-        # Check cache
-        if session_data["stored_docs"]["file_hash"] == current_docs_hash:
+        current_hash = hash(tuple(docs))
+        if _docs_hash == current_hash:
             return {"count": len(docs), "message": "Using cached documentation"}
 
-        # Store in vector DB
         logger.info(f"[◆] Storing {len(docs)} documentation files in vector database...")
         rag.store_documentation(docs)
         logger.info("[✓] Documentation indexed successfully")
 
-        # Update session
-        session_data["stored_docs"] = {
-            "file_hash": current_docs_hash,
-            "docs": docs,
-        }
-
+        _docs_hash = current_hash
         return {"count": len(docs), "message": f"Stored {len(docs)} documentation chunks"}
 
+    except HTTPException:
+        raise
     except ConnectionError as e:
         raise HTTPException(status_code=503, detail=f"Service unavailable: {str(e)}")
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Error uploading documentation: {str(e)}"
-        )
+        raise HTTPException(status_code=500, detail=f"Error uploading documentation: {str(e)}")
 
 
 @router.post("/incident/resolve")
-async def resolve_incident():
+async def resolve_incident(body: dict):
     """
-    Generate incident resolution based on analysed log and documentation.
+    Generate incident resolution.  The client must supply the context and
+    root_cause returned by /log/analyse — the API is stateless.
+
+    Expected body:
+        { "_context": {...}, "_root_cause_expln": "..." }
     """
-    if not session_data["processed_log"].get("summary") or not session_data[
-        "processed_log"
-    ].get("context"):
+    context_data = body.get("_context")
+    root_cause = body.get("_root_cause_expln")
+
+    if not context_data or not root_cause:
         raise HTTPException(
             status_code=400,
-            detail="Please analyse a log file first before running incident resolution",
+            detail=(
+                "Request body must include '_context' and '_root_cause_expln' "
+                "returned by the /log/analyse endpoint."
+            ),
         )
 
     try:
         logger.info("[▶] Starting incident resolution generation...")
-        context_data = session_data["processed_log"]["context"].causal_chain
-        if isinstance(context_data, (list, tuple)):
-            context_str = "\n".join(context_data)
-        else:
-            context_str = str(context_data)
+        causal_chain = context_data.get("causal_chain", [])
+        context_str = "\n".join(causal_chain) if isinstance(causal_chain, list) else str(causal_chain)
 
         logger.info("[◆] Searching documentation for relevant solutions...")
-        solution = rag.generate_solution(
-            context=context_str,
-            root_cause=session_data["processed_log"]["summary"].root_cause_expln,
-        )
+        solution = rag.generate_solution(context=context_str, root_cause=root_cause)
         logger.info(f"[✓] Solution generated with {len(solution.sources)} references")
 
         return {
-            "root_cause": session_data["processed_log"]["summary"].root_cause_expln,
+            "root_cause": root_cause,
             "solution": solution.response,
             "sources": [s for s in solution.sources if s != "unknown"],
         }
@@ -217,9 +217,7 @@ async def resolve_incident():
     except ConnectionError as e:
         raise HTTPException(status_code=503, detail=f"Service unavailable: {str(e)}")
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail=f"Error generating resolution: {str(e)}"
-        )
+        raise HTTPException(status_code=500, detail=f"Error generating resolution: {str(e)}")
 
 
 @router.get("/health")

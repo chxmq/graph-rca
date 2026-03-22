@@ -1,3 +1,4 @@
+import os
 import chromadb
 import pymongo
 
@@ -9,7 +10,8 @@ class ServerHealthCheck:
     """
     def __init__(self) -> None:
         self.chroma_client = chromadb.HttpClient(host='localhost', port=8000)
-        self.mongo_client = pymongo.MongoClient('mongodb://admin:password@localhost:27017/')
+        mongo_uri = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+        self.mongo_client = pymongo.MongoClient(mongo_uri)
         
     def check_chroma(self) -> bool:
         """Check if ChromaDB is accessible."""
