@@ -1,0 +1,573 @@
+
+Analyzing rag_comparison_qwen.json...
+Loaded 200 company mappings
+Processing 50 test results...
+Valid tests: 50
+Companies: 39
+
+============================================================
+📈 RAG IMPROVED (Δ > 5pp):
+  Valve: 20% → 85% (+65pp)
+  Stripe: 40% → 100% (+60pp)
+  Roblox: 60% → 95% (+35pp)
+  Foursquare: 70% → 95% (+25pp)
+  Fastly: 65% → 88% (+22pp)
+  Cloudflare: 78% → 98% (+20pp)
+
+📉 RAG DEGRADED (Δ < -5pp):
+  Netflix: 80% → 10% (-70pp)
+  CCP Games: 60% → 20% (-40pp)
+  Mailgun: 50% → 10% (-40pp)
+  Allegro: 100% → 70% (-30pp)
+  trivago: 85% → 60% (-25pp)
+  Therac-25: 100% → 80% (-20pp)
+
+⚖️ NEUTRAL (-5pp ≤ Δ ≤ 5pp): 20 companies
+============================================================
+✓ Saved to /home/rvce/finaltest/graph-rca/experiments/08_rag_real_world/data/heterogeneous_effects_rag_comparison_qwen.json
+
+Analyzing rag_comparison_gpt.json...
+Loaded 200 company mappings
+Processing 50 test results...
+Valid tests: 50
+Companies: 39
+
+============================================================
+📈 RAG IMPROVED (Δ > 5pp):
+  Stripe: 50% → 90% (+40pp)
+  Foursquare: 70% → 100% (+30pp)
+  Bintray: 70% → 90% (+20pp)
+  Uber: 70% → 90% (+20pp)
+  North American Electric Power System: 50% → 70% (+20pp)
+  Joyent: 75% → 95% (+20pp)
+
+📉 RAG DEGRADED (Δ < -5pp):
+  Netflix: 70% → 30% (-40pp)
+  Mailgun: 60% → 20% (-40pp)
+  Sentry: 80% → 55% (-25pp)
+  Fastly: 85% → 60% (-25pp)
+  CCP Games: 40% → 20% (-20pp)
+  Pagerduty: 70% → 50% (-20pp)
+
+⚖️ NEUTRAL (-5pp ≤ Δ ≤ 5pp): 12 companies
+============================================================
+✓ Saved to /home/rvce/finaltest/graph-rca/experiments/08_rag_real_world/data/heterogeneous_effects_rag_comparison_gpt.json
+======================================================================
+EXPERIMENT: RAG vs Baseline Comparison (CORRECTED)
+Judge: QWEN
+======================================================================
+Loading incidents from /home/rvce/finaltest/graph-rca/data/real_incidents...
+Loaded 200 incidents
+Initializing Vector Database...
+Generating embeddings for 150 training cases...
+✓ Indexed 150 documents in ChromaDB
+Train: 150, Test: 50
+
+[1/50] incident_138
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[2/50] incident_118
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[3/50] incident_012
+  Base: 0.60 | RAG: 0.60 | Diff: +0.00
+
+[4/50] incident_068
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[5/50] incident_089
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[6/50] incident_092
+  Base: 0.60 | RAG: 0.20 | Diff: -0.40
+
+[7/50] incident_025
+  Base: 0.85 | RAG: 0.80 | Diff: -0.05
+
+[8/50] incident_098
+  Base: 0.60 | RAG: 1.00 | Diff: +0.40
+
+[9/50] incident_183
+  Base: 0.85 | RAG: 0.60 | Diff: -0.25
+
+[10/50] incident_191
+  Base: 0.60 | RAG: 0.95 | Diff: +0.35
+
+[11/50] incident_087
+  Base: 0.85 | RAG: 0.90 | Diff: +0.05
+
+[12/50] incident_182
+  Base: 1.00 | RAG: 0.80 | Diff: -0.20
+
+[13/50] incident_040
+  Base: 0.80 | RAG: 1.00 | Diff: +0.20
+
+[14/50] incident_169
+  Base: 0.90 | RAG: 0.95 | Diff: +0.05
+
+[15/50] incident_088
+  Base: 1.00 | RAG: 0.95 | Diff: -0.05
+
+[16/50] incident_186
+  Base: 0.20 | RAG: 0.85 | Diff: +0.65
+
+[17/50] incident_041
+  Base: 1.00 | RAG: 0.95 | Diff: -0.05
+
+[18/50] incident_002
+  Base: 0.95 | RAG: 0.95 | Diff: +0.00
+
+[19/50] incident_072
+  Base: 1.00 | RAG: 0.70 | Diff: -0.30
+
+[20/50] incident_151
+  Base: 0.80 | RAG: 0.10 | Diff: -0.70
+
+[21/50] incident_115
+  Base: 0.85 | RAG: 0.85 | Diff: +0.00
+
+[22/50] incident_057
+  Base: 0.40 | RAG: 1.00 | Diff: +0.60
+
+[23/50] incident_108
+  Base: 0.80 | RAG: 0.85 | Diff: +0.05
+
+[24/50] incident_192
+  Base: 0.30 | RAG: 0.80 | Diff: +0.50
+
+[25/50] incident_167
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[26/50] incident_051
+  Base: 0.75 | RAG: 0.95 | Diff: +0.20
+
+[27/50] incident_144
+  Base: 0.50 | RAG: 0.10 | Diff: -0.40
+
+[28/50] incident_198
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[29/50] incident_155
+  Base: 0.90 | RAG: 0.80 | Diff: -0.10
+
+[30/50] incident_130
+  Base: 0.90 | RAG: 0.85 | Diff: -0.05
+
+[31/50] incident_060
+  Base: 1.00 | RAG: 1.00 | Diff: +0.00
+
+[32/50] incident_056
+  Base: 0.70 | RAG: 0.60 | Diff: -0.10
+
+[33/50] incident_024
+  Base: 0.70 | RAG: 0.95 | Diff: +0.25
+
+[34/50] incident_008
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[35/50] incident_009
+  Base: 0.85 | RAG: 0.90 | Diff: +0.05
+
+[36/50] incident_109
+  Base: 0.90 | RAG: 0.85 | Diff: -0.05
+
+[37/50] incident_152
+  Base: 0.60 | RAG: 0.50 | Diff: -0.10
+
+[38/50] incident_023
+  Base: 1.00 | RAG: 0.95 | Diff: -0.05
+
+[39/50] incident_140
+  Base: 0.90 | RAG: 0.95 | Diff: +0.05
+
+[40/50] incident_174
+  Base: 0.95 | RAG: 1.00 | Diff: +0.05
+
+[41/50] incident_027
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[42/50] incident_189
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[43/50] incident_036
+  Base: 0.85 | RAG: 0.85 | Diff: +0.00
+
+[44/50] incident_058
+  Base: 0.90 | RAG: 1.00 | Diff: +0.10
+
+[45/50] incident_063
+  Base: 0.90 | RAG: 0.95 | Diff: +0.05
+
+[46/50] incident_071
+  Base: 0.85 | RAG: 0.90 | Diff: +0.05
+
+[47/50] incident_190
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[48/50] incident_007
+  Base: 0.85 | RAG: 0.90 | Diff: +0.05
+
+[49/50] incident_029
+  Base: 0.90 | RAG: 0.98 | Diff: +0.08
+
+[50/50] incident_164
+  Base: 0.90 | RAG: 0.30 | Diff: -0.60
+
+RESULTS: Base 0.80 -> RAG 0.82
+
+Running Heterogeneous Effects Analysis...
+======================================================================
+EXPERIMENT: RAG vs Baseline Comparison (CORRECTED)
+Judge: GPT
+======================================================================
+Loading incidents from /home/rvce/finaltest/graph-rca/data/real_incidents...
+Loaded 200 incidents
+Initializing Vector Database...
+Generating embeddings for 150 training cases...
+✓ Indexed 150 documents in ChromaDB
+Train: 150, Test: 50
+
+[1/50] incident_138
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+
+[2/50] incident_118
+  Base: 0.70 | RAG: 0.70 | Diff: +0.00
+
+[3/50] incident_012
+  Base: 0.60 | RAG: 0.60 | Diff: +0.00
+
+[4/50] incident_068
+  Base: 0.90 | RAG: 0.80 | Diff: -0.10
+
+[5/50] incident_089
+  Base: 0.90 | RAG: 1.00 | Diff: +0.10
+
+[6/50] incident_092
+  Base: 0.40 | RAG: 0.20 | Diff: -0.20
+
+[7/50] incident_025
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+
+[8/50] incident_098
+  Base: 0.60 | RAG: 0.90 | Diff: +0.30
+
+[9/50] incident_183
+  Base: 0.40 | RAG: 0.40 | Diff: +0.00
+
+[10/50] incident_191
+  Base: 0.90 | RAG: 1.00 | Diff: +0.10
+
+[11/50] incident_087
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[12/50] incident_182
+  Base: 0.10 | RAG: 0.20 | Diff: +0.10
+
+[13/50] incident_040
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[14/50] incident_169
+  Base: 0.90 | RAG: 1.00 | Diff: +0.10
+
+[15/50] incident_088
+  Base: 1.00 | RAG: 0.90 | Diff: -0.10
+
+[16/50] incident_186
+  Base: 0.10 | RAG: 0.20 | Diff: +0.10
+
+[17/50] incident_041
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[18/50] incident_002
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[19/50] incident_072
+  Base: 0.00 | RAG: 0.00 | Diff: +0.00
+
+[20/50] incident_151
+  Base: 0.70 | RAG: 0.30 | Diff: -0.40
+
+[21/50] incident_115
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+
+[22/50] incident_057
+  Base: 0.50 | RAG: 0.90 | Diff: +0.40
+
+[23/50] incident_108
+  Base: 0.70 | RAG: 0.60 | Diff: -0.10
+
+[24/50] incident_192
+  Base: 0.70 | RAG: 0.20 | Diff: -0.50
+
+[25/50] incident_167
+  Base: 0.70 | RAG: 0.60 | Diff: -0.10
+
+[26/50] incident_051
+  Base: 0.80 | RAG: 1.00 | Diff: +0.20
+
+[27/50] incident_144
+  Base: 0.60 | RAG: 0.20 | Diff: -0.40
+
+[28/50] incident_198
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[29/50] incident_155
+  Base: 0.70 | RAG: 0.50 | Diff: -0.20
+
+[30/50] incident_130
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[31/50] incident_060
+  Base: 1.00 | RAG: 1.00 | Diff: +0.00
+
+[32/50] incident_056
+  Base: 0.40 | RAG: 0.40 | Diff: +0.00
+
+[33/50] incident_024
+  Base: 0.70 | RAG: 1.00 | Diff: +0.30
+
+[34/50] incident_008
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[35/50] incident_009
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[36/50] incident_109
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[37/50] incident_152
+  Base: 0.50 | RAG: 0.70 | Diff: +0.20
+
+[38/50] incident_023
+  Base: 1.00 | RAG: 1.00 | Diff: +0.00
+
+[39/50] incident_140
+  Base: 0.70 | RAG: 1.00 | Diff: +0.30
+
+[40/50] incident_174
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[41/50] incident_027
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[42/50] incident_189
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[43/50] incident_036
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[44/50] incident_058
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[45/50] incident_063
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[46/50] incident_071
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[47/50] incident_190
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[48/50] incident_007
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[49/50] incident_029
+  Base: 0.90 | RAG: 1.00 | Diff: +0.10
+
+[50/50] incident_164
+  Base: 0.90 | RAG: 0.20 | Diff: -0.70
+
+RESULTS: Base 0.71 -> RAG 0.74
+
+Running Heterogeneous Effects Analysis...
+======================================================================
+EXPERIMENT: RAG vs Baseline Comparison (CORRECTED)
+Judge: GROQ
+======================================================================
+Loading incidents from /home/rvce/finaltest/graph-rca/data/real_incidents...
+Loaded 200 incidents
+Initializing Vector Database...
+Generating embeddings for 150 training cases...
+✓ Indexed 150 documents in ChromaDB
+Train: 150, Test: 50
+
+[1/50] incident_138
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[2/50] incident_118
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+
+[3/50] incident_012
+  Base: 0.70 | RAG: 0.70 | Diff: +0.00
+
+[4/50] incident_068
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[5/50] incident_089
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[6/50] incident_092
+  Base: 0.40 | RAG: 0.00 | Diff: -0.40
+
+[7/50] incident_025
+  Base: 0.80 | RAG: 0.70 | Diff: -0.10
+
+[8/50] incident_098
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[9/50] incident_183
+  Base: 0.80 | RAG: 0.70 | Diff: -0.10
+
+[10/50] incident_191
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[11/50] incident_087
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+Analyzing rag_comparison_groq.json...
+Loaded 200 company mappings
+Processing 50 test results...
+Valid tests: 50
+Companies: 39
+
+============================================================
+📈 RAG IMPROVED (Δ > 5pp):
+  North American Electric Power System: 20% → 70% (+50pp)
+  Valve: 20% → 60% (+40pp)
+  Foursquare: 70% → 95% (+25pp)
+  Basecamp: 70% → 95% (+25pp)
+  Slack: 65% → 88% (+22pp)
+  Stripe: 70% → 90% (+20pp)
+
+📉 RAG DEGRADED (Δ < -5pp):
+  Strava: 80% → 20% (-60pp)
+  CCP Games: 40% → 0% (-40pp)
+  Bitly: 100% → 80% (-20pp)
+  Flowdock: 80% → 70% (-10pp)
+  trivago: 80% → 70% (-10pp)
+  Pagerduty: 80% → 70% (-10pp)
+
+⚖️ NEUTRAL (-5pp ≤ Δ ≤ 5pp): 16 companies
+============================================================
+✓ Saved to /home/rvce/finaltest/graph-rca/experiments/08_rag_real_world/data/heterogeneous_effects_rag_comparison_groq.json
+
+
+[12/50] incident_182
+  Base: 0.00 | RAG: 0.00 | Diff: +0.00
+
+[13/50] incident_040
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[14/50] incident_169
+  Base: 0.90 | RAG: 0.95 | Diff: +0.05
+
+[15/50] incident_088
+  Base: 1.00 | RAG: 0.80 | Diff: -0.20
+
+[16/50] incident_186
+  Base: 0.20 | RAG: 0.60 | Diff: +0.40
+
+[17/50] incident_041
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[18/50] incident_002
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[19/50] incident_072
+  Base: 0.00 | RAG: 0.00 | Diff: +0.00
+
+[20/50] incident_151
+  Base: 0.70 | RAG: 0.70 | Diff: +0.00
+
+[21/50] incident_115
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[22/50] incident_057
+  Base: 0.70 | RAG: 0.90 | Diff: +0.20
+
+[23/50] incident_108
+  Base: 0.60 | RAG: 0.70 | Diff: +0.10
+
+[24/50] incident_192
+  Base: 0.60 | RAG: 0.70 | Diff: +0.10
+
+[25/50] incident_167
+  Base: 0.40 | RAG: 0.80 | Diff: +0.40
+
+[26/50] incident_051
+  Base: 0.80 | RAG: 1.00 | Diff: +0.20
+
+[27/50] incident_144
+  Base: 0.70 | RAG: 0.70 | Diff: +0.00
+
+[28/50] incident_198
+  Base: 0.80 | RAG: 1.00 | Diff: +0.20
+
+[29/50] incident_155
+  Base: 0.80 | RAG: 0.70 | Diff: -0.10
+
+[30/50] incident_130
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[31/50] incident_060
+  Base: 1.00 | RAG: 1.00 | Diff: +0.00
+
+[32/50] incident_056
+  Base: 0.80 | RAG: 0.20 | Diff: -0.60
+
+[33/50] incident_024
+  Base: 0.70 | RAG: 0.95 | Diff: +0.25
+
+[34/50] incident_008
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[35/50] incident_009
+  Base: 0.70 | RAG: 0.80 | Diff: +0.10
+
+[36/50] incident_109
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[37/50] incident_152
+  Base: 0.20 | RAG: 0.70 | Diff: +0.50
+
+[38/50] incident_023
+  Base: 0.95 | RAG: 0.98 | Diff: +0.03
+
+[39/50] incident_140
+  Base: 0.70 | RAG: 0.95 | Diff: +0.25
+
+[40/50] incident_174
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[41/50] incident_027
+  Base: 0.70 | RAG: 0.95 | Diff: +0.25
+
+[42/50] incident_189
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[43/50] incident_036
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[44/50] incident_058
+  Base: 0.80 | RAG: 0.98 | Diff: +0.18
+
+[45/50] incident_063
+  Base: 0.90 | RAG: 0.90 | Diff: +0.00
+
+[46/50] incident_071
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[47/50] incident_190
+  Base: 0.80 | RAG: 0.90 | Diff: +0.10
+
+[48/50] incident_007
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+[49/50] incident_029
+  Base: 0.90 | RAG: 0.98 | Diff: +0.08
+
+[50/50] incident_164
+  Base: 0.80 | RAG: 0.80 | Diff: +0.00
+
+RESULTS: Base 0.72 -> RAG 0.78
+
+Running Heterogeneous Effects Analysis...

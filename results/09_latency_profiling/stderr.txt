@@ -1,0 +1,29 @@
+2026-02-14 20:31:05,714 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-02-14 20:31:08,732 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-02-14 20:31:08,733 - app.utils.graph_generator - INFO - [◆] Building DAG from 3 log entries
+2026-02-14 20:31:08,733 - app.utils.graph_generator - INFO -   [►] Created node 1: INFO at 2024-01-01T10:00:00Z
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO -   [►] Created node 2: INFO at 2024-01-01T10:00:01Z
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO -   [►] Created node 3: INFO at 2024-01-01T10:00:02Z
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO - [◆] Establishing parent-child relationships...
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO - [◆] Identifying root and leaf nodes...
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO - [◆] Analyzing for root cause...
+2026-02-14 20:31:08,734 - app.utils.graph_generator - INFO - [✓] Root cause determined: 2024-01-15T10:23:45.123Z ERROR [payment-service] Transaction failed: timeout connecting to payment gateway
+2026-02-14 20:31:08,772 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-14 20:31:12,241 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-02-14 20:31:12,242 - app.utils.graph_generator - INFO - [◆] Building DAG from 3 log entries
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO -   [►] Created node 1: INFO at 2024-01-01T10:00:00Z
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO -   [►] Created node 2: INFO at 2024-01-01T10:00:01Z
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO -   [►] Created node 3: INFO at 2024-01-01T10:00:02Z
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO - [◆] Establishing parent-child relationships...
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO - [◆] Identifying root and leaf nodes...
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO - [◆] Analyzing for root cause...
+2026-02-14 20:31:12,243 - app.utils.graph_generator - INFO - [✓] Root cause determined: 2024-01-15T10:23:45.123Z ERROR [payment-service] Transaction failed: timeout connecting to payment gateway
+2026-02-14 20:31:15,362 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO - [◆] Building DAG from 3 log entries
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO -   [►] Created node 1: INFO at 2024-01-01T10:00:00Z
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO -   [►] Created node 2: INFO at 2024-01-01T10:00:01Z
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO -   [►] Created node 3: INFO at 2024-01-01T10:00:02Z
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO - [◆] Establishing parent-child relationships...
+2026-02-14 20:31:15,363 - app.utils.graph_generator - INFO - [◆] Identifying root and leaf nodes...
+2026-02-14 20:31:15,364 - app.utils.graph_generator - INFO - [◆] Analyzing for root cause...
+2026-02-14 20:31:15,364 - app.utils.graph_generator - INFO - [✓] Root cause determined: 2024-01-15T10:23:45.123Z ERROR [payment-service] Transaction failed: timeout connecting to payment gateway

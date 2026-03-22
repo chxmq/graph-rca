@@ -1,0 +1,37 @@
+16:38:36 | ======================================================================
+16:38:36 | GraphRCA Noise Sensitivity Test
+16:38:36 | ======================================================================
+16:38:36 | Started: 2026-02-09T16:38:36.048412
+16:38:36 | ✓ Ollama connected
+16:38:36 | Loaded 200 incidents
+16:38:37 | ======================================================================
+16:38:37 | NOISE SENSITIVITY TEST
+16:38:37 | ======================================================================
+16:38:37 | Generated 1000 decoy documents
+16:38:37 | Testing with 20 incidents
+16:38:37 | 
+--- Noise Level: 0 decoys ---
+16:38:49 | Collection size: 200
+16:38:50 |   Accuracy: 90.0%, Avg decoys in top-5: 0.00
+16:38:50 | 
+--- Noise Level: 100 decoys ---
+16:39:08 | Collection size: 300
+16:39:09 |   Accuracy: 85.0%, Avg decoys in top-5: 3.60
+16:39:09 | 
+--- Noise Level: 250 decoys ---
+16:39:38 | Collection size: 450
+16:39:39 |   Accuracy: 70.0%, Avg decoys in top-5: 4.15
+16:39:39 | 
+--- Noise Level: 500 decoys ---
+16:40:28 | Collection size: 700
+16:40:29 |   Accuracy: 55.0%, Avg decoys in top-5: 4.40
+16:40:29 | 
+--- Noise Level: 750 decoys ---
+16:41:40 | Collection size: 950
+16:41:41 |   Accuracy: 40.0%, Avg decoys in top-5: 4.55
+16:41:41 | 
+--- Noise Level: 1000 decoys ---
+16:43:11 | Collection size: 1200
+16:43:12 |   Accuracy: 20.0%, Avg decoys in top-5: 4.80
+16:43:12 | 
+✅ Noise test complete! Results saved to /home/rvce/finaltest/graph-rca/experiments/05_noise_sensitivity/data/03_noise_sensitivity.json
