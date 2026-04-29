@@ -1,20 +1,19 @@
 import pytest
-from unittest.mock import Mock, patch, MagicMock
-from app.core.database_handlers import VectorDatabaseHandler, MongoDBHandler, Document
+from unittest.mock import patch, MagicMock
+from app.database import VectorDatabaseHandler, MongoDBHandler, Document
 from pymongo.results import InsertOneResult
 from chromadb.api.models.Collection import Collection
+from datetime import datetime, timezone
 
 @pytest.fixture
 def vector_db():
-    with patch('chromadb.HttpClient') as mock_client:
-        with patch('chromadb.utils.embedding_functions.OllamaEmbeddingFunction'):
-            handler = VectorDatabaseHandler()
-            # Get the actual client instance created during initialization
-            client_instance = mock_client.return_value
-            handler.client = client_instance
-            mock_collection = MagicMock(spec=Collection)
-            client_instance.get_or_create_collection.return_value = mock_collection
-            yield handler
+    with patch('chromadb.PersistentClient') as mock_client_cls:
+        handler = VectorDatabaseHandler()
+        client_instance = mock_client_cls.return_value
+        handler.client = client_instance
+        mock_collection = MagicMock(spec=Collection)
+        client_instance.get_or_create_collection.return_value = mock_collection
+        yield handler
 
 @pytest.fixture
 def mongo_db():
@@ -26,11 +25,10 @@ def mongo_db():
 class TestVectorDatabaseHandler:
     def test_initialization(self, vector_db):
         assert vector_db.client is not None
-        vector_db.client.heartbeat.assert_called_once()  # Now using the instance mock
         assert vector_db.ef is not None
 
-    def test_get_collection(self, vector_db):
-        collection = vector_db.get_collection("test")
+    def test_get_query_collection(self, vector_db):
+        collection = vector_db._get_query_collection("test")
         vector_db.client.get_or_create_collection.assert_called_with(
             name="test",
             embedding_function=vector_db.ef
@@ -43,18 +41,21 @@ class TestVectorDatabaseHandler:
         
         vector_db.add_documents(test_docs, test_embeddings)
         
-        collection = vector_db.get_collection()
-        collection.add.assert_called_once_with(
+        import hashlib
+        expected_ids = [hashlib.sha256(doc.encode()).hexdigest()[:32] for doc in test_docs]
+        collection = vector_db._get_write_collection()
+        collection.upsert.assert_called_once_with(
             documents=test_docs,
-            ids=[str(hash(doc)) for doc in test_docs],
-            embeddings=test_embeddings
+            ids=expected_ids,
+            embeddings=test_embeddings,
+            metadatas=None,
         )
 
     def test_query_collection(self, vector_db):
         test_query = ["test query"]
         vector_db.query_collection(test_query, n_results=5)
         
-        collection = vector_db.get_collection()
+        collection = vector_db._get_query_collection()
         collection.query.assert_called_once_with(
             query_texts=test_query,
             n_results=5
@@ -65,7 +66,7 @@ class TestVectorDatabaseHandler:
             "documents": [["result1", "result2"]],
             "metadatas": [[{"source": "test1"}, {"source": "test2"}]]
         }
-        vector_db.get_collection().query.return_value = mock_results
+        vector_db._get_query_collection().query.return_value = mock_results
         
         results = vector_db.search("test", "context", top_k=2)
         
@@ -79,20 +80,22 @@ class TestVectorDatabaseHandler:
             "documents": [[]],  # Empty list of documents in first result
             "metadatas": [[]]
         }
-        vector_db.get_collection().query.return_value = mock_results
+        vector_db._get_query_collection().query.return_value = mock_results
         
         results = vector_db.search("test", "context")
-        assert len(results) == 1
-        assert "Empty documents list" in results[0].text
+        assert results == []
 
     def test_search_exception_handling(self, vector_db):
-        vector_db.get_collection().query.side_effect = Exception("Test error")
-        
-        results = vector_db.search("test", "context")
-        assert len(results) == 1
-        assert "Error executing query" in results[0].text
+        vector_db._get_query_collection().query.side_effect = Exception("Test error")
+        with pytest.raises(Exception):
+            vector_db.search("test", "context")
 
 class TestMongoDBHandler:
+    def test_initialization_validates_connectivity(self):
+        with patch('app.database.MongoClient') as mock_client:
+            MongoDBHandler()
+            mock_client.return_value.server_info.assert_called_once()
+
     def test_save_dag(self, mongo_db):
         mock_result = MagicMock(spec=InsertOneResult)
         mock_result.inserted_id = "123"
@@ -115,15 +118,43 @@ class TestMongoDBHandler:
     def test_get_context_latest(self, mongo_db):
         mongo_db.get_context()
         mongo_db.db["contexts"].find_one.assert_called_once_with(
-            sort=[('timestamp', -1)]
+            sort=[('created_at', -1)]
         )
+
+    def test_get_context_by_analysis_id(self, mongo_db):
+        mongo_db.get_context_by_analysis_id("analysis-123")
+        mongo_db.db["contexts"].find_one.assert_called_once_with(
+            {"analysis_id": "analysis-123"}
+        )
+
+    def test_upsert_progress(self, mongo_db):
+        mongo_db.upsert_progress("analysis-xyz", {"status": "processing", "progress": 50})
+        mongo_db.db["analysis_progress"].update_one.assert_called_once()
+        call_args = mongo_db.db["analysis_progress"].update_one.call_args
+        assert call_args[0][0] == {"analysis_id": "analysis-xyz"}
+        assert call_args[1]["upsert"] is True
+
+    def test_get_progress_found(self, mongo_db):
+        mongo_db.db["analysis_progress"].find_one.return_value = {
+            "_id": "x",
+            "analysis_id": "analysis-xyz",
+            "updated_at": "t",
+            "status": "completed",
+            "progress": 100,
+        }
+        result = mongo_db.get_progress("analysis-xyz")
+        assert result == {"status": "completed", "progress": 100}
+
+    def test_get_progress_not_found(self, mongo_db):
+        mongo_db.db["analysis_progress"].find_one.return_value = None
+        assert mongo_db.get_progress("missing") is None
 
     def test_save_context(self, mongo_db):
         mock_result = MagicMock(spec=InsertOneResult)
         mock_result.inserted_id = "context_123"
         mongo_db.db["contexts"].insert_one.return_value = mock_result
         
-        test_context = {"dag_id": "test_dag", "timestamp": 123456}
+        test_context = {"dag_id": "test_dag", "created_at": datetime.now(timezone.utc)}
         result = mongo_db.save_context(test_context)
         
         mongo_db.db["contexts"].insert_one.assert_called_once_with(test_context)

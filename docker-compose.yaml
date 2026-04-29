@@ -1,45 +1,68 @@
 services:
-  chroma:
-    image: chromadb/chroma:0.6.3
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./data/chroma:/chroma/data
-    environment:
-      - ALLOW_RESET=TRUE
-      - ANONYMIZED_TELEMETRY=FALSE
-      - IS_PERSISTENT=TRUE
-    networks:
-      - rca-network
-
   mongodb:
     image: mongo:8.0.5
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27017:27017"
     volumes:
       - ./data/db:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-changeme}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?Set MONGO_PASSWORD in .env}
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    mem_limit: 1g
+    cpus: 1.0
     networks:
       - rca-network
 
   ollama:
     image: ollama/ollama:0.7.0
     ports:
-      - "11435:11434"
+      - "127.0.0.1:11435:11434"
     volumes:
       - ./data/ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+    mem_limit: 6g
+    cpus: 2.0
     networks:
       - rca-network
-    # Uncomment below for NVIDIA GPU support (Linux only)
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8010:8010"
+    environment:
+      # Inside the backend container, the Mongo service is reachable at
+      # `mongodb` (compose DNS), NOT `localhost`. The default is built from
+      # the same MONGO_USERNAME/MONGO_PASSWORD the mongo service uses.
+      # If MONGO_URI is set explicitly in .env it takes precedence.
+      - MONGO_URI=${MONGO_URI:-mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:?Set MONGO_PASSWORD in .env}@mongodb:27017/}
+      - OLLAMA_HOST=${BACKEND_OLLAMA_HOST:-http://ollama:11434}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:3000}
+      - API_KEY=${API_KEY:-}
+      - RATE_LIMIT_PER_MINUTE=${RATE_LIMIT_PER_MINUTE:-60}
+      - LOG_JSON=${LOG_JSON:-1}
+      - CHROMADB_PATH=/app/data/chroma
+    volumes:
+      - ./data/chroma:/app/data/chroma
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    # HEALTHCHECK is defined in the Dockerfile; no need to duplicate it here.
+    mem_limit: 2g
+    cpus: 2.0
+    networks:
+      - rca-network
 
 networks:
   rca-network:

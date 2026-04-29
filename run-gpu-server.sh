@@ -17,10 +17,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 echo ""
-echo "╔════════════════════════════════════════════╗"
-echo "║   Graph-RCA GPU Server Setup              ║"
-echo "║   (Docker-free with Direct GPU Access)    ║"
-echo "╚════════════════════════════════════════════╝"
+echo "=============================================="
+echo "      Graph-RCA GPU Server Setup"
+echo "   (Docker-free with Direct GPU Access)"
+echo "=============================================="
 echo ""
 
 # Step 1: Check NVIDIA GPU
@@ -33,20 +33,15 @@ else
 fi
 echo ""
 
-# Step 2: Check Python 3.13
+# Step 2: Check Python
 echo -e "${BLUE}[2/8]${NC} Checking Python..."
-if command -v python3.13 &> /dev/null; then
-    echo -e "${GREEN}✓${NC} Python 3.13 found: $(python3.13 --version)"
-    PYTHON_CMD="python3.13"
-elif command -v python3 &> /dev/null; then
-    PY_VERSION=$(python3 --version | cut -d' ' -f2)
-    echo -e "${GREEN}✓${NC} Python found: $PY_VERSION"
-    PYTHON_CMD="python3"
-else
+PYTHON_CMD="$(MIN_PY_MINOR=11 MAX_PY_MINOR=13 bash "$SCRIPT_DIR/scripts/detect-python.sh" || true)"
+if [ -z "$PYTHON_CMD" ]; then
     echo -e "${RED}✗${NC} Python 3 not found!"
-    echo "   Please install Python 3.8+ first"
+    echo "   Please install Python 3.11 - 3.13 first"
     exit 1
 fi
+echo -e "${GREEN}✓${NC} Python found: $($PYTHON_CMD --version)"
 echo ""
 
 # Step 3: Create Python venv
@@ -141,17 +136,9 @@ fi
 cd ..
 echo ""
 
-# Step 8: Update configuration for GPU server
-echo -e "${BLUE}[8/8]${NC} Configuring for GPU server..."
-
-# Update backend to use ChromaDB in-process mode
-cat > backend/app/core/database_handlers.py.patch << 'EOF'
-# ChromaDB will run in-process mode (no separate server needed)
-# Ollama will connect to local instance (no Docker)
-# MongoDB will use local instance (install separately if needed)
-EOF
-
-echo -e "${GREEN}✓${NC} Configuration updated for GPU server"
+# Step 8: Finalize configuration for GPU server
+echo -e "${BLUE}[8/8]${NC} Finalizing configuration for GPU server..."
+echo -e "${GREEN}✓${NC} Configuration ready"
 echo ""
 
 # Create startup scripts
@@ -161,6 +148,11 @@ echo -e "${BLUE}Creating startup scripts...${NC}"
 cat > start-backend-gpu.sh << 'EOF'
 #!/bin/bash
 cd "$(dirname "$0")/backend"
+if [ -f "../.env" ]; then
+  set -a
+  . ../.env
+  set +a
+fi
 
 # Activate venv
 source venv/bin/activate
@@ -183,7 +175,14 @@ echo ""
 echo "Press Ctrl+C to stop"
 echo ""
 
-python -m uvicorn main:app --host 0.0.0.0 --port 8010 --reload
+# `DEV=1 ./start-backend-gpu.sh` enables hot reload during dev.  Stable
+# default for GPU server deploys is no-reload.
+RELOAD_FLAG=""
+if [ "${DEV:-0}" = "1" ]; then
+  echo "[dev] hot-reload enabled"
+  RELOAD_FLAG="--reload"
+fi
+python -m uvicorn main:app --host 0.0.0.0 --port 8010 ${RELOAD_FLAG}
 EOF
 
 chmod +x start-backend-gpu.sh
@@ -209,9 +208,9 @@ echo -e "${GREEN}✓${NC} Startup scripts created"
 echo ""
 
 # Print success message
-echo "╔════════════════════════════════════════════╗"
-echo "║            Setup Complete! 🚀              ║"
-echo "╚════════════════════════════════════════════╝"
+echo "=============================================="
+echo "               Setup Complete!"
+echo "=============================================="
 echo ""
 echo -e "${GREEN}Next steps:${NC}"
 echo ""

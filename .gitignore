@@ -10,6 +10,7 @@
 env/
 venv/
 .venv/
+.venv*/
 *.egg-info/
 *.egg
 dist/
@@ -58,6 +59,8 @@ node_modules/
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
+frontend/tsconfig.tsbuildinfo
+*.tsbuildinfo
 .env
 .env.local
 .env.*.local
@@ -69,3 +72,5 @@ pnpm-debug.log*
 # --- Auto-generated scripts ---
 start-backend.sh
 start-frontend.sh
+start-backend-gpu.sh
+start-frontend-gpu.sh

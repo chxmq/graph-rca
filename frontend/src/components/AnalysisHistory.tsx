@@ -1,10 +1,37 @@
 import { useState } from "react";
 import { FiClock, FiChevronDown, FiChevronUp, FiTrash2 } from "react-icons/fi";
+import { getAnalysisContext, ApiError } from "../api";
 import { useAppStore } from "../store";
 
 export function AnalysisHistory() {
+  const severityBadge = (severity?: string) => {
+    const value = (severity ?? "").trim().toLowerCase();
+    if (value === "critical") return "text-red-400 border-red-500/50";
+    if (value === "high") return "text-yellow-400 border-yellow-500/50";
+    return "text-green-400 border-green-500/50";
+  };
+
   const [isExpanded, setIsExpanded] = useState(false);
-  const { analysisHistory, loadFromHistory, clearHistory } = useAppStore();
+  const { analysisHistory, loadFromHistory, clearHistory, mergeAnalysisResult } = useAppStore();
+
+  // Pre-fetch saved context immediately on history click so the resolve
+  // panel doesn't show a "missing context" flash before its own fetch
+  // resolves. Failures are silent — IncidentResolutionPanel re-fetches
+  // on demand if the prefetch didn't land.
+  const handleLoad = async (id: string, analysisId: string | undefined) => {
+    loadFromHistory(id);
+    if (!analysisId) return;
+    try {
+      const context = await getAnalysisContext(analysisId);
+      mergeAnalysisResult({ context, loadedFromHistory: false });
+    } catch (err) {
+      // 404 is expected when the backend's TTL expired the context;
+      // anything else we leave for IncidentResolutionPanel to surface.
+      if (!(err instanceof ApiError && err.status === 404)) {
+        console.warn("[AnalysisHistory] context prefetch failed", err);
+      }
+    }
+  };
 
   if (analysisHistory.length === 0) {
     return null;
@@ -48,7 +75,7 @@ export function AnalysisHistory() {
             {analysisHistory.map((entry) => (
               <button
                 key={entry.id}
-                onClick={() => loadFromHistory(entry.id)}
+                onClick={() => void handleLoad(entry.id, entry.analysis_id)}
                 className="w-full text-left p-3 bg-black/40 border border-green-500/20 hover:border-green-500/50 transition group"
               >
                 <div className="flex items-start justify-between gap-2">
@@ -58,13 +85,7 @@ export function AnalysisHistory() {
                         {entry.fileName}
                       </span>
                       <span
-                        className={`text-xs px-1.5 py-0.5 border ${
-                          entry.severity?.toLowerCase().includes("critical")
-                            ? "text-red-400 border-red-500/50"
-                            : entry.severity?.toLowerCase().includes("high")
-                            ? "text-yellow-400 border-yellow-500/50"
-                            : "text-green-400 border-green-500/50"
-                        }`}
+                        className={`text-xs px-1.5 py-0.5 border ${severityBadge(entry.severity)}`}
                       >
                         {entry.severity}
                       </span>

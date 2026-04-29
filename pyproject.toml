@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-rca"
+version = "0.1.0"
+description = "Graph-based root cause analysis with FastAPI backend and React frontend."
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "fastapi==0.115.0",
+  "uvicorn[standard]==0.32.0",
+  "python-multipart==0.0.17",
+  "pydantic==2.10.5",
+  "ollama==0.4.7",
+  "chromadb==1.3.7",
+  "pymongo==4.6.1",
+  "requests==2.32.3",
+  "langchain-text-splitters==0.2.4",
+  "httpx==0.28.1",
+  "python-json-logger==2.0.7",
+  "numpy==2.1.3",
+]
+
+[tool.setuptools]
+# We don't ship a Python package — the backend imports from ./backend/app
+# at runtime via pythonpath.  Tell setuptools not to try to discover one.
+packages = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "pytest-asyncio>=0.24",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["backend"]
+# 70 matches the v2 threshold. Lower it only if the measured gap is genuine.
+addopts = "--strict-markers --cov=app --cov-report=term-missing --cov-fail-under=70"
+asyncio_mode = "auto"
+markers = [
+  "integration: integration tests requiring external services",
+]

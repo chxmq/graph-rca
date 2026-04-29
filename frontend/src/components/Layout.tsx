@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { StatusSidebar } from "./StatusSidebar";
 
 interface LayoutProps {
@@ -8,7 +8,9 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex bg-black scanlines">
-      <StatusSidebar />
+      <nav aria-label="Execution status">
+        <StatusSidebar />
+      </nav>
       <main className="flex-1 px-6 py-6 md:px-10 md:py-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <header className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-green-500/30 pb-6">

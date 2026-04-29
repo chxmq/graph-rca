@@ -2,7 +2,7 @@ import { useAppStore } from "../store";
 import { FiActivity, FiBookOpen, FiAlertTriangle } from "react-icons/fi";
 
 export function StatusSidebar() {
-  const { logStatus, docsStatus } = useAppStore();
+  const { logStatus, docsStatus, resolutionResult, isProcessing } = useAppStore();
 
   return (
     <aside className="hidden lg:flex w-80 border-r border-green-500/30 bg-black px-6 py-6 flex-col gap-6 scanlines">
@@ -34,7 +34,8 @@ export function StatusSidebar() {
           index={3}
           title="Generate resolution"
           description="Use the analysed context plus docs to resolve."
-          done={false}
+          done={Boolean(resolutionResult)}
+          inProgress={isProcessing && !resolutionResult}
         />
       </div>
 
@@ -56,26 +57,29 @@ interface StepItemProps {
   title: string;
   description: string;
   done: boolean;
+  inProgress?: boolean;
 }
 
-function StepItem({ index, title, description, done }: StepItemProps) {
+function StepItem({ index, title, description, done, inProgress = false }: StepItemProps) {
   return (
     <div className="flex gap-3 items-start group">
       <div
         className={`flex h-8 w-8 items-center justify-center border text-xs font-bold transition-all ${
           done
             ? "border-green-500 bg-green-900/50 text-green-50 shadow-neon-sm"
+            : inProgress
+            ? "border-neon-purple bg-neon-purple/20 text-neon-purple animate-pulse"
             : "border-green-700 bg-black text-green-600"
         }`}
       >
-        {done ? "✓" : index}
+        {done ? "✓" : inProgress ? "…" : index}
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2">
-          {index === 1 && <FiActivity className={done ? "text-green-500" : "text-green-700"} />}
-          {index === 2 && <FiBookOpen className={done ? "text-green-500" : "text-green-700"} />}
-          {index === 3 && <FiAlertTriangle className={done ? "text-green-500" : "text-green-700"} />}
-          <h3 className={`text-sm font-bold uppercase tracking-wide ${done ? "text-green-50" : "text-green-600"}`}>
+          {index === 1 && <FiActivity className={done ? "text-green-500" : inProgress ? "text-neon-purple" : "text-green-700"} />}
+          {index === 2 && <FiBookOpen className={done ? "text-green-500" : inProgress ? "text-neon-purple" : "text-green-700"} />}
+          {index === 3 && <FiAlertTriangle className={done ? "text-green-500" : inProgress ? "text-neon-purple" : "text-green-700"} />}
+          <h3 className={`text-sm font-bold uppercase tracking-wide ${done ? "text-green-50" : inProgress ? "text-neon-purple" : "text-green-600"}`}>
             {title}
           </h3>
         </div>

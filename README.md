@@ -1,41 +1,34 @@
 # Graph-RCA: Log Analysis & Incident Resolution System
 
-An AI-powered system for automated log analysis and incident resolution. Features a modern React frontend with a FastAPI backend, leveraging LLMs for root cause analysis and solution generation.
+An AI-powered system for automated log analysis and incident resolution. Features a modern React frontend with a FastAPI backend, using deterministic correlation heuristics for root-cause selection and LLMs for parsing, summaries, and solution generation.
 
-## 🎯 Features
+## Features
 
-- 📊 **Automated log file analysis** with causal chain generation
-- 🔍 **Root cause identification** using graph-based analysis
+- 📊 **Automated log file analysis** with correlation-based causal timeline generation (degrades to chronological ordering when logs lack shared trace/component keys)
+- 🔍 **Root cause identification** using deterministic severity/chronology heuristics
 - 📝 **Documentation integration** for context-aware solutions
 - 🤖 **AI-powered incident resolution** using RAG (Retrieval Augmented Generation)
 - 💎 **Modern glass-morphism UI** built with React + TypeScript + Tailwind
 - 🚀 **FastAPI backend** with RESTful endpoints
-- 🗄️ **Persistent storage** with MongoDB and ChromaDB
+- 🗄️ **Persistent storage** with MongoDB and local persistent ChromaDB
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 graph-rca/
 ├── backend/                        # Python FastAPI backend
 │   ├── app/
-│   │   ├── api/
-│   │   │   └── routes.py           # API route handlers
-│   │   ├── core/
-│   │   │   ├── database_handlers.py     # MongoDB + ChromaDB clients
-│   │   │   ├── database_handlers_gpu.py # GPU-accelerated variant
-│   │   │   ├── embedding.py             # Embedding utilities
-│   │   │   └── rag.py                   # RAG engine
-│   │   ├── models/
-│   │   │   ├── context_data_models.py
-│   │   │   ├── graph_data_models.py
-│   │   │   ├── parsing_data_models.py
-│   │   │   └── rag_response_data_models.py
-│   │   └── utils/
-│   │       ├── context_builder.py       # DAG traversal & context extraction
-│   │       ├── database_healthcheck.py  # Service health checks
-│   │       ├── graph_generator.py       # DAG construction
-│   │       └── log_parser.py            # LLM-based log parser
-│   ├── tests/                      # Backend unit tests (5 files)
+│   │   ├── config.py               # Centralized configuration (env vars)
+│   │   ├── models.py               # All Pydantic data models
+│   │   ├── routes.py               # API route handlers
+│   │   ├── database.py             # MongoDB + ChromaDB clients
+│   │   ├── embedding.py            # Embedding utilities
+│   │   ├── rag.py                  # RAG engine
+│   │   ├── log_parser.py           # LLM-based log parser
+│   │   ├── graph_generator.py      # Correlation graph/timeline construction
+│   │   ├── context_builder.py      # Graph traversal & context extraction
+│   │   └── healthcheck.py          # Service health checks
+│   ├── tests/                      # Backend unit tests (6 files)
 │   ├── main.py                     # FastAPI application entry point
 │   └── requirements.txt            # Python dependencies
 │
@@ -56,42 +49,34 @@ graph-rca/
 │   │   └── styles.css
 │   └── package.json
 │
-├── experiments/                    # 9 reproducible experiment scripts
-│   ├── 01_batch_inference/
-│   ├── 02_scalability/
-│   ├── 03_baseline_comparison/
-│   ├── 04_doc_ablation/
-│   ├── 05_noise_sensitivity/
-│   ├── 06_parser_accuracy/
-│   ├── 07_multi_judge_validation/
-│   ├── 08_rag_real_world/
-│   ├── 09_latency_profiling/
-│   └── README.md
+├── research/                       # All research & experiment artifacts
+│   ├── experiments/                # 9 reproducible experiment scripts
+│   │   ├── 01_batch_inference/
+│   │   ├── 02_scalability/
+│   │   ├── 03_baseline_comparison/
+│   │   ├── 04_doc_ablation/
+│   │   ├── 05_noise_sensitivity/
+│   │   ├── 06_parser_accuracy/
+│   │   ├── 07_multi_judge_validation/
+│   │   ├── 08_rag_real_world/
+│   │   └── 09_latency_profiling/
+│   ├── results/                    # Raw JSON outputs from experiment runs
+│   ├── data/
+│   │   └── real_incidents/         # 200 annotated production incidents
+│   ├── run_all.py                  # Run all 9 experiments sequentially
+│   └── check_prerequisites.py      # Pre-flight dependency checker
 │
-├── results/                        # Raw JSON outputs from experiment runs
-├── data/
-│   ├── real_incidents/             # 200 annotated production incidents
-│   ├── chroma/                     # ChromaDB persistence (auto-created)
-│   ├── db/                         # MongoDB persistence (auto-created)
-│   └── ollama/                     # Ollama model cache (auto-created)
-├── docs/                           # Sample documentation corpus
-│   ├── API.md
-│   ├── sample_documentation.txt
-│   ├── sample_log.log
-│   └── sample_log_2.log
 │
 ├── .env.example                    # Environment variable template (copy to .env)
-├── docker-compose.yaml             # Docker services (MongoDB, ChromaDB, Ollama)
+├── docker-compose.yaml             # Docker services (MongoDB, Ollama, Backend)
 ├── docker-compose.gpu.yaml         # GPU-accelerated deployment variant
 ├── run.sh                          # One-command setup script
 ├── run-gpu-server.sh               # Setup for remote GPU servers
-├── run_all_experiments.py          # Run all 9 experiments sequentially
-├── check_prerequisites.py          # Pre-flight dependency checker
-├── start-backend.sh                # Start FastAPI backend
-└── start-frontend.sh               # Start Vite dev server
+├── start-backend.sh                # Auto-generated by run.sh (not committed)
+└── start-frontend.sh               # Auto-generated by run.sh (not committed)
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -105,7 +90,7 @@ graph-rca/
 > ⚠️ **Before first run:** copy the environment template and fill in your values:
 > ```bash
 > cp .env.example .env
-> # Edit .env — at minimum set MONGO_URI and OLLAMA_HOST
+> # Edit .env — at minimum set MONGO_PASSWORD for bundled Docker Compose
 > ```
 
 ```bash
@@ -116,7 +101,7 @@ cd graph-rca
 
 The script will:
 - ✓ Check Docker
-- ✓ Start all Docker services (MongoDB, ChromaDB, Ollama)
+- ✓ Start all Docker services (MongoDB, Ollama, Backend)
 - ✓ Download the LLM model if needed
 - ✓ Set up Python virtual environment
 - ✓ Install all Python dependencies
@@ -147,10 +132,9 @@ Then open your browser to `http://localhost:5173`
 | **Backend API** | http://localhost:8010 | FastAPI server |
 | **API Docs** | http://localhost:8010/docs | Interactive API documentation |
 | MongoDB | localhost:27017 | Document store |
-| ChromaDB | localhost:8000 | Vector database |
 | Ollama | localhost:11435 | LLM inference |
 
-## 📖 Usage
+## Usage
 
 ### Step-by-step workflow:
 
@@ -158,7 +142,7 @@ Then open your browser to `http://localhost:5173`
    - Navigate to the "1. Log Analysis" tab
    - Upload a `.log` or `.txt` file (**max 5 MB, 500 lines** — larger files are truncated)
    - Click "Analyse log"
-   - View severity, root cause, and summary
+   - View severity, heuristic root cause, and LLM-generated summary
 
 2. **Add Documentation** (Optional but recommended)
    - Go to "2. Documentation" tab
@@ -170,27 +154,50 @@ Then open your browser to `http://localhost:5173`
    - Click "Run resolution"
    - Review the generated solution with references
 
-## 🔧 API Endpoints
+### Interpreting Analysis Results
+
+The `root_cause` field is the backend's deterministic heuristic choice: the earliest high-severity candidate after parsing and correlation. The `root_cause_expln` field is an LLM-generated long-form explanation used as supplementary context for incident resolution. Treat the heuristic `root_cause` as the stable identifier shown in the UI, and the LLM explanation/summary as narrative support that may be less deterministic.
+
+
+The graph builder creates a correlation timeline from explicit keys such as `trace_id`, `request_id`, `component`, and `group`. When logs carry these fields, nodes are linked into real parent–child chains. When they do not, each node becomes its own root and the resulting causal chain is a flat chronological list — no stronger than that. This is by design: the builder never invents temporal edges to connect unrelated events. If you find your causal chain looks like a plain time-sorted list, the most likely cause is that the LLM parser did not extract correlation fields from the log format.
+
+`analysis_id` is an analysis-session UUID used for progress polling and context retrieval APIs. It is intentionally separate from `dag_id` (graph object identifier persisted in context records).
+
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/` | API information |
-| `GET` | `/api/health` | Health check |
-| `POST` | `/api/log/analyse` | Analyse uploaded log file (returns context + root cause) |
-| `POST` | `/api/docs/upload` | Upload documentation files |
-| `POST` | `/api/incident/resolve` | Generate incident resolution (requires context from `/analyse`) |
+| `GET` | `/api/health` | Health check (always public, even when `API_KEY` is set) |
+| `POST` | `/api/log/analyse` | Analyse uploaded log file. Returns context + root cause + `analysis_id` (server-generated UUIDv4 used for progress polling). Optional `X-Analysis-ID` header lets the client supply its own UUIDv4; non-UUIDv4 values are ignored. |
+| `GET` | `/api/analysis/{analysis_id}/progress` | Poll real parser progress for an active/recent analysis. State is shared across workers via MongoDB (TTL: 2h). |
+| `GET` | `/api/analysis/{analysis_id}/context` | Retrieve saved context for history-driven resolution. |
+| `POST` | `/api/docs/upload` | Upload documentation files (max 50 files / 25 MB total). |
+| `POST` | `/api/incident/resolve` | Generate incident resolution (requires context from `/analyse`). Polls client disconnect every 1s and aborts the LLM call cooperatively. |
+
+**Authentication.** When the `API_KEY` env var is set, every `/api/*` request (including GETs — they leak progress and context) must include `X-API-Key: <value>`.  Only `/api/health` is exempt. Leave `API_KEY` unset for local-only deploys.
 
 Full API docs: `http://localhost:8010/docs`
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 Create a `.env` file (copy from `.env.example`) and set the following variables before running:
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
 | `MONGO_URI` | **Yes** | `mongodb://localhost:27017/` | MongoDB connection string. Use `mongodb://admin:changeme@localhost:27017/` for the bundled Docker Compose setup. |
-| `OLLAMA_HOST` | **Yes** | `http://localhost:11435` | Ollama service URL. Port 11435 matches the Docker Compose host mapping. |
+| `MONGO_PASSWORD` | For Docker Compose | — | MongoDB root password consumed by `docker-compose.yaml`. |
+| `OLLAMA_HOST` | Host-run backend only | `http://localhost:11435` | Ollama service URL when running the backend directly on the host. |
+| `BACKEND_OLLAMA_HOST` | No | `http://ollama:11434` | Ollama URL injected into the Docker Compose backend container. |
+| `OLLAMA_TIMEOUT` | No | `30.0` | Timeout (seconds) for Ollama API calls. |
+| `OLLAMA_TEMPERATURE` | No | `0.2` | Default generation temperature used in backend prompts. |
+| `CHROMADB_PATH` | No | `<project>/data/chroma` | Local persistent ChromaDB path. |
+| `RAG_CHUNK_SIZE` | No | `1000` | Documentation chunk size for RAG indexing. |
+| `RAG_CHUNK_OVERLAP` | No | `200` | Documentation chunk overlap for RAG indexing. |
 | `ALLOWED_ORIGINS` | No | `http://localhost:5173,http://localhost:3000` | Comma-separated CORS origins. Override for production deployments. |
+| `API_KEY` | No | _(unset — open)_ | When set, all backend requests must include `X-API-Key: <value>`. Leave unset for local-only deploys. |
+| `RATE_LIMIT_PER_MINUTE` | No | `60` | Max requests per IP per minute enforced by the backend middleware. |
+| `UVICORN_WORKERS` | No | `1` | Number of Uvicorn worker processes inside the Docker container. **Keep at 1** until rate-limit state is moved to a shared store (e.g. Redis); multiple workers give each process its own rate-limit dict, making the effective limit `RATE_LIMIT_PER_MINUTE × workers`. |
 | `OPENAI_API_KEY` | For exp 07/08 | — | Required for multi-judge validation experiments with GPT-4o-mini. |
 | `GROQ_API_KEY` | For exp 07/08 | — | Required for multi-judge validation experiments with Groq Llama-70B. |
 
@@ -199,44 +206,44 @@ cp .env.example .env
 # Edit .env with your values
 ```
 
-## 🧪 Running Experiments
+## Running Experiments
 
 To reproduce all paper results:
 
 ```bash
 # Run all 9 experiments sequentially
-python run_all_experiments.py
+python research/run_all.py
 
 # Or run a specific experiment
-python experiments/01_batch_inference/run_experiment.py
-python experiments/07_multi_judge_validation/run_experiment.py
+python research/experiments/01_batch_inference/run_experiment.py
+python research/experiments/07_multi_judge_validation/run_experiment.py
 # ... etc
 ```
 
-Results are saved as JSON in `results/`. Pre-computed outputs are already included for verification without re-execution.
+Results are saved as JSON in `research/results/`. Pre-computed outputs are already included for verification without re-execution.
 
-## 🐳 Docker Services
+## Docker Services
 
 Check running services:
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 View logs:
 ```bash
-docker-compose logs <service-name>
+docker compose logs <service-name>
 # Examples:
-docker-compose logs ollama
-docker-compose logs chroma
-docker-compose logs mongodb
+docker compose logs ollama
+docker compose logs mongodb
+docker compose logs backend
 ```
 
 Stop all services:
 ```bash
-docker-compose down
+docker compose down
 ```
 
-## 🛠️ Development
+## Development
 
 ### Backend Development
 
@@ -255,13 +262,18 @@ npm run dev
 
 ### Run Backend Tests
 
+Install dev dependencies first (pytest, pytest-cov, pytest-asyncio):
+
 ```bash
-cd backend
-source venv/bin/activate
-pytest tests/
+# With uv (recommended — picks up pyproject.toml extras automatically)
+uv run --with pytest --with pytest-cov --with pytest-asyncio pytest backend/tests/
+
+# With pip
+pip install -e ".[dev]"
+pytest backend/tests/
 ```
 
-## 🎨 Tech Stack
+## Tech Stack
 
 **Frontend:**
 - React 18 + TypeScript
@@ -277,20 +289,22 @@ pytest tests/
 - LangChain (text processing & chunking)
 
 **Databases:**
-- ChromaDB (vector embeddings, HNSW index)
-- MongoDB (DAG structures & analysis contexts)
+- ChromaDB PersistentClient (local on-disk vector embeddings)
+- MongoDB (correlation graph structures & analysis contexts)
 
 **Experiment LLM Judges:**
 - Qwen3:32b (local via Ollama)
 - GPT-4o-mini (OpenAI API)
 - Llama-3.1-70B (Groq API)
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 **Backend won't start:**
 - Ensure Docker services are running: `docker ps`
-- Run the pre-flight checker: `python check_prerequisites.py`
+- Run the pre-flight checker: `python research/check_prerequisites.py`
 - Check Ollama has the model: `docker exec -it $(docker ps -qf "name=ollama") ollama list`
+- Check backend health details: `curl http://localhost:8010/api/health` (`startup_degraded: true` indicates one or more startup services failed initialization retries)
+- Verify local ChromaDB data path exists and is writable (default: `<project>/data/chroma`, override with `CHROMADB_PATH`)
 
 **Frontend can't connect:**
 - Verify backend is running on port 8010
@@ -303,11 +317,16 @@ pytest tests/
 - By default, Ollama runs on CPU (works on all systems)
 - For NVIDIA GPU acceleration (Linux only):
   ```bash
-  docker-compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d
+  docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d
   ```
 - For remote GPU servers, use `./run-gpu-server.sh` instead of `./run.sh`
 - Requires: NVIDIA drivers, CUDA 12.x, and nvidia-docker2 installed
 
-## 🤝 Contributing
+## Generated startup scripts
+
+`run.sh` and `run-gpu-server.sh` generate helper scripts (`start-backend*.sh`, `start-frontend*.sh`) at runtime.
+These files are intentionally gitignored and may be regenerated on each setup run.
+
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

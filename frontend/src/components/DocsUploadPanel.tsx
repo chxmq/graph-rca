@@ -16,6 +16,11 @@ export function DocsUploadPanel() {
       setError("Please choose at least one documentation file.");
       return;
     }
+    const oversize = files.find((f) => f.size > 5 * 1024 * 1024);
+    if (oversize) {
+      setError(`File '${oversize.name}' is too large. Maximum allowed size is 5 MB.`);
+      return;
+    }
     setError(null);
     setLoading(true);
     try {
@@ -24,8 +29,16 @@ export function DocsUploadPanel() {
 
       // Load preview from first file locally
       const first = files[0];
+      if (!first) {
+        setPreview(null);
+        return;
+      }
       const text = await first.text();
-      setPreview(text.slice(0, 800));
+      const prefix =
+        files.length > 1
+          ? `[Previewing file 1/${files.length}: ${first.name}]\n\n`
+          : `[Previewing: ${first.name}]\n\n`;
+      setPreview(`${prefix}${text.slice(0, 800)}`);
     } catch (e) {
       setError(
         e instanceof Error
@@ -39,17 +52,18 @@ export function DocsUploadPanel() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-4 border-b border-green-500/30 pb-4">
         <div>
-          <h2 className="text-lg font-semibold text-slate-50 flex items-center gap-2">
-            <FiBookOpen className="text-brand-400" />
-            <span>Add documentation</span>
+          <h2 className="text-xl font-bold text-green-50 flex items-center gap-3 uppercase tracking-wider">
+            <FiBookOpen className="text-green-500 animate-pulse" />
+            <span className="terminal-text">Documentation Ingestion</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
-            Upload runbooks, incident guides or service docs as{" "}
-            <span className="font-mono">.txt</span> or{" "}
-            <span className="font-mono">.md</span>. These are used as context when we
-            generate a fix.
+          <p className="text-xs text-green-400 mt-2 font-mono">
+            &gt; Upload runbooks, incident guides, or service docs as{" "}
+            <span className="text-green-300">.txt</span> |{" "}
+            <span className="text-green-300">.md</span>
+            <br />
+            &gt; Used as context for resolution generation
           </p>
         </div>
         <button
@@ -61,11 +75,11 @@ export function DocsUploadPanel() {
             setError(null);
           }}
         >
-          Reset
+          [RESET]
         </button>
       </div>
 
-      <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-700 hover:border-brand-500/60 transition rounded-2xl px-6 py-8 cursor-pointer bg-slate-950/40">
+      <label className="flex flex-col items-center justify-center border-2 border-dashed border-green-500/30 hover:border-green-500 transition rounded-none px-6 py-10 cursor-pointer bg-black/40 group">
         <input
           type="file"
           accept=".txt,.md"
@@ -77,41 +91,47 @@ export function DocsUploadPanel() {
             setFiles(Array.from(list));
           }}
         />
-        <FiUploadCloud className="text-3xl text-slate-400 mb-3" />
-        <p className="text-sm text-slate-100 font-medium">
+        <FiUploadCloud className="text-4xl text-green-500 mb-4 group-hover:animate-pulse" />
+        <p className="text-sm text-green-100 font-bold font-mono uppercase tracking-wide">
           {files.length
-            ? `${files.length} file${files.length > 1 ? "s" : ""} selected`
-            : "Drop docs here or click to browse"}
+            ? `[ ${files.length} FILE${files.length > 1 ? "S" : ""} SELECTED ]`
+            : "[ DROP DOCS HERE OR CLICK ]"}
         </p>
-        <p className="text-xs text-slate-400 mt-1">
-          Try including SLOs, alert runbooks and architecture overviews for richer
-          answers.
+        <p className="text-xs text-green-500 mt-2 font-mono">
+          &gt; Include SLOs, alert runbooks, architecture overviews for richer
+          answers
         </p>
       </label>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-3 items-center">
+        {loading && (
+          <div className="flex items-center gap-2 text-green-500 font-mono text-sm">
+            <div className="h-4 w-4 border-2 border-green-500 border-t-transparent loading-spinner" />
+            <span className="animate-pulse">INDEXING...</span>
+          </div>
+        )}
         <button
           className="primary-button"
           type="button"
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? "Indexing…" : "Index documentation"}
+          {loading ? "[PROCESSING]" : "[INDEX DOCUMENTATION]"}
         </button>
       </div>
 
       {error && (
-        <div className="rounded-xl border border-red-500/60 bg-red-950/40 px-3 py-2 text-xs text-red-200">
-          {error}
+        <div className="border-2 border-neon-pink bg-black px-4 py-3 text-xs text-neon-pink font-mono">
+          <span className="font-bold">ERROR:</span> {error}
         </div>
       )}
 
       {preview && (
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-slate-100">
-            Preview from first document
+          <h3 className="text-sm font-bold text-green-50 uppercase tracking-wider">
+            [DOCUMENT PREVIEW]
           </h3>
-          <pre className="text-xs text-slate-200 bg-slate-950/60 rounded-xl p-3 max-h-60 overflow-auto whitespace-pre-wrap">
+          <pre className="text-xs text-green-300 bg-black border border-green-500/30 p-4 max-h-60 overflow-auto whitespace-pre-wrap font-mono">
             {preview}
           </pre>
         </div>
@@ -119,4 +139,3 @@ export function DocsUploadPanel() {
     </div>
   );
 }
-

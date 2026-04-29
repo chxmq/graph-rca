@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FiUploadCloud } from "react-icons/fi";
-import { uploadLog } from "../api";
+import { uploadLog, getAnalysisProgress, ApiError } from "../api";
 import { useAppStore } from "../store";
 import { AnalysisHistory } from "./AnalysisHistory";
 
 export function LogUploadPanel() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
 
   const { 
     isProcessing, 
@@ -17,78 +18,134 @@ export function LogUploadPanel() {
     setLogStatus,
     analysisResult,
     setAnalysisResult,
-    addToHistory
+    addToHistory,
+    setResolutionResult,
   } = useAppStore();
+
+  const severityClass = (severity?: string) => {
+    const value = (severity ?? "").trim().toLowerCase();
+    if (value === "critical") return "text-neon-pink";
+    if (value === "high") return "text-neon-purple";
+    return "text-green-100";
+  };
+
+  // Backend rejects non-UUIDv4 X-Analysis-ID values, so always emit one.
+  // crypto.randomUUID is universally available in modern browsers and Node.
+  const createAnalysisId = () =>
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : null;
 
   const handleSubmit = async () => {
     if (!file) {
       setError("Please choose a log file first.");
       return;
     }
+    if (file.size > 5 * 1024 * 1024) {
+      setError("File too large. Maximum allowed size is 5 MB.");
+      return;
+    }
     setError(null);
     setAnalysisResult(null);
+    setResolutionResult(null);
     setProcessing(true);
     clearProcessingLogs();
     
-    addProcessingLog({ 
-      message: `[▶] Uploading: ${file.name}`, 
-      type: "info" 
-    });
-    
-    addProcessingLog({ 
-      message: `[◆] Backend is parsing log entries line-by-line with LLM...`, 
-      type: "info" 
-    });
-    
-    addProcessingLog({ 
-      message: `[◆] Check your backend terminal for detailed progress logs`, 
-      type: "info" 
+    addProcessingLog({
+      message: `[▶] Uploading: ${file.name}`,
+      type: "info",
     });
 
-    // Simple progress animation
-    const progressInterval = setInterval(() => {
-      setProcessingProgress((prev) => Math.min(prev + 2, 95));
-    }, 200);
+    addProcessingLog({
+      message: `[◆] Backend is parsing log entries with LLM — progress will update below`,
+      type: "info",
+    });
+
+    const controller = new AbortController();
+    const analysisId = createAnalysisId();
+    setAbortController(controller);
+
+    // Guard against overlapping polls: if a previous poll is still in
+    // flight (slow backend, transient stall), skip this tick rather than
+    // double-fetching and racing the progress bar.
+    let inflight = false;
+    const pollProgress = async () => {
+      if (inflight || !analysisId) return;
+      inflight = true;
+      try {
+        const progress = await getAnalysisProgress(analysisId, controller.signal);
+        useAppStore.getState().setProcessingProgress(progress.progress);
+      } catch (progressError) {
+        if (progressError instanceof ApiError && progressError.status === 404) {
+          return;
+        }
+        if (progressError instanceof DOMException && progressError.name === "AbortError") {
+          return;
+        }
+      } finally {
+        inflight = false;
+      }
+    };
+    const progressInterval = analysisId ? setInterval(pollProgress, 500) : null;
 
     try {
-      const res = await uploadLog(file);
+      void pollProgress();
+      const res = await uploadLog(file, controller.signal, analysisId ?? undefined);
       
-      clearInterval(progressInterval);
+      if (progressInterval !== null) clearInterval(progressInterval);
       setProcessingProgress(100);
-      
-      addProcessingLog({ 
-        message: `[✓] Analysis complete!`, 
-        type: "success" 
-      });
-      
-      addProcessingLog({ 
-        message: `[✓] Severity: ${res.severity}`, 
-        type: "success" 
-      });
-      
-      addProcessingLog({ 
-        message: `[✓] Root cause: ${res.root_cause}`, 
-        type: "success" 
-      });
+
+      addProcessingLog({ message: `[✓] Analysis complete!`, type: "success" });
+      addProcessingLog({ message: `[✓] Severity: ${res.severity}`, type: "success" });
+      addProcessingLog({ message: `[✓] Root cause: ${res.root_cause}`, type: "success" });
+      if (res.truncated) {
+        addProcessingLog({
+          message: `[⚠] Log truncated to ${res.max_log_lines ?? 500} lines (of ${res.total_lines ?? "?"})`,
+          type: "error",
+        });
+      }
+      if (res.parse_errors && res.parse_errors.length > 0) {
+        addProcessingLog({
+          message: `[⚠] ${res.parse_errors.length} line(s) could not be parsed; analysis may be partial`,
+          type: "error",
+        });
+      }
       
       setAnalysisResult(res);
-      addToHistory(file.name, res);
+      try {
+        addToHistory(file.name, res);
+      } catch (historyError) {
+        const historyMsg = historyError instanceof Error ? historyError.message : "Failed to save history entry";
+        addProcessingLog({ message: `[✗] History save failed: ${historyMsg}`, type: "error" });
+      }
       setLogStatus({
         analysed: true,
         rootCause: res.root_cause,
         severity: res.severity,
       });
     } catch (e) {
-      clearInterval(progressInterval);
-      const errorMsg = e instanceof Error ? e.message : "Unexpected error while analysing log file.";
+      if (progressInterval !== null) clearInterval(progressInterval);
+      const errorMsg =
+        e instanceof DOMException && e.name === "AbortError"
+          ? "Analysis cancelled by user."
+          : e instanceof ApiError
+            ? e.message
+            : e instanceof Error
+              ? e.message
+              : "Unexpected error while analysing log file.";
       setError(errorMsg);
       addProcessingLog({ 
         message: `[✗] Error: ${errorMsg}`, 
         type: "error" 
       });
     } finally {
-      setTimeout(() => setProcessing(false), 1500);
+      setAbortController(null);
+      setProcessing(false);
     }
+  };
+
+  const handleCancel = () => {
+    abortController?.abort();
   };
 
   return (
@@ -112,9 +169,14 @@ export function LogUploadPanel() {
           className="secondary-button text-xs"
           type="button"
           onClick={() => {
+            abortController?.abort();
+            setAbortController(null);
             setFile(null);
             setAnalysisResult(null);
+            setResolutionResult(null);
             setError(null);
+            clearProcessingLogs();
+            setProcessingProgress(0);
             setLogStatus({ analysed: false, rootCause: "", severity: "" });
           }}
           disabled={isProcessing}
@@ -162,11 +224,48 @@ export function LogUploadPanel() {
         >
           {isProcessing ? "[PROCESSING]" : "[ANALYSE LOG]"}
         </button>
+        {isProcessing && (
+          <button className="secondary-button" type="button" onClick={handleCancel}>
+            [CANCEL]
+          </button>
+        )}
       </div>
 
       {error && (
         <div className="border-2 border-neon-pink bg-black px-4 py-3 text-xs text-neon-pink font-mono">
           <span className="font-bold">ERROR:</span> {error}
+        </div>
+      )}
+
+      {analysisResult && (analysisResult.truncated || (analysisResult.parse_errors?.length ?? 0) > 0) && (
+        <div className="border-2 border-yellow-500/60 bg-black px-4 py-3 text-xs text-yellow-300 font-mono">
+          <div className="font-bold uppercase mb-1">&gt; Partial analysis</div>
+          {analysisResult.truncated && (
+            <p>
+              Log truncated to {analysisResult.max_log_lines ?? 500} of{" "}
+              {analysisResult.total_lines ?? "?"} lines. Re-run with a smaller window
+              if the root cause is past the cutoff.
+            </p>
+          )}
+          {(analysisResult.parse_errors?.length ?? 0) > 0 && (
+            <details className="mt-1">
+              <summary className="cursor-pointer">
+                {analysisResult.parse_errors!.length} line(s) failed to parse — click to expand
+              </summary>
+              <ul className="mt-2 space-y-1 max-h-40 overflow-auto pl-4">
+                {analysisResult.parse_errors!.slice(0, 50).map((err, idx) => (
+                  <li key={idx} className="text-yellow-400">
+                    &gt; {err}
+                  </li>
+                ))}
+                {analysisResult.parse_errors!.length > 50 && (
+                  <li className="text-yellow-600">
+                    … and {analysisResult.parse_errors!.length - 50} more
+                  </li>
+                )}
+              </ul>
+            </details>
+          )}
         </div>
       )}
 
@@ -181,9 +280,7 @@ export function LogUploadPanel() {
                 <div>
                   <span className="text-green-500">&gt; SEVERITY:</span>{" "}
                   <span className={`font-bold ${
-                    analysisResult.severity?.toLowerCase().includes('critical') ? 'text-neon-pink' :
-                    analysisResult.severity?.toLowerCase().includes('high') ? 'text-neon-purple' :
-                    'text-green-100'
+                    severityClass(analysisResult.severity)
                   }`}>
                     {analysisResult.severity ?? "UNKNOWN"}
                   </span>
@@ -200,7 +297,7 @@ export function LogUploadPanel() {
               </h3>
               <div className="space-y-2">
                 {analysisResult.summary?.map((line, idx) => (
-                  <div key={idx} className="text-xs text-green-300 font-mono flex gap-2">
+                  <div key={`${line}-${idx}`} className="text-xs text-green-300 font-mono flex gap-2">
                     <span className="text-green-500">&gt;</span>
                     <span>{line}</span>
                   </div>
@@ -243,10 +340,10 @@ function ProcessingView() {
       </div>
 
       {/* Log Output */}
-      <div className="bg-black border border-green-500/30 p-4 max-h-48 overflow-y-auto font-mono text-xs space-y-2">
+      <div aria-live="polite" className="bg-black border border-green-500/30 p-4 max-h-48 overflow-y-auto font-mono text-xs space-y-2">
         {processingLogs.map((log, idx) => (
           <div
-            key={idx}
+            key={`${log.timestamp}-${idx}`}
             className={`p-2 border-l-2 ${
               log.type === "error"
                 ? "text-red-400 border-red-500 bg-red-950/20"

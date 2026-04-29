@@ -8,6 +8,7 @@ export default defineConfig({
     host: true, // Listen on all network interfaces (0.0.0.0)
     proxy: {
       "/api": {
+        // Build-time environment variable for dev proxy target.
         target: process.env.VITE_BACKEND_URL || "http://localhost:8010",
         changeOrigin: true,
       },

@@ -9,9 +9,9 @@ PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PROJECT_DIR"
 
 echo ""
-echo "╔════════════════════════════════════════════╗"
-echo "║     Graph-RCA Startup Script              ║"
-echo "╚════════════════════════════════════════════╝"
+echo "=============================================="
+echo "         Graph-RCA Startup Script"
+echo "=============================================="
 echo ""
 
 # Colors for output
@@ -33,19 +33,25 @@ echo -e "${GREEN}✓${NC} Docker is running"
 # Clean up any existing containers first
 echo ""
 echo -e "${BLUE}[2/6]${NC} Cleaning up old containers..."
-docker-compose down > /dev/null 2>&1 || true
+echo "   Stopping previous compose stack (if any)..."
+docker compose down || true
 
 # Start Docker services
-echo -e "${BLUE}[3/6]${NC} Starting Docker services (MongoDB, ChromaDB, Ollama)..."
-docker-compose up -d
+echo -e "${BLUE}[3/6]${NC} Starting Docker services (MongoDB, Ollama, Backend)..."
+docker compose up -d
 echo -e "${GREEN}✓${NC} Docker services started"
 
 # Check/Install Ollama model
 echo ""
 echo -e "${BLUE}[4/6]${NC} Checking Ollama model..."
-if ! docker exec $(docker ps -qf "name=ollama") ollama list | grep -q "llama3.2:3b"; then
+OLLAMA_CID=$(docker ps -qf "name=ollama")
+if [ -z "$OLLAMA_CID" ]; then
+    echo -e "${RED}❌ Ollama container not running!${NC}"
+    exit 1
+fi
+if ! docker exec "$OLLAMA_CID" ollama list | grep -q "llama3.2:3b"; then
     echo -e "${YELLOW}⚠${NC}  Model llama3.2:3b not found. Installing..."
-    docker exec -it $(docker ps -qf "name=ollama") ollama pull llama3.2:3b
+    docker exec -i "$OLLAMA_CID" ollama pull llama3.2:3b
     echo -e "${GREEN}✓${NC} Model installed"
 else
     echo -e "${GREEN}✓${NC} Model llama3.2:3b already installed"
@@ -56,23 +62,11 @@ echo ""
 echo -e "${BLUE}[5/6]${NC} Setting up Python backend..."
 cd backend
 
-# Detect the best available Python (3.11, 3.12, or 3.13)
-PYTHON_CMD=""
-for ver in python3.13 python3.12 python3.11 python3; do
-    if command -v "$ver" &>/dev/null; then
-        PYVER=$("$ver" -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null)
-        MAJOR=${PYVER%%.*}
-        MINOR=${PYVER##*.}
-        if [ "$MAJOR" -ge 3 ] && [ "$MINOR" -ge 11 ]; then
-            PYTHON_CMD="$ver"
-            break
-        fi
-    fi
-done
+PYTHON_CMD="$(MIN_PY_MINOR=11 MAX_PY_MINOR=13 bash "$PROJECT_DIR/scripts/detect-python.sh" || true)"
 
 if [ -z "$PYTHON_CMD" ]; then
-    echo -e "${RED}❌ Python 3.11+ not found!${NC}"
-    echo "   Please install Python 3.11 or newer."
+    echo -e "${RED}❌ Supported Python version not found!${NC}"
+    echo "   Please install Python 3.11, 3.12, or 3.13."
     echo "   Visit: https://www.python.org/downloads/"
     exit 1
 fi
@@ -123,9 +117,9 @@ echo -e "${GREEN}✓${NC} All services ready"
 
 # Print summary
 echo ""
-echo "╔════════════════════════════════════════════╗"
-echo "║          Setup Complete! 🚀                ║"
-echo "╚════════════════════════════════════════════╝"
+echo "=============================================="
+echo "               Setup Complete!"
+echo "=============================================="
 echo ""
 echo -e "${GREEN}Python Environment:${NC}"
 echo "  • Version:  Python 3.11+ (auto-detected: $PYTHON_CMD)"
@@ -133,15 +127,13 @@ echo "  • Location: backend/venv (auto-activated by start script)"
 echo ""
 echo -e "${GREEN}Docker Services:${NC}"
 echo "  • MongoDB:  localhost:27017"
-echo "  • ChromaDB: localhost:8000"
 echo "  • Ollama:   localhost:11435"
+echo "  • Backend:  localhost:8010"
 echo ""
 echo -e "${YELLOW}To start the application:${NC}"
 echo ""
 echo "  ${BLUE}Terminal 1${NC} - Backend API:"
-echo "    cd backend"
-echo "    source venv/bin/activate"
-echo "    python -m uvicorn main:app --host 0.0.0.0 --port 8010 --reload"
+echo "    ./start-backend.sh"
 echo ""
 echo "  ${BLUE}Terminal 2${NC} - Frontend UI:"
 echo "    cd frontend"
@@ -161,10 +153,22 @@ echo ""
 cat > start-backend.sh << 'EOF'
 #!/bin/bash
 cd "$(dirname "$0")/backend"
+if [ -f "../.env" ]; then
+  set -a
+  . ../.env
+  set +a
+fi
 source venv/bin/activate
 echo "Starting backend on http://localhost:8010"
 echo "API docs: http://localhost:8010/docs"
-python -m uvicorn main:app --host 0.0.0.0 --port 8010 --reload
+# `DEV=1 ./start-backend.sh` enables hot reload for development.
+# Without DEV=1 we run a stable, single-worker process suitable for demos.
+RELOAD_FLAG=""
+if [ "${DEV:-0}" = "1" ]; then
+  echo "[dev] hot-reload enabled"
+  RELOAD_FLAG="--reload"
+fi
+python -m uvicorn main:app --host 0.0.0.0 --port 8010 ${RELOAD_FLAG}
 EOF
 
 cat > start-frontend.sh << 'EOF'
