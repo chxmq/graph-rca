@@ -182,7 +182,15 @@ def main():
         folders = folders[:3]
         print(f"Limited run: {len(folders)} incidents")
 
-    client = ollama.Client(host=CONFIG["ollama_host"])
+    # Optional Modal proxy auth (research/tools/modal_ollama_server.py with
+    # requires_proxy_auth=True): forward the token headers when present.
+    headers = None
+    if os.environ.get("MODAL_KEY") and os.environ.get("MODAL_SECRET"):
+        headers = {
+            "Modal-Key": os.environ["MODAL_KEY"],
+            "Modal-Secret": os.environ["MODAL_SECRET"],
+        }
+    client = ollama.Client(host=CONFIG["ollama_host"], headers=headers)
     report = {"model": args.model, "started": datetime.now().isoformat(), "incidents": []}
     accepted = skipped = needs_review = 0
 
