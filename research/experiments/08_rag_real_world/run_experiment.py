@@ -141,6 +141,35 @@ Respond with ONLY a number between 0.0 and 1.0:"""
               f"Returning 0.0 (not a mock). Check API key and connectivity.")
         return 0.0
     
+    def predict_root_cause(self, logs: str) -> str:
+        """Zero-shot condition: the judge's own model does RCA directly
+        from raw logs, with no parsing, temporal chain, or RAG.  This is
+        the 'inherent LLM capability' baseline reported in the paper."""
+        prompt = (
+            "Analyze these incident logs and identify the most likely root cause.\n\n"
+            f"Logs:\n{logs}\n\n"
+            "Respond with 1-3 sentences describing the root cause only:"
+        )
+        judge_type = self.judge_config["type"]
+        model = self.judge_config["model"]
+        try:
+            if judge_type == "ollama":
+                response = self.client.generate(
+                    model=model, prompt=prompt, options={"temperature": 0.0}
+                )
+                text = response.response.strip()
+                return re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+            response = self.client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.0,
+                max_tokens=200,
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            print(f"  Zero-shot prediction failed: {e}")
+            return ""
+
     def _call_judge(self, prompt: str) -> Optional[float]:
         judge_type = self.judge_config["type"]
         model = self.judge_config["model"]
@@ -330,9 +359,19 @@ def run_experiment(judge: JudgeClient) -> dict:
     for idx, test_case in enumerate(test_set):
         print(f"\n[{idx+1}/{len(test_set)}] {test_case['id']}")
         
-        input_text = test_case["logs"] if test_case["logs"] else test_case["postmortem"]
+        # The postmortem contains the ground-truth root cause; feeding it to
+        # the pipeline as input would leak the answer.  Skip instead.
+        if not test_case["logs"].strip():
+            print("  No logs — skipped to avoid ground-truth leakage")
+            results["tests"].append({"id": test_case["id"], "error": "no logs"})
+            continue
+        input_text = test_case["logs"]
         
         try:
+            # Zero-shot: judge's own model, raw logs, no pipeline.
+            zero_shot_pred = judge.predict_root_cause(input_text)
+            zero_shot_score = judge.score(zero_shot_pred, test_case["root_cause"])
+
             # Baseline: GraphRCA without RAG context
             baseline_pred = run_graphrca(input_text, rag_context="")
             baseline_score = judge.score(baseline_pred, test_case["root_cause"])
@@ -351,12 +390,13 @@ def run_experiment(judge: JudgeClient) -> dict:
             
             results["tests"].append({
                 "id": test_case["id"],
+                "zero_shot_score": round(zero_shot_score, 3),
                 "baseline_score": round(baseline_score, 3),
                 "rag_score": round(rag_score, 3),
                 "improvement": round(rag_score - baseline_score, 3)
             })
-            
-            print(f"  Base: {baseline_score:.2f} | RAG: {rag_score:.2f} | Diff: {rag_score-baseline_score:+.2f}")
+
+            print(f"  Zero: {zero_shot_score:.2f} | Base: {baseline_score:.2f} | RAG: {rag_score:.2f} | Diff: {rag_score-baseline_score:+.2f}")
             
         except Exception as e:
             print(f"  Failed: {e}")
@@ -364,11 +404,12 @@ def run_experiment(judge: JudgeClient) -> dict:
     
     # Aggregate
     valid = [t for t in results["tests"] if "baseline_score" in t]
+    results["zero_shot_avg"] = round(statistics.mean([t["zero_shot_score"] for t in valid if "zero_shot_score" in t]), 4) if valid else 0
     results["baseline_avg"] = round(statistics.mean([t["baseline_score"] for t in valid]), 4) if valid else 0
     results["rag_avg"] = round(statistics.mean([t["rag_score"] for t in valid]), 4) if valid else 0
     results["improvement"] = round(results["rag_avg"] - results["baseline_avg"], 4)
-    
-    print(f"\nRESULTS: Base {results['baseline_avg']:.2f} -> RAG {results['rag_avg']:.2f}")
+
+    print(f"\nRESULTS: Zero {results['zero_shot_avg']:.2f} -> Base {results['baseline_avg']:.2f} -> RAG {results['rag_avg']:.2f}")
     
     # Cleanup
     if EXP_CHROMA_DIR.exists():

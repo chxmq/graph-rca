@@ -80,17 +80,12 @@ def load_real_incidents() -> list:
                 if line.strip() and not line.strip().startswith("#")
             ]
             
-            # Include incident even if logs empty (use postmortem as fallback context)
+            # Never substitute postmortem text or the ground-truth root cause
+            # for missing logs — both contain the answer and would leak it
+            # into the pipeline input.  Skip the incident instead.
             if not logs:
-                # Try to get context from postmortem
-                postmortem_file = folder / "postmortem.md"
-                if postmortem_file.exists():
-                    pm_text = postmortem_file.read_text()
-                    # Extract log-like lines from postmortem if available
-                    logs = [line.strip() for line in pm_text.split("\n") 
-                            if any(level in line for level in ["ERROR", "WARN", "INFO", "DEBUG", "CRITICAL"])]
-                if not logs:
-                    logs = [f"Incident: {gt.get('root_cause', 'Unknown')}"]
+                skipped.append(f"{folder.name}: logs.txt empty — excluded to avoid ground-truth leakage")
+                continue
             
             scenarios.append({
                 "id": folder.name,
