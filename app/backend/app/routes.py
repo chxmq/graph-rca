@@ -241,6 +241,7 @@ async def upload_docs(
 
     try:
         docs: list[str] = []
+        names: list[str] = []
         total_bytes = 0
         for f in files:
             if not f.filename.endswith((".txt", ".md")):
@@ -261,6 +262,7 @@ async def upload_docs(
                     ),
                 )
             docs.append(content.decode("utf-8", errors="ignore"))
+            names.append(f.filename)
 
         if not docs:
             raise HTTPException(
@@ -268,17 +270,34 @@ async def upload_docs(
                 detail="No valid documentation found. Supported formats: .txt, .md",
             )
 
-        docs_payload = "\n\n".join(docs)
-        current_hash = hashlib.sha256(docs_payload.encode("utf-8")).hexdigest()
-        if mongo.db["doc_hashes"].find_one({"hash": current_hash}):
-            return {"count": len(docs), "message": "Using cached documentation"}
+        # Dedupe per file (not per batch): re-uploading known docs alongside
+        # one new file indexes only the new file.
+        new_docs: list[str] = []
+        new_names: list[str] = []
+        new_hashes: list[str] = []
+        skipped = 0
+        for doc, name in zip(docs, names):
+            doc_hash = hashlib.sha256(doc.encode("utf-8")).hexdigest()
+            if doc_hash in new_hashes or mongo.db["doc_hashes"].find_one({"hash": doc_hash}):
+                skipped += 1
+                continue
+            new_docs.append(doc)
+            new_names.append(name)
+            new_hashes.append(doc_hash)
 
-        logger.info("[◆] Storing %d documentation files in vector database...", len(docs))
-        await rag.store_documentation_async(docs)
+        if not new_docs:
+            return {"count": 0, "skipped": skipped, "message": "All documents already indexed"}
+
+        logger.info("[◆] Storing %d documentation files in vector database (%d cached)...", len(new_docs), skipped)
+        await rag.store_documentation_async(new_docs, names=new_names)
         logger.info("[✓] Documentation indexed successfully")
 
-        mongo.db["doc_hashes"].insert_one({"hash": current_hash})
-        return {"count": len(docs), "message": f"Stored {len(docs)} documentation chunks"}
+        mongo.db["doc_hashes"].insert_many([{"hash": h} for h in new_hashes])
+        return {
+            "count": len(new_docs),
+            "skipped": skipped,
+            "message": f"Indexed {len(new_docs)} new documents ({skipped} already cached)",
+        }
 
     except HTTPException:
         raise

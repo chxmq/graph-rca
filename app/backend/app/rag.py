@@ -98,14 +98,21 @@ class RAG_Engine:
 
     # ---- Indexing ------------------------------------------------------------
 
-    def store_documentation(self, documents: List[str]) -> None:
+    def store_documentation(self, documents: List[str], names: List[str] | None = None) -> None:
         """Store documentation in ChromaDB.
+
+        ``names`` carries the original filenames so retrieval results can
+        cite a meaningful source ("postgres-runbook.md") instead of an
+        opaque index ("upload_0").  Falls back to the index form when no
+        name is available.
 
         Sync wrapper kept for CLI callers; FastAPI routes wrap this in
         `asyncio.to_thread` so the event loop is never blocked on embedding.
         """
         if not documents:
             raise ValueError("Received empty documents list")
+        if names is not None and len(names) != len(documents):
+            raise ValueError("names must match documents length")
 
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=RAG_CHUNK_SIZE,
@@ -117,10 +124,11 @@ class RAG_Engine:
         chunks: list[str] = []
         metadatas: list[dict] = []
         for doc_idx, doc in enumerate(documents):
+            source = names[doc_idx] if names else f"upload_{doc_idx}"
             doc_chunks = text_splitter.split_text(doc)
             for chunk_idx, chunk in enumerate(doc_chunks):
                 chunks.append(chunk)
-                metadatas.append({"source": f"upload_{doc_idx}", "chunk_idx": chunk_idx})
+                metadatas.append({"source": source, "chunk_idx": chunk_idx})
 
         if not chunks:
             raise ValueError("No text chunks created after splitting")
@@ -133,6 +141,6 @@ class RAG_Engine:
             metadatas=metadatas,
         )
 
-    async def store_documentation_async(self, documents: List[str]) -> None:
+    async def store_documentation_async(self, documents: List[str], names: List[str] | None = None) -> None:
         """Async wrapper around the sync indexing path."""
-        await asyncio.to_thread(self.store_documentation, documents)
+        await asyncio.to_thread(self.store_documentation, documents, names)

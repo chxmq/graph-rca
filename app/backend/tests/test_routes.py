@@ -174,7 +174,7 @@ class TestDocsUploadRoute:
         app.state.rag_engine.store_documentation_async.assert_awaited_once()
 
     def test_upload_cached_doc_skips_indexing(self):
-        """Same doc uploaded twice → second call returns cached message."""
+        """Same doc uploaded twice → second call indexes nothing."""
         app.state.mongo_db.db = MagicMock()
         app.state.mongo_db.db.__getitem__.return_value.find_one.return_value = {"hash": "abc"}
         app.state.rag_engine.store_documentation_async = AsyncMock()
@@ -184,7 +184,9 @@ class TestDocsUploadRoute:
             files=[("files", ("guide.txt", io.BytesIO(b"some guide"), "text/plain"))],
         )
         assert response.status_code == 200
-        assert "cached" in response.json()["message"].lower()
+        body = response.json()
+        assert body["count"] == 0
+        assert body["skipped"] == 1
         app.state.rag_engine.store_documentation_async.assert_not_awaited()
 
     def test_upload_rejects_wrong_extension(self):

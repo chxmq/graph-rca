@@ -94,7 +94,8 @@ class DAG(BaseModel):
     """DAG-compatible correlation graph of log entries."""
     id: str = Field(default_factory=lambda: str(uuid4()))
     nodes: list[DAGNode] = Field(description="List of nodes in the graph")
-    root_id: str = Field(description="Unique identifier of the root node")
+    root_id: str = Field(description="Primary root node id (earliest root; kept for backward compatibility)")
+    root_ids: list[str] = Field(default_factory=list, description="All in-degree-zero node ids; uncorrelated logs yield one root per node")
     root_cause: Optional[str] = Field(default=None, description="Root cause of the issue")
     leaf_ids: list[str] = Field(description="List of unique identifiers of the leaf nodes")
 

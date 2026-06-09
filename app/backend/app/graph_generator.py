@@ -15,13 +15,15 @@ class GraphGenerator:
         self.log_chain = log_chain
         self.dag_nodes = []
         self.root_id = None
+        self.root_ids = []
         self.leaf_ids = []
-        
+
     def generate_dag(self, analyse_root: bool = True) -> DAG:
         """Generate a causal timeline structure from the log chain."""
         try:
             self.dag_nodes = []
             self.root_id = None
+            self.root_ids = []
             self.leaf_ids = []
             
             logger.info("[◆] Building DAG from %d log entries", len(self.log_chain.log_chain))
@@ -40,7 +42,7 @@ class GraphGenerator:
                 root_cause = self.find_root_cause()
                 logger.info("[✓] Root cause determined: %s", root_cause)
 
-            return DAG(nodes=self.dag_nodes, root_id=self.root_id, leaf_ids=self.leaf_ids, root_cause=root_cause)
+            return DAG(nodes=self.dag_nodes, root_id=self.root_id, root_ids=self.root_ids, leaf_ids=self.leaf_ids, root_cause=root_cause)
 
         except Exception as e:
             raise RuntimeError(f"Failed to generate DAG: {str(e)}") from e
@@ -110,30 +112,51 @@ class GraphGenerator:
             raise RuntimeError(f"Failed to set parent-child relationships: {str(e)}") from e
 
     def _find_root_and_leaf_nodes(self) -> None:
-        """Find the root and leaf nodes in the graph"""
+        """Find the root and leaf nodes in the graph.
+
+        ``root_ids`` holds every in-degree-zero node (uncorrelated logs
+        yield one root per node); ``root_id`` stays the earliest root for
+        backward compatibility with stored DAGs and existing callers.
+        """
         try:
             root_nodes = [node for node in self.dag_nodes if not node.parent_ids]
-            self.root_id = root_nodes[0].id if root_nodes else self.dag_nodes[0].id
+            if root_nodes:
+                self.root_ids = [node.id for node in root_nodes]
+            else:
+                self.root_ids = [self.dag_nodes[0].id]
+            self.root_id = self.root_ids[0]
             self.leaf_ids = [node.id for node in self.dag_nodes if not node.children]
 
         except Exception as e:
             raise RuntimeError(f"Failed to find root and leaf nodes: {str(e)}") from e
 
     def find_root_cause(self) -> str:
-        """Find root cause using deterministic heuristics."""
+        """Find root cause using deterministic, graph-aware heuristics.
+
+        Preference order:
+        1. earliest ERROR/CRITICAL node that is a graph root (no parents) —
+           a high-severity event with no upstream cause in any correlation
+           chain is the strongest signal the graph structure offers;
+        2. earliest ERROR/CRITICAL node anywhere (correlation keys may be
+           absent, or the true root may sit mid-chain after benign INFOs);
+        3. the primary root node's message.
+        """
         try:
-            # Identify candidate root causes (ERROR/CRITICAL logs near the start)
             candidates = self._identify_root_cause_candidates()
-            
+
             logger.debug("GraphGenerator: Found %d root cause candidates", len(candidates))
             for c in candidates:
                 logger.debug("  - [%s] %s...", c['level'], c['message'][:60])
-            
+
             if not candidates:
                 logger.debug("GraphGenerator: No candidates, using first log as root cause")
                 root_node = next(n for n in self.dag_nodes if n.id == self.root_id)
                 return root_node.log_entry.message
-            
+
+            root_id_set = set(self.root_ids)
+            root_candidates = [c for c in candidates if c["node_id"] in root_id_set]
+            if root_candidates:
+                return root_candidates[0]["message"]
             return candidates[0]["message"]
 
         except Exception as e:
@@ -162,6 +185,7 @@ class GraphGenerator:
             if entry.level.upper() in ["ERROR", "CRITICAL", "FATAL"]:
                 candidates.append({
                     "position": i + 1,
+                    "node_id": node.id,
                     "level": entry.level,
                     "message": entry.message,
                     "timestamp": entry.timestamp.isoformat(),
