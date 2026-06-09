@@ -16,7 +16,9 @@ def real_vector_db():
 
 @pytest.fixture
 def real_mongo_db():
-    with patch("pymongo.MongoClient") as MockClient:
+    # Must patch app.database.MongoClient (the imported name), not
+    # pymongo.MongoClient — see test_database_handlers.mongo_db.
+    with patch("app.database.MongoClient") as MockClient:
         instance = MagicMock()
         instance.server_info.return_value = {"ok": 1.0}
         MockClient.return_value = instance

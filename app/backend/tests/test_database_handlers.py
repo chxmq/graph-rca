@@ -17,7 +17,11 @@ def vector_db():
 
 @pytest.fixture
 def mongo_db():
-    with patch('pymongo.MongoClient') as mock_client:
+    # Patch the name bound in app.database (`from pymongo import MongoClient`),
+    # not pymongo.MongoClient — patching the latter leaves the real client in
+    # place, which silently connects to any MongoDB running on localhost and
+    # errors on hosts without one (this is what broke CI).
+    with patch('app.database.MongoClient') as mock_client:
         handler = MongoDBHandler()
         handler.db = MagicMock()
         yield handler

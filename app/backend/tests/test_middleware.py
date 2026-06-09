@@ -130,16 +130,33 @@ class TestRequestId:
 
         cap = _Capture()
         cap.addFilter(main_mod._RequestIdFilter())
-        logging.getLogger("app").addHandler(cap)
-        try:
-            with TestClient(app, raise_server_exceptions=False) as client:
-                response = client.get("/api/health", headers={"X-Request-ID": "rid-zzz"})
-                assert response.status_code in (200, 503)
 
-            # At least one log record from the request-handling code path should have the rid
-            # (we accept any non-"-" value as evidence the ContextVar was wired)
-            assert any(rid != "-" for rid in captured) or len(captured) == 0
-            # Stronger: at least one record explicitly has rid-zzz
-            assert any(rid == "rid-zzz" for rid in captured) or len(captured) == 0
-        finally:
-            logging.getLogger("app").removeHandler(cap)
+        with TestClient(app, raise_server_exceptions=False) as client:
+            # Attach the capture handler only AFTER startup: lifespan-time
+            # records (e.g. MongoDB retry errors when no local mongo exists)
+            # legitimately carry request_id "-" and must not be counted.
+            logging.getLogger("app").addHandler(cap)
+            try:
+                # /incident/resolve logs from app.routes inside the request
+                # context regardless of whether downstream services are up
+                # (success and failure paths both log after the [▶] line).
+                response = client.post(
+                    "/api/incident/resolve",
+                    headers={"X-Request-ID": "rid-zzz"},
+                    json={
+                        "context": {
+                            "dag_id": "d1",
+                            "root_cause": "rc",
+                            "causal_chain": ["e1"],
+                        },
+                        "root_cause_expln": "expl",
+                    },
+                )
+            finally:
+                logging.getLogger("app").removeHandler(cap)
+
+        if response.status_code == 503 and not captured:
+            pytest.skip("RAG engine unavailable at startup; no request-path logging to observe")
+        # The middleware must have stamped the supplied request id onto every
+        # record emitted within the request context.
+        assert any(rid == "rid-zzz" for rid in captured), f"captured={captured}"
