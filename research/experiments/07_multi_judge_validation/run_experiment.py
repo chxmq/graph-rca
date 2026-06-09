@@ -18,7 +18,7 @@ from datetime import datetime
 from typing import List, Dict, Optional
 
 # --- Backend Integration ---
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "app" / "backend"))
 try:
     from app.models import LogEntry, LogChain
     from app.graph_generator import GraphGenerator

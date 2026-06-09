@@ -14,14 +14,14 @@ import logging
 from pathlib import Path
 from datetime import datetime
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "app" / "backend"))
 
 try:
     from app.models import LogEntry, LogChain
     from app.graph_generator import GraphGenerator
 except ModuleNotFoundError as e:
     print("Error: Backend dependencies required. Run from project root:")
-    print("  pip install -r backend/requirements.txt")
+    print("  pip install -r app/backend/requirements.txt")
     print("  python experiments/02_scalability/run_experiment.py")
     sys.exit(1)
 

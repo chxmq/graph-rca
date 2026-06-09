@@ -168,7 +168,7 @@ def check_data_directories():
 def check_backend_dependencies():
     """Check if backend dependencies are available."""
     print("\nChecking backend dependencies...")
-    backend_path = PROJECT_ROOT / "backend"
+    backend_path = PROJECT_ROOT / "app" / "backend"
     
     if not backend_path.exists():
         print("  ✗ Backend directory not found")
@@ -182,7 +182,7 @@ def check_backend_dependencies():
         return True, []
     except ImportError as e:
         print(f"  ✗ Backend dependencies not available: {e}")
-        print("    Install: cd backend && pip install -r requirements.txt")
+        print("    Install: cd app/backend && pip install -r requirements.txt")
         return False, ["backend dependencies"]
 
 

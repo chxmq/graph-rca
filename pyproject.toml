@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-# We don't ship a Python package — the backend imports from ./backend/app
+# We don't ship a Python package — the backend imports from ./app/backend/app
 # at runtime via pythonpath.  Tell setuptools not to try to discover one.
 packages = []
 
@@ -35,7 +35,7 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-pythonpath = ["backend"]
+pythonpath = ["app/backend"]
 # 70 matches the v2 threshold. Lower it only if the measured gap is genuine.
 addopts = "--strict-markers --cov=app --cov-report=term-missing --cov-fail-under=70"
 asyncio_mode = "auto"

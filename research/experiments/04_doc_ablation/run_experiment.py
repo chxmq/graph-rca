@@ -15,7 +15,7 @@ from pathlib import Path
 from datetime import datetime
 
 # --- Backend Integration ---
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "app" / "backend"))
 try:
     from app.database import VectorDatabaseHandler
 except ImportError as e:

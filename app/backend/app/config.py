@@ -38,12 +38,12 @@ MONGO_URI: str = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
 MONGO_TIMEOUT_MS: int = _get_int("MONGO_TIMEOUT_MS", 5000)
 
 # --- ChromaDB ---
-# Default to a stable project-root path, independent of the shell cwd.
+# Default to a stable path under app/ (parents[2] of this file), independent of the shell cwd.
 # Only PersistentClient is used; no host/port — if a remote Chroma server
 # is wanted later, add CHROMADB_HOST/CHROMADB_PORT here at the same time
 # you wire HttpClient in database.py.
-_PROJECT_ROOT = Path(__file__).resolve().parents[2]
-CHROMADB_PATH: str = os.environ.get("CHROMADB_PATH", str((_PROJECT_ROOT / "data/chroma").resolve()))
+_APP_ROOT = Path(__file__).resolve().parents[2]
+CHROMADB_PATH: str = os.environ.get("CHROMADB_PATH", str((_APP_ROOT / "data/chroma").resolve()))
 
 # --- RAG ---
 RAG_CHUNK_SIZE: int = _get_int("RAG_CHUNK_SIZE", 1000)

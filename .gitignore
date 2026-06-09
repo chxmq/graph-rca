@@ -1,76 +1,267 @@
-# --- Git worktrees ---
+# =============================================================================
+# Graph-RCA — .gitignore
+# Covers: Python/FastAPI backend, React/Vite frontend, Docker volumes,
+#         research experiments, and LaTeX paper assets.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Git worktrees
+# -----------------------------------------------------------------------------
 .worktrees/
 
-# --- Environment variables ---
+# -----------------------------------------------------------------------------
+# Environment variables & secrets
+# Keep *.env.example files — they are templates, not secrets.
+# -----------------------------------------------------------------------------
 .env
-.env.local
-.env.production
+.env.*
+!.env.example
+!**/.env.example
 
-# --- Python environments & dependencies ---
+# Common credential / key filenames
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+service-account*.json
+
+# -----------------------------------------------------------------------------
+# Python — virtual environments & packaging
+# -----------------------------------------------------------------------------
 env/
 venv/
 .venv/
 .venv*/
+ENV/
+env.bak/
+venv.bak/
+
+# Setuptools / wheel / sdist
 *.egg-info/
 *.egg
+.eggs/
 dist/
 build/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.manifest
+*.spec
+MANIFEST
 
-# --- Python bytecode & cache ---
+# uv (lockfile is committed for reproducible installs)
+.uv/
+
+# -----------------------------------------------------------------------------
+# Python — bytecode, caches & tooling
+# -----------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+*.dylib
 
-# --- IDE & editor settings ---
-.vscode/
-.idea/
-.DS_Store
-*.swp
-*.swo
-
-# --- Test & coverage artifacts ---
 .pytest_cache/
 .coverage
+.coverage.*
 coverage.xml
 htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.pytype/
+.dmypy.json
+dmypy.json
 
-# --- Logs & local data ---
-*.log
-logs/
-
-# Project-specific data volumes (created by Docker/start.sh)
-data/chroma/
-data/db/
-data/ollama/
-app/data/chroma/
-app/data/db/
-app/data/ollama/
-
-# --- Notebooks & checkpoints (if any) ---
-.ipynb_checkpoints/
-
-# --- Misc cache ---
 .mypy_cache/
 .ruff_cache/
-.cache/
+.pyright/
+.pyre/
 
-# --- Frontend (Node.js) ---
-node_modules/
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
-frontend/tsconfig.tsbuildinfo
+# -----------------------------------------------------------------------------
+# Python — notebooks
+# -----------------------------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# -----------------------------------------------------------------------------
+# Node.js / Frontend (Vite + React + TypeScript)
+# Applies to app/frontend/, frontend/, and any nested package.
+# -----------------------------------------------------------------------------
+**/node_modules/
+**/dist/
+**/.vite/
+**/.parcel-cache/
+**/.turbo/
+**/.next/
+**/.nuxt/
+**/.svelte-kit/
+**/.cache/
+
 *.tsbuildinfo
-.env
-.env.local
-.env.*.local
+**/*.tsbuildinfo
+
+# Package manager logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# --- Auto-generated scripts ---
+# Frontend lint / format caches
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# -----------------------------------------------------------------------------
+# Runtime data — Docker Compose volumes & local service state
+# Created by app/run.sh, docker compose, or direct backend startup.
+# Scoped to app/runtime paths only — NOT research/data/ (experiment datasets).
+# -----------------------------------------------------------------------------
+/data/
+/app/data/
+backend/data/
+
+# ChromaDB persistent store
+**/data/chroma/
+chroma.sqlite3
+chroma.sqlite3-journal
+
+# MongoDB data directory (bind-mounted by compose)
+**/data/db/
+
+# Ollama model weights & cache
+**/data/ollama/
+
+# -----------------------------------------------------------------------------
+# Logs & local scratch
+# -----------------------------------------------------------------------------
+*.log
+logs/
+**/logs/
+tmp/
+temp/
+**/tmp/
+**/temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------------------------------
+# Auto-generated helper scripts (created by app/run.sh & app/run-gpu-server.sh)
+# -----------------------------------------------------------------------------
 start-backend.sh
 start-frontend.sh
 start-backend-gpu.sh
 start-frontend-gpu.sh
+app/start-backend.sh
+app/start-frontend.sh
+app/start-backend-gpu.sh
+app/start-frontend-gpu.sh
+
+# -----------------------------------------------------------------------------
+# Research — generated experiment outputs
+# Source datasets under research/data/ stay tracked; results are reproducible.
+# -----------------------------------------------------------------------------
+research/results/
+research/experiments/*/data/
+research/tools/*.json
+!research/tools/.gitkeep
+
+# Timestamped run folders from research/run_all.py
+research/results/20*/
+
+# -----------------------------------------------------------------------------
+# LaTeX — build artifacts (keep .tex, .cls, .bst, figures, fonts)
+# -----------------------------------------------------------------------------
+research/paper/*.aux
+research/paper/*.bbl
+research/paper/*.blg
+research/paper/*.fdb_latexmk
+research/paper/*.fls
+research/paper/*.log
+research/paper/*.out
+research/paper/*.synctex.gz
+research/paper/*.synctex(busy)
+research/paper/*.toc
+research/paper/*.lof
+research/paper/*.lot
+research/paper/*.nav
+research/paper/*.snm
+research/paper/*.vrb
+research/paper/*.bcf
+research/paper/*.run.xml
+research/paper/*.xdv
+# Compiled paper PDF (figures like fig1.png remain tracked)
+research/paper/
+
+# Generic LaTeX aux files anywhere in the repo
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex(busy)
+
+# -----------------------------------------------------------------------------
+# IDE & editor settings
+# -----------------------------------------------------------------------------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+*.sublime-project
+*.sublime-workspace
+
+# Cursor & Claude(local agent / index state)
+.cursor/
+.claude/
+
+# Vim / Emacs
+*.swp
+*.swo
+*.swn
+\#*\#
+.\#*
+
+# -----------------------------------------------------------------------------
+# OS-generated files
+# -----------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -----------------------------------------------------------------------------
+# Containers & deployment (local overrides only)
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+docker-compose.override.yaml
+*.override.yml
+*.override.yaml
+
+# -----------------------------------------------------------------------------
+# Misc caches
+# -----------------------------------------------------------------------------
+.cache/
+**/.cache/
+*.bak
+*.orig
