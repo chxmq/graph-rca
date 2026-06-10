@@ -23,6 +23,8 @@ try:
     from app.models import LogEntry, LogChain
     from app.graph_generator import GraphGenerator
     from app.log_parser import LogParser
+    from app.context_builder import ContextBuilder
+    from app.prompts import summary_prompt
 except ImportError as e:
     print(f"Error importing backend modules: {e}")
     sys.exit(1)
@@ -131,10 +133,11 @@ Respond with ONLY a number between 0.0 and 1.0:"""
                 print(f"  Judge attempt {attempt+1}/3 failed: {e}")
                 time.sleep(2)
         
-        # All retries exhausted — return 0.0 and warn rather than silently return 0.5
+        # All retries exhausted — return None so the caller can EXCLUDE this
+        # incident from accuracy instead of silently counting it as wrong.
         print(f"  ⚠ WARNING: all scoring attempts failed for judge '{self.judge_name}'. "
-              f"Returning 0.0 (not a mock). Check API key and connectivity.")
-        return 0.0
+              f"Marking unscored. Check API key and connectivity.")
+        return None
     
     def _call_judge(self, prompt: str) -> Optional[float]:
         judge_type = self.judge_config["type"]
@@ -206,24 +209,53 @@ def load_incidents() -> List[Dict]:
     return incidents
 
 
-def run_graphrca(logs: str) -> str:
-    """Run actual GraphRCA algorithm using the real LogParser + GraphGenerator pipeline."""
+def run_graphrca(logs: str) -> dict:
+    """Run the full GraphRCA pipeline and return BOTH of its outputs:
+
+    - "line": the deterministic heuristic root cause (a verbatim log line) —
+      what the UI shows as the stable identifier;
+    - "narrative": the LLM-articulated root-cause explanation generated from
+      the causal chain (the system's root_cause_expln) — the system's actual
+      causal claim, and the fair object of comparison against a narrative
+      ground truth.
+    """
     try:
         if not logs or len(logs) < 10:
-             return "Insufficient logs"
+            return {"line": "Insufficient logs", "narrative": "Insufficient logs"}
 
         # 1. Parse using actual LLM-based LogParser
-        parser = LogParser(model=CONFIG["model"])
+        parser = LogParser(model=CONFIG["model"], timeout=180)
         log_chain = parser.parse_log(logs)
-        
-        # 2. Build DAG and find root cause
+        parse_stats = {
+            "parsed_lines": log_chain.parsed_lines,
+            "total_lines": log_chain.total_lines,
+            "parse_errors": len(log_chain.parse_errors),
+        }
+
+        # 2. Build DAG and find heuristic root cause
         generator = GraphGenerator(log_chain)
         dag = generator.generate_dag()
-        
-        return dag.root_cause
-        
+
+        # 3. Articulate the causal narrative from the chain (same prompt and
+        #    model as the production summary stage).
+        context = ContextBuilder(dag).build_context()
+        client = ollama.Client(host=CONFIG["ollama_host"], timeout=120)
+        narrative = ""
+        try:
+            resp = client.generate(
+                model=CONFIG["model"],
+                prompt=summary_prompt("\n".join(context.causal_chain)),
+                format="json",
+                options={"temperature": CONFIG["temperature"], "num_ctx": 8192},
+            )
+            narrative = json.loads(resp.response).get("root_cause", "") or ""
+        except Exception as e:
+            print(f"  narrative generation failed: {e}")
+
+        return {"line": dag.root_cause or "", "narrative": narrative, "parse_stats": parse_stats}
+
     except Exception as e:
-        return f"GraphRCA failed: {str(e)}"
+        return {"line": f"GraphRCA failed: {str(e)}", "narrative": "", "parse_stats": {}}
 
 
 def run_validation(judge_name: str) -> Dict:
@@ -242,47 +274,99 @@ def run_validation(judge_name: str) -> Dict:
         print("🔥 SMOKE TEST MODE ENABLED: Reducing to 5 incidents")
         incidents = incidents[:5]
     
+    # Checkpoint/resume: each scored incident is appended to a JSONL file so
+    # a crash or restart skips completed work instead of redoing hours of it.
+    checkpoint = Path(__file__).parent / "data" / f"checkpoint_{judge_name}.jsonl"
+    checkpoint.parent.mkdir(exist_ok=True)
+    done: Dict[str, dict] = {}
+    if checkpoint.exists():
+        for raw in checkpoint.read_text().splitlines():
+            try:
+                rec = json.loads(raw)
+                done[rec["id"]] = rec
+            except json.JSONDecodeError:
+                continue
+        if done:
+            print(f"Resuming: {len(done)} incidents already scored in {checkpoint.name}")
+
     results = {"incidents": [], "by_category": {}, "total_incidents": len(incidents)}
-    all_scores = []
-    
+
     for idx, incident in enumerate(incidents):
         print(f"[{idx+1}/{len(incidents)}] {incident['id']} ({incident['category']})")
-        
-        logs = incident["logs"]
-        
-        prediction = run_graphrca(logs)
-        
-        score = judge.score(prediction, incident["root_cause"])
-        scores = [score] # Treating as 1 run for deterministic algo
-        
-        avg_score = score
-        correct = avg_score >= 0.7
-        
-        results["incidents"].append({
+
+        if incident["id"] in done:
+            results["incidents"].append(done[incident["id"]])
+            print("  → resumed from checkpoint")
+            continue
+
+        preds = run_graphrca(incident["logs"])
+        line_score = judge.score(preds["line"], incident["root_cause"])
+        narrative_score = judge.score(preds["narrative"], incident["root_cause"])
+
+        record = {
             "id": incident["id"],
-            "prediction": prediction[:100] + "...",
-            "avg_score": round(avg_score, 3),
-            "correct": correct
-        })
-        all_scores.extend(scores)
-        
-        cat = incident["category"]
+            "category": incident["category"],
+            "prediction": preds["narrative"][:160],
+            "prediction_line": preds["line"][:160],
+            # Primary metric: the narrative (the system's actual causal
+            # claim); the heuristic line rides along as an ablation.
+            "avg_score": round(narrative_score, 3) if narrative_score is not None else None,
+            "line_score": round(line_score, 3) if line_score is not None else None,
+            "correct": (narrative_score or 0) >= 0.7,
+            "correct_line": (line_score or 0) >= 0.7,
+            "parse_stats": preds.get("parse_stats", {}),
+        }
+        results["incidents"].append(record)
+        with open(checkpoint, "a") as f:
+            f.write(json.dumps(record) + "\n")
+
+        ns = "fail" if narrative_score is None else f"{narrative_score:.2f}"
+        ls = "fail" if line_score is None else f"{line_score:.2f}"
+        print(f"  → narrative: {ns} ({'✓' if record['correct'] else '✗'}) | line: {ls}")
+
+    # Summary — judge-failed incidents (score None) are excluded from
+    # accuracy denominators and reported separately.
+    scored = [i for i in results["incidents"] if i["avg_score"] is not None]
+    scored_line = [i for i in results["incidents"] if i["line_score"] is not None]
+    results["unscored_incidents"] = len(results["incidents"]) - len(scored)
+
+    for inc in scored:
+        cat = inc["category"]
         if cat not in results["by_category"]:
             results["by_category"][cat] = {"correct": 0, "total": 0}
         results["by_category"][cat]["total"] += 1
-        if correct:
+        if inc["correct"]:
             results["by_category"][cat]["correct"] += 1
-        
-        print(f"  → Score: {avg_score:.2f} ({'✓' if correct else '✗'})")
-    
-    # Summary
-    total_correct = sum(1 for i in results["incidents"] if i["correct"])
-    
-    results["overall_accuracy"] = round(total_correct / len(incidents), 4) if incidents else 0
+
+    def _metrics(rows: list, key: str) -> dict:
+        vals = [r[key] for r in rows]
+        return {
+            "mean_score": round(statistics.mean(vals), 4) if vals else 0,
+            "accuracy_at_0.5": round(sum(1 for v in vals if v >= 0.5) / len(vals), 4) if vals else 0,
+            "accuracy_at_0.7": round(sum(1 for v in vals if v >= 0.7) / len(vals), 4) if vals else 0,
+        }
+
+    results["narrative"] = _metrics(scored, "avg_score")
+    results["line"] = _metrics(scored_line, "line_score")
+    # Kept for backward compatibility with older analysis scripts.
+    results["overall_accuracy"] = results["narrative"]["accuracy_at_0.7"]
+    results["overall_accuracy_line"] = results["line"]["accuracy_at_0.7"]
+    results["config"] = {
+        "pipeline_model": CONFIG["model"],
+        "judge_model": CONFIG["judges"][judge_name]["model"],
+        "score_threshold": 0.7,
+        "dataset": "symptom-only logs v2",
+        "run_date": datetime.now().isoformat(),
+    }
     results["judge"] = judge_name
     
     print(f"\n{'='*70}")
-    print(f"RESULTS ({judge_name.upper()}): {results['overall_accuracy']*100:.1f}% accuracy")
+    print(f"RESULTS ({judge_name.upper()}) — narrative: acc@0.7 {results['narrative']['accuracy_at_0.7']*100:.1f}%, "
+          f"acc@0.5 {results['narrative']['accuracy_at_0.5']*100:.1f}%, mean {results['narrative']['mean_score']:.3f}")
+    print(f"{'':19}line:      acc@0.7 {results['line']['accuracy_at_0.7']*100:.1f}%, "
+          f"acc@0.5 {results['line']['accuracy_at_0.5']*100:.1f}%, mean {results['line']['mean_score']:.3f}")
+    if results["unscored_incidents"]:
+        print(f"  ⚠ {results['unscored_incidents']} incidents unscored (judge failures) — excluded from accuracy")
     print(f"{'='*70}\n")
     
     return results
