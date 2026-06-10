@@ -25,6 +25,8 @@ try:
     from app.database import VectorDatabaseHandler, Document
     from app.log_parser import LogParser
     from app.graph_generator import GraphGenerator
+    from app.context_builder import ContextBuilder
+    from app.prompts import summary_prompt
 except ImportError as e:
     print(f"Error importing backend modules: {e}")
     sys.exit(1)
@@ -136,10 +138,11 @@ Respond with ONLY a number between 0.0 and 1.0:"""
                 print(f"  Judge attempt {attempt+1}/3 failed: {e}")
                 time.sleep(2)
         
-        # All retries exhausted — return 0.0 and warn rather than silently return 0.5
+        # All retries exhausted — return None so the caller can EXCLUDE this
+        # condition from aggregates instead of silently counting it as wrong.
         print(f"  WARNING: all scoring attempts failed for judge '{self.judge_name}'. "
-              f"Returning 0.0 (not a mock). Check API key and connectivity.")
-        return 0.0
+              f"Marking unscored. Check API key and connectivity.")
+        return None
     
     def predict_root_cause(self, logs: str) -> str:
         """Zero-shot condition: the judge's own model does RCA directly
@@ -254,40 +257,62 @@ def load_incidents() -> List[Dict]:
     return incidents
 
 
-def run_graphrca(logs: str, rag_context: str = "") -> str:
-    """Run actual GraphRCA pipeline (LogParser + GraphGenerator), optionally with RAG context."""
+def run_pipeline(logs: str) -> dict:
+    """Run the GraphRCA pipeline ONCE per incident: parse, build the graph,
+    and articulate the causal narrative (production root_cause_expln).
+    Both the baseline and RAG conditions reuse this single pass, so the two
+    conditions differ only in retrieval — not in parsing noise."""
+    if not logs or len(logs) < 10:
+        return {"narrative": "Insufficient logs", "chain": "", "parse_stats": {}}
+
+    parser = LogParser(model=CONFIG["model"], timeout=180)
+    log_chain = parser.parse_log(logs)
+    dag = GraphGenerator(log_chain).generate_dag()
+    context = ContextBuilder(dag).build_context()
+    chain_text = "\n".join(context.causal_chain)
+
+    client = ollama.Client(host=CONFIG["ollama_host"], timeout=180)
+    narrative = ""
     try:
-        if not logs or len(logs) < 10:
-            return "Insufficient logs"
-        
-        # 1. Parse using actual LLM-based LogParser
-        parser = LogParser(model=CONFIG["model"])
-        log_chain = parser.parse_log(logs)
-        
-        # 2. Build DAG and find root cause
-        generator = GraphGenerator(log_chain)
-        dag = generator.generate_dag()
-        prediction = dag.root_cause
-        
-        # 3. If RAG context available, refine prediction with context
-        if rag_context and prediction:
-            client = ollama.Client(host=CONFIG["ollama_host"])
-            prompt = (
-                f"Using this context from a similar past incident:\n{rag_context}\n\n"
-                f"Refine this root cause analysis:\n{prediction}\n\n"
-                f"Refined Root Cause:"
-            )
-            response = client.generate(
-                model=CONFIG["model"],
-                prompt=prompt,
-                options={"temperature": CONFIG["temperature"]}
-            )
-            return response.response.strip()
-        
-        return prediction
-        
+        resp = client.generate(
+            model=CONFIG["model"],
+            prompt=summary_prompt(chain_text),
+            format="json",
+            options={"temperature": CONFIG["temperature"], "num_ctx": 8192},
+        )
+        narrative = json.loads(resp.response).get("root_cause", "") or ""
     except Exception as e:
-        return f"GraphRCA failed: {str(e)}"
+        print(f"  narrative generation failed: {e}")
+
+    return {
+        "narrative": narrative,
+        "chain": chain_text,
+        "parse_stats": {
+            "parsed_lines": log_chain.parsed_lines,
+            "total_lines": log_chain.total_lines,
+            "parse_errors": len(log_chain.parse_errors),
+        },
+    }
+
+
+def refine_with_rag(narrative: str, chain_text: str, rag_context: str) -> str:
+    """RAG condition: re-articulate the root cause with a similar past
+    incident as additional evidence, grounded in the same causal chain."""
+    client = ollama.Client(host=CONFIG["ollama_host"], timeout=180)
+    prompt = (
+        "You are analyzing a production incident.\n\n"
+        f"Observed causal chain from the logs:\n{chain_text}\n\n"
+        f"A similar past incident from the knowledge base:\n{rag_context}\n\n"
+        f"Current root cause hypothesis:\n{narrative}\n\n"
+        "Using the past incident as evidence (only where it genuinely fits the "
+        "observed symptoms), state the most likely root cause in 1-3 sentences:"
+    )
+    response = client.generate(
+        model=CONFIG["model"],
+        prompt=prompt,
+        options={"temperature": CONFIG["temperature"], "num_ctx": 8192},
+    )
+    return response.response.strip()
 
 
 def setup_vector_db(train_set: List[Dict]) -> VectorDatabaseHandler:
@@ -351,14 +376,34 @@ def run_experiment(judge: JudgeClient) -> dict:
     
     print(f"Train: {len(train_set)}, Test: {len(test_set)}")
     
+    # Checkpoint/resume: scored test cases are appended to JSONL so a crash
+    # or restart never redoes completed (expensive) work.
+    checkpoint = Path(__file__).parent / "data" / f"checkpoint_{judge.judge_name}.jsonl"
+    checkpoint.parent.mkdir(exist_ok=True)
+    done = {}
+    if checkpoint.exists():
+        for raw in checkpoint.read_text().splitlines():
+            try:
+                rec = json.loads(raw)
+                done[rec["id"]] = rec
+            except json.JSONDecodeError:
+                continue
+        if done:
+            print(f"Resuming: {len(done)} test cases already scored")
+
     results = {
         "judge": judge.judge_name,
         "tests": []
     }
-    
+
     for idx, test_case in enumerate(test_set):
         print(f"\n[{idx+1}/{len(test_set)}] {test_case['id']}")
-        
+
+        if test_case["id"] in done:
+            results["tests"].append(done[test_case["id"]])
+            print("  resumed from checkpoint")
+            continue
+
         # The postmortem contains the ground-truth root cause; feeding it to
         # the pipeline as input would leak the answer.  Skip instead.
         if not test_case["logs"].strip():
@@ -366,50 +411,81 @@ def run_experiment(judge: JudgeClient) -> dict:
             results["tests"].append({"id": test_case["id"], "error": "no logs"})
             continue
         input_text = test_case["logs"]
-        
-        try:
-            # Zero-shot: judge's own model, raw logs, no pipeline.
-            zero_shot_pred = judge.predict_root_cause(input_text)
-            zero_shot_score = judge.score(zero_shot_pred, test_case["root_cause"])
 
-            # Baseline: GraphRCA without RAG context
-            baseline_pred = run_graphrca(input_text, rag_context="")
+        try:
+            # Zero-shot: judge's own model, raw logs, no pipeline.  An empty
+            # prediction means the GENERATION call failed (infrastructure),
+            # not that the model answered badly — mark unscored, don't zero.
+            zero_shot_pred = judge.predict_root_cause(input_text)
+            zero_shot_score = judge.score(zero_shot_pred, test_case["root_cause"]) if zero_shot_pred else None
+
+            # One pipeline pass per incident; baseline and RAG share it so
+            # the conditions differ only in retrieval, not parsing noise.
+            pipe = run_pipeline(input_text)
+            baseline_pred = pipe["narrative"]
             baseline_score = judge.score(baseline_pred, test_case["root_cause"])
-            
-            # RAG: retrieve similar past incident from Vector DB
+
+            # RAG: retrieve the most similar past incident, then re-articulate.
             query = f"Incident logs: {input_text[:500]}"
             retrieved_docs = vdb.search(query=query, context="", top_k=1)
-            
-            rag_context = ""
-            if retrieved_docs:
-                rag_context = f"Similar Past Incident:\n{retrieved_docs[0].text}"
-            
-            # GraphRCA with RAG context
-            rag_pred = run_graphrca(input_text, rag_context=rag_context)
+            rag_context = f"Similar Past Incident:\n{retrieved_docs[0].text}" if retrieved_docs else ""
+            rag_pred = refine_with_rag(baseline_pred, pipe["chain"], rag_context) if rag_context else baseline_pred
             rag_score = judge.score(rag_pred, test_case["root_cause"])
-            
-            results["tests"].append({
-                "id": test_case["id"],
-                "zero_shot_score": round(zero_shot_score, 3),
-                "baseline_score": round(baseline_score, 3),
-                "rag_score": round(rag_score, 3),
-                "improvement": round(rag_score - baseline_score, 3)
-            })
 
-            print(f"  Zero: {zero_shot_score:.2f} | Base: {baseline_score:.2f} | RAG: {rag_score:.2f} | Diff: {rag_score-baseline_score:+.2f}")
-            
+            record = {
+                "id": test_case["id"],
+                "zero_shot_score": round(zero_shot_score, 3) if zero_shot_score is not None else None,
+                "baseline_score": round(baseline_score, 3) if baseline_score is not None else None,
+                "rag_score": round(rag_score, 3) if rag_score is not None else None,
+                "improvement": round(rag_score - baseline_score, 3)
+                               if rag_score is not None and baseline_score is not None else None,
+                "zero_shot_pred": zero_shot_pred or "",
+                "baseline_pred": baseline_pred or "",
+                "rag_pred": rag_pred or "",
+                "parse_stats": pipe["parse_stats"],
+            }
+            results["tests"].append(record)
+            with open(checkpoint, "a") as f:
+                f.write(json.dumps(record) + "\n")
+
+            fmt = lambda v: "fail" if v is None else f"{v:.2f}"
+            print(f"  Zero: {fmt(zero_shot_score)} | Base: {fmt(baseline_score)} | RAG: {fmt(rag_score)}")
+
         except Exception as e:
             print(f"  Failed: {e}")
             results["tests"].append({"id": test_case["id"], "error": str(e)})
-    
-    # Aggregate
-    valid = [t for t in results["tests"] if "baseline_score" in t]
-    results["zero_shot_avg"] = round(statistics.mean([t["zero_shot_score"] for t in valid if "zero_shot_score" in t]), 4) if valid else 0
-    results["baseline_avg"] = round(statistics.mean([t["baseline_score"] for t in valid]), 4) if valid else 0
-    results["rag_avg"] = round(statistics.mean([t["rag_score"] for t in valid]), 4) if valid else 0
-    results["improvement"] = round(results["rag_avg"] - results["baseline_avg"], 4)
 
-    print(f"\nRESULTS: Zero {results['zero_shot_avg']:.2f} -> Base {results['baseline_avg']:.2f} -> RAG {results['rag_avg']:.2f}")
+    # Aggregate — judge-failed conditions (None) are excluded per-condition.
+    def _metrics(key: str) -> dict:
+        vals = [t[key] for t in results["tests"] if t.get(key) is not None]
+        if not vals:
+            return {"mean_score": 0, "accuracy_at_0.5": 0, "accuracy_at_0.7": 0, "n": 0}
+        return {
+            "mean_score": round(statistics.mean(vals), 4),
+            "accuracy_at_0.5": round(sum(1 for v in vals if v >= 0.5) / len(vals), 4),
+            "accuracy_at_0.7": round(sum(1 for v in vals if v >= 0.7) / len(vals), 4),
+            "n": len(vals),
+        }
+
+    results["zero_shot"] = _metrics("zero_shot_score")
+    results["baseline"] = _metrics("baseline_score")
+    results["rag"] = _metrics("rag_score")
+    # Backward-compatible keys for enrich_with_companies.py
+    results["zero_shot_avg"] = results["zero_shot"]["mean_score"]
+    results["baseline_avg"] = results["baseline"]["mean_score"]
+    results["rag_avg"] = results["rag"]["mean_score"]
+    results["improvement"] = round(results["rag_avg"] - results["baseline_avg"], 4)
+    results["config"] = {
+        "pipeline_model": CONFIG["model"],
+        "judge_model": CONFIG["judges"][judge.judge_name]["model"],
+        "train_ratio": CONFIG["train_ratio"],
+        "random_seed": CONFIG["random_seed"],
+        "dataset": "symptom-only logs v2",
+        "run_date": datetime.now().isoformat(),
+    }
+
+    print(f"\nRESULTS mean: Zero {results['zero_shot_avg']:.2f} -> Base {results['baseline_avg']:.2f} -> RAG {results['rag_avg']:.2f}")
+    print(f"acc@0.7:      Zero {results['zero_shot']['accuracy_at_0.7']:.0%} -> Base {results['baseline']['accuracy_at_0.7']:.0%} -> RAG {results['rag']['accuracy_at_0.7']:.0%}")
     
     # Cleanup
     if EXP_CHROMA_DIR.exists():
