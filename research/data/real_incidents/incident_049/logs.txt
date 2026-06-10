@@ -1,14 +1,17 @@
-2022-07-19 08:00:00 [INFO] CoolingSystem1: Online and ready for operation
-2022-07-19 08:30:00 [INFO] CoolingSystem2: Online and ready for operation
-2022-07-19 09:15:00 [WARNING] PowerSupply3: Temperature warning detected at 85°C
-2022-07-19 10:00:00 [INFO] CoolingSystem1: Monitoring temperature at 80°C
-2022-07-19 11:30:00 [ERROR] CoolingSystem2: Failure reported due to high temperature
-2022-07-19 12:15:00 [CRITICAL] PowerSupply4: Temperature warning detected at 90°C
-2022-07-19 13:45:00 [WARNING] ServerA01: High CPU usage detected (95%)
-2022-07-19 14:10:00 [ERROR] CoolingSystem3: Failure reported due to high temperature
-2022-07-19 15:30:00 [CRITICAL] ServerB02: High temperature warning, shutting down server for cooling
-2022-07-19 16:00:00 [CRITICAL] ServerC03: High temperature warning, shutting down server for cooling
-2022-07-19 17:45:00 [CRITICAL] CoolingSystem4: Failure reported due to high temperature
-2022-07-19 18:15:00 [ERROR] PowerGrid1: Loss of power detected in data center
-2022-07-19 19:00:00 [CRITICAL] DataCenter01: Shutting down all servers due to cooling system failure
-2022-07-19 20:30:00 [INFO] ITSupport: Incident reported, sending team to investigate
+2022-07-19T06:33:00Z [INFO] server-manager: Server temperature exceeded threshold trace_id=req-03738f
+2022-07-19T06:34:05Z [WARN] load-balancer: High queue depth detected, requests delayed trace_id=req-7cc798
+2022-07-19T06:35:10Z [ERROR] storage-node: Timeout on read operation trace_id=req-03738f
+2022-07-19T06:36:15Z [CRITICAL] database-service: Connection refused, retrying trace_id=req-378b31
+2022-07-19T06:37:20Z [WARN] server-manager: Server performance degradation detected trace_id=req-7cc798
+2022-07-19T06:38:25Z [ERROR] api-gateway: HTTP 504 Gateway Timeout trace_id=req-52f1a7
+2022-07-19T06:39:30Z [CRITICAL] database-service: Failed to write transaction, retry limit exceeded trace_id=req-378b31
+2022-07-19T06:40:35Z [ERROR] storage-node: Disk I/O error, attempting recovery trace_id=req-52f1a7
+2022-07-19T06:41:40Z [INFO] server-manager: Server offline detected, initiating failover trace_id=req-7cc798
+2022-07-19T06:42:45Z [WARN] load-balancer: Load distribution imbalance trace_id=req-03738f
+2022-07-19T06:43:50Z [ERROR] api-gateway: Service unresponsive, retrying request trace_id=req-378b31
+2022-07-19T06:44:55Z [CRITICAL] database-service: Data corruption detected during recovery trace_id=req-52f1a7
+2022-07-19T06:46:00Z [ERROR] storage-node: Disk failure, marking as unavailable trace_id=req-7cc798
+2022-07-19T06:47:05Z [INFO] server-manager: Failover complete, new servers online trace_id=req-03738f
+2022-07-19T06:48:10Z [WARN] load-balancer: High latency in request processing trace_id=req-378b31
+2022-07-19T06:49:15Z [ERROR] api-gateway: HTTP 503 Service Unavailable trace_id=req-52f1a7
+2022-07-19T06:50:20Z [CRITICAL] database-service: Failed to connect to primary server, switching to backup trace_id=req-7cc798

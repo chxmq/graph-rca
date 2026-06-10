@@ -1,15 +1,17 @@
-2023-12-31 23:00:00 [INFO] elasticsearch-service: Started with 100% health check passing
-2023-12-31 23:15:00 [WARNING] elastic-cloud-api: 10 failed connections to AWS us-east-1 region in the last minute
-2023-12-31 23:20:00 [INFO] elastic-cloud-api: Received notification of potential issue from monitoring system
-2023-12-31 23:25:00 [ERROR] elasticsearch-service: Error authenticating with AWS, retrying after 5 seconds
-2023-12-31 23:30:00 [WARNING] elasticsearch-service: Error resolving cluster IP address for us-east-1 region
-2023-12-31 23:35:00 [INFO] elastic-cloud-api: Deployments in us-east-1 region showing signs of degradation, investigating further
-2023-12-31 23:40:00 [CRITICAL] elasticsearch-service: Error connecting to AWS regions due to network unavailability
-2023-12-31 23:45:00 [INFO] elastic-cloud-api: Investigating potential root cause in AWS us-east-1 region
-2023-12-31 23:50:00 [WARNING] elastic-cloud-api: Further deployments in affected region showing increased latency and timeouts
-2023-12-31 23:55:00 [ERROR] elasticsearch-service: Degraded cluster connections detected, alerting support team
-2023-01-01 00:00:00 [INFO] support-team: Received report of degraded access to clusters in AWS us-east-1 region
-2023-01-01 00:05:00 [CRITICAL] elastic-cloud-api: Affected customers experiencing complete cluster unavailability, escalating incident
-2023-01-01 00:10:00 [INFO] support-team: Root cause investigation began, collaboration with AWS and Elastic teams ongoing
-2023-01-01 00:15:00 [WARNING] rootcause-investigation: Potential misconfiguration in AWS regions identified as potential cause
-2023-01-01 00:20:00 [ERROR] rootcause-investigation: Verification of root cause still pending, awaiting confirmation from AWS support
+2023-10-15T14:30:00Z [WARN]  api-gateway: Request timeout for /v1/nodes trace_id=req-05b2c0
+2023-10-15T14:30:15Z [ERROR] node-manager: Health check failed for node-007 trace_id=req-d17ff4
+2023-10-15T14:31:00Z [WARN]  api-gateway: Increased request queue depth observed trace_id=req-05b2c0
+2023-10-15T14:31:30Z [ERROR] node-manager: Node-007 failed to respond within expected time frame trace_id=req-d17ff4
+2023-10-15T14:32:00Z [CRITICAL] api-gateway: HTTP 503 Service Unavailable for /v1/nodes trace_id=req-05b2c0
+2023-10-15T14:32:45Z [ERROR] node-manager: Health check failed for node-008 trace_id=req-6b8484
+2023-10-15T14:33:00Z [WARN]  api-gateway: Request timeout for /v1/nodes trace_id=req-c8cafe
+2023-10-15T14:33:15Z [ERROR] node-manager: Node-008 failed to respond within expected time frame trace_id=req-6b8484
+2023-10-15T14:33:45Z [CRITICAL] api-gateway: HTTP 503 Service Unavailable for /v1/nodes trace_id=req-c8cafe
+2023-10-15T14:34:00Z [WARN]  node-manager: Latency spike detected in node responses trace_id=req-143570
+2023-10-15T14:35:00Z [ERROR] api-gateway: Request timeout for /v1/nodes trace_id=req-21c72d
+2023-10-15T14:35:30Z [CRITICAL] node-manager: Node-009 failed to respond within expected time frame trace_id=req-dbe031
+2023-10-15T14:36:00Z [ERROR] api-gateway: HTTP 504 Gateway Timeout for /v1/nodes trace_id=req-21c72d
+2023-10-15T14:37:00Z [WARN]  node-manager: Latency spike detected in node responses continues trace_id=req-143570
+2023-10-15T14:38:00Z [ERROR] api-gateway: Request timeout for /v1/nodes trace_id=req-f8f726
+2023-10-15T14:39:00Z [CRITICAL] node-manager: Node-010 failed to respond within expected time frame trace_id=req-7f8a60
+2023-10-15T14:40:00Z [ERROR] api-gateway: HTTP 504 Gateway Timeout for /v1/nodes trace_id=req-f8f726

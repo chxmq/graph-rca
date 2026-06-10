@@ -1,16 +1,19 @@
-2023-12-15 14:45:30 [INFO] steam-desktop-client: Service started, version 1.0.1462
-2023-12-15 14:45:50 [INFO] steam-desktop-client: Loaded user configuration from /home/user/.steam/config
-2023-12-15 14:46:10 [WARNING] steam-desktop-client: Warning: missing dependency 'libvdpau.so' detected
-2023-12-15 14:46:20 [INFO] steam-desktop-client: Attempting to resolve dependency...
-2023-12-15 14:46:30 [ERROR] steam-desktop-client: Failed to resolve dependency, skipping update
-2023-12-15 14:47:00 [CRITICAL] steam-desktop-client: Deleted all local files and directories due to unknown error
-2023-12-15 14:47:05 [INFO] systemd: Steam desktop client terminated with signal 15
-2023-12-15 14:47:10 [WARNING] steam-desktop-client: Warning: failed to initialize Steam services
-2023-12-15 14:47:20 [ERROR] steam-desktop-client: Error loading user configuration due to missing directories
-2023-12-15 14:47:30 [INFO] systemd: Attempting to recover from service termination
-2023-12-15 14:48:00 [WARNING] steam-desktop-client: Warning: unable to restore user configuration
-2023-12-15 14:48:10 [CRITICAL] steam-desktop-client: Steam desktop client terminated unexpectedly, please reinstall
-2023-12-15 14:50:00 [INFO] steam-desktop-client: Receiving error report from user
-2023-12-15 14:50:05 [WARNING] steam-desktop-client: Warning: error report indicates missing dependencies
-2023-12-15 14:50:10 [ERROR] steam-desktop-client: Failed to resolve dependency, skipping update
-2023-12-15 14:51:00 [INFO] systemd: Steam desktop client terminated with signal 15
+2023-10-15T14:05:00Z [INFO] storage-service: Failed to read file metadata path=/unknown trace_id=req-38310a  
+2023-10-15T14:05:01Z [WARN] api-gateway: Request failed with 404 for /v1/data/unknown trace_id=req-38310a  
+2023-10-15T14:06:00Z [ERROR] storage-service: Failed to write data path=/unknown error=ENOENT trace_id=req-68ebc1  
+2023-10-15T14:07:00Z [CRITICAL] user-dashboard: Unhandled exception while fetching user data user_id=12345 trace_id=req-d0895d  
+2023-10-15T14:08:00Z [ERROR] content-delivery: Failed to download resource url=https://example.com/resource error=404 trace_id=req-d0895d  
+2023-10-15T14:09:00Z [WARN] database-service: Slow query detected query_time=10s query=SELECT * FROM unknown_table trace_id=req-31b2c8  
+2023-10-15T14:10:00Z [ERROR] session-manager: Session expired for user_id=67890 error=timeout trace_id=req-31b2c8  
+2023-10-15T14:11:00Z [CRITICAL] auth-service: Authentication failure for user_id=67890 reason=invalid_credentials trace_id=req-31b2c8  
+2023-10-15T14:12:00Z [ERROR] notification-service: Failed to send email recipient=user@example.com error=connection_refused trace_id=req-57486f  
+2023-10-15T14:13:00Z [WARN] storage-service: Disk usage exceeded 90% threshold current_usage=92% trace_id=req-f0e866  
+2023-10-15T14:14:00Z [ERROR] api-gateway: Request failed with 500 for /v1/user/data user_id=12345 error=internal_server_error trace_id=req-f0e866  
+2023-10-15T14:15:00Z [CRITICAL] user-dashboard: Failed to load dashboard content user_id=12345 error=not_found trace_id=req-db7e5d  
+2023-10-15T14:16:00Z [ERROR] storage-service: File not found path=/unknown_file trace_id=req-db7e5d  
+2023-10-15T14:17:00Z [WARN] database-service: Query failed query=SELECT * FROM unknown_table error=table_not_found trace_id=req-38efc1  
+2023-10-15T14:18:00Z [ERROR] session-manager: Failed to renew session user_id=67890 reason=session_expired trace_id=req-38efc1  
+2023-10-15T14:19:00Z [CRITICAL] content-delivery: Resource not found url=https://example.com/resource error=404 trace_id=req-d7a82a  
+2023-10-15T14:20:00Z [ERROR] api-gateway: Request failed with 500 for /v1/user/data user_id=67890 error=internal_server_error trace_id=req-9d11cf  
+2023-10-15T14:21:00Z [WARN] storage-service: Failed to write data path=/unknown_file error=ENOENT trace_id=req-c1b0df  
+2023-10-15T14:22:00Z [CRITICAL] user-dashboard: Dashboard rendering failed for user_id=67890 reason=data_not_found trace_id=req-724fe2

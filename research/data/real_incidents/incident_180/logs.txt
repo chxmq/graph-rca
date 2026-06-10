@@ -1,14 +1,20 @@
-2023-12-15 14:30:00 [INFO] tarsnap-s3-scanner: Starting batch job to scan for unused blocks in Amazon S3
-2023-12-15 14:31:00 [INFO] tarsnap-s3-scanner: Retrieved list of unused blocks from Amazon S3
-2023-12-15 14:32:00 [WARNING] tarsnap-s3-scanner: Failed to free block XXXX due to retry limit exceeded
-2023-12-15 14:33:00 [INFO] tarsnap-s3-scanner: Retrying failed block XXXX after 10 minutes
-2023-12-15 14:34:00 [WARNING] tarsnap-s3-scanner: Failed to free block XXXX due to retry limit exceeded
-2023-12-15 14:35:00 [INFO] tarsnap-s3-scanner: Retrying failed block XXXX after 20 minutes
-2023-12-15 14:36:00 [ERROR] tarsnap-s3-scanner: Failed to free all retries for block XXXX, giving up
-2023-12-15 14:37:00 [INFO] tarsnap-s3-scanner: Freeing remaining blocks in Amazon S3
-2023-12-15 14:38:00 [WARNING] tarsnap-s3-scanner: Local disk usage exceeded 90%, filesystem warning issued
-2023-12-15 14:40:00 [CRITICAL] tarsnap-s3-scanner: Filesystem full, unable to write new log entries
-2023-12-15 14:41:00 [ERROR] tarsnap-service: Unable to write log entries due to filesystem failure
-2023-12-15 14:42:00 [CRITICAL] tarsnap-service: Service stopped due to inability to write log entries
-2023-12-15 14:45:00 [INFO] user1: Manually removed log file from local disk
-2023-12-15 14:46:00 [INFO] tarsnap-s3-scanner: Successfully resumed operation after filesystem reset
+2023-10-05T14:30:00Z [WARN] s3-cleanup-service: High latency detected in object deletion requests latency=500ms trace_id=req-275f54  
+2023-10-05T14:31:00Z [ERROR] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-275f54  
+2023-10-05T14:31:30Z [CRITICAL] s3-cleanup-service: Failed to delete object id=obj-123 status_code=503 trace_id=req-275f54  
+2023-10-05T14:32:00Z [ERROR] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-95b8ec  
+2023-10-05T14:32:15Z [CRITICAL] s3-cleanup-service: Failed to delete object id=obj-456 status_code=503 trace_id=req-95b8ec  
+2023-10-05T14:32:45Z [ERROR] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-41bf65  
+2023-10-05T14:33:00Z [CRITICAL] s3-cleanup-service: Failed to delete object id=obj-789 status_code=503 trace_id=req-41bf65  
+2023-10-05T14:34:00Z [WARN] filesystem-monitor: Disk space usage exceeded 90% threshold usage=92% trace_id=req-c6e9e8  
+2023-10-05T14:35:00Z [ERROR] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-8f7065  
+2023-10-05T14:35:15Z [CRITICAL] s3-cleanup-service: Failed to delete object id=obj-101 status_code=503 trace_id=req-8f7065  
+2023-10-05T14:36:00Z [ERROR] filesystem-monitor: Disk write failed error_code=EIO trace_id=req-c6e9e8  
+2023-10-05T14:37:00Z [CRITICAL] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-94b5a5  
+2023-10-05T14:38:00Z [ERROR] s3-cleanup-service: Failed to delete object id=obj-202 status_code=503 trace_id=req-94b5a5  
+2023-10-05T14:39:00Z [CRITICAL] filesystem-monitor: Disk write failed error_code=EIO trace_id=req-c6e9e8  
+2023-10-05T14:40:00Z [ERROR] tarsnap-service: Service request failed error_code=ENOSPC trace_id=req-a0796b  
+2023-10-05T14:41:00Z [CRITICAL] tarsnap-service: Health check failed status_code=500 trace_id=req-a0796b  
+2023-10-05T14:42:00Z [ERROR] tarsnap-service: Service request failed error_code=ENOSPC trace_id=req-6e9849  
+2023-10-05T14:43:00Z [CRITICAL] tarsnap-service: Health check failed status_code=500 trace_id=req-6e9849  
+2023-10-05T14:44:00Z [ERROR] filesystem-monitor: Disk write failed error_code=EIO trace_id=req-c6e9e8  
+2023-10-05T14:45:00Z [CRITICAL] tarsnap-service: Service request failed error_code=ENOSPC trace_id=req-58aed7

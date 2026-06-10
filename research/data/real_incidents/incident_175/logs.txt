@@ -1,10 +1,20 @@
-2023-12-15 09:45:00 [INFO] careers-service: Service startup initiated
-2023-12-15 09:45:02 [INFO] developer-story-service: Service startup initiated
-2023-12-15 09:45:03 [WARNING] migrations-controller: Migration of Careers 2.0 to Developer Story detected
-2023-12-15 09:45:05 [INFO] migration-executor: Starting porting process for Careers 2.0
-2023-12-15 09:46:00 [INFO] database-service: Database connection established
-2023-12-15 09:46:10 [ERROR] developer-story-service: Exception occurred during porting (User info leak)
-2023-12-15 09:46:15 [WARNING] migrations-controller: Error detected in ported Careers 2.0 code
-2023-12-15 09:46:20 [INFO] error-handler: Handling exception for developer-story-service
-2023-12-15 09:46:25 [CRITICAL] careers-service: User info leak reported, alerting team
-2023-12-15 09:46:30 [ERROR] security-team: Security incident notified and escalation initiated
+2023-10-15T14:22:10Z [INFO] user-service: User profile update request received trace_id=req-d84bc4  
+2023-10-15T14:22:11Z [WARN] developer-story-service: Failed to fetch user details, retrying... attempt=1 trace_id=req-d84bc4  
+2023-10-15T14:22:13Z [ERROR] developer-story-service: User profile update failed after 3 retries error_code=E_TIMEOUT trace_id=req-d84bc4  
+2023-10-15T14:22:14Z [CRITICAL] api-gateway: Internal server error when updating user profile status_code=500 trace_id=req-d84bc4  
+2023-10-15T14:23:05Z [INFO] user-service: User profile update request received trace_id=req-7201af  
+2023-10-15T14:23:06Z [WARN] developer-story-service: Failed to fetch user details, retrying... attempt=1 trace_id=req-7201af  
+2023-10-15T14:23:08Z [ERROR] developer-story-service: User profile update failed after 3 retries error_code=E_TIMEOUT trace_id=req-7201af  
+2023-10-15T14:23:09Z [CRITICAL] api-gateway: Internal server error when updating user profile status_code=500 trace_id=req-7201af  
+2023-10-15T14:24:00Z [INFO] user-service: User profile update request received trace_id=req-9e4f7f  
+2023-10-15T14:24:01Z [WARN] developer-story-service: Failed to fetch user details, retrying... attempt=1 trace_id=req-9e4f7f  
+2023-10-15T14:24:03Z [ERROR] developer-story-service: User profile update failed after 3 retries error_code=E_TIMEOUT trace_id=req-9e4f7f  
+2023-10-15T14:24:04Z [CRITICAL] api-gateway: Internal server error when updating user profile status_code=500 trace_id=req-9e4f7f  
+2023-10-15T14:25:00Z [INFO] health-checks: developer-story-service is unresponsive, marking as down trace_id=req-29ac68  
+2023-10-15T14:26:00Z [WARN] user-service: Multiple failed attempts to update user profiles, queue depth increasing queue_depth=5 trace_id=req-85ec9b  
+2023-10-15T14:27:00Z [ERROR] developer-story-service: Latency spike detected in profile updates latency_ms=1200 trace_id=req-85ec9b  
+2023-10-15T14:28:00Z [CRITICAL] monitoring-alerts: Alert triggered for high error rates on api-gateway status_code=5xx rate=90% trace_id=req-b2411e  
+2023-10-15T14:29:00Z [INFO] user-service: User profile update request received trace_id=req-e2f55d  
+2023-10-15T14:29:01Z [WARN] developer-story-service: Failed to fetch user details, retrying... attempt=1 trace_id=req-e2f55d  
+2023-10-15T14:29:03Z [ERROR] developer-story-service: User profile update failed after 3 retries error_code=E_TIMEOUT trace_id=req-e2f55d  
+2023-10-15T14:29:04Z [CRITICAL] api-gateway: Internal server error when updating user profile status_code=500 trace_id=req-e2f55d

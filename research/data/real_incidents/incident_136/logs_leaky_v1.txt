@@ -1,0 +1,13 @@
+2022-07-15 23:45:00 [INFO] grid-svc: Normal power demand detected for northern grid
+2022-07-15 23:50:00 [WARNING] islanding-mechanism: Islanding mechanism not enabled on western grid
+2022-07-15 23:55:00 [INFO] grid-svc: Power flow from western to eastern grid initiated
+2022-07-15 23:58:00 [ERROR] under-frequency-protection: Under-frequency protection triggered on northern grid
+2022-07-15 23:59:00 [CRITICAL] grid-svc: Circuit breaker tripped due to under-frequency protection, northern grid collapsing
+2022-07-16 08:45:00 [INFO] restoration-team: Grid reactivation initiated
+2022-07-16 09:30:00 [WARNING] under-frequency-protection: Under-frequency protection triggered on eastern grid
+2022-07-16 09:32:00 [ERROR] circuit-breaker: Circuit breaker tripped due to under-frequency protection, eastern grid collapsing
+2022-07-16 10:15:00 [INFO] restoration-team: Grid reactivation initiated
+2022-07-16 12:00:00 [WARNING] power-demand: Skewed electricity supply-demand profile detected for northern grid
+2022-07-16 12:05:00 [CRITICAL] islanding-mechanism: Islanding mechanism not enabled, grid failing again
+2022-07-16 13:45:00 [INFO] restoration-team: Grid reactivation initiated
+2022-07-16 17:30:00 [INFO] grid-svc: Grid restored to normal operation

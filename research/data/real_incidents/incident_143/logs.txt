@@ -1,12 +1,17 @@
-2023-12-15 14:30:00 [INFO] rule-manager: Initializing flag targeting configuration
-2023-12-15 14:30:05 [WARNING] web-interface: Request received for /flags
-2023-12-15 14:30:10 [DEBUG] service-c: Retrieving flag data from database
-2023-12-15 14:30:15 [INFO] rule-manager: Evaluating attribute selector for flag
-2023-12-15 14:30:20 [WARNING] web-interface: Attribute selector validation failed
-2023-12-15 14:30:25 [ERROR] service-d: Flag targeting request to web interface failed
-2023-12-15 14:30:30 [CRITICAL] web-interface: Web interface crash detected, error message: "Invalid attribute selector"
-2023-12-15 14:30:35 [DEBUG] rule-manager: Error in rule manager for flag targeting configuration
-2023-12-15 14:30:40 [INFO] rule-manager: Re-initializing flag targeting configuration
-2023-12-15 14:30:45 [WARNING] service-e: Request handling failed after reinitialization
-2023-12-15 14:30:50 [ERROR] web-interface: Request received for /flags, error message: "Invalid attribute selector"
-2023-12-15 14:31:00 [CRITICAL] service-f: Rule manager is not responding
+2023-10-15T14:23:15Z [ERROR] web-ui-service: HTTP 500 error encountered while processing request trace_id=req-7d9207
+2023-10-15T14:23:17Z [WARN] api-gateway: Timeout on POST request to feature-management-service, retrying... trace_id=req-7d9207
+2023-10-15T14:23:20Z [ERROR] web-ui-service: Failed to load data from API, status code 504 trace_id=req-d8159b
+2023-10-15T14:23:22Z [WARN] feature-management-service: High queue depth detected, current size: 123 trace_id=req-7d9207
+2023-10-15T14:23:25Z [CRITICAL] web-ui-service: Unhandled exception in application, stack trace not captured trace_id=req-d8159b
+2023-10-15T14:23:30Z [ERROR] api-gateway: Second retry failed for POST request to feature-management-service, status code 500 trace_id=req-7d9207
+2023-10-15T14:23:32Z [WARN] web-ui-service: Slow response from backend service, latency: 8.7s trace_id=req-12ed46
+2023-10-15T14:23:35Z [ERROR] feature-management-service: Internal server error during request processing trace_id=req-7d9207
+2023-10-15T14:23:37Z [WARN] web-ui-service: Health check failed for feature-management-service, response status code 503 trace_id=req-9c10f1
+2023-10-15T14:23:40Z [ERROR] api-gateway: All retries exhausted for POST request to feature-management-service, marking as failed trace_id=req-7d9207
+2023-10-15T14:23:42Z [CRITICAL] web-ui-service: Application error, user session terminated unexpectedly trace_id=req-d8159b
+2023-10-15T14:23:45Z [WARN] feature-management-service: Queue depth continues to rise, current size: 160 trace_id=req-5745bb
+2023-10-15T14:23:47Z [ERROR] web-ui-service: Failed to fetch data from API after multiple retries, error code 500 trace_id=req-12ed46
+2023-10-15T14:23:50Z [WARN] api-gateway: Rate limiting triggered for client IP due to excessive requests, status code 429 trace_id=req-b9a968
+2023-10-15T14:23:52Z [ERROR] feature-management-service: Internal server error during request processing trace_id=req-d8159b
+2023-10-15T14:23:55Z [CRITICAL] web-ui-service: Application error, user session terminated unexpectedly trace_id=req-12ed46
+2023-10-15T14:23:57Z [WARN] feature-management-service: Queue depth continues to rise, current size: 185 trace_id=req-5745bb

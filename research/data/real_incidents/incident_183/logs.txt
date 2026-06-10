@@ -1,13 +1,16 @@
-2024-01-02 14:30:00 [INFO] service-c: Checking GitHub organization access for engineers
-2024-01-02 14:31:00 [WARNING] azure-ad-security-group: Security group removed during task execution
-2024-01-02 14:32:00 [ERROR] service-d: Error authenticating with GitHub API
-2024-01-02 14:33:00 [CRITICAL] trivago-service-e: All engineers lost access to central source code management platform (GitHub organization)
-2024-01-02 14:34:00 [DEBUG] github-api-error-handler: Failed to authenticate user 'trivago-engineer-123'
-2024-01-02 14:35:00 [INFO] trivago-monitoring-system: Incident triggered for GitHub organization access issue
-2024-01-02 14:36:00 [WARNING] azure-ad-security-group: Investigation initiated on removed security group
-2024-01-02 14:37:00 [ERROR] trivago-service-f: Error syncing code changes with remote repository
-2024-01-02 14:38:00 [CRITICAL] trivago-service-e: Code access denied for all engineers
-2024-01-02 14:40:00 [DEBUG] github-error-debugger: Detailed error message available at /github/error/12345
-2024-01-02 14:41:00 [INFO] azure-ad-security-group: Security group recreated with updated permissions
-2024-01-02 14:42:00 [WARNING] trivago-monitoring-system: Incident status updated to resolved for GitHub organization access issue
-2024-01-02 14:43:00 [INFO] trivago-service-g: Code access restored for engineers
+2023-10-10T14:05:00Z [ERROR] deployment-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-c2fb9a  
+2023-10-10T14:06:15Z [WARN] pipeline-service: Retry attempt 1 for triggering CI/CD job failed with error code 403 Forbidden trace_id=req-238c78  
+2023-10-10T14:07:30Z [ERROR] deployment-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-c2fb9a  
+2023-10-10T14:08:45Z [WARN] pipeline-service: Retry attempt 2 for triggering CI/CD job failed with error code 403 Forbidden trace_id=req-238c78  
+2023-10-10T14:10:00Z [CRITICAL] deployment-service: All retry attempts exhausted, unable to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-c2fb9a  
+2023-10-10T14:11:15Z [ERROR] pipeline-service: Failed to trigger CI/CD job due to repeated failures with error code 403 Forbidden trace_id=req-238c78  
+2023-10-10T14:12:30Z [WARN] deployment-service: Health check failed for version-control-system connectivity issue HTTP 500 Internal Server Error trace_id=req-698280  
+2023-10-10T14:13:45Z [ERROR] pipeline-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-083fec  
+2023-10-10T14:15:00Z [WARN] deployment-service: Health check failed for version-control-system connectivity issue HTTP 500 Internal Server Error trace_id=req-698280  
+2023-10-10T14:16:15Z [CRITICAL] pipeline-service: All retry attempts exhausted, unable to trigger CI/CD job due to repeated failures with error code 403 Forbidden trace_id=req-083fec  
+2023-10-10T14:17:30Z [ERROR] deployment-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-698280  
+2023-10-10T14:18:45Z [WARN] pipeline-service: Retry attempt 1 for triggering CI/CD job failed with error code 403 Forbidden trace_id=req-46cc13  
+2023-10-10T14:20:00Z [ERROR] deployment-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-698280  
+2023-10-10T14:21:15Z [WARN] pipeline-service: Retry attempt 2 for triggering CI/CD job failed with error code 403 Forbidden trace_id=req-46cc13  
+2023-10-10T14:22:30Z [CRITICAL] deployment-service: All retry attempts exhausted, unable to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-698280  
+2023-10-10T14:23:45Z [ERROR] pipeline-service: Failed to trigger CI/CD job due to repeated failures with error code 403 Forbidden trace_id=req-46cc13

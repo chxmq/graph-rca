@@ -1,13 +1,20 @@
-2023-12-15 14:30:00 [INFO] s3-request-processing-fleet: Service initialized, preparing for incoming requests.
-2023-12-15 14:30:10 [WARNING] distributed-server-state-function: Received corrupted message from service-a, skipping data.
-2023-12-15 14:30:20 [INFO] s3-request-processing-fleet: Processing rate increased to accommodate skipped data from service-a.
-2023-12-15 14:31:00 [CRITICAL] distributed-server-state-function: Message corruption exceeded threshold, overwhelm of resources detected on S3 request processing fleet.
-2023-12-15 14:31:05 [ERROR] s3-request-processing-fleet: Error rate spiked to 95%, unable to maintain performance.
-2023-12-15 14:31:10 [WARNING] distributed-server-state-function: Attempting to compensate for message corruption, but may exacerbate problem.
-2023-12-15 14:32:00 [INFO] s3-request-processing-fleet: Service shutdown initiated due to catastrophic failure of S3 request processing fleet.
-2023-12-15 14:32:05 [ERROR] distributed-server-state-function: Permanent failure, unable to recover from message corruption event.
-2023-12-15 14:32:10 [CRITICAL] s3-request-processing-fleet: Request processing fleet is down, all services impacted.
-2023-12-15 14:33:00 [INFO] incident-response-team: Alert sent to management and support teams regarding S3 request processing fleet failure.
-2023-12-15 14:33:05 [WARNING] distributed-server-state-function: Manual intervention required to resolve message corruption issue.
-2023-12-15 14:34:00 [ERROR] distributed-server-state-function: Attempting manual reset, but may take significant time to resolve.
-2023-12-15 14:35:00 [INFO] s3-request-processing-fleet: Service restarted with patched configuration to prevent similar issues in the future.
+2023-10-15T14:20:00Z [WARN] s3-storage-service: High queue depth detected in region us-east-1 queue_depth=1200 trace_id=req-a539a5  
+2023-10-15T14:21:15Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-008d68  
+2023-10-15T14:21:30Z [CRITICAL] s3-storage-service: Failed to process batch of items in us-east-1 error_code=EINTERNAL trace_id=req-a539a5  
+2023-10-15T14:22:45Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 503 retry_count=2 trace_id=req-b8dd48  
+2023-10-15T14:23:00Z [WARN] s3-storage-service: Latency increased in region us-east-1 latency_ms=8000 trace_id=req-008d68  
+2023-10-15T14:24:15Z [ERROR] s3-storage-service: Error during batch processing error_code=EINTERNAL retry_count=1 trace_id=req-a539a5  
+2023-10-15T14:25:30Z [CRITICAL] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-203bd1  
+2023-10-15T14:26:45Z [ERROR] s3-storage-service: Batch processing failure in us-east-1 error_code=EINTERNAL retry_count=2 trace_id=req-008d68  
+2023-10-15T14:27:00Z [WARN] s3-storage-service: High queue depth detected in region us-west-2 queue_depth=950 trace_id=req-53f0a7  
+2023-10-15T14:28:15Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 503 retry_count=3 trace_id=req-b8dd48  
+2023-10-15T14:29:30Z [CRITICAL] s3-storage-service: Failed to process batch of items in us-west-2 error_code=EINTERNAL trace_id=req-53f0a7  
+2023-10-15T14:30:45Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-203bd1  
+2023-10-15T14:32:00Z [WARN] s3-storage-service: Latency increased in region us-west-2 latency_ms=7800 trace_id=req-53f0a7  
+2023-10-15T14:33:15Z [ERROR] s3-storage-service: Error during batch processing error_code=EINTERNAL retry_count=3 trace_id=req-a539a5  
+2023-10-15T14:34:30Z [CRITICAL] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-902a22  
+2023-10-15T14:35:45Z [ERROR] s3-storage-service: Batch processing failure in us-west-2 error_code=EINTERNAL retry_count=4 trace_id=req-53f0a7  
+2023-10-15T14:37:00Z [WARN] s3-storage-service: High queue depth detected in region eu-central-1 queue_depth=1000 trace_id=req-e61c9c  
+2023-10-15T14:38:15Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 503 retry_count=4 trace_id=req-902a22  
+2023-10-15T14:39:30Z [CRITICAL] s3-storage-service: Failed to process batch of items in eu-central-1 error_code=EINTERNAL trace_id=req-e61c9c  
+2023-10-15T14:40:45Z [ERROR] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-203bd1

@@ -1,13 +1,16 @@
-2022-02-28 23:59:58 [INFO] azure-certs: Generating new certificates for all services
-2022-02-29 00:00:00 [INFO] azure-certs: Certificate generation completed successfully
-2022-02-29 00:01:00 [WARNING] service-a: Invalid certificate expiration date detected
-2022-02-29 00:01:05 [INFO] engineering: Investigating issue with service-A certificates
-2022-02-29 00:03:00 [ERROR] azure-certs: Error generating certificate for service-B due to invalid expiration date
-2022-02-29 00:04:00 [WARNING] service-b: Unable to establish secure connection with Azure services
-2022-02-29 01:00:00 [INFO] engineering: Alerted on critical outage in Azure services
-2022-02-29 01:05:00 [CRITICAL] azure-portal: Global Azure services unavailable due to certificate rejection
-2022-02-29 01:10:00 [WARNING] azure-storage: Error authenticating users due to invalid certificates
-2022-02-29 01:20:00 [INFO] engineering: Restoring services across regions, expected completion by end of day
-2022-02-29 02:30:00 [INFO] azure-certs: Certificate rotation completed successfully in region-A
-2022-02-29 03:15:00 [WARNING] azure-database: Resumed service, but with reduced functionality
-2022-02-29 04:45:00 [INFO] engineering: All regions restored to full functionality, outage duration approximately 24 hours
+2012-02-29T00:00:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-ce34eb
+2012-02-29T00:01:00Z [WARN] load-balancer: Increased request timeouts detected, retry attempts are rising trace_id=req-a4041b
+2012-02-29T00:02:30Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-d3334a
+2012-02-29T00:03:00Z [CRITICAL] api-gateway: Service is experiencing high error rates, unable to route requests properly trace_id=req-7fb279
+2012-02-29T00:05:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-ce34eb
+2012-02-29T00:07:00Z [WARN] storage-account: Connection retries have exceeded the threshold, marking service as degraded trace_id=req-a9232b
+2012-02-29T00:10:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-b19a9b
+2012-02-29T00:11:30Z [CRITICAL] api-gateway: Service is experiencing high error rates, unable to route requests properly trace_id=req-7fb279
+2012-02-29T00:13:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-d3334a
+2012-02-29T00:15:00Z [WARN] load-balancer: Increased request timeouts detected, retry attempts are rising trace_id=req-a4041b
+2012-02-29T00:18:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-75eaa9
+2012-02-29T00:20:00Z [CRITICAL] api-gateway: Service is experiencing high error rates, unable to route requests properly trace_id=req-7fb279
+2012-02-29T00:22:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-b19a9b
+2012-02-29T00:24:00Z [WARN] storage-account: Connection retries have exceeded the threshold, marking service as degraded trace_id=req-a9232b
+2012-02-29T00:26:00Z [ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-ce34eb
+2012-02-29T00:30:00Z [CRITICAL] api-gateway: Service is experiencing high error rates, unable to route requests properly trace_id=req-7fb279

@@ -1,10 +1,15 @@
-2023-12-31 23:59:59 [INFO] ELB-Maintenance: Initiating nightly maintenance process
-2023-12-31 23:59:59 [INFO] ELB-Maintenance: Running against production ELB state data
-2024-01-01 00:00:00 [WARNING] ELB-State-Checker: Data inconsistency detected in production ELB state
-2024-01-01 00:00:02 [WARNING] ELB-Controller: Attempting to update production ELB configuration
-2024-01-01 00:00:05 [ERROR] ELB-Maintenance: Unexpected error occurred during data synchronization
-2024-01-01 00:00:10 [INFO] Error-Collector: Incident detected: Elastic Load Balancer failure
-2024-01-01 00:00:15 [CRITICAL] ELB-ControlPlane: Loss of ELB control plane connectivity
-2024-01-01 00:00:20 [ERROR] Service-A: Request handling failed due to ELB unavailability
-2024-01-01 00:00:25 [WARNING] Error-Collector: System alert triggered for ELB failure
-2024-01-01 00:00:30 [INFO] Incident-Manager: Incident logged, investigation initiated
+2023-10-05T14:23:15Z [WARN] api-gateway-service: Request timed out trace_id=req-960532
+2023-10-05T14:23:20Z [ERROR] api-gateway-service: Connection refused to backend service trace_id=req-960532
+2023-10-05T14:23:30Z [INFO] ec2-instance-1: Health check failed for instance i-0abcd1234efgh5678 trace_id=req-65d3d6
+2023-10-05T14:24:00Z [ERROR] api-gateway-service: Request failed with HTTP status code 503 trace_id=req-14d360
+2023-10-05T14:24:10Z [CRITICAL] ec2-instance-2: High latency detected for requests, average response time exceeded threshold trace_id=req-ec883a
+2023-10-05T14:25:00Z [WARN] api-gateway-service: Increased request retries due to backend unavailability trace_id=req-960532
+2023-10-05T14:25:15Z [ERROR] ec2-instance-3: Health check failed for instance i-0efgh5678abcd1234 trace_id=req-93ab59
+2023-10-05T14:26:00Z [CRITICAL] api-gateway-service: Service is unable to handle incoming requests due to backend failures trace_id=req-6a90da
+2023-10-05T14:26:20Z [ERROR] ec2-instance-1: Failed to connect to the database, connection pool exhausted trace_id=req-eb8930
+2023-10-05T14:27:00Z [WARN] api-gateway-service: Request queue depth exceeded threshold trace_id=req-14d360
+2023-10-05T14:27:30Z [ERROR] ec2-instance-2: Application error, cannot process request trace_id=req-4ba103
+2023-10-05T14:28:00Z [CRITICAL] api-gateway-service: HTTP status code 504 Gateway Timeout for request trace_id=req-6a90da
+2023-10-05T14:29:00Z [ERROR] ec2-instance-3: Health check failed, instance marked as unhealthy trace_id=req-677700
+2023-10-05T14:29:30Z [WARN] api-gateway-service: High number of 5xx errors reported by backend services trace_id=req-960532
+2023-10-05T14:30:00Z [ERROR] ec2-instance-1: Failed to retrieve data, database connection timed out trace_id=req-eb8930

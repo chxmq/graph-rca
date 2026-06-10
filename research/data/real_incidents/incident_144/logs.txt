@@ -1,15 +1,19 @@
-2023-12-15 14:30:00 [INFO] service-c: MongoDB replication started
-2023-12-15 14:31:00 [INFO] service-d: Starting request handling
-2023-12-15 14:32:05 [WARNING] mongod: Warning: disk space low on /var/lib/mongod
-2023-12-15 14:33:00 [INFO] service-e: MongoDB replication check initiated
-2023-12-15 14:34:00 [ERROR] mongod: Error: unable to connect to primary node
-2023-12-15 14:35:00 [INFO] service-f: Secondary nodes load balancing detected
-2023-12-15 14:36:05 [WARNING] mongos: Warning: high connection count from client
-2023-12-15 14:37:00 [ERROR] mongod: Error: unable to handle incoming requests
-2023-12-15 14:38:00 [INFO] service-g: Request handling paused due to error
-2023-12-15 14:39:00 [WARNING] mongos: Warning: connection limit exceeded
-2023-12-15 14:40:05 [ERROR] mongod: Error: primary node overloaded
-2023-12-15 14:41:00 [INFO] service-h: Alert sent to ops team due to MongoDB overload
-2023-12-15 14:42:00 [CRITICAL] mongod: CRITICAL: all secondary nodes sending traffic to primary node
-2023-12-15 14:43:05 [ERROR] mongos: Error: unable to recover from primary node failure
-2023-12-15 14:44:00 [INFO] service-i: Request handling paused due to MongoDB error
+2023-10-15T14:23:45Z [WARN]  database-service: Connection pool reached maximum size of 100 connections trace_id=req-bfd312
+2023-10-15T14:24:07Z [ERROR] database-service: Failed to connect to database server after 5 retries trace_id=req-bfd312
+2023-10-15T14:24:15Z [CRITICAL] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74
+2023-10-15T14:24:20Z [ERROR] database-service: Query execution timed out after 60 seconds trace_id=req-18d513
+2023-10-15T14:24:30Z [WARN] database-service: High queue depth detected: 250 pending queries trace_id=req-8a8b38
+2023-10-15T14:24:50Z [ERROR] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74
+2023-10-15T14:25:05Z [CRITICAL] database-service: Connection refused for IP address 192.168.1.100 trace_id=req-18d513
+2023-10-15T14:25:10Z [WARN] web-app: Increased response time detected: 120 seconds for request trace_id=req-8a8b38
+2023-10-15T14:26:00Z [ERROR] database-service: Failed to connect to database server after 5 retries trace_id=req-bfd312
+2023-10-15T14:26:10Z [CRITICAL] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74
+2023-10-15T14:26:20Z [ERROR] database-service: Query execution timed out after 60 seconds trace_id=req-18d513
+2023-10-15T14:26:30Z [WARN] database-service: High queue depth detected: 300 pending queries trace_id=req-8a8b38
+2023-10-15T14:27:00Z [ERROR] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74
+2023-10-15T14:27:10Z [CRITICAL] database-service: Connection refused for IP address 192.168.1.100 trace_id=req-18d513
+2023-10-15T14:27:20Z [WARN] web-app: Increased response time detected: 150 seconds for request trace_id=req-8a8b38
+2023-10-15T14:28:00Z [ERROR] database-service: Failed to connect to database server after 5 retries trace_id=req-bfd312
+2023-10-15T14:28:10Z [CRITICAL] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74
+2023-10-15T14:28:20Z [ERROR] database-service: Query execution timed out after 60 seconds trace_id=req-18d513
+2023-10-15T14:28:30Z [WARN] database-service: High queue depth detected: 350 pending queries trace_id=req-8a8b38

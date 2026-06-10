@@ -1,16 +1,17 @@
-2024-01-01 09:45:00 [INFO] system-health-checker: System load is currently at 20% threshold
-2024-01-01 09:50:00 [WARNING] service-c: Request queue growing at a rate of 100 requests per second
-2024-01-01 10:00:00 [INFO] load-balancer: New connection established with 192.168.1.100
-2024-01-01 10:00:05 [ERROR] service-b: Database connection timeout (attempt 2)
-2024-01-01 10:00:10 [WARNING] monitoring-system: Service b is experiencing increased latency
-2024-01-01 10:02:30 [INFO] system administrator: Noticing rapid increase in system load
-2024-01-01 10:03:00 [ERROR] service-b: Database connection timeout (attempt 3)
-2024-01-01 10:04:15 [WARNING] load-balancer: Service b is now experiencing partial failure
-2024-01-01 10:05:00 [INFO] system administrator: Alerting on rising system load and service disruptions
-2024-01-01 10:06:30 [ERROR] service-a: Request handling becoming overwhelmed
-2024-01-01 10:07:15 [CRITICAL] monitoring-system: System failure detected, extreme load at 3.2 million concurrent users
-2024-01-01 10:08:00 [INFO] incident-response-team: Incident categorized as Critical and notified of system failure
-2024-01-01 10:09:30 [WARNING] service-b: Partial recovery initiated
-2024-01-01 10:12:15 [INFO] load-balancer: New connection established with 192.168.1.101
-2024-01-01 10:13:00 [ERROR] service-a: Request handling becoming overwhelmed (attempt 2)
-2024-01-01 10:14:45 [CRITICAL] incident-response-team: Root cause identified - extreme load exceeding 3.4 million concurrent users
+2023-10-15T14:30:00Z [WARN] web-gateway: Increased latency detected for incoming requests duration=250ms trace_id=req-18cce7  
+2023-10-15T14:31:00Z [ERROR] db-cluster: Connection timeout error while attempting to connect to database duration=10s trace_id=req-e50a13  
+2023-10-15T14:32:00Z [CRITICAL] auth-service: Failed health check, retrying... attempt=3 trace_id=req-18cce7  
+2023-10-15T14:33:00Z [ERROR] web-gateway: HTTP 503 Service Unavailable error for request path=/api/login trace_id=req-65d028  
+2023-10-15T14:34:00Z [WARN] cache-service: High queue depth detected, current=1200 max=1000 trace_id=req-e50a13  
+2023-10-15T14:35:00Z [ERROR] db-cluster: Query execution failed due to timeout duration=15s trace_id=req-65d028  
+2023-10-15T14:36:00Z [CRITICAL] web-gateway: Failed to establish connection with auth-service, retrying... attempt=5 trace_id=req-18cce7  
+2023-10-15T14:37:00Z [ERROR] api-gateway: HTTP 504 Gateway Timeout for request path=/api/gamestatus trace_id=req-580e2e  
+2023-10-15T14:38:00Z [WARN] web-gateway: Latency increased to unacceptable levels, duration=500ms trace_id=req-65d028  
+2023-10-15T14:39:00Z [ERROR] db-cluster: Connection refused error for database instance db-primary trace_id=req-e50a13  
+2023-10-15T14:40:00Z [CRITICAL] cache-service: Cache eviction failed, queue depth still high current=1300 max=1000 trace_id=req-18cce7  
+2023-10-15T14:41:00Z [ERROR] api-gateway: HTTP 500 Internal Server Error for request path=/api/user/profile trace_id=req-580e2e  
+2023-10-15T14:42:00Z [CRITICAL] web-gateway: Failed health check, retrying... attempt=7 trace_id=req-18cce7  
+2023-10-15T14:43:00Z [ERROR] db-cluster: Query execution failed due to timeout duration=20s trace_id=req-580e2e  
+2023-10-15T14:44:00Z [WARN] cache-service: High queue depth detected, current=1400 max=1000 trace_id=req-65d028  
+2023-10-15T14:45:00Z [ERROR] web-gateway: HTTP 503 Service Unavailable error for request path=/api/login trace_id=req-ecddaf  
+2023-10-15T14:46:00Z [CRITICAL] auth-service: Failed health check, retrying... attempt=8 trace_id=req-65d028

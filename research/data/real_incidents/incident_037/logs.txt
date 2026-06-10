@@ -1,13 +1,15 @@
-2013-07-19 09:30:00 [INFO] Master instance: Receiving sync requests from slaves
-2013-07-19 09:31:00 [WARNING] Master instance: Slave replication lag increasing, 10.5 seconds
-2013-07-19 09:32:00 [INFO] Redis client: Attempting to synchronize data with master
-2013-07-19 09:33:00 [ERROR] Redis client: Connection to master lost due to network partition
-2013-07-19 09:34:00 [WARNING] Master instance: Resync storm detected, retrying synchronization attempts
-2013-07-19 09:35:00 [INFO] Billing service: Entering read-only mode due to resync issue
-2013-07-19 09:36:00 [ERROR] Billing service: Retry error: unable to sync data with master
-2013-07-19 09:37:00 [CRITICAL] Master instance: Crashed due to resync storm, leaving billing in read-only mode
-2013-07-19 09:38:00 [WARNING] Redis client: Network partition detected, unable to recover connection
-2013-07-19 09:39:00 [INFO] Incident detection system: Billing service is in read-only mode, triggering incident response
-2013-07-19 09:40:00 [ERROR] Incident response system: Unable to resolve resync issue, retrying billing operations
-2013-07-19 09:41:00 [WARNING] Master instance: Slave replication lag increasing, 30.1 seconds
-2013-07-19 09:42:00 [INFO] IT team notified of incident and beginning troubleshooting process
+2013-07-19T00:00:00Z [WARN] payment-service: High queue depth detected in transaction processor queue_depth=45 trace_id=req-1307fa  
+2013-07-19T00:01:09Z [ERROR] database-proxy: Connection timeout to primary database timeout=10s trace_id=req-07d2ff  
+2013-07-19T00:02:31Z [CRITICAL] transaction-service: Failed to commit transaction, HTTP 503 from payment-service status_code=503 trace_id=req-1307fa  
+2013-07-19T00:02:47Z [WARN] database-proxy: Increased latency in query execution latency=300ms trace_id=req-217c29  
+2013-07-19T00:03:45Z [ERROR] payment-service: Failed to write transaction record, HTTP 400 from database-proxy status_code=400 trace_id=req-54add5  
+2013-07-19T00:03:58Z [WARN] health-check: Database health check failed error="connection refused" trace_id=req-c61f05  
+2013-07-19T00:05:01Z [ERROR] transaction-service: Transaction rollback failed, HTTP 408 from payment-service status_code=408 trace_id=req-1307fa  
+2013-07-19T00:05:09Z [CRITICAL] database-proxy: Connection refused by primary database error="connection refused" trace_id=req-c61f05  
+2013-07-19T00:05:51Z [ERROR] payment-service: Transaction processing failed, HTTP 504 from transaction-service status_code=504 trace_id=req-7b4b70  
+2013-07-19T00:06:16Z [WARN] database-proxy: High latency in query execution detected latency=450ms trace_id=req-217c29  
+2013-07-19T00:06:47Z [CRITICAL] transaction-service: Transaction commit failed, HTTP 503 from payment-service status_code=503 trace_id=req-7b4b70  
+2013-07-19T00:07:31Z [ERROR] database-proxy: Failed to execute query error="timeout" trace_id=req-822911  
+2013-07-19T00:08:01Z [WARN] health-check: Database health check failed again error="connection refused" trace_id=req-68a320  
+2013-07-19T00:09:09Z [CRITICAL] payment-service: Failed to process transaction, HTTP 500 from database-proxy status_code=500 trace_id=req-822911  
+2013-07-19T00:09:51Z [ERROR] transaction-service: Transaction failed to complete, HTTP 408 from payment-service status_code=408 trace_id=req-87c471

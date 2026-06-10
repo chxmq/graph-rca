@@ -1,10 +1,16 @@
-2024-01-01 09:45:00 [INFO] db-mgr: Initiating scheduled OS upgrade on node-1
-2024-01-01 09:46:00 [WARNING] db-mgr: Node-1 reported high disk usage before upgrade
-2024-01-01 09:47:00 [INFO] db-mgr: Upgrading OS on node-1
-2024-01-01 09:48:15 [ERROR] db-mgr: Node-1 failed to complete OS upgrade, error code 123
-2024-01-01 09:49:00 [WARNING] db-server: Database connection attempts failing on node-1
-2024-01-01 09:50:00 [CRITICAL] db-server: All database connections dropped for node-1
-2024-01-01 10:00:00 [INFO] ops-team: Notifying ops team of potential issue with node-1
-2024-01-01 10:05:00 [WARNING] db-mgr: Node-2 reported high disk usage, similar to node-1
-2024-01-01 10:10:00 [CRITICAL] db-server: Database connection attempts failing on node-2 as well
-2024-01-01 11:00:00 [INFO] ops-team: Initiating investigation into potential cause of issue
+2023-10-05T14:00:00Z [WARN] db-cluster: High latency detected for query execution trace_id=req-b142b7
+2023-10-05T14:01:00Z [ERROR] db-node1: Connection timeout while trying to connect to database trace_id=req-34afe6
+2023-10-05T14:02:00Z [CRITICAL] app-server: Failed to fetch data from database, retrying... trace_id=req-b142b7
+2023-10-05T14:03:00Z [ERROR] db-node2: Query execution failed with error code 1062 trace_id=req-d13359
+2023-10-05T14:04:00Z [WARN] db-cluster: Increased queue depth observed for incoming requests trace_id=req-a9f36d
+2023-10-05T14:05:00Z [ERROR] app-server: HTTP 500 error returned to client due to database unavailability trace_id=req-34afe6
+2023-10-05T14:06:00Z [CRITICAL] db-node3: Data corruption detected in the database file system trace_id=req-d13359
+2023-10-05T14:07:00Z [ERROR] db-cluster: Failed to replicate data from primary node to secondary nodes trace_id=req-a9f36d
+2023-10-05T14:08:00Z [WARN] app-server: Increased response times for API requests trace_id=req-b142b7
+2023-10-05T14:09:00Z [ERROR] db-node1: Disk I/O operations failed with error code 5 trace_id=req-34afe6
+2023-10-05T14:10:00Z [CRITICAL] monitoring-service: Health-check for db-cluster failed, alert triggered trace_id=req-a52bd1
+2023-10-05T14:11:00Z [ERROR] app-server: Failed to establish connection after multiple retries trace_id=req-d13359
+2023-10-05T14:12:00Z [WARN] db-cluster: Detected inconsistencies in database replication status trace_id=req-a9f36d
+2023-10-05T14:13:00Z [ERROR] db-node2: Connection refused when trying to connect to database trace_id=req-b142b7
+2023-10-05T14:14:00Z [CRITICAL] monitoring-service: Multiple health-check failures, escalating alert level trace_id=req-a52bd1
+2023-10-05T14:15:00Z [ERROR] db-node3: System call failure during data retrieval trace_id=req-34afe6

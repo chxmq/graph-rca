@@ -1,0 +1,10 @@
+2024-01-01 14:30:00 [INFO] instapaper-database: Initiating maintenance window for database migration
+2024-01-01 14:31:00 [WARNING] instapaper-monitoring: High CPU usage detected on db-host1, restarting instance
+2024-01-01 14:32:00 [INFO] instapaper-database: Migrating to new database...
+2024-01-01 14:40:00 [ERROR] instapaper-database: Limits hit for hosted database, unable to acquire necessary resources
+2024-01-01 14:41:00 [WARNING] instapaper-monitoring: High memory usage detected on db-host1, restarting instance
+2024-01-01 14:42:00 [INFO] instapaper-database: Attempting to migrate data from old database...
+2024-01-01 15:45:00 [ERROR] instapaper-database: Data migration failed due to insufficient disk space
+2024-01-01 15:46:00 [WARNING] instapaper-monitoring: High network traffic detected, attempting to reduce load
+2024-01-01 16:10:00 [INFO] instapaper-database: New database migration complete
+2024-01-01 16:11:00 [ERROR] instapaper-web: Unable to connect to new database due to insufficient authentication credentials

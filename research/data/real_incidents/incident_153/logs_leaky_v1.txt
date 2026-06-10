@@ -1,0 +1,14 @@
+2023-12-30 14:42:00 [INFO] okta-auth-service: Received notification of potential security incident
+2023-12-30 14:43:00 [WARNING] okta-security-team: Investigation initiated - possible insider threat
+2023-12-30 14:44:00 [INFO] okta-investigation-team: Reviewing logs from support engineer's laptop
+2023-12-30 14:45:05 [ERROR] okta-auth-service: Multiple unauthorized login attempts detected
+2023-12-30 14:45:10 [WARNING] okta-security-team: Potential breach detected - escalating to incident response
+2023-12-30 14:46:00 [INFO] okta-incident-response: Notifying teams and stakeholders of potential breach
+2023-12-30 14:47:05 [CRITICAL] okta-auth-service: Hacker group access confirmed - immediate action required
+2023-12-30 14:47:10 [WARNING] okta-security-team: Investigating source of hacker group's access to support engineer's laptop
+2023-12-30 14:48:00 [INFO] okta-investigation-team: Identifying potential vulnerability in third-party support engineer's laptop
+2023-12-30 14:49:05 [ERROR] okta-auth-service: Data exfiltration detected - attempting to contain breach
+2023-12-30 14:50:00 [CRITICAL] okta-security-team: Hacker group access confirmed via compromised laptop - containment efforts underway
+2023-12-30 14:51:00 [INFO] okta-incident-response: Notification of breach sent to relevant teams and stakeholders
+2023-12-30 14:52:05 [WARNING] okta-security-team: Investigation into source of vulnerability ongoing
+2023-12-30 14:53:00 [INFO] okta-investigation-team: Preliminary findings indicate third-party support engineer's laptop was compromised

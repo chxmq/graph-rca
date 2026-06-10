@@ -1,13 +1,15 @@
-2020-07-21 14:30:00 [INFO] system-upgrade-service: Starting system upgrade process
-2020-07-21 14:31:00 [WARNING] weight-calculator-service: Unexpected passenger weight calculation for Miss Johnson
-2020-07-21 14:32:00 [INFO] weight-calculator-service: Adjusting passenger weights due to potential issue
-2020-07-21 14:33:00 [ERROR] weight-calculator-service: Female passengers with 'Miss' title being identified as children in takeoff mass calculations
-2020-07-21 14:35:00 [CRITICAL] flight-planner-service: Critical error occurred in flight planning due to incorrect passenger weights
-2020-07-21 14:36:00 [INFO] flight-planner-service: Stopping and restarting flight planning process
-2020-07-21 14:37:00 [WARNING] system-upgrade-service: System upgrade failed to resolve issue
-2020-07-21 14:38:00 [ERROR] weight-calculator-service: Failed to revert passenger weights to correct values after system restart
-2020-07-21 14:40:00 [CRITICAL] system-upgrade-service: System upgrade process terminated due to critical error
-2020-07-21 14:41:00 [INFO] system-upgrade-service: Rolling back to previous version
-2020-07-21 14:42:00 [WARNING] weight-calculator-service: Still detecting female passengers with 'Miss' title being identified as children in takeoff mass calculations
-2020-07-21 14:45:00 [INFO] system-upgrade-service: System upgrade process completed successfully, reverting to previous version
-2020-07-21 14:50:00 [ERROR] flight-planner-service: Error still present after system restart, investigation ongoing
+2020-07-21T00:00:00Z [WARN] flight-scheduler: Unexpected weight discrepancy detected for flight G-TAWG trace_id=req-69d9a5  
+2020-07-21T00:01:00Z [ERROR] weight-validator: Failed to validate aircraft load with error code 409 trace_id=req-69d9a5  
+2020-07-21T00:02:30Z [CRITICAL] flight-control: Flight G-TAWG aborted due to critical weight mismatch trace_id=req-69d9a5  
+2020-07-21T00:03:00Z [ERROR] load-balancer: Service flight-scheduler is down, retrying... trace_id=req-28c2ab  
+2020-07-21T00:04:00Z [WARN] weight-validator: Excessive retries detected for validation request trace_id=req-28c2ab  
+2020-07-21T00:05:00Z [ERROR] flight-control: Failed to process flight G-TAWG, marking as critical trace_id=req-cc3869  
+2020-07-21T00:06:00Z [INFO] alert-manager: Alert fired for flight control system failure trace_id=req-a9881f  
+2020-07-21T00:07:00Z [ERROR] weight-validator: HTTP 503 from flight-scheduler, service unavailable trace_id=req-b5bada  
+2020-07-21T00:08:00Z [CRITICAL] health-checker: Critical failure in weight validation system detected trace_id=req-a67139  
+2020-07-21T00:09:00Z [WARN] flight-scheduler: High queue depth, processing requests slowly trace_id=req-84a3e4  
+2020-07-21T00:10:00Z [ERROR] weight-validator: Timeout while waiting for flight-scheduler response trace_id=req-84a3e4  
+2020-07-21T00:11:00Z [CRITICAL] flight-control: Flight G-TAWG aborted, retry scheduled trace_id=req-d67ebc  
+2020-07-21T00:12:00Z [ERROR] weight-validator: Validation failed for multiple flights, system under stress trace_id=req-f3041a  
+2020-07-21T00:13:00Z [INFO] alert-manager: Alert fired for increased system latency trace_id=req-c5ed7f  
+2020-07-21T00:14:00Z [ERROR] flight-control: Failed to process flight G-TAWG, marking as critical trace_id=req-a3d899

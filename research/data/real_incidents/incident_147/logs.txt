@@ -1,16 +1,19 @@
-2023-12-15 14:30:00 [INFO] CloudWatch Monitor checking for any unusual activity
-2023-12-15 14:35:00 [INFO] Checking Azure service status, no issues reported
-2023-12-15 14:40:00 [WARNING] Service-a: Unusual spike in requests, 100% CPU usage detected
-2023-12-15 14:42:00 [INFO] Investigating cause of unusual CPU usage on Service-a
-2023-12-15 14:45:00 [ERROR] Checking logs for errors related to Service-a, unexpected error found
-2023-12-15 14:46:00 [CRITICAL] Error in database connection, unable to connect to Azure database
-2023-12-15 14:47:00 [INFO] Investigating reason for failure, searching Azure documentation
-2023-12-15 14:50:00 [WARNING] Azure documentation search yields results of recent breaking change
-2023-12-15 14:52:00 [CRITICAL] Breaking change in Azure affects downstream services like Metrist's service
-2023-12-15 14:55:00 [INFO] Verifying impact on downstream systems, Service-b experiencing connection timeout
-2023-12-15 14:57:00 [ERROR] Unable to recover from Azure breaking change, attempting workaround
-2023-12-15 15:02:00 [INFO] Workaround implemented, service-a stable again
-2023-12-15 15:05:00 [WARNING] Service-b still experiencing issues after workaround implementation
-2023-12-15 15:10:00 [INFO] Investigating further error in Service-b, searching logs for clues
-2023-12-15 15:12:00 [ERROR] Unable to resolve issue with Service-b, escalating incident to support team
-2023-12-15 15:15:00 [CRITICAL] Incident escalating to support team due to lack of progress on resolving issues
+2023-10-05T14:23:17Z [WARN] api-gateway: Timeout while waiting for response from service-backend trace_id=req-d7a08b  
+2023-10-05T14:23:22Z [ERROR] service-backend: Connection refused by database-server trace_id=req-d7a08b  
+2023-10-05T14:23:27Z [CRITICAL] api-gateway: Service timeout exceeded, retrying... trace_id=req-d7a08b  
+2023-10-05T14:24:18Z [WARN] database-server: Slow query detected: SELECT * FROM metrics WHERE timestamp > NOW() - INTERVAL 1 HOUR trace_id=req-36e203  
+2023-10-05T14:24:30Z [ERROR] api-gateway: HTTP 502 Bad Gateway from service-backend trace_id=req-36e203  
+2023-10-05T14:25:01Z [INFO] queue-manager: Increased retry count for failed jobs in metrics-queue trace_id=req-623ccc  
+2023-10-05T14:25:12Z [WARN] service-backend: Latency spike detected, current latency: 7.5s trace_id=req-7ad3e8  
+2023-10-05T14:26:03Z [ERROR] api-gateway: Health check failed for service-backend trace_id=req-c6dcf3  
+2023-10-05T14:26:25Z [CRITICAL] database-server: Connection pool exhausted, unable to handle new requests trace_id=req-7ad3e8  
+2023-10-05T14:27:02Z [WARN] queue-manager: Metrics-queue depth exceeded threshold, current depth: 500 trace_id=req-623ccc  
+2023-10-05T14:27:30Z [ERROR] service-backend: Failed to fetch data from external-service, HTTP status code 500 trace_id=req-617508  
+2023-10-05T14:28:15Z [CRITICAL] api-gateway: Service timeout exceeded, retrying... trace_id=req-617508  
+2023-10-05T14:29:07Z [INFO] queue-manager: Retrying job in metrics-queue trace_id=req-fe83b6  
+2023-10-05T14:29:28Z [ERROR] service-backend: Connection refused by database-server trace_id=req-450d45  
+2023-10-05T14:30:10Z [WARN] api-gateway: High latency detected, current latency: 6.8s trace_id=req-c6dcf3  
+2023-10-05T14:30:32Z [CRITICAL] database-server: Slow query execution time, query: SELECT * FROM metrics WHERE timestamp > NOW() - INTERVAL 1 HOUR trace_id=req-617508  
+2023-10-05T14:31:01Z [ERROR] api-gateway: HTTP 502 Bad Gateway from service-backend trace_id=req-fe83b6  
+2023-10-05T14:31:23Z [WARN] queue-manager: Increased retry count for failed jobs in metrics-queue trace_id=req-36e203  
+2023-10-05T14:32:05Z [CRITICAL] service-backend: Latency spike detected, current latency: 8.2s trace_id=req-fe83b6

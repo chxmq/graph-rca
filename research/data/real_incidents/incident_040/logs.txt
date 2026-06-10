@@ -1,12 +1,17 @@
-2016-06-12 14:30:00 [INFO] s3-backup-service: Initiating backup process for critical data
-2016-06-12 14:31:00 [WARNING] s3-backup-service: Detected unusual access pattern from unknown IP address
-2016-06-12 14:32:00 [INFO] s3-backup-service: Granting public read access to backup bucket
-2016-06-12 14:33:00 [ERROR] s3-backup-service: Failed to verify user identity for bucket access
-2016-06-12 14:34:00 [CRITICAL] s3-backup-service: Sensitive data exposed publicly due to missing permissions
-2016-06-12 14:35:00 [INFO] security-team: Notified of potential security incident via alert system
-2016-06-12 14:36:00 [WARNING] security-team: Reviewing access logs for possible misconfigurations
-2016-06-12 14:37:00 [INFO] security-team: Identified missing permissions on backup bucket as root cause
-2016-06-12 14:38:00 [DEBUG] security-team: Running script to rectify missing permissions on backup bucket
-2016-06-12 14:40:00 [INFO] s3-backup-service: Resolved public exposure of sensitive data by reconfiguring bucket permissions
-2016-06-12 14:41:00 [WARNING] security-team: Monitoring for potential future incidents due to similar misconfigurations
-2016-06-12 14:42:00 [INFO] s3-backup-service: Resumed backup process after resolution of public exposure incident
+2016-06-12T00:00:00Z [INFO] storage-service: Attempting to retrieve object from S3 s3://example-bucket/obj1 trace_id=req-6dcdf8  
+2016-06-12T00:00:05Z [WARN] storage-service: Increased latency in retrieving object obj1, current wait time 5s trace_id=req-6dcdf8  
+2016-06-12T00:00:25Z [ERROR] storage-service: Failed to retrieve object obj1 after 2 retries, HTTP status code 403 trace_id=req-6dcdf8  
+2016-06-12T00:01:00Z [INFO] api-gateway: Handling request for /storage/obj2 from client IP 192.168.1.1 trace_id=req-efb63f  
+2016-06-12T00:01:05Z [WARN] storage-service: Increased latency in retrieving object obj2, current wait time 5s trace_id=req-efb63f  
+2016-06-12T00:01:30Z [ERROR] storage-service: Failed to retrieve object obj2 after 2 retries, HTTP status code 403 trace_id=req-efb63f  
+2016-06-12T00:01:55Z [CRITICAL] api-gateway: Client error response for /storage/obj2, status code 500 trace_id=req-efb63f  
+2016-06-12T00:03:00Z [INFO] storage-service: Attempting to retrieve object from S3 s3://example-bucket/obj3 trace_id=req-99da75  
+2016-06-12T00:03:05Z [WARN] storage-service: Increased latency in retrieving object obj3, current wait time 5s trace_id=req-99da75  
+2016-06-12T00:03:30Z [ERROR] storage-service: Failed to retrieve object obj3 after 2 retries, HTTP status code 403 trace_id=req-99da75  
+2016-06-12T00:03:55Z [CRITICAL] api-gateway: Client error response for /storage/obj3, status code 500 trace_id=req-99da75  
+2016-06-12T00:04:10Z [INFO] health-checker: Health check failed for storage-service, HTTP status code 500 trace_id=req-a50ed2  
+2016-06-12T00:04:55Z [CRITICAL] monitoring-system: Alert triggered - Multiple failures in storage-service within last 5 minutes trace_id=req-797653  
+2016-06-12T00:06:00Z [INFO] api-gateway: Handling request for /storage/obj4 from client IP 192.168.1.2 trace_id=req-8c3593  
+2016-06-12T00:06:05Z [WARN] storage-service: Increased latency in retrieving object obj4, current wait time 5s trace_id=req-8c3593  
+2016-06-12T00:06:30Z [ERROR] storage-service: Failed to retrieve object obj4 after 2 retries, HTTP status code 403 trace_id=req-8c3593  
+2016-06-12T00:06:55Z [CRITICAL] api-gateway: Client error response for /storage/obj4, status code 500 trace_id=req-8c3593

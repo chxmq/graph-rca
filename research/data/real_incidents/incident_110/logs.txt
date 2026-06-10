@@ -1,17 +1,18 @@
-2023-12-15 14:30:00 [INFO] deployer: Beginning deployment of version 1.2.3
-2023-12-15 14:31:00 [WARNING] dbmanager: Detected unexpected database upgrade on production machine "db01"
-2023-12-15 14:32:00 [ERROR] integritycheck: Integrity check for production databases failed due to unexpected upgrades
-2023-12-15 14:33:00 [CRITICAL] trafficcontroller: Stopping all incoming traffic to production servers to prevent data corruption
-2023-12-15 14:34:00 [INFO] deployer: Deployment of version 1.2.3 completed
-2023-12-15 14:35:00 [WARNING] idoverflow: Detected integer overflow in database operation on table "ids"
-2023-12-15 14:36:00 [ERROR] dbmanager: Database operation failed due to integer overflow on table "ids" (database: "db01", server: "server-1")
-2023-12-15 14:37:00 [CRITICAL] trafficcontroller: Taking down production servers until further notice
-2023-12-15 14:38:00 [INFO] deployer: Deployment of version 1.2.3 rolled back to previous version
-2023-12-15 14:40:00 [WARNING] idoverflow: Integer overflow detected again on table "ids" (database: "db02", server: "server-2")
-2023-12-15 14:41:00 [ERROR] dbmanager: Database operation failed due to integer overflow on table "ids" (database: "db02", server: "server-2")
-2023-12-15 14:42:00 [CRITICAL] trafficcontroller: Taking down production servers until further notice
-2023-12-15 14:43:00 [INFO] dbmanager: Rolled back database upgrades on all production machines
-2023-12-15 14:44:00 [WARNING] idoverflow: Database operation failed due to integer overflow on table "ids" (database: "db03", server: "server-3")
-2023-12-15 14:45:00 [ERROR] dbmanager: Database operation failed due to integer overflow on table "ids" (database: "db03", server: "server-3")
-2023-12-15 14:46:00 [CRITICAL] trafficcontroller: Taking down production servers until further notice
-2023-12-15 14:47:00 [INFO] dbmanager: All database operations have been rolled back to prevent data corruption
+2023-10-05T14:23:15Z [INFO] web-server: Received request for /items/123456789 trace_id=req-b66166
+2023-10-05T14:23:15Z [WARN] db-connector: Connection timeout to database server at 192.168.1.10 port 5432 trace_id=req-b66166
+2023-10-05T14:23:16Z [ERROR] web-server: Failed to fetch data for request /items/123456789 with error: timeout trace_id=req-b66166
+2023-10-05T14:23:17Z [CRITICAL] db-connector: Connection failed, retrying... trace_id=req-d07cc0
+2023-10-05T14:23:20Z [INFO] web-server: Received request for /items/987654321 trace_id=req-f5c425
+2023-10-05T14:23:21Z [ERROR] db-connector: Connection timeout to database server at 192.168.1.10 port 5432 trace_id=req-f5c425
+2023-10-05T14:23:22Z [CRITICAL] web-server: Failed to fetch data for request /items/987654321 with error: timeout trace_id=req-f5c425
+2023-10-05T14:23:25Z [ERROR] db-connector: Connection failed, retrying... trace_id=req-fe1b08
+2023-10-05T14:23:30Z [CRITICAL] db-connector: Failed to connect after 5 retries trace_id=req-b66166
+2023-10-05T14:23:35Z [ERROR] web-server: Database connection failed, marking server as unhealthy trace_id=req-bfcc99
+2023-10-05T14:23:40Z [CRITICAL] db-connector: Connection failed after 5 retries trace_id=req-f5c425
+2023-10-05T14:23:45Z [ERROR] web-server: Database connection failed, marking server as unhealthy trace_id=req-a21900
+2023-10-05T14:23:50Z [WARN] load-balancer: Health check failed for backend 192.168.1.10, removing from pool trace_id=req-eda255
+2023-10-05T14:23:55Z [ERROR] web-server: Failed to connect to database server at 192.168.1.11 port 5432 trace_id=req-c1d490
+2023-10-05T14:24:00Z [CRITICAL] db-connector: Connection failed after 5 retries trace_id=req-c1d490
+2023-10-05T14:24:05Z [ERROR] web-server: Database connection failed, marking server as unhealthy trace_id=req-96f828
+2023-10-05T14:24:10Z [WARN] load-balancer: Health check failed for backend 192.168.1.11, removing from pool trace_id=req-eda255
+2023-10-05T14:24:15Z [CRITICAL] web-server: All database backends are unhealthy, taking server offline trace_id=req-dd0789

@@ -1,13 +1,16 @@
-2021-01-04 14:30:00 [INFO] slack-service: Initializing connection to AWS Transit Gateway
-2021-01-04 14:30:15 [WARNING] aws-transit-gateway: Incoming packet volume exceeds threshold (25% of capacity)
-2021-01-04 14:30:20 [INFO] slack-service: Attempting to route traffic through alternate gateway
-2021-01-04 14:30:40 [ERROR] slack-service: Connection drop detected on primary gateway, trying backup
-2021-01-04 14:31:00 [WARNING] aws-transit-gateway: Packet loss detected on primary gateway (10% of packets lost)
-2021-01-04 14:31:15 [INFO] slack-service: Noticing increased latency across all users
-2021-01-04 14:31:30 [ERROR] slack-service: Connection drop confirmed, users experiencing disconnection issues
-2021-01-04 14:32:00 [WARNING] aws-transit-gateway: Gateway utilization exceeds 90% capacity
-2021-01-04 14:32:15 [INFO] slack-service: Triggering alert for AWS support team to investigate issue
-2021-01-04 14:35:00 [ERROR] slack-service: Connection loss confirmed, 5% of users globally disconnected
-2021-01-04 14:40:00 [CRITICAL] slack-service: Massive packet loss detected across all users (50% packets lost)
-2021-01-04 14:45:00 [INFO] aws-transit-gateway: Gateway capacity reduced to prevent further saturation
-2021-01-04 15:00:00 [WARNING] slack-service: Connection attempts are being rate limited due to excessive packet loss
+2021-01-04T15:00:00Z [ERROR] slack-api-server: Request timeout trace_id=req-1856b3  
+2021-01-04T15:00:01Z [WARN] slack-api-server: Increased retry count for client req-980a06 trace_id=req-1856b3  
+2021-01-04T15:00:03Z [ERROR] slack-websocket-handler: Failed to send message to client trace_id=req-edff09  
+2021-01-04T15:00:05Z [CRITICAL] slack-api-server: Health check failed for service instance i-1234567890abcdef0 trace_id=req-fe79a5  
+2021-01-04T15:00:07Z [ERROR] slack-chat-service: Internal server error trace_id=req-1856b3  
+2021-01-04T15:00:08Z [WARN] slack-api-server: Queue depth exceeded threshold for endpoint /v1/messages/send trace_id=req-e9f374  
+2021-01-04T15:00:10Z [ERROR] slack-chat-service: Failed to fetch message history trace_id=req-0dc319  
+2021-01-04T15:00:12Z [CRITICAL] slack-websocket-handler: Client disconnect detected trace_id=req-bfb86c  
+2021-01-04T15:00:15Z [ERROR] slack-api-server: Request timeout trace_id=req-0dc319  
+2021-01-04T15:00:16Z [WARN] slack-chat-service: Increased retry count for client req-7f8c trace_id=req-0dc319  
+2021-01-04T15:00:19Z [ERROR] slack-api-server: Health check failed for service instance i-0987654321fedcba0 trace_id=req-0ad233  
+2021-01-04T15:00:21Z [CRITICAL] slack-chat-service: Internal server error trace_id=req-0dc319  
+2021-01-04T15:00:23Z [ERROR] slack-websocket-handler: Failed to send message to client trace_id=req-112825  
+2021-01-04T15:00:26Z [WARN] slack-api-server: Queue depth exceeded threshold for endpoint /v1/messages/send trace_id=req-fd0e1d  
+2021-01-04T15:00:30Z [ERROR] slack-chat-service: Failed to fetch message history trace_id=req-b03255  
+2021-01-04T15:00:31Z [CRITICAL] slack-websocket-handler: Client disconnect detected trace_id=req-9db471

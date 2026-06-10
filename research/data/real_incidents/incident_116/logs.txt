@@ -1,13 +1,19 @@
-2024-01-01 14:30:00 [INFO] Primary instance: Entering maintenance mode
-2024-01-01 14:30:20 [WARNING] Primary instance: Lock acquired, but no heartbeat received in 10 seconds
-2024-01-01 14:31:00 [ERROR] Primary instance: Force restart initiated due to prolonged lock acquisition
-2024-01-01 14:31:10 [INFO] Primary instance: Restarting with new configuration
-2024-01-01 14:31:15 [WARNING] Primary instance: Detected unknown filesystem type "newfs"
-2024-01-01 14:31:20 [CRITICAL] Primary instance: Global outage reported by monitoring system due to incorrect filesystem mount
-2024-01-01 14:31:25 [INFO] Monitoring system: Notifying incident response team of primary instance failure
-2024-01-01 14:31:30 [WARNING] Database connection attempt failed with error "filesystem not found"
-2024-01-01 14:31:35 [ERROR] Service-a: Error loading configuration due to incorrect filesystem mount
-2024-01-01 14:31:40 [INFO] Service-a: Attempting to recover from configuration failure
-2024-01-01 14:31:45 [CRITICAL] Service-b: Database connection attempt failed with error "filesystem not found"
-2024-01-01 14:31:50 [WARNING] Monitoring system: Alert sent to DevOps team regarding service-a and service-b failures
-2024-01-01 14:32:00 [INFO] Incident response team: Activated emergency recovery procedures for Gitlab services
+2023-10-05T14:22:10Z [ERROR] gitlab-web: Failed to retrieve project data from database timeout=30s trace_id=req-d915fe  
+2023-10-05T14:22:15Z [WARN] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=1 trace_id=req-6ee92c  
+2023-10-05T14:22:20Z [CRITICAL] gitlab-web: 503 Service Unavailable for request "GET /projects". trace_id=req-d915fe  
+2023-10-05T14:22:25Z [ERROR] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=2 trace_id=req-6ee92c  
+2023-10-05T14:22:30Z [WARN] gitlab-nginx: Upstream server timed out while reading response header from upstream. trace_id=req-d915fe  
+2023-10-05T14:22:35Z [ERROR] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=3 trace_id=req-6ee92c  
+2023-10-05T14:22:40Z [CRITICAL] gitlab-web: 503 Service Unavailable for request "POST /projects". trace_id=req-bf1073  
+2023-10-05T14:22:45Z [ERROR] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=1 trace_id=req-7b55a3  
+2023-10-05T14:22:50Z [WARN] gitlab-web: Failed to connect to database, retrying... attempt=1 trace_id=req-bf1073  
+2023-10-05T14:23:00Z [ERROR] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=2 trace_id=req-7b55a3  
+2023-10-05T14:23:05Z [WARN] gitlab-web: Failed to connect to database, retrying... attempt=2 trace_id=req-bf1073  
+2023-10-05T14:23:10Z [CRITICAL] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=3 trace_id=req-7b55a3  
+2023-10-05T14:23:15Z [ERROR] gitlab-web: Failed to connect to database, retrying... attempt=3 trace_id=req-bf1073  
+2023-10-05T14:23:20Z [CRITICAL] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=4 trace_id=req-7b55a3  
+2023-10-05T14:23:25Z [ERROR] gitlab-web: Failed to connect to database, giving up. trace_id=req-bf1073  
+2023-10-05T14:23:30Z [CRITICAL] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=5 trace_id=req-7b55a3  
+2023-10-05T14:23:35Z [ERROR] gitlab-web: 500 Internal Server Error for request "GET /dashboard/projects". trace_id=req-bbc579  
+2023-10-05T14:23:40Z [WARN] gitlab-sidekiq: Job failed with exception 'ActiveRecord::StatementInvalid' retry_count=1 trace_id=req-a73b10  
+2023-10-05T14:23:45Z [CRITICAL] gitlab-web: 500 Internal Server Error for request "POST /users/sign_in". trace_id=req-c14639

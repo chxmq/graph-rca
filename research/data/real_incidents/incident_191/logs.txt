@@ -1,13 +1,20 @@
-2023-12-15 14:30:00 [INFO] consul-service-1: Initializing cluster for new streaming feature
-2023-12-15 14:31:00 [WARNING] consul-service-2: Consul cluster not yet available
-2023-12-15 14:32:00 [INFO] streaming-feature: Enabling high load on new feature
-2023-12-15 14:33:00 [CRITICAL] consul-service-1: Consul cluster failed with error message "service-not-available"
-2023-12-15 14:34:00 [ERROR] streaming-feature: Error enabling new streaming feature (Consul cluster failure)
-2023-12-15 14:35:00 [WARNING] service-a: Service a experiencing high load, potential impact on overall system
-2023-12-15 14:36:00 [CRITICAL] consul-service-2: Consul cluster still not available after 10 minutes of retry attempts
-2023-12-15 14:37:00 [INFO] operations-team: Alert sent to operations team regarding consul cluster failure
-2023-12-15 14:38:00 [ERROR] streaming-feature: Failed to enable new streaming feature due to Consul cluster unavailability
-2023-12-15 14:39:00 [CRITICAL] infrastructure: 73-hour outage due to HashiCorp Consul cluster failure when enabling new streaming feature under high load
-2023-12-15 14:40:00 [WARNING] service-b: Service b experiencing prolonged database connection timeout
-2023-12-15 14:41:00 [INFO] incident-response-team: Incident response team notified and investigation underway
-2023-12-15 14:42:00 [CRITICAL] infrastructure: Estimated recovery time: 5 hours for initial fixes, 24 hours for full system recovery
+2023-10-28T14:59:00Z [ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-b0d6d3  
+2023-10-28T14:59:05Z [WARN] api-gateway: Timeout while waiting for response from service-discovery, retrying... trace_id=req-219b77  
+2023-10-28T14:59:10Z [ERROR] database-proxy: Connection refused to primary db instance trace_id=req-b0d6d3  
+2023-10-28T14:59:15Z [CRITICAL] user-service: Failed to fetch user data, retry limit exceeded trace_id=req-219b77  
+2023-10-28T14:59:20Z [ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-53656c  
+2023-10-28T14:59:25Z [WARN] api-gateway: Timeout while waiting for response from service-discovery, retrying... trace_id=req-37ba0c  
+2023-10-28T14:59:30Z [ERROR] database-proxy: Connection refused to primary db instance trace_id=req-219b77  
+2023-10-28T14:59:35Z [CRITICAL] user-service: Failed to fetch user data, retry limit exceeded trace_id=req-37ba0c  
+2023-10-28T14:59:40Z [ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-b6b83a  
+2023-10-28T14:59:45Z [WARN] api-gateway: Timeout while waiting for response from service-discovery, retrying... trace_id=req-5f2b0f  
+2023-10-28T14:59:50Z [ERROR] database-proxy: Connection refused to primary db instance trace_id=req-37ba0c  
+2023-10-28T14:59:55Z [CRITICAL] user-service: Failed to fetch user data, retry limit exceeded trace_id=req-5f2b0f  
+2023-10-28T15:00:00Z [ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-57d87b  
+2023-10-28T15:00:05Z [WARN] api-gateway: Timeout while waiting for response from service-discovery, retrying... trace_id=req-0a9b40  
+2023-10-28T15:00:10Z [ERROR] database-proxy: Connection refused to primary db instance trace_id=req-5f2b0f  
+2023-10-28T15:00:15Z [CRITICAL] user-service: Failed to fetch user data, retry limit exceeded trace_id=req-0a9b40  
+2023-10-28T15:00:20Z [ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-68b891  
+2023-10-28T15:00:25Z [WARN] api-gateway: Timeout while waiting for response from service-discovery, retrying... trace_id=req-dd3215  
+2023-10-28T15:00:30Z [ERROR] database-proxy: Connection refused to primary db instance trace_id=req-0a9b40  
+2023-10-28T15:00:35Z [CRITICAL] user-service: Failed to fetch user data, retry limit exceeded trace_id=req-dd3215

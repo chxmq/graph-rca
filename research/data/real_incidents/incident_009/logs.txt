@@ -1,9 +1,16 @@
-2021-10-04 15:39:00 [WARNING] bgp-svc: Routine maintenance audit command executed
-2021-10-04 15:39:02 [INFO] bgp-svc: Retrieving BGP route configuration data
-2021-10-04 15:39:03 [INFO] bgp-svc: Processing audit results
-2021-10-04 15:39:04 [ERROR] bgp-svc: Unexpected error in route processing - withdrawal of all routes detected
-2021-10-04 15:39:05 [CRITICAL] bgp-svc: ALL ROUTES WITHDRAWN - TOTAL GLOBAL OUTAGE IMMINENT
-2021-10-04 15:40:00 [WARNING] prod-svc: Connection attempts failing worldwide
-2021-10-04 15:41:00 [INFO] ops-team: Physical access granted to Santa Clara data center
-2021-10-04 15:42:00 [CRITICAL] bgp-svc: Routes restored - service availability restored
-2021-10-04 15:43:00 [INFO] ops-team: Remote access established for router configuration review
+2021-10-04T15:39:00Z [WARN] edge-server: High latency detected for user request trace_id=req-bf714d
+2021-10-04T15:39:04Z [ERROR] api-gateway: Timeout while connecting to backend service trace_id=req-b93ffb
+2021-10-04T15:39:05Z [CRITICAL] load-balancer: All backend instances are reporting errors trace_id=req-bf714d
+2021-10-04T15:39:09Z [WARN] edge-server: Increased error rate in health checks trace_id=req-8dbecf
+2021-10-04T15:39:14Z [ERROR] api-gateway: Failed to establish connection with backend service, retrying trace_id=req-b93ffb
+2021-10-04T15:39:19Z [CRITICAL] load-balancer: Exceeded maximum allowed retries for user request trace_id=req-bf714d
+2021-10-04T15:39:24Z [ERROR] edge-server: Connection refused from backend server trace_id=req-b93ffb
+2021-10-04T15:39:29Z [WARN] edge-server: Detected multiple failed health checks, marking backend as unhealthy trace_id=req-8dbecf
+2021-10-04T15:39:34Z [CRITICAL] api-gateway: All retry attempts failed for request, returning 503 Service Unavailable trace_id=req-bf714d
+2021-10-04T15:39:39Z [ERROR] edge-server: Connection timeouts persisting across multiple requests trace_id=req-b93ffb
+2021-10-04T15:39:44Z [WARN] load-balancer: No healthy backends available, queuing requests trace_id=req-720b98
+2021-10-04T15:39:49Z [CRITICAL] edge-server: Health check failures reached critical threshold, initiating failover procedure trace_id=req-8dbecf
+2021-10-04T15:39:54Z [ERROR] api-gateway: Failed to route request due to no available backends, returning 503 Service Unavailable trace_id=req-720b98
+2021-10-04T15:39:59Z [WARN] edge-server: Latency spikes observed across all regions trace_id=req-ab5529
+2021-10-04T15:40:04Z [ERROR] load-balancer: Request queue depth exceeded, dropping new requests trace_id=req-720b98
+2021-10-04T15:40:09Z [CRITICAL] edge-server: Failover to backup backend failed, returning 503 Service Unavailable trace_id=req-8dbecf

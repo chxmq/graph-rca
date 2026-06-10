@@ -1,13 +1,16 @@
-2023-12-25 08:45:00 [INFO] mail-service: Initiating batch email job
-2023-12-25 08:45:10 [WARNING] mail-service: Marking 100 users as waiting for mail
-2023-12-25 08:45:20 [WARNING] cron-service: Running batch job to send emails
-2023-12-25 08:46:00 [INFO] mail-service: Sending email to user X
-2023-12-25 08:46:15 [INFO] mail-service: Sending email to user Y
-2023-12-25 08:48:30 [ERROR] cron-service: Error sending email to 50 users (max 20 attempts)
-2023-12-25 08:49:00 [WARNING] mail-service: Marking 50 users as not waiting for mail
-2023-12-25 09:02:45 [INFO] mail-service: Sending email to user Z
-2023-12-25 09:03:10 [INFO] mail-service: Sending email to user W
-2023-12-25 09:05:20 [ERROR] cron-service: Error sending email to remaining users (non-atomic operation)
-2023-12-25 09:06:00 [CRITICAL] mail-service: Email sent to 57 users, exceeding maximum attempts
-2023-12-25 09:10:30 [INFO] audit-log: Incident logged for non-atomic batch email job
-2023-12-25 09:20:00 [WARNING] incident-manager: Alerting on-going incident to team leads
+2023-10-15T14:23:15Z [INFO] smtp-sender: Processing batch of recipients trace_id=req-bf0b01  
+2023-10-15T14:24:01Z [WARN] smtp-sender: High queue depth detected, current size 500 trace_id=req-bf0b01  
+2023-10-15T14:24:30Z [ERROR] smtp-sender: Failed to send message to recipient@example.com, retrying... trace_id=req-c4d319  
+2023-10-15T14:25:15Z [CRITICAL] smtp-sender: Exceeded maximum retries for recipient@domain.org trace_id=req-b64964  
+2023-10-15T14:26:00Z [INFO] smtp-sender: Processing batch of recipients trace_id=req-f78d89  
+2023-10-15T14:26:10Z [WARN] smtp-sender: High queue depth detected, current size 600 trace_id=req-f78d89  
+2023-10-15T14:27:20Z [ERROR] smtp-sender: Failed to send message to user@website.com, retrying... trace_id=req-198771  
+2023-10-15T14:28:05Z [CRITICAL] smtp-sender: Exceeded maximum retries for contact@service.net trace_id=req-1512d8  
+2023-10-15T14:29:00Z [INFO] smtp-sender: Processing batch of recipients trace_id=req-bf0b01  
+2023-10-15T14:29:30Z [WARN] smtp-sender: High queue depth detected, current size 700 trace_id=req-bf0b01  
+2023-10-15T14:30:45Z [ERROR] smtp-sender: Failed to send message to admin@company.biz, retrying... trace_id=req-c4d319  
+2023-10-15T14:31:30Z [CRITICAL] smtp-sender: Exceeded maximum retries for support@help.io trace_id=req-b64964  
+2023-10-15T14:32:00Z [INFO] smtp-sender: Processing batch of recipients trace_id=req-f78d89  
+2023-10-15T14:32:45Z [WARN] smtp-sender: High queue depth detected, current size 800 trace_id=req-f78d89  
+2023-10-15T14:34:00Z [ERROR] smtp-sender: Failed to send message to info@info.org, retrying... trace_id=req-198771  
+2023-10-15T14:34:45Z [CRITICAL] smtp-sender: Exceeded maximum retries for notify@notify.me trace_id=req-1512d8

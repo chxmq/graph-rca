@@ -1,0 +1,14 @@
+2023-12-15 09:00:00 [INFO] microservice-d: Initializing
+2023-12-15 09:00:05 [WARNING] circuit-breaker-d: Attempting to activate
+2023-12-15 09:00:10 [INFO] microservice-c: Request received
+2023-12-15 09:00:15 [INFO] service-a: Starting request handling
+2023-12-15 09:01:00 [WARNING] circuit-breaker-d: Failure to activate circuit breaker after 5 attempts
+2023-12-15 09:01:05 [INFO] microservice-b: Request received
+2023-12-15 09:01:10 [ERROR] service-b: Database connection timeout
+2023-12-15 09:01:15 [WARNING] circuit-breaker-d: Detection of cascading failure in microservice-b
+2023-12-15 09:01:20 [INFO] microservice-c: Request failed
+2023-12-15 09:01:25 [ERROR] service-a: Request handling failure
+2023-12-15 09:01:30 [WARNING] circuit-breaker-d: Cascade failure detected in multiple services
+2023-12-15 09:01:35 [CRITICAL] system-status: System instability detected due to cascading failures
+2023-12-15 09:01:40 [INFO] incident-management: Alerting incident management team
+2023-12-15 09:02:00 [INFO] incident-management: Incident reported as critical

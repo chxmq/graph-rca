@@ -1,0 +1,9 @@
+2021-10-04 15:39:00 [WARNING] bgp-svc: Routine maintenance audit command executed
+2021-10-04 15:39:02 [INFO] bgp-svc: Retrieving BGP route configuration data
+2021-10-04 15:39:03 [INFO] bgp-svc: Processing audit results
+2021-10-04 15:39:04 [ERROR] bgp-svc: Unexpected error in route processing - withdrawal of all routes detected
+2021-10-04 15:39:05 [CRITICAL] bgp-svc: ALL ROUTES WITHDRAWN - TOTAL GLOBAL OUTAGE IMMINENT
+2021-10-04 15:40:00 [WARNING] prod-svc: Connection attempts failing worldwide
+2021-10-04 15:41:00 [INFO] ops-team: Physical access granted to Santa Clara data center
+2021-10-04 15:42:00 [CRITICAL] bgp-svc: Routes restored - service availability restored
+2021-10-04 15:43:00 [INFO] ops-team: Remote access established for router configuration review

@@ -1,0 +1,13 @@
+2023-12-25 14:30:00 [INFO] reporting-agent: Connecting to data collection server 'dc-srv-123'
+2023-12-25 14:31:00 [WARNING] storage-server-a: Memory usage reaching 80% threshold
+2023-12-25 14:32:00 [INFO] monitoring-system: System memory usage at 85%
+2023-12-25 14:33:00 [ERROR] reporting-agent: Failed to establish connection with data collection server 'dc-srv-123'
+2023-12-25 14:34:00 [WARNING] storage-server-a: Memory usage reaching 90% threshold
+2023-12-25 14:35:00 [INFO] monitoring-system: System memory usage at 92%
+2023-12-25 14:36:00 [ERROR] reporting-agent: Memory leak detected in reporting agent on storage server 'srv-123'
+2023-12-25 14:37:00 [WARNING] storage-server-a: Memory warning: unable to allocate new memory
+2023-12-25 14:38:00 [INFO] monitoring-system: System memory usage at 95%
+2023-12-25 14:39:00 [ERROR] reporting-agent: Reporting agent process crashing due to excessive memory consumption
+2023-12-25 14:40:00 [CRITICAL] storage-server-a: Storage server 'srv-123' experiencing system failure due to memory leak
+2023-12-25 15:00:00 [INFO] monitoring-system: System alarm triggered for storage server 'srv-123'
+2023-12-25 15:01:00 [WARNING] storage-server-a: No failover available, storage server 'srv-123' unable to recover from failure

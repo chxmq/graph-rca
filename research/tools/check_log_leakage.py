@@ -166,13 +166,20 @@ def main():
     flagged = [r for r in rows if r["banned_phrases"]]
     print(f"Incidents with self-diagnosing phrases: {len(flagged)}")
 
+    real = [r for r in rows if r["logs_available"]]
+    if real:
+        print(f"Real-log incidents (exempt from gate — authentic telemetry may "
+              f"legitimately reference its cause): {[r['id'] for r in real]}")
+
     if args.json:
         args.json.write_text(json.dumps(rows, indent=2))
         print(f"Report written to {args.json}")
 
-    # Non-zero exit when the dataset still contains high-leakage logs, so
-    # this can run as a CI gate after regeneration.
-    sys.exit(0 if counts["high"] == 0 else 2)
+    # Non-zero exit when SYNTHETIC logs are high-leakage, so this can run as
+    # a CI gate after regeneration.  Real logs are exempt: they are ground
+    # truth and must never be rewritten to satisfy the metric.
+    synthetic_high = [r for r in rows if r["tier"] == "high" and not r["logs_available"]]
+    sys.exit(0 if not synthetic_high else 2)
 
 
 if __name__ == "__main__":

@@ -1,15 +1,19 @@
-2024-01-01 09:45:00 [INFO] service-d: Service started, listening on port 8080
-2024-01-01 09:50:00 [WARNING] service-a: Request to service-b timed out
-2024-01-01 09:51:00 [INFO] Chaos Monkey: Triggered random failure in service-c
-2024-01-01 09:52:00 [ERROR] service-e: Connection to service-d failed
-2024-01-01 09:53:00 [WARNING] service-b: Database connection attempts exceeded limit
-2024-01-01 09:54:00 [INFO] Chaos Monkey: Triggered random failure in service-a
-2024-01-01 09:55:00 [ERROR] service-f: Failed to resolve service-g due to unresponsive dependency
-2024-01-01 09:56:00 [CRITICAL] Regional availability issue detected: Service-c unavailable globally
-2024-01-01 09:57:00 [INFO] Netflix Monitoring: Alert triggered for regional availability issue in Region US-East
-2024-01-01 09:58:00 [WARNING] service-a: Request to service-f timed out due to unresponsive dependency
-2024-01-01 09:59:00 [ERROR] Netflix Service Monitor: Regional availability issue persisted despite restart attempts for service-c
-2024-01-01 10:00:00 [CRITICAL] Regional availability issue detected: Service-e unavailable globally
-2024-01-01 10:01:00 [INFO] Chaos Monkey: Triggered random failure in service-b
-2024-01-01 10:02:00 [ERROR] Netflix Service Monitor: Failed to resolve regional availability issue due to hidden dependencies in microservice mesh
-2024-01-01 10:03:00 [CRITICAL] Regional availability issue detected: Service-f unavailable globally
+2023-10-05T14:20:00Z [WARN]  api-gateway: Timeout while waiting for response from service-backend trace_id=req-c77e53  
+2023-10-05T14:20:02Z [ERROR] service-backend: Failed to connect to database-replica, retrying... trace_id=req-c77e53  
+2023-10-05T14:20:10Z [CRITICAL] api-gateway: Connection failed after 3 retries, returning 504 Gateway Timeout trace_id=req-c77e53  
+2023-10-05T14:20:15Z [WARN]  service-backend: High queue depth detected, current size is 120 items trace_id=req-a20801  
+2023-10-05T14:20:20Z [ERROR] database-replica: Connection refused, retrying... trace_id=req-a20801  
+2023-10-05T14:20:30Z [CRITICAL] service-backend: Failed to handle request within timeout, returning 503 Service Unavailable trace_id=req-a20801  
+2023-10-05T14:20:35Z [ERROR] api-gateway: Failed health check for service-backend, marking as unhealthy trace_id=req-a4e663  
+2023-10-05T14:20:40Z [WARN]  service-backend: Latency spike detected, current response time is 3.5 seconds trace_id=req-b4df37  
+2023-10-05T14:20:45Z [ERROR] database-replica: Connection timeout after 5 seconds, retrying... trace_id=req-b4df37  
+2023-10-05T14:20:50Z [CRITICAL] service-backend: Failed to process request due to database error, returning 500 Internal Server Error trace_id=req-b4df37  
+2023-10-05T14:21:00Z [WARN]  api-gateway: Excessive retries detected for service-backend, threshold exceeded trace_id=req-a4e663  
+2023-10-05T14:21:05Z [ERROR] service-backend: Connection refused by database-replica, retrying... trace_id=req-966d8a  
+2023-10-05T14:21:10Z [CRITICAL] api-gateway: Service-backend marked as unhealthy due to repeated failures trace_id=req-a4e663  
+2023-10-05T14:21:15Z [ERROR] database-replica: Connection timeout, retrying... trace_id=req-966d8a  
+2023-10-05T14:21:20Z [CRITICAL] service-backend: Failed to connect to database-replica after 3 retries, returning 503 Service Unavailable trace_id=req-966d8a  
+2023-10-05T14:21:25Z [WARN]  api-gateway: High latency detected for service-backend, average response time is 4.2 seconds trace_id=req-85e635  
+2023-10-05T14:21:30Z [ERROR] database-replica: Connection refused, retrying... trace_id=req-10a066  
+2023-10-05T14:21:35Z [CRITICAL] service-backend: Failed to handle request due to database connectivity issues, returning 500 Internal Server Error trace_id=req-10a066  
+2023-10-05T14:21:40Z [WARN]  api-gateway: Service-backend is experiencing high latency and failures, escalating alert level trace_id=req-85e635

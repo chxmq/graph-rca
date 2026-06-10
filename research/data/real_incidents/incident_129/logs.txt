@@ -1,18 +1,19 @@
-2023-12-15 14:30:00 [INFO] service-a: Starting request handling
-2023-12-15 14:30:20 [WARNING] scheduler-worker: Request queue exceeded limit
-2023-12-15 14:30:25 [ERROR] scheduler-worker: Failed to process request due to lack of worker availability
-2023-12-15 14:30:30 [INFO] service-b: Starting database connection
-2023-12-15 14:30:40 [WARNING] autoscaler: Scaling group failed to initialize router instances correctly on startup
-2023-12-15 14:30:45 [ERROR] autoscaler: Router instance not found for service-c
-2023-12-15 14:31:00 [INFO] scheduler-worker: Request handling resumed
-2023-12-15 14:31:10 [WARNING] service-b: Database connection timeout
-2023-12-15 14:31:20 [ERROR] service-a: Request handling failed due to lack of worker availability
-2023-12-15 14:32:00 [INFO] autoscaler: Scaling group successfully initialized router instances on retry
-2023-12-15 14:32:10 [WARNING] scheduler-worker: Request queue exceeded limit again
-2023-12-15 14:32:20 [ERROR] service-c: Request handling failed due to lack of worker availability
-2023-12-15 14:33:00 [INFO] service-b: Restarting database connection
-2023-12-15 14:33:10 [WARNING] autoscaler: Degradation detected in runtime cluster due to insufficient router instances
-2023-12-15 14:33:20 [ERROR] scheduler-worker: System failure due to lack of worker availability
-2023-12-15 14:34:00 [INFO] service-a: Request handling resumed after system restart
-2023-12-15 14:35:00 [WARNING] autoscaler: Continued degradation in runtime cluster
-2023-12-15 14:36:00 [ERROR] service-c: Persistent request handling failure due to lack of worker availability
+2023-10-15T14:00:00Z [WARN] task-worker: Task processing time exceeded 60 seconds trace_id=req-9b82a1  
+2023-10-15T14:00:30Z [ERROR] scheduler: Failed to assign task, retrying in 5s trace_id=req-ba7d3f  
+2023-10-15T14:01:00Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:01:10Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499  
+2023-10-15T14:02:00Z [WARN] scheduler: Failed to assign task, retrying in 10s trace_id=req-ba7d3f  
+2023-10-15T14:02:30Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:03:00Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499  
+2023-10-15T14:03:30Z [WARN] scheduler: Failed to assign task, retrying in 15s trace_id=req-ba7d3f  
+2023-10-15T14:04:00Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:05:00Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499  
+2023-10-15T14:05:30Z [WARN] scheduler: Failed to assign task, retrying in 20s trace_id=req-ba7d3f  
+2023-10-15T14:06:00Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:07:00Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499  
+2023-10-15T14:08:00Z [WARN] scheduler: Failed to assign task, retrying in 25s trace_id=req-ba7d3f  
+2023-10-15T14:09:00Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:10:00Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499  
+2023-10-15T14:11:00Z [WARN] scheduler: Failed to assign task, retrying in 30s trace_id=req-ba7d3f  
+2023-10-15T14:12:00Z [CRITICAL] router: Timeout on request, returning 504 Gateway Timeout trace_id=req-3381e4  
+2023-10-15T14:13:00Z [ERROR] task-worker: Task processing time exceeded 60 seconds trace_id=req-bfd499

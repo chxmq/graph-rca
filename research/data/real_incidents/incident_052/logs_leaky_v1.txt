@@ -1,0 +1,12 @@
+2014-11-18 14:30:00 [INFO] StorageService: Deploying performance enhancement patch
+2014-11-18 14:30:15 [WARNING] StorageService: Unexpected error while applying patch, checking configuration files
+2014-11-18 14:30:20 [ERROR] StorageService: Configuration file validation failed, error message: "Invalid parameter value"
+2014-11-18 14:30:25 [INFO] MonitoringService: Noticing unusual storage usage patterns
+2014-11-18 14:30:35 [WARNING] MonitoringService: Storage service slowdown detected
+2014-11-18 14:30:40 [ERROR] MonitoringService: Global storage service failure reported, Azure Storage down for all regions
+2014-11-18 14:31:00 [CRITICAL] OperationsTeam: Incident triggered, sending alert to teams and stakeholders
+2014-11-18 14:31:10 [INFO] IncidentResponseTeam: Initiating incident response, gathering information from storage service logs
+2014-11-18 14:32:30 [WARNING] IncidentResponseTeam: Azure Storage downtime affecting multiple services, including Office 365 and Dynamics CRM
+2014-11-18 14:33:00 [ERROR] IncidentResponseTeam: Unable to recover storage service using standard procedures, escalating to expert team
+2014-11-18 14:34:15 [CRITICAL] ExpertTeam: Confirmed that configuration change was deployed incorrectly, taking down Azure Storage globally
+2014-11-18 14:35:00 [INFO] MicrosoftSupport: Notification sent to stakeholders and partners regarding storage service outage

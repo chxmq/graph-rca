@@ -1,12 +1,20 @@
-2021-11-20 14:30:00 [INFO] MySQL Replicas: Initiating schema migration for production environment
-2021-11-20 14:31:00 [WARNING] MySQL Replicas: Table 'table1' encountered a constraint violation during rename operation
-2021-11-20 14:32:00 [INFO] MySQL Replicas: Skipping table 'table1' and continuing with migration
-2021-11-20 14:33:00 [ERROR] MySQL Replicas: Semaphores are now in conflict, unable to proceed with migration
-2021-11-20 14:34:00 [CRITICAL] MySQL Replicas: Critical error detected - semaphore deadlock during 'rename' operation on table 'table2'
-2021-11-20 14:35:00 [ERROR] MySQL Replicas: Crash detected on replica node due to excessive load and semaphore conflict
-2021-11-20 14:36:00 [WARNING] MySQL Replicas: Node 'replica-1' experiencing high CPU utilization and disk I/O issues
-2021-11-20 14:37:00 [ERROR] MySQL Replicas: Node 'replica-2' crashed due to inability to resolve semaphore deadlock
-2021-11-20 14:38:00 [CRITICAL] GitHub Outage Team: System alert triggered - multiple replica nodes have crashed
-2021-11-20 14:40:00 [INFO] GitHub Outage Team: Initiating investigation into root cause of system failure
-2021-11-20 14:42:00 [WARNING] GitHub Outage Team: Suspected semaphore deadlock during table rename in schema migration
-2021-11-20 14:45:00 [ERROR] GitHub Outage Team: Verified root cause - MySQL read replicas entered a semaphore deadlock during final 'rename' step of massive schema migration
+2021-11-20T00:00:00Z [WARN] db-proxy: Connection timeout to backend service trace_id=req-db7a5d
+2021-11-20T00:00:05Z [ERROR] web-app: Failed to fetch data from database, retrying... trace_id=req-db7a5d
+2021-11-20T00:00:10Z [CRITICAL] db-proxy: High queue depth detected, impacting performance trace_id=req-936005
+2021-11-20T00:00:15Z [ERROR] web-app: Second attempt to fetch data failed, retrying... trace_id=req-db7a5d
+2021-11-20T00:00:20Z [WARN] db-proxy: Connection timeout to backend service trace_id=req-936005
+2021-11-20T00:00:25Z [ERROR] web-app: Third attempt to fetch data failed, giving up trace_id=req-db7a5d
+2021-11-20T00:00:30Z [CRITICAL] db-proxy: Latency increased by 200ms in response time trace_id=req-936005
+2021-11-20T00:00:35Z [WARN] load-balancer: Service unresponsive, redirecting traffic to other nodes trace_id=req-e5a149
+2021-11-20T00:00:40Z [ERROR] web-app: Failed to fetch data from database, retrying... trace_id=req-36aec2
+2021-11-20T00:00:45Z [CRITICAL] db-proxy: Connection timeout to backend service trace_id=req-e5a149
+2021-11-20T00:00:50Z [ERROR] web-app: Second attempt to fetch data failed, retrying... trace_id=req-36aec2
+2021-11-20T00:00:55Z [CRITICAL] db-proxy: High queue depth detected, impacting performance trace_id=req-e5a149
+2021-11-20T00:01:00Z [ERROR] web-app: Third attempt to fetch data failed, giving up trace_id=req-36aec2
+2021-11-20T00:01:05Z [CRITICAL] db-proxy: Latency increased by 300ms in response time trace_id=req-e5a149
+2021-11-20T00:01:10Z [ERROR] web-app: Failed to fetch data from database, retrying... trace_id=req-704236
+2021-11-20T00:01:15Z [CRITICAL] db-proxy: Connection timeout to backend service trace_id=req-e5a149
+2021-11-20T00:01:20Z [ERROR] web-app: Second attempt to fetch data failed, retrying... trace_id=req-704236
+2021-11-20T00:01:25Z [CRITICAL] db-proxy: High queue depth detected, impacting performance trace_id=req-e5a149
+2021-11-20T00:01:30Z [ERROR] web-app: Third attempt to fetch data failed, giving up trace_id=req-704236
+2021-11-20T00:01:35Z [CRITICAL] db-proxy: Latency increased by 400ms in response time trace_id=req-e5a149

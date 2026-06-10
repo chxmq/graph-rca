@@ -1,0 +1,15 @@
+2021-06-08 14:30:00 [INFO] Service-check: Cloud connectivity check initiated for all edge locations.
+2021-06-08 14:30:02 [INFO] Service-check: Successful cloud connectivity checks completed for all edge locations.
+2021-06-08 14:30:10 [WARNING] service-c: Unexpected increase in request latency detected at edge location 'us-east-1'.
+2021-06-08 14:30:12 [ERROR] service-d: Request throttling error encountered while handling requests from 'us-east-1' edge location.
+2021-06-08 14:30:15 [INFO] Service-check: Edge location 'us-east-1' reported as down for service-d.
+2021-06-08 14:30:18 [WARNING] service-e: Simultaneous increase in request latency detected at multiple edge locations, including 'us-east-1'.
+2021-06-08 14:30:20 [INFO] Service-check: Global outage reported by multiple customers using service-d.
+2021-06-08 14:30:22 [CRITICAL] Incident notified to Fastly support team - global outage affecting all services.
+2021-06-08 14:30:25 [ERROR] Support Ticket #1234 created for investigating the cause of the incident.
+2021-06-08 14:31:00 [INFO] Root cause analysis initiated by technical team.
+2021-06-08 14:32:15 [WARNING] Technical team detects potential connection issue with edge cloud service.
+2021-06-08 14:33:02 [ERROR] Edge cloud service 'us-east-1' reported as offline due to internal connectivity issues.
+2021-06-08 14:33:05 [CRITICAL] Root cause identified - undiscovered software bug in Fastly's edge cloud triggered by valid customer configuration change.
+2021-06-08 14:33:10 [INFO] Incident resolution plan initiated by technical team.
+2021-06-08 14:35:00 [INFO] Support Ticket #1234 updated with root cause information.

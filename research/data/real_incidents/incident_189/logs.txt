@@ -1,13 +1,19 @@
-2023-08-29 14:15:00 [INFO] oms-service: Receiving new order for 1M units of penny stock (PENNY_123)
-2023-08-29 14:15:05 [WARNING] oms-service: Order quantity exceeds maximum allowed limit for individual trades (0.1M)
-2023-08-29 14:15:10 [INFO] oms-service: Attempting to split order into multiple trades
-2023-08-29 14:15:12 [ERROR] oms-service: Splitting logic encountering division by zero error in trade calculation
-2023-08-29 14:15:13 [CRITICAL] oms-service: Order Management System collapsing due to internal logic failure
-2023-08-29 14:15:15 [INFO] monitoring-service: Alert triggered for OMS service
-2023-08-29 14:15:20 [WARNING] oms-service: Losing main process connection attempt #1
-2023-08-29 14:15:25 [ERROR] oms-service: Losing main process connection attempt #2
-2023-08-29 14:15:30 [CRITICAL] oms-service: All attempts to recover failed, service is down for permanent recovery
-2023-08-29 14:15:35 [INFO] incident-response-service: Incident reported with ID ZDH-1234
-2023-08-29 14:15:40 [WARNING] incident-response-service: No prior incidents of this type found in OMS service history
-2023-08-29 14:15:45 [ERROR] incident-response-service: Unable to establish communication with Refinitiv support for root cause analysis
-2023-08-29 14:15:50 [CRITICAL] oms-service: Permanent failure, awaiting further investigation and resolution
+2019-08-29T14:35:00Z [ERROR] exchange-api: Timeout while processing request trace_id=req-9b4866
+2019-08-29T14:35:01Z [WARN] trading-engine: High queue depth detected, current size: 2560 trace_id=req-9b4866
+2019-08-29T14:35:05Z [ERROR] exchange-api: HTTP 500 Internal Server Error received from upstream service trace_id=req-9b4866
+2019-08-29T14:35:07Z [INFO] monitoring-agent: Alert fired for high latency in trading-engine, current latency: 4.5s trace_id=req-ec73f4
+2019-08-29T14:35:10Z [ERROR] exchange-api: Timeout while processing request trace_id=req-492306
+2019-08-29T14:35:15Z [WARN] trading-engine: High queue depth detected, current size: 3072 trace_id=req-ec73f4
+2019-08-29T14:35:20Z [CRITICAL] exchange-api: Critical error, service unresponsive trace_id=req-492306
+2019-08-29T14:35:25Z [ERROR] trading-engine: Failed to process request due to internal error trace_id=req-594de1
+2019-08-29T14:35:30Z [INFO] monitoring-agent: Alert fired for high latency in trading-engine, current latency: 6.2s trace_id=req-492306
+2019-08-29T14:35:35Z [ERROR] exchange-api: HTTP 500 Internal Server Error received from upstream service trace_id=req-594de1
+2019-08-29T14:36:00Z [WARN] trading-engine: High queue depth detected, current size: 4096 trace_id=req-492306
+2019-08-29T14:36:05Z [ERROR] exchange-api: Timeout while processing request trace_id=req-bc529f
+2019-08-29T14:36:10Z [CRITICAL] trading-engine: Service health-check failed, status: DOWN trace_id=req-594de1
+2019-08-29T14:36:15Z [ERROR] exchange-api: HTTP 500 Internal Server Error received from upstream service trace_id=req-bc529f
+2019-08-29T14:36:20Z [WARN] trading-engine: High queue depth detected, current size: 5120 trace_id=req-9b4866
+2019-08-29T14:36:25Z [ERROR] exchange-api: Timeout while processing request trace_id=req-ec73f4
+2019-08-29T14:37:00Z [CRITICAL] monitoring-agent: Service failure alert, trading-engine is down trace_id=req-492306
+2019-08-29T14:37:05Z [ERROR] exchange-api: HTTP 500 Internal Server Error received from upstream service trace_id=req-bc529f
+2019-08-29T14:37:10Z [INFO] trading-engine: Retrying failed request, attempt 2 trace_id=req-594de1

@@ -1,13 +1,20 @@
-2023-12-25 14:30:00 [INFO] reporting-agent: Connecting to data collection server 'dc-srv-123'
-2023-12-25 14:31:00 [WARNING] storage-server-a: Memory usage reaching 80% threshold
-2023-12-25 14:32:00 [INFO] monitoring-system: System memory usage at 85%
-2023-12-25 14:33:00 [ERROR] reporting-agent: Failed to establish connection with data collection server 'dc-srv-123'
-2023-12-25 14:34:00 [WARNING] storage-server-a: Memory usage reaching 90% threshold
-2023-12-25 14:35:00 [INFO] monitoring-system: System memory usage at 92%
-2023-12-25 14:36:00 [ERROR] reporting-agent: Memory leak detected in reporting agent on storage server 'srv-123'
-2023-12-25 14:37:00 [WARNING] storage-server-a: Memory warning: unable to allocate new memory
-2023-12-25 14:38:00 [INFO] monitoring-system: System memory usage at 95%
-2023-12-25 14:39:00 [ERROR] reporting-agent: Reporting agent process crashing due to excessive memory consumption
-2023-12-25 14:40:00 [CRITICAL] storage-server-a: Storage server 'srv-123' experiencing system failure due to memory leak
-2023-12-25 15:00:00 [INFO] monitoring-system: System alarm triggered for storage server 'srv-123'
-2023-12-25 15:01:00 [WARNING] storage-server-a: No failover available, storage server 'srv-123' unable to recover from failure
+2023-10-09T14:25:00Z [WARN] ebs-monitor: Health check failed for instance i-1234567890abcdef0 status_code=503 trace_id=req-8c0784  
+2023-10-09T14:26:05Z [ERROR] ebs-api-gateway: Timeout while processing request, client_id=cid-12345 trace_id=req-8c0784  
+2023-10-09T14:27:10Z [WARN] ebs-monitor: High latency detected in API calls, duration=1200ms trace_id=req-8c0784  
+2023-10-09T14:28:15Z [ERROR] ebs-api-gateway: Failed to connect to backend server, server_ip=192.168.1.100 trace_id=req-91a87a  
+2023-10-09T14:29:20Z [CRITICAL] ebs-monitor: Excessive retries detected in API requests, count=5 trace_id=req-8c0784  
+2023-10-09T14:30:25Z [WARN] ebs-api-gateway: High queue depth observed, size=500 trace_id=req-c74ec7  
+2023-10-09T14:31:30Z [ERROR] ebs-monitor: Health check failed for instance i-0987654321fedcba9 status_code=503 trace_id=req-91a87a  
+2023-10-09T14:32:35Z [CRITICAL] ebs-api-gateway: Connection reset by peer, server_ip=192.168.1.101 trace_id=req-c74ec7  
+2023-10-09T14:33:40Z [WARN] ebs-monitor: High latency detected in API calls, duration=1500ms trace_id=req-91a87a  
+2023-10-09T14:34:45Z [ERROR] ebs-api-gateway: Timeout while processing request, client_id=cid-67890 trace_id=req-140cab  
+2023-10-09T14:35:50Z [CRITICAL] ebs-monitor: Excessive retries detected in API requests, count=6 trace_id=req-c74ec7  
+2023-10-09T14:36:55Z [WARN] ebs-api-gateway: High queue depth observed, size=600 trace_id=req-140cab  
+2023-10-09T14:38:00Z [ERROR] ebs-monitor: Health check failed for instance i-abcdef0987654321 status_code=503 trace_id=req-140cab  
+2023-10-09T14:39:05Z [CRITICAL] ebs-api-gateway: Connection reset by peer, server_ip=192.168.1.102 trace_id=req-8c0784  
+2023-10-09T14:40:10Z [WARN] ebs-monitor: High latency detected in API calls, duration=1800ms trace_id=req-140cab  
+2023-10-09T14:41:15Z [ERROR] ebs-api-gateway: Timeout while processing request, client_id=cid-13579 trace_id=req-91a87a  
+2023-10-09T14:42:20Z [CRITICAL] ebs-monitor: Excessive retries detected in API requests, count=7 trace_id=req-8c0784  
+2023-10-09T14:43:25Z [WARN] ebs-api-gateway: High queue depth observed, size=700 trace_id=req-91a87a  
+2023-10-09T14:44:30Z [ERROR] ebs-monitor: Health check failed for instance i-654321fedcba0987 status_code=503 trace_id=req-c74ec7  
+2023-10-09T14:45:35Z [CRITICAL] ebs-api-gateway: Connection reset by peer, server_ip=192.168.1.103 trace_id=req-140cab

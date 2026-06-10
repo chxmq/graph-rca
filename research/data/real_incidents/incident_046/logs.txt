@@ -1,11 +1,16 @@
-2024-01-02 14:30:00 [INFO] System Monitor: VxWorks version 5.2.0 initialized
-2024-01-02 14:30:05 [INFO] Service-c: Starting data synchronization
-2024-01-02 14:31:10 [WARNING] System Monitor: High-priority task "task-x" waiting on mutex held by low-priority task "task-y"
-2024-01-02 14:31:15 [INFO] Service-d: Attempting to acquire mutex for high-priority task "task-z"
-2024-01-02 14:32:20 [WARNING] System Monitor: Medium-priority task "task-w" blocked low-priority task "task-y"
-2024-01-02 14:33:25 [ERROR] Service-d: Failed to acquire mutex for high-priority task "task-z", error code 5
-2024-01-02 14:34:30 [CRITICAL] System Monitor: Priority inversion detected, multiple tasks blocked due to insufficient resources
-2024-01-02 14:35:00 [INFO] Service-e: Attempting to recover from priority inversion
-2024-01-02 14:36:15 [WARNING] System Monitor: High-priority task "task-x" still waiting on mutex held by low-priority task "task-y"
-2024-01-02 14:37:20 [ERROR] Service-f: Unable to recover from priority inversion, system instability detected
-2024-01-02 14:40:00 [INFO] System Monitor: VxWorks version 5.2.0 shutdown initiated
+1997-07-04T00:00:00Z [INFO] telemetry-service: Queue depth increased to 25 trace_id=req-5122ca  
+1997-07-04T00:00:05Z [WARN] telemetry-service: Latency spike detected, current latency is 300ms trace_id=req-13491f  
+1997-07-04T00:00:10Z [ERROR] telemetry-service: Failed to acquire resource, retrying... trace_id=req-bb3d91  
+1997-07-04T00:00:15Z [CRITICAL] telemetry-service: Resource acquisition failed after 3 retries trace_id=req-5122ca  
+1997-07-04T00:00:20Z [ERROR] data-processing-service: Timeout while waiting for resource trace_id=req-13491f  
+1997-07-04T00:00:25Z [WARN] data-processing-service: Latency increased to 600ms trace_id=req-bb3d91  
+1997-07-04T00:00:30Z [ERROR] command-execution-service: Failed to execute command, retrying... trace_id=req-242623  
+1997-07-04T00:00:35Z [CRITICAL] telemetry-service: Health check failed due to unresponsive resource acquisition trace_id=req-5122ca  
+1997-07-04T00:00:40Z [ERROR] data-processing-service: Command execution timeout, retrying... trace_id=req-13491f  
+1997-07-04T00:00:45Z [WARN] command-execution-service: Latency spike detected, current latency is 800ms trace_id=req-242623  
+1997-07-04T00:00:50Z [ERROR] telemetry-service: Failed to send data due to resource unavailability trace_id=req-bb3d91  
+1997-07-04T00:00:55Z [CRITICAL] command-execution-service: Resource acquisition failed after 3 retries trace_id=req-242623  
+1997-07-04T00:01:00Z [ERROR] data-processing-service: Health check failed due to unresponsive resource acquisition trace_id=req-13491f  
+1997-07-04T00:01:05Z [CRITICAL] telemetry-service: Data processing service is down, attempting to restart... trace_id=req-5122ca  
+1997-07-04T00:01:10Z [ERROR] command-execution-service: Failed to execute critical command, system may be unstable trace_id=req-242623  
+1997-07-04T00:01:15Z [WARN] data-processing-service: Latency continues to increase, current latency is 1000ms trace_id=req-13491f

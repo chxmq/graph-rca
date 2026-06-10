@@ -1,12 +1,16 @@
-2014-11-18 14:30:00 [INFO] StorageService: Deploying performance enhancement patch
-2014-11-18 14:30:15 [WARNING] StorageService: Unexpected error while applying patch, checking configuration files
-2014-11-18 14:30:20 [ERROR] StorageService: Configuration file validation failed, error message: "Invalid parameter value"
-2014-11-18 14:30:25 [INFO] MonitoringService: Noticing unusual storage usage patterns
-2014-11-18 14:30:35 [WARNING] MonitoringService: Storage service slowdown detected
-2014-11-18 14:30:40 [ERROR] MonitoringService: Global storage service failure reported, Azure Storage down for all regions
-2014-11-18 14:31:00 [CRITICAL] OperationsTeam: Incident triggered, sending alert to teams and stakeholders
-2014-11-18 14:31:10 [INFO] IncidentResponseTeam: Initiating incident response, gathering information from storage service logs
-2014-11-18 14:32:30 [WARNING] IncidentResponseTeam: Azure Storage downtime affecting multiple services, including Office 365 and Dynamics CRM
-2014-11-18 14:33:00 [ERROR] IncidentResponseTeam: Unable to recover storage service using standard procedures, escalating to expert team
-2014-11-18 14:34:15 [CRITICAL] ExpertTeam: Confirmed that configuration change was deployed incorrectly, taking down Azure Storage globally
-2014-11-18 14:35:00 [INFO] MicrosoftSupport: Notification sent to stakeholders and partners regarding storage service outage
+2014-11-18T00:00:00Z [ERROR] data-service: Request timed out after 30 seconds trace_id=req-3823ab
+2014-11-18T00:00:05Z [WARN] api-gateway: Increased queue depth to 150 from 75 trace_id=req-203a02
+2014-11-18T00:00:07Z [ERROR] data-service: Failed to connect to backend server at 10.1.2.3:5000, retrying... trace_id=req-3823ab
+2014-11-18T00:00:15Z [CRITICAL] api-gateway: Service health check failed with status code 503 trace_id=req-203a02
+2014-11-18T00:00:20Z [ERROR] data-service: Request timed out after 30 seconds trace_id=req-345446
+2014-11-18T00:00:22Z [WARN] monitoring-system: Latency increased to 500ms from 100ms for service calls trace_id=req-670548
+2014-11-18T00:00:25Z [ERROR] data-service: Failed to connect to backend server at 10.1.2.4:5000, retrying... trace_id=req-345446
+2014-11-18T00:00:30Z [CRITICAL] api-gateway: Service health check failed with status code 503 trace_id=req-670548
+2014-11-18T00:00:35Z [ERROR] data-service: Request timed out after 30 seconds trace_id=req-849485
+2014-11-18T00:00:40Z [WARN] monitoring-system: Latency increased to 700ms from 500ms for service calls trace_id=req-670548
+2014-11-18T00:00:45Z [ERROR] data-service: Failed to connect to backend server at 10.1.2.3:5000, retrying... trace_id=req-849485
+2014-11-18T00:00:50Z [CRITICAL] api-gateway: Service health check failed with status code 503 trace_id=req-203a02
+2014-11-18T00:00:55Z [ERROR] data-service: Request timed out after 30 seconds trace_id=req-89c06d
+2014-11-18T00:01:00Z [WARN] monitoring-system: Latency increased to 900ms from 700ms for service calls trace_id=req-670548
+2014-11-18T00:01:05Z [ERROR] data-service: Failed to connect to backend server at 10.1.2.5:5000, retrying... trace_id=req-89c06d
+2014-11-18T00:01:10Z [CRITICAL] api-gateway: Service health check failed with status code 503 trace_id=req-670548

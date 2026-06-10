@@ -1,11 +1,16 @@
-2022-02-22 14:30:00 [INFO] Witness Cluster: Cache nodes removal initiated for maintenance
-2022-02-22 14:31:00 [WARNING] Witness Cluster: High workload detected on witness nodes due to cache removal
-2022-02-22 14:32:00 [ERROR] Service-a: Request handling overload, responding with error messages
-2022-02-22 14:33:00 [CRITICAL] Service-b: Database connection timeout occurred, unable to retrieve data
-2022-02-22 14:34:00 [WARNING] Service-c: High latency detected due to witness cluster overload
-2022-02-22 14:35:00 [ERROR] Service-d: Unable to connect to database, service unavailable
-2022-02-22 14:36:00 [CRITICAL] Witness Cluster: Cache nodes removal completed, witness cluster is under heavy load
-2022-02-22 14:37:00 [INFO] Operations Team: Incident detected, investigating cause
-2022-02-22 14:38:00 [WARNING] Operations Team: High workload on witness cluster suspected as root cause
-2022-02-22 14:39:00 [ERROR] Operations Team: Cache nodes removal confirmed as root cause of service outage
-2022-02-22 14:40:00 [CRITICAL] Operations Team: Root cause analysis in progress, estimated fix time is 30 minutes
+2023-02-22T14:45:00Z [INFO] api-gateway: Increased latency observed on request trace_id=req-89dfe8  
+2023-02-22T14:46:00Z [WARN] database-service: Timeout while processing query trace_id=req-89dfe8  
+2023-02-22T14:47:05Z [ERROR] api-gateway: Failed to connect to backend service trace_id=req-516cef  
+2023-02-22T14:48:00Z [CRITICAL] message-broker: Consumer queue depth exceeded threshold trace_id=req-bea317  
+2023-02-22T14:49:10Z [ERROR] database-service: Connection pool exhausted trace_id=req-5edf2d  
+2023-02-22T14:50:00Z [WARN] api-gateway: Increased latency observed on request trace_id=req-516cef  
+2023-02-22T14:51:00Z [ERROR] message-broker: Consumer failure, retrying... trace_id=req-bea317  
+2023-02-22T14:52:00Z [CRITICAL] database-service: Connection timeout for query execution trace_id=req-5edf2d  
+2023-02-22T14:53:00Z [WARN] api-gateway: Failed to fetch data from database, retrying... trace_id=req-89dfe8  
+2023-02-22T14:54:00Z [ERROR] message-broker: Consumer queue depth still above threshold after retries trace_id=req-bea317  
+2023-02-22T14:55:00Z [CRITICAL] database-service: All connections failed, retrying... trace_id=req-5edf2d  
+2023-02-22T14:56:00Z [ERROR] api-gateway: HTTP 503 Service Unavailable for request trace_id=req-89dfe8  
+2023-02-22T14:57:00Z [WARN] message-broker: Consumer processing time exceeded maximum allowed duration trace_id=req-bea317  
+2023-02-22T14:58:00Z [CRITICAL] database-service: Connection pool failure, shutting down connections... trace_id=req-5edf2d  
+2023-02-22T14:59:00Z [ERROR] api-gateway: Failed to connect to backend service, multiple retries failed trace_id=req-516cef  
+2023-02-22T15:00:00Z [WARN] message-broker: Consumer failures reaching critical threshold, taking corrective actions... trace_id=req-bea317

@@ -1,15 +1,20 @@
-2022-04-05 08:30:00 [INFO] Script-runner: Beginning decommission script for legacy app 'old-app'
-2022-04-05 08:30:02 [INFO] Script-runner: Targeting environment 'dev' for deletion
-2022-04-05 08:30:03 [INFO] Script-runner: Checking dependencies for 'old-app' in 'dev' environment
-2022-04-05 08:30:04 [WARNING] Script-runner: Missing dependency 'dependency-1' found in 'dev' environment
-2022-04-05 08:30:05 [INFO] Script-runner: Ignoring missing dependency and continuing script execution
-2022-04-05 08:30:06 [INFO] Script-runner: Starting deletion process for 'old-app' in 'dev' environment
-2022-04-05 08:30:07 [ERROR] Script-runner: Error deleting 'old-app' in 'dev' environment: missing required permissions
-2022-04-05 08:30:08 [INFO] Script-runner: Checking if script can continue execution without 'old-app'
-2022-04-05 08:30:09 [WARNING] Script-runner: Cannot proceed without 'old-app', skipping deletion for 'dev' environment
-2022-04-05 08:30:10 [INFO] Script-runner: Targeting environment 'prod' for deletion
-2022-04-05 08:30:11 [INFO] Script-runner: Checking dependencies for 'old-app' in 'prod' environment
-2022-04-05 08:30:12 [WARNING] Script-runner: Missing dependency 'dependency-1' found in 'prod' environment
-2022-04-05 08:30:13 [ERROR] Script-runner: Error deleting 'old-app' in 'prod' environment: missing required permissions
-2022-04-05 08:30:14 [INFO] Script-runner: Deletion process failed for both 'dev' and 'prod' environments
-2022-04-05 08:30:15 [CRITICAL] Script-runner: Decommission script for legacy app 'old-app' has failed
+2022-04-05T07:38:00Z [ERROR] db-service: Failed to delete data for project ID 123456 error_code=500 trace_id=req-069e82  
+2022-04-05T07:38:05Z [WARN] api-gateway: Request failed with status code 503 for path /projects/123456 response_time=3.2s trace_id=req-069e82  
+2022-04-05T07:38:10Z [ERROR] db-service: Failed to delete data for project ID 789012 error_code=500 trace_id=req-3a281a  
+2022-04-05T07:38:15Z [WARN] api-gateway: Request failed with status code 503 for path /projects/789012 response_time=2.9s trace_id=req-3a281a  
+2022-04-05T07:38:20Z [CRITICAL] web-ui: Failed to load project data for ID 123456 error_code=503 response_time=5.1s trace_id=req-069e82  
+2022-04-05T07:38:25Z [ERROR] db-service: Failed to delete data for project ID 345678 error_code=500 trace_id=req-17cab1  
+2022-04-05T07:38:30Z [WARN] api-gateway: Request failed with status code 503 for path /projects/345678 response_time=3.4s trace_id=req-17cab1  
+2022-04-05T07:38:50Z [CRITICAL] web-ui: Failed to load project data for ID 789012 error_code=503 response_time=4.8s trace_id=req-3a281a  
+2022-04-05T07:39:00Z [ERROR] db-service: Failed to delete data for project ID 901234 error_code=500 trace_id=req-5458ab  
+2022-04-05T07:39:05Z [WARN] api-gateway: Request failed with status code 503 for path /projects/901234 response_time=3.6s trace_id=req-5458ab  
+2022-04-05T07:39:10Z [CRITICAL] web-ui: Failed to load project data for ID 345678 error_code=503 response_time=4.9s trace_id=req-17cab1  
+2022-04-05T07:39:20Z [ERROR] db-service: Failed to delete data for project ID 111222 error_code=500 trace_id=req-776279  
+2022-04-05T07:39:25Z [WARN] api-gateway: Request failed with status code 503 for path /projects/111222 response_time=3.7s trace_id=req-776279  
+2022-04-05T07:39:35Z [CRITICAL] web-ui: Failed to load project data for ID 901234 error_code=503 response_time=5.0s trace_id=req-5458ab  
+2022-04-05T07:39:50Z [ERROR] db-service: Failed to delete data for project ID 222333 error_code=500 trace_id=req-7c11d1  
+2022-04-05T07:40:00Z [WARN] api-gateway: Request failed with status code 503 for path /projects/222333 response_time=3.8s trace_id=req-7c11d1  
+2022-04-05T07:40:10Z [CRITICAL] web-ui: Failed to load project data for ID 111222 error_code=503 response_time=5.1s trace_id=req-776279  
+2022-04-05T07:40:20Z [ERROR] db-service: Failed to delete data for project ID 444555 error_code=500 trace_id=req-e3fb32  
+2022-04-05T07:40:25Z [WARN] api-gateway: Request failed with status code 503 for path /projects/444555 response_time=3.9s trace_id=req-e3fb32  
+2022-04-05T07:40:35Z [CRITICAL] web-ui: Failed to load project data for ID 222333 error_code=503 response_time=5.2s trace_id=req-7c11d1

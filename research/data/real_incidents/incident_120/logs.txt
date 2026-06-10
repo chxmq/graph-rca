@@ -1,13 +1,20 @@
-2021-10-25 04:00:00 [INFO] livestream-service: Initiating livestream operation for event X123
-2021-10-25 04:00:02 [WARNING] network-svc: Network latency spike detected
-2021-10-25 04:00:05 [CRITICAL] livestream-service: Error initializing video encoder for user U456
-2021-10-25 04:01:00 [INFO] monitoring-system: Alert triggered for service livestream-service due to error in livestream-video-playback
-2021-10-25 04:02:00 [ERROR] network-svc: Packet loss detected on connection from viewer V789
-2021-10-25 04:03:00 [WARNING] livestream-service: Warning: user U456 experiencing rebuffer rate above threshold
-2021-10-25 04:05:00 [INFO] alert-system: Sending notification to support team for service livestream-service
-2021-10-25 08:30:00 [CRITICAL] livestream-service: Video playback interrupted for user U456 due to network connectivity issues
-2021-10-26 02:30:00 [WARNING] monitoring-system: Service livestream-service returning to normal operation
-2021-10-26 04:00:00 [INFO] livestream-service: Resuming livestream operation for event X123
-2021-10-26 05:59:00 [ERROR] network-svc: Error detected in network connection from viewer V789
-2021-10-26 09:50:00 [CRITICAL] livestream-service: Video playback interrupted for user U456 due to rebuffer rate above threshold
-2021-10-26 10:00:00 [INFO] support-team: Investigating issue with service livestream-service
+2021-10-25T04:01:30Z [WARN] video-stream-service: High rebuffer rate detected for session 12345 trace_id=req-d77d2e  
+2021-10-25T04:02:15Z [ERROR] media-delivery-network: Latency increased to 800ms for stream id 67890 trace_id=req-d6afa1  
+2021-10-25T04:03:00Z [CRITICAL] video-stream-service: Timeout occurred during streaming session 12345 trace_id=req-d77d2e  
+2021-10-25T04:03:30Z [ERROR] media-delivery-network: Failed to deliver packets for stream id 67890, retrying trace_id=req-d6afa1  
+2021-10-25T04:04:00Z [WARN] load-balancer: Increased queue depth detected on node lb-node-01 trace_id=req-6a85d8  
+2021-10-25T04:04:30Z [ERROR] video-stream-service: Session 12345 failed to reconnect, retrying trace_id=req-d77d2e  
+2021-10-25T04:05:00Z [WARN] media-delivery-network: Latency for stream id 67890 now at 1000ms trace_id=req-d6afa1  
+2021-10-25T04:05:30Z [CRITICAL] video-stream-service: Session 12345 failed to connect after 5 retries, marking as failed trace_id=req-d77d2e  
+2021-10-25T04:06:00Z [ERROR] load-balancer: Node lb-node-02 reports high latency and packet loss trace_id=req-6a85d8  
+2021-10-25T04:06:30Z [WARN] video-stream-service: High rebuffer rate for session 23456 detected trace_id=req-06db83  
+2021-10-25T04:07:00Z [ERROR] media-delivery-network: Stream id 78901 failed to deliver packets, retrying trace_id=req-06db83  
+2021-10-25T04:07:30Z [CRITICAL] video-stream-service: Session 23456 timed out after 3 retries trace_id=req-06db83  
+2021-10-25T04:08:00Z [ERROR] load-balancer: Node lb-node-03 reports connectivity issues trace_id=req-6a85d8  
+2021-10-25T04:08:30Z [WARN] video-stream-service: Rebuffer rate for session 34567 is above threshold trace_id=req-438ca8  
+2021-10-25T04:09:00Z [ERROR] media-delivery-network: Stream id 89012 failed to deliver packets, retrying trace_id=req-438ca8  
+2021-10-25T04:09:30Z [CRITICAL] video-stream-service: Session 34567 marked as failed after multiple retries trace_id=req-438ca8  
+2021-10-25T04:10:00Z [ERROR] load-balancer: High packet loss detected on node lb-node-04 trace_id=req-6a85d8  
+2021-10-25T04:10:30Z [WARN] video-stream-service: Increased rebuffer rates observed across multiple sessions trace_id=req-0a46c8  
+2021-10-25T04:11:00Z [ERROR] media-delivery-network: Multiple streams reporting packet delivery failures trace_id=req-0a46c8  
+2021-10-25T04:11:30Z [CRITICAL] video-stream-service: System-wide rebuffer rate has reached critical levels trace_id=req-0a46c8

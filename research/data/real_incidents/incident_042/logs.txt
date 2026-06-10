@@ -1,13 +1,15 @@
-2023-01-01 14:30:00 [INFO] gcve-provisioning: Initiating GCVE environment setup
-2023-01-01 14:31:00 [WARNING] gcve-provisioning: Detected legacy provisioning option for fixed-term contract
-2023-01-01 14:32:00 [INFO] gcve-provisioning: Creating environment with default settings
-2023-01-01 14:33:00 [INFO] service-a: Starting request handling
-2023-01-01 14:34:00 [INFO] service-b: Initializing database connection
-2023-01-01 14:35:00 [WARNING] gcve-provisioning: Contract term approaching expiry
-2023-01-01 14:36:00 [ERROR] gcve-provisioning: Automatic deletion of environment initiated due to contract expiry
-2023-01-01 14:37:00 [CRITICAL] gcve-provisioning: Environment deleted, all services failed
-2023-01-01 14:38:00 [INFO] gcve-monitoring: Notifying incident response team of environment deletion
-2023-01-01 14:39:00 [WARNING] service-c: Failed to connect to deleted environment
-2023-01-01 14:40:00 [ERROR] service-d: Request handling failed due to environment loss
-2023-01-01 14:41:00 [CRITICAL] gcve-provisioning: Root cause identified as legacy provisioning option with fixed-term contract
-2023-01-01 14:42:00 [INFO] gcve-admin: Updating provisioning settings to prevent future incidents
+2023-01-01T00:00:00Z [ERROR] compute-engine: Instance shutdown request failed with status code 409 trace_id=req-4540b2
+2023-01-01T00:00:05Z [WARN] load-balancer: Backend service instance count dropped to zero trace_id=req-f9f6e6
+2023-01-01T00:00:10Z [CRITICAL] app-service: Service unreachable, HTTP 503 errors for client requests trace_id=req-4540b2
+2023-01-01T00:00:15Z [ERROR] storage-api: Bucket access failed with error code E_TIMEOUT trace_id=req-54b0dd
+2023-01-01T00:01:00Z [WARN] dns-service: DNS resolution failure for app.example.com trace_id=req-f83f13
+2023-01-01T00:01:05Z [ERROR] compute-engine: Failed to restart instance, status code 400 trace_id=req-a914a9
+2023-01-01T00:01:10Z [CRITICAL] app-service: Health check failures detected for all instances trace_id=req-f83f13
+2023-01-01T00:01:15Z [ERROR] storage-api: Object retrieval failed, status code 404 trace_id=req-7adad5
+2023-01-01T00:01:55Z [WARN] load-balancer: No healthy backends available for traffic routing trace_id=req-f9f6e6
+2023-01-01T00:02:00Z [ERROR] compute-engine: Instance creation request failed with status code 403 trace_id=req-a33004
+2023-01-01T00:02:05Z [CRITICAL] app-service: Application downtime detected, no successful responses in last 5 minutes trace_id=req-f83f13
+2023-01-01T00:02:10Z [ERROR] storage-api: Bucket operation timed out after 60 seconds trace_id=req-15542c
+2023-01-01T00:02:55Z [WARN] dns-service: DNS propagation delay for app.example.com, resolution still failing trace_id=req-f83f13
+2023-01-01T00:03:00Z [ERROR] compute-engine: Instance deletion request failed with status code 409 trace_id=req-cecafa
+2023-01-01T00:03:05Z [CRITICAL] app-service: Service recovery attempts failing, all instances reported as unhealthy trace_id=req-f83f13

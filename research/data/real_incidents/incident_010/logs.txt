@@ -1,10 +1,19 @@
-2017-02-28 14:30:00 [INFO] s3-server-123: Initiating server removal process in US-EAST-1
-2017-02-28 14:30:01 [WARNING] s3-server-123: Invalid command syntax detected
-2017-02-28 14:30:02 [INFO] s3-server-123: Attempting to correct invalid command
-2017-02-28 14:30:03 [ERROR] s3-server-123: Command execution failed due to syntax error
-2017-02-28 14:30:04 [WARNING] s3-server-123: Unintended server removal detected
-2017-02-28 14:30:05 [CRITICAL] s3-server-123: Massive S3 storage system deletion initiated
-2017-02-28 14:30:10 [ERROR] monitoring-system: S3 storage usage alarm triggered
-2017-02-28 14:30:11 [WARNING] alert-manager: Multiple downstream customers affected by S3 outage
-2017-02-28 14:30:12 [CRITICAL] infrastructure-team: EC2 and EBS services experiencing cascading failure
-2017-02-28 14:30:15 [ERROR] incident-response: AWS S3 outage confirmed, impacting hundreds of downstream customers
+2017-02-28T09:37:00Z [ERROR] s3-service: Failed to fetch bucket list. HTTP status code: 500 trace_id=req-350ad3  
+2017-02-28T09:37:01Z [WARN] ec2-instance-manager: Instance i-1234567890abcdef0 reported health-check failure. trace_id=req-6fa679  
+2017-02-28T09:37:05Z [CRITICAL] s3-service: Failed to retrieve object with key 'datafile.txt'. HTTP status code: 404 trace_id=req-350ad3  
+2017-02-28T09:37:10Z [ERROR] ebs-volume-controller: Volume vol-09d2a6af0b99e27e5 failed to attach. Error code: InvalidVolume.NotFound trace_id=req-af3c1f  
+2017-02-28T09:37:15Z [WARN] s3-service: Increased request latency detected (from 2ms to 1200ms). trace_id=req-6fa679  
+2017-02-28T09:37:20Z [ERROR] s3-service: Failed to fetch bucket list. HTTP status code: 500 trace_id=req-af3c1f  
+2017-02-28T09:37:25Z [CRITICAL] ec2-instance-manager: Instance i-abcdef09876543210 terminated due to unresponsive health-checks. trace_id=req-6fa679  
+2017-02-28T09:37:30Z [WARN] s3-service: Increased request latency detected (from 1200ms to 1500ms). trace_id=req-350ad3  
+2017-02-28T09:37:35Z [ERROR] ebs-volume-controller: Volume vol-e27e56af0b9909d2a failed to attach. Error code: InvalidVolume.NotFound trace_id=req-666b19  
+2017-02-28T09:37:40Z [CRITICAL] s3-service: Failed to retrieve object with key 'config.json'. HTTP status code: 404 trace_id=req-af3c1f  
+2017-02-28T09:37:45Z [ERROR] ec2-instance-manager: Instance i-fedcba0987654321a reported health-check failure. trace_id=req-9b6d5b  
+2017-02-28T09:37:50Z [WARN] s3-service: Increased request latency detected (from 1500ms to 1800ms). trace_id=req-350ad3  
+2017-02-28T09:37:55Z [CRITICAL] ebs-volume-controller: Volume vol-af0b99e27e56d2a09 failed to attach. Error code: InvalidVolume.NotFound trace_id=req-666b19  
+2017-02-28T09:38:00Z [ERROR] s3-service: Failed to fetch bucket list. HTTP status code: 500 trace_id=req-9b6d5b  
+2017-02-28T09:38:05Z [CRITICAL] ec2-instance-manager: Instance i-cba0987654321afed terminated due to unresponsive health-checks. trace_id=req-9b6d5b  
+2017-02-28T09:38:10Z [ERROR] s3-service: Failed to retrieve object with key 'logdata.txt'. HTTP status code: 404 trace_id=req-af3c1f  
+2017-02-28T09:38:15Z [WARN] s3-service: Increased request latency detected (from 1800ms to 2000ms). trace_id=req-350ad3  
+2017-02-28T09:38:20Z [ERROR] ec2-instance-manager: Instance i-a9d2e56b0c99f8765 reported health-check failure. trace_id=req-7a5976  
+2017-02-28T09:38:25Z [CRITICAL] s3-service: Failed to fetch bucket list. HTTP status code: 500 trace_id=req-7a5976

@@ -1,14 +1,16 @@
-2024-01-01 09:45:00 [INFO] sms-service: Initial start-up check
-2024-01-01 09:45:02 [WARNING] sms-service: Unusual message routing detected
-2024-01-01 09:45:05 [ERROR] sms-service: Failed to validate recipient information for message ID 123456
-2024-01-01 09:45:10 [INFO] sms-service: Recovering from initial failure, attempting to re-route messages
-2024-01-01 09:45:12 [WARNING] sms-service: Multiple concurrent routing attempts detected
-2024-01-01 09:45:15 [ERROR] sms-service: Exception encountered during message processing (Error Code: 0x123)
-2024-01-01 09:45:20 [CRITICAL] sms-service: Unexpected system failure, sending messages to unknown destinations
-2024-01-01 09:45:25 [INFO] sms-service: Triggering emergency shutdown protocol for datacenter
-2024-01-01 09:45:30 [WARNING] firewall: Datacenter firewall alert, potential security breach detected
-2024-01-01 09:45:35 [ERROR] fire-sensor: Fire detected in datacenter, immediate shutdown required
-2024-01-01 09:45:40 [CRITICAL] sms-service: SMS messages being sent to random destinations, customer service notified
-2024-01-01 09:50:00 [INFO] incident-response: Incident reported, emergency response team engaged
-2024-01-01 10:00:00 [WARNING] sms-service: System restore initiated, attempting to recover lost messages
-2024-01-01 10:05:00 [INFO] sms-service: Recovered from system failure, message routing corrected
+2023-10-15T14:00:00Z [WARN] sms-gateway: Queue depth exceeded threshold trace_id=req-49ab9f
+2023-10-15T14:01:05Z [ERROR] sms-gateway: Timeout while sending request to SMSC trace_id=req-7c1278
+2023-10-15T14:02:10Z [CRITICAL] smpp-router: Failed health-check on SMPP connection trace_id=req-49ab9f
+2023-10-15T14:03:15Z [WARN] sms-gateway: Retrying failed message delivery trace_id=req-7c1278
+2023-10-15T14:04:20Z [ERROR] smpp-router: Unexpected HTTP status code 500 from SMSC trace_id=req-eab736
+2023-10-15T14:05:25Z [CRITICAL] sms-gateway: Message delivery failure, retry limit exceeded trace_id=req-7c1278
+2023-10-15T14:06:30Z [WARN] smpp-router: Queue depth warning: 90% capacity reached trace_id=req-eab736
+2023-10-15T14:07:35Z [ERROR] sms-gateway: Corrupt message detected in queue trace_id=req-49ab9f
+2023-10-15T14:08:40Z [CRITICAL] smpp-router: SMPP connection lost, attempting reconnection trace_id=req-eab736
+2023-10-15T14:09:45Z [WARN] sms-gateway: Increased latency in message processing detected trace_id=req-7c1278
+2023-10-15T14:10:50Z [ERROR] smpp-router: Failed to establish SMPP connection trace_id=req-eab736
+2023-10-15T14:11:55Z [CRITICAL] sms-gateway: High error rate in message delivery trace_id=req-49ab9f
+2023-10-15T14:13:00Z [WARN] smpp-router: Health-check failed, initiating failover procedure trace_id=req-eab736
+2023-10-15T14:14:05Z [ERROR] sms-gateway: Message delivery timeout, no response from SMSC trace_id=req-7c1278
+2023-10-15T14:15:10Z [CRITICAL] smpp-router: Failover to secondary SMSC failed, retrying trace_id=req-eab736
+2023-10-15T14:16:15Z [WARN] sms-gateway: Increased number of retries for message delivery trace_id=req-49ab9f

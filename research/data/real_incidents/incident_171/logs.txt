@@ -1,13 +1,19 @@
-2024-01-01 08:45:00 [INFO] merchant-authentication-service: Receiving normal traffic
-2024-01-01 09:15:00 [WARNING] adjacent-service-x: Request spike detected
-2024-01-01 09:20:00 [INFO] adjacent-service-y: Noticing increased load on service-b
-2024-01-01 09:25:00 [ERROR] merchant-authentication-service: Overloaded with requests from adjacent service-b
-2024-01-01 09:30:00 [CRITICAL] merchant-authentication-service: Service response time exceeded threshold
-2024-01-01 09:35:00 [INFO] incident-response-team: Alert triggered for merchant authentication service overload
-2024-01-01 09:40:00 [WARNING] adjacent-service-x: Request spike continues, unable to recover
-2024-01-01 10:05:00 [ERROR] merchant-authentication-service: Connection timeout due to excessive load
-2024-01-01 10:10:00 [INFO] incident-response-team: Escalation notice sent to adjacent service developers
-2024-01-01 10:20:00 [CRITICAL] merchant-authentication-service: Service is still overloaded, users affected
-2024-01-01 11:15:00 [INFO] incident-response-team: Request spike has subsided, monitoring services for recovery
-2024-01-01 12:00:00 [WARNING] adjacent-service-x: Possible underlying issue, further investigation required
-2024-01-01 13:00:00 [INFO] merchant-authentication-service: Service is recovering, normal traffic resumed
+2023-10-15T14:23:15Z [WARN] web-gateway: Request timeout trace_id=req-a5204f
+2023-10-15T14:23:17Z [ERROR] payment-service: Failed to connect to dependency service trace_id=req-a5204f
+2023-10-15T14:23:20Z [CRITICAL] web-gateway: High queue depth detected trace_id=req-d1b594
+2023-10-15T14:23:22Z [ERROR] payment-service: Connection refused trace_id=req-d1b594
+2023-10-15T14:23:25Z [WARN] web-gateway: Request timeout trace_id=req-d1b594
+2023-10-15T14:23:30Z [CRITICAL] payment-service: Multiple request failures trace_id=req-550540
+2023-10-15T14:23:32Z [ERROR] web-gateway: 503 Service Unavailable trace_id=req-550540
+2023-10-15T14:23:35Z [WARN] payment-service: Slow response time detected trace_id=req-8dffc9
+2023-10-15T14:23:37Z [ERROR] web-gateway: Request failed after retries trace_id=req-8dffc9
+2023-10-15T14:23:40Z [CRITICAL] payment-service: Health check failed trace_id=req-8dffc9
+2023-10-15T14:23:42Z [ERROR] web-gateway: Service unreachable trace_id=req-550540
+2023-10-15T14:23:45Z [WARN] payment-service: Excessive request failures trace_id=req-a5204f
+2023-10-15T14:23:47Z [ERROR] web-gateway: 504 Gateway Timeout trace_id=req-a5204f
+2023-10-15T14:23:50Z [CRITICAL] payment-service: Queue depth exceeds threshold trace_id=req-d1b594
+2023-10-15T14:23:52Z [ERROR] web-gateway: Failed to process request trace_id=req-d1b594
+2023-10-15T14:23:55Z [WARN] payment-service: Latency spike detected trace_id=req-550540
+2023-10-15T14:23:57Z [ERROR] web-gateway: Service degradation observed trace_id=req-550540
+2023-10-15T14:24:00Z [CRITICAL] payment-service: System resource exhaustion trace_id=req-8dffc9
+2023-10-15T14:24:02Z [ERROR] web-gateway: 500 Internal Server Error trace_id=req-8dffc9

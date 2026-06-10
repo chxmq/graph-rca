@@ -1,15 +1,18 @@
-2023-12-31 23:45:00 [INFO] mysql: Service started, version 8.0.27-0ubuntu0.20.04.1
-2023-12-31 23:50:00 [WARNING] mysql: Warning: Sort order was ignored due to query optimization
-2023-12-31 23:52:30 [INFO] mysql: New connection established from service-a
-2023-12-31 23:55:10 [ERROR] mysql: Error in 'SELECT' statement: Unknown error (code=1267)
-2023-12-31 23:56:00 [WARNING] mysql: Warning: Sort order was ignored due to query optimization (second occurrence)
-2023-12-31 23:57:30 [INFO] mysql: Query failed, service-a
-2023-12-31 23:58:10 [ERROR] mysql: Error in 'SELECT' statement: Unknown error (code=1267) repeated
-2023-12-31 23:59:00 [CRITICAL] mysql: Primary DB became inconsistent with all replicas
-2023-12-31 23:59:30 [INFO] mysql: Alert sent to on-call engineer
-2023-12-31 23:59:45 [ERROR] mysql: Failed to replicate data, backup failed
-2023-12-31 23:59:50 [WARNING] mysql: Warning: Sort order was ignored due to query optimization (third occurrence)
-2023-12-31 23:59:55 [INFO] mysql: Attempting to recover from inconsistent state
-2023-12-31 00:01:10 [CRITICAL] mysql: Database connection timeout due to failed recovery attempt
-2023-12-31 00:02:00 [ERROR] mysql: Error in 'SELECT' statement: Unknown error (code=1267) repeated (fourth occurrence)
-2023-12-31 00:03:30 [INFO] mysql: Running database repair and recovery script
+2023-10-05T14:23:15Z [WARN] database-service: Query execution took 30 seconds trace_id=req-fb6d0c
+2023-10-05T14:23:17Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-fb6d0c
+2023-10-05T14:23:20Z [INFO] load-balancer: Retrying request to backend service due to failure trace_id=req-fb6d0c
+2023-10-05T14:23:25Z [WARN] database-service: Query execution took 45 seconds trace_id=req-20ae23
+2023-10-05T14:23:30Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-20ae23
+2023-10-05T14:23:35Z [CRITICAL] load-balancer: Maximum retries reached for request, failing over trace_id=req-20ae23
+2023-10-05T14:23:40Z [WARN] database-service: Query execution took 60 seconds trace_id=req-e40728
+2023-10-05T14:23:45Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-e40728
+2023-10-05T14:23:50Z [INFO] load-balancer: Retrying request to backend service due to failure trace_id=req-e40728
+2023-10-05T14:23:55Z [WARN] database-service: Query execution took 75 seconds trace_id=req-21475c
+2023-10-05T14:24:00Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-21475c
+2023-10-05T14:24:05Z [CRITICAL] load-balancer: Maximum retries reached for request, failing over trace_id=req-21475c
+2023-10-05T14:24:10Z [WARN] database-service: Query execution took 90 seconds trace_id=req-5bb889
+2023-10-05T14:24:15Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-5bb889
+2023-10-05T14:24:20Z [INFO] load-balancer: Retrying request to backend service due to failure trace_id=req-5bb889
+2023-10-05T14:24:25Z [WARN] database-service: Query execution took 105 seconds trace_id=req-9ed5a0
+2023-10-05T14:24:30Z [ERROR] application-service: Failed to fetch data from database, timeout trace_id=req-9ed5a0
+2023-10-05T14:24:35Z [CRITICAL] load-balancer: Maximum retries reached for request, failing over trace_id=req-9ed5a0

@@ -1,13 +1,20 @@
-2024-01-01 09:45:00 [INFO] Storage Service: Checking disk usage across shards (version 1.0)
-2024-01-01 09:46:00 [WARNING] Shard-a: Disk temperature above threshold (80°C)
-2024-01-01 09:47:00 [INFO] Shard-a: Initiating rebalancing process
-2024-01-01 09:48:00 [INFO] Shard-b: Rebalancing process complete, data redistribution in progress
-2024-01-01 10:02:00 [WARNING] Storage Service: Uneven data distribution across shards detected (shard-a: 60%, shard-b: 40%)
-2024-01-01 10:03:00 [INFO] Shard-c: Rebalancing process initiated to address uneven distribution
-2024-01-01 10:04:00 [ERROR] Storage Service: Error rebalancing shard-c due to disk hot spot (85°C)
-2024-01-01 10:05:00 [CRITICAL] Storage Service: Disk hot spots and uneven data distribution across shards detected, emergency rebalancing initiated
-2024-01-01 10:06:00 [INFO] Emergency Rebalancing Team: Starting manual disk cooling measures
-2024-01-01 10:07:00 [WARNING] Shard-a: Disk temperature reduced to safe threshold (60°C)
-2024-01-01 10:08:00 [INFO] Shard-b: Rebalancing process complete, data redistribution in progress
-2024-01-01 10:10:00 [INFO] Emergency Rebalancing Team: Monitoring disk temperatures and rebalancing progress
-2024-01-01 10:15:00 [INFO] Storage Service: Disk hot spots and uneven data distribution across shards resolved
+2023-10-05T14:30:00Z [WARN] storage-service: High latency detected in read operation duration=2.5s trace_id=req-f82045  
+2023-10-05T14:30:15Z [ERROR] storage-service: Read timeout occurred while processing request duration=3.5s trace_id=req-f82045  
+2023-10-05T14:30:30Z [WARN] storage-service: Increased retries for write operation attempts=3 duration=4.2s trace_id=req-ace804  
+2023-10-05T14:30:45Z [CRITICAL] storage-service: Write operation failed after 5 retries error_code=EIO duration=6.8s trace_id=req-ace804  
+2023-10-05T14:31:00Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-f82045  
+2023-10-05T14:31:15Z [WARN] storage-service: High queue depth detected for read requests queue_size=150 trace_id=req-9b5d80  
+2023-10-05T14:31:30Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-9b5d80  
+2023-10-05T14:31:45Z [CRITICAL] storage-service: Read operation failed after 5 retries error_code=EIO duration=7.2s trace_id=req-9b5d80  
+2023-10-05T14:32:00Z [WARN] health-checker: Health check for storage-service failed response_time=8.5s trace_id=req-d5cc79  
+2023-10-05T14:32:15Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-ace804  
+2023-10-05T14:32:30Z [CRITICAL] storage-service: Write operation failed after 5 retries error_code=EIO duration=8.1s trace_id=req-ace804  
+2023-10-05T14:32:45Z [WARN] health-checker: Health check for storage-service failed response_time=9.6s trace_id=req-d5cc79  
+2023-10-05T14:33:00Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-9b5d80  
+2023-10-05T14:33:15Z [CRITICAL] storage-service: Read operation failed after 5 retries error_code=EIO duration=9.3s trace_id=req-9b5d80  
+2023-10-05T14:33:30Z [WARN] health-checker: Health check for storage-service failed response_time=10.8s trace_id=req-d5cc79  
+2023-10-05T14:33:45Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-f82045  
+2023-10-05T14:34:00Z [CRITICAL] storage-service: Read operation failed after 5 retries error_code=EIO duration=11.2s trace_id=req-f82045  
+2023-10-05T14:34:15Z [ERROR] api-gateway: Upstream service responded with HTTP status code 500 trace_id=req-ace804  
+2023-10-05T14:34:30Z [CRITICAL] storage-service: Write operation failed after 5 retries error_code=EIO duration=12.6s trace_id=req-ace804  
+2023-10-05T14:34:45Z [WARN] health-checker: Health check for storage-service failed response_time=13.8s trace_id=req-d5cc79

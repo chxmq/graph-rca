@@ -1,10 +1,18 @@
-2024-01-01 14:30:00 [INFO] instapaper-database: Initiating maintenance window for database migration
-2024-01-01 14:31:00 [WARNING] instapaper-monitoring: High CPU usage detected on db-host1, restarting instance
-2024-01-01 14:32:00 [INFO] instapaper-database: Migrating to new database...
-2024-01-01 14:40:00 [ERROR] instapaper-database: Limits hit for hosted database, unable to acquire necessary resources
-2024-01-01 14:41:00 [WARNING] instapaper-monitoring: High memory usage detected on db-host1, restarting instance
-2024-01-01 14:42:00 [INFO] instapaper-database: Attempting to migrate data from old database...
-2024-01-01 15:45:00 [ERROR] instapaper-database: Data migration failed due to insufficient disk space
-2024-01-01 15:46:00 [WARNING] instapaper-monitoring: High network traffic detected, attempting to reduce load
-2024-01-01 16:10:00 [INFO] instapaper-database: New database migration complete
-2024-01-01 16:11:00 [ERROR] instapaper-web: Unable to connect to new database due to insufficient authentication credentials
+2023-10-15T14:00:00Z [WARN] db-service: Query timeout for user data retrieval, took 30 seconds trace_id=req-4bd485
+2023-10-15T14:00:05Z [ERROR] api-gateway: Internal server error while fetching user preferences, status code 500 trace_id=req-a94aeb
+2023-10-15T14:00:10Z [CRITICAL] db-service: Connection pool exhausted, max connections reached trace_id=req-4bd485
+2023-10-15T14:00:15Z [ERROR] api-gateway: Failed to process request due to timeout from backend service, retrying... trace_id=req-1b0a39
+2023-10-15T14:00:20Z [WARN] db-service: High query latency detected, average of 25 seconds for recent queries trace_id=req-839ef0
+2023-10-15T14:00:25Z [ERROR] api-gateway: Retry failed after 3 attempts, giving up on request trace_id=req-1b0a39
+2023-10-15T14:00:30Z [CRITICAL] db-service: Unable to acquire connection, all slots in use trace_id=req-3e7728
+2023-10-15T14:00:35Z [ERROR] web-app: Failed to load user data due to backend error, status code 503 trace_id=req-a94aeb
+2023-10-15T14:00:40Z [WARN] db-service: Slow response time for critical query, took 45 seconds trace_id=req-839ef0
+2023-10-15T14:00:45Z [ERROR] api-gateway: Exceeded maximum allowed retries for request, marking as failed trace_id=req-4bd485
+2023-10-15T14:00:50Z [CRITICAL] db-service: Connection pool full, no available connections for new requests trace_id=req-091336
+2023-10-15T14:00:55Z [ERROR] web-app: Backend service unresponsive, unable to fulfill request trace_id=req-3e7728
+2023-10-15T14:01:00Z [WARN] db-service: Increased error rate detected in recent query executions trace_id=req-1b0a39
+2023-10-15T14:01:05Z [ERROR] api-gateway: Request failed with status code 500, backend service reported error trace_id=req-a94aeb
+2023-10-15T14:01:10Z [CRITICAL] db-service: Connection reset by peer, possible network issue or server overload trace_id=req-839ef0
+2023-10-15T14:01:15Z [ERROR] web-app: Backend service failed to respond within timeout period trace_id=req-4bd485
+2023-10-15T14:01:20Z [WARN] db-service: High number of connection resets observed, potential server issue trace_id=req-3e7728
+2023-10-15T14:01:25Z [ERROR] api-gateway: Health check failed for backend service, marking as unhealthy trace_id=req-091336

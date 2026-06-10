@@ -1,0 +1,12 @@
+2023-12-31 22:45:30 [INFO] kubelet: Upgrading Kubernetes cluster to version 1.25
+2023-12-31 22:46:15 [WARNING] etcd: Node metadata being updated
+2023-12-31 22:47:00 [ERROR] workload-networking: Failed to update node metadata
+2023-12-31 22:47:10 [INFO] kubelet: Kubernetes cluster upgrade failed
+2023-12-31 22:48:00 [WARNING] service-a: Request handling paused due to cluster error
+2023-12-31 22:50:15 [ERROR] workload-networking: Workload networking down
+2023-12-31 22:51:00 [CRITICAL] kubelet: Kubernetes cluster is unavailable
+2023-12-31 23:01:00 [INFO] operator: Restarting Kubernetes cluster
+2023-12-31 23:02:15 [WARNING] workload-networking: Attempting to recover workload networking
+2023-12-31 23:03:00 [ERROR] service-b: Database connection timeout due to delayed recovery
+2023-12-31 23:04:10 [INFO] operator: Kubernetes cluster is back online
+2023-12-31 23:05:15 [WARNING] workload-networking: Slow recovery of workload networking

@@ -1,13 +1,19 @@
-2023-12-31 23:59:00 [INFO] mysql_service: MySQL connection established
-2023-12-31 23:59:15 [WARNING] mysql_service: Table 'uber_data' reached 90% of operational limit (1000 MB)
-2023-12-31 23:59:30 [INFO] mysql_service: Initiating table partitioning to reduce load
-2023-12-31 23:59:45 [ERROR] mysql_service: Failed to perform table partitioning, skipping
-2023-12-31 23:59:50 [WARNING] mysql_service: Table 'uber_data' exceeded operational limit (1000 MB), triggering emergency sharding protocol
-2023-12-31 23:59:55 [CRITICAL] mysql_shard_service: Sharding service initiated, redirecting queries to shard 1
-2023-12-31 23:59:58 [WARNING] mysql_shard_service: Shard 1 under heavy load, requesting additional resources
-2023-12-31 23:59:60 [ERROR] mysql_shard_service: Shard 1 connection timeout, attempting to reconnect
-2023-12-31 23:59:62 [CRITICAL] mysql_shard_service: Sharding failed, redirecting all queries to shard 2
-2023-12-31 23:59:65 [INFO] mysql_shard_service: Shard 2 online, accepting new connections
-2023-12-31 23:59:70 [WARNING] mysql_shard_service: Shard 1 still under heavy load, monitoring for recovery
-2023-12-31 23:59:75 [INFO] mysql_shard_service: Shard 1 connection timeout cleared, resuming normal operation
-2023-12-31 23:59:80 [ERROR] mysql_shard_service: Unexpected sharding failure, investigating root cause
+2023-10-15T12:00:00Z [WARN]  db-service: Slow query detected for request trace_id=req-056352  
+2023-10-15T12:00:01Z [ERROR] db-service: Query timeout for request, retrying trace_id=req-056352  
+2023-10-15T12:00:15Z [CRITICAL] db-service: Maximum retries reached for request trace_id=req-056352  
+2023-10-15T12:00:16Z [ERROR] app-service: Failed to fetch data from db-service, status code 500 trace_id=req-056352  
+2023-10-15T12:00:17Z [WARN]  db-service: Slow query detected for request trace_id=req-e685a7  
+2023-10-15T12:00:18Z [ERROR] db-service: Query timeout for request, retrying trace_id=req-e685a7  
+2023-10-15T12:00:30Z [CRITICAL] db-service: Maximum retries reached for request trace_id=req-e685a7  
+2023-10-15T12:00:31Z [ERROR] app-service: Failed to fetch data from db-service, status code 500 trace_id=req-e685a7  
+2023-10-15T12:01:00Z [WARN]  db-service: Slow query detected for request trace_id=req-c1e011  
+2023-10-15T12:01:01Z [ERROR] db-service: Query timeout for request, retrying trace_id=req-c1e011  
+2023-10-15T12:01:10Z [CRITICAL] db-service: Maximum retries reached for request trace_id=req-c1e011  
+2023-10-15T12:01:11Z [ERROR] app-service: Failed to fetch data from db-service, status code 500 trace_id=req-c1e011  
+2023-10-15T12:01:20Z [WARN]  db-service: Slow query detected for request trace_id=req-dfeecf  
+2023-10-15T12:01:21Z [ERROR] db-service: Query timeout for request, retrying trace_id=req-dfeecf  
+2023-10-15T12:01:30Z [CRITICAL] db-service: Maximum retries reached for request trace_id=req-dfeecf  
+2023-10-15T12:01:31Z [ERROR] app-service: Failed to fetch data from db-service, status code 500 trace_id=req-dfeecf  
+2023-10-15T12:01:45Z [WARN]  health-checker: Health check failed for db-service, latency too high trace_id=req-db0f4b  
+2023-10-15T12:02:00Z [CRITICAL] load-balancer: Service db-service is down, routing requests to backup trace_id=req-4f2583  
+2023-10-15T12:02:15Z [ERROR] app-service: Failed to fetch data from db-service, using cached data trace_id=req-056352

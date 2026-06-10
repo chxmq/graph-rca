@@ -1,11 +1,18 @@
-2026-03-15 14:30:00 [INFO] bgp-announcements-service: Beginning daily BGP announcements synchronization
-2026-03-15 14:31:00 [WARNING] bgp-announcements-service: Compute Engine IP blocks not found in BGP announcements
-2026-03-15 14:31:01 [ERROR] bgp-announcements-service: Automated configuration generation tool detected; attempting to correct issue
-2026-03-15 14:32:00 [INFO] config-gen-tool: Starting automated configuration generation for BGP announcements
-2026-03-15 14:33:00 [CRITICAL] bgp-announcements-service: All Google Compute Engine IP blocks removed from BGP announcements; reachability issues reported across network
-2026-03-15 14:35:00 [INFO] incident-response-team: Received notification of critical issue; triggering investigation and containment procedures
-2026-03-15 14:40:00 [WARNING] bgp-announcements-service: Attempts to restore BGP announcements failing due to missing Compute Engine IP blocks
-2026-03-15 14:42:00 [ERROR] bgp-announcements-service: Service unresponsive; attempting to restart and re-run configuration generation tool
-2026-03-15 14:45:00 [INFO] config-gen-tool: Re-running automated configuration generation for BGP announcements
-2026-03-15 14:50:00 [CRITICAL] bgp-announcements-service: BGP announcements restored; reachability issues resolved across network
-2026-03-15 14:55:00 [INFO] incident-response-team: Investigation and containment procedures complete; issue fully resolved
+2016-04-11T00:00:00Z [WARN] bgp-router: Peer 192.168.1.1 not responding to keepalives trace_id=req-f5c2f2  
+2016-04-11T00:00:30Z [ERROR] web-server: Connection timed out while connecting to backend service trace_id=req-ddada2  
+2016-04-11T00:01:40Z [CRITICAL] database-proxy: Failed to establish connection with primary database server trace_id=req-313930  
+2016-04-11T00:02:50Z [ERROR] bgp-router: Peer 192.168.1.2 not responding to keepalives trace_id=req-6d52f5  
+2016-04-11T00:04:00Z [WARN] web-server: High request queue depth, requests delayed trace_id=req-f5c2f2  
+2016-04-11T00:05:10Z [ERROR] api-gateway: 504 Gateway Timeout while processing request trace_id=req-122872  
+2016-04-11T00:06:20Z [CRITICAL] database-proxy: All connection attempts to backup server failed trace_id=req-313930  
+2016-04-11T00:07:30Z [ERROR] bgp-router: Peer 192.168.1.3 not responding to keepalives trace_id=req-e8ca80  
+2016-04-11T00:08:40Z [WARN] web-server: Health check failed for backend service trace_id=req-ddada2  
+2016-04-11T00:09:50Z [ERROR] api-gateway: Connection reset by peer while processing request trace_id=req-122872  
+2016-04-11T00:11:00Z [CRITICAL] bgp-router: Peer 192.168.1.4 not responding to keepalives trace_id=req-9acca0  
+2016-04-11T00:12:10Z [ERROR] web-server: Latency spike detected, response times above acceptable threshold trace_id=req-ddada2  
+2016-04-11T00:13:20Z [WARN] database-proxy: Increased connection retry attempts to primary server trace_id=req-313930  
+2016-04-11T00:13:30Z [ERROR] api-gateway: 503 Service Unavailable, unable to route request trace_id=req-8b0c52  
+2016-04-11T00:14:40Z [CRITICAL] bgp-router: Peer 192.168.1.5 not responding to keepalives trace_id=req-a079b6  
+2016-04-11T00:15:50Z [ERROR] web-server: Client request timeout, no response from backend service trace_id=req-f5c2f2  
+2016-04-11T00:17:00Z [CRITICAL] database-proxy: Connection pool exhausted, unable to handle new requests trace_id=req-313930  
+2016-04-11T00:18:10Z [ERROR] api-gateway: 500 Internal Server Error while processing request trace_id=req-8b0c52

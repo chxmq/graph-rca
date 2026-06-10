@@ -1,13 +1,18 @@
-2021-10-04 14:30:00 [INFO] whatsapp-service: Initiating routine network scan
-2021-10-04 14:30:02 [WARNING] instagram-service: Increased number of failed login attempts in the last minute
-2021-10-04 14:30:05 [ERROR] whatsapp-service: Service is experiencing high latency
-2021-10-04 14:30:10 [INFO] whatsapp-service: Checking for potential DNS issues
-2021-10-04 14:30:12 [WARNING] facebook-backbone: Multiple failed connections to WhatsApp and Instagram services detected
-2021-10-04 14:30:15 [ERROR] whatsapp-service: Unable to establish connection to Facebook's backbone routers
-2021-10-04 14:30:18 [CRITICAL] whatsapp-service: Service is now down, investigating possible cause
-2021-10-04 14:30:20 [INFO] incident-manager: Notifying global support teams of WhatsApp service outage
-2021-10-04 14:31:00 [WARNING] instagram-service: Instagram service also experiencing downtime due to potential configuration issues
-2021-10-04 14:31:02 [CRITICAL] instagram-service: Service is now down, investigation ongoing
-2021-10-04 14:31:05 [INFO] incident-manager: Alerting external authorities on Facebook's backbone router configuration changes
-2021-10-04 14:32:00 [ERROR] whatsapp-service: Root cause identified as configuration changes to Facebook's backbone routers also took down WhatsApp and Instagram globally
-2021-10-04 14:32:02 [CRITICAL] incident-manager: Incident report submitted, post-mortem analysis in progress
+2021-10-04T15:00:00Z [WARN] edge-server: HTTP 503 Service Unavailable for endpoint /api/v1/messages trace_id=req-ae76ad  
+2021-10-04T15:00:05Z [ERROR] message-router: Failed to connect to upstream service, retrying... attempt=1 trace_id=req-ae76ad  
+2021-10-04T15:00:15Z [CRITICAL] message-router: Maximum retries reached for upstream connection trace_id=req-ae76ad  
+2021-10-04T15:00:25Z [WARN] edge-server: High queue depth detected, current=300 threshold=250 trace_id=req-ec814d  
+2021-10-04T15:00:55Z [ERROR] media-storage: Read timeout on request to /uploads/trace_id=req-ec814d  
+2021-10-04T15:01:00Z [CRITICAL] edge-server: Connection refused from upstream service, marking as unhealthy trace_id=req-ec814d  
+2021-10-04T15:01:05Z [WARN] health-checker: Unhealthy status reported for message-router, triggering failover... trace_id=req-95cb2a  
+2021-10-04T15:01:15Z [ERROR] media-storage: Failed to write file, retrying... attempt=1 trace_id=req-ae76ad  
+2021-10-04T15:01:25Z [CRITICAL] edge-server: Latency spike detected, current=8s threshold=2s trace_id=req-ec814d  
+2021-10-04T15:01:35Z [ERROR] message-router: Failed to connect to backup upstream service, retrying... attempt=1 trace_id=req-ae76ad  
+2021-10-04T15:01:45Z [CRITICAL] edge-server: Health check failed for multiple services, escalating issue trace_id=req-95cb2a  
+2021-10-04T15:01:55Z [ERROR] media-storage: Maximum retries reached for write operation trace_id=req-ae76ad  
+2021-10-04T15:02:05Z [WARN] edge-server: Increased error rate detected, current=60% threshold=30% trace_id=req-ec814d  
+2021-10-04T15:02:15Z [ERROR] message-router: Failed to connect to all upstream services trace_id=req-ec814d  
+2021-10-04T15:02:25Z [CRITICAL] edge-server: Service outage detected, initiating failover for critical components trace_id=req-b1f6c1  
+2021-10-04T15:02:35Z [ERROR] media-storage: Connection refused on all retry attempts trace_id=req-ec814d  
+2021-10-04T15:02:55Z [WARN] health-checker: Persistent unhealthy status for message-router, failover complete trace_id=req-95cb2a  
+2021-10-04T15:03:05Z [CRITICAL] edge-server: Latency remains elevated despite failover, re-evaluating strategy trace_id=req-b1f6c1

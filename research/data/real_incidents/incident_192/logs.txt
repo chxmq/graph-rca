@@ -1,13 +1,17 @@
-2023-12-15 14:30:00 [INFO] fastly-cdn: Service startup complete
-2023-12-15 14:30:15 [INFO] fastly-cdn: Checking for configuration updates
-2023-12-15 14:31:45 [WARNING] fastly-cdn: Configuration update detected, applying changes
-2023-12-15 14:32:10 [INFO] fastly-cdn: New configuration applied successfully
-2023-12-15 14:32:20 [INFO] service-a: Starting request handling
-2023-12-15 14:33:00 [WARNING] service-b: Increased load expected due to new configuration
-2023-12-15 14:33:05 [ERROR] service-b: Database connection timeout, retrying in 30 seconds
-2023-12-15 14:33:35 [ERROR] service-b: Database connection timeout (retry 2), escalating incident
-2023-12-15 14:34:00 [CRITICAL] fastly-cdn: Global CDN outage detected, investigating root cause
-2023-12-15 14:34:20 [INFO] fastly-cdn: Retrieving configuration data for affected services
-2023-12-15 14:35:05 [WARNING] fastly-cdn: Configuration update found in affected service configurations
-2023-12-15 14:35:10 [ERROR] fastly-cdn: Believing configuration update to be root cause of outage
-2023-12-15 14:36:00 [CRITICAL] fastly-cdn: Root cause identified, preparing for incident resolution
+2023-06-08T14:05:00Z [INFO] edge-server: request timed out trace_id=req-bd6f89  
+2023-06-08T14:05:02Z [WARN] origin-proxy: high queue depth detected trace_id=req-ea5de8  
+2023-06-08T14:05:03Z [ERROR] edge-server: failed to connect to backend trace_id=req-bd6f89  
+2023-06-08T14:05:05Z [CRITICAL] health-checker: backend health check failure trace_id=req-e5eedc  
+2023-06-08T14:05:06Z [WARN] edge-server: increased latency observed trace_id=req-b3641e  
+2023-06-08T14:05:08Z [ERROR] origin-proxy: connection reset by peer trace_id=req-ea5de8  
+2023-06-08T14:05:10Z [CRITICAL] edge-server: request failed with HTTP 504 Gateway Timeout trace_id=req-bd6f89  
+2023-06-08T14:05:12Z [ERROR] origin-proxy: request timed out trace_id=req-b3641e  
+2023-06-08T14:05:15Z [CRITICAL] health-checker: multiple backend health check failures trace_id=req-e5eedc  
+2023-06-08T14:05:17Z [ERROR] edge-server: failed to connect to backend trace_id=req-b3641e  
+2023-06-08T14:05:20Z [CRITICAL] edge-server: request failed with HTTP 504 Gateway Timeout trace_id=req-ea5de8  
+2023-06-08T14:05:22Z [ERROR] origin-proxy: connection reset by peer trace_id=req-b3641e  
+2023-06-08T14:05:25Z [CRITICAL] edge-server: request failed with HTTP 504 Gateway Timeout trace_id=req-bd6f89  
+2023-06-08T14:05:27Z [ERROR] origin-proxy: request timed out trace_id=req-ea5de8  
+2023-06-08T14:05:30Z [CRITICAL] health-checker: backend health check failure trace_id=req-5f57d0  
+2023-06-08T14:05:32Z [ERROR] edge-server: failed to connect to backend trace_id=req-bd6f89  
+2023-06-08T14:05:35Z [CRITICAL] edge-server: request failed with HTTP 504 Gateway Timeout trace_id=req-ea5de8

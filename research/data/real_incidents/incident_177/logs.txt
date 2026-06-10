@@ -1,13 +1,19 @@
-2023-12-27 15:45:20 [INFO] service-c: Initiating daily data backup
-2023-12-27 15:45:30 [WARNING] service-d: Primary key usage counter exceeded warning threshold
-2023-12-27 15:45:40 [INFO] service-e: Running database cleanup script
-2023-12-27 15:45:50 [CRITICAL] service-f: Uploads failed due to primary key limit reached
-2023-12-27 15:46:00 [DEBUG] service-g: Investigating primary key counter issue
-2023-12-27 15:46:10 [INFO] service-h: Checking database schema for potential issues
-2023-12-27 15:46:20 [WARNING] service-i: Integer overflow detected in primary key column
-2023-12-27 15:46:30 [ERROR] service-j: Primary key limit exceeded error encountered
-2023-12-27 15:47:00 [DEBUG] service-k: Analyzing database query logs for clues
-2023-12-27 15:48:00 [INFO] service-l: Identifying potential cause as signed integer limit
-2023-12-27 15:49:00 [CRITICAL] service-m: Uploads still failing due to primary key limit reached
-2023-12-27 15:50:00 [WARNING] service-n: Consideration of alternative data storage solutions
-2023-12-27 15:51:00 [INFO] service-o: Implementing workaround to bypass primary key limit
+2023-10-05T14:23:15Z [ERROR] web-server: HTTP request timed out trace_id=req-c4d600
+2023-10-05T14:23:16Z [WARN] database: Connection retry attempt 1 trace_id=req-71efd7
+2023-10-05T14:23:17Z [ERROR] web-server: HTTP request failed with status code 500 trace_id=req-c4d600
+2023-10-05T14:23:18Z [INFO] message-broker: Queue depth increased to 500 messages trace_id=req-d1b3dd
+2023-10-05T14:23:20Z [ERROR] database: Connection retry attempt 2 trace_id=req-71efd7
+2023-10-05T14:23:22Z [CRITICAL] web-server: HTTP request timed out trace_id=req-3a6e49
+2023-10-05T14:23:25Z [ERROR] database: Connection retry attempt 3 trace_id=req-71efd7
+2023-10-05T14:23:26Z [WARN] web-server: Increased latency detected in response times trace_id=req-c4d600
+2023-10-05T14:23:30Z [ERROR] message-broker: Failed to process message due to database unavailability trace_id=req-d1b3dd
+2023-10-05T14:23:32Z [CRITICAL] web-server: HTTP request failed with status code 503 trace_id=req-3a6e49
+2023-10-05T14:23:35Z [ERROR] database: Connection retry attempt 4 trace_id=req-71efd7
+2023-10-05T14:23:38Z [CRITICAL] web-server: HTTP request timed out trace_id=req-e02bbe
+2023-10-05T14:23:40Z [ERROR] message-broker: Queue depth increased to 600 messages trace_id=req-d1b3dd
+2023-10-05T14:23:42Z [WARN] web-server: Increased latency detected in response times trace_id=req-e02bbe
+2023-10-05T14:23:45Z [ERROR] database: Connection retry attempt 5 trace_id=req-71efd7
+2023-10-05T14:23:50Z [CRITICAL] web-server: HTTP request failed with status code 503 trace_id=req-e02bbe
+2023-10-05T14:23:52Z [ERROR] message-broker: Failed to process message due to database unavailability trace_id=req-d1b3dd
+2023-10-05T14:23:55Z [WARN] web-server: Increased latency detected in response times trace_id=req-3a6e49
+2023-10-05T14:24:00Z [ERROR] database: Connection retry attempt 6 trace_id=req-71efd7

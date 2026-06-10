@@ -1,13 +1,19 @@
-2020-03-16 09:30:00 [INFO] backend-service: Starting to monitor traffic volume
-2020-03-16 09:40:00 [WARNING] analytics-service: Traffic spike detected, 20% increase in 10 minutes
-2020-03-16 09:45:00 [INFO] alert-system: Sending email alerts for increased traffic
-2020-03-16 09:50:00 [ERROR] backend-service: CPU utilization exceeded 80%, service slowing down
-2020-03-16 09:55:00 [WARNING] monitoring-system: Backend service error rate increasing
-2020-03-16 10:00:00 [INFO] incident-manager: Triggering incident response plan due to high error rate
-2020-03-16 10:05:00 [CRITICAL] backend-service: All requests being dropped, system becoming unresponsive
-2020-03-16 10:10:00 [ERROR] monitoring-system: Unable to retrieve backend service status from API
-2020-03-16 10:15:00 [WARNING] incident-manager: Triggering fallback routing for high traffic
-2020-03-16 10:20:00 [INFO] analytics-service: Data collection service failing due to lack of resources
-2020-03-16 10:25:00 [CRITICAL] incident-manager: Incident classification as Medium severity, notifying support team
-2020-03-16 10:30:00 [ERROR] support-team: Initial support request received, investigating root cause
-2020-03-16 10:40:00 [INFO] backend-service: System partially recovered, traffic volume returning to normal
+2020-03-16T15:00:00Z [INFO] api-gateway: Request received for user authentication trace_id=req-ddcdc2  
+2020-03-16T15:00:02Z [WARN] database: Slow query execution detected, duration=2.8s trace_id=req-ddcdc2  
+2020-03-16T15:00:05Z [ERROR] user-service: Connection timeout to database, retrying... attempt=1 trace_id=req-ddcdc2  
+2020-03-16T15:00:07Z [CRITICAL] api-gateway: Failed to authenticate user, returning 500 Internal Server Error trace_id=req-ddcdc2  
+2020-03-16T15:00:10Z [INFO] api-gateway: Request received for fetching user data trace_id=req-d87e15  
+2020-03-16T15:00:12Z [WARN] database: Slow query execution detected, duration=3.2s trace_id=req-d87e15  
+2020-03-16T15:00:14Z [ERROR] user-service: Connection timeout to database, retrying... attempt=1 trace_id=req-d87e15  
+2020-03-16T15:00:18Z [CRITICAL] api-gateway: Failed to fetch user data, returning 504 Gateway Timeout trace_id=req-d87e15  
+2020-03-16T15:00:20Z [INFO] api-gateway: Request received for sending notification trace_id=req-c311aa  
+2020-03-16T15:00:22Z [ERROR] messaging-service: Failed to send message, queue depth exceeded limit=100, current=120 trace_id=req-c311aa  
+2020-03-16T15:00:24Z [CRITICAL] api-gateway: Message sending failed, returning 503 Service Unavailable trace_id=req-c311aa  
+2020-03-16T15:00:30Z [WARN] load-balancer: High request latency detected, avg=4.5s, threshold=2s  
+2020-03-16T15:00:32Z [ERROR] api-gateway: Request received for fetching user data, returning 503 Service Unavailable trace_id=req-b09fde  
+2020-03-16T15:00:35Z [CRITICAL] monitoring-service: Health check failed for service=user-service, status=down  
+2020-03-16T15:00:37Z [INFO] api-gateway: Request received for user authentication trace_id=req-0270ed  
+2020-03-16T15:00:39Z [ERROR] user-service: Connection timeout to database, retrying... attempt=2 trace_id=req-0270ed  
+2020-03-16T15:00:41Z [CRITICAL] api-gateway: Failed to authenticate user, returning 500 Internal Server Error trace_id=req-0270ed  
+2020-03-16T15:00:44Z [ERROR] messaging-service: Failed to send message, queue depth exceeded limit=100, current=130 trace_id=req-b09fde  
+2020-03-16T15:00:47Z [CRITICAL] api-gateway: Message sending failed, returning 503 Service Unavailable trace_id=req-b09fde

@@ -1,13 +1,19 @@
-2023-12-31 23:00:00 [INFO] aws-servicedashboard: Automated scaling triggered for service 'service-x'
-2023-12-31 23:00:01 [WARNING] network-device-1: Increased traffic detected on interface 'eth0'
-2023-12-31 23:00:05 [INFO] aws-servicedashboard: Scaling completed for service 'service-x'
-2023-12-31 23:00:10 [ERROR] network-device-2: Buffer overflow on queue 'queue-1'
-2023-12-31 23:00:15 [WARNING] internal-network-mgr: High CPU utilization detected
-2023-12-31 23:00:20 [INFO] aws-servicedashboard: Service 'service-x' reported high traffic volume
-2023-12-31 23:00:25 [ERROR] network-device-1: Interface 'eth0' dropped connection due to packet loss
-2023-12-31 23:00:30 [CRITICAL] internal-network-mgr: Network congestion threshold reached, alerting team
-2023-12-31 23:00:35 [WARNING] service-c: Connection retry failed after 5 attempts
-2023-12-31 23:00:40 [INFO] aws-servicedashboard: Service 'service-x' reported critical traffic volume
-2023-12-31 23:00:45 [ERROR] network-device-2: Queue 'queue-1' overflowed, discarding packets
-2023-12-31 23:00:50 [CRITICAL] internal-network-mgr: Persistent congestion detected, escalating to incident team
-2023-12-31 23:01:00 [INFO] aws-servicedashboard: Service 'service-x' reported degraded performance
+2023-10-15T14:30:00Z [WARN] api-gateway: Increased latency detected for request processing duration=2.5s trace_id=req-561802  
+2023-10-15T14:30:30Z [ERROR] ec2-instance: Connection timeout to load balancer error_code=ETIMEDOUT trace_id=req-1058cf  
+2023-10-15T14:31:00Z [CRITICAL] rds-database: High connection queue depth connections=1200 trace_id=req-561802  
+2023-10-15T14:31:15Z [ERROR] s3-bucket: Failed to retrieve object http_status_code=503 trace_id=req-b9738a  
+2023-10-15T14:31:30Z [WARN] api-gateway: Retrying request attempt=2 duration=3.2s trace_id=req-561802  
+2023-10-15T14:31:45Z [ERROR] ec2-instance: Connection refused to service error_code=ECONNREFUSED trace_id=req-00f3bf  
+2023-10-15T14:32:00Z [CRITICAL] rds-database: Database connection failure error_code=ECOMM trace_id=req-1058cf  
+2023-10-15T14:32:15Z [ERROR] s3-bucket: Failed to upload file http_status_code=504 trace_id=req-b9738a  
+2023-10-15T14:32:30Z [WARN] api-gateway: Increased latency detected for request processing duration=3.8s trace_id=req-561802  
+2023-10-15T14:33:00Z [ERROR] ec2-instance: Connection timeout to load balancer error_code=ETIMEDOUT trace_id=req-62558e  
+2023-10-15T14:33:15Z [CRITICAL] rds-database: High connection queue depth connections=1400 trace_id=req-561802  
+2023-10-15T14:33:30Z [ERROR] s3-bucket: Failed to retrieve object http_status_code=503 trace_id=req-00f3bf  
+2023-10-15T14:34:00Z [WARN] api-gateway: Retrying request attempt=3 duration=4.5s trace_id=req-561802  
+2023-10-15T14:34:15Z [ERROR] ec2-instance: Connection refused to service error_code=ECONNREFUSED trace_id=req-96e7be  
+2023-10-15T14:34:30Z [CRITICAL] rds-database: Database connection failure error_code=ECOMM trace_id=req-b9738a  
+2023-10-15T14:34:45Z [ERROR] s3-bucket: Failed to upload file http_status_code=504 trace_id=req-62558e  
+2023-10-15T14:35:00Z [WARN] api-gateway: Increased latency detected for request processing duration=5.1s trace_id=req-561802  
+2023-10-15T14:35:15Z [ERROR] ec2-instance: Connection timeout to load balancer error_code=ETIMEDOUT trace_id=req-d23752  
+2023-10-15T14:36:00Z [CRITICAL] rds-database: High connection queue depth connections=1600 trace_id=req-561802

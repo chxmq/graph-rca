@@ -1,0 +1,12 @@
+2010-10-04 14:30:00 [INFO] MongoDB: Initializing with default config
+2010-10-04 14:30:15 [WARNING] MongoDB: Warning: Low locality query detected in check-in history retrieval
+2010-10-04 14:30:45 [INFO] Service-c: Checking database for available memory
+2010-10-04 14:31:00 [ERROR] Service-d: Memory warning, available space 512 MB
+2010-10-04 14:31:05 [WARNING] MongoDB: Warning: Slow query detected on check-in history table
+2010-10-04 14:31:20 [INFO] MongoDB: Reaching memory limit, available space 256 MB
+2010-10-04 14:31:25 [CRITICAL] MongoDB: CRITICAL: Out of memory, shutting down database
+2010-10-04 14:31:30 [ERROR] Service-e: Connection to MongoDB lost
+2010-10-04 14:31:35 [WARNING] Service-f: Warning: No backup available for check-in history table
+2010-10-04 14:31:40 [CRITICAL] Foursquare System: CRITICAL: Catastrophic failure due to MongoDB out of memory
+2010-10-04 14:31:45 [ERROR] Monitoring: Alert sent to support team
+2010-10-04 14:32:00 [INFO] Support Team: Incident notification received, investigation underway

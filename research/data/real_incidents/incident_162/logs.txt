@@ -1,13 +1,18 @@
-2024-01-01 14:30:00 [INFO] DC1-DB: Initial power failure detected in one datacenter
-2024-01-01 14:31:00 [WARNING] DC2-CR: Cross data center failover initiated due to file discrepancies
-2024-01-01 14:31:05 [ERROR] DC3-DC: Database cluster unable to recover from power failure
-2024-01-01 14:32:00 [CRITICAL] DC1-DB: System crash detected, attempting recovery procedures
-2024-01-01 14:33:00 [INFO] DBA-Team: Notification sent to on-call DBA team
-2024-01-01 14:34:00 [WARNING] DC2-CR: File inconsistencies detected across datacenters
-2024-01-01 14:35:00 [ERROR] DC3-DC: System failure reported, attempting manual restart
-2024-01-01 14:36:00 [INFO] Automation-Tool: Automated failover procedures initiated
-2024-01-01 14:37:00 [WARNING] DC1-DB: Recovering from power failure, potential data loss expected
-2024-01-01 14:38:00 [CRITICAL] DC2-CR: Cross data center failover issues detected, manual intervention required
-2024-01-01 14:40:00 [INFO] Operations-Team: Notification sent to on-call operations team
-2024-01-01 14:41:00 [ERROR] DBA-Team: Failed to recover database cluster from power failure
-2024-01-01 14:42:00 [CRITICAL] DC1-DB: System failure confirmed, manual intervention required
+2023-10-05T14:23:15Z [WARN] db-proxy: Connection timeout to primary instance trace_id=req-5cdcb7
+2023-10-05T14:23:17Z [ERROR] app-server: Failed to fetch user data, retrying... trace_id=req-5cdcb7
+2023-10-05T14:23:20Z [CRITICAL] db-proxy: Exceeded max retries for primary instance connection trace_id=req-5cdcb7
+2023-10-05T14:23:21Z [ERROR] app-server: HTTP 500 Internal Server Error trace_id=req-5cdcb7
+2023-10-05T14:24:05Z [WARN] db-proxy: Connection timeout to secondary instance trace_id=req-475415
+2023-10-05T14:24:07Z [ERROR] app-server: Failed to fetch user data, retrying... trace_id=req-475415
+2023-10-05T14:24:10Z [CRITICAL] db-proxy: Exceeded max retries for secondary instance connection trace_id=req-475415
+2023-10-05T14:24:11Z [ERROR] app-server: HTTP 500 Internal Server Error trace_id=req-475415
+2023-10-05T14:25:30Z [WARN] db-proxy: Connection timeout to primary instance trace_id=req-b8dd4f
+2023-10-05T14:25:32Z [ERROR] app-server: Failed to fetch user data, retrying... trace_id=req-b8dd4f
+2023-10-05T14:25:35Z [CRITICAL] db-proxy: Exceeded max retries for primary instance connection trace_id=req-b8dd4f
+2023-10-05T14:25:36Z [ERROR] app-server: HTTP 500 Internal Server Error trace_id=req-b8dd4f
+2023-10-05T14:27:00Z [WARN] db-proxy: Connection timeout to secondary instance trace_id=req-f3a206
+2023-10-05T14:27:02Z [ERROR] app-server: Failed to fetch user data, retrying... trace_id=req-f3a206
+2023-10-05T14:27:05Z [CRITICAL] db-proxy: Exceeded max retries for secondary instance connection trace_id=req-f3a206
+2023-10-05T14:27:06Z [ERROR] app-server: HTTP 500 Internal Server Error trace_id=req-f3a206
+2023-10-05T14:28:45Z [WARN] health-checker: Failed to connect to database instance trace_id=req-88c46a
+2023-10-05T14:29:00Z [CRITICAL] health-checker: Multiple health checks failed, escalating alert trace_id=req-88c46a

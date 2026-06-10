@@ -1,18 +1,19 @@
-2023-07-15 14:30:00 [INFO] consul-streaming: Heartbeat check initiated
-2023-07-15 14:30:05 [WARNING] boltdb: Index corruption detected on write operation
-2023-07-15 14:30:10 [ERROR] consul-streaming: Write failure to Consul
-2023-07-15 14:30:15 [INFO] service-a: Alert trigger for Consul streaming issue
-2023-07-15 14:30:20 [WARNING] roblox-db: Query timeout on read operation
-2023-07-15 14:30:25 [CRITICAL] consul-streaming: Connection loss to Consul cluster
-2023-07-15 14:30:30 [INFO] service-b: Alert trigger for Consul streaming issue
-2023-07-15 14:30:35 [ERROR] roblox-db: Failed to recover from Consul connection loss
-2023-07-15 14:30:40 [WARNING] boltdb: Journal corruption on backup operation
-2023-07-15 14:30:45 [CRITICAL] consul-streaming: Inconsistent state detected
-2023-07-15 14:30:50 [INFO] roblox-ops: Automated escalation to Critical
-2023-07-15 14:31:00 [ERROR] service-a: Failed to authenticate request due to Consul streaming issue
-2023-07-15 14:31:05 [CRITICAL] roblox-db: Service unavailable due to Consul connection loss
-2023-07-15 14:31:10 [INFO] roblox-ops: Sending incident report to management
-2023-07-15 14:31:15 [WARNING] consul-streaming: Attempting recovery from Consul cluster
-2023-07-15 14:31:20 [ERROR] roblox-db: Data corruption detected on write operation
-2023-07-15 14:31:25 [CRITICAL] roblox-endgame: System failure imminent due to data loss
-2023-10-01 00:00:00 [INFO] roblox-endgame: System failed, entering recovery mode
+2021-10-29T03:54:12Z [ERROR] db-service: Failed to connect to primary database timeout=30s trace_id=req-de7bf3  
+2021-10-29T03:56:15Z [WARN] consul-streamer: Stream connection error code=10054 trace_id=req-727df7  
+2021-10-29T03:57:20Z [ERROR] bolt-service: Transaction failed retry_count=3 trace_id=req-de7bf3  
+2021-10-29T03:58:30Z [CRITICAL] api-gateway: Health check failed status_code=503 trace_id=req-727df7  
+2021-10-29T03:59:45Z [ERROR] db-service: Connection pool exhausted max_connections_reached trace_id=req-afa17e  
+2021-10-29T04:00:00Z [WARN] bolt-service: High latency detected duration=1.2s trace_id=req-afa17e  
+2021-10-29T04:01:30Z [ERROR] consul-streamer: Stream recovery failed attempt=5 trace_id=req-727df7  
+2021-10-29T04:02:00Z [CRITICAL] api-gateway: Multiple backend failures status_code=500 trace_id=req-56f2d8  
+2021-10-29T04:03:45Z [ERROR] db-service: Query timeout query_time_exceeded threshold=10s trace_id=req-afa17e  
+2021-10-29T04:05:00Z [WARN] bolt-service: Transaction rollback failed retry_count=5 trace_id=req-56f2d8  
+2021-10-29T04:06:30Z [ERROR] consul-streamer: Stream connection lost code=10060 trace_id=req-727df7  
+2021-10-29T04:07:15Z [CRITICAL] api-gateway: Service unavailable status_code=503 trace_id=req-56f2d8  
+2021-10-29T04:08:00Z [ERROR] db-service: Failed to acquire lock timeout=60s trace_id=req-de7bf3  
+2021-10-29T04:09:30Z [WARN] bolt-service: High queue depth detected size=500 trace_id=req-afa17e  
+2021-10-29T04:10:45Z [ERROR] consul-streamer: Stream recovery timed out duration=60s trace_id=req-727df7  
+2021-10-29T04:12:00Z [CRITICAL] api-gateway: Consistent health check failures status_code=503 trace_id=req-56f2d8  
+2021-10-29T04:13:15Z [ERROR] db-service: Connection reset by peer code=10054 trace_id=req-afa17e  
+2021-10-29T04:14:30Z [WARN] bolt-service: Transaction log corruption detected log_id=123456 trace_id=req-56f2d8  
+2021-10-29T04:15:45Z [ERROR] consul-streamer: Stream connection error code=10061 trace_id=req-727df7

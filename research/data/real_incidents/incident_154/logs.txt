@@ -1,16 +1,20 @@
-2023-12-15 14:30:00 [INFO] service-c: Initializing Redis cache
-2023-12-15 14:30:02 [WARNING] service-d: Request queue length exceeded, skipping requests
-2023-12-15 14:30:04 [ERROR] service-e: Failed to flush Redis cache, error: error flushing the database (Operation timed out)
-2023-12-15 14:30:10 [INFO] service-f: Attempting to recover from Redis cache corruption
-2023-12-15 14:30:12 [WARNING] service-g: Corrupted request queue found, attempting to resequence
-2023-12-15 14:30:15 [ERROR] service-h: Error resequencing requests, error message: Invalid sequence number
-2023-12-15 14:30:20 [INFO] service-i: Logging in with debug credentials for debugging purposes
-2023-12-15 14:30:25 [WARNING] service-j: Suspected data exposure detected, but unable to verify due to corrupted cache
-2023-12-15 14:30:28 [ERROR] service-k: Error verifying user authentication, error message: User ID not found
-2023-12-15 14:30:30 [CRITICAL] service-l: Unauthorized access detected, revealing sensitive data to affected users
-2023-12-15 14:30:32 [INFO] service-m: Reporting incident to internal teams and notifying users
-2023-12-15 14:30:35 [WARNING] service-n: Attempting to clear corrupted Redis cache
-2023-12-15 14:30:40 [ERROR] service-o: Failed to clear corrupted Redis cache, error message: Cache too large
-2023-12-15 14:30:45 [INFO] service-p: Rebooting Redis server for recovery
-2023-12-15 14:30:50 [WARNING] service-q: Request queue length still exceeded after reboot
-2023-12-15 14:31:00 [INFO] service-r: Recovered from Redis cache corruption, but data integrity compromised
+2023-10-15T14:23:15Z [WARN] api-gateway: Latency spike detected: 500ms trace_id=req-e3c2a2  
+2023-10-15T14:23:20Z [ERROR] backend-service: HTTP 500 error on response processing trace_id=req-e3c2a2  
+2023-10-15T14:23:25Z [INFO] api-gateway: Retrying request, attempt 1 trace_id=req-e3c2a2  
+2023-10-15T14:23:30Z [CRITICAL] backend-service: Data mismatch detected in response trace_id=req-abd59d  
+2023-10-15T14:23:35Z [ERROR] api-gateway: Latency spike detected: 600ms trace_id=req-abd59d  
+2023-10-15T14:23:40Z [WARN] backend-service: Health check failed, retrying... trace_id=req-0775a2  
+2023-10-15T14:23:45Z [ERROR] api-gateway: HTTP 500 error on response processing trace_id=req-abd59d  
+2023-10-15T14:23:50Z [INFO] api-gateway: Retrying request, attempt 2 trace_id=req-abd59d  
+2023-10-15T14:23:55Z [CRITICAL] backend-service: Data mismatch detected in response trace_id=req-0775a2  
+2023-10-15T14:24:00Z [ERROR] api-gateway: Latency spike detected: 700ms trace_id=req-0775a2  
+2023-10-15T14:24:05Z [WARN] backend-service: Health check failed, retrying... trace_id=req-3fb41d  
+2023-10-15T14:24:10Z [ERROR] api-gateway: HTTP 500 error on response processing trace_id=req-0775a2  
+2023-10-15T14:24:15Z [INFO] api-gateway: Retrying request, attempt 3 trace_id=req-0775a2  
+2023-10-15T14:24:20Z [CRITICAL] backend-service: Data mismatch detected in response trace_id=req-3fb41d  
+2023-10-15T14:24:25Z [ERROR] api-gateway: Latency spike detected: 800ms trace_id=req-3fb41d  
+2023-10-15T14:24:30Z [WARN] backend-service: Health check failed, retrying... trace_id=req-e3c2a2  
+2023-10-15T14:24:35Z [ERROR] api-gateway: HTTP 500 error on response processing trace_id=req-3fb41d  
+2023-10-15T14:24:40Z [INFO] api-gateway: Retrying request, attempt 4 trace_id=req-3fb41d  
+2023-10-15T14:24:45Z [CRITICAL] backend-service: Data mismatch detected in response trace_id=req-e3c2a2  
+2023-10-15T14:24:50Z [ERROR] api-gateway: Latency spike detected: 900ms trace_id=req-e3c2a2

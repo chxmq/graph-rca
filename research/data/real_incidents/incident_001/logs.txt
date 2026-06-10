@@ -1,12 +1,19 @@
-2018-07-18 11:50:00 [INFO] cluster-manager: Starting scheduled capacity check for production cluster
-2018-07-18 11:51:30 [WARNING] cluster-manager: High resource reservation detected - services requesting 95% of cluster capacity
-2018-07-18 11:52:00 [INFO] monitoring-svc: CPU allocation ratio: 87%, Memory allocation ratio: 92%
-2018-07-18 11:53:00 [ERROR] cluster-manager: Unable to schedule new service instance - insufficient resources
-2018-07-18 11:53:30 [WARNING] autoscaler: Scaling event blocked due to resource constraints
-2018-07-18 11:54:00 [ERROR] cluster-manager: Resource allocation mismatch detected - reserved > actual usage by 340%
-2018-07-18 11:55:00 [CRITICAL] cluster-manager: Misconfiguration detected in resource management - services reserving excessive CPU/RAM
-2018-07-18 11:55:30 [ERROR] service-deployer: New instance deployment failed - no available capacity despite 45% physical resources free
-2018-07-18 11:56:00 [WARNING] incident-alert: Service degradation detected - multiple deployment failures
-2018-07-18 11:57:00 [INFO] ops-team: Investigating cluster resource allocation issue
-2018-07-18 11:58:00 [ERROR] cluster-manager: Resource quota configuration error confirmed - services over-reserving resources
-2018-07-18 12:00:00 [INFO] ops-team: Applying resource quota fix to cluster configuration
+2018-07-18T11:55:00Z [WARN] autoscaler: Scaling up failed due to insufficient resources trace_id=req-340ca0  
+2018-07-18T11:55:45Z [ERROR] frontend: Timeout while waiting for backend response trace_id=req-8c94d0  
+2018-07-18T11:56:00Z [CRITICAL] database: Connection pool exhausted, queries are queuing up trace_id=req-262c50  
+2018-07-18T11:56:30Z [WARN] autoscaler: Scaling operation timed out trace_id=req-340ca0  
+2018-07-18T11:56:40Z [ERROR] frontend: HTTP 503 Service Unavailable from backend service trace_id=req-8c94d0  
+2018-07-18T11:57:15Z [CRITICAL] database: Query execution time exceeded threshold of 30 seconds trace_id=req-262c50  
+2018-07-18T11:57:30Z [WARN] autoscaler: Scaling request rejected by scheduler trace_id=req-340ca0  
+2018-07-18T11:58:00Z [ERROR] frontend: Failed to load critical data, retrying... trace_id=req-8c94d0  
+2018-07-18T11:58:15Z [CRITICAL] database: Connection error: too many connections trace_id=req-262c50  
+2018-07-18T11:58:30Z [ERROR] frontend: Failed to connect to backend service after 3 retries trace_id=req-8c94d0  
+2018-07-18T11:58:45Z [WARN] autoscaler: Unable to scale up, waiting for next attempt trace_id=req-340ca0  
+2018-07-18T11:59:00Z [CRITICAL] database: Query failed due to timeout trace_id=req-262c50  
+2018-07-18T11:59:30Z [ERROR] frontend: Backend service returned HTTP 500 Internal Server Error trace_id=req-8c94d0  
+2018-07-18T12:00:15Z [CRITICAL] database: Connection refused, max retries reached trace_id=req-262c50  
+2018-07-18T12:01:00Z [WARN] autoscaler: Scaling request still pending trace_id=req-340ca0  
+2018-07-18T12:01:30Z [ERROR] frontend: Health check failed, backend not responding trace_id=req-dbb6e7  
+2018-07-18T12:02:45Z [CRITICAL] database: Unable to connect to primary, switching to replica trace_id=req-262c50  
+2018-07-18T12:03:30Z [ERROR] opbox: Failed to initialize session due to backend failure trace_id=req-a4168a  
+2018-07-18T12:05:00Z [WARN] autoscaler: Scaling operation still unresolved, retrying... trace_id=req-340ca0

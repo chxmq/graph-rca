@@ -1,0 +1,13 @@
+2024-01-15 09:45:00 [INFO] autoscaling-service: Checking for traffic patterns starting check
+2024-01-15 09:50:00 [WARNING] autoscaling-service: Predictive algorithm indicating high demand in the next hour
+2024-01-15 09:55:00 [INFO] autoscaling-service: Adjusting capacity for service-a and service-b to handle expected surge
+2024-01-15 10:00:05 [INFO] autoscaling-service: Applying new scaling rules for service-a
+2024-01-15 10:00:20 [WARNING] autoscaling-service: Service-a is still experiencing high traffic, but capacity adjustment seems sufficient
+2024-01-15 10:05:30 [ERROR] autoscaling-service: Unexpected spike in demand for service-b, exceeding predicted capacity
+2024-01-15 10:06:15 [CRITICAL] autoscaling-service: Resource exhaustion detected for service-b, initiating manual scaling adjustments
+2024-01-15 10:07:00 [INFO] autoscaling-service: Manually scaling up service-b to prevent resource failure
+2024-01-15 10:08:30 [WARNING] autoscaling-service: Service-a is approaching capacity limits due to prolonged high traffic
+2024-01-15 10:09:45 [ERROR] autoscaling-service: Service-a resource exhaustion imminent, manual intervention required
+2024-01-15 10:10:00 [CRITICAL] autoscaling-service: Manual scaling adjustment for service-a applied, preventing resource failure
+2024-01-15 10:10:30 [INFO] incident-manager: Grab Incident (2024-01-15) triggered due to severity level exceeding threshold
+2024-01-15 10:10:45 [INFO] incident-manager: Root Cause identified as Predictive autoscaling algorithm miscalculated the required capacity for a surge in demand, leading to resource exhaustion

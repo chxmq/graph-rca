@@ -1,13 +1,18 @@
-2024-01-02 08:45:00 [INFO] zookeeper: Received notification of scheduled maintenance window
-2024-01-02 08:50:00 [INFO] service-c: Started request handling
-2024-01-02 09:05:00 [WARNING] zookeeper: Insufficient disk space reported
-2024-01-02 09:10:00 [INFO] zookeeper: Attempting to boot with increased configuration
-2024-01-02 09:15:00 [ERROR] service-d: Unable to connect to ZooKeeper
-2024-01-02 09:20:00 [WARNING] service-e: Request handling failed due to ZooKeeper unavailability
-2024-01-02 09:25:00 [CRITICAL] service-f: System services unavailable due to ZooKeeper outage
-2024-01-02 09:30:00 [INFO] ops-team: Notified of incident and initiated troubleshooting
-2024-01-02 09:35:00 [INFO] zookeeper: Insufficient data size reported as root cause
-2024-01-02 09:40:00 [WARNING] ops-team: Data cleansing process initiated to reduce ZooKeeper load
-2024-01-02 09:45:00 [INFO] zookeeper: Data reduction successful, rebooting service
-2024-01-02 09:50:00 [INFO] service-g: Request handling resumed after ZooKeeper reboot
-2024-01-02 10:00:00 [INFO] ops-team: Incident resolved, maintenance completed
+2023-10-15T14:22:15Z [ERROR] config-service: Failed to connect to leader node: connection timeout trace_id=req-e24a9d  
+2023-10-15T14:22:30Z [WARN] config-service: High queue depth detected, current value: 1200 trace_id=req-6bc363  
+2023-10-15T14:23:05Z [CRITICAL] config-service: Leader election failed, no quorum reached trace_id=req-e24a9d  
+2023-10-15T14:23:10Z [ERROR] api-gateway: Service unavailable, HTTP status code 503 trace_id=req-fa56fb  
+2023-10-15T14:23:20Z [WARN] database-service: Connection retries exceeded for node db-node-3 trace_id=req-6bc363  
+2023-10-15T14:24:00Z [ERROR] config-service: Failed to write configuration, timeout after 60 seconds trace_id=req-28232c  
+2023-10-15T14:24:15Z [CRITICAL] api-gateway: Health check failed for service config-service trace_id=req-e1c285  
+2023-10-15T14:24:30Z [ERROR] database-service: Read operation timed out, duration 120 seconds trace_id=req-a20d3b  
+2023-10-15T14:25:00Z [WARN] config-service: High latency detected, average response time increased to 800ms trace_id=req-e24a9d  
+2023-10-15T14:25:10Z [ERROR] api-gateway: Service unavailable, HTTP status code 503 trace_id=req-6b3253  
+2023-10-15T14:26:00Z [CRITICAL] config-service: Leader election failed again, no quorum reached trace_id=req-e1c285  
+2023-10-15T14:26:30Z [ERROR] database-service: Connection pool exhausted for node db-node-1 trace_id=req-ae32d1  
+2023-10-15T14:27:00Z [WARN] config-service: High queue depth detected, current value: 1500 trace_id=req-a20d3b  
+2023-10-15T14:27:30Z [ERROR] api-gateway: Service unavailable, HTTP status code 503 trace_id=req-9ef3c2  
+2023-10-15T14:28:00Z [CRITICAL] config-service: Failed to connect to leader node: connection timeout trace_id=req-91f20f  
+2023-10-15T14:28:30Z [ERROR] database-service: Write operation failed, timeout after 90 seconds trace_id=req-9ef3c2  
+2023-10-15T14:29:00Z [WARN] config-service: High latency detected, average response time increased to 1000ms trace_id=req-91f20f  
+2023-10-15T14:29:30Z [ERROR] api-gateway: Health check failed for service database-service trace_id=req-903106

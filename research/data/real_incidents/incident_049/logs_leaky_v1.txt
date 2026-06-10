@@ -1,0 +1,14 @@
+2022-07-19 08:00:00 [INFO] CoolingSystem1: Online and ready for operation
+2022-07-19 08:30:00 [INFO] CoolingSystem2: Online and ready for operation
+2022-07-19 09:15:00 [WARNING] PowerSupply3: Temperature warning detected at 85°C
+2022-07-19 10:00:00 [INFO] CoolingSystem1: Monitoring temperature at 80°C
+2022-07-19 11:30:00 [ERROR] CoolingSystem2: Failure reported due to high temperature
+2022-07-19 12:15:00 [CRITICAL] PowerSupply4: Temperature warning detected at 90°C
+2022-07-19 13:45:00 [WARNING] ServerA01: High CPU usage detected (95%)
+2022-07-19 14:10:00 [ERROR] CoolingSystem3: Failure reported due to high temperature
+2022-07-19 15:30:00 [CRITICAL] ServerB02: High temperature warning, shutting down server for cooling
+2022-07-19 16:00:00 [CRITICAL] ServerC03: High temperature warning, shutting down server for cooling
+2022-07-19 17:45:00 [CRITICAL] CoolingSystem4: Failure reported due to high temperature
+2022-07-19 18:15:00 [ERROR] PowerGrid1: Loss of power detected in data center
+2022-07-19 19:00:00 [CRITICAL] DataCenter01: Shutting down all servers due to cooling system failure
+2022-07-19 20:30:00 [INFO] ITSupport: Incident reported, sending team to investigate

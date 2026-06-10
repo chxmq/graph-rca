@@ -1,0 +1,13 @@
+2020-03-16 09:30:00 [INFO] backend-service: Starting to monitor traffic volume
+2020-03-16 09:40:00 [WARNING] analytics-service: Traffic spike detected, 20% increase in 10 minutes
+2020-03-16 09:45:00 [INFO] alert-system: Sending email alerts for increased traffic
+2020-03-16 09:50:00 [ERROR] backend-service: CPU utilization exceeded 80%, service slowing down
+2020-03-16 09:55:00 [WARNING] monitoring-system: Backend service error rate increasing
+2020-03-16 10:00:00 [INFO] incident-manager: Triggering incident response plan due to high error rate
+2020-03-16 10:05:00 [CRITICAL] backend-service: All requests being dropped, system becoming unresponsive
+2020-03-16 10:10:00 [ERROR] monitoring-system: Unable to retrieve backend service status from API
+2020-03-16 10:15:00 [WARNING] incident-manager: Triggering fallback routing for high traffic
+2020-03-16 10:20:00 [INFO] analytics-service: Data collection service failing due to lack of resources
+2020-03-16 10:25:00 [CRITICAL] incident-manager: Incident classification as Medium severity, notifying support team
+2020-03-16 10:30:00 [ERROR] support-team: Initial support request received, investigating root cause
+2020-03-16 10:40:00 [INFO] backend-service: System partially recovered, traffic volume returning to normal

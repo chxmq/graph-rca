@@ -1,11 +1,19 @@
-2023-02-28 09:37:00 [INFO] Amazon S3 Team: Beginning debug session on US-EAST-1
-2023-02-28 09:38:00 [WARNING] Amazon S3 Team: Removing small number of servers ( playbook-123 )
-2023-02-28 09:38:01 [ERROR] Amazon S3 Team: Error parsing server list command - typo detected
-2023-02-28 09:38:02 [CRITICAL] Amazon S3 Team: Removed critical S3 systems without confirmation
-2023-02-28 09:40:00 [WARNING] EC2 Service: Dropped connections from US-EAST-1 region
-2023-02-28 09:41:00 [ERROR] EBS Service: Unable to access data in affected region
-2023-02-28 09:42:00 [CRITICAL] S3 Service: Full outage reported across US-EAST-1 region
-2023-02-28 10:20:00 [WARNING] Monitoring Service: High error rate detected on US-EAST-1
-2023-02-28 11:30:00 [ERROR] Amazon Web Services: Cascading failure detected - dependent systems failing
-2023-02-28 12:45:00 [CRITICAL] IT Operations: Alert triggered for critical infrastructure failure
-2023-02-28 13:54:00 [INFO] Amazon S3 Team: Resolved issue and restored affected services
+2017-02-28T09:37:45Z [WARN] s3-backend: Increased latency detected in US-EAST region trace_id=req-645e7a  
+2017-02-28T09:38:01Z [ERROR] ec2-manager: Failed to communicate with server instance i-0e67b2de5c9d389ab, timeout after 30 seconds trace_id=req-645e7a  
+2017-02-28T09:38:15Z [CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket my-bucket trace_id=req-a02280  
+2017-02-28T09:38:22Z [ERROR] ec2-manager: Instance i-0e67b2de5c9d389ab is unresponsive, retrying... trace_id=req-645e7a  
+2017-02-28T09:38:37Z [WARN] s3-backend: Queue depth increased to 1200 requests for US-EAST trace_id=req-a02280  
+2017-02-28T09:38:45Z [ERROR] ec2-manager: Instance i-0e67b2de5c9d389ab failed health check, marking as unhealthy trace_id=req-645e7a  
+2017-02-28T09:38:55Z [CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket another-bucket trace_id=req-89b07f  
+2017-02-28T09:39:01Z [ERROR] ec2-manager: Instance i-0f67b2de5c9d389ac is unresponsive, retrying... trace_id=req-a02280  
+2017-02-28T09:39:10Z [WARN] s3-backend: Latency for US-EAST region has reached 6 seconds trace_id=req-89b07f  
+2017-02-28T09:39:15Z [ERROR] ec2-manager: Instance i-0f67b2de5c9d389ac failed health check, marking as unhealthy trace_id=req-a02280  
+2017-02-28T09:39:22Z [CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket third-bucket trace_id=req-953f32  
+2017-02-28T09:39:30Z [ERROR] ec2-manager: Instance i-0g67b2de5c9d389ad is unresponsive, retrying... trace_id=req-89b07f  
+2017-02-28T09:39:45Z [CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket fourth-bucket trace_id=req-02e7dc  
+2017-02-28T09:39:50Z [ERROR] ec2-manager: Instance i-0g67b2de5c9d389ad failed health check, marking as unhealthy trace_id=req-89b07f  
+2017-02-28T09:40:05Z [WARN] s3-backend: Queue depth for US-EAST region has reached 1500 requests trace_id=req-953f32  
+2017-02-28T09:40:15Z [ERROR] ec2-manager: Instance i-0h67b2de5c9d389ae is unresponsive, retrying... trace_id=req-02e7dc  
+2017-02-28T09:40:20Z [CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket fifth-bucket trace_id=req-993443  
+2017-02-28T09:40:35Z [ERROR] ec2-manager: Instance i-0h67b2de5c9d389ae failed health check, marking as unhealthy trace_id=req-02e7dc  
+2017-02-28T09:40:50Z [WARN] s3-backend: Latency for US-EAST region has reached 9 seconds trace_id=req-993443

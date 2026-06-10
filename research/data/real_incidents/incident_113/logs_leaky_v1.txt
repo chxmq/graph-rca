@@ -1,0 +1,14 @@
+2023-08-15 14:30:00 [INFO] MongoDB service: Starting query processing
+2023-08-15 14:30:10 [WARNING] MongoDB service: High load detected, but not yet critical (90% utilization)
+2023-08-15 14:40:00 [INFO] Foursquare service: Handling user check-in request
+2023-08-15 14:40:05 [ERROR] MongoDB service: Memory allocation failed for query
+2023-08-15 14:40:10 [WARNING] Foursquare service: Query response time exceeded threshold (500ms)
+2023-08-15 14:41:00 [CRITICAL] MongoDB service: Out of memory error detected, initiating failover
+2023-08-15 14:42:00 [INFO] Foursquare service: Request handling completed with failure
+2023-08-15 14:45:00 [WARNING] MongoDB service: Failover attempt failed due to high load
+2023-08-15 14:50:00 [ERROR] Foursquare service: Query pattern causing high load, re-evaluating query optimization
+2023-08-15 15:00:00 [INFO] MongoDB service: Query processing restarted with optimized configuration
+2023-08-15 15:10:00 [CRITICAL] Foursquare service: High load detected again, initiating failover
+2023-08-15 15:15:00 [WARNING] MongoDB service: Failover attempt failed due to high load
+2023-08-15 15:20:00 [INFO] Foursquare service: Request handling completed with failure (second incident)
+2023-08-15 16:30:00 [CRITICAL] MongoDB service: Out of memory error detected again, initiating emergency failover

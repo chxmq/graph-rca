@@ -1,12 +1,18 @@
-2012-08-01 09:45:00 [INFO] service-c: Deployment initiated for Power Peg update
-2012-08-01 09:46:00 [WARNING] power_peg: Old deployment script detected, but overridden by new one
-2012-08-01 09:47:00 [INFO] service-d: System checks indicating successful deployment completion
-2012-08-01 09:48:00 [CRITICAL] power_peg: Production environment loaded with outdated Power Peg code path
-2012-08-01 09:50:00 [ERROR] trade-execution-service: Error in trade execution due to deprecated function call
-2012-08-01 09:55:00 [WARNING] trade-execution-service: Multiple trade executions failed, pending review
-2012-08-01 10:02:00 [CRITICAL] power_peg: Automated testing revealed erroneous trades in millions of dollars
-2012-08-01 10:05:00 [ERROR] trade-execution-service: System unable to correct trades due to critical error conditions
-2012-08-01 10:08:00 [WARNING] trade-execution-system: Alert sent to incident response team for assistance
-2012-08-01 10:12:00 [CRITICAL] power_peg: Root cause analysis initiated, discovering outdated code path re-enabled during deployment
-2012-08-01 10:15:00 [INFO] incident-response-team: Root cause identified and mitigation plans outlined
-2012-08-01 10:20:00 [ERROR] trade-execution-service: System attempts to correct trades, but fails due to severe error conditions
+2012-08-01T09:30:00Z [INFO] trade-executor: Starting batch processing trace_id=req-13665d
+2012-08-01T09:30:02Z [WARN] order-router: High queue depth detected, current size 2000 trace_id=req-13665d
+2012-08-01T09:30:10Z [ERROR] market-data-gateway: Failed to fetch latest prices, retrying... trace_id=req-cd5b9a
+2012-08-01T09:30:15Z [CRITICAL] trade-executor: Execution failed for order 123456, status_code=500 trace_id=req-13665d
+2012-08-01T09:30:17Z [ERROR] market-data-gateway: Failed to fetch latest prices, retrying... trace_id=req-cd5b9a
+2012-08-01T09:30:25Z [WARN] order-router: High queue depth detected, current size 3000 trace_id=req-e3a6e7
+2012-08-01T09:30:30Z [ERROR] trade-executor: Execution failed for order 123457, status_code=500 trace_id=req-e3a6e7
+2012-08-01T09:30:35Z [CRITICAL] market-data-gateway: Failed to fetch latest prices, retrying... trace_id=req-cd5b9a
+2012-08-01T09:30:40Z [ERROR] trade-executor: Execution failed for order 123458, status_code=500 trace_id=req-a89649
+2012-08-01T09:30:45Z [WARN] order-router: High queue depth detected, current size 4000 trace_id=req-e3a6e7
+2012-08-01T09:30:50Z [ERROR] trade-executor: Execution failed for order 123459, status_code=500 trace_id=req-a89649
+2012-08-01T09:30:55Z [CRITICAL] market-data-gateway: Failed to fetch latest prices, retrying... trace_id=req-cd5b9a
+2012-08-01T09:31:00Z [ERROR] trade-executor: Execution failed for order 123460, status_code=500 trace_id=req-a89649
+2012-08-01T09:31:05Z [WARN] order-router: High queue depth detected, current size 5000 trace_id=req-e3a6e7
+2012-08-01T09:31:10Z [ERROR] trade-executor: Execution failed for order 123461, status_code=500 trace_id=req-87fb0e
+2012-08-01T09:31:15Z [CRITICAL] market-data-gateway: Failed to fetch latest prices, retrying... trace_id=req-cd5b9a
+2012-08-01T09:31:20Z [ERROR] trade-executor: Execution failed for order 123462, status_code=500 trace_id=req-87fb0e
+2012-08-01T09:31:25Z [WARN] order-router: High queue depth detected, current size 6000 trace_id=req-e3a6e7

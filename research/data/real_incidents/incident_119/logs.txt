@@ -1,15 +1,20 @@
-2023-12-31 14:00:00 [INFO] filestore-service: Started normal API request processing
-2023-12-31 14:02:30 [WARNING] filestore-service: High CPU usage detected (10% threshold exceeded)
-2023-12-31 14:03:05 [ERROR] internal-service: Failed to manage GCP projects, CPU usage increasing rapidly
-2023-12-31 14:04:00 [CRITICAL] filestore-service: Global API request limit exceeded, throttling enabled
-2023-12-31 14:04:30 [INFO] filestore-service: Received alert notification for global quota exceeded
-2023-12-31 14:05:00 [WARNING] internal-service: CPU usage still high (20% threshold exceeded), further failure imminent
-2023-12-31 14:10:00 [ERROR] filestore-service: API requests from console and gcloud failing due to throttling
-2023-12-31 14:11:30 [INFO] filestore-service: Received request to pause internal service, throttling lifted
-2023-12-31 14:15:00 [INFO] filestore-service: Normal API request processing resumed
-2023-12-31 14:20:00 [WARNING] console-service: Console access still unavailable due to global quota limitations
-2023-12-31 14:30:00 [INFO] gcloud-service: gcloud access still unavailable for List and GetOperation calls
-2023-12-31 15:02:30 [ERROR] filestore-service: Mutate operations (CreateInstance, UpdateInstance) failing due to quota limitations
-2023-12-31 16:00:00 [INFO] internal-service: Internal service manually paused, global quota exceeded issue resolved
-2023-12-31 17:10:00 [INFO] console-service: Console access restored after resolving global quota limitations
-2023-12-31 18:00:00 [INFO] gcloud-service: gcloud access restored for List and GetOperation calls
+2023-10-15T14:30:00Z [WARN] api-gateway: Request timed out trace_id=req-0545b0
+2023-10-15T14:30:05Z [ERROR] storage-service: Failed to fetch data, retrying... trace_id=req-0545b0
+2023-10-15T14:30:10Z [CRITICAL] api-gateway: Too many retries, request failed trace_id=req-0545b0
+2023-10-15T14:30:12Z [ERROR] storage-service: Queue depth exceeded 100 requests trace_id=req-7ef413
+2023-10-15T14:30:15Z [WARN] health-checker: Health check failed for service api-gateway trace_id=req-157306
+2023-10-15T14:30:20Z [ERROR] storage-service: Failed to fetch data, retrying... trace_id=req-7ef413
+2023-10-15T14:30:25Z [CRITICAL] api-gateway: Too many retries, request failed trace_id=req-7ef413
+2023-10-15T14:30:30Z [WARN] health-checker: Health check failed for service storage-service trace_id=req-157306
+2023-10-15T14:30:35Z [ERROR] api-gateway: Request timed out trace_id=req-bb4c0f
+2023-10-15T14:30:40Z [CRITICAL] storage-service: Queue depth exceeded 100 requests trace_id=req-bb4c0f
+2023-10-15T14:30:45Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-bb4c0f
+2023-10-15T14:30:50Z [WARN] health-checker: Health check failed for service api-gateway trace_id=req-c8a620
+2023-10-15T14:30:55Z [ERROR] storage-service: Failed to fetch data, retrying... trace_id=req-b88754
+2023-10-15T14:31:00Z [CRITICAL] api-gateway: Too many retries, request failed trace_id=req-b88754
+2023-10-15T14:31:05Z [ERROR] storage-service: Request timed out trace_id=req-b88754
+2023-10-15T14:31:10Z [WARN] health-checker: Health check failed for service storage-service trace_id=req-c8a620
+2023-10-15T14:31:15Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-b88754
+2023-10-15T14:31:20Z [CRITICAL] storage-service: Queue depth exceeded 100 requests trace_id=req-d2f6f5
+2023-10-15T14:31:25Z [ERROR] api-gateway: Request timed out trace_id=req-d2f6f5
+2023-10-15T14:31:30Z [CRITICAL] storage-service: Too many retries, request failed trace_id=req-d2f6f5

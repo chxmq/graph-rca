@@ -1,12 +1,21 @@
-2023-12-15 14:30:00 [INFO] database-keeper: Started maintenance window for production data
-2023-12-15 14:32:00 [WARNING] database-keeper: Error backing up production database (code 123)
-2023-12-15 14:33:00 [ERROR] database-keeper: Failed to create backup archive for production data
-2023-12-15 14:35:00 [INFO] dba-team: Running manual backup script to recover lost data
-2023-12-15 14:37:00 [WARNING] dba-team: Backup script encountered unexpected data inconsistencies (code 456)
-2023-12-15 14:40:00 [ERROR] dba-team: Manual backup recovery attempt failed due to locked database files
-2023-12-15 14:42:00 [CRITICAL] alert-system: Critical system failure detected - production data loss imminent
-2023-12-15 14:45:00 [INFO] alert-system: Automated shutdown initiated for all services
-2023-12-15 14:50:00 [WARNING] service-c: Failed to reconnect to database after shutdown
-2023-12-15 14:55:00 [ERROR] service-d: Unable to recover from loss of production data
-2023-12-15 15:00:00 [INFO] incident-response: Incident reported to GitLab operations team
-2023-12-15 15:05:00 [CRITICAL] incident-response: Production outage confirmed - critical database failure
+2023-10-15T14:23:12Z [ERROR] db-service: Failed to fetch user profile for user_id=12345 error="record not found" trace_id=req-265763  
+2023-10-15T14:23:15Z [WARN] api-gateway: Slow response from db-service latency=5000ms trace_id=req-265763  
+2023-10-15T14:23:20Z [CRITICAL] web-ui: User profile fetch failed for user_id=12345 error="Internal Server Error" http_status_code=500 trace_id=req-265763  
+2023-10-15T14:23:25Z [ERROR] db-service: Failed to fetch project details for project_id=67890 error="record not found" trace_id=req-c6bfaf  
+2023-10-15T14:23:30Z [WARN] api-gateway: Slow response from db-service latency=4500ms trace_id=req-c6bfaf  
+2023-10-15T14:23:35Z [CRITICAL] web-ui: Project details fetch failed for project_id=67890 error="Internal Server Error" http_status_code=500 trace_id=req-c6bfaf  
+2023-10-15T14:23:40Z [ERROR] db-service: Failed to execute query: SELECT * FROM issues WHERE project_id=67890 error="no such table" trace_id=req-baf7f0  
+2023-10-15T14:23:45Z [WARN] api-gateway: Slow response from db-service latency=4800ms trace_id=req-baf7f0  
+2023-10-15T14:23:50Z [CRITICAL] web-ui: Issues fetch failed for project_id=67890 error="Internal Server Error" http_status_code=500 trace_id=req-baf7f0  
+2023-10-15T14:23:55Z [ERROR] db-service: Failed to insert new issue record error="table issues does not exist" trace_id=req-293510  
+2023-10-15T14:24:00Z [WARN] api-gateway: Slow response from db-service latency=6000ms trace_id=req-293510  
+2023-10-15T14:24:05Z [CRITICAL] web-ui: Issue creation failed error="Internal Server Error" http_status_code=500 trace_id=req-293510  
+2023-10-15T14:24:10Z [ERROR] db-service: Failed to update user profile for user_id=12345 error="table users does not exist" trace_id=req-265763  
+2023-10-15T14:24:15Z [WARN] api-gateway: Slow response from db-service latency=5500ms trace_id=req-265763  
+2023-10-15T14:24:20Z [CRITICAL] web-ui: User profile update failed for user_id=12345 error="Internal Server Error" http_status_code=500 trace_id=req-265763  
+2023-10-15T14:24:25Z [ERROR] db-service: Failed to fetch project members for project_id=67890 error="table project_members does not exist" trace_id=req-c6bfaf  
+2023-10-15T14:24:30Z [WARN] api-gateway: Slow response from db-service latency=5200ms trace_id=req-c6bfaf  
+2023-10-15T14:24:35Z [CRITICAL] web-ui: Project members fetch failed for project_id=67890 error="Internal Server Error" http_status_code=500 trace_id=req-c6bfaf  
+2023-10-15T14:24:40Z [ERROR] db-service: Failed to delete issue record with id=112233 error="no such table" trace_id=req-baf7f0  
+2023-10-15T14:24:45Z [WARN] api-gateway: Slow response from db-service latency=6200ms trace_id=req-baf7f0  
+2023-10-15T14:24:50Z [CRITICAL] web-ui: Issue deletion failed for id=112233 error="Internal Server Error" http_status_code=500 trace_id=req-baf7f0

@@ -1,14 +1,19 @@
-2024-01-01 09:45:00 [INFO] impressionbus-srv1: Starting database update
-2024-01-01 09:45:02 [WARNING] impressionbus-srv2: Unhandled exception in trigger function
-2024-01-01 09:45:03 [INFO] impressionbus-srv3: Receiving request from 'client-123'
-2024-01-01 09:45:05 [ERROR] impressionbus-srv1: Database connection error
-2024-01-01 09:45:06 [CRITICAL] impressionbus-srv2: Service failed with error code 22
-2024-01-01 09:45:07 [INFO] impressionbus-srv4: Receiving request from 'client-456'
-2024-01-01 09:45:10 [WARNING] impressionbus-srv3: Potential database issue detected
-2024-01-01 09:45:11 [ERROR] impressionbus-srv5: Double free error detected in database update
-2024-01-01 09:45:12 [CRITICAL] impressionbus-srv1: Service failed with critical error
-2024-01-01 09:45:13 [INFO] impressionbus-srv2: Attempting to recover from double free error
-2024-01-01 09:45:15 [ERROR] impressionbus-srv3: Database connection timeout (second occurrence)
-2024-01-01 09:45:16 [CRITICAL] impressionbus-srv2: Service failed with critical error
-2024-01-01 09:45:18 [INFO] impressionbus-srv4: Receiving request from 'client-789'
-2024-01-01 09:45:20 [WARNING] All impressionbus servers: Potential database issue detected across all instances
+2025-09-17T14:30:00Z [WARN] ad-server: Timeout connecting to bus-server trace_id=req-788f50
+2025-09-17T14:30:05Z [ERROR] ad-server: Failed to send request, retrying... trace_id=req-788f50
+2025-09-17T14:30:10Z [CRITICAL] bus-server: Queue depth exceeded threshold of 1000 entries trace_id=req-0aa7b7
+2025-09-17T14:30:15Z [ERROR] ad-server: Second attempt to send request failed trace_id=req-788f50
+2025-09-17T14:30:20Z [WARN] health-checker: bus-server health check failed with HTTP 500 trace_id=req-61c376
+2025-09-17T14:30:25Z [ERROR] ad-server: Third attempt to send request failed, giving up trace_id=req-788f50
+2025-09-17T14:30:30Z [CRITICAL] bus-server: Queue depth still above threshold, triggering alert trace_id=req-0aa7b7
+2025-09-17T14:30:35Z [WARN] ad-server: Timeout connecting to bus-server trace_id=req-94e8b8
+2025-09-17T14:30:40Z [ERROR] ad-server: Failed to send request, retrying... trace_id=req-94e8b8
+2025-09-17T14:30:45Z [CRITICAL] bus-server: Queue depth exceeded threshold of 1000 entries trace_id=req-dde312
+2025-09-17T14:30:50Z [ERROR] ad-server: Second attempt to send request failed trace_id=req-94e8b8
+2025-09-17T14:30:55Z [WARN] health-checker: bus-server health check failed with HTTP 500 trace_id=req-6d0b76
+2025-09-17T14:31:00Z [ERROR] ad-server: Third attempt to send request failed, giving up trace_id=req-94e8b8
+2025-09-17T14:31:05Z [CRITICAL] bus-server: Queue depth still above threshold, triggering alert trace_id=req-dde312
+2025-09-17T14:31:10Z [WARN] ad-server: Timeout connecting to bus-server trace_id=req-8c2e89
+2025-09-17T14:31:15Z [ERROR] ad-server: Failed to send request, retrying... trace_id=req-8c2e89
+2025-09-17T14:31:20Z [CRITICAL] bus-server: Queue depth exceeded threshold of 1000 entries trace_id=req-7a7188
+2025-09-17T14:31:25Z [ERROR] ad-server: Second attempt to send request failed trace_id=req-8c2e89
+2025-09-17T14:31:30Z [WARN] health-checker: bus-server health check failed with HTTP 500 trace_id=req-4095df

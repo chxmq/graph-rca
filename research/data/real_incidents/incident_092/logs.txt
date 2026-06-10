@@ -1,13 +1,16 @@
-2024-01-01 09:30:00 [INFO] cluster-service: Initializing cluster nodes for patch deployment
-2024-01-01 09:30:15 [INFO] logging-channel: Starting log collection and aggregation
-2024-01-01 09:31:00 [WARNING] service-a: High CPU usage detected, possible thread exhaustion
-2024-01-01 09:31:05 [INFO] cluster-service: Cluster start sequence initiated
-2024-01-01 09:32:30 [CRITICAL] logging-channel: Log channel errors exceeding threshold (max 5)
-2024-01-01 09:33:00 [ERROR] service-b: Database connection failed, unable to authenticate
-2024-01-01 09:33:10 [INFO] cluster-service: Node failure detected on node 'node-123'
-2024-01-01 09:34:20 [CRITICAL] logging-channel: Error rate exceeded (60% in last minute)
-2024-01-01 09:35:00 [WARNING] service-c: Service not responding to cluster requests
-2024-01-01 09:36:15 [ERROR] cluster-service: Cluster start sequence failed, unable to recover from node failure
-2024-01-01 09:37:30 [INFO] logging-channel: Log collection and aggregation terminated due to errors
-2024-01-01 09:38:00 [CRITICAL] cluster-service: All nodes dead, cluster unavailable
-2024-01-01 09:40:15 [INFO] monitoring-service: Alert triggered for high error rates in cluster services
+2023-10-15T14:23:15Z [ERROR] api-server: Failed to initialize service: context deadline exceeded trace_id=req-ba708c  
+2023-10-15T14:23:16Z [WARN] web-gateway: High latency detected in request processing: 8.7s trace_id=req-5d49c5  
+2023-10-15T14:23:20Z [ERROR] database: Connection timeout after 5 seconds trace_id=req-e43e24  
+2023-10-15T14:23:22Z [CRITICAL] web-gateway: Service unavailable due to backend failure HTTP 503 trace_id=req-5d49c5  
+2023-10-15T14:23:25Z [ERROR] api-server: Failed to initialize service: context deadline exceeded trace_id=req-81e61f  
+2023-10-15T14:23:30Z [WARN] web-gateway: High latency detected in request processing: 9.2s trace_id=req-00329b  
+2023-10-15T14:23:32Z [ERROR] database: Connection timeout after 5 seconds trace_id=req-e43e24  
+2023-10-15T14:23:35Z [CRITICAL] web-gateway: Service unavailable due to backend failure HTTP 503 trace_id=req-00329b  
+2023-10-15T14:23:40Z [ERROR] api-server: Failed to initialize service: context deadline exceeded trace_id=req-794e01  
+2023-10-15T14:23:45Z [WARN] web-gateway: High latency detected in request processing: 9.8s trace_id=req-c58872  
+2023-10-15T14:23:47Z [ERROR] database: Connection timeout after 5 seconds trace_id=req-1a5738  
+2023-10-15T14:23:50Z [CRITICAL] web-gateway: Service unavailable due to backend failure HTTP 503 trace_id=req-c58872  
+2023-10-15T14:23:52Z [ERROR] api-server: Failed to initialize service: context deadline exceeded trace_id=req-bcf901  
+2023-10-15T14:23:57Z [WARN] web-gateway: High latency detected in request processing: 10.5s trace_id=req-043c2f  
+2023-10-15T14:24:00Z [ERROR] database: Connection timeout after 5 seconds trace_id=req-1a5738  
+2023-10-15T14:24:02Z [CRITICAL] web-gateway: Service unavailable due to backend failure HTTP 503 trace_id=req-043c2f

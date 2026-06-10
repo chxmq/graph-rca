@@ -1,12 +1,16 @@
-2013-04-13 08:45:00 [INFO] service-c: Normal quorum establishment detected for cluster-1
-2013-04-13 08:45:02 [INFO] service-d: Normal quorum establishment detected for cluster-2
-2013-04-13 09:10:00 [WARNING] network-a: High latency detected on peering point to cluster-1
-2013-04-13 09:10:05 [WARNING] network-b: High latency detected on peering point to cluster-2
-2013-04-13 09:20:00 [INFO] service-c: Quorum establishment failed for cluster-1 due to high latency
-2013-04-13 09:20:02 [INFO] service-d: Quorum establishment failed for cluster-2 due to high latency
-2013-04-13 09:25:00 [CRITICAL] network-a: Error establishing quorum for cluster-1, possible peering point failure detected
-2013-04-13 09:25:05 [CRITICAL] network-b: Error establishing quorum for cluster-2, possible peering point failure detected
-2013-04-13 09:30:00 [INFO] pagerduty: Alert sent to PagerDuty team due to critical quorum failure
-2013-04-13 09:35:00 [WARNING] pagerduty: Attempting to establish quorum via secondary connection
-2013-04-13 09:40:00 [ERROR] pagerduty: Secondary connection failed, primary peering point still unavailable
-2013-04-13 09:50:00 [CRITICAL] pagerduty: Application unable to establish quorum due to persistent peering point failure across cloud deployments
+2013-04-13T00:00:00Z [WARN] database-service: Slow response time detected from replica db query trace_id=req-73e5e5
+2013-04-13T00:00:05Z [ERROR] web-server: Failed to connect to backend service, retrying... trace_id=req-de4dbc
+2013-04-13T00:00:10Z [WARN] database-service: Slow response time detected from replica db query trace_id=req-73e5e5
+2013-04-13T00:00:15Z [ERROR] web-server: Backend service still unavailable after 3 retries trace_id=req-de4dbc
+2013-04-13T00:00:30Z [CRITICAL] web-server: Connection timeout to backend service, marking as failed trace_id=req-e06fd1
+2013-04-13T00:00:35Z [WARN] api-gateway: Increased queue depth for requests waiting on backend response trace_id=req-ae4468
+2013-04-13T00:00:45Z [ERROR] database-service: Failed to connect to primary db, retrying... trace_id=req-73e5e5
+2013-04-13T00:00:55Z [CRITICAL] web-server: Connection timeout to backend service, marking as failed trace_id=req-ae4468
+2013-04-13T00:01:00Z [ERROR] api-gateway: Service health check failed for web-server trace_id=req-27c974
+2013-04-13T00:01:05Z [ERROR] database-service: Failed to connect to primary db, retrying... trace_id=req-73e5e5
+2013-04-13T00:01:10Z [CRITICAL] web-server: Connection timeout to backend service, marking as failed trace_id=req-e06fd1
+2013-04-13T00:01:15Z [ERROR] api-gateway: Service health check failed for web-server trace_id=req-27c974
+2013-04-13T00:01:30Z [CRITICAL] database-service: Failed to connect to primary db after 5 retries, marking as failed trace_id=req-73e5e5
+2013-04-13T00:01:35Z [ERROR] api-gateway: Service health check failed for web-server trace_id=req-27c974
+2013-04-13T00:01:45Z [CRITICAL] web-server: Unable to serve request, all backend services are down trace_id=req-9c9fbc
+2013-04-13T00:01:55Z [ERROR] api-gateway: Service health check failed for web-server trace_id=req-27c974

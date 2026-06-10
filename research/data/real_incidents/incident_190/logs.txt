@@ -1,16 +1,18 @@
-2023-12-15 14:30:00 [INFO] service-g: Received request for trading operations
-2023-12-15 14:30:03 [INFO] service-e: Lease line to CTCL active, primary line online
-2023-12-15 14:30:05 [WARNING] service-f: Backup leased line on CTCL detected, warning sent to administrators
-2023-12-15 14:30:06 [INFO] service-d: Processing trading requests with backup leased line enabled
-2023-12-15 14:30:08 [ERROR] service-c: Bracket orders failed validation due to unreliable connection
-2023-12-15 14:30:10 [WARNING] service-a: Order placement and validation delayed by 1 minute
-2023-12-15 14:30:11 [INFO] service-b: Checking primary leased line status, awaiting confirmation from provider
-2023-12-15 14:30:12 [CRITICAL] service-e: Primary leased line to CTCL failed, backup line activated
-2023-12-15 14:30:13 [ERROR] service-f: Backup leased line on CTCL detected, error sent to administrators
-2023-12-15 14:31:00 [INFO] service-d: Process still running with modified order validation process
-2023-12-15 14:31:02 [WARNING] service-a: More than 2 minutes of delay in trading operations
-2023-12-15 14:31:03 [INFO] service-b: Checking backup leased line status, awaiting confirmation from provider
-2023-12-15 14:31:04 [CRITICAL] service-e: Backup leased line on CTCL failed sporadically for 1 minute
-2023-12-15 14:32:00 [ERROR] service-c: Bracket orders still failing validation due to unreliable connection
-2023-12-15 14:32:02 [WARNING] service-a: Trading operations delayed by more than 5 minutes
-2023-12-15 14:32:03 [INFO] service-b: Lease line to CTCL confirmed offline, primary line reactivated
+2023-10-15T14:22:15Z [WARN]  order-validation-service: Timeout while waiting for response from trading-gateway trace_id=req-f059ef  
+2023-10-15T14:22:18Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-f059ef  
+2023-10-15T14:22:23Z [WARN]  order-validation-service: Timeout while waiting for response from trading-gateway trace_id=req-3b2f09  
+2023-10-15T14:22:26Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-3b2f09  
+2023-10-15T14:22:30Z [CRITICAL] order-execution-service: Order placement failed due to gateway timeout trace_id=req-f059ef  
+2023-10-15T14:22:32Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-712c5d  
+2023-10-15T14:22:38Z [WARN]  order-validation-service: Timeout while waiting for response from trading-gateway trace_id=req-712c5d  
+2023-10-15T14:22:41Z [CRITICAL] order-execution-service: Order placement failed due to gateway timeout trace_id=req-3b2f09  
+2023-10-15T14:22:46Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-712c5d  
+2023-10-15T14:22:51Z [CRITICAL] order-execution-service: Order placement failed due to gateway timeout trace_id=req-712c5d  
+2023-10-15T14:22:56Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-50ca7f  
+2023-10-15T14:23:02Z [WARN]  order-validation-service: Timeout while waiting for response from trading-gateway trace_id=req-50ca7f  
+2023-10-15T14:23:07Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-50ca7f  
+2023-10-15T14:23:11Z [CRITICAL] order-execution-service: Order placement failed due to gateway timeout trace_id=req-50ca7f  
+2023-10-15T14:23:16Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-160ea5  
+2023-10-15T14:23:21Z [WARN]  order-validation-service: Timeout while waiting for response from trading-gateway trace_id=req-160ea5  
+2023-10-15T14:23:26Z [CRITICAL] order-execution-service: Order placement failed due to gateway timeout trace_id=req-160ea5  
+2023-10-15T14:23:31Z [ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-160ea5

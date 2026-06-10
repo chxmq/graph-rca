@@ -1,13 +1,16 @@
-2023-01-04 08:45:00 [INFO] system-health-checker: Started daily health check for all services
-2023-01-04 08:45:02 [INFO] auth-service: Verified SSO session cookie for user 'john.doe'
-2023-01-04 08:45:10 [WARNING] file-scanner: Detected suspicious activity on engineer's laptop (ID: 1234)
-2023-01-04 08:45:12 [INFO] antivirus-software: Malware detected on engineer's laptop (ID: 1234)
-2023-01-04 08:45:15 [WARNING] auth-service: Unusual login activity detected for user 'john.doe'
-2023-01-04 08:45:18 [CRITICAL] auth-service: SSO session cookie stolen by malware
-2023-01-04 08:45:20 [ERROR] api-gateway: Unauthorized access detected for production systems
-2023-01-04 08:45:22 [INFO] incident-response-team: Incident reported and alert sent to on-call engineer
-2023-01-04 08:45:25 [WARNING] security-information-systems: Alert triggered for potential security breach
-2023-01-04 08:45:30 [CRITICAL] system-administration: Engineer's laptop isolated and replaced with a clean machine
-2023-01-04 08:45:32 [INFO] incident-response-team: Root cause identified as malware on engineer's laptop
-2023-01-04 08:45:35 [WARNING] security-information-systems: Malware analysis in progress
-2023-01-04 08:45:40 [ERROR] authentication-server: SSO session cookie invalidated for all users
+2022-12-16T00:00:00Z [WARN] auth-service: Failed to authenticate user with provided credentials retry_count=3 trace_id=req-d16942
+2022-12-16T00:02:08Z [ERROR] web-app: API call failed with HTTP status code 500 endpoint=/api/v1/jobs/12345 trace_id=req-0af1ff
+2022-12-16T00:03:22Z [CRITICAL] database: Connection timeout while executing query duration=30s trace_id=req-6ffc0d
+2022-12-16T00:04:03Z [ERROR] web-app: Failed to retrieve job status with HTTP status code 503 endpoint=/api/v1/jobs/12345/retry_count=2 trace_id=req-0af1ff
+2022-12-16T00:04:50Z [INFO] load-balancer: Increased request queue depth to 20 requests max_queue_depth=20 trace_id=req-d16942
+2022-12-16T00:06:38Z [WARN] web-app: API call failed with HTTP status code 403 endpoint=/api/v1/jobs/12345 retry_count=4 trace_id=req-0af1ff
+2022-12-16T00:07:58Z [CRITICAL] auth-service: High number of failed authentication attempts detected failure_rate=70% trace_id=req-6ffc0d
+2022-12-16T00:10:33Z [ERROR] web-app: API call timed out after 15 seconds endpoint=/api/v1/jobs/12345 retry_count=5 trace_id=req-0af1ff
+2022-12-16T00:12:11Z [WARN] database: Slow query execution duration=20s threshold=10s trace_id=req-6ffc0d
+2022-12-16T00:13:53Z [ERROR] web-app: API call failed with HTTP status code 403 endpoint=/api/v1/jobs/12345 retry_count=6 trace_id=req-0af1ff
+2022-12-16T00:15:03Z [INFO] load-balancer: Increased request queue depth to 30 requests max_queue_depth=30 trace_id=req-6ffc0d
+2022-12-16T00:16:33Z [ERROR] web-app: API call failed with HTTP status code 500 endpoint=/api/v1/jobs/12345 retry_count=7 trace_id=req-0af1ff
+2022-12-16T00:17:58Z [CRITICAL] auth-service: Failed to authenticate user with provided credentials retry_count=4 trace_id=req-6ffc0d
+2022-12-16T00:20:08Z [ERROR] web-app: API call failed with HTTP status code 403 endpoint=/api/v1/jobs/12345 retry_count=8 trace_id=req-0af1ff
+2022-12-16T00:22:00Z [CRITICAL] database: Connection timeout while executing query duration=30s trace_id=req-6ffc0d
+2022-12-16T00:23:42Z [ERROR] web-app: API call timed out after 15 seconds endpoint=/api/v1/jobs/12345 retry_count=9 trace_id=req-0af1ff

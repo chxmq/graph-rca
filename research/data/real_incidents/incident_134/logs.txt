@@ -1,14 +1,20 @@
-2023-07-25 13:40:00 [INFO] Service-c: Initializing backup process
-2023-07-25 13:40:02 [WARNING] Service-d: Disk space threshold exceeded, warning sent to team
-2023-07-25 13:40:05 [INFO] Service-e: Started data ingestion process
-2023-07-25 13:40:10 [CRITICAL] Service-f: Unexpected error during database connection attempt
-2023-07-25 13:41:00 [ERROR] Service-g: Failed to establish connections with upstream services
-2023-07-25 13:42:00 [WARNING] Service-h: Received high CPU usage alert, investigating possible root cause
-2023-07-25 13:43:00 [INFO] Service-i: Attempting to restart service-f
-2023-07-25 13:44:00 [CRITICAL] Service-j: Failed to recover from restart attempt of service-f
-2023-07-25 13:45:00 [ERROR] Service-k: Unable to connect to failed service-f instance
-2023-07-25 13:46:00 [WARNING] Service-l: High error rates detected in data ingestion process
-2023-07-25 13:47:00 [INFO] Service-m: Initiating emergency shutdown of all services
-2023-07-25 13:48:00 [CRITICAL] All Services: Total outage confirmed, alert sent to management
-2023-07-25 14:48:00 [ERROR] System Monitoring: Unable to recover from total outage
-2023-07-25 15:00:00 [INFO] Post-mortem Analysis: Starting root cause investigation
+2023-06-25T13:40:00Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-a8c107  
+2023-06-25T13:40:05Z [WARN] data-ingestor: Connection timed out while connecting to backend trace_id=req-a8c107  
+2023-06-25T13:40:10Z [ERROR] query-engine: Failed to retrieve data from storage, retrying... trace_id=req-8efea7  
+2023-06-25T13:40:15Z [CRITICAL] dashboard-service: Health check failed for backend service trace_id=req-a8c107  
+2023-06-25T13:40:20Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-8efea7  
+2023-06-25T13:40:25Z [WARN] data-ingestor: Connection timed out while connecting to backend trace_id=req-8efea7  
+2023-06-25T13:40:30Z [ERROR] query-engine: Failed to retrieve data from storage, retrying... trace_id=req-53a8f8  
+2023-06-25T13:40:35Z [CRITICAL] dashboard-service: Health check failed for backend service trace_id=req-8efea7  
+2023-06-25T13:40:40Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-53a8f8  
+2023-06-25T13:40:45Z [WARN] data-ingestor: Connection timed out while connecting to backend trace_id=req-53a8f8  
+2023-06-25T13:40:50Z [ERROR] query-engine: Failed to retrieve data from storage, retrying... trace_id=req-c29552  
+2023-06-25T13:40:55Z [CRITICAL] dashboard-service: Health check failed for backend service trace_id=req-53a8f8  
+2023-06-25T13:41:00Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-c29552  
+2023-06-25T13:41:05Z [WARN] data-ingestor: Connection timed out while connecting to backend trace_id=req-c29552  
+2023-06-25T13:41:10Z [ERROR] query-engine: Failed to retrieve data from storage, retrying... trace_id=req-b12e3b  
+2023-06-25T13:41:15Z [CRITICAL] dashboard-service: Health check failed for backend service trace_id=req-c29552  
+2023-06-25T13:41:20Z [ERROR] api-gateway: Request failed with status code 503 trace_id=req-b12e3b  
+2023-06-25T13:41:25Z [WARN] data-ingestor: Connection timed out while connecting to backend trace_id=req-b12e3b  
+2023-06-25T13:41:30Z [ERROR] query-engine: Failed to retrieve data from storage, retrying... trace_id=req-2c585c  
+2023-06-25T13:41:35Z [CRITICAL] dashboard-service: Health check failed for backend service trace_id=req-b12e3b

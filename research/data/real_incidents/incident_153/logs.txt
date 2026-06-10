@@ -1,14 +1,17 @@
-2023-12-30 14:42:00 [INFO] okta-auth-service: Received notification of potential security incident
-2023-12-30 14:43:00 [WARNING] okta-security-team: Investigation initiated - possible insider threat
-2023-12-30 14:44:00 [INFO] okta-investigation-team: Reviewing logs from support engineer's laptop
-2023-12-30 14:45:05 [ERROR] okta-auth-service: Multiple unauthorized login attempts detected
-2023-12-30 14:45:10 [WARNING] okta-security-team: Potential breach detected - escalating to incident response
-2023-12-30 14:46:00 [INFO] okta-incident-response: Notifying teams and stakeholders of potential breach
-2023-12-30 14:47:05 [CRITICAL] okta-auth-service: Hacker group access confirmed - immediate action required
-2023-12-30 14:47:10 [WARNING] okta-security-team: Investigating source of hacker group's access to support engineer's laptop
-2023-12-30 14:48:00 [INFO] okta-investigation-team: Identifying potential vulnerability in third-party support engineer's laptop
-2023-12-30 14:49:05 [ERROR] okta-auth-service: Data exfiltration detected - attempting to contain breach
-2023-12-30 14:50:00 [CRITICAL] okta-security-team: Hacker group access confirmed via compromised laptop - containment efforts underway
-2023-12-30 14:51:00 [INFO] okta-incident-response: Notification of breach sent to relevant teams and stakeholders
-2023-12-30 14:52:05 [WARNING] okta-security-team: Investigation into source of vulnerability ongoing
-2023-12-30 14:53:00 [INFO] okta-investigation-team: Preliminary findings indicate third-party support engineer's laptop was compromised
+2023-10-15T14:22:15Z [WARN]  auth-service: Increased latency in authentication requests duration=1200ms trace_id=req-334bc6
+2023-10-15T14:22:20Z [ERROR] api-gateway: Failed to connect to backend service status_code=504 trace_id=req-334bc6
+2023-10-15T14:22:25Z [CRITICAL] database-service: Connection timeout error duration=3000ms trace_id=req-a0bfa1
+2023-10-15T14:22:30Z [WARN]  auth-service: Authentication failure rate increased failures=15% trace_id=req-a0bfa1
+2023-10-15T14:22:35Z [INFO]  monitoring-service: Alert triggered for high error rates in database requests alert_id=alert-8a1d
+2023-10-15T14:22:40Z [ERROR] api-gateway: Backend service unreachable status_code=502 trace_id=req-a0bfa1
+2023-10-15T14:22:45Z [WARN]  load-balancer: High queue depth detected queue_depth=200 trace_id=req-86edf5
+2023-10-15T14:22:50Z [ERROR] database-service: Connection refused error duration=1500ms trace_id=req-86edf5
+2023-10-15T14:22:55Z [CRITICAL] api-gateway: Service downtime detected status_code=503 trace_id=req-86edf5
+2023-10-15T14:23:00Z [WARN]  monitoring-service: Health check failed for auth-service service=auth-service health_status=false trace_id=req-99a8ab
+2023-10-15T14:23:05Z [ERROR] database-service: Failed to execute query error_code=SQL_TIMEOUT trace_id=req-99a8ab
+2023-10-15T14:23:10Z [CRITICAL] monitoring-service: High latency in API requests detected avg_latency=1800ms trace_id=req-99a8ab
+2023-10-15T14:23:15Z [ERROR] api-gateway: Internal server error status_code=500 trace_id=req-4a1b8d
+2023-10-15T14:23:20Z [WARN]  load-balancer: Network congestion detected trace_id=req-4a1b8d
+2023-10-15T14:23:25Z [ERROR] database-service: Connection reset by peer duration=500ms trace_id=req-4a1b8d
+2023-10-15T14:23:30Z [CRITICAL] monitoring-service: Alert triggered for database service downtime alert_id=alert-9b8c
+2023-10-15T14:23:35Z [ERROR] api-gateway: Service unresponsive status_code=504 trace_id=req-4a1b8d

@@ -1,15 +1,15 @@
-2014-07-29 14:30:00 [INFO] uploads-service: Receiving new upload data from user
-2014-07-29 14:30:01 [INFO] uploads-service: Preparing to store new upload data in database
-2014-07-29 14:30:02 [WARNING] uploads-service: Database query failed with error code 22
-2014-07-29 14:30:03 [ERROR] uploads-service: Database connection timeout
-2014-07-29 14:30:04 [CRITICAL] uploads-service: Failed to store new upload data in database
-2014-07-29 14:30:05 [INFO] db-maintenance: Running database maintenance task
-2014-07-29 14:30:10 [WARNING] db-maintenance: Detected signed integer limit hit on primary key 'upload_id'
-2014-07-29 14:30:15 [ERROR] db-maintenance: Failed to update primary key data type due to size limit exceeded
-2014-07-29 14:30:20 [CRITICAL] uploads-service: All new uploads failed with error code 22
-2014-07-29 14:31:00 [INFO] incident-reporter: Incident started, logging and notification procedures engaged
-2014-07-29 14:31:15 [WARNING] incident-reporter: Sending email to development team for assistance
-2014-07-29 14:32:00 [INFO] db-admin: Running database schema update to resolve issue
-2014-07-29 14:35:30 [ERROR] db-admin: Failed to update primary key data type due to compatibility issues
-2014-07-29 14:40:00 [CRITICAL] uploads-service: All new uploads failed with error code 22, waiting for database resolution
-2014-07-29 15:05:00 [INFO] incident-reporter: Database issue resolved, all new uploads resumed
+2014-07-29T00:00:00Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-8e4633  
+2014-07-29T00:00:01Z [WARN] queue-manager: High queue depth detected, current size: 12345 trace_id=req-63a313  
+2014-07-29T00:00:05Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-8e4633  
+2014-07-29T00:00:07Z [INFO] queue-manager: Processing request req-d2dac5, retry attempt 1 of 5 trace_id=req-63a313  
+2014-07-29T00:00:15Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-6f9526  
+2014-07-29T00:00:20Z [WARN] queue-manager: Processing request req-5g6h, retry attempt 1 of 5 trace_id=req-ec3d9a  
+2014-07-29T00:00:25Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-6f9526  
+2014-07-29T00:00:30Z [CRITICAL] queue-manager: Request req-d2dac5 timed out after 3 retries, moving to dead-letter queue trace_id=req-63a313  
+2014-07-29T00:00:35Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-eadcaf  
+2014-07-29T00:00:40Z [INFO] queue-manager: Processing request req-6i7j, retry attempt 1 of 5 trace_id=req-3f5ba9  
+2014-07-29T00:00:45Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-eadcaf  
+2014-07-29T00:00:50Z [WARN] queue-manager: Processing request req-6i7j, retry attempt 2 of 5 trace_id=req-3f5ba9  
+2014-07-29T00:00:55Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-eadcaf  
+2014-07-29T00:01:00Z [CRITICAL] queue-manager: Request req-5g6h timed out after 3 retries, moving to dead-letter queue trace_id=req-ec3d9a  
+2014-07-29T00:01:05Z [ERROR] web-server: POST /api/data returned 503 Service Unavailable trace_id=req-eadcaf

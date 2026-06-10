@@ -1,12 +1,16 @@
-2023-12-31 23:59:45 [INFO] sql-server-1: Server initialization completed
-2023-12-31 23:59:50 [WARNING] sql-server-1: Memory allocation failure reported by Windows
-2023-12-31 23:59:55 [ERROR] sql-server-1: System crash detected, kernel bugcheck triggered
-2023-12-31 23:59:56 [CRITICAL] sql-server-1: All sites entering read-only mode due to server crash
-2023-12-31 23:59:57 [INFO] incident-management: Incident notified, alert sent to teams
-2023-12-31 23:59:58 [WARNING] web-servers: Unexpected increase in request traffic
-2023-12-31 23:59:59 [ERROR] web-servers: Possible cause: primary SQL server failure
-2023-12-31 23:59:60 [CRITICAL] incident-management: All sites now offline, incident classified as high severity
-2023-12-31 23:59:61 [INFO] sql-server-1: Crash dump collected and sent for analysis
-2023-12-31 00:00:01 [WARNING] database-replication: Replication service unavailable due to primary server failure
-2023-12-31 00:00:02 [ERROR] database-replication: Loss of data synchronization across sites
-2023-12-31 00:00:03 [CRITICAL] incident-management: Incident investigation underway, teams on standby for root cause analysis
+2017-01-24T00:00:00Z [INFO] sql-server: Connection attempt failed for database 'StackOverflow' due to timeout trace_id=req-050408
+2017-01-24T00:01:11Z [WARN] load-balancer: Increased latency detected from sql-server (avg 5.2s) trace_id=req-a499d3
+2017-01-24T00:02:22Z [ERROR] web-app: SQL query failed with error code 18456 for user 'sa' trace_id=req-34b4dd
+2017-01-24T00:03:33Z [CRITICAL] sql-server: High queue depth (345) detected trace_id=req-7d301a
+2017-01-24T00:04:48Z [WARN] health-checker: sql-server failed health check 3 times in a row trace_id=req-4a2f0d
+2017-01-24T00:06:03Z [INFO] load-balancer: Marking sql-server as unhealthy, redirecting traffic trace_id=req-a499d3
+2017-01-24T00:07:18Z [ERROR] web-app: Failed to connect to database 'StackOverflow', retry attempt 2/5 trace_id=req-34b4dd
+2017-01-24T00:08:33Z [CRITICAL] sql-server: Connection reset by peer during query execution trace_id=req-c2e569
+2017-01-24T00:09:48Z [WARN] web-app: Increased HTTP 500 errors reported from users trace_id=req-eda310
+2017-01-24T00:11:03Z [ERROR] sql-server: Lock timeout exceeded for transaction trace_id=req-2cffe9
+2017-01-24T00:12:18Z [CRITICAL] web-app: Failed to load data, returning HTTP 503 Service Unavailable trace_id=req-050408
+2017-01-24T00:13:33Z [ERROR] health-checker: sql-server failed health check again trace_id=req-4a2f0d
+2017-01-24T00:14:48Z [INFO] load-balancer: No healthy nodes available, all traffic halted temporarily trace_id=req-a499d3
+2017-01-24T00:16:03Z [ERROR] web-app: Failed to connect to database 'StackOverflow', retry attempt 5/5 trace_id=req-34b4dd
+2017-01-24T00:17:18Z [CRITICAL] sql-server: Query execution failed with error code 824 trace_id=req-c2e569
+2017-01-24T00:18:33Z [WARN] web-app: HTTP response times exceeding thresholds, investigating cause trace_id=req-eda310

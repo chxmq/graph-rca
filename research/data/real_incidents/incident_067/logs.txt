@@ -1,15 +1,22 @@
-2023-12-31 23:59:45 [INFO] xtime: Leap second detection initiated
-2023-12-31 23:59:46 [WARNING] timer: Timer interrupt handler triggered
-2023-12-31 23:59:47 [ERROR] xtime: Holding xtime_lock, waiting for lock to be released
-2023-12-31 23:59:48 [INFO] klogd: Waking up from sleep, attempting to get time
-2023-12-31 23:59:49 [WARNING] klogd: Waiting on xtime_lock
-2023-12-31 23:59:50 [CRITICAL] klogd: Deadlock detected, unable to access time information
-2023-12-31 23:59:51 [INFO] kernel: printk failed due to deadlock
-2023-12-31 23:59:52 [ERROR] xtime: Cannot log leap second
-2023-12-31 23:59:53 [WARNING] system: System time is out of sync
-2023-12-31 23:59:54 [INFO] kernel: Attempting to reset system time
-2023-12-31 23:59:55 [ERROR] xtime: Unable to reset system time due to deadlock
-2023-12-31 23:59:56 [CRITICAL] kernel: System time is currently unusable
-2023-12-31 23:59:57 [INFO] logging: Log rotation enabled for error log
-2023-12-31 23:59:58 [WARNING] system: Error log queue is full
-2023-12-31 23:59:59 [ERROR] kernel: System crash detected due to time synchronization issue
+2023-10-05T14:23:15Z [WARN] kernel-log: printk buffer overflow trace_id=req-ee21b7  
+2023-10-05T14:23:17Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-ee21b7  
+2023-10-05T14:23:22Z [CRITICAL] klogd: maximum retries exceeded, unable to log message trace_id=req-ee21b7  
+2023-10-05T14:23:23Z [ERROR] ntpd: synchronization lost, time drift detected trace_id=req-6d2e7b  
+2023-10-05T14:23:25Z [WARN] kernel-log: printk buffer overflow trace_id=req-80e4ab  
+2023-10-05T14:23:27Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-80e4ab  
+2023-10-05T14:23:32Z [CRITICAL] klogd: maximum retries exceeded, unable to log message trace_id=req-80e4ab  
+2023-10-05T14:23:35Z [ERROR] http-server: request timed out after 60s trace_id=req-9fe73b  
+2023-10-05T14:23:40Z [WARN] kernel-log: printk buffer overflow trace_id=req-6d2e7b  
+2023-10-05T14:23:42Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-6d2e7b  
+2023-10-05T14:23:47Z [CRITICAL] klogd: maximum retries exceeded, unable to log message trace_id=req-6d2e7b  
+2023-10-05T14:23:50Z [ERROR] ntpd: synchronization lost, time drift detected trace_id=req-9fe73b  
+2023-10-05T14:23:52Z [WARN] kernel-log: printk buffer overflow trace_id=req-9facf9  
+2023-10-05T14:23:54Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-9facf9  
+2023-10-05T14:23:59Z [CRITICAL] klogd: maximum retries exceeded, unable to log message trace_id=req-9facf9  
+2023-10-05T14:24:05Z [ERROR] http-server: request timed out after 60s trace_id=req-840b62  
+2023-10-05T14:24:10Z [WARN] kernel-log: printk buffer overflow trace_id=req-9fe73b  
+2023-10-05T14:24:12Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-9fe73b  
+2023-10-05T14:24:17Z [CRITICAL] klogd: maximum retries exceeded, unable to log message trace_id=req-9fe73b  
+2023-10-05T14:24:22Z [ERROR] ntpd: synchronization lost, time drift detected trace_id=req-840b62  
+2023-10-05T14:24:25Z [WARN] kernel-log: printk buffer overflow trace_id=req-9facf9  
+2023-10-05T14:24:27Z [ERROR] klogd: failed to retrieve time, retrying in 5s trace_id=req-9facf9

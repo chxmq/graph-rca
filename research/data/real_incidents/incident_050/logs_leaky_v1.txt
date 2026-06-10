@@ -1,0 +1,15 @@
+2022-04-05 08:30:00 [INFO] Script-runner: Beginning decommission script for legacy app 'old-app'
+2022-04-05 08:30:02 [INFO] Script-runner: Targeting environment 'dev' for deletion
+2022-04-05 08:30:03 [INFO] Script-runner: Checking dependencies for 'old-app' in 'dev' environment
+2022-04-05 08:30:04 [WARNING] Script-runner: Missing dependency 'dependency-1' found in 'dev' environment
+2022-04-05 08:30:05 [INFO] Script-runner: Ignoring missing dependency and continuing script execution
+2022-04-05 08:30:06 [INFO] Script-runner: Starting deletion process for 'old-app' in 'dev' environment
+2022-04-05 08:30:07 [ERROR] Script-runner: Error deleting 'old-app' in 'dev' environment: missing required permissions
+2022-04-05 08:30:08 [INFO] Script-runner: Checking if script can continue execution without 'old-app'
+2022-04-05 08:30:09 [WARNING] Script-runner: Cannot proceed without 'old-app', skipping deletion for 'dev' environment
+2022-04-05 08:30:10 [INFO] Script-runner: Targeting environment 'prod' for deletion
+2022-04-05 08:30:11 [INFO] Script-runner: Checking dependencies for 'old-app' in 'prod' environment
+2022-04-05 08:30:12 [WARNING] Script-runner: Missing dependency 'dependency-1' found in 'prod' environment
+2022-04-05 08:30:13 [ERROR] Script-runner: Error deleting 'old-app' in 'prod' environment: missing required permissions
+2022-04-05 08:30:14 [INFO] Script-runner: Deletion process failed for both 'dev' and 'prod' environments
+2022-04-05 08:30:15 [CRITICAL] Script-runner: Decommission script for legacy app 'old-app' has failed

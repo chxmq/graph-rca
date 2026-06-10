@@ -1,11 +1,15 @@
-2014-05-08 14:30:00 [INFO] Service-check: Source Code Repository - Connection Established
-2014-05-08 14:31:00 [WARNING] Security Check: Credentials Exposed in Source Code Repository
-2014-05-08 14:32:00 [INFO] Security Check: Database Backup Access Detected
-2014-05-08 14:33:00 [ERROR] Service-check: Database Backup - Unauthorized Access Attempted
-2014-05-08 14:34:00 [CRITICAL] Incident Response: High Severity Breach Detected - Immediate Action Required
-2014-05-08 14:35:00 [INFO] Incident Response: Notify Security Team and Management
-2014-05-08 14:36:00 [WARNING] Incident Response: Backup Data Exfiltration Attempted
-2014-05-08 14:37:00 [ERROR] Incident Response: Unauthorized Access to Database Backups Confirmed
-2014-05-08 14:38:00 [CRITICAL] Incident Response: Credentials Updated and Access Revoked
-2014-05-08 14:40:00 [INFO] Service-check: Source Code Repository - Credentials Removed
-2014-05-08 14:42:00 [INFO] Security Check: Database Backup Configuration Review Initiated
+2014-05-08T00:00:00Z [ERROR] s3-storage: Failed to retrieve file 9f2a3b from bucket data-store error=Timeout trace_id=req-e56f03  
+2014-05-08T00:00:04Z [WARN] web-app: Slow response detected for request /api/data endpoint=GET latency=6000ms trace_id=req-5032ed  
+2014-05-08T00:00:06Z [ERROR] s3-storage: Failed to retrieve file 9f2a3b from bucket data-store error=Timeout trace_id=req-e56f03  
+2014-05-08T00:00:09Z [CRITICAL] web-app: Request failed due to upstream service failure endpoint=/api/data error=Service Unavailable status_code=503 trace_id=req-5032ed  
+2014-05-08T00:00:11Z [WARN] s3-storage: Increased number of retries for file 9f2a3b in bucket data-store retries=3 trace_id=req-4a1a63  
+2014-05-08T00:00:14Z [ERROR] web-app: Failed to retrieve data from storage service endpoint=/api/data error=Storage Service Unavailable status_code=500 trace_id=req-cfcc0c  
+2014-05-08T00:00:19Z [CRITICAL] s3-storage: File retrieval failed for file 9f2a3b in bucket data-store error=Permanent Failure trace_id=req-4a1a63  
+2014-05-08T00:00:21Z [ERROR] web-app: Request failed with storage backend failure endpoint=/api/data error=Backend Error status_code=500 trace_id=req-cfcc0c  
+2014-05-08T00:00:29Z [WARN] s3-storage: Failed to retrieve file 9f2a3b from bucket data-store error=Timeout trace_id=req-a26267  
+2014-05-08T00:00:34Z [ERROR] web-app: Internal Server Error on request endpoint=/api/data error=Internal Server Error status_code=500 trace_id=req-a26267  
+2014-05-08T00:00:39Z [CRITICAL] s3-storage: File retrieval failed for file 9f2a3b in bucket data-store error=Permanent Failure trace_id=req-e56f03  
+2014-05-08T00:00:44Z [ERROR] web-app: Request failed with storage backend failure endpoint=/api/data error=Backend Error status_code=500 trace_id=req-5032ed  
+2014-05-08T00:00:49Z [WARN] s3-storage: Increased number of retries for file 9f2a3b in bucket data-store retries=6 trace_id=req-4a1a63  
+2014-05-08T00:00:54Z [ERROR] web-app: Failed to retrieve data from storage service endpoint=/api/data error=Storage Service Unavailable status_code=503 trace_id=req-cfcc0c  
+2014-05-08T00:00:59Z [CRITICAL] s3-storage: File retrieval failed for file 9f2a3b in bucket data-store error=Permanent Failure trace_id=req-a26267

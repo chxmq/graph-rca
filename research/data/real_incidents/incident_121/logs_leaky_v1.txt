@@ -1,0 +1,11 @@
+2022-10-13 23:30:00 [INFO] WriteAPIStreamingFrontend: Received normal incoming traffic
+2022-10-13 23:30:00 [INFO] BigQueryStorageWriteAPI: Observing elevated error rates in US Multi-Region
+2022-10-13 23:35:15 [WARNING] StreamingRPCLibrary: Deadlock detected due to high logging traffic
+2022-10-13 23:35:20 [INFO] WriteAPIStreamingFrontend: Overloaded, unable to process requests
+2022-10-13 23:36:00 [ERROR] BigQueryStorageWriteAPI: Elevated error rates persisting in US Multi-Region
+2022-10-13 23:40:15 [CRITICAL] StreamingRPCLibrary: Critical bug identified causing deadlock
+2022-10-13 23:45:30 [INFO] AlertTeam: Incident notified, investigation initiated
+2022-10-13 23:50:00 [WARNING] WriteAPIStreamingFrontend: Continued overload, request handling slowing
+2022-10-13 23:55:15 [INFO] BigQueryStorageWriteAPI: Error rates in US Multi-Region decreasing
+2022-10-13 00:00:00 [INFO] StreamingRPCLibrary: Bug patched, deadlock resolved
+2022-10-13 00:05:00 [INFO] WriteAPIStreamingFrontend: Request handling returned to normal

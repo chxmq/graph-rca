@@ -1,15 +1,16 @@
-2023-12-31 23:59:45 [INFO] azure-management-certificates: Creating certificates for renewal
-2023-12-31 23:59:50 [WARNING] azure-management-certificates: Using hardcoded expiration date
-2023-12-31 23:59:55 [INFO] azure-management-certificates: Certificate creation completed
-2024-01-01 00:00:00 [ERROR] azure-management-certificates: Expiration date validation failed
-2024-01-01 00:00:05 [WARNING] azure-management-certs: Inconsistent certificate expiration dates detected
-2024-01-01 00:00:10 [INFO] azure-management-certs: Retrieving list of certificates for review
-2024-01-01 00:00:15 [ERROR] azure-management-certs: Certificates with invalid expiration dates found
-2024-01-01 00:00:20 [CRITICAL] azure-management-certs: Azure service outage initiated due to certificate issues
-2024-01-01 00:00:25 [INFO] azure-management-certs: Sending alert notification to security team
-2024-01-01 00:00:30 [WARNING] azure-management-certs: Attempting to resolve certificate expiration date issue
-2024-01-01 00:00:35 [ERROR] azure-management-certs: Failed to resolve certificate expiration date due to incorrect logic
-2024-01-01 00:00:40 [CRITICAL] azure-management-certs: Azure service outage prolonged due to certificate issues
-2024-01-01 12:59:45 [INFO] azure-management-certs: Certificate creation rewritten with corrected logic
-2024-01-01 13:00:00 [WARNING] azure-management-certs: Certificates with incorrect expiration dates removed
-2024-01-01 13:00:05 [INFO] azure-management-certificates: Certificate renewal completed successfully
+2023-10-15T14:29:00Z [WARN] azure-api-gateway: Failed to establish SSL connection with backend service error="x509: certificate is not valid for any names" trace_id=req-74ce62
+2023-10-15T14:29:01Z [ERROR] azure-storage-service: HTTPS request failed status_code=403 message="SSL handshake failure" trace_id=req-aa2f10
+2023-10-15T14:29:05Z [CRITICAL] azure-auth-service: Authentication failed for user request_id=rq-73c30e error="SSL connection error" trace_id=req-74ce62
+2023-10-15T14:29:06Z [ERROR] azure-api-gateway: Backend service unreachable error="context deadline exceeded" trace_id=req-aa2f10
+2023-10-15T14:29:08Z [WARN] azure-load-balancer: Increased retry attempts for failed requests count=3 service-name=api-gateway trace_id=req-9236eb
+2023-10-15T14:29:10Z [ERROR] azure-database-service: Connection refused error="TLS handshake timeout" trace_id=req-67c55e
+2023-10-15T14:29:12Z [CRITICAL] azure-storage-service: Critical failure in data retrieval status_code=500 message="SSL certificate validation failed" trace_id=req-9236eb
+2023-10-15T14:29:15Z [ERROR] azure-api-gateway: SSL handshake error for client connection error="x509: certificate signed by unknown authority" trace_id=req-74ce62
+2023-10-15T14:29:18Z [WARN] azure-load-balancer: High queue depth detected service-name=storage-service queue_depth=120 trace_id=req-67c55e
+2023-10-15T14:29:20Z [ERROR] azure-auth-service: Authentication request failed for user request_id=rq-16cb63 error="SSL certificate expired" trace_id=req-aa2f10
+2023-10-15T14:29:22Z [CRITICAL] azure-database-service: Database connection failed status_code=500 message="SSL certificate validation error" trace_id=req-9236eb
+2023-10-15T14:29:25Z [WARN] azure-api-gateway: Increased latency for client requests avg_latency_ms=1200 service-name=api-gateway trace_id=req-74ce62
+2023-10-15T14:29:28Z [ERROR] azure-storage-service: Failed to write data status_code=500 message="SSL certificate error" trace_id=req-67c55e
+2023-10-15T14:29:30Z [CRITICAL] azure-auth-service: Multiple failed authentication attempts count=5 service-name=auth-service trace_id=req-74ce62
+2023-10-15T14:29:35Z [ERROR] azure-database-service: Transaction failure error="SSL certificate validation failed" trace_id=req-aa2f10
+2023-10-15T14:29:38Z [WARN] azure-load-balancer: Service health check failed service-name=database-service status_code=503 trace_id=req-9236eb

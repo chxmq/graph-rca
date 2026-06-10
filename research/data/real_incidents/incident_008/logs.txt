@@ -1,13 +1,19 @@
-2024-03-31 09:00:00 [INFO] load_balancer: Feature flag StackEgg enabled for testing purposes.
-2024-03-31 09:00:30 [WARNING] load_balancer: Traffic spike detected, but within expected bounds.
-2024-03-31 09:05:15 [INFO] load_balancer: All users granted access to global StackEgg feature flag.
-2024-03-31 09:10:00 [CRITICAL] load_balancer: HAProxy fleet overwhelmed with traffic, request rate exceeding threshold.
-2024-03-31 09:12:30 [ERROR] load_balancer: System attempting to handle excessive requests, but unable to keep up.
-2024-03-31 09:15:00 [WARNING] service-c: Connection timeouts reported for multiple services.
-2024-03-31 09:20:45 [CRITICAL] service-d: All services experiencing high latency and dropped connections.
-2024-03-31 09:25:10 [ERROR] load_balancer: HAProxy fleet unable to recover from traffic spike, still under heavy load.
-2024-03-31 09:30:00 [WARNING] monitoring-system: Alert sent to on-call team due to high load and latency issues.
-2024-03-31 09:35:15 [INFO] on-call-team: Team notified of possible network issue and starting investigation.
-2024-03-31 09:40:00 [CRITICAL] stack_exchange_web: Entire web application unavailable, users unable to access site.
-2024-03-31 09:45:30 [ERROR] load_balancer: Root cause analysis suggests self-inflicted DDoS via StackEgg feature flag as probable cause.
-2024-03-31 10:00:00 [INFO] incident-response-team: Incident response team notified and starting post-mortem analysis.
+2015-03-31T00:00:00Z [INFO] haproxy: Connection queue depth exceeded 50 connections trace_id=req-33d7ec  
+2015-03-31T00:00:05Z [WARN] web-server: Increased request latency, timeout reached for request trace_id=req-33d7ec  
+2015-03-31T00:00:10Z [ERROR] haproxy: Connection refused, max connections limit hit trace_id=req-2b28f8  
+2015-03-31T00:00:15Z [CRITICAL] web-server: Health check failed for backend service trace_id=req-f1bd63  
+2015-03-31T00:00:20Z [ERROR] haproxy: Request retry count exceeded, client dropped trace_id=req-79a2e7  
+2015-03-31T00:00:25Z [WARN] web-server: Latency increased to 3.5s for request trace_id=req-88ab5e  
+2015-03-31T00:00:30Z [CRITICAL] haproxy: Connection limit breached, new connections dropped trace_id=req-981ba1  
+2015-03-31T00:00:35Z [ERROR] web-server: Request failed with status code 504 Gateway Timeout trace_id=req-88ab5e  
+2015-03-31T00:00:40Z [WARN] haproxy: High CPU usage detected, consider scaling up trace_id=req-1ac9b5  
+2015-03-31T00:00:45Z [ERROR] web-server: Health check failed for backend service trace_id=req-bc6c9c  
+2015-03-31T00:00:50Z [CRITICAL] haproxy: Connection queue depth exceeded 100 connections trace_id=req-24aadd  
+2015-03-31T00:00:55Z [ERROR] web-server: Increased request latency, timeout reached for request trace_id=req-ebda0d  
+2015-03-31T00:01:00Z [CRITICAL] haproxy: Connection refused, max connections limit hit trace_id=req-f6e757  
+2015-03-31T00:01:05Z [ERROR] web-server: Health check failed for backend service trace_id=req-266acb  
+2015-03-31T00:01:10Z [WARN] haproxy: High CPU usage detected, consider scaling up trace_id=req-06e710  
+2015-03-31T00:01:15Z [ERROR] web-server: Latency increased to 4.5s for request trace_id=req-29ce1b  
+2015-03-31T00:01:20Z [CRITICAL] haproxy: Request retry count exceeded, client dropped trace_id=req-90a892  
+2015-03-31T00:01:25Z [ERROR] web-server: Health check failed for backend service trace_id=req-3bce11  
+2015-03-31T00:01:30Z [CRITICAL] haproxy: Connection limit breached, new connections dropped trace_id=req-07f72d

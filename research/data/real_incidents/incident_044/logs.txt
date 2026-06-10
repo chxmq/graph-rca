@@ -1,12 +1,20 @@
-2024-01-01 09:00:00 [INFO] service-c: Starting data retrieval
-2024-01-01 09:00:10 [WARNING] db-backend: Increased query load by 25%
-2024-01-01 09:00:20 [INFO] service-d: Request handling started
-2024-01-01 09:00:30 [ERROR] service-e: Database connection timeout
-2024-01-01 09:00:40 [WARNING] service-f: Cache miss rate exceeded 50%
-2024-01-01 09:00:45 [CRITICAL] db-backend: Throttling detected, services without local caching failing
-2024-01-01 09:00:50 [ERROR] web-service: Request handling failed due to database timeout
-2024-01-01 09:01:00 [INFO] service-g: Service restarted with increased cache size
-2024-01-01 09:01:10 [WARNING] db-backend: Database load remains high
-2024-01-01 09:01:20 [ERROR] api-service: Connection to database backend timed out
-2024-01-01 09:01:30 [CRITICAL] db-backend: Overload causing throttling, services unavailable
-2024-01-01 09:02:00 [INFO] incident-manager: Incident logged and notified teams
+2014-07-01T00:00:00Z [INFO] user-service: Handling request for user data trace_id=req-307db4  
+2014-07-01T00:00:05Z [WARN] user-service: Request to profile-service timed out after 30 seconds trace_id=req-307db4  
+2014-07-01T00:00:10Z [ERROR] profile-service: Connection refused from data-retrieval-service; retrying... trace_id=req-307db4  
+2014-07-01T00:00:15Z [CRITICAL] data-retrieval-service: Queue depth reached 1000, request dropped trace_id=req-307db4  
+2014-07-01T00:00:20Z [ERROR] user-service: Request failed after 3 retries with status code 503 trace_id=req-307db4  
+2014-07-01T00:00:25Z [INFO] content-service: Handling request for article data trace_id=req-9fae0d  
+2014-07-01T00:00:30Z [WARN] content-service: Request to article-storage-service timed out after 45 seconds trace_id=req-9fae0d  
+2014-07-01T00:00:35Z [ERROR] article-storage-service: Connection refused from data-retrieval-service; retrying... trace_id=req-9fae0d  
+2014-07-01T00:00:40Z [CRITICAL] data-retrieval-service: Queue depth reached 1000, request dropped trace_id=req-9fae0d  
+2014-07-01T00:00:45Z [ERROR] content-service: Request failed after 3 retries with status code 503 trace_id=req-9fae0d  
+2014-07-01T00:00:50Z [INFO] user-service: Handling request for user data trace_id=req-b947d4  
+2014-07-01T00:00:55Z [WARN] user-service: Request to profile-service timed out after 30 seconds trace_id=req-b947d4  
+2014-07-01T00:01:00Z [ERROR] profile-service: Connection refused from data-retrieval-service; retrying... trace_id=req-b947d4  
+2014-07-01T00:01:05Z [CRITICAL] data-retrieval-service: Queue depth reached 1000, request dropped trace_id=req-b947d4  
+2014-07-01T00:01:10Z [ERROR] user-service: Request failed after 3 retries with status code 503 trace_id=req-b947d4  
+2014-07-01T00:01:15Z [INFO] search-service: Handling request for keyword search trace_id=req-9fc4a0  
+2014-07-01T00:01:20Z [WARN] search-service: Request to document-index-service timed out after 60 seconds trace_id=req-9fc4a0  
+2014-07-01T00:01:25Z [ERROR] document-index-service: Connection refused from data-retrieval-service; retrying... trace_id=req-9fc4a0  
+2014-07-01T00:01:30Z [CRITICAL] data-retrieval-service: Queue depth reached 1000, request dropped trace_id=req-9fc4a0  
+2014-07-01T00:01:35Z [ERROR] search-service: Request failed after 3 retries with status code 503 trace_id=req-9fc4a0

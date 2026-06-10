@@ -1,15 +1,21 @@
-2023-03-14 08:30:00 [INFO] kubernetes-upgrade: Beginning cluster upgrade process
-2023-03-14 08:31:00 [INFO] kubernetes-upgrade: Upgrading control plane nodes
-2023-03-14 08:32:00 [WARNING] service-c: Node metadata update failed, retrying in 5 seconds
-2023-03-14 08:37:00 [WARNING] service-c: Node metadata update attempt 2 failed, retrying in 10 seconds
-2023-03-14 08:42:00 [WARNING] service-c: Node metadata update attempt 3 failed, considering alternative approach
-2023-03-14 09:00:00 [INFO] kubernetes-upgrade: Upgrade to node version complete
-2023-03-14 09:01:00 [ERROR] service-d: Workload networking initialization failed due to node metadata inconsistency
-2023-03-14 09:02:00 [WARNING] service-e: Service 'service-d' detected as down, attempting to recover
-2023-03-14 09:30:00 [INFO] kubernetes-recovery: Manual intervention initiated for service 'service-d'
-2023-03-14 10:15:00 [CRITICAL] kubernetes-cluster: Cluster upgrade failed due to node metadata incompatibility
-2023-03-14 10:20:00 [ERROR] service-f: Workload networking unavailable due to cluster failure
-2023-03-14 11:45:00 [INFO] kubernetes-debugging: Analyzing node metadata for root cause identification
-2023-03-14 12:30:00 [WARNING] kubernetes-debugging: Node metadata version mismatch detected between control plane and worker nodes
-2023-03-14 13:15:00 [CRITICAL] kubernetes-cluster: Critical upgrade failure confirmed, cluster is down
-2023-03-14 15:00:00 [INFO] support-team: Incident notified to Reddit Support Team
+2023-03-14T00:00:00Z [ERROR] api-server: Failed to communicate with service endpoint timeout=30s trace_id=req-3e3e5d  
+2023-03-14T00:00:48Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=2 trace_id=req-93f2ac  
+2023-03-14T00:01:23Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:01:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:02:33Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=3 trace_id=req-93f2ac  
+2023-03-14T00:03:08Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:03:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:04:23Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=4 trace_id=req-93f2ac  
+2023-03-14T00:05:08Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:05:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:06:23Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=5 trace_id=req-93f2ac  
+2023-03-14T00:07:08Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:07:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:08:23Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=6 trace_id=req-93f2ac  
+2023-03-14T00:09:08Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:09:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:10:23Z [WARN] pod-scheduler: Unable to schedule pods on host, retrying... attempt=7 trace_id=req-93f2ac  
+2023-03-14T00:11:08Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-3e3e5d  
+2023-03-14T00:11:48Z [ERROR] database-proxy: Connection refused to backend database timeout=60s trace_id=req-a50372  
+2023-03-14T00:12:38Z [ERROR] api-server: Failed to communicate with service endpoint timeout=30s trace_id=req-6c66df  
+2023-03-14T00:13:18Z [CRITICAL] ingress-controller: Health check failed for service 5xx status_code=502 trace_id=req-6c66df

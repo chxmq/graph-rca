@@ -1,0 +1,12 @@
+2023-12-15 14:30:00 [INFO] mysql-cluster: Initializing schema migration for large MySQL table
+2023-12-15 14:31:00 [INFO] github-service: Starting schema migration on large MySQL table
+2023-12-15 14:32:00 [WARNING] read-replica-1: Increased load detected due to semaphore deadlock
+2023-12-15 14:32:05 [WARNING] read-replica-2: Increased load detected due to semaphore deadlock
+2023-12-15 14:32:10 [INFO] mysql-cluster: Noticing increasing load on read replicas
+2023-12-15 14:33:00 [ERROR] github-service: Production requests failing due to high latency
+2023-12-15 14:33:05 [CRITICAL] mysql-cluster: All production requests denied due to insufficient active read replicas
+2023-12-15 14:34:00 [INFO] monitoring-system: Alert sent for insufficient active read replicas
+2023-12-15 14:35:00 [WARNING] github-service: Internal read traffic for backup and analytics purposes impacted
+2023-12-15 14:36:00 [INFO] ops-team: Investigating root cause of insufficient active read replicas
+2023-12-15 14:37:00 [INFO] mysql-cluster: Insufficient active read replicas identified as root cause
+2023-12-15 14:38:00 [CRITICAL] github-service: Critical service availability impacted due to insufficient active read replicas

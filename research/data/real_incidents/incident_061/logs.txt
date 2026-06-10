@@ -1,16 +1,20 @@
-2023-12-15 14:30:00 [INFO] load-balancer: New configuration received from API
-2023-12-15 14:30:02 [WARNING] load-balancer: Slow code path detected for applying changes
-2023-12-15 14:32:01 [INFO] load-balancer: Applying changes to internal state
-2023-12-15 14:34:05 [ERROR] load-balancer: Internal state update timed out, attempting retry
-2023-12-15 14:36:02 [WARNING] service-a: Public addressing change request queued for processing
-2023-12-15 14:38:01 [INFO] load-balancer: Processing public addressing changes
-2023-12-15 14:40:00 [ERROR] load-balancer: Slow code path update complete, but pending changes not applied yet
-2023-12-15 14:42:05 [WARNING] service-b: Database connection timeout ( retrying )
-2023-12-15 14:45:01 [INFO] load-balancer: Forced re-apply of pending public addressing changes due to slow code path issue
-2023-12-15 14:47:02 [ERROR] load-balancer: Re-apply operation failed, current configuration still in use
-2023-12-15 14:50:00 [CRITICAL] service-a: Public addressing change request timed out, all requests rejected
-2023-12-15 14:55:01 [INFO] load-balancer: System recovery initiated due to slow code path issue
-2023-12-15 14:57:05 [WARNING] system-recovery: Slow code path fix in progress
-2023-12-15 15:00:02 [INFO] load-balancer: Public addressing changes applied successfully, all pending requests processed
-2023-12-15 15:02:01 [ERROR] service-b: Database connection timeout ( resolved )
-2023-12-15 15:05:00 [INFO] system-recovery: Slow code path fix complete, system recovered to normal state
+2023-10-15T14:30:00Z [INFO] public-address-service: Received request for IP update trace_id=req-b463e6  
+2023-10-15T14:31:00Z [WARN] public-address-service: Timeout waiting for response from backend trace_id=req-b463e6  
+2023-10-15T14:32:00Z [ERROR] public-address-service: Failed to update IP address, retrying... trace_id=req-b463e6  
+2023-10-15T14:33:00Z [CRITICAL] public-address-service: Exceeded maximum retries for IP update request trace_id=req-b463e6  
+2023-10-15T14:34:00Z [INFO] public-address-service: Received request for IP update trace_id=req-f4a15e  
+2023-10-15T14:35:00Z [WARN] public-address-service: Timeout waiting for response from backend trace_id=req-f4a15e  
+2023-10-15T14:36:00Z [ERROR] public-address-service: Failed to update IP address, retrying... trace_id=req-f4a15e  
+2023-10-15T14:37:00Z [CRITICAL] public-address-service: Exceeded maximum retries for IP update request trace_id=req-f4a15e  
+2023-10-15T14:38:00Z [INFO] health-checker: Public address service unresponsive, marking as failed trace_id=req-166a11  
+2023-10-15T14:39:00Z [WARN] alert-manager: Health check failure detected for public-address-service trace_id=req-166a11  
+2023-10-15T14:40:00Z [INFO] health-checker: Public address service unresponsive, marking as failed trace_id=req-4f10fb  
+2023-10-15T14:41:00Z [WARN] alert-manager: Health check failure detected for public-address-service trace_id=req-4f10fb  
+2023-10-15T14:42:00Z [ERROR] backend-server: High queue depth detected, processing time exceeded 3 minutes trace_id=req-d1d38d  
+2023-10-15T14:43:00Z [CRITICAL] backend-server: System under heavy load, request timeouts increasing trace_id=req-d1d38d  
+2023-10-15T14:44:00Z [INFO] public-address-service: Received request for IP update trace_id=req-dd6b25  
+2023-10-15T14:45:00Z [WARN] public-address-service: Timeout waiting for response from backend trace_id=req-dd6b25  
+2023-10-15T14:46:00Z [ERROR] public-address-service: Failed to update IP address, retrying... trace_id=req-dd6b25  
+2023-10-15T14:47:00Z [CRITICAL] public-address-service: Exceeded maximum retries for IP update request trace_id=req-dd6b25  
+2023-10-15T14:48:00Z [ERROR] backend-server: Latency increased to 4 minutes, system performance degradation observed trace_id=req-67cb44  
+2023-10-15T14:49:00Z [CRITICAL] backend-server: Critical latency issues, impacting service availability trace_id=req-67cb44

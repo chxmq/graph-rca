@@ -1,0 +1,12 @@
+2023-12-30 14:45:00 [INFO] traffic-gateway: Initial traffic volume detected
+2023-12-30 14:50:00 [WARNING] traffic-gateway: Traffic volume increasing by 10%
+2023-12-30 14:55:00 [INFO] alert-system: Threshold reached, sending alert
+2023-12-30 15:00:00 [ERROR] service-a: Request handling overwhelmed
+2023-12-30 15:05:00 [WARNING] traffic-gateway: Attempting to scale up services
+2023-12-30 15:10:00 [INFO] autoscaling: Scaling up successfully
+2023-12-30 15:15:00 [ERROR] service-b: Packet loss detected, request rejected
+2023-12-30 15:20:00 [WARNING] traffic-gateway: Packet loss increasing
+2023-12-30 15:25:00 [CRITICAL] system-health: System failing due to packet loss
+2023-12-30 15:30:00 [INFO] alert-system: Alert triggered, notification sent
+2023-12-30 15:35:00 [ERROR] network-engine: Unable to resolve packet loss issue
+2023-12-30 15:40:00 [CRITICAL] traffic-gateway: Packet loss causing service outage

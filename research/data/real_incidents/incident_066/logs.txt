@@ -1,12 +1,21 @@
-Here's a semi-realistic log snippet for the incident:
-
-2023-12-31 23:59:55 [INFO] dns-service: Receiving notification of leap second event
-2023-12-31 23:59:56 [INFO] dns-service: Updating timekeeping mechanisms to account for leap second
-2023-12-31 23:59:57 [WARNING] rrdns-service: Unusual timestamp value detected in system clock
-2023-12-31 23:59:58 [WARNING] rrdns-service: Weighted round-robin DNS resolver selection algorithm triggering warning flags
-2023-12-31 23:59:59 [ERROR] rrdns-service: Algorithm panicking on invalid timestamp value, attempting to recover
-2023-12-31 23:59:60 [ERROR] rrdns-service: Panic detected, attempting to log error message
-2023-12-31 23:59:61 [WARNING] service-a: Unexpected panic from RRDNS service, triggering retry mechanisms
-2023-12-31 23:59:62 [INFO] service-b: Starting recovery sequence for affected DNS services
-2023-12-31 23:59:63 [ERROR] rrdns-service: Panic resolved, but error messages persisted due to incorrect assumptions about system timekeeping
-2023-01-01 00:00:00 [CRITICAL] dns-service: Global panic detected across all DNS services; attempting to initiate emergency shutdown procedures
+2016-12-31T23:59:58Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-5c8d68  
+2016-12-31T23:59:59Z [CRITICAL] rrdns: Panic occurred during random selection process trace_id=req-5c8d68  
+2017-01-01T00:00:00Z [WARN] dns-resolver: Increased queue depth detected, current depth 34 trace_id=req-457008  
+2017-01-01T00:00:01Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-457008  
+2017-01-01T00:00:02Z [WARN] dns-resolver: Latency spike observed, current latency 456ms trace_id=req-457008  
+2017-01-01T00:00:03Z [ERROR] rrdns: Panic occurred during random selection process trace_id=req-457008  
+2017-01-01T00:00:04Z [CRITICAL] health-checker: DNS resolver health check failed, retry 1/3 trace_id=req-6cb009  
+2017-01-01T00:00:05Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-8282f7  
+2017-01-01T00:00:06Z [WARN] dns-resolver: Increased queue depth detected, current depth 38 trace_id=req-8282f7  
+2017-01-01T00:00:07Z [ERROR] rrdns: Panic occurred during random selection process trace_id=req-8282f7  
+2017-01-01T00:00:08Z [CRITICAL] health-checker: DNS resolver health check failed, retry 2/3 trace_id=req-6cb009  
+2017-01-01T00:00:09Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-8282f7  
+2017-01-01T00:00:10Z [WARN] dns-resolver: Latency spike observed, current latency 568ms trace_id=req-8282f7  
+2017-01-01T00:00:11Z [ERROR] rrdns: Panic occurred during random selection process trace_id=req-8282f7  
+2017-01-01T00:00:12Z [CRITICAL] health-checker: DNS resolver health check failed, retry 3/3 trace_id=req-6cb009  
+2017-01-01T00:00:13Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-c48f36  
+2017-01-01T00:00:14Z [WARN] dns-resolver: Increased queue depth detected, current depth 42 trace_id=req-c48f36  
+2017-01-01T00:00:15Z [ERROR] rrdns: Panic occurred during random selection process trace_id=req-c48f36  
+2017-01-01T00:00:16Z [CRITICAL] alert-manager: Alert triggered - DNS resolver health check failure trace_id=req-6cb009  
+2017-01-01T00:00:17Z [ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-c48f36  
+2017-01-01T00:00:18Z [WARN] dns-resolver: Latency spike observed, current latency 689ms trace_id=req-c48f36

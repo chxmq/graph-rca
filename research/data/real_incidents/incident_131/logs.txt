@@ -1,16 +1,18 @@
-2023-12-31 22:00:00 [INFO] honeycomb-api: Received new user registration request
-2023-12-31 22:00:05 [INFO] honeycomb-api: Updated user data in database
-2023-12-31 22:00:10 [WARNING] honeycomb-db: High CPU usage detected
-2023-12-31 22:00:15 [INFO] honeycomb-api: New user login request received
-2023-12-31 22:00:20 [ERROR] honeycomb-db: Connection to database timed out
-2023-12-31 22:00:25 [WARNING] honeycomb-api: Request handling rate exceeded threshold
-2023-12-31 22:00:30 [CRITICAL] honeycomb-system: System resources overloading
-2023-12-31 22:00:35 [ERROR] honeycomb-db: Data corruption detected due to unhandled write requests
-2023-12-31 22:00:40 [WARNING] honeycomb-api: Unhandled exception in request handling loop
-2023-12-31 22:00:45 [INFO] honeycomb-system: System crash detected
-2023-12-31 22:01:00 [ERROR] honeycomb-sysadmin: Attempting to recover from system crash
-2023-12-31 22:01:05 [WARNING] honeycomb-db: Partial database recovery failed
-2023-12-31 22:01:10 [CRITICAL] honeycomb-api: Service unavailable due to database corruption
-2023-12-31 22:01:15 [INFO] honeycomb-system: System shutdown initiated
-2023-12-31 22:01:20 [ERROR] honeycomb-sysadmin: Failed to recover from system crash
-2023-12-31 22:01:25 [CRITICAL] honeycomb-api: Root cause analysis started
+2023-10-05T14:20:15Z [INFO] api-gateway: Request timeout for /data endpoint trace_id=req-05fd7a  
+2023-10-05T14:21:05Z [WARN] database: Connection pool reached maximum size of 100 connections trace_id=req-33bee7  
+2023-10-05T14:21:10Z [ERROR] worker-service: Failed to process message, retrying... attempt=1 trace_id=req-05fd7a  
+2023-10-05T14:21:20Z [WARN] api-gateway: High latency detected for /data endpoint, took 7.8 seconds trace_id=req-4fceae  
+2023-10-05T14:21:30Z [ERROR] worker-service: Failed to process message, retrying... attempt=2 trace_id=req-33bee7  
+2023-10-05T14:21:40Z [CRITICAL] database: Database connection failed with error code 1205 trace_id=req-4fceae  
+2023-10-05T14:21:45Z [ERROR] worker-service: Failed to process message, retrying... attempt=3 trace_id=req-05fd7a  
+2023-10-05T14:21:50Z [WARN] load-balancer: Increased error rate detected on backend api-gateway instances trace_id=req-33bee7  
+2023-10-05T14:22:00Z [ERROR] worker-service: Failed to process message, retrying... attempt=4 trace_id=req-4fceae  
+2023-10-05T14:22:10Z [CRITICAL] api-gateway: Request failed with HTTP 504 Gateway Timeout for /data endpoint trace_id=req-05fd7a  
+2023-10-05T14:22:20Z [ERROR] database: Failed to acquire a connection within 30 seconds trace_id=req-33bee7  
+2023-10-05T14:22:30Z [WARN] api-gateway: High latency detected for /data endpoint, took 9.2 seconds trace_id=req-3b82e1  
+2023-10-05T14:22:40Z [ERROR] worker-service: Failed to process message, retrying... attempt=5 trace_id=req-4fceae  
+2023-10-05T14:22:50Z [CRITICAL] database: Connection refused by the server trace_id=req-3b82e1  
+2023-10-05T14:23:00Z [ERROR] worker-service: Failed to process message, retrying... attempt=6 trace_id=req-33bee7  
+2023-10-05T14:23:10Z [CRITICAL] api-gateway: Service unavailable for /data endpoint, HTTP 503 returned trace_id=req-3b82e1  
+2023-10-05T14:23:20Z [ERROR] worker-service: Failed to process message, retrying... attempt=7 trace_id=req-05fd7a  
+2023-10-05T14:23:30Z [WARN] load-balancer: Backend api-gateway instances reporting health check failures trace_id=req-3b82e1

@@ -1,0 +1,14 @@
+2023-12-15 14:30:00 [INFO] tarsnap-s3-scanner: Starting batch job to scan for unused blocks in Amazon S3
+2023-12-15 14:31:00 [INFO] tarsnap-s3-scanner: Retrieved list of unused blocks from Amazon S3
+2023-12-15 14:32:00 [WARNING] tarsnap-s3-scanner: Failed to free block XXXX due to retry limit exceeded
+2023-12-15 14:33:00 [INFO] tarsnap-s3-scanner: Retrying failed block XXXX after 10 minutes
+2023-12-15 14:34:00 [WARNING] tarsnap-s3-scanner: Failed to free block XXXX due to retry limit exceeded
+2023-12-15 14:35:00 [INFO] tarsnap-s3-scanner: Retrying failed block XXXX after 20 minutes
+2023-12-15 14:36:00 [ERROR] tarsnap-s3-scanner: Failed to free all retries for block XXXX, giving up
+2023-12-15 14:37:00 [INFO] tarsnap-s3-scanner: Freeing remaining blocks in Amazon S3
+2023-12-15 14:38:00 [WARNING] tarsnap-s3-scanner: Local disk usage exceeded 90%, filesystem warning issued
+2023-12-15 14:40:00 [CRITICAL] tarsnap-s3-scanner: Filesystem full, unable to write new log entries
+2023-12-15 14:41:00 [ERROR] tarsnap-service: Unable to write log entries due to filesystem failure
+2023-12-15 14:42:00 [CRITICAL] tarsnap-service: Service stopped due to inability to write log entries
+2023-12-15 14:45:00 [INFO] user1: Manually removed log file from local disk
+2023-12-15 14:46:00 [INFO] tarsnap-s3-scanner: Successfully resumed operation after filesystem reset

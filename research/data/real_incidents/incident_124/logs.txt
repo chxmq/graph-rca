@@ -1,14 +1,17 @@
-2024-01-01 09:00:00 [INFO] service-c: Initializing application server
-2024-01-01 09:00:02 [WARNING] service-d: Failed to validate SSL certificate (code: 100)
-2024-01-01 09:00:10 [INFO] service-e: Retrieving website configuration from database
-2024-01-01 09:00:15 [ERROR] service-f: Website template not found in production environment
-2024-01-01 09:00:20 [WARNING] service-g: Failed to establish connection with content delivery network
-2024-01-01 09:00:25 [INFO] service-h: Attempting to build website using backup template
-2024-01-01 09:00:30 [ERROR] service-i: Error parsing HTML template (code: 500)
-2024-01-01 09:00:35 [WARNING] service-j: Database query timeout (code: 1200)
-2024-01-01 09:00:40 [INFO] service-k: Sending error notification to project manager
-2024-01-01 09:00:45 [ERROR] service-l: Failed to deploy website updates (code: 8001)
-2024-01-01 09:00:50 [CRITICAL] service-m: Website build failure reported to executive team
-2024-01-01 09:05:00 [INFO] service-n: Retrieving incident response plan from database
-2024-01-01 09:10:00 [WARNING] service-o: Failed to notify emergency services (code: 1001)
-2024-01-01 09:15:00 [INFO] service-p: Initiating post-mortem analysis of website build process
+2023-10-15T14:25:00Z [ERROR] load-balancer: Connection timeout to backend server instance-1 trace_id=req-707bd8  
+2023-10-15T14:25:05Z [WARN] application-server: High response latency detected, average 6.7s trace_id=req-b61c54  
+2023-10-15T14:25:10Z [INFO] database-service: Query execution time exceeded threshold, duration=8.9s trace_id=req-707bd8  
+2023-10-15T14:25:15Z [ERROR] load-balancer: Connection timeout to backend server instance-2 trace_id=req-b61c54  
+2023-10-15T14:25:20Z [CRITICAL] application-server: HTTP 500 error on request, message="Internal Server Error" trace_id=req-18141f  
+2023-10-15T14:25:25Z [WARN] database-service: High queue depth detected, current=52, max=60 trace_id=req-0ed441  
+2023-10-15T14:25:30Z [ERROR] load-balancer: Health check failed for instance-1, status code 503 trace_id=req-707bd8  
+2023-10-15T14:25:35Z [WARN] application-server: Excessive retry attempts detected on request, count=3 trace_id=req-b61c54  
+2023-10-15T14:25:40Z [ERROR] database-service: Connection pool exhausted, max size reached trace_id=req-18141f  
+2023-10-15T14:25:45Z [CRITICAL] application-server: HTTP 500 error on request, message="Internal Server Error" trace_id=req-0ed441  
+2023-10-15T14:25:50Z [ERROR] load-balancer: Health check failed for instance-2, status code 503 trace_id=req-b61c54  
+2023-10-15T14:26:00Z [WARN] application-server: Slow response detected, duration=7.2s trace_id=req-707bd8  
+2023-10-15T14:26:05Z [ERROR] database-service: Query execution time exceeded threshold, duration=9.1s trace_id=req-b61c54  
+2023-10-15T14:26:10Z [CRITICAL] application-server: HTTP 503 error on request, message="Service Unavailable" trace_id=req-18141f  
+2023-10-15T14:26:15Z [WARN] load-balancer: Connection timeout to backend server instance-3 trace_id=req-0ed441  
+2023-10-15T14:26:20Z [ERROR] database-service: High queue depth detected, current=58, max=60 trace_id=req-707bd8  
+2023-10-15T14:26:25Z [CRITICAL] application-server: HTTP 503 error on request, message="Service Unavailable" trace_id=req-b61c54

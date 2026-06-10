@@ -1,12 +1,16 @@
-2023-12-31 13:45:00 [INFO] api-service: Checking Redis primary instance status
-2023-12-31 14:01:00 [WARNING] api-service: Redis primary instance detected as 'at risk' due to maintenance schedule
-2023-12-31 14:01:05 [ERROR] api-service: Failed to migrate Redis primary instance, error: "Migration failed, node not available"
-2023-12-31 14:01:10 [WARNING] cluster-manager: Cluster rebalancing initiated due to primary node failure
-2023-12-31 14:01:15 [INFO] cluster-manager: Redis failover protocol engaged
-2023-12-31 14:02:00 [ERROR] api-service: Error handling Redis failover, error: "Invalid reconnect sequence"
-2023-12-31 14:02:05 [WARNING] discord-api: Known issue detected in Redis failover handling, warning: "Disconnects on reconnects"
-2023-12-31 14:03:00 [INFO] discord-api: Triggering full restart of Discord API service
-2023-12-31 14:04:00 [ERROR] discord-api: Full restart initiated, warning: "Client reconnects expected within 20 minutes"
-2023-12-31 15:19:59 [INFO] discord-api: Last client reconnect completed
-2023-12-31 15:20:00 [WARNING] cluster-manager: Cluster rebalancing complete, but underlying issues remain
-2023-12-31 15:20:05 [ERROR] discord-api: System-wide error detected in real-time system
+2023-10-15T14:01:05Z [ERROR] api-service: Connection timeout to backend database trace_id=req-c6716d
+2023-10-15T14:01:07Z [WARN] message-broker: Failed to enqueue message, retrying... queue_depth=500 trace_id=req-32a222
+2023-10-15T14:01:10Z [CRITICAL] gateway-service: High latency detected in API response time latency_ms=2500 trace_id=req-ca49d4
+2023-10-15T14:01:12Z [ERROR] api-service: Connection timeout to backend database trace_id=req-8ca523
+2023-10-15T14:01:15Z [WARN] message-broker: Failed to enqueue message, retrying... queue_depth=550 trace_id=req-32a222
+2023-10-15T14:01:20Z [ERROR] gateway-service: Connection refused from API service HTTP_status_code=503 trace_id=req-ca49d4
+2023-10-15T14:01:25Z [CRITICAL] api-service: Maximum retry attempts reached for backend database connection retries=5 trace_id=req-c6716d
+2023-10-15T14:01:27Z [ERROR] message-broker: Failed to enqueue message, giving up... queue_depth=600 trace_id=req-32a222
+2023-10-15T14:01:30Z [CRITICAL] gateway-service: High latency detected in API response time latency_ms=3000 trace_id=req-ca49d4
+2023-10-15T14:01:35Z [ERROR] api-service: Connection timeout to backend database trace_id=req-8ca523
+2023-10-15T14:01:40Z [CRITICAL] gateway-service: API service unresponsive, failing health check HTTP_status_code=504 trace_id=req-ca49d4
+2023-10-15T14:01:45Z [ERROR] api-service: Connection timeout to backend database trace_id=req-dec3dc
+2023-10-15T14:01:50Z [CRITICAL] gateway-service: High latency detected in API response time latency_ms=3500 trace_id=req-ca49d4
+2023-10-15T14:01:55Z [ERROR] message-broker: Failed to enqueue message, retrying... queue_depth=650 trace_id=req-2dbd34
+2023-10-15T14:02:00Z [CRITICAL] api-service: Maximum retry attempts reached for backend database connection retries=5 trace_id=req-dec3dc
+2023-10-15T14:02:05Z [ERROR] gateway-service: API service unresponsive, failing health check HTTP_status_code=504 trace_id=req-ca49d4

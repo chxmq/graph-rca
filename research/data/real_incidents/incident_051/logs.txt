@@ -1,13 +1,16 @@
-2021-01-01 14:00:30 [INFO] heroku-main: Service started successfully
-2021-01-01 14:00:35 [WARNING] heroku-main: Configuration variables not loaded from environment
-2021-01-01 14:00:40 [INFO] deployment-bot: Deploying new code version to main branch
-2021-01-01 14:00:45 [ERROR] heroku-main: git push failed with error message "No such file or directory"
-2021-01-01 14:00:50 [WARNING] deployment-bot: Deployment failed due to unexpected output from heroku-main
-2021-01-01 14:00:55 [INFO] deployment-bot: Checking configuration variables for main branch
-2021-01-01 14:01:00 [ERROR] heroku-main: Configuration variables not found in code, trying alternative methods
-2021-01-01 14:01:05 [WARNING] heroku-main: Alternative method failed to load required configuration variables
-2021-01-01 14:01:10 [INFO] deployment-bot: Reviewing log output for main branch to identify root cause
-2021-01-01 14:01:15 [ERROR] deployment-bot: Deployment process failed due to incorrect application of new configuration variables
-2021-01-01 14:01:20 [CRITICAL] heroku-main: Service is currently unavailable and unable to push changes to main branch
-2021-01-01 14:01:25 [INFO] incident-response-team: Notifying Heroku support team regarding critical deployment issue
-2021-01-01 14:01:30 [WARNING] heroku-main: Critical error reported to Heroku, investigation underway
+2021-01-01T00:00:00Z [WARN]  git-receive-pack: Failed to process incoming data trace_id=req-650e46
+2021-01-01T00:00:15Z [ERROR] heroku-router: at=error code=H12 desc="Request timeout" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-70f6a4 fwd="1.2.3.4" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https trace_id=req-650e46
+2021-01-01T00:00:20Z [ERROR] git-receive-pack: Error during unpack operation trace_id=req-650e46
+2021-01-01T00:00:25Z [CRITICAL] dyno-manager: Failed to start new dyno instance for web.1 trace_id=req-3a0598
+2021-01-01T00:00:40Z [ERROR] heroku-router: at=error code=H14 desc="No web processes running" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-1b1f42 fwd="5.6.7.8" dyno= connect= service= status=503 bytes= protocol=https trace_id=req-a41083
+2021-01-01T00:00:55Z [WARN]  git-receive-pack: Unexpected error during data processing trace_id=req-a41083
+2021-01-01T00:01:10Z [ERROR] heroku-router: at=error code=H13 desc="Connection closed without response" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-c5a443 fwd="9.8.7.6" dyno=web.1 connect=1ms service= status=503 bytes= protocol=https trace_id=req-a41083
+2021-01-01T00:01:25Z [ERROR] git-receive-pack: Failed to update refs for repository abcd.git trace_id=req-a41083
+2021-01-01T00:01:40Z [CRITICAL] heroku-router: at=error code=H20 desc="App boot timeout" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-01c7fc fwd="8.7.6.5" dyno=web.1 connect=0ms service=30000ms status=503 bytes= protocol=https trace_id=req-480db4
+2021-01-01T00:01:55Z [ERROR] git-receive-pack: Failed to process incoming data trace_id=req-480db4
+2021-01-01T00:02:10Z [CRITICAL] heroku-router: at=error code=H14 desc="No web processes running" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-255a9d fwd="2.3.4.5" dyno= connect= service= status=503 bytes= protocol=https trace_id=req-480db4
+2021-01-01T00:02:25Z [ERROR] git-receive-pack: Error during unpack operation trace_id=req-480db4
+2021-01-01T00:02:50Z [CRITICAL] heroku-router: at=error code=H13 desc="Connection closed without response" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-4432c5 fwd="6.5.4.3" dyno=web.1 connect=1ms service= status=503 bytes= protocol=https trace_id=req-480db4
+2021-01-01T00:03:05Z [ERROR] git-receive-pack: Failed to update refs for repository abcd.git trace_id=req-480db4
+2021-01-01T00:03:50Z [CRITICAL] heroku-router: at=error code=H20 desc="App boot timeout" method=POST path="/git/receive-pack/abcd.git" host=myapp.herokuapp.com request_id=rq-b4f09b fwd="1.2.3.4" dyno=web.1 connect=0ms service=30000ms status=503 bytes= protocol=https trace_id=req-7294d6
+2021-01-01T00:04:15Z [ERROR] git-receive-pack: Failed to process incoming data trace_id=req-7294d6

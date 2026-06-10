@@ -1,15 +1,19 @@
-2022-12-15 08:45:00 [INFO] Service Control: Initializing policy replication
-2022-12-15 08:45:02 [WARNING] Policy Replication Service: Handling blank fields in policy change
-2022-12-15 08:45:03 [ERROR] Policy Replication Service: Null pointer exception detected during replication
-2022-12-15 08:45:04 [CRITICAL] Service Control: Global crash loop initiated due to unhandled null pointer exception
-2022-12-15 08:45:05 [INFO] Monitoring System: Service Control binary crashing globally
-2022-12-15 08:45:06 [WARNING] Operations Manager: Multiple services experiencing downtime
-2022-12-15 08:45:07 [ERROR] Service-a: Request handling failed due to global crash loop
-2022-12-15 08:45:08 [CRITICAL] Service Control: System failure confirmed, rolling back to previous state
-2022-12-15 08:45:09 [INFO] Recovery Team: Restoring backup of critical data
-2022-12-15 08:45:10 [WARNING] Security Clearance: Multiple users logged in remotely due to lack of authentication
-2022-12-15 08:45:11 [ERROR] Network Monitoring: Global network blackout detected
-2022-12-15 08:45:12 [CRITICAL] System Administration: Entire system experiencing catastrophic failure
-2022-12-15 08:45:13 [INFO] Incident Response Team: Containment procedure initiated
-2022-12-15 08:45:14 [WARNING] Resource Allocation: Critical resources allocated to emergency response team
-2022-12-15 08:45:15 [ERROR] Backup Systems: Critical backup systems offline due to system failure
+2022-12-15T00:00:00Z [ERROR] service-replication: Failed to replicate data status_code=500 trace_id=req-bcbfd0  
+2022-12-15T00:00:25Z [WARN] health-checker: Service unavailable retries=3 service-name=data-service trace_id=req-16e6b1  
+2022-12-15T00:00:50Z [CRITICAL] api-gateway: Timeout error processing request client_ip=192.168.1.1 latency_ms=60000 trace_id=req-bcbfd0  
+2022-12-15T00:01:13Z [ERROR] data-service: Internal server error while handling request status_code=500 trace_id=req-65ff00  
+2022-12-15T00:02:35Z [WARN] service-replication: Replication failed, retrying attempt=2 max_attempts=5 trace_id=req-bcbfd0  
+2022-12-15T00:03:05Z [ERROR] api-gateway: Failed to connect to backend service data-service error_code=ECONNREFUSED trace_id=req-16e6b1  
+2022-12-15T00:03:20Z [CRITICAL] health-checker: Health check failed for service data-service status_code=503 trace_id=req-65ff00  
+2022-12-15T00:03:50Z [WARN] service-replication: Replication queue depth increased to 120 max_depth=200 trace_id=req-bcbfd0  
+2022-12-15T00:05:05Z [ERROR] data-service: Request failed due to internal error status_code=500 trace_id=req-65ff00  
+2022-12-15T00:05:50Z [CRITICAL] api-gateway: Gateway timeout while waiting for response from service data-service latency_ms=60000 trace_id=req-476800  
+2022-12-15T00:07:35Z [ERROR] service-replication: Failed to replicate data status_code=500 trace_id=req-65ff00  
+2022-12-15T00:08:20Z [WARN] health-checker: Service unavailable retries=4 service-name=data-service trace_id=req-16e6b1  
+2022-12-15T00:08:50Z [CRITICAL] api-gateway: Connection refused while connecting to data-service error_code=ECONNREFUSED trace_id=req-476800  
+2022-12-15T00:10:35Z [ERROR] service-replication: Internal server error encountered during replication status_code=500 trace_id=req-65ff00  
+2022-12-15T00:12:05Z [WARN] data-service: Queue depth exceeds threshold current_depth=150 max_depth=200 service-name=data-service trace_id=req-476800  
+2022-12-15T00:12:50Z [ERROR] api-gateway: Failed to connect to backend service error_code=ECONNREFUSED trace_id=req-16e6b1  
+2022-12-15T00:15:20Z [CRITICAL] health-checker: Health check failed for data-service status_code=503 trace_id=req-65ff00  
+2022-12-15T00:17:35Z [ERROR] service-replication: Replication failure, retrying attempt=3 max_attempts=5 trace_id=req-476800  
+2022-12-15T00:19:05Z [CRITICAL] api-gateway: Service unavailable retries exceeded for data-service status_code=503 trace_id=req-476800

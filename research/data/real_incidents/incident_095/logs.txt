@@ -1,14 +1,17 @@
-2024-01-01 09:45:00 [INFO] service-c: Incoming load detected, normalizing to expected levels
-2024-01-01 09:46:00 [WARNING] GitHub.statuspage.io: Outage detected, recovery in progress (20% complete)
-2024-01-01 09:47:05 [INFO] service-a: Queue system initialized
-2024-01-01 09:48:00 [ERROR] CircleCI: Unhandled requests piling up due to increased load
-2024-01-01 09:50:10 [WARNING] GitHub.statuspage.io: Recovery complete, status page updated
-2024-01-01 09:51:15 [INFO] service-b: Database connection timeout resolved
-2024-01-01 09:52:00 [CRITICAL] CircleCI: Queue system overwhelmed, handling transactions at rate of 1/minute
-2024-01-01 09:53:10 [ERROR] service-c: Unexpected spike in load causing queue slowdown
-2024-01-01 09:54:30 [WARNING] GitHub.statuspage.io: Load on CircleCI is now within normal limits
-2024-01-01 09:55:00 [INFO] service-a: Queue system handling transactions at rate of 1/minute
-2024-01-01 10:00:05 [ERROR] service-b: Database connection timeout (again)
-2024-01-01 10:01:15 [WARNING] CircleCI: Unhandled requests still piling up despite normal load
-2024-01-01 10:02:30 [CRITICAL] CircleCI: Queue system failing to handle transactions, users affected
-2024-01-01 10:03:00 [INFO] GitHub.statuspage.io: Load on CircleCI is now within critical limits
+2023-10-15T14:00:00Z [INFO] queue-service: Queue depth increased to 500 jobs trace_id=req-01cccd  
+2023-10-15T14:01:00Z [WARN] web-server: Request timeout for user request, took 60 seconds trace_id=req-0186df  
+2023-10-15T14:02:00Z [ERROR] api-gateway: HTTP 503 Service Unavailable error returned to client trace_id=req-01cccd  
+2023-10-15T14:03:00Z [CRITICAL] job-executor: Failed to start job, exceeded retry limit of 3 trace_id=req-17b1cd  
+2023-10-15T14:04:00Z [INFO] queue-service: Queue depth increased to 800 jobs trace_id=req-c0f55b  
+2023-10-15T14:05:00Z [WARN] web-server: Request timeout for user request, took 90 seconds trace_id=req-0186df  
+2023-10-15T14:06:00Z [ERROR] api-gateway: HTTP 503 Service Unavailable error returned to client trace_id=req-c0f55b  
+2023-10-15T14:07:00Z [CRITICAL] job-executor: Failed to start job, exceeded retry limit of 3 trace_id=req-03866e  
+2023-10-15T14:08:00Z [INFO] queue-service: Queue depth increased to 1200 jobs trace_id=req-01cccd  
+2023-10-15T14:09:00Z [WARN] web-server: Request timeout for user request, took 120 seconds trace_id=req-17b1cd  
+2023-10-15T14:10:00Z [ERROR] api-gateway: HTTP 503 Service Unavailable error returned to client trace_id=req-03866e  
+2023-10-15T14:11:00Z [CRITICAL] job-executor: Failed to start job, exceeded retry limit of 3 trace_id=req-c0f55b  
+2023-10-15T14:12:00Z [INFO] queue-service: Queue depth increased to 1600 jobs trace_id=req-0186df  
+2023-10-15T14:13:00Z [WARN] web-server: Request timeout for user request, took 150 seconds trace_id=req-cdcafe  
+2023-10-15T14:14:00Z [ERROR] api-gateway: HTTP 503 Service Unavailable error returned to client trace_id=req-cdcafe  
+2023-10-15T14:15:00Z [CRITICAL] job-executor: Failed to start job, exceeded retry limit of 3 trace_id=req-17b1cd  
+2023-10-15T14:16:00Z [INFO] queue-service: Queue depth increased to 2000 jobs trace_id=req-03866e

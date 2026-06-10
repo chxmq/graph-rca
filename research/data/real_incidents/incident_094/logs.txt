@@ -1,13 +1,20 @@
-2023-12-15 14:30:00 [INFO] supermarket-service: Service startup complete
-2023-12-15 14:30:03 [WARNING] health-checker: Initial health check passed with minor latency
-2023-12-15 14:30:10 [INFO] supermarket-service: Received first request
-2023-12-15 14:31:00 [INFO] supermarket-service: Response sent to client
-2023-12-15 14:31:02 [WARNING] health-checker: Second health check failed due to high latency
-2023-12-15 14:32:30 [ERROR] supermarket-service: Unresponsive client detected, retrying request
-2023-12-15 14:32:45 [INFO] supermarket-service: Request re-sent with increased timeout
-2023-12-15 14:33:00 [WARNING] health-checker: Third health check failed due to high latency
-2023-12-15 14:40:00 [ERROR] chef-distributed-systems: System heartbeat failed, assuming node is down
-2023-12-15 14:45:00 [CRITICAL] supermarket-service: Maximum retries exceeded, service terminated
-2023-12-15 14:46:00 [INFO] chef-distributed-systems: Node restart initiated for affected service
-2023-12-15 14:50:00 [WARNING] health-checker: Initial health check passed with minor latency after node restart
-2023-12-15 14:55:00 [INFO] supermarket-service: Service startup complete, but high latency detected
+2023-10-05T14:23:15Z [WARN]  supermarket-web: Request timed out trace_id=req-0783aa
+2023-10-05T14:23:18Z [ERROR] supermarket-api: Failed to connect to database trace_id=req-0783aa
+2023-10-05T14:23:20Z [INFO]  supermarket-web: Retrying request trace_id=req-52e02d
+2023-10-05T14:23:25Z [ERROR] supermarket-api: Health check failed trace_id=req-3a5927
+2023-10-05T14:23:30Z [WARN]  supermarket-web: Slow response from backend trace_id=req-52e02d
+2023-10-05T14:23:35Z [ERROR] supermarket-api: Request failed with HTTP status 500 trace_id=req-0783aa
+2023-10-05T14:23:40Z [CRITICAL] supermarket-web: Multiple retries failed trace_id=req-52e02d
+2023-10-05T14:23:45Z [WARN]  supermarket-web: Health check response time exceeded threshold trace_id=req-3a5927
+2023-10-05T14:23:50Z [ERROR] supermarket-api: Database connection timeout trace_id=req-ce3937
+2023-10-05T14:23:55Z [WARN]  supermarket-web: High queue depth detected trace_id=req-52e02d
+2023-10-05T14:24:00Z [ERROR] supermarket-api: Failed to execute query trace_id=req-0783aa
+2023-10-05T14:24:05Z [CRITICAL] supermarket-web: Service temporarily unavailable trace_id=req-3a5927
+2023-10-05T14:24:10Z [ERROR] supermarket-api: Connection refused trace_id=req-ce3937
+2023-10-05T14:24:15Z [WARN]  supermarket-web: Backend response time slow trace_id=req-0783aa
+2023-10-05T14:24:20Z [ERROR] supermarket-api: Health check failed again trace_id=req-3a5927
+2023-10-05T14:24:25Z [CRITICAL] supermarket-web: Unable to complete request trace_id=req-52e02d
+2023-10-05T14:24:30Z [ERROR] supermarket-api: Timeout waiting for response trace_id=req-0783aa
+2023-10-05T14:24:35Z [WARN]  supermarket-web: High backend load detected trace_id=req-3a5927
+2023-10-05T14:24:40Z [ERROR] supermarket-api: Failed to fetch data trace_id=req-ce3937
+2023-10-05T14:24:45Z [CRITICAL] supermarket-web: Service disruption alert triggered trace_id=req-0783aa

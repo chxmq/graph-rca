@@ -1,10 +1,18 @@
-2024-01-01 10:00:00 [INFO] S3RequestProcessor: Initial request load detected
-2024-01-01 10:00:02 [WARNING] S3RequestProcessor: Service A processing time exceeded 500ms threshold
-2024-01-01 10:00:05 [ERROR] S3RequestProcessor: Service B connection to database timed out
-2024-01-01 10:00:07 [INFO] S3RequestProcessor: Received gossip message with corrupted bit
-2024-01-01 10:00:10 [WARNING] S3RequestProcessor: Distributed server state exceeded 80% threshold
-2024-01-01 10:00:15 [ERROR] S3RequestProcessor: System memory utilization spiked to 90%
-2024-01-01 10:00:18 [CRITICAL] S3RequestProcessor: Request processing fleet overwhelmed, request rate exceeded limits
-2024-01-01 10:00:20 [INFO] S3RequestProcessor: Service C entering emergency shutdown mode
-2024-01-01 10:00:25 [ERROR] S3RequestProcessor: Database connection attempt failed due to excessive overload
-2024-01-01 10:00:30 [CRITICAL] S3RequestProcessor: System crash imminent, requesting manual intervention
+2008-07-20T00:00:00Z [INFO] s3-storage: Increased queue depth to 150 trace_id=req-8a3b67  
+2008-07-20T00:00:05Z [WARN] s3-storage: Latency spike detected at 6.2s for PUT operation trace_id=req-7a91cb  
+2008-07-20T00:00:10Z [ERROR] s3-storage: HTTP 503 error on GET request, retrying... trace_id=req-8a3b67  
+2008-07-20T00:00:15Z [WARN] s3-storage: Timeout on DELETE operation after 10s trace_id=req-3773de  
+2008-07-20T00:00:20Z [CRITICAL] s3-storage: Failed to process batch of 50 PUT requests, all timed out trace_id=req-59e05f  
+2008-07-20T00:00:25Z [ERROR] s3-storage: HTTP 504 Gateway Timeout on HEAD request trace_id=req-7a91cb  
+2008-07-20T00:00:30Z [INFO] s3-storage: Increased queue depth to 180 trace_id=req-8a3b67  
+2008-07-20T00:00:35Z [WARN] s3-storage: Latency for POST operation reached 9.5s trace_id=req-3773de  
+2008-07-20T00:00:40Z [ERROR] s3-storage: HTTP 500 Internal Server Error on PUT request, retrying... trace_id=req-59e05f  
+2008-07-20T00:00:45Z [CRITICAL] s3-storage: Failed health check for node s3-node-01, marking as unhealthy trace_id=req-701009  
+2008-07-20T00:00:50Z [ERROR] s3-storage: HTTP 503 Service Unavailable on GET request trace_id=req-8a3b67  
+2008-07-20T00:00:55Z [WARN] s3-storage: Latency for PUT operation reached 12s trace_id=req-7a91cb  
+2008-07-20T00:01:00Z [ERROR] s3-storage: Failed to process batch of 60 DELETE requests, all timed out trace_id=req-3773de  
+2008-07-20T00:01:05Z [CRITICAL] s3-storage: Node s3-node-02 reported high CPU usage, potential bottleneck detected trace_id=req-701009  
+2008-07-20T00:01:10Z [ERROR] s3-storage: HTTP 504 Gateway Timeout on POST request trace_id=req-59e05f  
+2008-07-20T00:01:15Z [WARN] s3-storage: Latency for HEAD operation reached 15s trace_id=req-8a3b67  
+2008-07-20T00:01:20Z [ERROR] s3-storage: Failed to process batch of 40 GET requests, all timed out trace_id=req-7a91cb  
+2008-07-20T00:01:25Z [CRITICAL] s3-storage: Node s3-node-03 reported high memory usage, potential bottleneck detected trace_id=req-701009

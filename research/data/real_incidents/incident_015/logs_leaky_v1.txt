@@ -1,0 +1,12 @@
+2021-11-20 14:30:00 [INFO] MySQL Replicas: Initiating schema migration for production environment
+2021-11-20 14:31:00 [WARNING] MySQL Replicas: Table 'table1' encountered a constraint violation during rename operation
+2021-11-20 14:32:00 [INFO] MySQL Replicas: Skipping table 'table1' and continuing with migration
+2021-11-20 14:33:00 [ERROR] MySQL Replicas: Semaphores are now in conflict, unable to proceed with migration
+2021-11-20 14:34:00 [CRITICAL] MySQL Replicas: Critical error detected - semaphore deadlock during 'rename' operation on table 'table2'
+2021-11-20 14:35:00 [ERROR] MySQL Replicas: Crash detected on replica node due to excessive load and semaphore conflict
+2021-11-20 14:36:00 [WARNING] MySQL Replicas: Node 'replica-1' experiencing high CPU utilization and disk I/O issues
+2021-11-20 14:37:00 [ERROR] MySQL Replicas: Node 'replica-2' crashed due to inability to resolve semaphore deadlock
+2021-11-20 14:38:00 [CRITICAL] GitHub Outage Team: System alert triggered - multiple replica nodes have crashed
+2021-11-20 14:40:00 [INFO] GitHub Outage Team: Initiating investigation into root cause of system failure
+2021-11-20 14:42:00 [WARNING] GitHub Outage Team: Suspected semaphore deadlock during table rename in schema migration
+2021-11-20 14:45:00 [ERROR] GitHub Outage Team: Verified root cause - MySQL read replicas entered a semaphore deadlock during final 'rename' step of massive schema migration

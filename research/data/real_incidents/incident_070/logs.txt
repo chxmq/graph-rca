@@ -1,12 +1,16 @@
-2023-12-15 14:30:00 [INFO] mysql-cluster: Initializing schema migration for large MySQL table
-2023-12-15 14:31:00 [INFO] github-service: Starting schema migration on large MySQL table
-2023-12-15 14:32:00 [WARNING] read-replica-1: Increased load detected due to semaphore deadlock
-2023-12-15 14:32:05 [WARNING] read-replica-2: Increased load detected due to semaphore deadlock
-2023-12-15 14:32:10 [INFO] mysql-cluster: Noticing increasing load on read replicas
-2023-12-15 14:33:00 [ERROR] github-service: Production requests failing due to high latency
-2023-12-15 14:33:05 [CRITICAL] mysql-cluster: All production requests denied due to insufficient active read replicas
-2023-12-15 14:34:00 [INFO] monitoring-system: Alert sent for insufficient active read replicas
-2023-12-15 14:35:00 [WARNING] github-service: Internal read traffic for backup and analytics purposes impacted
-2023-12-15 14:36:00 [INFO] ops-team: Investigating root cause of insufficient active read replicas
-2023-12-15 14:37:00 [INFO] mysql-cluster: Insufficient active read replicas identified as root cause
-2023-12-15 14:38:00 [CRITICAL] github-service: Critical service availability impacted due to insufficient active read replicas
+2021-11-30T14:59:45Z [WARN] db-mysql-cluster: High queue depth detected on schema migration table operations trace_id=req-855cc4  
+2021-11-30T15:00:10Z [ERROR] web-app: Timeout while waiting for database response during request processing trace_id=req-855cc4  
+2021-11-30T15:00:15Z [CRITICAL] db-mysql-cluster: Semaphore deadlock detected on multiple nodes during schema rename operation trace_id=req-7c26f5  
+2021-11-30T15:01:00Z [ERROR] web-app: Database connection failed with error code 1205 (Lock wait timeout exceeded) trace_id=req-27ef49  
+2021-11-30T15:01:05Z [INFO] db-mysql-cluster: Increased retry count for schema migration due to deadlock resolution attempts trace_id=req-7c26f5  
+2021-11-30T15:02:00Z [ERROR] web-app: HTTP 500 error returned to client: Internal Server Error trace_id=req-855cc4  
+2021-11-30T15:02:20Z [WARN] db-mysql-cluster: Latency spike detected in schema migration operations, average response time increased by 300% trace_id=req-bf69a8  
+2021-11-30T15:03:10Z [CRITICAL] web-app: Multiple database connection failures, retry attempts exceeded limit trace_id=req-27ef49  
+2021-11-30T15:03:30Z [ERROR] db-mysql-cluster: Schema rename operation failed with error code 1213 (Deadlock found when trying to get lock; try restarting transaction) trace_id=req-7c26f5  
+2021-11-30T15:04:00Z [INFO] web-app: Service health check failed due to database unresponsiveness trace_id=req-bf69a8  
+2021-11-30T15:04:25Z [ERROR] db-mysql-cluster: Deadlock condition persists, escalating issue to level 3 response team trace_id=req-7c26f5  
+2021-11-30T15:05:00Z [CRITICAL] web-app: Application performance degraded significantly, processing requests at half the normal rate trace_id=req-855cc4  
+2021-11-30T15:06:00Z [WARN] db-mysql-cluster: Retry mechanism for schema migration operations has reached maximum threshold trace_id=req-7c26f5  
+2021-11-30T15:07:00Z [ERROR] web-app: HTTP 503 Service Unavailable returned to client due to database cluster unavailability trace_id=req-27ef49  
+2021-11-30T15:08:00Z [CRITICAL] db-mysql-cluster: Schema migration operation aborted, manual intervention required to resolve deadlock condition trace_id=req-7c26f5  
+2021-11-30T15:09:00Z [INFO] web-app: Service health check status remains critical, database operations continue to fail trace_id=req-bf69a8

@@ -1,0 +1,10 @@
+2024-01-01 09:45:00 [INFO] db-mgr: Initiating scheduled OS upgrade on node-1
+2024-01-01 09:46:00 [WARNING] db-mgr: Node-1 reported high disk usage before upgrade
+2024-01-01 09:47:00 [INFO] db-mgr: Upgrading OS on node-1
+2024-01-01 09:48:15 [ERROR] db-mgr: Node-1 failed to complete OS upgrade, error code 123
+2024-01-01 09:49:00 [WARNING] db-server: Database connection attempts failing on node-1
+2024-01-01 09:50:00 [CRITICAL] db-server: All database connections dropped for node-1
+2024-01-01 10:00:00 [INFO] ops-team: Notifying ops team of potential issue with node-1
+2024-01-01 10:05:00 [WARNING] db-mgr: Node-2 reported high disk usage, similar to node-1
+2024-01-01 10:10:00 [CRITICAL] db-server: Database connection attempts failing on node-2 as well
+2024-01-01 11:00:00 [INFO] ops-team: Initiating investigation into potential cause of issue

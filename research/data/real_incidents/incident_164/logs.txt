@@ -1,12 +1,17 @@
-2023-12-15 09:00:00 [INFO] sentry-service: Starting database query
-2023-12-15 09:00:02 [WARNING] sentry-service: High transaction volume detected (1000+ concurrent queries)
-2023-12-15 09:05:01 [INFO] sentry-postgres: Received large batch of queries from service-a
-2023-12-15 09:05:03 [ERROR] sentry-postgres: Transaction ID wraparound detected in database
-2023-12-15 09:05:04 [CRITICAL] sentry-service: Database connection lost, Sentry unavailable
-2023-12-15 09:10:00 [INFO] sentry-operator: Received alert from Sentry service, investigating cause
-2023-12-15 09:20:02 [WARNING] sentry-postgres: Attempting to recover from transaction ID wraparound
-2023-12-15 09:30:05 [ERROR] sency-service: Failed to recover database connection
-2023-12-15 09:40:01 [INFO] sency-operator: Running Postgres maintenance task to repair damage
-2023-12-15 10:00:03 [WARNING] sency-postgres: Repair process taking longer than expected (30% complete)
-2023-12-15 11:00:05 [ERROR] sency-service: Database still unavailable after maintenance, Sentry down for most of the day
-2023-12-15 11:10:02 [INFO] sency-operator: Investigating potential causes for database unavailability
+2023-10-15T09:05:00Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-8594aa  
+2023-10-15T09:06:15Z [WARN] api-gateway: Increased request latency detected, average response time is now 15 seconds trace_id=req-ffcd0d  
+2023-10-15T09:07:30Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-8594aa  
+2023-10-15T09:08:45Z [CRITICAL] web-ui: HTTP status code 500 returned for request to /events/trace_id=req-bbc4b6  
+2023-10-15T09:09:00Z [WARN] api-gateway: Increased request latency detected, average response time is now 20 seconds trace_id=req-ffcd0d  
+2023-10-15T09:10:15Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-8594aa  
+2023-10-15T09:11:30Z [CRITICAL] web-ui: HTTP status code 500 returned for request to /events/trace_id=req-bbc4b6  
+2023-10-15T09:12:45Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-36495b  
+2023-10-15T09:14:00Z [CRITICAL] background-job-processor: Job failed due to repeated database query errors, retrying... trace_id=req-f8b46c  
+2023-10-15T09:15:15Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-36495b  
+2023-10-15T09:16:30Z [CRITICAL] web-ui: HTTP status code 500 returned for request to /events/trace_id=req-bbc4b6  
+2023-10-15T09:17:45Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-8594aa  
+2023-10-15T09:18:00Z [WARN] api-gateway: Increased request latency detected, average response time is now 25 seconds trace_id=req-ffcd0d  
+2023-10-15T09:19:15Z [CRITICAL] background-job-processor: Job failed due to repeated database query errors, retrying... trace_id=req-f8b46c  
+2023-10-15T09:20:30Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-36495b  
+2023-10-15T09:21:45Z [CRITICAL] web-ui: HTTP status code 500 returned for request to /events/trace_id=req-bbc4b6  
+2023-10-15T09:23:00Z [ERROR] database-service: Query failed with error code 40001 trace_id=req-8594aa

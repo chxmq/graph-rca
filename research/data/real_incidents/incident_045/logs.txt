@@ -1,13 +1,21 @@
-2023-08-22 14:30:00 [INFO] service-c: Database capacity upgraded to peak load level
-2023-08-22 14:40:00 [WARNING] service-d: Increased request rate detected, but no error reported yet
-2023-08-23 09:00:00 [INFO] service-e: Application scaling activated for high traffic
-2023-08-23 10:00:00 [ERROR] service-f: Database connection timeout, retrying in 1 second
-2023-08-23 10:15:00 [WARNING] service-g: Increased request rate detected, with multiple timeouts reported
-2023-08-23 10:30:00 [CRITICAL] service-h: Application scaling failed due to insufficient resources
-2023-08-23 10:35:00 [ERROR] service-i: Database connection refused, unable to recover from timeout
-2023-08-23 11:00:00 [WARNING] system: High CPU usage detected on database server
-2023-08-23 11:15:00 [CRITICAL] system: Disk space exhausted on database server, unable to write data
-2023-08-23 11:30:00 [ERROR] service-j: Application failure due to insufficient resources and database capacity downgrade
-2023-08-23 12:00:00 [INFO] operations-team: Alert sent for high availability issue
-2023-08-23 12:15:00 [WARNING] operations-team: Attempting to scale up database resources
-2023-08-23 13:30:00 [CRITICAL] operations-team: Scaling attempt failed due to root cause identification and no viable solutions available
+2018-08-23T00:00:00Z [WARN] app-service: Request timed out after 30 seconds trace_id=req-06f1eb
+2018-08-23T00:01:05Z [ERROR] web-gateway: HTTP 503 Service Unavailable for /api/v1/data request_id=rq-2f2216
+2018-08-23T00:01:35Z [WARN] app-service: Failed to fetch data from backend, retrying... attempt=1 trace_id=req-06f1eb
+2018-08-23T00:02:00Z [ERROR] web-gateway: HTTP 504 Gateway Timeout for /api/v1/data request_id=rq-e216f9
+2018-08-23T00:02:15Z [WARN] app-service: Failed to fetch data from backend, retrying... attempt=2 trace_id=req-06f1eb
+2018-08-23T00:03:00Z [ERROR] web-gateway: HTTP 504 Gateway Timeout for /api/v1/data request_id=rq-31407d
+2018-08-23T00:03:20Z [CRITICAL] app-service: Maximum retry attempts reached, failing request trace_id=req-06f1eb
+2018-08-23T00:03:55Z [WARN] app-service: Request timed out after 30 seconds trace_id=req-d67fa3
+2018-08-23T00:04:30Z [ERROR] web-gateway: HTTP 503 Service Unavailable for /api/v1/data request_id=rq-83ec36
+2018-08-23T00:05:05Z [WARN] app-service: Failed to fetch data from backend, retrying... attempt=1 trace_id=req-d67fa3
+2018-08-23T00:05:35Z [ERROR] web-gateway: HTTP 504 Gateway Timeout for /api/v1/data request_id=rq-135aa9
+2018-08-23T00:06:00Z [WARN] app-service: Failed to fetch data from backend, retrying... attempt=2 trace_id=req-d67fa3
+2018-08-23T00:07:35Z [ERROR] web-gateway: HTTP 504 Gateway Timeout for /api/v1/data request_id=rq-fa7888
+2018-08-23T00:08:05Z [CRITICAL] app-service: Maximum retry attempts reached, failing request trace_id=req-d67fa3
+2018-08-23T00:09:10Z [WARN] health-checker: Backend health check failed for service=app-service reason=response-timeout
+2018-08-23T00:10:15Z [ERROR] alert-manager: Alert fired: High request failures in app-service threshold=50%
+2018-08-23T00:11:20Z [CRITICAL] health-checker: Multiple backend services are unhealthy, initiating failover...
+2018-08-23T00:12:35Z [ERROR] alert-manager: Alert fired: Failover initiated for critical service=app-service
+2018-08-23T00:13:40Z [WARN] web-gateway: All backend instances are unhealthy, routing to fallback services temporarily
+2018-08-23T00:14:55Z [ERROR] alert-manager: Alert fired: Fallback service handling critical requests
+2018-08-23T00:16:00Z [CRITICAL] app-service: Unable to process request within acceptable latency, marking as degraded trace_id=req-dedabc

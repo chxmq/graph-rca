@@ -1,9 +1,16 @@
-2023-12-15 14:30:00 [INFO] instance-123: EBS volume detected as unhealthy in AZ1
-2023-12-15 14:30:05 [WARNING] service-c: Alert sent to ops team for potential EBS outage in AZ1
-2023-12-15 14:31:00 [ERROR] ec2-api: Request failed for instance-123, error code 503 (Service Unavailable)
-2023-12-15 14:32:00 [INFO] service-d: Initiating migration of data to other AZs
-2023-12-15 14:33:00 [INFO] instance-456: EBS volume successfully migrated to AZ2
-2023-12-15 14:34:00 [INFO] ec2-api: Request successful for instance-456, error code 200 (OK)
-2023-12-15 14:35:00 [INFO] service-e: Service restored after migration completion
-2023-12-15 14:36:00 [INFO] ops-team: Notification sent to team members of incident resolution
-2023-12-15 14:37:00 [INFO] incident-manager: Incident classification as Medium Severity due to data loss and downtime
+2023-10-22T14:45:00Z [ERROR] ebs-volume-service: Volume read failed with error code 123 trace_id=req-664c63
+2023-10-22T14:45:05Z [WARN] application-service: Request timeout detected, retrying... trace_id=req-664c63
+2023-10-22T14:45:10Z [ERROR] ebs-volume-service: Volume write failed with error code 456 trace_id=req-7892c7
+2023-10-22T14:45:15Z [CRITICAL] application-service: Failed to process request after 3 retries, marking as failed. trace_id=req-7892c7
+2023-10-22T14:45:20Z [ERROR] ebs-volume-service: Volume read failed with error code 123 trace_id=req-4ca1bb
+2023-10-22T14:46:00Z [WARN] load-balancer: High queue depth detected, current depth: 500 trace_id=req-4ca1bb
+2023-10-22T14:46:10Z [ERROR] ebs-volume-service: Volume write failed with error code 456 trace_id=req-85199b
+2023-10-22T14:46:15Z [CRITICAL] application-service: Failed to process request after 3 retries, marking as failed. trace_id=req-85199b
+2023-10-22T14:47:00Z [ERROR] ebs-volume-service: Volume read failed with error code 123 trace_id=req-387b99
+2023-10-22T14:47:05Z [WARN] application-service: Request timeout detected, retrying... trace_id=req-387b99
+2023-10-22T14:47:20Z [ERROR] ebs-volume-service: Volume write failed with error code 456 trace_id=req-cf88ff
+2023-10-22T14:47:25Z [CRITICAL] application-service: Failed to process request after 3 retries, marking as failed. trace_id=req-cf88ff
+2023-10-22T14:48:00Z [ERROR] ebs-volume-service: Volume read failed with error code 123 trace_id=req-9da6d6
+2023-10-22T14:48:10Z [WARN] application-service: Request timeout detected, retrying... trace_id=req-9da6d6
+2023-10-22T14:49:00Z [ERROR] ebs-volume-service: Volume write failed with error code 456 trace_id=req-7fb6da
+2023-10-22T14:49:15Z [CRITICAL] application-service: Failed to process request after 3 retries, marking as failed. trace_id=req-7fb6da

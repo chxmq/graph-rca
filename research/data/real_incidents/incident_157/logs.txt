@@ -1,15 +1,19 @@
-2022-12-20 14:30:00 [INFO] Service-c: Deploying new software patch
-2022-12-20 14:35:00 [WARNING] Service-d: Inadequate review of UI change
-2022-12-20 15:10:00 [INFO] Service-e: Software deployment initiated
-2022-12-20 15:11:00 [ERROR] Service-f: Unexpected error in transaction processing
-2022-12-20 15:15:00 [WARNING] Monitoring-system: Unusual activity detected
-2022-12-20 15:18:00 [INFO] Incident-management: Security alert triggered
-2022-12-20 15:25:00 [ERROR] Service-g: Unauthorized access detected
-2022-12-20 15:30:00 [CRITICAL] Monitoring-system: $30 million cryptocurrency diverted (stolen)
-2022-12-20 16:00:00 [INFO] Incident-management: Alert escalated to severity medium
-2022-12-20 16:05:00 [WARNING] Service-h: Potential vulnerability detected in software patch
-2022-12-20 16:10:00 [ERROR] Incident-management: Bug identification confirmed
-2022-12-20 16:15:00 [CRITICAL] Security-team: $30 million cryptocurrency value at risk due to security bug
-2022-12-20 17:00:00 [INFO] Incident-management: Rescue operation initiated for remaining funds ($150 million)
-2022-12-20 17:05:00 [WARNING] Service-i: Temporary fix deployed to mitigate further damage
-2022-12-20 17:10:00 [ERROR] Monitoring-system: $30 million cryptocurrency value diverted (stolen) confirmed
+2023-10-15T14:23:15Z [WARN] wallet-service: Transaction failed with error code 400 trace_id=req-f6cb9d  
+2023-10-15T14:23:16Z [ERROR] transaction-manager: Retry attempt 1 for transaction req-fe94b8 timed out trace_id=req-f6cb9d  
+2023-10-15T14:23:20Z [CRITICAL] blockchain-monitor: Detected unusual activity in wallet address walle-7x8z trace_id=req-fedb3d  
+2023-10-15T14:24:01Z [ERROR] transaction-manager: Retry attempt 2 for transaction req-fe94b8 failed with status code 500 trace_id=req-f6cb9d  
+2023-10-15T14:24:03Z [WARN] wallet-service: High latency detected in API response for user usr-3h5j trace_id=req-2831e5  
+2023-10-15T14:24:10Z [ERROR] transaction-manager: Retry attempt 3 for transaction req-fe94b8 failed with status code 503 trace_id=req-f6cb9d  
+2023-10-15T14:24:15Z [CRITICAL] blockchain-monitor: Wallet address walle-7x8z shows unauthorized transfer activity trace_id=req-fedb3d  
+2023-10-15T14:25:01Z [ERROR] transaction-manager: Transaction req-fe94b8 marked as failed after 3 retries trace_id=req-f6cb9d  
+2023-10-15T14:25:05Z [WARN] wallet-service: API request queue depth exceeds threshold for user usr-3h5j trace_id=req-2831e5  
+2023-10-15T14:26:00Z [ERROR] blockchain-monitor: High transaction volume detected from unknown source trace_id=req-0aa6cd  
+2023-10-15T14:26:10Z [CRITICAL] wallet-service: Transaction failed with critical error for user usr-9m0n trace_id=req-c519b5  
+2023-10-15T14:27:00Z [ERROR] transaction-manager: Retry attempt 1 for transaction req-3b4c timed out trace_id=req-c519b5  
+2023-10-15T14:27:10Z [WARN] blockchain-monitor: Unusual pattern in wallet address walle-9p0q detected trace_id=req-61459a  
+2023-10-15T14:28:01Z [ERROR] transaction-manager: Retry attempt 2 for transaction req-3b4c failed with status code 500 trace_id=req-c519b5  
+2023-10-15T14:29:00Z [CRITICAL] wallet-service: High API response latency for user usr-9m0n trace_id=req-c3bb64  
+2023-10-15T14:30:00Z [ERROR] transaction-manager: Retry attempt 3 for transaction req-3b4c failed with status code 503 trace_id=req-c519b5  
+2023-10-15T14:30:10Z [CRITICAL] wallet-service: Transaction marked as failed after 3 retries for user usr-9m0n trace_id=req-c519b5  
+2023-10-15T14:31:00Z [ERROR] blockchain-monitor: High transaction volume detected from unauthorized source trace_id=req-0aa6cd  
+2023-10-15T14:32:00Z [CRITICAL] wallet-service: API request queue depth exceeds threshold for user usr-9m0n trace_id=req-c3bb64

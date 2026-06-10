@@ -1,0 +1,14 @@
+2024-01-01 09:45:30 [INFO] postgresql_metadata_service: Initiating PostgreSQL metadata maintenance
+2024-01-01 09:45:31 [WARNING] joyent_query_service: Attempting to acquire global lock on metadata table
+2024-01-01 09:45:32 [ERROR] postgresql_metadata_service: Lock acquisition failed due to ongoing maintenance
+2024-01-01 09:45:33 [INFO] joyent_query_service: Query processing request from service-c
+2024-01-01 09:45:34 [WARNING] joyent_query_service: Requesting global lock on metadata table again
+2024-01-01 09:45:35 [CRITICAL] postgresql_metadata_service: Lock acquisition failed, operations blocked
+2024-01-01 09:46:00 [INFO] service-d: Query processing request from service-e
+2024-01-01 09:46:02 [ERROR] joyent_query_service: Global lock not acquired within timeout period
+2024-01-01 09:46:05 [WARNING] joyent_query_service: Service operation timed out due to locked resource
+2024-01-01 09:46:10 [INFO] postgresql_metadata_service: Transaction wraparound maintenance completed
+2024-01-01 09:46:15 [INFO] joyent_query_service: Query processing request from service-c (retries)
+2024-01-01 09:46:20 [WARNING] joyent_query_service: Requesting global lock on metadata table again due to previous failure
+2024-01-01 09:46:25 [CRITICAL] postgresql_metadata_service: Lock acquisition failed, operations blocked
+2024-01-01 09:47:00 [INFO] service-f: Query processing request from service-g

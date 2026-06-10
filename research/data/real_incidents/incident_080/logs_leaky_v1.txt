@@ -1,0 +1,13 @@
+2023-12-31 23:00:00 [INFO] aws-servicedashboard: Automated scaling triggered for service 'service-x'
+2023-12-31 23:00:01 [WARNING] network-device-1: Increased traffic detected on interface 'eth0'
+2023-12-31 23:00:05 [INFO] aws-servicedashboard: Scaling completed for service 'service-x'
+2023-12-31 23:00:10 [ERROR] network-device-2: Buffer overflow on queue 'queue-1'
+2023-12-31 23:00:15 [WARNING] internal-network-mgr: High CPU utilization detected
+2023-12-31 23:00:20 [INFO] aws-servicedashboard: Service 'service-x' reported high traffic volume
+2023-12-31 23:00:25 [ERROR] network-device-1: Interface 'eth0' dropped connection due to packet loss
+2023-12-31 23:00:30 [CRITICAL] internal-network-mgr: Network congestion threshold reached, alerting team
+2023-12-31 23:00:35 [WARNING] service-c: Connection retry failed after 5 attempts
+2023-12-31 23:00:40 [INFO] aws-servicedashboard: Service 'service-x' reported critical traffic volume
+2023-12-31 23:00:45 [ERROR] network-device-2: Queue 'queue-1' overflowed, discarding packets
+2023-12-31 23:00:50 [CRITICAL] internal-network-mgr: Persistent congestion detected, escalating to incident team
+2023-12-31 23:01:00 [INFO] aws-servicedashboard: Service 'service-x' reported degraded performance

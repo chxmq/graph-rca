@@ -1,16 +1,19 @@
-2023-12-31 14:30:00 [INFO] metadata-service: Started with new version 1.2.3
-2023-12-31 14:32:00 [WARNING] metadata-service: High CPU usage detected (80%)
-2023-12-31 14:35:00 [INFO] storage-node-1: Ready for operations
-2023-12-31 14:37:10 [ERROR] metadata-service: Response time exceeded timeout value (5s)
-2023-12-31 14:37:15 [WARNING] storage-node-1: Retrying operation after timeout
-2023-12-31 14:40:00 [INFO] metadata-service: Load increased to 90% capacity
-2023-12-31 14:42:30 [ERROR] storage-node-2: Response time exceeded timeout value (5s)
-2023-12-31 14:43:15 [WARNING] storage-node-2: Retrying operation after timeout
-2023-12-31 14:45:00 [INFO] metadata-service: High CPU usage increased to 100%
-2023-12-31 14:47:10 [CRITICAL] storage-node-1: Took itself down due to excessive load
-2023-12-31 14:48:30 [ERROR] metadata-service: Response time exceeded timeout value (5s)
-2023-12-31 14:49:15 [WARNING] storage-node-2: Retrying operation after timeout
-2023-12-31 14:50:00 [INFO] metadata-service: Load decreased to 80% capacity
-2023-12-31 14:52:10 [ERROR] storage-node-1: Took itself down due to excessive load (retry)
-2023-12-31 14:53:30 [CRITICAL] metadata-service: High CPU usage increased to 100%
-2023-12-31 14:54:00 [INFO] network-disruption-detector: Detected potential network disruption
+2023-10-15T14:30:00Z [WARN] s3-service: Request failed with HTTP status code 503 Service Unavailable trace_id=req-1e75ee  
+2023-10-15T14:30:05Z [ERROR] ec2-instance-manager: Health check failure detected for instance i-1234567890abcdef0 trace_id=req-d6fc91  
+2023-10-15T14:30:10Z [CRITICAL] s3-service: Latency spike detected, average response time over 3 seconds trace_id=req-1e75ee  
+2023-10-15T14:30:15Z [ERROR] ec2-instance-manager: Failed to start instance i-0987654321fedcba0 due to unknown error trace_id=req-d6fc91  
+2023-10-15T14:30:20Z [WARN] s3-service: Queue depth exceeded threshold, current depth 5000 trace_id=req-1e75ee  
+2023-10-15T14:30:25Z [ERROR] s3-service: Request failed with HTTP status code 504 Gateway Timeout trace_id=req-92cce7  
+2023-10-15T14:30:30Z [CRITICAL] ec2-instance-manager: Multiple health check failures detected, instances unresponsive trace_id=req-d6fc91  
+2023-10-15T14:30:35Z [WARN] s3-service: High latency for request, took 4.5 seconds to process trace_id=req-92cce7  
+2023-10-15T14:30:40Z [ERROR] ec2-instance-manager: Instance i-1234567890abcdef0 terminated unexpectedly trace_id=req-d6fc91  
+2023-10-15T14:30:45Z [INFO] s3-service: Retrying request, attempt 2 of 5 trace_id=req-1e75ee  
+2023-10-15T14:30:50Z [ERROR] ec2-instance-manager: Failed to restart instance i-1234567890abcdef0 trace_id=req-d6fc91  
+2023-10-15T14:30:55Z [WARN] s3-service: Request failed with HTTP status code 503 Service Unavailable trace_id=req-92cce7  
+2023-10-15T14:31:00Z [CRITICAL] ec2-instance-manager: Instance i-0987654321fedcba0 failed health checks, marked as unhealthy trace_id=req-d6fc91  
+2023-10-15T14:31:05Z [ERROR] s3-service: Request failed with HTTP status code 504 Gateway Timeout trace_id=req-5216f7  
+2023-10-15T14:31:10Z [WARN] s3-service: Queue depth exceeded threshold, current depth 7000 trace_id=req-5216f7  
+2023-10-15T14:31:15Z [CRITICAL] s3-service: Latency spike detected, average response time over 5 seconds trace_id=req-5216f7  
+2023-10-15T14:31:20Z [INFO] s3-service: Retrying request, attempt 3 of 5 trace_id=req-1e75ee  
+2023-10-15T14:31:25Z [ERROR] ec2-instance-manager: Failed to restart instance i-0987654321fedcba0 trace_id=req-d6fc91  
+2023-10-15T14:31:30Z [WARN] s3-service: Request failed with HTTP status code 503 Service Unavailable trace_id=req-5216f7

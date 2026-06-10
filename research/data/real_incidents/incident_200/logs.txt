@@ -1,15 +1,16 @@
-2023-12-15 14:30:00 [INFO] payment-system: Initializing node for production environment
-2023-12-15 14:30:02 [WARNING] payment-system: Idempotency key generation failed due to unknown error
-2023-12-15 14:30:03 [INFO] payment-system: Falling back to legacy idempotency key strategy
-2023-12-15 14:30:04 [ERROR] network-partition-detector: Network partition detected for node-1234
-2023-12-15 14:30:05 [CRITICAL] payment-system: Duplicate charge attempt detected due to idempotency key failure
-2023-12-15 14:30:06 [WARNING] network-partition-detector: Network partition persisted across multiple nodes
-2023-12-15 14:30:07 [ERROR] database-engine: Failed to update transaction record due to persistent network partition
-2023-12-15 14:30:08 [CRITICAL] payment-system: Duplicate charge processed for user X1234
-2023-12-15 14:30:09 [INFO] monitoring-system: Alert sent to operations team due to critical payment system issue
-2023-12-15 14:30:10 [WARNING] network-partition-detector: Network partition detected and resolved for node-1234
-2023-12-15 14:30:11 [INFO] database-engine: Partial transaction rollbacks initiated due to idempotency key failure
-2023-12-15 14:30:12 [ERROR] payment-system: Duplicate charge attempt still pending resolution after partial rollback
-2023-12-15 14:30:13 [CRITICAL] monitoring-system: Payment system critical issue escalating to incident management team
-2023-12-15 14:30:14 [INFO] incident-management: Airbnb Incident created for payment system failure
-2023-12-15 14:30:15 [WARNING] network-partition-detector: Network partition persisted despite resolution attempt
+2023-10-05T14:23:01Z [WARN] payment-gateway: Timeout while processing transaction trace_id=req-1c1087
+2023-10-05T14:23:10Z [ERROR] payment-service: Failed to commit transaction, retrying... trace_id=req-1c1087
+2023-10-05T14:23:20Z [CRITICAL] payment-gateway: Transaction failed after 3 retries, marking as failed trace_id=req-1c1087
+2023-10-05T14:24:05Z [WARN] transaction-manager: Detected unusual high latency in processing queue depth=150 trace_id=req-9bed3e
+2023-10-05T14:24:15Z [ERROR] payment-gateway: HTTP 500 error from upstream service trace_id=req-9bed3e
+2023-10-05T14:24:25Z [CRITICAL] payment-service: Failed to update transaction status, retrying... trace_id=req-9bed3e
+2023-10-05T14:25:00Z [WARN] health-checker: Health check failed for service payment-gateway status=down trace_id=req-f9f963
+2023-10-05T14:25:10Z [ERROR] alert-system: Alert fired - High transaction failure rate in payment-service failures=20 threshold=15 trace_id=req-6840fc
+2023-10-05T14:26:01Z [WARN] payment-gateway: Timeout while processing transaction trace_id=req-a59221
+2023-10-05T14:26:10Z [ERROR] payment-service: Failed to commit transaction, retrying... trace_id=req-a59221
+2023-10-05T14:27:05Z [CRITICAL] payment-gateway: Transaction failed after 3 retries, marking as failed trace_id=req-a59221
+2023-10-05T14:27:15Z [WARN] transaction-manager: Detected unusual high latency in processing queue depth=200 trace_id=req-211678
+2023-10-05T14:28:10Z [ERROR] payment-gateway: HTTP 500 error from upstream service trace_id=req-211678
+2023-10-05T14:28:20Z [CRITICAL] payment-service: Failed to update transaction status, retrying... trace_id=req-211678
+2023-10-05T14:29:00Z [WARN] health-checker: Health check failed for service payment-gateway status=down trace_id=req-f9f963
+2023-10-05T14:29:10Z [ERROR] alert-system: Alert fired - High transaction failure rate in payment-service failures=30 threshold=15 trace_id=req-6840fc

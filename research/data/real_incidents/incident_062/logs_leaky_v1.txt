@@ -1,0 +1,18 @@
+2023-12-15 14:30:00 [INFO] bgp-svc: Received BGP update from peer 'US-W1'
+2023-12-15 14:31:00 [WARNING] edge-lc001: High packet loss detected (40%) on fiber path US-W1
+2023-12-15 14:32:00 [INFO] bgp-svc: Routed traffic through backup BGP session with US-W2
+2023-12-15 14:33:00 [CRITICAL] gateway-usw01: Available bandwidth decreased by 75% on fiber path US-W1
+2023-12-15 14:34:00 [ERROR] network-mgr: Alert triggered for low bandwidth condition on gateway-usw01
+2023-12-15 14:35:00 [INFO] network-mgr: Initiating automatic traffic rerouting to US-W2 and other backup paths
+2023-12-15 14:36:00 [WARNING] edge-lc002: High packet loss detected (50%) on fiber path US-W1 via rerouted traffic
+2023-12-15 14:37:00 [INFO] bgp-svc: Updated routing table to reflect new BGP sessions with US-W2 and US-W3
+2023-12-15 14:38:00 [CRITICAL] gateway-usw02: Available bandwidth decreased by 90% on fiber path US-W1 via rerouted traffic
+2023-12-15 14:39:00 [ERROR] network-mgr: Alert triggered for critical low bandwidth condition on gateway-usw02
+2023-12-15 14:40:00 [INFO] network-mgr: Investigating root cause of high bandwidth loss on fiber path US-W1
+2023-12-15 14:41:00 [CRITICAL] monitoring-svc: High CPU usage detected on monitoring server processing BGP updates
+2023-12-15 14:42:00 [INFO] monitoring-svc: Investigating possible connection to high CPU usage issue with BGP update processing
+2023-12-15 14:43:00 [WARNING] network-eng: Potential fiber path failure detected on US-W1 based on historical data analysis
+2023-12-15 14:44:00 [INFO] network-eng: Verifying fiber path status for US-W1 using network monitoring tools
+2023-12-15 14:45:00 [CRITICAL] network-eng: Root cause confirmed: failed component on fiber path US-W1 leading to high bandwidth loss
+2023-12-15 14:46:00 [ERROR] incident-svc: Medium severity incident triggered for fiber path failure and related service disruptions
+2023-12-15 14:47:00 [INFO] incident-svc: Notifying relevant teams and stakeholders of incident details

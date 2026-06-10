@@ -1,15 +1,18 @@
-2022-12-16 14:30:00 [INFO] service-c: New employee engineer-123 created
-2022-12-16 14:30:15 [WARNING] antivirus-scan: Malware detected on engineer-123's laptop (scan ID: #001)
-2022-12-16 14:30:20 [INFO] service-d: SSO session creation initiated for engineer-123
-2023-01-04 08:00:00 [CRITICAL] sso-session-a: Unauthorized access detected on February 1, 2023 (IP address: 192.168.0.100)
-2023-01-04 08:00:05 [INFO] service-e: Remote system impersonation attempt logged
-2023-01-04 08:00:10 [ERROR] service-f: Production system escalation detected on February 2, 2023 (user ID: 1234)
-2023-01-04 08:00:15 [WARNING] security-a: Unauthorized access to production system confirmed
-2023-01-04 08:00:20 [INFO] incident-response: Incident report initiated
-2023-01-04 08:00:25 [INFO] investigation-team: Internal investigation team assembled
-2023-01-04 08:00:30 [INFO] security-a: Malware removal and cleanup in progress
-2023-01-04 08:00:35 [INFO] incident-response: Incident report update (status: in-progress)
-2023-01-04 08:00:40 [INFO] investigation-team: Root cause analysis initiated
-2023-01-04 08:00:45 [INFO] security-a: Malware root cause identified
-2023-01-04 08:00:50 [INFO] incident-response: Incident report update (status: resolved)
-2023-01-04 08:01:00 [INFO] investigation-team: Post-mortem analysis initiated
+2023-01-04T00:15:00Z [WARN] auth-service: Failed to validate SSO token for user=user_123 trace_id=req-fee54e  
+2023-01-04T00:16:10Z [ERROR] build-service: Job failed due to authentication error job_id=job-789 trace_id=req-69ae8b  
+2023-01-04T00:16:15Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.100 trace_id=req-69ae8b  
+2023-01-04T00:17:00Z [WARN] auth-service: Failed to validate SSO token for user=user_456 trace_id=req-636470  
+2023-01-04T00:18:20Z [ERROR] build-service: Job failed due to authentication error job_id=job-101 trace_id=req-636470  
+2023-01-04T00:19:30Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.101 trace_id=req-636470  
+2023-01-04T00:20:05Z [ERROR] auth-service: SSO session expired for user=user_789 trace_id=req-d3f8e1  
+2023-01-04T00:21:10Z [WARN] build-service: Job failed due to authentication error job_id=job-102 trace_id=req-d3f8e1  
+2023-01-04T00:21:45Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.102 trace_id=req-d3f8e1  
+2023-01-04T00:22:20Z [WARN] auth-service: Failed to validate SSO token for user=user_123 trace_id=req-4f78df  
+2023-01-04T00:23:15Z [ERROR] build-service: Job failed due to authentication error job_id=job-103 trace_id=req-4f78df  
+2023-01-04T00:24:00Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.103 trace_id=req-4f78df  
+2023-01-04T00:25:30Z [ERROR] auth-service: SSO session expired for user=user_456 trace_id=req-2817b1  
+2023-01-04T00:26:10Z [WARN] build-service: Job failed due to authentication error job_id=job-104 trace_id=req-2817b1  
+2023-01-04T00:27:50Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.104 trace_id=req-2817b1  
+2023-01-04T00:28:10Z [ERROR] auth-service: Failed to validate SSO token for user=user_789 trace_id=req-7be561  
+2023-01-04T00:29:05Z [WARN] build-service: Job failed due to authentication error job_id=job-105 trace_id=req-7be561  
+2023-01-04T00:30:20Z [CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.105 trace_id=req-7be561

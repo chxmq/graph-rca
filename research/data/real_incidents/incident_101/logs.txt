@@ -1,14 +1,20 @@
-2024-01-01 09:45:00 [INFO] mem-service: Initializing internal queues
-2024-01-01 09:46:00 [WARNING] mem-service: Internal queue size increasing rapidly
-2024-01-01 09:47:00 [INFO] frontend-service: Starting request handling
-2024-01-01 09:48:05 [ERROR] frontend-service: Out of memory error detected
-2024-01-01 09:48:10 [WARNING] mem-service: Reconnection attempt to service-a initiated due to flapping
-2024-01-01 09:49:00 [INFO] service-a: Recovered from previous failure, reconnecting to internal queues
-2024-01-01 09:50:05 [ERROR] frontend-service: Internal queue size exceeds capacity
-2024-01-01 09:51:00 [CRITICAL] mem-service: Critical threshold exceeded, restarting service
-2024-01-01 09:52:00 [INFO] mem-service: Restarting internal queues, attempting to reclaim memory
-2024-01-01 09:53:00 [WARNING] frontend-service: Reconnection attempt to internal queues failed due to queue filling
-2024-01-01 09:54:00 [ERROR] frontend-service: Service unavailable due to internal queue issues
-2024-01-01 09:55:00 [INFO] mem-service: Internal queue cleanup initiated, attempting to reduce memory usage
-2024-01-01 10:01:00 [WARNING] mem-service: Internal queue size still above acceptable threshold
-2024-01-01 10:02:00 [CRITICAL] mem-service: Critical failure, escalating incident
+2023-10-05T14:30:00Z [WARN] gateway-service: High request latency detected trace_id=req-af6904
+2023-10-05T14:30:15Z [ERROR] frontend-service: HTTP 503 error while connecting to backend service trace_id=req-7ee07f
+2023-10-05T14:30:30Z [CRITICAL] load-balancer: Service gateway-service marked as unhealthy due to multiple failures trace_id=req-7eab17
+2023-10-05T14:31:00Z [WARN] frontend-service: Connection timeout while trying to reconnect trace_id=req-7ee07f
+2023-10-05T14:31:10Z [ERROR] gateway-service: Failed to process request, retry limit exceeded trace_id=req-2e74cd
+2023-10-05T14:31:25Z [CRITICAL] message-broker: Increased number of unacknowledged messages detected trace_id=req-3090a8
+2023-10-05T14:31:40Z [WARN] frontend-service: Slow response time from gateway-service, taking 15 seconds trace_id=req-af6904
+2023-10-05T14:32:00Z [ERROR] load-balancer: Service frontend-service failed health checks trace_id=req-7eab17
+2023-10-05T14:32:15Z [WARN] message-broker: Message delivery latency increased to 30 seconds trace_id=req-3090a8
+2023-10-05T14:32:30Z [ERROR] gateway-service: Out of memory error while processing request trace_id=req-4866d7
+2023-10-05T14:32:45Z [CRITICAL] frontend-service: Unable to handle incoming requests, server overload trace_id=req-7ee07f
+2023-10-05T14:33:00Z [WARN] message-broker: Connection refused while trying to publish message trace_id=req-3090a8
+2023-10-05T14:33:15Z [ERROR] load-balancer: Service frontend-service temporarily removed from rotation due to critical failures trace_id=req-7eab17
+2023-10-05T14:33:30Z [CRITICAL] gateway-service: Memory allocation failed, shutting down process gracefully trace_id=req-4866d7
+2023-10-05T14:33:45Z [WARN] frontend-service: High CPU usage detected on server instance trace_id=req-7ee07f
+2023-10-05T14:34:00Z [ERROR] message-broker: Publisher queue overflow, discarding messages trace_id=req-3090a8
+2023-10-05T14:34:15Z [CRITICAL] frontend-service: Server instance restarted due to unresponsive state trace_id=req-7ee07f
+2023-10-05T14:34:30Z [WARN] gateway-service: Connection timeouts increased, retrying requests trace_id=req-2e74cd
+2023-10-05T14:34:45Z [ERROR] load-balancer: Service gateway-service failed health checks again trace_id=req-7eab17
+2023-10-05T14:35:00Z [CRITICAL] message-broker: Consumer unable to keep up with incoming messages, consumer lag detected trace_id=req-3090a8

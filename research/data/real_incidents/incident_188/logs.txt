@@ -1,16 +1,19 @@
-2023-12-31 23:59:45 [INFO] cluster-manager: Initializing cluster state
-2023-12-31 23:59:50 [WARNING] route-cache: Route cache initialized with 500 entries
-2023-12-31 23:59:55 [INFO] service-a: Starting request handling
-2023-12-31 23:59:59 [INFO] service-b: Connecting to database
-2023-12-31 23:59:60 [ERROR] service-b: Database connection timeout (after 4 attempts)
-2023-12-31 24:00:01 [WARNING] route-cache: Route cache entry updated for service-b
-2023-12-31 24:00:05 [INFO] cluster-manager: Notifying services of delayed message
-2023-12-31 24:00:10 [INFO] service-c: Starting request handling (delayed by 1 hour)
-2023-12-31 24:00:15 [WARNING] route-cache: Route cache entry updated for service-c
-2023-12-31 24:00:20 [INFO] cluster-manager: Notifying services of delayed message (again)
-2023-12-31 24:00:25 [INFO] service-d: Starting request handling (delayed by 2 hours)
-2023-12-31 24:00:30 [WARNING] route-cache: Route cache entry updated for service-d
-2023-12-31 24:01:10 [INFO] cluster-manager: Rolling restart initiated
-2023-12-31 24:02:05 [INFO] cluster-manager: Cluster state restored
-2023-12-31 24:02:10 [INFO] route-cache: Route cache flushed
-2023-12-31 24:02:15 [WARNING] service-a: Service restart completed, message backlog cleared
+2023-10-15T14:30:00Z [WARN] network-manager: Detected high latency in packet delivery to node 192.168.1.10 trace_id=req-efe028  
+2023-10-15T14:31:05Z [ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-20fe3b  
+2023-10-15T14:32:10Z [CRITICAL] load-balancer: Exceeded maximum retry attempts for request. Dropping connection. trace_id=req-efe028  
+2023-10-15T14:33:15Z [ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-20fe3b  
+2023-10-15T14:34:20Z [INFO] network-manager: Packet loss detected between node 192.168.1.10 and 192.168.1.11 trace_id=req-312720  
+2023-10-15T14:35:25Z [WARN] message-broker: Increased queue depth for 'outbound'. Current depth: 500 messages. trace_id=req-312720  
+2023-10-15T14:36:30Z [ERROR] api-gateway: Connection timeout to service at https://service.example.com/api/v1/data. Retrying... trace_id=req-ed2a91  
+2023-10-15T14:37:35Z [CRITICAL] load-balancer: Node 192.168.1.10 marked as unhealthy due to repeated failures. trace_id=req-312720  
+2023-10-15T14:38:40Z [ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-ed2a91  
+2023-10-15T14:39:45Z [INFO] network-manager: Packet loss detected between node 192.168.1.12 and 192.168.1.13 trace_id=req-20fe3b  
+2023-10-15T14:40:50Z [WARN] message-broker: Increased queue depth for 'outbound'. Current depth: 600 messages. trace_id=req-ed2a91  
+2023-10-15T14:41:55Z [ERROR] api-gateway: Connection timeout to service at https://service.example.com/api/v1/data. Retrying... trace_id=req-312720  
+2023-10-15T14:43:00Z [CRITICAL] load-balancer: Node 192.168.1.12 marked as unhealthy due to repeated failures. trace_id=req-ed2a91  
+2023-10-15T14:44:05Z [ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-312720  
+2023-10-15T14:45:10Z [INFO] network-manager: Packet loss detected between node 192.168.1.14 and 192.168.1.15 trace_id=req-efe028  
+2023-10-15T14:46:15Z [WARN] message-broker: Increased queue depth for 'outbound'. Current depth: 700 messages. trace_id=req-ed2a91  
+2023-10-15T14:47:20Z [ERROR] api-gateway: Connection timeout to service at https://service.example.com/api/v1/data. Retrying... trace_id=req-312720  
+2023-10-15T14:48:25Z [CRITICAL] load-balancer: Node 192.168.1.14 marked as unhealthy due to repeated failures. trace_id=req-ed2a91  
+2023-10-15T14:49:30Z [ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-efe028

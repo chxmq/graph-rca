@@ -1,12 +1,19 @@
-2023-12-31 14:30:00 [INFO] ariane-5-gsmc: Service started, initialization complete
-2023-12-31 14:30:15 [INFO] ariane-5-gsmc: Converting 16-bit number to 64-bit numerical value
-2023-12-31 14:30:20 [WARNING] ariane-5-gsmc: Potential overflow detected in conversion process (num=65535)
-2023-12-31 14:30:25 [INFO] ariane-5-gsmc: Ignoring warning, proceeding with calculation
-2023-12-31 14:30:30 [CRITICAL] ariane-5-gsmc: Overflow occurred, invalid data detected (num=4294967295)
-2023-12-31 14:30:35 [ERROR] ariane-5-gsmc: Unhandled exception in diagnostic processing
-2023-12-31 14:30:40 [INFO] ariane-5-gsmc: Diagnostic error message printed to console
-2023-12-31 14:30:45 [WARNING] ariane-5-gsmc: Interpretation of diagnostic error message as valid data detected
-2023-12-31 14:30:50 [CRITICAL] ariane-5-gsmc: Rocket crash imminent, aborting launch sequence
-2023-12-31 14:30:55 [ERROR] ariane-5-gsmc: System failure, unable to recover from error
-2023-12-31 14:31:00 [INFO] ariane-5-gsmc: System shutdown initiated
-2023-12-31 14:31:05 [WARNING] ariane-5-gsmc: Post-launch analysis of system failure underway
+2023-10-15T14:32:05Z [INFO] telemetry-service: Diagnostic message received from subsystem 3 trace_id=req-fdf548  
+2023-10-15T14:32:06Z [WARN] navigation-module: Unexpected value in data stream, triggering recheck trace_id=req-fdf548  
+2023-10-15T14:32:10Z [ERROR] flight-control-system: Health check failed for critical component 7 trace_id=req-0df81a  
+2023-10-15T14:32:15Z [CRITICAL] telemetry-service: Communication timeout with navigation-module, retrying... trace_id=req-fdf548  
+2023-10-15T14:32:20Z [ERROR] navigation-module: Data validation error in subsystem 3, marking as unhealthy trace_id=req-0df81a  
+2023-10-15T14:32:25Z [WARN] telemetry-service: High latency detected in data stream from navigation-module trace_id=req-fdf548  
+2023-10-15T14:32:30Z [INFO] flight-control-system: Retrying health check for critical component 7 trace_id=req-0df81a  
+2023-10-15T14:32:35Z [ERROR] telemetry-service: Failed to receive expected diagnostic message, marking navigation-module as failed trace_id=req-fdf548  
+2023-10-15T14:32:40Z [CRITICAL] navigation-module: Critical error in subsystem 3, shutting down trace_id=req-0df81a  
+2023-10-15T14:32:45Z [ERROR] flight-control-system: Health check for critical component 7 still failing after retry trace_id=req-0df81a  
+2023-10-15T14:32:50Z [WARN] telemetry-service: Communication link with navigation-module degraded, attempting to re-establish trace_id=req-fdf548  
+2023-10-15T14:32:55Z [ERROR] flight-control-system: System error detected in subsystem 3, initiating fail-safe procedures trace_id=req-0df81a  
+2023-10-15T14:33:00Z [CRITICAL] telemetry-service: Unable to establish communication with navigation-module after multiple retries trace_id=req-fdf548  
+2023-10-15T14:33:05Z [ERROR] flight-control-system: Critical component 7 failed, system in fail-safe mode trace_id=req-0df81a  
+2023-10-15T14:33:10Z [WARN] telemetry-service: Latency remains high, potential network issue detected trace_id=req-fdf548  
+2023-10-15T14:33:15Z [INFO] flight-control-system: Executing fail-safe procedure for critical component 7 trace_id=req-0df81a  
+2023-10-15T14:33:20Z [ERROR] telemetry-service: Diagnostic message stream from navigation-module still interrupted trace_id=req-fdf548  
+2023-10-15T14:33:25Z [CRITICAL] flight-control-system: Fail-safe mode activated, critical component 7 offline trace_id=req-0df81a  
+2023-10-15T14:33:30Z [WARN] telemetry-service: Network diagnostics initiated for connection to navigation-module trace_id=req-fdf548

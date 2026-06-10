@@ -1,16 +1,20 @@
-2023-12-31 23:59:00 [INFO] PagerDuty Cloud Service Monitoring: Initializing monitoring script
-2023-12-31 23:59:30 [WARNING] PagerDuty Cloud Service Monitoring: Received alert from third party service (SMS/voice calls)
-2023-12-31 23:59:45 [INFO] PagerDuty Cloud Service Monitoring: Parsing alert message for region and severity
-2023-12-31 23:59:50 [ERROR] PagerDuty Cloud Service Monitoring: Unable to resolve region due to AWS outage in us-west-2
-2023-12-31 23:59:55 [INFO] PagerDuty Cloud Service Monitoring: Checking alternative routes for SMS/voice calls
-2023-12-31 23:59:59 [WARNING] PagerDuty Cloud Service Monitoring: Alternative route unavailable due to AWS outage in us-west-2
-2023-12-31 23:60:00 [CRITICAL] PagerDuty Cloud Service Monitoring: Incident created for AWS outage in us-west-2 region
-2023-12-31 23:60:05 [INFO] PagerDuty Cloud Service Monitoring: Notifying PagerDuty Ops Team of incident
-2023-12-31 23:60:10 [ERROR] PagerDuty Cloud Service Monitoring: Unable to contact AWS for outage details
-2023-12-31 23:60:15 [WARNING] PagerDuty Cloud Service Monitoring: Estimated time to resolution exceeds expected threshold
-2023-12-31 23:60:20 [INFO] PagerDuty Cloud Service Monitoring: Updating incident status to "In Progress"
-2023-12-31 23:60:25 [CRITICAL] PagerDude Cloud Service Monitoring: AWS outage in us-west-2 region still ongoing after 10 minutes
-2023-12-31 23:60:30 [INFO] PagerDuty Cloud Service Monitoring: Notifying affected services of AWS outage
-2023-12-31 23:60:35 [ERROR] service-a: Unable to connect to AWS region due to outage
-2023-12-31 23:60:40 [WARNING] service-b: Error sending SMS/voice calls due to AWS outage in us-west-2 region
-2023-12-31 23:60:45 [INFO] PagerDuty Cloud Service Monitoring: Incident status updated to "Resolved"
+2023-10-15T14:45:00Z [INFO] sms-gateway: Starting request to AWS SQS queue trace_id=req-932731
+2023-10-15T14:46:10Z [WARN] sms-gateway: Timeout while sending message to AWS SQS queue trace_id=req-932731
+2023-10-15T14:47:20Z [ERROR] sms-gateway: Failed to send message to AWS SQS, retrying... trace_id=req-932731
+2023-10-15T14:48:30Z [CRITICAL] sms-gateway: Third attempt failed, giving up for now trace_id=req-932731
+2023-10-15T14:49:00Z [INFO] voice-service: Initiating call request to AWS Lambda function trace_id=req-d61f82
+2023-10-15T14:50:10Z [WARN] voice-service: AWS Lambda did not respond within expected time frame trace_id=req-d61f82
+2023-10-15T14:51:20Z [ERROR] voice-service: Failed to invoke AWS Lambda function, retrying... trace_id=req-d61f82
+2023-10-15T14:52:30Z [CRITICAL] voice-service: Third attempt failed, call request aborted trace_id=req-d61f82
+2023-10-15T14:53:00Z [INFO] sms-gateway: Starting request to AWS SQS queue trace_id=req-8886bb
+2023-10-15T14:54:10Z [WARN] sms-gateway: Timeout while sending message to AWS SQS queue trace_id=req-8886bb
+2023-10-15T14:55:20Z [ERROR] sms-gateway: Failed to send message to AWS SQS, retrying... trace_id=req-8886bb
+2023-10-15T14:56:30Z [CRITICAL] sms-gateway: Third attempt failed, giving up for now trace_id=req-8886bb
+2023-10-15T14:57:00Z [INFO] voice-service: Initiating call request to AWS Lambda function trace_id=req-b91cb9
+2023-10-15T14:58:10Z [WARN] voice-service: AWS Lambda did not respond within expected time frame trace_id=req-b91cb9
+2023-10-15T14:59:20Z [ERROR] voice-service: Failed to invoke AWS Lambda function, retrying... trace_id=req-b91cb9
+2023-10-15T15:00:30Z [CRITICAL] voice-service: Third attempt failed, call request aborted trace_id=req-b91cb9
+2023-10-15T15:01:00Z [INFO] sms-gateway: Starting request to AWS SQS queue trace_id=req-de8275
+2023-10-15T15:02:10Z [WARN] sms-gateway: Timeout while sending message to AWS SQS queue trace_id=req-de8275
+2023-10-15T15:03:20Z [ERROR] sms-gateway: Failed to send message to AWS SQS, retrying... trace_id=req-de8275
+2023-10-15T15:04:30Z [CRITICAL] sms-gateway: Third attempt failed, giving up for now trace_id=req-de8275

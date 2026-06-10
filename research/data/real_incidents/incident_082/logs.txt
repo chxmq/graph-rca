@@ -1,16 +1,19 @@
-2023-12-25 14:45:00 [INFO] NetworkMonitor: System check initiated due to scheduled maintenance window
-2023-12-25 14:46:00 [WARNING] service-c: Inbound call volume unexpectedly high, potential for network overload
-2023-12-25 14:47:00 [INFO] ServiceController: Triggering quickfire resumption sequence to maintain uptime
-2023-12-25 14:48:00 [ERROR] NetworkManager: Unexpected reboot of switch 1234 due to unknown reason
-2023-12-25 14:49:00 [WARNING] ServiceD: System call timeout, retriggering request handling
-2023-12-25 14:50:00 [INFO] NetworkMonitor: Switch 4567 experiencing intermittent connectivity issues
-2023-12-25 14:51:00 [ERROR] ServiceE: Inbound call dropping due to network congestion
-2023-12-25 14:52:00 [CRITICAL] NetworkManager: System failure detected across 10 switches, immediate action required
-2023-12-25 14:53:00 [WARNING] SwitchController: Rebooting switch 9012 in an attempt to isolate issue
-2023-12-25 14:54:00 [INFO] NetworkMonitor: Number of dropped calls exceeds threshold for automated intervention
-2023-12-25 14:55:00 [ERROR] SystemAdmin: Unexpected failure to stabilize network, manual intervention required
-2023-12-25 15:00:00 [CRITICAL] NetworkManager: Critical system failure confirmed across entire network
-2023-12-25 15:05:00 [INFO] RootCauseAnalyzer: Identifying root cause of failure, preliminary indication of race hazard in C code
-2023-12-25 15:10:00 [WARNING] SystemAdmin: Manual intervention not resolving issue, further analysis required
-2023-12-25 15:15:00 [ERROR] NetworkManager: Confirming critical failure across all network switches and services
-2023-12-25 15:20:00 [CRITICAL] NetworkController: Final system failure confirmed, emergency measures in place to mitigate damage
+1990-02-16T03:45:23Z [ERROR] switch-responder: Failed to connect to peer switch retry=1 trace_id=req-165d8e
+1990-02-16T03:46:07Z [WARN] call-router: High latency detected on trunk 345 latency=800ms trace_id=req-6ae9d8
+1990-02-16T03:47:12Z [ERROR] switch-responder: Timeout while processing quickfire message timeout=5s trace_id=req-165d8e
+1990-02-16T03:48:22Z [CRITICAL] call-router: Service unavailable on trunk 789 status_code=503 trace_id=req-6ae9d8
+1990-02-16T03:49:01Z [ERROR] switch-responder: Failed to connect to peer switch retry=2 trace_id=req-33fc86
+1990-02-16T03:50:15Z [WARN] call-router: Queue depth exceeded limit queue_depth=1200 trace_id=req-647a97
+1990-02-16T03:51:07Z [ERROR] switch-responder: Timeout while processing quickfire message timeout=5s trace_id=req-33fc86
+1990-02-16T03:52:21Z [CRITICAL] call-router: Service unavailable on trunk 234 status_code=503 trace_id=req-647a97
+1990-02-16T03:53:12Z [ERROR] switch-responder: Failed to connect to peer switch retry=3 trace_id=req-165d8e
+1990-02-16T03:54:37Z [WARN] call-router: High latency detected on trunk 678 latency=950ms trace_id=req-6ae9d8
+1990-02-16T03:55:22Z [ERROR] switch-responder: Timeout while processing quickfire message timeout=5s trace_id=req-33fc86
+1990-02-16T03:56:42Z [CRITICAL] call-router: Service unavailable on trunk 890 status_code=503 trace_id=req-647a97
+1990-02-16T03:57:08Z [ERROR] switch-responder: Failed to connect to peer switch retry=4 trace_id=req-165d8e
+1990-02-16T03:58:33Z [WARN] call-router: Queue depth exceeded limit queue_depth=1300 trace_id=req-6ae9d8
+1990-02-16T03:59:17Z [ERROR] switch-responder: Timeout while processing quickfire message timeout=5s trace_id=req-33fc86
+1990-02-16T04:00:38Z [CRITICAL] call-router: Service unavailable on trunk 123 status_code=503 trace_id=req-647a97
+1990-02-16T04:01:24Z [ERROR] switch-responder: Failed to connect to peer switch retry=5 trace_id=req-165d8e
+1990-02-16T04:02:48Z [WARN] call-router: High latency detected on trunk 456 latency=1000ms trace_id=req-6ae9d8
+1990-02-16T04:03:32Z [ERROR] switch-responder: Timeout while processing quickfire message timeout=5s trace_id=req-33fc86

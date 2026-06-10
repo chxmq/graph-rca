@@ -1,0 +1,11 @@
+2023-12-15 14:30:00 [INFO] therac-25-monitor: Initial system check, all services online.
+2023-12-15 14:30:10 [WARNING] therac-25-service-a: Error in calculation module, warning reported.
+2023-12-15 14:30:20 [INFO] therac-25-monitor: Service-a error still present after restart.
+2023-12-15 14:30:30 [ERROR] therac-25-service-b: Database query failed due to incorrect indexing.
+2023-12-15 14:31:00 [WARNING] therac-25-monitor: Multiple errors reported, system stability at risk.
+2023-12-15 14:31:10 [CRITICAL] therac-25-service-c: Failure in radiation dose calculation.
+2023-12-15 14:31:20 [ERROR] therac-25-error-handler: Exception detected, attempting to log and notify administrators.
+2023-12-15 14:31:30 [WARNING] therac-25-administrators: Multiple critical errors reported, system failure imminent.
+2023-12-15 14:32:00 [CRITICAL] therac-25-system: System failure due to uncorrectable programming error.
+2023-12-15 14:32:10 [INFO] therac-25-monitor: System shutdown initiated, all services offline.
+2023-12-15 14:32:20 [ERROR] therac-25-error-handler: Root cause confirmed - concurrent programming errors detected.

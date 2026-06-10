@@ -1,12 +1,18 @@
-2024-01-01 08:00:00 [INFO] pagerduty-service: Starting monitoring checks
-2024-01-01 08:02:00 [WARNING] peering-point-1: High latency detected on incoming traffic (2.5ms)
-2024-01-01 08:03:00 [WARNING] peering-point-1: High latency detected on outgoing traffic (3.1ms)
-2024-01-01 08:05:00 [INFO] pagerduty-service: Establishing quorum failed
-2024-01-01 08:06:00 [WARNING] service-c: Notification attempt failed due to high latency
-2024-01-01 08:07:00 [ERROR] pagerduty-service: Failed to send notification to client A
-2024-01-01 08:10:00 [CRITICAL] peering-point-1: Peering point instability reported by monitoring system
-2024-01-01 08:11:00 [CRITICAL] pagerduty-service: High latency across all deployments causing service failure
-2024-01-01 08:12:00 [INFO] pagerduty-team: Alert triggered for high latency issue
-2024-01-01 08:15:00 [WARNING] pagerduty-team: Attempting to isolate affected deployment
-2024-01-01 08:17:00 [ERROR] pagerduty-service: Notification attempt failed due to high latency (second attempt)
-2024-01-01 08:20:00 [INFO] pagerduty-team: Deployment isolation complete, investigation underway
+2023-10-19T06:05:00Z [WARN] pd-router: Timeout while waiting for response from downstream service trace_id=req-f6d4d5
+2023-10-19T06:05:02Z [ERROR] pd-worker: Failed to process request, retrying... trace_id=req-f6d4d5
+2023-10-19T06:05:05Z [INFO] pd-router: Retrying request with new upstream trace_id=req-f138b6
+2023-10-19T06:05:07Z [WARN] pd-worker: Queue depth exceeded threshold, processing delayed trace_id=req-7bcd77
+2023-10-19T06:05:10Z [ERROR] pd-router: Connection refused from service endpoint trace_id=req-f138b6
+2023-10-19T06:05:15Z [CRITICAL] pd-notifier: Alert processing failed, no response received trace_id=req-7bcd77
+2023-10-19T06:05:20Z [WARN] pd-router: Health check failed for service instance trace_id=req-3cbe4c
+2023-10-19T06:05:25Z [ERROR] pd-worker: Request timed out, maximum retries reached trace_id=req-f6d4d5
+2023-10-19T06:05:30Z [CRITICAL] pd-notifier: Failed to deliver alert within expected time frame trace_id=req-7bcd77
+2023-10-19T06:05:35Z [WARN] pd-router: Increased queue depth detected, potential processing delay trace_id=req-3cbe4c
+2023-10-19T06:05:40Z [ERROR] pd-worker: Connection timeout to service endpoint, retrying... trace_id=req-cf2d74
+2023-10-19T06:05:45Z [CRITICAL] pd-notifier: Alert delivery failure, no response from downstream trace_id=req-7bcd77
+2023-10-19T06:05:50Z [WARN] pd-router: Health check failed for secondary service instance trace_id=req-3cbe4c
+2023-10-19T06:05:55Z [ERROR] pd-worker: Unable to connect to downstream, retry limit exceeded trace_id=req-f6d4d5
+2023-10-19T06:06:00Z [CRITICAL] pd-notifier: Alert delivery failure, no response from service endpoint trace_id=req-7bcd77
+2023-10-19T06:06:05Z [WARN] pd-router: Health check failed for primary and secondary instances trace_id=req-3cbe4c
+2023-10-19T06:06:10Z [ERROR] pd-worker: Service endpoint unresponsive, request processing halted trace_id=req-f6d4d5
+2023-10-19T06:06:15Z [CRITICAL] pd-notifier: Alert delivery failure, no response from downstream service trace_id=req-7bcd77

@@ -1,12 +1,16 @@
-2024-01-01 10:00:00 [INFO] Service-db: Autovacuum process started on metadata server
-2024-01-01 10:00:02 [INFO] Service-db: Autovacuum process acquiring lock on index 1234
-2024-01-01 10:00:03 [WARNING] Service-c: Request to execute global lock query received
-2024-01-01 10:00:04 [ERROR] Service-c: Failed to acquire global lock, blocking subsequent requests
-2024-01-01 10:00:05 [CRITICAL] Service-db: Autovacuum process still holding lock on index 1234 after 30 seconds
-2024-01-01 10:00:06 [ERROR] System Monitor: Lock duration exceeded threshold, triggering alert
-2024-01-01 10:00:07 [WARNING] System Monitor: Potential locking conflict detected between autovacuum and global lock query
-2024-01-01 10:00:08 [INFO] System Monitor: Escalating incident to database administrator for review
-2024-01-01 10:00:09 [ERROR] Service-db: PostgreSQL connection timeout due to prolonged lock acquisition
-2024-01-01 10:00:10 [CRITICAL] Joyent Manta: High-severity locking conflict encountered on metadata server
-2024-01-01 10:00:11 [INFO] System Monitor: Notifying incident response team for further investigation
-2024-01-01 10:00:12 [WARNING] System Monitor: Database operations suspended to prevent further conflicts
+2015-07-27T00:00:00Z [WARN] metadata-server: Slow response detected, request took 34 seconds trace_id=req-37b924
+2015-07-27T00:00:05Z [ERROR] api-gateway: Timeout while waiting for metadata-server response trace_id=req-3ff3da
+2015-07-27T00:00:25Z [WARN] storage-node: Increased queue depth to 80 requests, was 60 trace_id=req-09334f
+2015-07-27T00:00:55Z [CRITICAL] metadata-server: Connection pool exhausted, no available connections trace_id=req-37b924
+2015-07-27T00:01:25Z [ERROR] api-gateway: HTTP 500 Internal Server Error from metadata-server trace_id=req-371d98
+2015-07-27T00:01:55Z [WARN] storage-node: Latency spike detected, average response time increased to 60 seconds trace_id=req-09334f
+2015-07-27T00:02:25Z [ERROR] api-gateway: Timeout while waiting for metadata-server response trace_id=req-a41545
+2015-07-27T00:02:55Z [CRITICAL] metadata-server: Connection pool exhausted, no available connections trace_id=req-3ff3da
+2015-07-27T00:03:25Z [ERROR] api-gateway: HTTP 500 Internal Server Error from metadata-server trace_id=req-371d98
+2015-07-27T00:03:55Z [WARN] storage-node: Increased queue depth to 90 requests, was 80 trace_id=req-09334f
+2015-07-27T00:04:25Z [ERROR] api-gateway: Timeout while waiting for metadata-server response trace_id=req-ad91c7
+2015-07-27T00:04:55Z [CRITICAL] metadata-server: Connection pool exhausted, no available connections trace_id=req-37b924
+2015-07-27T00:05:25Z [ERROR] api-gateway: HTTP 500 Internal Server Error from metadata-server trace_id=req-a41545
+2015-07-27T00:05:55Z [WARN] storage-node: Latency spike detected, average response time increased to 70 seconds trace_id=req-09334f
+2015-07-27T00:07:25Z [ERROR] api-gateway: Timeout while waiting for metadata-server response trace_id=req-f8173f
+2015-07-27T00:07:55Z [CRITICAL] metadata-server: Connection pool exhausted, no available connections trace_id=req-3ff3da

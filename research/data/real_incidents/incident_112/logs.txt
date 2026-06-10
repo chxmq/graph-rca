@@ -1,8 +1,21 @@
-2020-04-21 08:00:00 [INFO] flowdock-messaging-service: Service started, listening on port 8001
-2020-04-21 09:00:00 [WARNING] flowdock-messaging-service: CPU usage increased to 75% due to high incoming traffic
-2020-04-21 10:30:00 [INFO] flowdock-messaging-service: Attempting database connection optimization
-2020-04-21 11:15:00 [ERROR] flowdock-messaging-service: Database connection failed, error code 1234
-2020-04-21 11:20:00 [WARNING] flowdock-messaging-service: Temporary fix applied to prevent further errors
-2020-04-21 23:45:00 [CRITICAL] flowdock-messaging-service: Application database hung due to high CPU usage, restarting in 5 seconds
-2020-04-22 08:00:00 [INFO] flowdock-messaging-service: Service restarted after 24 hours of downtime
-2020-04-22 12:00:00 [ERROR] admin: User data permanently lost during database hang
+2020-04-21T19:35:00Z [WARN] db-service: High CPU usage detected trace_id=req-d26ef8  
+2020-04-21T19:36:15Z [ERROR] app-backend: Database query timeout trace_id=req-d26ef8  
+2020-04-21T19:37:30Z [CRITICAL] web-gateway: HTTP 503 Service Unavailable trace_id=req-a6e91e  
+2020-04-21T19:38:45Z [ERROR] db-service: Connection pool exhausted trace_id=req-230828  
+2020-04-21T19:40:00Z [WARN] app-backend: Retry failed for database operation trace_id=req-d26ef8  
+2020-04-21T19:41:15Z [CRITICAL] web-gateway: HTTP 504 Gateway Timeout trace_id=req-a6e91e  
+2020-04-21T19:42:30Z [ERROR] db-service: Failed to execute query within timeout trace_id=req-230828  
+2020-04-21T19:43:45Z [WARN] app-backend: Health check failed for database connection trace_id=req-943a01  
+2020-04-21T19:45:00Z [CRITICAL] web-gateway: HTTP 503 Service Unavailable trace_id=req-943a01  
+2020-04-21T19:46:15Z [ERROR] db-service: Connection reset by peer trace_id=req-d26ef8  
+2020-04-21T19:47:30Z [CRITICAL] web-gateway: HTTP 500 Internal Server Error trace_id=req-a6e91e  
+2020-04-21T19:48:45Z [ERROR] app-backend: Failed to reconnect to database trace_id=req-230828  
+2020-04-21T19:50:00Z [WARN] db-service: High query latency detected trace_id=req-943a01  
+2020-04-21T19:51:15Z [CRITICAL] web-gateway: HTTP 503 Service Unavailable trace_id=req-d26ef8  
+2020-04-21T19:52:30Z [ERROR] app-backend: Database connection refused trace_id=req-a6e91e  
+2020-04-21T19:53:45Z [CRITICAL] web-gateway: HTTP 504 Gateway Timeout trace_id=req-230828  
+2020-04-21T19:55:00Z [ERROR] db-service: Exceeded maximum number of retries trace_id=req-943a01  
+2020-04-21T19:56:15Z [CRITICAL] web-gateway: HTTP 503 Service Unavailable trace_id=req-d26ef8  
+2020-04-21T19:57:30Z [ERROR] app-backend: Database operation failed trace_id=req-a6e91e  
+2020-04-21T19:58:45Z [CRITICAL] web-gateway: HTTP 500 Internal Server Error trace_id=req-230828  
+2020-04-21T19:59:00Z [ERROR] db-service: Connection reset by peer trace_id=req-943a01

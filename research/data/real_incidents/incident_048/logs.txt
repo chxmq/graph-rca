@@ -1,13 +1,17 @@
-2024-01-15 09:45:00 [INFO] autoscaling-service: Checking for traffic patterns starting check
-2024-01-15 09:50:00 [WARNING] autoscaling-service: Predictive algorithm indicating high demand in the next hour
-2024-01-15 09:55:00 [INFO] autoscaling-service: Adjusting capacity for service-a and service-b to handle expected surge
-2024-01-15 10:00:05 [INFO] autoscaling-service: Applying new scaling rules for service-a
-2024-01-15 10:00:20 [WARNING] autoscaling-service: Service-a is still experiencing high traffic, but capacity adjustment seems sufficient
-2024-01-15 10:05:30 [ERROR] autoscaling-service: Unexpected spike in demand for service-b, exceeding predicted capacity
-2024-01-15 10:06:15 [CRITICAL] autoscaling-service: Resource exhaustion detected for service-b, initiating manual scaling adjustments
-2024-01-15 10:07:00 [INFO] autoscaling-service: Manually scaling up service-b to prevent resource failure
-2024-01-15 10:08:30 [WARNING] autoscaling-service: Service-a is approaching capacity limits due to prolonged high traffic
-2024-01-15 10:09:45 [ERROR] autoscaling-service: Service-a resource exhaustion imminent, manual intervention required
-2024-01-15 10:10:00 [CRITICAL] autoscaling-service: Manual scaling adjustment for service-a applied, preventing resource failure
-2024-01-15 10:10:30 [INFO] incident-manager: Grab Incident (2024-01-15) triggered due to severity level exceeding threshold
-2024-01-15 10:10:45 [INFO] incident-manager: Root Cause identified as Predictive autoscaling algorithm miscalculated the required capacity for a surge in demand, leading to resource exhaustion
+2024-01-15T00:00:00Z [WARN] web-server: Request timed out trace_id=req-cb2ac4
+2024-01-15T00:00:02Z [ERROR] database: Connection refused trace_id=req-cb2ac4
+2024-01-15T00:00:04Z [CRITICAL] web-server: Failed to handle request due to timeout trace_id=req-cb2ac4
+2024-01-15T00:00:06Z [ERROR] load-balancer: Backend service unavailable trace_id=req-79a692
+2024-01-15T00:00:09Z [WARN] web-server: High request queue depth detected trace_id=req-cb2ac4
+2024-01-15T00:00:11Z [ERROR] database: Connection timeout trace_id=req-79a692
+2024-01-15T00:00:14Z [CRITICAL] web-server: Service unavailable, HTTP 503 trace_id=req-79a692
+2024-01-15T00:00:16Z [ERROR] load-balancer: Health check failed for web-server trace_id=req-dab32c
+2024-01-15T00:00:19Z [WARN] web-server: Latency increased to 3000ms trace_id=req-cb2ac4
+2024-01-15T00:00:21Z [ERROR] database: Connection pool exhausted trace_id=req-79a692
+2024-01-15T00:00:24Z [CRITICAL] web-server: Failed to connect to database, retrying trace_id=req-cb2ac4
+2024-01-15T00:00:29Z [ERROR] load-balancer: All backend instances unhealthy trace_id=req-dab32c
+2024-01-15T00:00:31Z [CRITICAL] web-server: Service temporarily down, HTTP 500 trace_id=req-701240
+2024-01-15T00:00:34Z [ERROR] database: Timeout waiting for connection trace_id=req-701240
+2024-01-15T00:00:36Z [CRITICAL] web-server: Unable to process request, HTTP 503 trace_id=req-4479cd
+2024-01-15T00:00:39Z [ERROR] load-balancer: Health check failed for all instances trace_id=req-dab32c
+2024-01-15T00:00:41Z [CRITICAL] web-server: High latency and frequent timeouts detected trace_id=req-701240

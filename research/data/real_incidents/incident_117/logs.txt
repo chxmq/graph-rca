@@ -1,11 +1,20 @@
-2023-12-31 14:30:00 [INFO] service-c: Received 500 requests in last 5 minutes, starting to show signs of overload
-2023-12-31 15:10:00 [WARNING] replication-a: Replication lag detected at 10 seconds
-2023-12-31 16:20:00 [INFO] admin-user: Deleting unnecessary directory /var/gitlab/data
-2023-12-31 16:25:05 [ERROR] service-d: Directory deletion failed, log rotation disabled
-2023-12-31 16:25:10 [CRITICAL] replication-a: Replication stopped due to disk space issues
-2023-12-31 16:30:00 [WARNING] admin-user: Realized mistake in deleting directory, 30 minutes too late
-2023-12-31 16:40:00 [INFO] service-e: Data replication attempted after directory restoration
-2023-12-31 17:05:00 [ERROR] admin-user: Database connection refused due to replication lag
-2023-12-31 18:30:00 [CRITICAL] service-f: Overloaded database causing replication failure, six hours of data loss detected
-2023-12-31 19:15:00 [INFO] support-team: Notified on incident and investigation started
-2023-12-31 20:10:00 [WARNING] service-g: Service availability affected due to database issues
+2023-10-15T14:00:00Z [WARN] gitlab-web: Slow response detected for /api/v4/projects/1/issues trace_id=req-9e8e32  
+2023-10-15T14:00:30Z [ERROR] postgresql: Connection timed out trace_id=req-9e8e32  
+2023-10-15T14:01:00Z [WARN] gitlab-sidekiq: Job failed to process within timeout trace_id=req-6f1451  
+2023-10-15T14:01:10Z [ERROR] redis: Command timed out after 500ms trace_id=req-6f1451  
+2023-10-15T14:02:00Z [CRITICAL] gitlab-web: HTTP 503 Service Unavailable trace_id=req-9e8e32  
+2023-10-15T14:02:15Z [ERROR] postgresql: Connection refused trace_id=req-75c0de  
+2023-10-15T14:02:30Z [WARN] gitlab-web: Slow response detected for /api/v4/projects/2/issues trace_id=req-75c0de  
+2023-10-15T14:03:00Z [ERROR] postgresql: Connection timed out trace_id=req-75c0de  
+2023-10-15T14:03:20Z [CRITICAL] gitlab-web: HTTP 503 Service Unavailable trace_id=req-75c0de  
+2023-10-15T14:04:00Z [WARN] gitlab-sidekiq: Retry limit reached for job trace_id=req-0e4932  
+2023-10-15T14:04:10Z [ERROR] redis: Connection reset by peer trace_id=req-0e4932  
+2023-10-15T14:05:00Z [CRITICAL] gitlab-web: HTTP 500 Internal Server Error trace_id=req-b3b41f  
+2023-10-15T14:05:30Z [WARN] gitlab-sidekiq: Slow job processing detected trace_id=req-1918a9  
+2023-10-15T14:06:00Z [ERROR] postgresql: Connection timed out trace_id=req-b3b41f  
+2023-10-15T14:06:15Z [CRITICAL] gitlab-web: HTTP 503 Service Unavailable trace_id=req-b3b41f  
+2023-10-15T14:07:00Z [ERROR] redis: Command timed out after 500ms trace_id=req-1918a9  
+2023-10-15T14:07:30Z [WARN] gitlab-web: Slow response detected for /api/v4/projects/3/issues trace_id=req-8fed3a  
+2023-10-15T14:08:00Z [ERROR] postgresql: Connection refused trace_id=req-8fed3a  
+2023-10-15T14:08:20Z [CRITICAL] gitlab-web: HTTP 503 Service Unavailable trace_id=req-8fed3a  
+2023-10-15T14:09:00Z [ERROR] postgresql: Connection timed out trace_id=req-0e4932

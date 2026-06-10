@@ -1,13 +1,16 @@
-2022-07-15 23:45:00 [INFO] grid-svc: Normal power demand detected for northern grid
-2022-07-15 23:50:00 [WARNING] islanding-mechanism: Islanding mechanism not enabled on western grid
-2022-07-15 23:55:00 [INFO] grid-svc: Power flow from western to eastern grid initiated
-2022-07-15 23:58:00 [ERROR] under-frequency-protection: Under-frequency protection triggered on northern grid
-2022-07-15 23:59:00 [CRITICAL] grid-svc: Circuit breaker tripped due to under-frequency protection, northern grid collapsing
-2022-07-16 08:45:00 [INFO] restoration-team: Grid reactivation initiated
-2022-07-16 09:30:00 [WARNING] under-frequency-protection: Under-frequency protection triggered on eastern grid
-2022-07-16 09:32:00 [ERROR] circuit-breaker: Circuit breaker tripped due to under-frequency protection, eastern grid collapsing
-2022-07-16 10:15:00 [INFO] restoration-team: Grid reactivation initiated
-2022-07-16 12:00:00 [WARNING] power-demand: Skewed electricity supply-demand profile detected for northern grid
-2022-07-16 12:05:00 [CRITICAL] islanding-mechanism: Islanding mechanism not enabled, grid failing again
-2022-07-16 13:45:00 [INFO] restoration-team: Grid reactivation initiated
-2022-07-16 17:30:00 [INFO] grid-svc: Grid restored to normal operation
+2023-07-15T21:45:00Z [WARN] load-balancer: Increased latency detected for requests to power-grid-monitoring-service latency=1200ms trace_id=req-ab65ad  
+2023-07-15T21:46:05Z [ERROR] circuit-breaker: Breaker tripped due to under-frequency protection service-name=circuit-breaker trace_id=req-efb9b9  
+2023-07-15T21:46:10Z [CRITICAL] power-grid-monitoring-service: Failed health check response-time=3000ms trace_id=req-ab65ad  
+2023-07-15T21:46:15Z [ERROR] load-balancer: Service unreachable - power-grid-monitoring-service error-code=503 trace_id=req-efb9b9  
+2023-07-15T21:47:00Z [INFO] alert-manager: Alert fired - High latency on power-grid-monitoring-service threshold-exceeded=true trace_id=req-ab65ad  
+2023-07-15T21:47:10Z [WARN] circuit-breaker: Breaker tripped again service-name=circuit-breaker trace_id=req-965e4b  
+2023-07-15T21:47:15Z [ERROR] load-balancer: Retry limit reached for power-grid-monitoring-service retries=3 trace_id=req-efb9b9  
+2023-07-15T21:48:00Z [CRITICAL] alert-manager: Alert fired - Service outage on power-grid-monitoring-service status-code=500 trace_id=req-efb9b9  
+2023-07-15T21:48:15Z [ERROR] circuit-breaker: Breaker tripped repeatedly service-name=circuit-breaker trace_id=req-965e4b  
+2023-07-15T21:49:00Z [WARN] power-grid-monitoring-service: Failed health check response-time=6000ms trace_id=req-ab65ad  
+2023-07-15T21:49:10Z [ERROR] load-balancer: Service timeout - power-grid-monitoring-service error-code=504 trace_id=req-965e4b  
+2023-07-15T21:49:15Z [CRITICAL] alert-manager: Alert fired - Critical service failure on power-grid-monitoring-service status-code=503 trace_id=req-965e4b  
+2023-07-15T21:50:00Z [ERROR] circuit-breaker: Breaker tripped multiple times service-name=circuit-breaker trace_id=req-6dce37  
+2023-07-15T21:50:10Z [CRITICAL] power-grid-monitoring-service: Service unresponsive response-time=10000ms trace_id=req-ab65ad  
+2023-07-15T21:51:00Z [ERROR] load-balancer: Maximum retries exceeded for power-grid-monitoring-service retries=5 trace_id=req-6dce37  
+2023-07-15T21:51:10Z [CRITICAL] alert-manager: Alert fired - Persistent service failure on power-grid-monitoring-service status-code=500 trace_id=req-6dce37

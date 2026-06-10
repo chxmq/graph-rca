@@ -1,13 +1,18 @@
-2020-11-25 14:30:00 [INFO] Kinesis Frontend Service: Scaling up to support increased traffic
-2020-11-25 14:35:00 [WARNING] Lambda Function 'lambda-123': Exceeded thread limit, waiting for OS thread limits to recover
-2020-11-25 14:40:00 [INFO] Cognito User Pool: New user authentication request received
-2020-11-25 14:41:00 [ERROR] Lambda Function 'lambda-123': Failed to authenticate user due to connection issues with Cognito
-2020-11-25 14:42:00 [CRITICAL] Kinesis Frontend Service: Scaling attempt failed, OS thread limits exceeded
-2020-11-25 14:45:00 [ERROR] Lambda Function 'lambda-123': Failed to handle request due to memory-intensive configuration
-2020-11-25 14:50:00 [WARNING] Cognito User Pool: Connection timeout occurred for user authentication request
-2020-11-25 14:55:00 [INFO] AWS System Log: Thread limit exceeded warning logged for Kinesis Frontend Service
-2020-11-25 15:00:00 [ERROR] Lambda Function 'lambda-123': Crashed due to OS thread limits exceeding capacity
-2020-11-25 15:05:00 [CRITICAL] Cognito User Pool: All services failed, user authentication request denied
-2020-11-25 15:10:00 [INFO] AWS System Log: Scaling attempt for Kinesis Frontend Service logged as failed operation
-2020-11-25 15:15:00 [WARNING] Lambda Function 'lambda-123': Memory-intensive configuration detected
-2020-11-25 15:20:00 [ERROR] Cognito User Pool: Failed to recover from memory-intensive configuration issue
+2020-11-25T05:15:00Z [WARN] stream-processing-service: Request timed out after 30 seconds trace_id=req-71e869  
+2020-11-25T05:15:02Z [ERROR] api-gateway: HTTP 504 Gateway Timeout received from backend trace_id=req-71e869  
+2020-11-25T05:15:05Z [CRITICAL] stream-processing-service: Excessive retry attempts detected for request trace_id=req-8cb659  
+2020-11-25T05:15:50Z [WARN] stream-processing-service: Request queue depth increased to 500 trace_id=req-7af43e  
+2020-11-25T05:15:55Z [ERROR] api-gateway: HTTP 503 Service Unavailable from backend service trace_id=req-7af43e  
+2020-11-25T05:16:10Z [CRITICAL] stream-processing-service: Latency spike detected at 120 seconds for request trace_id=req-b036b2  
+2020-11-25T05:17:00Z [ERROR] api-gateway: HTTP 500 Internal Server Error from backend service trace_id=req-b036b2  
+2020-11-25T05:17:50Z [WARN] stream-processing-service: Health check failed for instance i-321cba9876543210  
+2020-11-25T05:18:20Z [ERROR] api-gateway: HTTP 502 Bad Gateway from backend service trace_id=req-71e869  
+2020-11-25T05:18:50Z [CRITICAL] stream-processing-service: Critical failure in processing pipeline detected trace_id=req-8cb659  
+2020-11-25T05:19:20Z [ERROR] api-gateway: HTTP 504 Gateway Timeout received from backend trace_id=req-7af43e  
+2020-11-25T05:19:50Z [WARN] stream-processing-service: Request timed out after 60 seconds trace_id=req-faa5f3  
+2020-11-25T05:20:20Z [ERROR] api-gateway: HTTP 503 Service Unavailable from backend service trace_id=req-faa5f3  
+2020-11-25T05:20:50Z [CRITICAL] stream-processing-service: Latency spike detected at 180 seconds for request trace_id=req-b036b2  
+2020-11-25T05:21:20Z [ERROR] api-gateway: HTTP 500 Internal Server Error from backend service trace_id=req-faa5f3  
+2020-11-25T05:21:50Z [WARN] stream-processing-service: Health check failed for instance i-0987654321cba987  
+2020-11-25T05:22:20Z [ERROR] api-gateway: HTTP 504 Gateway Timeout received from backend trace_id=req-71e869  
+2020-11-25T05:22:50Z [CRITICAL] stream-processing-service: Critical failure in processing pipeline detected trace_id=req-8cb659

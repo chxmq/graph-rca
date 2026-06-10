@@ -1,14 +1,19 @@
-2023-12-31 23:45:00 [INFO] service-a: Postgres database connection established
-2023-12-31 23:45:10 [WARNING] service-c: High transaction volume detected (90% above average)
-2023-12-31 23:50:05 [INFO] service-d: Transaction ID generation enabled
-2023-12-31 23:50:15 [ERROR] service-e: Postgres error (code 22): Invalid transaction ID
-2023-12-31 23:50:20 [WARNING] service-f: Duplicate transaction ID detected in post-commit hook
-2023-12-31 23:51:00 [CRITICAL] service-g: Postgres database connection lost due to overflow
-2023-12-31 23:51:05 [INFO] service-h: Automated failover to standby database enabled
-2023-12-31 23:51:10 [WARNING] service-i: High error rate on primary database (60% above average)
-2023-12-31 23:52:00 [ERROR] service-j: Postgres error (code 22): Transaction ID wraparound detected
-2023-12-31 23:52:05 [INFO] service-k: Transaction ID generation disabled due to wraparound
-2023-12-31 23:55:00 [WARNING] service-l: Partial data loss reported due to transaction ID wraparound
-2023-12-31 23:55:15 [CRITICAL] service-m: Partial outage declared for affected services
-2024-01-01 08:30:00 [INFO] service-n: System monitoring indicates primary database is stable
-2024-01-01 09:00:00 [WARNING] service-o: Slow recovery time reported due to database rebuild
+2023-10-15T14:30:00Z [ERROR] db-service: Connection failed with error code 57P03 trace_id=req-5c8074  
+2023-10-15T14:30:05Z [WARN] app-server: Database connection retry attempt 1 for req-a8fc12 failed trace_id=req-5c8074  
+2023-10-15T14:30:10Z [ERROR] db-service: Connection failed with error code 57P03 trace_id=req-3dfda6  
+2023-10-15T14:30:15Z [WARN] app-server: Database connection retry attempt 1 for req-7g8b failed trace_id=req-3dfda6  
+2023-10-15T14:30:20Z [ERROR] db-service: Connection failed with error code 57P03 trace_id=req-75dfaa  
+2023-10-15T14:30:25Z [WARN] app-server: Database connection retry attempt 1 for req-9h0c failed trace_id=req-75dfaa  
+2023-10-15T14:30:30Z [ERROR] db-service: Connection failed with error code 57P03 trace_id=req-a7d7ba  
+2023-10-15T14:30:35Z [WARN] app-server: Database connection retry attempt 1 for req-1d2d failed trace_id=req-a7d7ba  
+2023-10-15T14:30:40Z [CRITICAL] db-service: Connection failed with error code 57P03 trace_id=req-5c8074  
+2023-10-15T14:30:45Z [ERROR] app-server: Database connection retry attempt 2 for req-a8fc12 failed trace_id=req-5c8074  
+2023-10-15T14:30:50Z [CRITICAL] db-service: Connection failed with error code 57P03 trace_id=req-3dfda6  
+2023-10-15T14:30:55Z [ERROR] app-server: Database connection retry attempt 2 for req-7g8b failed trace_id=req-3dfda6  
+2023-10-15T14:31:00Z [CRITICAL] db-service: Connection failed with error code 57P03 trace_id=req-75dfaa  
+2023-10-15T14:31:05Z [ERROR] app-server: Database connection retry attempt 2 for req-9h0c failed trace_id=req-75dfaa  
+2023-10-15T14:31:10Z [CRITICAL] db-service: Connection failed with error code 57P03 trace_id=req-a7d7ba  
+2023-10-15T14:31:15Z [ERROR] app-server: Database connection retry attempt 2 for req-1d2d failed trace_id=req-a7d7ba  
+2023-10-15T14:31:20Z [CRITICAL] health-checks: App-server health check failed due to database connectivity issues trace_id=req-4b68da  
+2023-10-15T14:31:25Z [WARN] app-server: Queue depth for email-sender increased to 150 items trace_id=req-48770b  
+2023-10-15T14:31:30Z [ERROR] db-service: Connection failed with error code 57P03 trace_id=req-48770b

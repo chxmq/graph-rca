@@ -1,15 +1,18 @@
-2022-04-05 07:38:00 [INFO] service-a: Initial startup sequence complete
-2022-04-05 07:38:03 [WARNING] service-c: Connection to database failed
-2022-04-05 07:38:10 [ERROR] service-d: Failed to establish API connection
-2022-04-05 07:38:15 [CRITICAL] service-e: Critical service failure - Database query timeout
-2022-04-05 07:38:20 [INFO] service-f: Attempting to recover from critical service failure
-2022-04-05 07:38:25 [WARNING] service-g: Error retrieving customer data
-2022-04-05 07:38:30 [ERROR] service-h: Failed to authenticate user session
-2022-04-05 07:38:35 [CRITICAL] service-i: Critical failure - Customer session lost
-2022-04-05 07:38:40 [INFO] support-team: Alert sent to incident response team
-2022-04-05 07:38:45 [WARNING] infrastructure: Service i is in critical state
-2022-04-05 07:38:50 [ERROR] infrastructure: Error propagating recovery attempts
-2022-04-05 07:39:00 [CRITICAL] infrastructure: Critical failure - Recovery attempts failed
-2022-04-06 08:00:00 [INFO] support-team: First set of customers restored
-2022-04-06 08:30:00 [WARNING] infrastructure: Service i is still in degraded state
-2022-04-18 14:00:00 [INFO] support-team: Final customer sites restored
+2022-04-05T07:38:01Z [ERROR] web-gateway: Request failed with status code 503 trace_id=req-723ce6
+2022-04-05T07:38:02Z [WARN] load-balancer: Backend server health check failed for backend srv-123 trace_id=req-f429fd
+2022-04-05T07:38:05Z [ERROR] web-gateway: Request timeout after 30 seconds trace_id=req-723ce6
+2022-04-05T07:38:10Z [CRITICAL] load-balancer: All backend servers marked as unhealthy trace_id=req-f429fd
+2022-04-05T07:38:15Z [ERROR] web-gateway: Request failed with status code 503 trace_id=req-e5cc67
+2022-04-05T07:38:20Z [WARN] database-proxy: High query latency detected, average response time increased to 60s trace_id=req-e6008e
+2022-04-05T07:39:01Z [CRITICAL] web-gateway: Failed to establish connection with backend server trace_id=req-e5cc67
+2022-04-05T07:39:05Z [ERROR] database-proxy: Connection pool exhausted, max connections reached trace_id=req-e6008e
+2022-04-05T07:40:01Z [WARN] web-gateway: High request queue depth detected, current queue length 200 trace_id=req-c59527
+2022-04-05T07:40:10Z [CRITICAL] database-proxy: Connection timeout after 60 seconds trace_id=req-e6008e
+2022-04-05T07:41:01Z [ERROR] web-gateway: Request failed with status code 503 trace_id=req-c59527
+2022-04-05T07:42:01Z [WARN] load-balancer: Backend server health check failed for backend srv-456 trace_id=req-005530
+2022-04-05T07:43:01Z [ERROR] web-gateway: Request timeout after 30 seconds trace_id=req-c59527
+2022-04-05T07:45:01Z [CRITICAL] load-balancer: All backend servers marked as unhealthy trace_id=req-005530
+2022-04-05T07:46:01Z [ERROR] web-gateway: Request failed with status code 503 trace_id=req-fd0ba5
+2022-04-05T07:47:01Z [WARN] database-proxy: High query latency detected, average response time increased to 80s trace_id=req-9d9c56
+2022-04-05T07:49:01Z [CRITICAL] web-gateway: Failed to establish connection with backend server trace_id=req-fd0ba5
+2022-04-05T07:50:01Z [ERROR] database-proxy: Connection pool exhausted, max connections reached trace_id=req-9d9c56

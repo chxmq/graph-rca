@@ -23,8 +23,10 @@ Usage:
   python regenerate_symptom_logs.py --model qwen2.5-coder:32b
   SMOKE_TEST=1 python regenerate_symptom_logs.py       # 3 incidents only
 
-After a full run, re-audit and then rerun experiments 07 and 08:
-  python research/tools/check_log_leakage.py
+After a full run, ALWAYS finish the pipeline (both steps are idempotent):
+  python research/tools/fix_log_artifacts.py      # dedupe trace ids, align dates
+  python research/tools/check_log_leakage.py      # gate: must exit 0
+Then rerun experiments 07 and 08:
   python research/experiments/07_multi_judge_validation/run_experiment.py
   python research/experiments/08_rag_real_world/run_experiment.py --judge all
 """
@@ -67,9 +69,14 @@ CONFIG = {
 
 
 def build_prompt(gt: dict, postmortem: str, attempt: int) -> str:
+    import hashlib
     root_cause = gt.get("root_cause", "")
     forbidden = sorted(content_words(root_cause))
     start_ts = gt.get("root_cause_timestamp") or "2024-03-01T10:00:00Z"
+    # Per-incident example id: a fixed example (e.g. req-4f2a) gets copied
+    # verbatim by the model into every incident, fingerprinting the dataset.
+    seed = hashlib.sha256(str(gt.get("incident_id", root_cause)).encode()).hexdigest()
+    example_id = f"req-{seed[:4]}"
 
     # On retries, harden the instructions rather than just rerolling.
     extra = ""
@@ -101,7 +108,7 @@ STRICT RULES:
    Use realistic service names for this technology stack. Mix INFO, WARN,
    ERROR, and CRITICAL levels as the incident escalates.
 6. Correlation keys: lines that belong to the same request flow MUST share
-   the same trace_id (e.g. trace_id=req-4f2a). Use 2-4 distinct trace_ids
+   the same trace_id (e.g. trace_id={example_id}). Use 2-4 distinct trace_ids
    across the incident so failures form connected chains, and keep
    service-name consistent for lines from the same component.
 7. Timestamps start near {start_ts} and advance over several minutes.
@@ -124,6 +131,25 @@ def strip_fences(text: str) -> str:
     return "\n".join(kept).strip() or text
 
 
+def _generate_with_retry(client: ollama.Client, model: str, prompt: str, retries: int = 4):
+    """Survive cold starts and transient disconnects of remote endpoints
+    (e.g. Modal scale-from-zero drops the first long-held connection)."""
+    delay = 15
+    for attempt in range(retries):
+        try:
+            return client.generate(
+                model=model,
+                prompt=prompt,
+                options={"temperature": CONFIG["temperature"]},
+            )
+        except Exception as e:
+            if attempt == retries - 1:
+                raise
+            print(f"    transient error ({type(e).__name__}: {e}); retrying in {delay}s...")
+            time.sleep(delay)
+            delay = min(delay * 2, 120)
+
+
 def regenerate_incident(client: ollama.Client, folder: Path, model: str) -> dict:
     gt = json.loads((folder / "ground_truth.json").read_text())
     postmortem = (folder / "postmortem.md").read_text() if (folder / "postmortem.md").exists() else ""
@@ -131,10 +157,10 @@ def regenerate_incident(client: ollama.Client, folder: Path, model: str) -> dict
 
     best = None  # (ratio, logs, reasons)
     for attempt in range(CONFIG["attempts"]):
-        response = client.generate(
-            model=model,
-            prompt=build_prompt(gt, postmortem, attempt),
-            options={"temperature": CONFIG["temperature"]},
+        response = _generate_with_retry(
+            client,
+            model,
+            build_prompt(gt, postmortem, attempt),
         )
         candidate = strip_fences(response["response"])
         ok, reasons = validate_candidate(

@@ -1,18 +1,16 @@
-2023-12-31 23:45:00 [INFO] Service-c: Received software update for GPS/GLONASS system
-2023-12-31 23:45:15 [WARNING] Service-d: Orbital mechanics calculations validation failed
-2023-12-31 23:45:30 [ERROR] Service-e: Incorrect orbital mechanics calculations detected
-2023-12-31 23:45:40 [INFO] IT-Team: Rolling back software update
-2023-12-31 23:45:50 [WARNING] Service-f: Update rollback failed due to dependencies not resolving
-2023-12-31 23:46:00 [ERROR] GPS/GLONASS System: Initial orbit calculation error reported by GLONASS module
-2023-12-31 23:46:10 [INFO] IT-Team: Re-attempting update rollback with manual intervention
-2023-12-31 23:46:20 [WARNING] Service-g: Update rollback failed again, manual intervention required
-2023-12-31 23:46:30 [ERROR] GPS/GLONASS System: GLONASS module reporting error in position calculation
-2023-12-31 23:46:40 [INFO] IT-Team: Manual intervention initiated to re-configure orbital mechanics calculations
-2023-12-31 23:46:50 [WARNING] Service-h: Re-configuration of orbital mechanics calculations not yet complete
-2023-12-31 23:47:00 [ERROR] GPS/GLONASS System: GLONASS module still reporting incorrect position calculations
-2023-12-31 23:47:10 [INFO] IT-Team: Reviewing system logs for potential causes of the issue
-2023-12-31 23:47:20 [WARNING] Service-i: Potential dependency conflict detected in update process
-2023-12-31 23:47:30 [ERROR] GPS/GLONASS System: GLONASS module error persisted after re-configuration
-2023-12-31 23:47:40 [INFO] IT-Team: Deciding to revert to previous version of the system
-2023-12-31 23:48:00 [WARNING] Service-j: Reversion process initiated but encountered unexpected errors
-2023-12-31 23:48:10 [ERROR] GPS/GLONASS System: GLONASS module continued to broadcast incorrect positions
+2023-10-15T14:30:00Z [WARN] position-service: Latency anomaly detected for GLONASS satellite positions trace_id=req-d62a77
+2023-10-15T14:31:00Z [ERROR] orbit-calculation-service: Failed to update orbital mechanics calculations for 3 satellites trace_id=req-ba9662
+2023-10-15T14:32:00Z [CRITICAL] navigation-system: Position mismatch detected between GPS and GLONASS coordinates trace_id=req-51b374
+2023-10-15T14:33:00Z [ERROR] satellite-sync-service: Timeout while syncing with GLONASS satellites trace_id=req-d62a77
+2023-10-15T14:34:00Z [WARN] health-checker: Health check failed for position-service, retrying... trace_id=req-180e16
+2023-10-15T14:35:00Z [ERROR] orbit-calculation-service: Failed to update orbital mechanics calculations for 5 satellites trace_id=req-ba9662
+2023-10-15T14:36:00Z [CRITICAL] navigation-system: Position mismatch detected between GPS and GLONASS coordinates trace_id=req-51b374
+2023-10-15T14:37:00Z [ERROR] satellite-sync-service: Timeout while syncing with GLONASS satellites trace_id=req-d62a77
+2023-10-15T14:38:00Z [WARN] health-checker: Health check failed for position-service, retrying... trace_id=req-180e16
+2023-10-15T14:39:00Z [ERROR] orbit-calculation-service: Failed to update orbital mechanics calculations for 7 satellites trace_id=req-ba9662
+2023-10-15T14:40:00Z [CRITICAL] navigation-system: Position mismatch detected between GPS and GLONASS coordinates trace_id=req-51b374
+2023-10-15T14:41:00Z [ERROR] satellite-sync-service: Timeout while syncing with GLONASS satellites trace_id=req-d62a77
+2023-10-15T14:42:00Z [WARN] health-checker: Health check failed for position-service, retrying... trace_id=req-180e16
+2023-10-15T14:43:00Z [ERROR] orbit-calculation-service: Failed to update orbital mechanics calculations for 9 satellites trace_id=req-ba9662
+2023-10-15T14:44:00Z [CRITICAL] navigation-system: Position mismatch detected between GPS and GLONASS coordinates trace_id=req-51b374
+2023-10-15T14:45:00Z [ERROR] satellite-sync-service: Timeout while syncing with GLONASS satellites trace_id=req-d62a77

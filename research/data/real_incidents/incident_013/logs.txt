@@ -1,13 +1,15 @@
-2023-01-31 12:30:00 [INFO] db-primary: Replication lag warning triggered due to high load
-2023-01-31 12:32:00 [WARNING] admin-user: Attempting to wipe staging database, using command 'rm -rf'
-2023-01-31 12:32:05 [ERROR] admin-user: Staging database wiped, but no error message displayed
-2023-01-31 12:32:10 [INFO] db-primary: Warning: primary database directory not found, assuming it was deleted by user
-2023-01-31 12:32:15 [WARNING] db-primary: Attempting to start replication with missing database directory
-2023-01-31 12:32:20 [ERROR] db-primary: Error starting replication due to missing database directory
-2023-01-31 12:32:25 [CRITICAL] db-primary: Database directory deletion detected on primary, system going down
-2023-01-31 12:32:30 [WARNING] alert-system: Alert sent to support team and administrators
-2023-01-31 12:32:35 [ERROR] db-secondary: Unable to connect to deleted database directory on primary
-2023-01-31 12:32:40 [CRITICAL] db-primary: System shutdown initiated due to database directory deletion
-2023-01-31 13:38:00 [INFO] db-secondary: Attempting to restore database from backup
-2023-01-31 13:40:00 [WARNING] db-secondary: Partial restoration of data, but merge requests and users still lost
-2023-01-31 14:30:00 [ERROR] admin-user: Realized deletion error occurred on primary, investigation underway
+2017-01-31T23:00:00Z [ERROR] postgresql: connection failed: server closed the connection unexpectedly trace_id=req-c3fcf6  
+2017-01-31T23:01:08Z [WARN] gitlab-workhorse: timeout waiting for response from upstream trace_id=req-aefaef  
+2017-01-31T23:03:31Z [ERROR] postgresql: could not connect to server: No such file or directory trace_id=req-6bc193  
+2017-01-31T23:04:57Z [CRITICAL] gitlab-rails: Failed to load resource, status code 500 trace_id=req-c3fcf6  
+2017-01-31T23:05:55Z [ERROR] postgresql: FATAL:  the database system is in recovery mode trace_id=req-828a13  
+2017-01-31T23:07:20Z [WARN] gitlab-sidekiq: Job failed to complete: PG::ConnectionBad: connection is closed trace_id=req-aefaef  
+2017-01-31T23:08:34Z [ERROR] redis: read error on connection to 127.0.0.1:6379 (Socket closed) trace_id=req-6bc193  
+2017-01-31T23:09:47Z [CRITICAL] gitlab-rails: ActiveRecord::StatementInvalid: PG::ConnectionBad: PQconsumeInput() SSL connection has been closed unexpectedly trace_id=req-c3fcf6  
+2017-01-31T23:11:05Z [ERROR] postgresql: could not connect to server: No such file or directory trace_id=req-f492d1  
+2017-01-31T23:12:31Z [WARN] gitlab-workhorse: timeout waiting for response from upstream trace_id=req-aefaef  
+2017-01-31T23:13:09Z [ERROR] postgresql: FATAL:  the database system is in recovery mode trace_id=req-6bc193  
+2017-01-31T23:14:45Z [CRITICAL] gitlab-rails: Failed to load resource, status code 500 trace_id=req-c3fcf6  
+2017-01-31T23:16:20Z [ERROR] postgresql: could not connect to server: No such file or directory trace_id=req-f492d1  
+2017-01-31T23:17:51Z [WARN] gitlab-sidekiq: Job failed to complete: PG::ConnectionBad: connection is closed trace_id=req-aefaef  
+2017-01-31T23:19:14Z [ERROR] redis: read error on connection to 127.0.0.1:6379 (Socket closed) trace_id=req-6bc193

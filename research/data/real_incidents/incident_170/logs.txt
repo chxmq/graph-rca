@@ -1,9 +1,18 @@
-2023-12-15 14:30:00 [INFO] service-a: Starting request handling for new user registration request
-2023-12-15 14:31:02 [WARNING] service-b: High CPU usage detected, 75% utilization
-2023-12-15 14:31:05 [INFO] service-c: Sending alert notification to operations team for high CPU usage in service-b
-2023-12-15 14:31:20 [WARNING] service-d: Database connection timeout due to increased load on service-b
-2023-12-15 14:32:00 [ERROR] service-e: Failed to validate user credentials, unable to process registration request
-2023-12-15 14:32:10 [INFO] service-f: Triggering exponential backoff for failed validation in service-e
-2023-12-15 14:33:30 [WARNING] service-g: Exponential backoff timer not firing due to insufficient backoff value in service-f
-2023-12-15 14:35:00 [ERROR] service-h: Timed out waiting for response from service-b, registration request failed
-2023-12-15 14:40:00 [CRITICAL] service-i: All services down, system unavailable due to cascading failure
+2023-10-05T14:00:00Z [INFO] user-service: Handling request for user profile trace_id=req-5e614e  
+2023-10-05T14:00:02Z [WARN] recommendation-engine: Failed to fetch recommendations, retrying... trace_id=req-5e614e  
+2023-10-05T14:00:04Z [ERROR] recommendation-engine: Fetch failed again, max retries reached trace_id=req-5e614e  
+2023-10-05T14:00:06Z [CRITICAL] user-service: Request timed out waiting for recommendations trace_id=req-5e614e  
+2023-10-05T14:00:08Z [INFO] payment-gateway: Processing transaction request trace_id=req-dfeaea  
+2023-10-05T14:00:10Z [WARN] recommendation-engine: Failed to fetch recommendations, retrying... trace_id=req-dfeaea  
+2023-10-05T14:00:12Z [ERROR] recommendation-engine: Fetch failed again, max retries reached trace_id=req-dfeaea  
+2023-10-05T14:00:14Z [CRITICAL] payment-gateway: Request timed out waiting for recommendations trace_id=req-dfeaea  
+2023-10-05T14:00:16Z [INFO] user-service: Handling request for user profile trace_id=req-b237a7  
+2023-10-05T14:00:18Z [WARN] recommendation-engine: Failed to fetch recommendations, retrying... trace_id=req-b237a7  
+2023-10-05T14:00:20Z [ERROR] recommendation-engine: Fetch failed again, max retries reached trace_id=req-b237a7  
+2023-10-05T14:00:22Z [CRITICAL] user-service: Request timed out waiting for recommendations trace_id=req-b237a7  
+2023-10-05T14:00:24Z [INFO] recommendation-engine: Queue depth is high, processing delayed trace_id=req-591979  
+2023-10-05T14:00:26Z [WARN] user-service: Latency spike detected in recommendations service trace_id=req-591979  
+2023-10-05T14:00:28Z [ERROR] recommendation-engine: Queue overflow, discarding requests trace_id=req-591979  
+2023-10-05T14:00:30Z [CRITICAL] user-service: Service unresponsive, retry mechanism failed trace_id=req-591979  
+2023-10-05T14:00:32Z [INFO] recommendation-engine: Health check failed, instance marked as unhealthy trace_id=req-7e52a3  
+2023-10-05T14:00:34Z [WARN] user-service: Recommendations service health check failure detected trace_id=req-7e52a3

@@ -1,16 +1,18 @@
-2023-12-31 21:45:10 [INFO] db-service: Initial database connection attempt made
-2023-12-31 21:45:20 [WARNING] auth-service: User login attempt failed due to database disconnection
-2023-12-31 21:45:30 [ERROR] db-service: Database error detected, retrying in 5 seconds
-2023-12-31 21:45:35 [INFO] auth-service: Attempting alternative authentication route
-2023-12-31 21:46:00 [WARNING] db-service: Database connection attempts exceeded capacity limit
-2023-12-31 21:46:05 [CRITICAL] db-service: Database failure, disconnection of users in progress
-2023-12-31 21:46:10 [INFO] monitoring-service: Alert triggered for large number of disconnections
-2023-12-31 21:46:15 [ERROR] db-service: Disconnection-reconnection process reached critical mass
-2023-12-31 21:47:00 [CRITICAL] db-service: Cascading connection failures detected, 5% users affected
-2023-12-31 21:47:05 [INFO] monitoring-service: Alert escalated to support team
-2023-12-31 21:48:00 [WARNING] db-service: Database capacity exhausted, further disconnections imminent
-2023-12-31 21:48:30 [ERROR] auth-service: User authentication attempts blocked due to database disconnection
-2023-12-31 21:49:00 [CRITICAL] db-service: Users unable to connect for up to 2 hours, incident ongoing
-2023-12-31 22:00:00 [INFO] support-team: Incident team notified and investigation underway
-2023-12-31 22:30:00 [WARNING] db-service: Database error rate stabilization, users slowly reconnecting
-2023-12-31 23:00:00 [INFO] monitoring-service: User connectivity restored to normal levels
+2018-12-08T12:34:15Z [WARN] database-service: High queue depth detected in write operations trace_id=req-8bd905  
+2018-12-08T12:34:30Z [ERROR] message-broker: Timeout while waiting for response from database-service trace_id=req-8bd905  
+2018-12-08T12:35:00Z [CRITICAL] frontend-service: Failed to fetch user data, HTTP 504 Gateway Timeout trace_id=req-8bd905  
+2018-12-08T12:35:05Z [WARN] database-service: Increased latency in read operations detected trace_id=req-e080bc  
+2018-12-08T12:35:20Z [ERROR] message-broker: Failed to send message, error code 503 Service Unavailable trace_id=req-e080bc  
+2018-12-08T12:36:10Z [INFO] health-checker: database-service failed health check trace_id=req-837266  
+2018-12-08T12:37:00Z [CRITICAL] frontend-service: User session timeout, unable to reconnect trace_id=req-3ed51f  
+2018-12-08T12:37:30Z [ERROR] message-broker: Failed to establish connection to database-service, retrying... trace_id=req-3ed51f  
+2018-12-08T12:38:00Z [WARN] database-service: Connection refused from frontend-service trace_id=req-7de022  
+2018-12-08T12:38:30Z [ERROR] message-broker: Exceeded maximum retries, giving up on sending message trace_id=req-7de022  
+2018-12-08T12:39:00Z [CRITICAL] frontend-service: Unable to establish connection to backend services trace_id=req-a2ecaf  
+2018-12-08T12:39:40Z [WARN] database-service: CPU usage at critical levels, slowing down operations trace_id=req-8bd905  
+2018-12-08T12:40:10Z [ERROR] message-broker: Failed to send message, error code 503 Service Unavailable trace_id=req-a2ecaf  
+2018-12-08T12:41:00Z [CRITICAL] frontend-service: HTTP 500 Internal Server Error while processing request trace_id=req-e080bc  
+2018-12-08T12:42:30Z [WARN] database-service: Memory usage above threshold, potential data loss risk trace_id=req-d431b9  
+2018-12-08T12:43:00Z [ERROR] message-broker: Failed to send message, error code 503 Service Unavailable trace_id=req-3ed51f  
+2018-12-08T12:44:00Z [CRITICAL] frontend-service: User session timeout, unable to reconnect trace_id=req-8e5cb1  
+2018-12-08T12:45:30Z [ERROR] message-broker: Failed to send message, error code 503 Service Unavailable trace_id=req-7de022

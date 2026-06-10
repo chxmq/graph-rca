@@ -1,0 +1,13 @@
+2023-12-31 14:30:00 [INFO] elastic-cloud-controller: Initialization complete, waiting for cluster heartbeat
+2023-12-31 14:32:00 [WARNING] eu-west-1-region-logger: High CPU usage detected in region logger process (70%)
+2023-12-31 14:35:00 [ERROR] eu-west-1-region-logger: Region logger process crashed due to high CPU
+2023-12-31 14:40:00 [INFO] eu-west-1-region-logger: Attempting to restart region logger process
+2023-12-31 14:42:00 [WARNING] elastic-cloud-controller: No cluster heartbeats received from eu-west-1 in 10 minutes
+2023-12-31 15:00:00 [INFO] elastic-cloud-controller: Notifying AWS support of cluster heartbeat failure
+2023-12-31 15:05:00 [CRITICAL] eu-west-1-region-logger: Region logger process failed to restart, services unavailable in region
+2023-12-31 15:20:00 [WARNING] elastic-cloud-controller: All deployments in eu-west-1 experiencing complete unavailability
+2023-12-31 15:25:00 [INFO] elastic-cloud-controller: Triggering emergency shutdown of all instances in eu-west-1
+2023-12-31 15:30:00 [ERROR] eu-west-1-region-logger: Region logger process still not responding, attempting manual intervention
+2023-12-31 16:20:00 [INFO] eu-west-1-region-logger: Manual intervention successful, region logger process restarted successfully
+2023-12-31 16:25:00 [WARNING] elastic-cloud-controller: Cluster heartbeats resumed in eu-west-1, services slowly coming back online
+2023-12-31 17:15:00 [INFO] elastic-cloud-controller: All services now fully operational in eu-west-1

@@ -1,13 +1,19 @@
-2023-12-15 14:30:00 [INFO] service-c: Initiating database query for user authentication
-2023-12-15 14:30:20 [WARNING] request_queue: Current queue size exceeds 80% threshold (60/75)
-2023-12-15 14:30:25 [INFO] service-d: Receiving high volume of login requests
-2023-12-15 14:31:00 [ERROR] request_queue: Queue size exceeds 90% threshold (72/80)
-2023-12-15 14:31:05 [WARNING] monitoring-system: Alert sent to on-call engineer for queue issues
-2023-12-15 14:32:20 [INFO] service-e: Database connection attempts exceeding rate limit
-2023-12-15 14:32:30 [ERROR] request_queue: Queue size exceeds 95% threshold (75/80)
-2023-12-15 14:33:00 [CRITICAL] monitoring-system: Request queue failure detected, triggering incident response
-2023-12-15 14:33:05 [INFO] service-f: Sending alert notification to incident response team
-2023-12-15 14:34:20 [WARNING] db-admin: Database capacity planning review is overdue
-2023-12-15 14:35:00 [ERROR] request_queue: Request queue crashes due to excessive load, causing database overload
-2023-12-15 14:35:10 [CRITICAL] monitoring-system: Incident confirmed, escalating severity to Critical
-2023-12-15 14:36:20 [INFO] db-admin: Reviewing and adjusting database capacity planning to mitigate future issues
+2023-10-15T14:30:00Z [WARN] api-gateway: Latency spike detected in response times trace_id=req-9f7bd8  
+2023-10-15T14:31:15Z [ERROR] user-service: Connection timeout while fetching user data trace_id=req-9f7bd8  
+2023-10-15T14:31:30Z [CRITICAL] auth-service: Failed to authenticate user, retrying... trace_id=req-4a641e  
+2023-10-15T14:32:00Z [ERROR] session-manager: Session creation failed with error code 500 trace_id=req-178732  
+2023-10-15T14:32:15Z [WARN] api-gateway: Latency spike detected in response times trace_id=req-4a641e  
+2023-10-15T14:33:00Z [ERROR] user-service: Connection timeout while fetching user data trace_id=req-178732  
+2023-10-15T14:33:30Z [CRITICAL] auth-service: Failed to authenticate user, retrying... trace_id=req-b6fcfc  
+2023-10-15T14:34:00Z [WARN] api-gateway: Latency spike detected in response times trace_id=req-178732  
+2023-10-15T14:34:30Z [ERROR] session-manager: Session creation failed with error code 500 trace_id=req-b6fcfc  
+2023-10-15T14:35:00Z [CRITICAL] auth-service: Failed to authenticate user, retrying... trace_id=req-9f7bd8  
+2023-10-15T14:36:00Z [ERROR] user-service: Connection timeout while fetching user data trace_id=req-4a641e  
+2023-10-15T14:37:00Z [CRITICAL] session-manager: Failed to create session, retry limit exceeded trace_id=req-b6fcfc  
+2023-10-15T14:38:00Z [ERROR] api-gateway: Request failed with status code 504 trace_id=req-9f7bd8  
+2023-10-15T14:39:00Z [CRITICAL] user-service: Connection timeout while fetching user data, retrying... trace_id=req-178732  
+2023-10-15T14:40:00Z [ERROR] auth-service: Failed to authenticate user with error code 503 trace_id=req-4a641e  
+2023-10-15T14:41:00Z [CRITICAL] session-manager: Session creation failed, system unresponsive trace_id=req-9f7bd8  
+2023-10-15T14:42:00Z [ERROR] api-gateway: Request failed with status code 504 trace_id=req-b6fcfc  
+2023-10-15T14:43:00Z [WARN] monitoring-alerts: High latency alert triggered for user-service trace_id=req-8188c4  
+2023-10-15T14:44:00Z [CRITICAL] api-gateway: Service degradation detected, circuit breaker activated trace_id=req-52d2cd

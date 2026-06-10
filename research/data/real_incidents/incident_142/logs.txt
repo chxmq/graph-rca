@@ -1,14 +1,15 @@
-2023-12-15 14:30:00 [INFO] 3PAR-svc: Initializing storage pool
-2023-12-15 14:31:00 [WARNING] 3PAR-svc: Warning: Disk space low, 10% remaining
-2023-12-15 14:32:00 [INFO] 3PAR-svc: Starting nightly backup
-2023-12-15 14:33:00 [ERROR] 3PAR-svc: Backup failed due to disk errors
-2023-12-15 14:34:00 [WARNING] 3PAR-svc: Warning: Storage pool not fully utilized
-2023-12-15 14:35:00 [INFO] ITOps-svc: Notifying storage team of issues
-2023-12-15 14:36:00 [ERROR] 3PAR-svc: Storage team notified, but no fix implemented
-2023-12-15 14:37:00 [CRITICAL] 3PAR-svc: System failure, 3PAR storage pool offline
-2023-12-15 14:38:00 [WARNING] 3PAR-svc: Warning: No backup available due to system failure
-2023-12-15 14:39:00 [INFO] ITOps-svc: Initiating emergency procedures
-2023-12-15 14:40:00 [ERROR] 3PAR-svc: Emergency procedures failed, system still offline
-2023-12-15 14:41:00 [CRITICAL] 3PAR-svc: System failure confirmed, catastrophic outage initiated
-2023-12-15 14:42:00 [INFO] ITOps-svc: Notification of incident sent to management
-2023-12-15 14:43:00 [WARNING] 3PAR-svc: Warning: No fix in sight, estimated downtime extended
+2023-10-05T14:30:00Z [ERROR] storage-array: Connection timeout to 3PAR system trace_id=req-f83517
+2023-10-05T14:30:05Z [WARN] storage-controller: High latency detected on volume operations trace_id=req-2cbceb
+2023-10-05T14:31:00Z [ERROR] data-access-layer: Failed to retrieve block from 3PAR, retrying... trace_id=req-f83517
+2023-10-05T14:31:10Z [CRITICAL] storage-array: Unable to connect to 3PAR system after multiple retries trace_id=req-2cbceb
+2023-10-05T14:31:20Z [ERROR] storage-controller: Volume operation failed with error code 500 trace_id=req-f83517
+2023-10-05T14:32:00Z [WARN] monitoring-service: Health check failure for storage-array component trace_id=req-95db4d
+2023-10-05T14:32:15Z [ERROR] data-access-layer: Exceeded maximum retries on 3PAR request trace_id=req-2cbceb
+2023-10-05T14:33:00Z [CRITICAL] storage-array: Critical error in communication with 3PAR system trace_id=req-95db4d
+2023-10-05T14:33:30Z [ERROR] application-service: Failed to write data, storage backend unavailable trace_id=req-977169
+2023-10-05T14:34:00Z [WARN] monitoring-service: High queue depth detected on storage-array trace_id=req-95db4d
+2023-10-05T14:35:00Z [ERROR] data-access-layer: Timeout during write operation to 3PAR system trace_id=req-977169
+2023-10-05T14:36:00Z [CRITICAL] storage-controller: Storage backend completely unresponsive, initiating failover protocol trace_id=req-95db4d
+2023-10-05T14:37:00Z [WARN] application-service: Data write operation failed with timeout trace_id=req-977169
+2023-10-05T14:38:00Z [ERROR] storage-array: Failed to establish connection to 3PAR, retrying... trace_id=req-95db4d
+2023-10-05T14:39:00Z [CRITICAL] data-access-layer: Unrecoverable error in communication with 3PAR system trace_id=req-2cbceb

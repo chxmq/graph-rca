@@ -1,15 +1,18 @@
-2024-02-20 14:30:00 [INFO] sql-server-primary: Service startup initiated
-2024-02-20 14:31:00 [WARNING] sql-server-primary: Warning: Index rebuild operation in progress on database 'StackExchangeDB'
-2024-02-20 14:32:00 [CRITICAL] sql-server-primary: Bugcheck detected: 0xc0000005 (Access violation) on SQL Server process
-2024-02-20 14:33:00 [INFO] sql-server-primary: Attempting to restart SQL Server process
-2024-02-20 14:34:00 [ERROR] site-a: Database connection failed, going into read-only mode
-2024-02-20 14:35:00 [WARNING] site-b: Site unavailable, attempting fallback to read-only mode
-2024-02-20 14:36:00 [CRITICAL] site-c: All sites unavailable, complete outage declared
-2024-02-20 14:37:00 [INFO] operations-team: Alert sent to ops team for investigation
-2024-02-20 14:38:00 [WARNING] sql-server-primary: SQL Server process failed to restart after 10 attempts
-2024-02-20 14:39:00 [ERROR] site-a: Read-only mode timeout, attempting to recover from read-only state
-2024-02-20 14:40:00 [INFO] site-b: Site recovery successful, read-write mode restored
-2024-02-20 14:41:00 [WARNING] sql-server-primary: Warning: Corruption detected in SQL Server database
-2024-02-20 14:42:00 [CRITICAL] sql-server-primary: Primary SQL Server process terminated due to corruption
-2024-02-20 14:43:00 [INFO] operations-team: Investigation team notified for further analysis
-2024-02-20 14:45:00 [ERROR] site-c: Site recovery attempt failed, permanent data loss suspected
+2017-01-24T19:35:10Z [WARN] sql-server: High transaction latency detected, current value: 6000ms trace_id=req-869513  
+2017-01-24T19:35:20Z [ERROR] web-app: Connection timeout to database, retrying... trace_id=req-c46bdd  
+2017-01-24T19:36:00Z [CRITICAL] sql-server: Failed to execute query within timeout limit, error code 1205 trace_id=req-347929  
+2017-01-24T19:36:10Z [ERROR] web-app: Database connection failed with status 500, retrying... trace_id=req-c46bdd  
+2017-01-24T19:36:30Z [WARN] sql-server: High queue depth detected, current value: 200 trace_id=req-73d541  
+2017-01-24T19:36:50Z [ERROR] web-app: Connection timeout to database, retrying... trace_id=req-493385  
+2017-01-24T19:37:00Z [CRITICAL] sql-server: Failed to execute query within timeout limit, error code 1205 trace_id=req-347929  
+2017-01-24T19:38:00Z [ERROR] web-app: Database connection failed with status 500, retrying... trace_id=req-493385  
+2017-01-24T19:38:10Z [WARN] sql-server: High transaction latency detected, current value: 6500ms trace_id=req-c17947  
+2017-01-24T19:38:30Z [ERROR] web-app: Connection timeout to database, retrying... trace_id=req-43c4c6  
+2017-01-24T19:39:00Z [CRITICAL] sql-server: Failed to execute query within timeout limit, error code 1205 trace_id=req-73d541  
+2017-01-24T19:39:30Z [ERROR] web-app: Database connection failed with status 500, retrying... trace_id=req-43c4c6  
+2017-01-24T19:40:00Z [CRITICAL] sql-server: High queue depth detected, current value: 300 trace_id=req-622dc1  
+2017-01-24T19:40:30Z [ERROR] web-app: Connection timeout to database, retrying... trace_id=req-5cbf63  
+2017-01-24T19:41:00Z [CRITICAL] sql-server: Failed to execute query within timeout limit, error code 1205 trace_id=req-622dc1  
+2017-01-24T19:41:30Z [ERROR] web-app: Database connection failed with status 500, retrying... trace_id=req-5cbf63  
+2017-01-24T19:42:00Z [WARN] sql-server: High transaction latency detected, current value: 7000ms trace_id=req-73d541  
+2017-01-24T19:43:00Z [CRITICAL] web-app: Unable to connect to database after multiple retries, shutting down... trace_id=req-493385

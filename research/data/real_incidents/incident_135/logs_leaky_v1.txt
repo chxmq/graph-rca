@@ -1,0 +1,21 @@
+Here's a semi-realistic log snippet for the incident:
+
+2023-12-15 14:30:00 [INFO] service-a: Started async worker processing queue
+2023-12-15 14:31:10 [WARNING] service-c: Async worker processing queue is growing rapidly (10% in 1 minute)
+2023-12-15 14:31:20 [INFO] service-d: Started request handling
+2023-12-15 14:32:30 [ERROR] service-b: Unhandled panic occurred while processing database query
+2023-12-15 14:32:40 [CRITICAL] service-a: Unhandled panic occurred while processing async worker queue, crashing the app
+2023-12-15 14:33:00 [WARNING] heroku: Heroku infrastructure is experiencing high latency (500ms+)
+2023-12-15 14:33:20 [INFO] service-e: Started error logging and monitoring
+2023-12-15 14:34:30 [ERROR] service-b: Unhandled panic occurred while processing database query (second occurrence in 2 minutes)
+2023-12-15 14:35:00 [CRITICAL] service-a: Unhandled panic occurred again, repeating the crash cycle
+2023-12-15 14:36:10 [INFO] incident.io: Incident triggered due to repeated crashes of service-a
+2023-12-15 14:37:20 [WARNING] heroku: Heroku infrastructure is still experiencing high latency (500ms+)
+2023-12-15 14:38:00 [INFO] service-f: Started process to mitigate async worker queue issues
+2023-12-15 14:40:10 [ERROR] service-b: Unhandled panic occurred while processing database query (third occurrence in 4 minutes)
+2023-12-15 14:41:20 [CRITICAL] service-a: Unhandled panic occurred again, repeating the crash cycle
+2023-12-15 14:42:30 [INFO] incident.io: Root cause identified as a bad event (poison pill) in the async workers queue.
+2023-12-15 14:45:00 [WARNING] service-c: Async worker processing queue is still growing rapidly (20% in 10 minutes)
+2023-12-15 14:46:00 [INFO] incident.io: Mitigations applied to improve reliability of web services, including catching corner cases of Go panic recovery and splitting work by type/class.
+2023-12-15 14:50:00 [INFO] service-g: Started post-mortem analysis
+2023-12-15 14:55:00 [INFO] incident.io: Incident resolved.

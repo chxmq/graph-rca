@@ -1,14 +1,18 @@
-2023-12-15 09:00:00 [INFO] database: Service startup complete
-2023-12-15 09:00:30 [WARNING] service-c: Cache miss, requesting database response
-2023-12-15 09:01:10 [INFO] database: Handling request from service-c
-2023-12-15 09:01:20 [ERROR] service-d: Request timed out due to high load
-2023-12-15 09:01:40 [WARNING] services-g, h, i: Increased cache size
-2023-12-15 09:02:00 [INFO] database: Reducing request frequency for service-c
-2023-12-15 09:02:30 [CRITICAL] services-g, h, i: All cached responses from database failed
-2023-12-15 09:03:00 [ERROR] application-server: No longer accepting requests due to high load
-2023-12-15 09:04:00 [WARNING] service-b: Application server failure detected
-2023-12-15 09:05:00 [CRITICAL] services-g, h, i: All online services unavailable
-2023-12-15 10:00:00 [INFO] operations-team: Database backend under heavy load
-2023-12-15 10:30:00 [WARNING] database: Request throttling detected
-2023-12-15 11:00:00 [ERROR] services-f, j: Throttling causing service failure
-2023-12-15 11:30:00 [CRITICAL] operations-team: Ongoing issue with BBC iPlayer services.
+2014-06-30T23:59:45Z [WARN] db-backend: Connection timeout detected trace_id=req-26333e  
+2014-06-30T23:59:47Z [ERROR] content-service: Failed to fetch data from database, retrying... trace_id=req-26333e  
+2014-06-30T23:59:55Z [WARN] db-backend: High query latency detected, current queue depth is 120 trace_id=req-63f2eb  
+2014-06-30T23:59:57Z [ERROR] user-auth-service: Database request timed out after 30 seconds trace_id=req-63f2eb  
+2014-07-01T00:00:02Z [CRITICAL] db-backend: Connection refused, maximum retries exceeded trace_id=req-52c5bb  
+2014-07-01T00:00:05Z [ERROR] video-streaming-service: Failed to retrieve content metadata from database trace_id=req-52c5bb  
+2014-07-01T00:00:10Z [WARN] db-backend: Slow query detected, execution time 60 seconds trace_id=req-2c2fff  
+2014-07-01T00:00:13Z [ERROR] news-service: Database operation failed with error code 1045 trace_id=req-2c2fff  
+2014-07-01T00:00:20Z [CRITICAL] db-backend: Queue depth reached critical level, current value is 200 trace_id=req-00bffa  
+2014-07-01T00:00:25Z [ERROR] user-profile-service: Failed to update user preferences, database connection timeout trace_id=req-00bffa  
+2014-07-01T00:00:30Z [WARN] db-backend: High latency warning, current response time 90 seconds trace_id=req-04bdc0  
+2014-07-01T00:00:35Z [ERROR] search-service: Database query failed with timeout error trace_id=req-04bdc0  
+2014-07-01T00:00:40Z [CRITICAL] db-backend: Connection pool exhausted, no available connections trace_id=req-a97806  
+2014-07-01T00:00:45Z [ERROR] recommendation-service: Database request failed, unable to fetch recommendations trace_id=req-a97806  
+2014-07-01T00:00:50Z [CRITICAL] db-backend: System overload, throttling active trace_id=req-a68fdc  
+2014-07-01T00:00:55Z [ERROR] content-service: Database connection error, retry limit exceeded trace_id=req-a68fdc  
+2014-07-01T00:01:00Z [CRITICAL] db-backend: High queue depth warning, current value is 250 trace_id=req-ccdb1f  
+2014-07-01T00:01:05Z [ERROR] user-auth-service: Database operation failed with error code 1045 trace_id=req-ccdb1f

@@ -1,0 +1,10 @@
+2015-10-08 14:45:00 [INFO] stripe-api: Started normal operation after initial load
+2015-10-08 15:00:30 [WARNING] stripe-api: Unexpected spike in API request rate, monitoring alert triggered
+2015-10-08 15:03:05 [INFO] stripe-api: Attempting to optimize database query performance
+2015-10-08 15:04:20 [ERROR] stripe-api: Database connection error - unable to access required dependency
+2015-10-08 15:04:25 [WARNING] stripe-support: Triggering manual database operation to resolve issue
+2015-10-08 15:04:40 [INFO] stripe-support: Executing manual database modification
+2015-10-08 15:05:00 [ERROR] stripe-api: Error encountered during database modification - database connection timeout
+2015-10-08 15:05:30 [CRITICAL] stripe-api: API request rate exceeded, service unavailable for 90 minutes
+2015-10-08 16:35:00 [INFO] stripe-support: Manual database operation completed successfully
+2015-10-08 17:30:00 [WARNING] stripe-monitoring: Service is now available again

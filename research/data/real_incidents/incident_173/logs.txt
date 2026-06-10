@@ -1,14 +1,16 @@
-2024-01-01 09:45:00 [INFO] Service-LoadBalancer: Initial load balancing configuration applied.
-2024-01-01 09:46:00 [INFO] Service-StackEgg: StackEgg enabled for all users.
-2024-01-01 09:47:00 [WARNING] Service-LoadBalancer: Increased load on load balancer 'service-a'.
-2024-01-01 09:48:00 [WARNING] Service-LoadBalancer: Load balancer 'service-b' experiencing slow response times.
-2024-01-01 09:50:00 [ERROR] Service-StackEgg: Unexpected increase in traffic to StackEgg endpoint.
-2024-01-01 09:51:00 [CRITICAL] Service-LoadBalancer: Load balancer failure due to excessive traffic.
-2024-01-01 09:52:00 [CRITICAL] Service-DDoS-Protection: DDoS attack detected and triggered mitigation.
-2024-01-01 09:53:00 [INFO] Service-Operations: Incident notification sent to operations team.
-2024-01-01 09:54:00 [WARNING] Service-WebServers: Web server 'web-server-1' experiencing high CPU usage.
-2024-01-01 09:55:00 [CRITICAL] Service-WebServers: Web server 'web-server-2' shutdown due to hardware failure.
-2024-01-01 10:00:00 [INFO] Service-CriticalServices: Critical services paused for maintenance.
-2024-01-01 10:02:00 [ERROR] Service-DDoS-Protection: DDoS attack still active after mitigation efforts.
-2024-01-01 10:03:00 [CRITICAL] Service-DDoS-Protection: DDoS protection system failure.
-2024-01-01 10:04:00 [INFO] Service-Operations: Incident response team on standby for further action.
+2023-10-05T14:30:00Z [INFO] nginx: Increased request queue depth detected trace_id=req-85e138  
+2023-10-05T14:30:15Z [WARN] api-gateway: Latency above threshold for 75% of requests trace_id=req-6a0a87  
+2023-10-05T14:31:00Z [ERROR] database: Connection timeout while executing query trace_id=req-85e138  
+2023-10-05T14:31:20Z [CRITICAL] frontend: HTTP 503 error for request trace_id=req-f87cce  
+2023-10-05T14:31:30Z [ERROR] api-gateway: Health check failed for backend service trace_id=req-28512a  
+2023-10-05T14:32:00Z [WARN] nginx: Rate limit exceeded, dropping requests trace_id=req-6a0a87  
+2023-10-05T14:32:15Z [ERROR] database: Failed to connect after 3 retries trace_id=req-f87cce  
+2023-10-05T14:32:30Z [INFO] frontend: Increased error rate detected, triggering alert trace_id=req-28512a  
+2023-10-05T14:33:00Z [CRITICAL] api-gateway: Service unavailable for 90% of requests trace_id=req-85e138  
+2023-10-05T14:33:15Z [ERROR] database: Slow query execution, exceeded timeout limit trace_id=req-6a0a87  
+2023-10-05T14:34:00Z [WARN] frontend: HTTP 408 request timeouts detected trace_id=req-f87cce  
+2023-10-05T14:34:15Z [CRITICAL] nginx: High number of failed health checks, service degraded trace_id=req-28512a  
+2023-10-05T14:35:00Z [ERROR] api-gateway: Backend communication failures, circuit breaker activated trace_id=req-85e138  
+2023-10-05T14:35:15Z [WARN] database: Connection pool exhausted, unable to handle new connections trace_id=req-6a0a87  
+2023-10-05T14:36:00Z [ERROR] frontend: Failed to load resource with status 500 trace_id=req-f87cce  
+2023-10-05T14:36:15Z [CRITICAL] nginx: Request queue overflow, dropping incoming requests trace_id=req-28512a

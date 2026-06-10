@@ -1,16 +1,15 @@
-2023-12-20 14:30:00 [INFO]twilio-sms-filtering: Initiating check on SMS filtering rules
-2023-12-20 14:31:00 [WARNING]twilio-sms-filtering: High filtering detected on AT&T network in US
-2023-12-20 14:32:00 [INFO]twilio-incident-management: Incident logged, category=Network, severity=Medium
-2023-12-20 14:33:00 [CRITICAL]twilio-sms-filtering: High filtering impacting SMS send failures to AT&T
-2023-12-20 14:34:00 [ERROR]twilio-api-gateway: Error sending SMS to AT&T, error message='Filtering blocked'
-2023-12-20 14:35:00 [INFO]twilio-incident-management: Sending alert notification to support team
-2023-12-20 14:36:00 [WARNING]twilio-operations: Twilio status page updated with new incident details
-2023-12-20 14:37:00 [CRITICAL]twilio-sms-filtering: High filtering still active on AT&T network in US, no resolution yet
-2023-12-20 14:38:00 [ERROR]twilio-api-gateway: Error retrying failed SMS send attempts to AT&T
-2023-12-20 14:40:00 [INFO]twilio-incident-management: Running diagnostic checks on Twilio infrastructure
-2023-12-20 14:41:00 [WARNING]twilio-diagnostics: High filtering still present on AT&T network in US, possible root cause identified
-2023-12-20 14:42:00 [CRITICAL]twilio-sms-filtering: Found high filtering on SMS rules towards AT&T network in US as root cause
-2023-12-20 14:43:00 [INFO]twilio-incident-management: Posting incident update to Twilio status page
-2023-12-20 14:44:00 [ERROR]twilio-api-gateway: Error sending SMS test message to AT&T, error message='Filtering blocked'
-2023-12-20 14:45:00 [WARNING]twilio-operations: Resolving incident, Twilio support team notified
-2023-12-20 14:46:00 [INFO]twilio-sms-filtering: High filtering lifted on SMS rules towards AT&T network in US
+2023-10-15T14:00:00Z [WARN] sms-gateway: Increased retry attempts for message delivery msg_id=msg-123 trace_id=req-a2e441
+2023-10-15T14:01:05Z [ERROR] sms-router: Timeout on SMS submission to AT&T gateway msg_id=msg-456 trace_id=req-483ef9
+2023-10-15T14:02:10Z [WARN] sms-gateway: Queue depth exceeded threshold service=at-andt-gw queue_depth=256 trace_id=req-a2e441
+2023-10-15T14:03:15Z [ERROR] sms-router: Failed to submit message, retry limit reached msg_id=msg-789 trace_id=req-483ef9
+2023-10-15T14:04:20Z [CRITICAL] health-checker: SMS delivery service unresponsive for AT&T gateway status_code=504 trace_id=req-c2dbc3
+2023-10-15T14:05:25Z [ERROR] sms-gateway: HTTP 503 error from AT&T gateway msg_id=msg-101 trace_id=req-c2dbc3
+2023-10-15T14:06:30Z [WARN] sms-router: Message delivery latency above acceptable threshold latency=8s msg_id=msg-102 trace_id=req-11e3a9
+2023-10-15T14:07:35Z [ERROR] sms-gateway: Failed to connect to AT&T gateway, socket timeout service=at-andt-gw trace_id=req-11e3a9
+2023-10-15T14:08:40Z [CRITICAL] alert-manager: Alert fired - SMS delivery failure rate exceeded threshold alert_name=sms_delivery_failure_rate trace_id=req-9ae6b4
+2023-10-15T14:09:45Z [ERROR] sms-router: Failed to submit message, retry limit reached msg_id=msg-103 trace_id=req-9ae6b4
+2023-10-15T14:10:50Z [WARN] sms-gateway: Increased retry attempts for message delivery msg_id=msg-104 trace_id=req-8f764a
+2023-10-15T14:11:55Z [ERROR] sms-router: Timeout on SMS submission to AT&T gateway msg_id=msg-105 trace_id=req-8f764a
+2023-10-15T14:13:00Z [CRITICAL] health-checker: SMS delivery service unresponsive for AT&T gateway status_code=504 trace_id=req-4efd7b
+2023-10-15T14:14:05Z [ERROR] sms-gateway: HTTP 503 error from AT&T gateway msg_id=msg-106 trace_id=req-4efd7b
+2023-10-15T14:15:10Z [WARN] sms-router: Message delivery latency above acceptable threshold latency=9s msg_id=msg-107 trace_id=req-6478e4

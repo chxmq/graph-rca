@@ -1,14 +1,15 @@
-2024-01-01 09:30:00 [INFO] dyno-12345: Checking for updates to apt
-2024-01-01 09:30:02 [WARNING] apt: Pinned packages failed update check
-2024-01-01 09:30:03 [INFO] dyno-12345: Attempting to resolve pinned package conflicts
-2024-01-01 09:30:05 [ERROR] dyno-12345: Write permission failures detected on /dev
-2024-01-01 09:30:07 [CRITICAL] dyno-12345: Write access denied to /dev due to apt update error
-2024-01-01 09:30:10 [INFO] ops-team: Alert sent to operations team for investigation
-2024-01-01 09:30:12 [WARNING] dyno-12345: Customer dynos affected by write permission failures
-2024-01-01 09:31:00 [INFO] devops-team: DevOps team notified and investigation underway
-2024-01-01 09:31:05 [ERROR] dyno-12345: Attempting to reset dyno permissions failed due to apt error
-2024-01-01 09:32:00 [CRITICAL] dyno-12345: Critical failure: write access denied to /dev persisting across reboots
-2024-01-01 09:32:02 [INFO] support-team: Support team notified for customer assistance
-2024-01-01 09:32:05 [WARNING] status-page: Incident message posted on Heroku Status Page
-2024-01-01 09:33:00 [INFO] ops-team: Operations team working to resolve issue with upstream apt update
-2024-01-01 09:34:00 [ERROR] dyno-12345: Customer dynos still unavailable due to write permission failures
+2018-05-01T00:00:00Z [ERROR] web-server: Failed to start process with error code 1 trace_id=req-53aeb9
+2018-05-01T00:00:02Z [WARN] database-proxy: Connection timeout detected for req-c3c0b4 trace_id=req-53aeb9
+2018-05-01T00:00:04Z [ERROR] web-server: Failed to bind to /dev/socket, retrying... trace_id=req-32cc38
+2018-05-01T00:00:06Z [CRITICAL] web-server: Maximum retries reached for process startup trace_id=req-32cc38
+2018-05-01T00:00:08Z [WARN] load-balancer: Backend service unavailable, retrying... trace_id=req-8947e0
+2018-05-01T00:00:10Z [ERROR] web-server: Failed to write logs to /dev/logfile, error code 13 trace_id=req-8947e0
+2018-05-01T00:00:13Z [WARN] database-proxy: Connection timeout detected for req-e1f2 trace_id=req-8947e0
+2018-05-01T00:00:16Z [CRITICAL] web-server: Process terminated due to previous errors trace_id=req-53aeb9
+2018-05-01T00:00:18Z [ERROR] web-server: Failed to start process with error code 13 trace_id=req-428ef6
+2018-05-01T00:00:21Z [WARN] database-proxy: Connection timeout detected for req-7g8h trace_id=req-428ef6
+2018-05-01T00:00:23Z [ERROR] web-server: Failed to bind to /dev/socket, retrying... trace_id=req-e96793
+2018-05-01T00:00:26Z [CRITICAL] web-server: Maximum retries reached for process startup trace_id=req-e96793
+2018-05-01T00:00:29Z [ERROR] load-balancer: Backend service unavailable, retrying... trace_id=req-412304
+2018-05-01T00:00:32Z [WARN] web-server: Failed to write logs to /dev/logfile, error code 13 trace_id=req-412304
+2018-05-01T00:00:35Z [CRITICAL] web-server: Process terminated due to previous errors trace_id=req-8947e0

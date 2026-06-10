@@ -1,9 +1,20 @@
-2025-10-28 18:34:00 [INFO] Migration-service: Live migration initiated
-2025-10-28 18:36:02 [WARNING] Monitoring-service: High CPU usage detected on monitoring server
-2025-10-28 19:00:01 [ERROR] Postgres-service: Table lock acquired by Postgres, connection slots exhausted
-2025-10-28 19:00:05 [INFO] Postgres-service: Attempting to release table lock
-2025-10-28 19:00:15 [WARNING] Postgres-service: Connection pool slots still exhausted after table lock release attempt
-2025-10-28 19:00:30 [ERROR] Postgres-service: Administrative connection slots overflow due to PgBouncer, system unavailable
-2025-10-28 19:05:00 [INFO] Postgres-service: Recovery process initiated to restore services
-2025-10-28 19:15:00 [INFO] Postgres-service: Table lock released after recovery process completed
-2025-10-28 20:00:00 [WARNING] Monitoring-service: Low CPU usage detected on monitoring server
+2025-10-28T18:34:00Z [INFO] pg-migrator: Starting migration process for service data-store trace_id=req-5476fd
+2025-10-28T18:36:05Z [WARN] api-gateway: Increased request latency detected, average response time 4.5s trace_id=req-c0d0de
+2025-10-28T18:36:10Z [ERROR] pg-migrator: Migration operation timed out after 120 seconds trace_id=req-5476fd
+2025-10-28T18:36:20Z [CRITICAL] frontend-web: Failed to load data, HTTP status code 504 Gateway Timeout trace_id=req-00d853
+2025-10-28T18:36:30Z [WARN] pg-migrator: Exceeded maximum retries for migration operation, retry count 3 trace_id=req-5476fd
+2025-10-28T18:37:00Z [ERROR] backend-worker: Connection refused to data-store service, error code ECONNREFUSED trace_id=req-4e4294
+2025-10-28T18:37:15Z [CRITICAL] api-gateway: Service health-check failed, all instances down trace_id=req-e55c17
+2025-10-28T18:38:00Z [WARN] pg-migrator: Migration process halted due to critical errors trace_id=req-5476fd
+2025-10-28T18:38:45Z [ERROR] frontend-web: Unable to fetch data, HTTP status code 503 Service Unavailable trace_id=req-1cc159
+2025-10-28T18:39:00Z [CRITICAL] backend-worker: Critical failure in processing queue, message stuck for over 5 minutes trace_id=req-4e4294
+2025-10-28T18:39:15Z [ERROR] pg-migrator: Failed to connect to data-store after multiple attempts, error code EHOSTUNREACH trace_id=req-5476fd
+2025-10-28T18:40:00Z [WARN] frontend-web: Increased 5xx errors detected, rate of 15 requests per minute trace_id=req-00d853
+2025-10-28T18:40:30Z [ERROR] backend-worker: Data processing pipeline stalled, unable to acquire lock on data-store trace_id=req-4e4294
+2025-10-28T18:41:00Z [CRITICAL] api-gateway: High error rate detected, triggering auto-scaling event trace_id=req-e55c17
+2025-10-28T18:41:30Z [ERROR] frontend-web: Failed to submit data, HTTP status code 504 Gateway Timeout trace_id=req-1cc159
+2025-10-28T18:42:00Z [WARN] pg-migrator: Migration process resumed but still encountering timeouts trace_id=req-5476fd
+2025-10-28T18:43:00Z [ERROR] backend-worker: Processing queue depth exceeded critical threshold, current depth 256 trace_id=req-4e4294
+2025-10-28T18:44:00Z [CRITICAL] frontend-web: System response times degraded to over 30 seconds trace_id=req-c0d0de
+2025-10-28T18:45:00Z [INFO] pg-migrator: Migration completed successfully, releasing locks trace_id=req-5476fd
+2025-10-28T18:46:00Z [INFO] api-gateway: Service health-checks restored to normal operation trace_id=req-e55c17

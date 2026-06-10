@@ -1,0 +1,12 @@
+2024-01-01 09:00:00 [INFO] service-c: Starting data retrieval
+2024-01-01 09:00:10 [WARNING] db-backend: Increased query load by 25%
+2024-01-01 09:00:20 [INFO] service-d: Request handling started
+2024-01-01 09:00:30 [ERROR] service-e: Database connection timeout
+2024-01-01 09:00:40 [WARNING] service-f: Cache miss rate exceeded 50%
+2024-01-01 09:00:45 [CRITICAL] db-backend: Throttling detected, services without local caching failing
+2024-01-01 09:00:50 [ERROR] web-service: Request handling failed due to database timeout
+2024-01-01 09:01:00 [INFO] service-g: Service restarted with increased cache size
+2024-01-01 09:01:10 [WARNING] db-backend: Database load remains high
+2024-01-01 09:01:20 [ERROR] api-service: Connection to database backend timed out
+2024-01-01 09:01:30 [CRITICAL] db-backend: Overload causing throttling, services unavailable
+2024-01-01 09:02:00 [INFO] incident-manager: Incident logged and notified teams

@@ -1,11 +1,16 @@
-2023-12-15 14:30:00 [INFO] therac-25-monitor: Initial system check, all services online.
-2023-12-15 14:30:10 [WARNING] therac-25-service-a: Error in calculation module, warning reported.
-2023-12-15 14:30:20 [INFO] therac-25-monitor: Service-a error still present after restart.
-2023-12-15 14:30:30 [ERROR] therac-25-service-b: Database query failed due to incorrect indexing.
-2023-12-15 14:31:00 [WARNING] therac-25-monitor: Multiple errors reported, system stability at risk.
-2023-12-15 14:31:10 [CRITICAL] therac-25-service-c: Failure in radiation dose calculation.
-2023-12-15 14:31:20 [ERROR] therac-25-error-handler: Exception detected, attempting to log and notify administrators.
-2023-12-15 14:31:30 [WARNING] therac-25-administrators: Multiple critical errors reported, system failure imminent.
-2023-12-15 14:32:00 [CRITICAL] therac-25-system: System failure due to uncorrectable programming error.
-2023-12-15 14:32:10 [INFO] therac-25-monitor: System shutdown initiated, all services offline.
-2023-12-15 14:32:20 [ERROR] therac-25-error-handler: Root cause confirmed - concurrent programming errors detected.
+2023-10-05T14:23:05Z [WARN] treatment-planner: High latency in dose calculation response trace_id=req-945cf7  
+2023-10-05T14:23:10Z [ERROR] treatment-delivery: Failed to deliver dose: TimeoutError trace_id=req-945cf7  
+2023-10-05T14:23:15Z [CRITICAL] safety-monitor: Safety check failed for req-913bfd, retrying... trace_id=req-945cf7  
+2023-10-05T14:23:20Z [ERROR] treatment-planner: Dose calculation service unavailable, HTTP 503 trace_id=req-6b1798  
+2023-10-05T14:23:25Z [WARN] treatment-delivery: Detected unexpected queue depth of 15 items in dose delivery pipeline trace_id=req-6b1798  
+2023-10-05T14:23:30Z [ERROR] safety-monitor: Safety check failed for req-6b8c, retrying... trace_id=req-6b1798  
+2023-10-05T14:23:35Z [CRITICAL] treatment-planner: Critical error in dose calculation logic, aborting request trace_id=req-25eee8  
+2023-10-05T14:23:40Z [ERROR] treatment-delivery: Dose delivery failed for req-9d7e, HTTP 400 Bad Request trace_id=req-25eee8  
+2023-10-05T14:23:45Z [WARN] safety-monitor: Multiple consecutive safety check failures detected trace_id=req-25eee8  
+2023-10-05T14:23:50Z [CRITICAL] treatment-planner: System entering maintenance mode due to repeated calculation errors trace_id=req-25fb76  
+2023-10-05T14:23:55Z [ERROR] treatment-delivery: Failed to deliver dose for req-9d7e, HTTP 500 Internal Server Error trace_id=req-25eee8  
+2023-10-05T14:24:00Z [CRITICAL] safety-monitor: Safety system disabled due to excessive errors, manual intervention required trace_id=req-25fb76  
+2023-10-05T14:24:05Z [ERROR] treatment-planner: Dose calculation service still unavailable, HTTP 503 trace_id=req-2479b3  
+2023-10-05T14:24:10Z [WARN] treatment-delivery: Detected unexpected queue depth of 20 items in dose delivery pipeline trace_id=req-2479b3  
+2023-10-05T14:24:15Z [CRITICAL] safety-monitor: Safety check failed for req-bf3d, retrying... trace_id=req-2479b3  
+2023-10-05T14:24:20Z [ERROR] treatment-planner: Critical error in dose calculation logic, aborting request trace_id=req-2479b3

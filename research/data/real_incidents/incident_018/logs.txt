@@ -1,12 +1,15 @@
-2023-09-20 08:45:00 [INFO] policy-manager: Applying new security policy update - "AllowAccessToAdminConsole"
-2023-09-20 08:46:00 [WARNING] service-a: Failed to authenticate user "john.doe" due to unknown error
-2023-09-20 08:47:00 [INFO] policy-manager: Reviewing policy changes for potential conflicts
-2023-09-20 08:48:00 [ERROR] service-b: Unexpected request from IP address 192.168.1.100 (blocked by new policy)
-2023-09-20 08:49:00 [WARNING] audit-system: Detected potential security threat - user "john.doe" is unable to access console
-2023-09-20 08:50:00 [INFO] system-admin: Reviewing logs for unusual activity patterns
-2023-09-20 08:51:00 [CRITICAL] service-a: GLOBAL LOGIN DISRUPTION DETECTED - Unable to authenticate user "jane.smith"
-2023-09-20 08:52:00 [ERROR] policy-manager: Misconfigured security policy update causing global login disruption
-2023-09-20 08:53:00 [INFO] incident-response: Notifying Salesforce support team of global login disruption
-2023-09-20 08:54:00 [WARNING] service-b: Request from IP address 192.168.1.100 (still blocked by new policy)
-2023-09-20 08:55:00 [INFO] system-admin: Rolling back security policy update to prevent further damage
-2023-09-20 08:56:00 [CRITICAL] service-a: GLOBAL LOGIN FUNCTIONALITY RESTORED - User "jane.smith" successfully authenticated
+2023-09-20T14:48:00Z [ERROR] auth-service: Failed to authenticate user with ID 12345 status_code=403 trace_id=req-69741d  
+2023-09-20T14:48:01Z [WARN] web-gateway: High latency detected for request from IP 192.168.1.1 duration=1500ms trace_id=req-7a6283  
+2023-09-20T14:48:02Z [ERROR] auth-service: Failed to authenticate user with ID 67890 status_code=403 trace_id=req-f978b3  
+2023-09-20T14:48:05Z [WARN] web-gateway: Timeout while waiting for response from auth-service duration=5000ms trace_id=req-69741d  
+2023-09-20T14:48:07Z [CRITICAL] api-server: Failed to process request due to timeout status_code=504 trace_id=req-7a6283  
+2023-09-20T14:48:10Z [ERROR] auth-service: Failed to authenticate user with ID 112233 status_code=403 trace_id=req-f978b3  
+2023-09-20T14:48:15Z [WARN] web-gateway: Multiple timeouts detected from IP 192.168.1.1 count=5 duration=7000ms trace_id=req-3dbbd7  
+2023-09-20T14:48:20Z [ERROR] auth-service: Failed to authenticate user with ID 445566 status_code=403 trace_id=req-69741d  
+2023-09-20T14:48:25Z [CRITICAL] api-server: System overload detected due to failed requests queue_depth=100 trace_id=req-7a6283  
+2023-09-20T14:48:30Z [ERROR] auth-service: Failed to authenticate user with ID 778899 status_code=403 trace_id=req-f978b3  
+2023-09-20T14:48:35Z [WARN] web-gateway: High latency detected for request from IP 192.168.1.2 duration=1500ms trace_id=req-3dbbd7  
+2023-09-20T14:48:40Z [ERROR] auth-service: Failed to authenticate user with ID 13579 status_code=403 trace_id=req-69741d  
+2023-09-20T14:48:45Z [CRITICAL] api-server: Failed to process request due to timeout status_code=504 trace_id=req-7a6283  
+2023-09-20T14:48:50Z [ERROR] auth-service: Failed to authenticate user with ID 24680 status_code=403 trace_id=req-f978b3  
+2023-09-20T14:48:55Z [WARN] web-gateway: Multiple timeouts detected from IP 192.168.1.2 count=5 duration=7000ms trace_id=req-3dbbd7
