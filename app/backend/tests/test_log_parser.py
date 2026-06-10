@@ -34,9 +34,27 @@ def mock_ollama():
 @pytest.mark.asyncio
 async def test_parse_valid_log(mock_ollama):
     parser = LogParser()
-    result = await parser.parse_log_async("2023-01-01 INFO Test message")
+    # Input line whose content matches the mocked LLM message ("line 0"),
+    # so the contamination guard accepts the LLM's extraction as-is.
+    result = await parser.parse_log_async("2023-01-01 INFO line 0")
     assert len(result.log_chain) == 1
     assert result.log_chain[0].message == "line 0"
+
+
+@pytest.mark.asyncio
+async def test_invented_message_triggers_regex_fallback(mock_ollama):
+    """An LLM message unrelated to the source line (e.g. a copied few-shot
+    example) must be replaced by the deterministic regex fallback."""
+    parser = LogParser()
+    raw = "2023-01-01T00:00:00Z [ERROR] db-service: Connection pool exhausted trace_id=req-abc123"
+    result = await parser.parse_log_async(raw)
+    assert len(result.log_chain) == 1
+    entry = result.log_chain[0]
+    assert "Connection pool exhausted" in entry.message
+    assert entry.level == "ERROR"
+    assert entry.component == "db-service"
+    assert entry.trace_id == "req-abc123"
+    assert any("fallback" in e for e in result.parse_errors)
 
 
 @pytest.mark.asyncio

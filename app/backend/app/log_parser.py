@@ -1,14 +1,64 @@
 import ollama
 import logging
 import json
+import re
 import asyncio
 from typing import Callable, Awaitable
 from app.models import LogEntry, LogChain
-from app.config import OLLAMA_HOST, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_TEMPERATURE
+from app.config import OLLAMA_HOST, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_TEMPERATURE, OLLAMA_NUM_CTX
 from app._ollama import response_text
 from app.prompts import PARSER_SYSTEM_PROMPT, parser_batch_prompt
 
 logger = logging.getLogger(__name__)
+
+_TS_PREFIX_RE = re.compile(
+    r"^(\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?)"
+)
+_LEVEL_RE = re.compile(r"\b(INFO|WARN|WARNING|ERROR|CRITICAL|FATAL|DEBUG)\b")
+_CORR_RE = re.compile(r"\b(trace_id|request_id)=([\w.-]+)")
+_COMPONENT_RE = re.compile(r"\]\s+([\w.-]+):")
+
+
+def _message_overlap(message: str, raw_line: str) -> float:
+    """Fraction of the parsed message's content words present in the source
+    line.  Low overlap means the model invented the message (e.g. copied the
+    prompt's few-shot example) instead of extracting it."""
+    words = set(re.findall(r"[a-z0-9]{3,}", message.lower()))
+    if not words:
+        return 0.0
+    raw_words = set(re.findall(r"[a-z0-9]{3,}", raw_line.lower()))
+    return len(words & raw_words) / len(words)
+
+
+def _regex_fallback_entry(raw_line: str) -> LogEntry | None:
+    """Deterministic extraction for lines the LLM mangled.  Only handles the
+    common `<iso-ts> [LEVEL] component: message k=v` shape; returns None when
+    the line doesn't fit, so the caller records a parse error instead."""
+    ts_m = _TS_PREFIX_RE.match(raw_line)
+    if not ts_m:
+        return None
+    rest = raw_line[ts_m.end():]
+    lvl_m = _LEVEL_RE.search(rest)
+    comp_m = _COMPONENT_RE.search(rest)
+    corr = dict()
+    for key, value in _CORR_RE.findall(rest):
+        corr.setdefault(key, value)
+    message = _CORR_RE.sub("", rest)
+    message = _LEVEL_RE.sub("", message, count=1)
+    if comp_m:
+        message = message.replace(comp_m.group(0), " ", 1)
+    message = message.strip(" []:-\t")
+    try:
+        return LogEntry(
+            timestamp=ts_m.group(1),
+            message=message or raw_line,
+            level=lvl_m.group(1) if lvl_m else "INFO",
+            component=comp_m.group(1) if comp_m else "",
+            trace_id=corr.get("trace_id", ""),
+            request_id=corr.get("request_id", ""),
+        )
+    except Exception:
+        return None
 
 
 class LogParser:
@@ -18,7 +68,7 @@ class LogParser:
             self.timeout = timeout
             self.batch_size = batch_size
             self.ollama_async_client = ollama.AsyncClient(host=OLLAMA_HOST, timeout=timeout)
-            self.ollama_options = ollama.Options(temperature=OLLAMA_TEMPERATURE)
+            self.ollama_options = ollama.Options(temperature=OLLAMA_TEMPERATURE, num_ctx=OLLAMA_NUM_CTX)
             self.system_prompt = PARSER_SYSTEM_PROMPT
         except (ConnectionError, ConnectionRefusedError) as e:
             raise ConnectionError(
@@ -119,8 +169,8 @@ class LogParser:
                             parse_errors=parse_errors,
                         )
                     except Exception as e:
-                        logger.error("  [✗] Failed batch %d parse: %s", batch_idx + 1, e)
-                        parse_errors.extend([f"line {line_no}: {e}" for line_no, _ in batch])
+                        logger.error("  [✗] Failed batch %d parse: %s: %s", batch_idx + 1, type(e).__name__, e)
+                        parse_errors.extend([f"line {line_no}: {type(e).__name__}: {e}" for line_no, _ in batch])
                     finally:
                         processed += 1
                         if progress_callback:
@@ -161,6 +211,14 @@ class LogParser:
             raise ValueError("Empty response from language model for batch")
 
         parsed = json.loads(llm_text)
+        # Small models under format="json" strongly prefer a top-level object;
+        # the prompt asks for {"entries": [...]} to work with that bias, but a
+        # bare array (or any single-key object wrapping an array) is accepted.
+        if isinstance(parsed, dict):
+            if isinstance(parsed.get("entries"), list):
+                parsed = parsed["entries"]
+            elif len(parsed) == 1 and isinstance(next(iter(parsed.values())), list):
+                parsed = next(iter(parsed.values()))
         if not isinstance(parsed, list):
             raise ValueError("Batch response is not a JSON array")
 
@@ -168,6 +226,24 @@ class LogParser:
         for i, item in enumerate(parsed):
             try:
                 entry = LogEntry.model_validate(item)
+                # Contamination guard: a parsed message whose words don't
+                # appear in its source line was invented by the model.
+                # Recover deterministically from the raw line instead.
+                if i < len(indexed_batch):
+                    raw_line = indexed_batch[i][1]
+                    if _message_overlap(entry.message, raw_line) < 0.34:
+                        fallback = _regex_fallback_entry(raw_line)
+                        line_no = indexed_batch[i][0]
+                        if fallback is not None:
+                            parse_errors.append(
+                                f"line {line_no}: LLM message did not match source; regex fallback used"
+                            )
+                            entry = fallback
+                        else:
+                            parse_errors.append(
+                                f"line {line_no}: LLM message did not match source and no fallback fit"
+                            )
+                            continue
                 valid_entries.append(entry)
                 line_no = indexed_batch[i][0] if i < len(indexed_batch) else "?"
                 logger.debug("  [✓] Parsed line %s: %s - %s...", line_no, entry.level, entry.message[:50])

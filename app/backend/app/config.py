@@ -32,6 +32,10 @@ OLLAMA_MODEL: str = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
 EMBEDDING_MODEL: str = os.environ.get("EMBEDDING_MODEL", "nomic-embed-text")
 OLLAMA_TIMEOUT: float = _get_float("OLLAMA_TIMEOUT", 30.0)
 OLLAMA_TEMPERATURE: float = _get_float("OLLAMA_TEMPERATURE", 0.2)
+# Parser batches (16 lines in, 11 JSON fields out per line) overflow Ollama's
+# default 2048-token context, truncating output mid-array and failing the
+# whole batch.  8192 leaves comfortable headroom.
+OLLAMA_NUM_CTX: int = _get_int("OLLAMA_NUM_CTX", 8192)
 
 # --- MongoDB ---
 MONGO_URI: str = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")

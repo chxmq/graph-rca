@@ -11,23 +11,23 @@ PARSER_SYSTEM_PROMPT = (
 
 
 def parser_batch_prompt(lines: list[str]) -> str:
-    return f"""Parse the following log entries into a JSON array.
+    return f"""Parse the following log entries into JSON.
 
-Return an array where each element has:
-- timestamp (ISO 8601 format)
-- message
-- level
-- pid
-- component
-- error_code
-- username
-- ip_address
-- group
-- trace_id
-- request_id
+Return a JSON object with a single key "entries" whose value is an array
+containing exactly one object per input line, in the same order as the
+input.  Do NOT write code, do NOT add commentary.
 
-Return empty strings for missing fields.
-Keep output order exactly the same as input order.
+Each entry object has exactly these fields (empty string when absent):
+timestamp (ISO 8601), message, level, pid, component, error_code,
+username, ip_address, group, trace_id, request_id
+
+Every field value MUST be extracted from the corresponding input line —
+never invent values and never reuse values from the example below.
+
+Example. For the example input line:
+  "2031-05-09 03:14:15 example-svc FOO bar baz qux id=x-0000"
+the output would be:
+{{"entries": [{{"timestamp": "2031-05-09T03:14:15Z", "message": "bar baz qux", "level": "FOO", "pid": "", "component": "example-svc", "error_code": "", "username": "", "ip_address": "", "group": "", "trace_id": "x-0000", "request_id": ""}}]}}
 
 Input log lines:
 {json.dumps(lines, ensure_ascii=True, indent=2)}
