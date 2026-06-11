@@ -57,7 +57,7 @@ models_volume = modal.Volume.from_name("graphrca-ollama-models", create_if_missi
 # Models guaranteed available when the server reports ready.  First-time
 # downloads land in the volume and are committed, so later cold starts are
 # just a volume mount, not a re-download.
-REQUIRED_MODELS = ["llama3.2:3b", "qwen2.5-coder:32b", "qwen3:32b"]
+REQUIRED_MODELS = ["llama3.2:3b", "qwen2.5-coder:32b", "qwen3:32b", "nomic-embed-text"]
 
 
 @app.function(

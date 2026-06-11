@@ -1,0 +1,39 @@
+{
+  "n_per_dataset": {
+    "BGL": 586,
+    "HDFS": 1333
+  },
+  "smoke_test": false,
+  "BGL": {
+    "message": {
+      "n": 586,
+      "bertscore_f1_raw": 0.9305,
+      "bertscore_f1_rescaled": 0.588,
+      "bertscore_f1_rescaled_p25": 0.2136,
+      "exact_match": 0.3584
+    },
+    "component": {
+      "n": 572,
+      "bertscore_f1_raw": 0.82,
+      "bertscore_f1_rescaled": -0.0663,
+      "bertscore_f1_rescaled_p25": -0.2995,
+      "exact_match": 0
+    }
+  },
+  "HDFS": {
+    "message": {
+      "n": 1333,
+      "bertscore_f1_raw": 0.9713,
+      "bertscore_f1_rescaled": 0.8298,
+      "bertscore_f1_rescaled_p25": 0.7634,
+      "exact_match": 0.2618
+    },
+    "component": {
+      "n": 1333,
+      "bertscore_f1_raw": 0.9058,
+      "bertscore_f1_rescaled": 0.4419,
+      "bertscore_f1_rescaled_p25": 0.2254,
+      "exact_match": 0.003
+    }
+  }
+}

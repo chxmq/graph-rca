@@ -1,0 +1,835 @@
+{
+  "judge": "groq",
+  "tests": [
+    {
+      "id": "incident_138",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.1,
+      "rag_score": 0.1,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is a performance issue with the math-service, specifically with floating point operations, which is causing timeouts, errors, and increased queue depths. This issue appears to be triggering a cascade of failures throughout the system, including the compute nodes and api-gateway. The repeated latency spikes and operation timeouts suggest that the math-service may be overwhelmed or experiencing a resource constraint.",
+      "baseline_pred": "The root cause appears to be a combination of hardware or software issues affecting the floating point operations in the math-service, leading to repeated failures and timeouts. This is further exacerbated by latency spikes across multiple compute nodes, causing additional retries and increased queue depths.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is a hardware or software issue affecting the floating point operations in the math-service. The fact that latency spikes across multiple compute nodes are causing repeated failures and timeouts suggests a potential problem with the underlying infrastructure or software stack. This is somewhat analogous to the past incident involving backwards time flow from tracking a leap second, which also caused issues with random number generation and led to panics in Go's `rand` package.",
+      "retrieval_distance": 212.002,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_118",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is a performance or capacity issue with the SMTP sender, as evidenced by the repeated warnings of high queue depth and the increasing queue size over time. This issue is likely causing the sender to fail to deliver messages, resulting in exceeded maximum retries for multiple recipients. The root cause may be related to inadequate resources, poor configuration, or an unexpected surge in email volume.",
+      "baseline_pred": "The smtp-sender service is experiencing a high volume of failed message retries, exceeding the maximum allowed retries for multiple recipients, and is also struggling with a high queue depth, indicating an issue with its processing capacity.",
+      "rag_pred": "Based on the observed causal chain from the logs, the most likely root cause is that the smtp-sender service is experiencing a high volume of failed message retries due to an issue with its processing capacity or network connectivity. The high queue depth and repeated warnings about high queue depth suggest that the service is struggling to keep up with the incoming messages, which may be indicative of a network partition or congestion issue. This scenario bears some resemblance to the \"Yeller Incident\" from the knowledge base, where a similar issue was reported due to cached routes, but in this case, there is no clear indication of cached routes being the root cause.",
+      "retrieval_distance": 233.7184,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_012",
+      "zero_shot_score": 0.8,
+      "baseline_score": 0.7,
+      "rag_score": 0.7,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a misconfiguration in the Varnish backend setup, which led to a cascade of errors and timeouts. This misconfiguration appears to have been triggered by the restart of the Varnish service, causing incorrect request distribution and connection issues with the Manta backend. The incorrect configuration was eventually detected and reset to default, but not before causing significant errors and disruptions.",
+      "baseline_pred": "The root cause of this incident is a misconfiguration in the VCL (Service Configuration Language) that caused the Varnish service to fail during restart. This misconfiguration led to incorrect backend configuration being reloaded, causing subsequent errors and timeouts.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a misconfiguration in the VCL that caused the Varnish service to fail during restart. This misconfiguration led to incorrect backend configuration being reloaded, causing subsequent errors and timeouts. The fact that a traffic spike occurred just before the incident started suggests that the misconfiguration may have been triggered by an unexpected increase in traffic, similar to the past incident where a special offer attracted 3x normal traffic.",
+      "retrieval_distance": 241.9746,
+      "parse_stats": {
+        "parsed_lines": 11,
+        "total_lines": 11,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_068",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.7,
+      "improvement": 0.7,
+      "zero_shot_pred": "The most likely root cause of the incident is a database connection issue, as evidenced by the repeated connection failures, timeouts, and latency spikes reported by the database-proxy. This issue appears to have cascaded to other components, such as the web-server and api-gateway, leading to a series of errors and timeouts. The database-proxy's increased queue depth and connection refusal errors suggest that the database may have been overwhelmed or experiencing performance issues.",
+      "baseline_pred": "The web server was unable to establish a successful connection for a request, which led to a retry failure and ultimately a critical failure. This is likely due to an issue with the underlying infrastructure or service that is not directly related to the web server itself. Additionally, the database proxy experienced a connection timeout, while the API gateway failed to establish a connection, indicating potential issues with these services.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, it appears that the issue may be related to a leap second event. The past incident suggests that backwards time flow from tracking a leap second caused issues with DNS resolution and timing-related functions in Go. Given that the web server experienced retry failures and critical failures, while other services like the database proxy and API gateway also failed, it is possible that a similar issue with timing or synchronization occurred, potentially triggered by the recent leap second event.",
+      "retrieval_distance": 211.7759,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_089",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incidents appears to be a connection timeout issue with the database server at 192.168.1.100, which is causing high latency and ultimately leading to failed user authentication attempts. This issue is consistently reported across multiple requests and user IDs, suggesting a systemic problem with the database connection. The repeated connection timeouts indicate a potential problem with the database server's availability or responsiveness.",
+      "baseline_pred": "The root cause is a combination of high latency in the API gateway and connection timeouts to the database server, resulting in failed user authentication attempts and retry limit exceedances.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is a PostgreSQL transaction ID wraparound. This would force the database into read-only mode to prevent data loss, leading to high latency in the API gateway due to increased write volume, resulting in connection timeouts and failed user authentication attempts. The combination of these factors would ultimately lead to retry limit exceedances.",
+      "retrieval_distance": 237.3533,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_092",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.1,
+      "rag_score": 0.2,
+      "improvement": 0.1,
+      "zero_shot_pred": "The most likely root cause is a database connection issue, as evidenced by the recurring \"Connection timeout after 5 seconds\" errors in the database logs. This issue is likely causing a cascade of failures, including high latency and service unavailability, in the web-gateway and api-server components. The database connection timeouts are consistently occurring at the 5-second mark, suggesting a potential configuration or resource limitation issue.",
+      "baseline_pred": "The root cause appears to be a combination of issues with the API server's ability to initialize services within the allotted timeframe, and repeated instances of high latency in the web-gateway, which is likely caused by a backend failure. This has resulted in service unavailability due to HTTP 503 responses.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is a thundering herd problem when service control tasks restarted, overloading the underlying infrastructure. The repeated instances of high latency in the web-gateway and API server's inability to initialize services within the allotted timeframe suggest that the underlying Spanner infrastructure may have been overwhelmed by the sudden increase in requests, leading to the observed symptoms. This is consistent with the root cause identified in the past incident related to Google Cloud APIs.",
+      "retrieval_distance": 236.3701,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_025",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.7,
+      "improvement": 0.5,
+      "zero_shot_pred": "The root cause of the incidents appears to be a database performance issue, as indicated by the slow query execution warnings and connection timeouts. This database issue is cascading to other services, such as the user-service and messaging-service, causing failures and timeouts. The high request latency and queue depth exceeded errors further suggest that the database is overwhelmed, leading to a downstream impact on the entire system.",
+      "baseline_pred": "The root cause of the incident appears to be a combination of issues: (1) slow query execution in the database, (2) connection timeouts to the database, and (3) high request latency. However, upon closer inspection, it seems that the primary issue is the repeated failure of user authentication due to database connection timeouts, which has cascaded into other failures such as message sending and health checks.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, it appears that the primary issue is a database-related problem. The repeated failure of user authentication due to connection timeouts to the database suggests a high CPU usage or resource contention issue, which is consistent with the Flowdock instant messaging unavailability in the past incident. Therefore, the most likely root cause is a similar scenario where high usage or unexpected spikes in workload caused by external factors (e.g., COVID-19 pandemic) led to high CPU usage and database hang, resulting in connection timeouts and subsequent failures.",
+      "retrieval_distance": 215.3559,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_098",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.7,
+      "improvement": 0.7,
+      "zero_shot_pred": "The most likely root cause of the incident is a cascading failure of nodes due to increased queue depth and latency, leading to a server overload and subsequent shutdown of multiple nodes. This suggests that the system was unable to handle a sudden surge in traffic or requests, causing a chain reaction of failures. The root cause may be related to inadequate resource allocation, poor load balancing, or insufficient scaling of the system to handle peak traffic.",
+      "baseline_pred": "A combination of node failures (Node 3 and Node 4) led to a server overload, resulting in increased latency across all nodes. This caused the load balancer to redistribute traffic, further exacerbating the issue. Additionally, request timeouts were experienced due to waftimeout, indicating a potential configuration or timeout issue.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is that a poorly configured WAF rule caused CPU exhaustion, leading to node failures (Node 3 and Node 4) and subsequent server overload. The regex pattern in the WAF rule may have triggered catastrophic backtracking, resulting in increased latency across all nodes and request timeouts due to waftimeout. This hypothesis is supported by the presence of similar error messages and timestamps in both incidents.",
+      "retrieval_distance": 213.8295,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_183",
+      "zero_shot_score": 0.4,
+      "baseline_score": 0.4,
+      "rag_score": 0.2,
+      "improvement": -0.2,
+      "zero_shot_pred": "The most likely root cause is an authentication or authorization issue, as indicated by the repeated HTTP 401 Unauthorized and 403 Forbidden error codes. This suggests a problem with credentials, permissions, or access control to the version-control-system. The issue is likely related to the deployment-service and pipeline-service being unable to authenticate or authorize with the version-control-system.",
+      "baseline_pred": "The root cause is a repeated failure in fetching repository configuration from the version-control-system due to unauthorized access, leading to exhaustion of retry attempts and subsequent failures in triggering CI/CD jobs. This issue is likely caused by incorrect credentials or permissions being used to authenticate with the version-control-system.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I believe that the root cause is a repeated failure in fetching repository configuration from the version-control-system due to unauthorized access. This issue is likely caused by incorrect credentials or permissions being used to authenticate with the version-control-system, which is consistent with the symptoms of HTTP 401 Unauthorized errors and exhaustion of retry attempts.",
+      "retrieval_distance": 225.1237,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_191",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incidents appears to be a connection issue with the primary database instance, as evidenced by the repeated \"Connection refused\" errors from the database-proxy. This issue is cascading to other services, including service-discovery and user-service, causing timeouts and registration failures. The error code 500 from service-discovery suggests an internal server error, which may be related to the underlying database connection issue.",
+      "baseline_pred": "The root cause appears to be a failure in service discovery, which is causing the database proxy to be unable to connect to the primary db instance and the API gateway to timeout. This is further exacerbated by the user service retry limit being exceeded.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause of this production incident is a failure in service discovery that has caused Redis request/response queues to become corrupted and out-of-sequence. This corruption is likely due to a misconfigured or failing service discovery mechanism, which is preventing the database proxy from connecting to the primary db instance and causing the API gateway to timeout. The user service retry limit being exceeded is a consequence of this failure, rather than the root cause itself.",
+      "retrieval_distance": 219.0803,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_087",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is an issue with the repository at https://repo.example.com, as multiple requests to fetch the same dependency.jar result in various errors such as 404, timeout, and content hash mismatch. This suggests a problem with the repository's availability, consistency, or data integrity. The errors are not isolated to a single request or service, indicating a broader issue with the repository itself.",
+      "baseline_pred": "The system experienced a critical failure due to an unhandled exception, resulting in a crash. The exact cause of the exception is unclear but appears to be related to a combination of factors including inadequate memory management and insufficient error handling.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of the current production incident is related to inadequate memory management. The Consul streaming feature's impact on BoltDB in the past incident suggests that excessive load or resource-intensive operations may be contributing to the system's failure. This hypothesis is supported by the observed sequence of events, including a critical failure and subsequent error messages, which are consistent with a memory-related issue.",
+      "retrieval_distance": 211.8401,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_182",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incidents appears to be a critical error in the dose calculation logic, which triggered a cascade of failures and timeouts in the treatment planner, delivery, and safety monitoring systems. This error caused the dose calculation service to become unavailable, resulting in a series of downstream errors and safety check failures. The repeated calculation errors ultimately led to the system entering maintenance mode and the safety system being disabled.",
+      "baseline_pred": "The root cause of the incident is a critical error in the dose calculation logic, which led to multiple system failures and safety checks. The repeated calculation errors caused the system to enter maintenance mode, while the dose calculation service remained unavailable, resulting in further failures.",
+      "rag_pred": "Based on the provided logs and the similar past incident from the knowledge base, the most likely root cause of the incident is a critical error in the dose calculation logic. This error led to multiple system failures, safety checks, and ultimately caused the system to enter maintenance mode due to repeated calculation errors. The error's impact was exacerbated by the backwards time flow from tracking a leap second on December 31st, 2016, which may have introduced incorrect assumptions about monotonicity in Go's `time.Now()` function, potentially affecting the dose calculation service's behavior.",
+      "retrieval_distance": 233.5037,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_040",
+      "zero_shot_score": 0.6,
+      "baseline_score": 0.2,
+      "rag_score": 0.1,
+      "improvement": -0.1,
+      "zero_shot_pred": "The most likely root cause is an authentication or authorization issue with the storage service's access to the S3 bucket, as indicated by the repeated HTTP status code 403 errors. This suggests that the storage service's credentials or permissions may be invalid or expired, preventing it from retrieving objects from the bucket. The consistent pattern of errors across multiple requests and objects supports this conclusion.",
+      "baseline_pred": "The storage service is experiencing issues with retrieving objects from S3, resulting in repeated failures and a health check failure. This suggests a problem with the storage service's connectivity or authentication with S3.",
+      "rag_pred": "Based on the observed causal chain, the most likely root cause hypothesis is that the storage service is experiencing issues with retrieving objects from S3 due to an authentication or connectivity problem. This is supported by the repeated failures and health check failure, which suggests a systemic issue rather than a transient connection problem. The fact that similar requests (e.g., obj2 and obj4) are also failing suggests a broader issue with the storage service's interaction with S3.",
+      "retrieval_distance": 245.6427,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_169",
+      "zero_shot_score": 0.1,
+      "baseline_score": 0.1,
+      "rag_score": 0.1,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a database connection pool exhaustion, which led to a cascade of failures across the system, including increased latency, timeouts, and consumer queue depth issues. This exhaustion may have been caused by a sudden surge in requests or a long-running query that consumed all available connections. The database service's inability to handle the load ultimately brought down the entire system, resulting in HTTP 503 Service Unavailable errors and critical failures.",
+      "baseline_pred": "The root cause of this incident is a combination of issues with the API Gateway's backend connections, which led to a cascade of failures in the system. The primary issue was a failure to connect to the backend service, resulting in HTTP 503 Service Unavailable for requests. This, in turn, caused the consumer queue depth in message-broker to exceed the threshold, leading to further failures and timeouts.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a request queue overloading the existing database capacity. This is supported by the fact that the API Gateway's backend connections failed to connect to the backend service, leading to HTTP 503 Service Unavailable for requests, which in turn caused the consumer queue depth in message-broker to exceed the threshold. The cascading failure suggests that inadequate capacity planning and monitoring may have contributed to this incident.",
+      "retrieval_distance": 211.4103,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_088",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a connection issue with the primary database, as indicated by the repeated connection timeouts and failures to establish connections. This database connection issue cascaded into various service failures, including authentication failures, latency spikes, and read-only mode failures. The connection pool exhaustion and subsequent failures suggest that the database was overwhelmed or experiencing technical difficulties.",
+      "baseline_pred": "The root cause appears to be a combination of database connection issues and API gateway errors, which are impacting the overall system availability. The exact root cause may require further investigation to determine the underlying cause of these failures.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is a PostgreSQL transaction ID wraparound, which forced the database into read-only mode to prevent data loss. This is supported by the fact that autovacuum failed to keep up with high write volume in the past incident, which may be related to the current connection pool failure and API gateway errors. The combination of these symptoms suggests a potential issue with PostgreSQL's transaction management.",
+      "retrieval_distance": 218.6033,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_186",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.0,
+      "rag_score": 0.1,
+      "improvement": 0.1,
+      "zero_shot_pred": "The root cause of the incidents appears to be a storage or file system issue, with repeated errors indicating failed reads and writes to unknown or non-existent files and directories. This is further supported by the disk usage exceeding 90% threshold warning, which may be contributing to the errors. The storage-service errors, such as \"File not found\" and \"Failed to write data\", are particularly indicative of this root cause.",
+      "baseline_pred": "The root cause appears to be a combination of issues with the storage service, API gateway, and session manager. However, upon closer inspection, it seems that the storage service is consistently failing to read file metadata for unknown paths, which may be causing the other services to fail due to missing data. This suggests that the root cause may be related to incorrect or missing data in the storage service.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is that the storage service is experiencing a data integrity issue due to incorrect or missing file metadata for unknown paths. This could be related to a PostgreSQL transaction ID wraparound, where the database's autovacuum process failed to keep up with high write volume, causing the storage service to become inconsistent and fail to read file metadata correctly.",
+      "retrieval_distance": 223.9243,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_041",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is an overload or failure of the upstream service, as indicated by repeated failed health checks and increased error rates in content retrieval. This is further supported by the frequent HTTP 503 errors, which typically signify a service being unavailable due to maintenance or overload. The cascading failures in the url-filter-service and web-proxy suggest a downstream effect of the upstream service issue.",
+      "baseline_pred": "The root cause appears to be a combination of URL validation issues, high latency, and increased error rates in content retrieval, which ultimately led to a service outage. The repeated failure of health checks for an upstream service indicates a potential issue with the service's availability or connectivity.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, it appears that the root cause is likely related to a network issue affecting the upstream service's availability or connectivity. The repeated failure of health checks for the upstream service and the high latency detected in URL validation suggest a potential peering point failure or connectivity issue between cloud deployments, which is consistent with the past incident. This could be causing the observed symptoms of URL validation issues, high latency, and increased error rates in content retrieval.",
+      "retrieval_distance": 233.643,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_002",
+      "zero_shot_score": 0.9,
+      "baseline_score": 0.8,
+      "rag_score": 0.9,
+      "improvement": 0.1,
+      "zero_shot_pred": "The root cause of the incident is a poorly designed regex pattern (.*(?:.*=.*)*) in the newly deployed WAF rule, which caused catastrophic backtracking and led to excessive CPU utilization. This regex pattern resulted in an infinite loop, causing the edge routers to become unresponsive and triggering a failover. The introduction of this flawed WAF rule update is the primary cause of the global traffic impact and system instability.",
+      "baseline_pred": "A catastrophic backtracking issue in a WAF rule regex pattern caused infinite loops on multiple edge routers, resulting in CPU exhaustion, unresponsiveness, and a significant global traffic impact. This was exacerbated by an excessive number of requests being processed simultaneously.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is a catastrophic backtracking issue in a WAF rule regex pattern. This is supported by the fact that the regex pattern `.*(?:.*=.*)*` triggered catastrophic backtracking, causing infinite loops on multiple edge routers, leading to CPU exhaustion and unresponsiveness. The similarity with the past incident's root cause hypothesis further supports this conclusion.",
+      "retrieval_distance": 104.5037,
+      "parse_stats": {
+        "parsed_lines": 12,
+        "total_lines": 13,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_072",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of these incidents is a failure or overload of the task-processor service, as evidenced by repeated task processing timeouts and failed health checks. This failure is cascading to other services, such as cart-service, newsletter-service, and bulk-edit-service, causing them to experience errors and retries. The task-processor service appears to be the common point of failure across these incidents.",
+      "baseline_pred": "The root cause appears to be a failure in the task-processor service, which is causing multiple services (cart-service, task-processor, and health-checker) to timeout. Additionally, there are internal errors in the bulk-edit-service that are preventing offer edits from succeeding.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is a database-related issue. Specifically, the transaction ID wraparound in Postgres could be causing the task-processor service to timeout, leading to cascading failures across multiple services. This hypothesis is supported by the fact that the task-processor service is experiencing repeated timeouts, which is consistent with the symptoms described in the past incident.",
+      "retrieval_distance": 223.4723,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_151",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.1,
+      "improvement": -0.1,
+      "zero_shot_pred": "The root cause of the incidents appears to be issues with the ebs-volume-service, specifically recurring volume read and write failures with error codes 123 and 456. These failures are triggering request timeouts and retries in the application-service, ultimately leading to failed requests. The high queue depth detected by the load-balancer suggests that the ebs-volume-service issues are causing a backlog of requests, exacerbating the problem.",
+      "baseline_pred": "The root cause appears to be a persistent issue with the ebs-volume-service, where it is failing to read and write volumes due to an unspecified error. This is compounded by the application-service's inability to handle request timeouts, leading to repeated retries and failures.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is a PostgreSQL transaction ID wraparound issue. This could be causing the ebs-volume-service to fail reading and writing volumes due to an unspecified error, leading to repeated failures in the application-service. The fact that autovacuum failed to keep up with high write volume in the past incident suggests that this could be a plausible explanation for the current issue.",
+      "retrieval_distance": 234.2021,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_115",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a database connection issue, as evidenced by the repeated errors and warnings related to database connections, connection pool exhaustion, and query timeouts. This issue appears to have cascaded to other components, such as the application server and load balancer, causing a chain reaction of failures. The database connection problem likely led to high latency, timeouts, and eventual shutdown of worker processes.",
+      "baseline_pred": "The root cause appears to be a cascading effect of multiple issues, but the primary root cause is likely due to the high latency detected in the application-server, which led to a timeout in the upstream connection. This, in turn, caused a failure to establish a database connection and a backend server error (503). The connection pool exhaustion and connection reset by peer are secondary effects of this primary issue.",
+      "rag_pred": "Based on the analysis, the most likely root cause is a cascading effect of multiple issues, but the primary root cause appears to be related to network latency. The high latency detected in the application-server and upstream connection may have caused a failure to establish a database connection, leading to backend server errors (503) and subsequent secondary effects such as connection pool exhaustion and connection reset by peer. This scenario bears some resemblance to the past incident of common peering point failure across two 'independent' cloud deployments, which also resulted in high latency and prevented the application from establishing quorum.",
+      "retrieval_distance": 211.7637,
+      "parse_stats": {
+        "parsed_lines": 8,
+        "total_lines": 17,
+        "parse_errors": 8
+      }
+    },
+    {
+      "id": "incident_057",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incident appears to be a failure or overload of the payments-service, as evidenced by repeated timeouts, connection refusals, and internal server errors. This failure is causing a cascade of errors and warnings in the api-gateway and health-checker services. The payments-service is unable to process payments, leading to a critical failure of the payments endpoint.",
+      "baseline_pred": "The payments service is not responding, causing multiple failures in the payments endpoint and connection refusals. This is due to a temporary issue with the payments service, which may be related to its internal server error or high response latency.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is intermittent unresponsiveness and increased latency of the payments service. This is supported by the multiple failures detected in the payments endpoint, connection refusals, high response latency, and internal server errors, which are all indicative of a temporary issue with the payments service. The low health check timeouts mentioned in the past incident also suggest that this could be a contributing factor to the current incident.",
+      "retrieval_distance": 235.2997,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_108",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.0,
+      "rag_score": 0.2,
+      "improvement": 0.2,
+      "zero_shot_pred": "The most likely root cause is a latency issue or overload in the node responses, as indicated by repeated warnings of latency spikes and nodes failing to respond within expected time frames. This is further exacerbated by the api-gateway experiencing request timeouts and increased queue depths, suggesting a cascading failure. The root cause appears to be related to the node-manager's inability to manage node responses efficiently.",
+      "baseline_pred": "The repeated occurrence of 'ERROR' log entries suggests a failure in the system's error handling mechanism or a data corruption issue, which may be causing the system to produce incorrect output. This could be due to a software bug or a hardware malfunction.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is intermittent unresponsiveness and increased latency due to a failure in the system's error handling mechanism or data corruption issue. The repeated 'ERROR' log entries suggest that the system may be producing incorrect output, which could be caused by a software bug or hardware malfunction. This aligns with the root cause identified in the past incident, where low health check timeouts contributed to the Supermarket crash.",
+      "retrieval_distance": 218.544,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_192",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.2,
+      "rag_score": 0.0,
+      "improvement": -0.2,
+      "zero_shot_pred": "The most likely root cause of the incident is a failure or overload of the backend service, as indicated by repeated \"failed to connect to backend\" and \"backend health check failure\" errors. This is further supported by the \"connection reset by peer\" errors, which suggest that the backend service is terminating connections unexpectedly. The resulting queue depth and latency issues are likely secondary effects of the backend service issue.",
+      "baseline_pred": "The system is experiencing a combination of backend health check failures, high queue depth in the origin-proxy, and increased latency, leading to widespread request timeouts across multiple services. This suggests a systemic issue with the backend infrastructure or a configuration problem that is affecting all services.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I hypothesize that the root cause of this production incident is a common peering point failure across multiple cloud deployments, causing high latency and preventing the application from establishing quorum. This hypothesis is supported by the widespread request timeouts across multiple services, including backend health check failures, high queue depth in the origin-proxy, and increased latency. The fact that similar symptoms were observed in a past incident with a common peering point failure suggests a systemic issue with the network infrastructure or configuration.",
+      "retrieval_distance": 223.9638,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_167",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.4,
+      "rag_score": 0.4,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incidents is the database-service experiencing high CPU usage and memory usage above threshold, leading to increased latency, connection refusals, and eventual failures. This caused a cascade of errors in the message-broker and frontend-service, resulting in timeouts, failed connections, and HTTP errors. The database-service's resource constraints appear to be the primary trigger for the observed issues.",
+      "baseline_pred": "The root cause appears to be a failure in communication between the message broker and the database service, leading to repeated timeouts and errors. This is likely due to a misconfiguration or issue with one of the services.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is that a request queue overloading the existing database capacity has caused a cascade of failures due to repeated timeouts and errors between the message broker and the database service. This is consistent with the past incident where a request queue overloading led to cascading failures in communication between services. The symptoms of high queue depth, CPU usage at critical levels, increased latency, connection refused, and memory usage above threshold all point towards this root cause.",
+      "retrieval_distance": 194.1411,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_051",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a timeout or performance issue with the git-receive-pack process, which is causing requests to timeout and resulting in a cascade of errors. This is evident from the repeated H12 and H13 errors, which indicate request timeouts and connection closures without response. The git-receive-pack process appears to be struggling to handle incoming data, leading to a failure to update repository refs and subsequent app boot timeouts.",
+      "baseline_pred": "The root cause appears to be a combination of connection issues and app boot timeouts, which resulted in the failure of the git repository update process. Specifically, the repeated failures to establish connections with the Git server and the inability to start new dyno instances for the web.1 service led to the overall failure of the git repository update.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is that a scheduled manual update resulted in an error that caused connection issues with the Git server, leading to repeated failures to establish connections and start new dyno instances for the web.1 service, ultimately resulting in the failure of the git repository update process. This hypothesis aligns with the past incident's description of a system requiring scheduled manual updates causing errors that affected US customers' ability to scale or restart dynos.",
+      "retrieval_distance": 199.4039,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_144",
+      "zero_shot_score": 0.7,
+      "baseline_score": 0.1,
+      "rag_score": 0.2,
+      "improvement": 0.1,
+      "zero_shot_pred": "The most likely root cause is that the database server is overwhelmed and unable to handle the volume of incoming requests, resulting in connection refusals, query timeouts, and high queue depths. This is likely due to insufficient database server resources, such as CPU, memory, or connection pool size, to handle the current workload. The repeated connection attempts and query retries are exacerbating the issue, leading to a cascade of errors and failures.",
+      "baseline_pred": "The system is experiencing a catastrophic failure due to an unknown or unhandled exception, resulting in repeated Critical errors and a high volume of Error messages. This has led to the system entering a Critical state.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I believe that the most likely root cause is a massive reconnection spike following a network glitch or other external factor that overwhelmed the system's capacity. This could be due to an unhandled exception or an unexpected event that caused a cascade of connection failures, leading to the repeated Critical errors and high volume of Error messages observed in the logs. The similarity with the past incident suggests that this may be a plausible explanation for the current incident.",
+      "retrieval_distance": 189.3048,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_198",
+      "zero_shot_score": 0.4,
+      "baseline_score": 0.4,
+      "rag_score": 0.4,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incident appears to be a performance issue with the db-service, specifically slow queries that are timing out and causing retries to fail. This is likely due to a high load or inefficient database queries, leading to increased latency and eventual service unavailability. The repeated slow query warnings and timeouts across multiple requests suggest a systemic issue with the db-service rather than an isolated problem.",
+      "baseline_pred": "The root cause appears to be a recurring issue with the database service, where it is failing to handle queries within a reasonable time frame, leading to repeated timeouts and maximum retries being reached. This suggests a potential problem with the database's performance or configuration.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is that the database service is experiencing a high volume of requests, causing replication to lag and leading to repeated timeouts and maximum retries being reached. This scenario is consistent with the past incident where an influx of requests overloaded the database, causing data loss. The fact that multiple requests are triggering similar errors suggests a performance or configuration issue within the database service itself.",
+      "retrieval_distance": 214.5829,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_155",
+      "zero_shot_score": 0.4,
+      "baseline_score": 0.2,
+      "rag_score": 0.4,
+      "improvement": 0.2,
+      "zero_shot_pred": "The root cause of the incident appears to be a failure of the downstream service, resulting in timeouts, connection refusals, and processing delays. This failure is likely due to the service being unresponsive or unavailable, causing a cascade of errors and warnings throughout the system. The health check failures for both primary and secondary service instances suggest a potentially catastrophic failure of the downstream service.",
+      "baseline_pred": "The root cause appears to be a persistent issue with the downstream service, causing multiple failures in connections, alert processing, and health checks. This suggests a problem with the service itself rather than an external issue.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is a persistent issue with the downstream service. The fact that multiple failures occur across different components (connections, alert processing, health checks) suggests a problem with the service itself rather than an external issue. This aligns with the past incident where a common peering point failure caused high latency and prevented the application from establishing quorum, implying a potential underlying issue with the downstream service's connectivity or stability.",
+      "retrieval_distance": 231.2889,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_130",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.0,
+      "rag_score": 0.2,
+      "improvement": 0.2,
+      "zero_shot_pred": "The most likely root cause of the incidents is an authentication issue, as indicated by the repeated \"authentication error\" messages in the build-system logs and the HTTP status code 403 (Forbidden) errors in the git-service logs. This suggests that the system is unable to authenticate with the remote repository, preventing it from fetching updates and ultimately causing the build and deployment failures. The consistent error messages across multiple services point to a centralized authentication issue.",
+      "baseline_pred": "The root cause of the issue is that the retry limit for the deployment-service was exceeded, indicating a failure in the deployment process. This suggests that there may be an underlying problem with the service or its configuration.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I would hypothesize that the root cause of this issue is related to a deployment process failure. The fact that the retry limit for the deployment-service was exceeded suggests a problem with the service or its configuration, which aligns with the past incident where an attacker exploited a token leak in Jenkins build logs. However, there is no direct evidence in the provided logs to suggest a similar token leak occurred here, so I will focus on the deployment process failure as the most likely root cause.",
+      "retrieval_distance": 224.4305,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_060",
+      "zero_shot_score": 0.4,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incident is a connectivity issue with the upstream services, as evidenced by repeated connection failures and timeouts reported by the message-router and media-storage components. This issue appears to have triggered a cascade of failures and errors throughout the system, leading to a service outage. The root cause may be related to a network or infrastructure problem affecting the upstream services.",
+      "baseline_pred": "The root cause appears to be a failure in the upstream services, which is causing all downstream services to experience connection issues and timeouts. This has led to a health check failure for multiple services, resulting in a service outage and elevated latency.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is a failure in the upstream services, which is causing all downstream services to experience connection issues and timeouts. This is consistent with the common peering point failure scenario described in the past incident, where a failure across two 'independent' cloud deployments caused high latency and prevented the application from establishing quorum. The fact that multiple downstream services are experiencing similar issues suggests a systemic problem rather than a localized one.",
+      "retrieval_distance": 214.2169,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_056",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.1,
+      "rag_score": 0.1,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is that the queue-manager is overwhelmed, leading to a high queue depth and subsequent timeouts, which in turn cause the web-server to return 503 Service Unavailable errors. This suggests that the system is experiencing a bottleneck or resource constraint, potentially due to excessive load or inadequate queue processing capacity. The repeated retry attempts and timeouts indicate a failure to process requests in a timely manner, exacerbating the issue.",
+      "baseline_pred": "The system is experiencing a high volume of repeated errors, indicating a potential issue with the underlying infrastructure or a recurring problem within the application.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is that the system's request queue is overloading the existing database capacity due to a high volume of repeated errors. This is consistent with the past incident where a request queue overloading led to a cascading failure. The fact that there are multiple consecutive error logs suggests a recurring issue within the application or underlying infrastructure.",
+      "retrieval_distance": 200.2267,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_024",
+      "zero_shot_score": 0.7,
+      "baseline_score": 0.1,
+      "rag_score": 0.0,
+      "improvement": -0.1,
+      "zero_shot_pred": "The most likely root cause is a database server overload or performance issue, leading to connection timeouts, query execution failures, and high latency. This overload is causing a cascade of errors, including connection pool exhaustion, queue depth exceeding limits, and slow response times. The database server's inability to handle the request volume is the primary cause of the observed errors and alerts.",
+      "baseline_pred": "The root cause of the incident appears to be a combination of high database latency and connection issues, leading to repeated timeouts and errors. The database service is experiencing high latency, which is causing the API gateway to fail due to excessive retries. Additionally, the queue depth has exceeded the threshold, resulting in requests being throttled.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a PostgreSQL transaction ID wraparound. This would have caused high write volume to overwhelm the autovacuum process, leading to database latency issues and connection problems, ultimately resulting in the observed timeouts and errors. The fact that the queue depth has exceeded the threshold further supports this hypothesis, as it suggests that the database is struggling to keep up with the high volume of requests.",
+      "retrieval_distance": 231.2278,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_008",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.4,
+      "rag_score": 0.2,
+      "improvement": -0.2,
+      "zero_shot_pred": "The root cause of the incident appears to be the haproxy connection limit being breached, resulting in new connections being dropped and increased latency. This is likely due to a sudden surge in traffic or an issue with the backend service, causing the connection queue to exceed its limit. High CPU usage detected by haproxy also suggests that the system may be overwhelmed, contributing to the connection limit breach.",
+      "baseline_pred": "The root cause appears to be a combination of high connection usage, health checks failing for backend services, and exceeding connection limits. This suggests that the system is experiencing an overload due to high traffic or resource constraints.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause appears to be a massive reconnection spike following a network glitch that overwhelmed database capacity. However, given that the category of the current incident is not explicitly stated as \"Database\", but rather \"Scaling\" with symptoms related to high connection usage and health checks failing for backend services, it's more plausible that the root cause is related to scaling issues due to high traffic or resource constraints. The network glitch mentioned in the past incident seems to be a red herring in this case.",
+      "retrieval_distance": 218.1649,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_009",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.1,
+      "improvement": 0.1,
+      "zero_shot_pred": "The most likely root cause is a failure or overload of the backend service, as indicated by the repeated connection timeouts, errors, and health check failures reported by the edge-server, api-gateway, and load-balancer. This failure caused a cascade of errors, ultimately leading to the unavailability of the service and the return of 503 Service Unavailable errors to users. The root cause is likely related to the backend service itself, rather than the edge-server, api-gateway, or load-balancer.",
+      "baseline_pred": "The root cause of the incident appears to be a combination of high latency and errors in the edge-server, which led to health check failures and subsequent failover attempts. However, the primary backend failed to recover, resulting in service unavailability. Additionally, latency spikes across all regions suggest a broader issue with the system's performance.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a common peering point failure across multiple cloud deployments, which caused high latency and prevented the application from establishing quorum. This is suggested by the fact that latency spikes are observed across all regions, indicating a broader issue with the system's performance, rather than a localized problem in one region or deployment. The similarity to the past incident further supports this hypothesis.",
+      "retrieval_distance": 225.0086,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_109",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.7,
+      "rag_score": 0.7,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incidents is a failure or instability in the npm (Node Package Manager) repository, as evidenced by repeated errors and timeouts when attempting to fetch or download packages. This is further supported by error codes 500 and 503 from the npm server, indicating internal server errors or service unavailability. The corrupted package files and dependency resolution failures suggest that the issue is related to the npm repository's ability to provide reliable and intact packages.",
+      "baseline_pred": "Corrupted packages in the NPM repository are causing a chain reaction of failures, including deployment pipeline blockages, system health degradation, and security alerts. The root cause is likely due to a compromised or malicious package being pushed to the repository.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I hypothesize that the root cause is a corrupted or malicious package being pushed to the NPM repository. This is supported by the fact that the issue started with a failed package download and escalated into deployment pipeline blockages, system health degradation, and security alerts. The timing of the incident, which coincides with a valid customer configuration change, suggests that the root cause may be related to an undiscovered software bug triggered by this event.",
+      "retrieval_distance": 223.9543,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_152",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incidents is a database connection issue, as evidenced by the repeated connection timeout errors and database connection failures reported by the database-service. This issue appears to be cascading and affecting other services, including the load-balancer, web-application, and cache-service. The database connection problems are likely causing a ripple effect of errors and timeouts throughout the system.",
+      "baseline_pred": "The load balancer failed to detect backend server health issues, leading to a cascade of failures in the web application, database service, and cache service. The root cause is likely due to misconfiguration or inadequate monitoring of the load balancer.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is that the load balancer failed to detect backend server health issues due to inadequate monitoring or misconfiguration. This led to a cascade of failures in the web application, database service, and cache service. The low health check timeouts identified in the past incident may be a contributing factor to this failure.",
+      "retrieval_distance": 207.1217,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_023",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.0,
+      "improvement": -0.2,
+      "zero_shot_pred": "The most likely root cause is a network connectivity issue or a problem with the backend servers, as evidenced by the repeated connection timeouts and refusals from multiple backend servers. This issue is causing a cascade of failures throughout the system, including increased latency, failed connections, and unhealthy backend pools. The widespread nature of the problem across multiple domains and services suggests a common underlying infrastructure issue.",
+      "baseline_pred": "The root cause is a combination of backend server issues, including connection timeouts, failed health checks, and increased request latency. This is likely due to a problem with the origin server or load balancer configuration.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I would hypothesize that the root cause is a peering point failure across two 'independent' cloud deployments. The fact that multiple backend servers are experiencing connection timeouts, failed health checks, and increased request latency suggests a broader network issue rather than isolated server problems. This hypothesis is supported by the fact that similar issues were observed on different domains (e.g., example.com, api.example.org, dashboard.example.com) and services (e.g., login.example.com), indicating a potential peering point failure affecting multiple parts of the system.",
+      "retrieval_distance": 204.0308,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_140",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incidents is a network overload or congestion issue, as evidenced by the repeated warnings of high latency, excessive DHCP requests, and queue depth issues. This overload is causing a cascade of failures across multiple services, including DHCP, TFTP, and instance management. The resulting errors and timeouts are preventing nodes from booting and instances from starting, leading to a critical failure of the system.",
+      "baseline_pred": "The root cause appears to be a combination of issues with the API request handling, DHCP server, and TFTP service. The high latency and timeouts in API requests are likely causing the PXE boot failures, while the DHCP lease allocation failure and excessive DHCP requests are contributing to the queue depth issues. Additionally, the health-check failure on the API endpoint is causing instance start failures.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause appears to be related to a leap second issue. The high latency and timeouts in API requests, as well as the health-check failure on the API endpoint, are consistent with the symptoms described in the past incident caused by backwards time flow from tracking a leap second. It is possible that a similar issue has occurred, causing the weighted round-robin selection of DNS resolvers to panic and fail, leading to the observed problems.",
+      "retrieval_distance": 212.1346,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_174",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The root cause of the incident appears to be a database connection timeout issue, as indicated by the repeated \"Connection timeout exceeded\" errors from the database. This issue likely caused a cascade of failures, leading to timeouts and errors in the application server, load balancer, and nginx. The database connection timeout may be due to a high load, resource constraints, or a configuration issue.",
+      "baseline_pred": "The system is experiencing a high volume of requests that are causing timeouts, which in turn led to the database connection timeout exceeding multiple times. Additionally, all backend servers were marked as down due to consecutive failures, forcing the system to route to a fallback server.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is that there was an unexpected surge in traffic to the system, causing high CPU usage which led to the application database hanging. This is analogous to the Flowdock instant messaging unavailability in the past incident, where a sudden increase in usage caused high CPU usage and subsequent database issues. The current symptoms of timeouts, consecutive failures, and routing to a fallback server suggest that the system was overwhelmed with requests.",
+      "retrieval_distance": 216.8445,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_027",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.2,
+      "rag_score": 0.2,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause of the incidents is a database performance issue, specifically a connection pool exhaustion and slow query execution times. This is evident from the repeated warnings of connection pool reaching max depth, query execution time exceeding thresholds, and connection refusals. The database's inability to handle the request load is cascading into web-server errors and load-balancer issues.",
+      "baseline_pred": "The root cause of the incident appears to be a combination of factors. The load balancer detected an unhealthy backend, which led to requests being dropped due to high request queue depth. Additionally, the database connection pool was exhausted, causing query execution times to exceed thresholds. Furthermore, the web server experienced HTTP 503 Service Unavailable errors due to database connection failures.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a massive reconnection spike following a network glitch that overwhelmed database capacity. This is supported by the fact that the load balancer detected an unhealthy backend, requests were dropped due to high request queue depth, and query execution times exceeded thresholds, all of which are consistent with the symptoms described in the past incident.",
+      "retrieval_distance": 191.2265,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_189",
+      "zero_shot_score": 0.2,
+      "baseline_score": 0.2,
+      "rag_score": 0.1,
+      "improvement": -0.1,
+      "zero_shot_pred": "The most likely root cause of the incident is a high volume of requests overwhelming the trading-engine, leading to a buildup of queue depth and subsequent timeouts and errors. This overload appears to have caused a cascading failure, where the exchange-api and trading-engine services become unresponsive and start returning HTTP 500 Internal Server Errors. The root cause is likely related to insufficient resources or inadequate scaling of the trading-engine to handle the incoming request volume.",
+      "baseline_pred": "The root cause of the incident appears to be a critical error in the trading-engine service, which resulted in the service becoming unresponsive. This led to multiple timeouts and internal server errors in the exchange-api, as well as monitoring alerts being fired due to high latency and queue depth.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is intermittent unresponsiveness and increased latency in the trading-engine service. The critical error in the trading-engine service led to multiple timeouts and internal server errors in the exchange-api, as well as monitoring alerts being fired due to high latency and queue depth. This aligns with the past incident where low health check timeouts were identified as a contributing factor to the failure of the Supermarket recipe community site.",
+      "retrieval_distance": 226.521,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_036",
+      "zero_shot_score": 0.4,
+      "baseline_score": 0.1,
+      "rag_score": 0.1,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is an overload or resource exhaustion issue in the stream-processing-service, as evidenced by increasing request queue depths, latency spikes, and health check failures. This overload is likely causing cascading failures and timeouts in the api-gateway and other dependent services. The repeated critical failures in the processing pipeline and excessive retry attempts further support this conclusion.",
+      "baseline_pred": "The root cause appears to be a combination of issues with the Stream Processing Service, which resulted in a critical failure in processing the pipeline. This, in turn, caused an HTTP 504 Gateway Timeout response from the backend due to the upstream service being unresponsive.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, the most likely root cause is a deadlock caused by an unexpected increase in incoming traffic combined with a bug or issue in the Stream Processing Service's internal processing pipeline. This would have triggered a critical failure in processing the pipeline, leading to unresponsiveness of the upstream service and resulting in the HTTP 504 Gateway Timeout response from the backend. The timing of the incident (23:30 US/Pacific) also aligns with the past incident, suggesting a potential connection between the two events.",
+      "retrieval_distance": 221.2677,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_058",
+      "zero_shot_score": 0.7,
+      "baseline_score": 0.1,
+      "rag_score": 0.0,
+      "improvement": -0.1,
+      "zero_shot_pred": "The most likely root cause is a permissions issue, as evidenced by error code 13, which is a common error code for permission denied. This is further supported by the repeated failures to bind to /dev/socket and write to /dev/logfile. The web-server's inability to perform these basic operations suggests a fundamental issue with its access to system resources.",
+      "baseline_pred": "The system is experiencing a catastrophic failure due to an unknown internal issue, resulting in repeated error messages and critical failures.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause is that a PostgreSQL transaction ID wraparound is occurring, forcing the database into read-only mode. This would explain the repeated error messages and critical failures, as well as the autovacuum failing to keep up with high write volume. The fact that the system is experiencing catastrophic failure due to an unknown internal issue suggests that this root cause may be related to a similar issue that occurred in July 2015.",
+      "retrieval_distance": 217.9239,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_063",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.1,
+      "rag_score": 0.0,
+      "improvement": -0.1,
+      "zero_shot_pred": "The most likely root cause of the incidents is a connectivity or data retrieval issue with the market-data-service, as evidenced by repeated warnings of high latency, timeouts, and failed reconnect attempts. This issue is cascading to the trading-engine, causing order execution failures and triggering critical alerts. The market-data-service's inability to provide timely and reliable data is the underlying cause of the trading-engine's errors and the subsequent alerts.",
+      "baseline_pred": "The root cause appears to be a combination of issues with the trading engine's order execution and the market data service's performance. The trading engine is experiencing repeated failures, while the market data service is struggling with high latency and queue depth, leading to processing delays in the trading engine. This has resulted in multiple critical alerts being triggered.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, it appears that the root cause may be related to a performance issue with the Redis request/response queues. The fact that the trading engine is experiencing repeated failures and the market data service is struggling with high latency and queue depth suggests that there may be a communication or synchronization issue between these two systems, potentially involving Redis. This aligns with the past incident where Redis request/response queues became corrupted and out-of-sequence, revealing user data to other users.",
+      "retrieval_distance": 240.9991,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_071",
+      "zero_shot_score": 0.6,
+      "baseline_score": 0.1,
+      "rag_score": 0.2,
+      "improvement": 0.1,
+      "zero_shot_pred": "The most likely root cause is a database integrity constraint violation, specifically error 1452, which is causing a cascade of failures in the authorization creation process. This error is likely due to inconsistent or duplicate data in the database, leading to transaction aborts and deployment failures. The repeated occurrence of this error across multiple services suggests a fundamental data consistency issue.",
+      "baseline_pred": "The root cause appears to be a combination of authorization creation failures and deployment issues, possibly caused by an inconsistent database state or configuration. The repeated failure to create authorizations and the deployment failure suggest a deeper issue with the system's ability to handle concurrent requests and maintain data consistency.",
+      "rag_pred": "Based on the observed causal chain, the most likely root cause is an inconsistent database state or configuration that is causing authorization creation failures and deployment issues. This is supported by the repeated failure to create authorizations and the deployment failure, which suggests a deeper issue with the system's ability to handle concurrent requests and maintain data consistency. The fact that this incident shares similarities with a past software-related incident also supports this hypothesis.",
+      "retrieval_distance": 179.3358,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_190",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.1,
+      "improvement": 0.1,
+      "zero_shot_pred": "The root cause of the incident appears to be a recurring issue with the trading-gateway, which is consistently failing to send requests and timing out. This is causing a cascade of errors and timeouts in the order-validation-service and order-execution-service, ultimately resulting in failed order placements. The repeated \"Failed to send request, retrying\" errors in the trading-gateway logs suggest a potential connectivity or configuration issue with the gateway.",
+      "baseline_pred": "The root cause of the issue is a gateway timeout that prevented order placement from succeeding.",
+      "rag_pred": "Based on the analysis, the most likely root cause of the issue is intermittent unresponsiveness and increased latency in the gateway, which led to a timeout that prevented order placement from succeeding. This hypothesis is supported by the fact that the past incident from Chef.io also experienced similar symptoms, including low health check timeouts, which contributed to the Supermarket crash. The observed causal chain from the logs suggests a similar pattern of intermittent unresponsiveness and increased latency in this current incident.",
+      "retrieval_distance": 245.3027,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_007",
+      "zero_shot_score": 0.0,
+      "baseline_score": 0.0,
+      "rag_score": 0.0,
+      "improvement": 0.0,
+      "zero_shot_pred": "The most likely root cause is a connection pool exhaustion issue in the metadata-server, where the available connections are depleted, leading to timeouts and errors. This exhaustion is likely caused by a high volume of requests or a lack of proper connection management, resulting in the metadata-server being unable to handle incoming requests. The repeated errors and warnings suggest a cascading failure, where the initial connection pool exhaustion triggers a chain of subsequent errors and timeouts.",
+      "baseline_pred": "The root cause of this incident is a failure in the metadata-server service, which led to a connection pool exhaustion and subsequent API Gateway timeouts. This was exacerbated by an increase in storage-node queue depths, causing latency spikes.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident from the knowledge base, the most likely root cause of this incident is a request queue overloading the existing, insufficient database capacity. The fact that the storage-node queue depths increased significantly and caused latency spikes suggests that the metadata-server service was unable to handle the volume of requests, leading to connection pool exhaustion and subsequent API Gateway timeouts. This scenario aligns with the past incident described in the knowledge base.",
+      "retrieval_distance": 196.1869,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_029",
+      "zero_shot_score": 0.0,
+      "baseline_score": null,
+      "rag_score": null,
+      "improvement": null,
+      "zero_shot_pred": "The most likely root cause is a failure of the market-data-gateway to fetch latest prices, which is causing a cascade of errors in the trade-executor and order-router components. This failure is leading to high queue depths and execution failures for orders, resulting in a critical system failure. The repeated retry attempts by the market-data-gateway suggest a persistent issue with fetching market data.",
+      "baseline_pred": "The root cause is a combination of high queue depths in the order-router and repeated failures in fetching latest prices from the market-data-gateway, which led to repeated retries and ultimately caused trade-executor execution failures. This indicates a systemic issue with the system's ability to handle concurrent requests and retrieve critical data.",
+      "rag_pred": "Based on the analysis of the production incident logs, the most likely root cause is a temporary network partition or high latency issue affecting the market-data-gateway, leading to repeated failures in fetching latest prices and subsequent retries. This caused high queue depths in the order-router, resulting in trade-executor execution failures. The similarity with the past incident from 2013 suggests that a similar underlying issue may be at play.",
+      "retrieval_distance": 230.7409,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_164",
+      "zero_shot_score": null,
+      "baseline_score": null,
+      "rag_score": null,
+      "improvement": null,
+      "zero_shot_pred": "",
+      "baseline_pred": "Repeated database query errors due to error code 40001, leading to failure of the background job processor and increased request latency in the API Gateway. This is further exacerbated by HTTP status code 500 responses for multiple requests to /events.",
+      "rag_pred": "Based on the observed causal chain and the similar past incident, I believe that the most likely root cause is a Redis request/response queue corruption issue. The fact that error code 40001 is repeated across multiple queries suggests a potential data integrity problem, which is consistent with the past incident's description of Redis queue corruption. This could be causing the database query errors and subsequent failures in the background job processor and API Gateway.",
+      "retrieval_distance": 207.2402,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    }
+  ],
+  "zero_shot": {
+    "mean_score": 0.202,
+    "accuracy_at_0.5": 0.1429,
+    "accuracy_at_0.7": 0.102,
+    "n": 49
+  },
+  "baseline": {
+    "mean_score": 0.1583,
+    "accuracy_at_0.5": 0.0625,
+    "accuracy_at_0.7": 0.0625,
+    "n": 48
+  },
+  "rag": {
+    "mean_score": 0.1958,
+    "accuracy_at_0.5": 0.125,
+    "accuracy_at_0.7": 0.125,
+    "n": 48
+  },
+  "zero_shot_avg": 0.202,
+  "baseline_avg": 0.1583,
+  "rag_avg": 0.1958,
+  "improvement": 0.0375,
+  "config": {
+    "pipeline_model": "llama3.2:3b",
+    "judge_model": "llama-3.3-70b-versatile",
+    "train_ratio": 0.75,
+    "random_seed": 42,
+    "dataset": "symptom-only logs v2",
+    "run_date": "2026-06-11T08:19:02.115549"
+  }
+}

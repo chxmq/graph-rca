@@ -1,0 +1,3064 @@
+{
+  "incidents": [
+    {
+      "id": "incident_001",
+      "category": "Configuration",
+      "prediction": "The root cause appears to be a cascading failure of the autoscaler, frontend, and database services. The autoscaler is unable to scale up due to insufficient re",
+      "prediction_line": "[ERROR] frontend: Timeout while waiting for backend response",
+      "avg_score": 0.3,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_002",
+      "category": "Network",
+      "prediction": "The catastrophic backtracking detected in the regex pattern .*(?:.*=.*)* caused infinite loop processing, leading to CPU exhaustion on multiple edge routers and",
+      "prediction_line": "[INFO] waf-service: Deploying new WAF rule update to edge routers",
+      "avg_score": 0.95,
+      "line_score": 0.1,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 12,
+        "total_lines": 13,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_003",
+      "category": "Network",
+      "prediction": "A configuration typo in the prefix-list update for the Atlanta router ATL-01 led to a BGP route leak, causing all BGP routes to be leaked with high local-prefer",
+      "prediction_line": "[INFO] network-ops: Initiating maintenance on Atlanta router ATL-01",
+      "avg_score": 0.95,
+      "line_score": 0.2,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 12,
+        "total_lines": 13,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_004",
+      "category": "CI-CD",
+      "prediction": "The root cause appears to be a misconfiguration or failure in the build-service that is causing multiple job failures and service unresponsiveness. This may be ",
+      "prediction_line": "[ERROR] build-service: Job 12345 failed with status 1 trace_id=req-047943",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_005",
+      "category": "Database",
+      "prediction": "The root cause appears to be a failure in the data-store service, which is causing timeouts, errors, and critical failures in other services. The repeated attem",
+      "prediction_line": "[INFO] pg-migrator: Starting migration process for service data-store trace_id=req-5476fd",
+      "avg_score": 0.3,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_006",
+      "category": "Software",
+      "prediction": "The root cause appears to be a combination of issues with the Azure authentication service, specifically multiple failed SSL handshakes. This is likely due to a",
+      "prediction_line": "[ERROR] azure-auth-service: SSL handshake failed with peer trace_id=req-ce34eb",
+      "avg_score": 0.0,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_007",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of the metadata server's inability to handle incoming requests in a timely manner, resulting in connection pool exhau",
+      "prediction_line": "[WARN] metadata-server: Slow response detected, request took 34 seconds trace_id=req-37b924",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_008",
+      "category": "Network",
+      "prediction": "The root cause is a combination of factors: the connection queue depth exceeding the limit, causing new connections to be dropped; and high CPU usage detected, ",
+      "prediction_line": "[ERROR] haproxy: Connection refused, max connections limit hit trace_id=req-2b28f8",
+      "avg_score": 0.4,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_009",
+      "category": "Network",
+      "prediction": "The root cause of the incident appears to be a persistent connection issue with the backend service, which led to a cascade of failures across multiple componen",
+      "prediction_line": "[WARN] edge-server: High latency detected for user request trace_id=req-bf714d",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_010",
+      "category": "Infrastructure",
+      "prediction": "The system experienced a catastrophic failure, resulting in repeated critical errors and instability due to an unhandled exception or resource leak.",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 20,
+        "parse_errors": 2
+      }
+    },
+    {
+      "id": "incident_011",
+      "category": "Security",
+      "prediction": "The system experienced a series of errors, indicating potential issues with data integrity or processing, which may have been caused by a software bug or miscon",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 10,
+        "total_lines": 10,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_012",
+      "category": "Configuration",
+      "prediction": "The Varnish service was unable to restart successfully due to a combination of backend configuration issues, including incorrect configuration and a connection ",
+      "prediction_line": "[INFO] varnish: Received request to restart from VCL",
+      "avg_score": 0.5,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 11,
+        "total_lines": 11,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_013",
+      "category": "Database",
+      "prediction": "The database system is in recovery mode, causing PostgreSQL connections to fail unexpectedly.",
+      "prediction_line": "[ERROR] postgresql: connection failed: server closed the connection unexpectedly trace_id=req-c3fcf6",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_014",
+      "category": "Software",
+      "prediction": "A combination of connection timeouts and unresponsive backend services, likely due to a failure in the C-00000291*.sys service, is causing the API gateway to re",
+      "prediction_line": "[ERROR] api-gateway: HTTP 503 error received from backend service req-7a64a8",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_015",
+      "category": "Database",
+      "prediction": "The root cause appears to be a backend service issue, specifically a high queue depth detected in the db-proxy, leading to increased latency and failed database",
+      "prediction_line": "Failed to fetch data from database, retrying...",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 21,
+        "parse_errors": 3
+      }
+    },
+    {
+      "id": "incident_016",
+      "category": "Database",
+      "prediction": "The system experienced a catastrophic failure of its core components, resulting in data corruption and loss of critical functionality.",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_017",
+      "category": "Database",
+      "prediction": "The autovacuum process is unable to keep up with the workload, causing a high queue depth. This has led to write operations in the web-app failing due to timeou",
+      "prediction_line": "[WARN] autovacuum: High queue depth detected queue_depth=54 trace_id=req-286faf",
+      "avg_score": 0.5,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_018",
+      "category": "Security",
+      "prediction": "The root cause is a combination of authentication failures, high latency from specific IP addresses, and system overload due to failed requests, indicating a br",
+      "prediction_line": "[ERROR] auth-service: Failed to authenticate user with ID 12345 status_code=403 trace_id=req-69741d",
+      "avg_score": 0.1,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_019",
+      "category": "Network",
+      "prediction": "The system's primary database connection failed, resulting in data loss and corruption across multiple components. This failure was caused by a misconfigured da",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_020",
+      "category": "Software",
+      "prediction": "The root cause of the issue appears to be a combination of factors, including a failed connection to the backend service data-service, a queue depth exceeding t",
+      "prediction_line": "[CRITICAL] health-checker: Health check failed for data-service status_code=503 trace_id=req-65ff00",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_021",
+      "category": "Security",
+      "prediction": "The root cause appears to be a combination of authentication and database issues. The high number of failed authentication attempts and the database connection ",
+      "prediction_line": "[ERROR] web-app: API call failed with HTTP status code 500 endpoint=/api/v1/jobs/12345 trace_id=req-0af1ff",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_022",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident is a combination of issues within the message queue service, backend service 'session-store', and chat service. The message queue",
+      "prediction_line": "[ERROR] api-gateway: Timeout while processing request to backend service 'session-store' trace_id=req-3af274",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_023",
+      "category": "Software",
+      "prediction": "A combination of connection timeouts and failed connections to backend servers at IP addresses 192.168.1.1, 192.168.1.3, 192.168.1.4, 192.168.1.5, and 192.168.1",
+      "prediction_line": "[WARN] http-proxy: Increased request latency observed for domain example.com duration=3.5s trace_id=req-115d21",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_024",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of high latency in query execution and a connection pool exhaustion issue. The database service is experiencing high ",
+      "prediction_line": "[CRITICAL] alert-manager: Firing alert for high database latency trace_id=req-73ded1",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_025",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues with the database, messaging-service, and api-gateway. The slow query execution in the database is causing ",
+      "prediction_line": "[ERROR] api-gateway: Request received for fetching user data, returning 503 Service Unavailable trace_id=req-b09fde",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_026",
+      "category": "Security",
+      "prediction": "The backend service is experiencing a persistent issue with its database replica connections, resulting in repeated timeouts and failures. This is likely due to",
+      "prediction_line": "[ERROR] backend-service: Connection timeout while connecting to database replica trace_id=req-778dc6",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_027",
+      "category": "Network",
+      "prediction": "The load balancer is detecting an unhealthy backend, which is causing requests to be retried. However, the root cause of this issue lies in the database connect",
+      "prediction_line": "[ERROR] web-server: HTTP 503 Service Unavailable on /projects/123/tasks trace_id=req-d3f693",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_028",
+      "category": "Security",
+      "prediction": "The root cause appears to be a persistent issue with the storage backend, leading to repeated failures in file retrieval and API requests. This is further compl",
+      "prediction_line": "[ERROR] s3-storage: Failed to retrieve file 9f2a3b from bucket data-store error=Timeout trace_id=req-e56f03",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_029",
+      "category": "Software",
+      "prediction": "The root cause is a combination of factors: (1) High queue depth in the order-router, leading to repeated failures and retries; (2) Multiple orders failing exec",
+      "prediction_line": "[INFO] trade-executor: Starting batch processing trace_id=req-13665d",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_030",
+      "category": "Database",
+      "prediction": "The system is experiencing a catastrophic failure due to an unhandled exception, resulting in repeated error and critical messages. This suggests a severe flaw ",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_031",
+      "category": "Network",
+      "prediction": "The root cause of this incident appears to be a combination of issues: the primary database connection failed, leading to a cascade of failures in the backend s",
+      "prediction_line": "[ERROR] web-server: Failed to connect to backend service, retrying... trace_id=req-de4dbc",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_032",
+      "category": "Infrastructure",
+      "prediction": "The service discovery queue exceeded its maximum depth, causing a timeout in the user authentication process. This is due to high latency detected in configurat",
+      "prediction_line": "[WARN] service-discovery: Exceeded maximum queue depth of 500 for request processing trace_id=req-739f8a",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_033",
+      "category": "Software",
+      "prediction": "The root cause of this incident is a combination of factors leading to a service outage. The auth-service experienced high queue depth, which caused the stream-",
+      "prediction_line": "[INFO] api-gateway: Received request for /stream endpoint trace_id=req-e906fa",
+      "avg_score": 0.4,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_034",
+      "category": "Database",
+      "prediction": "The queue depth has reached a critical threshold of 220, causing potential performance issues. Meanwhile, the API gateway is experiencing repeated failures due ",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_035",
+      "category": "Database",
+      "prediction": "The load balancer is redirecting all traffic to an unhealthy sql-server instance due to a high queue depth (345) detected, which is causing the web-app to fail ",
+      "prediction_line": "[INFO] sql-server: Connection attempt failed for database ",
+      "avg_score": 0.4,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_036",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the backend services, leading to repeated timeouts, retries, and failures. This is likely due to a problem with the se",
+      "prediction_line": "[CRITICAL] stream-processing-service: Excessive retry attempts detected for request trace_id=req-8cb659",
+      "avg_score": 0.5,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_037",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of issues with the payment service's transaction processing, which is being impacted by high queue depths. Additional",
+      "prediction_line": "[ERROR] database-proxy: Connection timeout to primary database timeout=10s trace_id=req-07d2ff",
+      "avg_score": 0.1,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_038",
+      "category": "Software",
+      "prediction": "The root cause appears to be a failure of the upstream service, causing both API gateway timeouts and high queue depths in the trading-engine. This is likely du",
+      "prediction_line": "Alert fired - High latency detected in trading-engine (avg: 9500ms)",
+      "avg_score": 0.5,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 20,
+        "parse_errors": 13
+      }
+    },
+    {
+      "id": "incident_039",
+      "category": "Software",
+      "prediction": "The bot detector service is unresponsive, leading to delayed request processing and potential security risks. This issue is compounded by the failure of data in",
+      "prediction_line": "[CRITICAL] api-gateway: Service bot-detector is unresponsive, retrying... trace_id=req-72c099",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_040",
+      "category": "Security",
+      "prediction": "The root cause appears to be a misconfigured or failing storage service that is unable to handle requests from the API Gateway, resulting in multiple failures a",
+      "prediction_line": "[INFO] storage-service: Attempting to retrieve object from S3 s3://example-bucket/obj1 trace_id=req-6dcdf8",
+      "avg_score": 0.6,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_041",
+      "category": "Software",
+      "prediction": "The system's error handling mechanism failed to properly handle a critical exception, resulting in repeated error messages and warnings being logged.",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_042",
+      "category": "Infrastructure",
+      "prediction": "The system is experiencing an unhandled exception that is causing all error messages to be logged, resulting in the persistence of multiple error messages at di",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_043",
+      "category": "Software",
+      "prediction": "A critical failure in the weight validation system has been detected, causing flight G-TAWG to be aborted and leading to increased system latency. This issue is",
+      "prediction_line": "[ERROR] load-balancer: Service flight-scheduler is down, retrying... trace_id=req-28c2ab",
+      "avg_score": 0.5,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_044",
+      "category": "Database",
+      "prediction": "The root cause is a high queue depth in the data-retrieval-service, causing multiple services to timeout or fail due to waiting for responses from this service.",
+      "prediction_line": "[INFO] user-service: Handling request for user data trace_id=req-307db4",
+      "avg_score": 0.8,
+      "line_score": 0.0,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_045",
+      "category": "Database",
+      "prediction": "The app service is unable to process requests within acceptable latency due to backend services being unhealthy, leading to high request failures and a degradat",
+      "prediction_line": "[CRITICAL] health-checker: Multiple backend services are unhealthy, initiating failover...",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 22,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_046",
+      "category": "Software",
+      "prediction": "The root cause appears to be a failure in the telemetry service's ability to acquire resources, which led to a cascade of failures in the data processing and co",
+      "prediction_line": "[ERROR] telemetry-service: Failed to acquire resource, retrying... trace_id=req-bb3d91",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_047",
+      "category": "Database",
+      "prediction": "The root cause of the incident appears to be a failure in communication between the API Gateway and one or more backend services, resulting in unavailability of",
+      "prediction_line": "[ERROR] api-gateway: Connection timeout to backend service trace_id=req-764913",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_048",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a misconfigured or failing load balancer that is not properly distributing traffic to the web server and database, leading to servi",
+      "prediction_line": "[ERROR] load-balancer: Backend service unavailable trace_id=req-79a692",
+      "avg_score": 0.3,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_049",
+      "category": "Infrastructure",
+      "prediction": "A series of hardware failures led to a cascade of failures in dependent services, resulting in a prolonged outage. The root cause was likely due to a combinatio",
+      "prediction_line": "[CRITICAL] database-service: Connection refused, retrying trace_id=req-378b31",
+      "avg_score": 0.6,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_050",
+      "category": "Software",
+      "prediction": "The root cause appears to be a temporary overload on the database service, resulting in repeated failures to delete data and process requests. This is likely du",
+      "prediction_line": "[ERROR] db-service: Failed to delete data for project ID 444555 error_code=500 trace_id=req-e3fb32",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_051",
+      "category": "Software",
+      "prediction": "The root cause appears to be a combination of connection issues, timeouts, and errors during the Git repository update process. Specifically, the Git receive-pa",
+      "prediction_line": "[CRITICAL] dyno-manager: Failed to start new dyno instance for web.1 trace_id=req-3a0598",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_052",
+      "category": "Configuration",
+      "prediction": "The latency increase to 900ms for service calls is likely due to a high load on the system, causing delays in processing requests. This, combined with the reque",
+      "prediction_line": "Request timed out after 30 seconds",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 17,
+        "parse_errors": 4
+      }
+    },
+    {
+      "id": "incident_053",
+      "category": "Network",
+      "prediction": "The root cause appears to be a network issue affecting multiple BGP peers, causing them to not respond to keepalives. This is likely due to a problem with the n",
+      "prediction_line": "[WARN] bgp-router: Peer 192.168.1.1 not responding to keepalives trace_id=req-f5c2f2",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_054",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the issue appears to be a failure to manage the database connection pool effectively, leading to an exhaustion of available connections. This ",
+      "prediction_line": "[WARN] http-proxy: Timeout while waiting for backend response",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_055",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues: the ingress controller is failing health checks due to a service returning a 5xx status code, the database",
+      "prediction_line": "[ERROR] api-server: Failed to communicate with service endpoint timeout=30s trace_id=req-3e3e5d",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 22,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_056",
+      "category": "Database",
+      "prediction": "The repeated occurrence of 'Error' log entries suggests a potential issue with the system's error handling or logging mechanism, but without further information",
+      "prediction_line": "[ERROR] ",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_057",
+      "category": "Database",
+      "prediction": "The Payments Service is experiencing a failure to respond, resulting in multiple connection attempts being made and failing due to high response latency and int",
+      "prediction_line": "[ERROR] api-gateway: Connection refused when trying to reach payments-service trace_id=req-6c8043",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_058",
+      "category": "Software",
+      "prediction": "The system is experiencing a critical failure due to an unknown cause, with multiple error messages indicating a potential hardware or software issue. Further i",
+      "prediction_line": "[ERROR] ",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_059",
+      "category": "Software",
+      "prediction": "The system experienced a critical failure due to an accumulation of unhandled errors, which led to multiple warnings and further instability. The exact cause of",
+      "prediction_line": "[INFO]",
+      "avg_score": 0.3,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_060",
+      "category": "Network",
+      "prediction": "The root cause appears to be a failure in the upstream connection, leading to repeated failures of message-router and media-storage services. This is further ex",
+      "prediction_line": "[CRITICAL] edge-server: Latency remains elevated despite failover, re-evaluating strategy trace_id=req-b1f6c1",
+      "avg_score": 0.6,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_061",
+      "category": "Software",
+      "prediction": "The public address service is experiencing a failure to update IP addresses, leading to repeated timeouts and eventually exceeding maximum retries. This is caus",
+      "prediction_line": "[ERROR] backend-server: High queue depth detected, processing time exceeded 3 minutes trace_id=req-d1d38d",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_062",
+      "category": "Network",
+      "prediction": "The root cause appears to be a failure in the edge-router's ability to maintain stable outgoing traffic connections, resulting in packet loss, connection timeou",
+      "prediction_line": "web-server: Request failed with HTTP status code 504 (Gateway Timeout) trace_id=req-c0c003",
+      "avg_score": 0.6,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_063",
+      "category": "Software",
+      "prediction": "The market-data-service is experiencing high queue depth, leading to significant processing delays. This has resulted in severe processing delays in the alert-s",
+      "prediction_line": "[ERROR] trading-engine: Failed to execute order, retrying... ",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_064",
+      "category": "Configuration",
+      "prediction": "The root cause appears to be a combination of inconsistent data and repeated failures during the checkout process, which has led to system instability. The exac",
+      "prediction_line": "[ERROR] web-server: Checkout operation failed with error code 12 trace_id=req-e5d647",
+      "avg_score": 0.3,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_065",
+      "category": "Security",
+      "prediction": "The system has encountered an unexpected failure, resulting in repeated error messages across different log levels.",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_066",
+      "category": "Network",
+      "prediction": "The root cause appears to be a failure in the DNS resolver, causing repeated CNAME lookup failures and increased latency. This is likely due to a configuration ",
+      "prediction_line": "[ERROR] rrdns: CNAME lookup failed with negative duration trace_id=req-5c8d68",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 22,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_067",
+      "category": "Software",
+      "prediction": "The repeated instances of printk buffer overflow in kernel-log are causing klogd to fail to retrieve time, leading to synchronization loss in ntpd and repeated ",
+      "prediction_line": "[ERROR] ntpd: synchronization lost, time drift detected trace_id=req-6d2e7b",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 22,
+        "total_lines": 23,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_068",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues with the web server's request handling, database proxy connection, and API gateway's resource fetching capa",
+      "prediction_line": "[ERROR] database-proxy: Connection timeout, retry limit reached trace_id=req-8ac7a2",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_069",
+      "category": "Security",
+      "prediction": "The root cause appears to be a failure in the add-on metadata loading process, which is likely due to a temporary issue with the API endpoint or a configuration",
+      "prediction_line": "[ERROR] web-addon-service: Failed to load add-on metadata from https://addons.mozilla.org/api/v4/addons/addon/example-addon/ HTTP status code 500 trace_id=req-6",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_070",
+      "category": "Database",
+      "prediction": "Repeated instances of severe errors (CRITICAL) suggest a failure in system monitoring or error handling, potentially leading to data loss or corruption. The per",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_071",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of issues related to authorization and deployment, but the primary issue is an inconsistent state in the database tha",
+      "prediction_line": "Failed to create authorization: Integrity constraint violation 1452",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_072",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the task-processor service, which is causing timeouts for multiple services (cart-service, bulk-edit-service, and heal",
+      "prediction_line": "[ERROR] task-processor: Task processing timeout exceeded trace_id=req-de49fb",
+      "avg_score": 1.0,
+      "line_score": 0.0,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_073",
+      "category": "Infrastructure",
+      "prediction": "A combination of factors led to the current state: increased latency in the US-EAST region, unresponsive instances, and high queue depths. This resulted in mult",
+      "prediction_line": "[CRITICAL] s3-gateway: Request failed with HTTP status code 503 for bucket my-bucket trace_id=req-a02280",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_074",
+      "category": "Infrastructure",
+      "prediction": "The root cause is a combination of factors: high queue depths in the S3 storage service across multiple regions, leading to repeated batch processing failures. ",
+      "prediction_line": "[ERROR] s3-api-gateway: Client request failed with HTTP status code 504 timeout_ms=60000 trace_id=req-008d68",
+      "avg_score": 0.4,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_075",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of issues with the database connection, S3 bucket write and read operations, and load balancer performance. The repea",
+      "prediction_line": "[ERROR] ec2-instance: Connection timeout to database endpoint trace_id=req-de6c33",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_076",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues with the ebs-monitor and ebs-api-gateway services. The excessive retries detected may be due to a temporary",
+      "prediction_line": "[CRITICAL] ebs-monitor: Excessive retries detected in API requests, count=7 trace_id=req-8c0784",
+      "avg_score": 0.25,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_077",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of backend unavailability, high latency, and database connection issues. The API Gateway Service is unable to handle ",
+      "prediction_line": "[ERROR] api-gateway-service: Request failed with HTTP status code 503 trace_id=req-14d360",
+      "avg_score": 0.0,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_078",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of health check failures for multiple instances, which led to instance unresponsiveness. Additionally, the S3 service",
+      "prediction_line": "[ERROR] ec2-instance-manager: Health check failure detected for instance i-1234567890abcdef0 trace_id=req-d6fc91",
+      "avg_score": 0.3,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_079",
+      "category": "Infrastructure",
+      "prediction": "The root cause of this incident appears to be a combination of high latency in the API Gateway and CloudWatch, leading to repeated function executions timing ou",
+      "prediction_line": "[ERROR] lambda: Function execution timed out trace_id=req-e1d7f2",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_080",
+      "category": "Network",
+      "prediction": "The root cause of the incident appears to be a combination of high latency in the API Gateway, database connection failures, and EC2 instance connection issues.",
+      "prediction_line": "[ERROR] ec2-instance: Connection timeout to load balancer error_code=ETIMEDOUT trace_id=req-1058cf",
+      "avg_score": 0.4,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_081",
+      "category": "Database",
+      "prediction": "The root cause is a combination of the bus-server's inability to handle the increasing queue depth and the health check failing with an HTTP 500 response. This ",
+      "prediction_line": "[CRITICAL] bus-server: Queue depth exceeded threshold of 1000 entries trace_id=req-0aa7b7",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_082",
+      "category": "Network",
+      "prediction": "The root cause appears to be a failure in the connection between the switches, which is causing timeouts and service unavailability on the call router. This is ",
+      "prediction_line": "[ERROR] switch-responder: Failed to connect to peer switch retry=1 trace_id=req-165d8e",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_083",
+      "category": "Infrastructure",
+      "prediction": "The load balancer is unable to establish connections with all backend servers, resulting in a connection timeout and subsequent exhaustion of the connection poo",
+      "prediction_line": "[ERROR] web-gateway: Request failed with status code 503 trace_id=req-723ce6",
+      "avg_score": 0.3,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_084",
+      "category": "Network",
+      "prediction": "The root cause of the incident appears to be a combination of factors, including high request volume causing timeouts on the web server (High request volume cau",
+      "prediction_line": "[INFO] web-server: Increased request latency observed trace_id=req-9f6f32",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_085",
+      "category": "Database",
+      "prediction": "The primary storage write check is failing due to a queue depth issue, which is causing write operations to time out. This is a critical failure that requires i",
+      "prediction_line": "retrying... trace_id=req-72bac1",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_086",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of high query latency, slow database connections, and system overload in the db-backend service. This has led to time",
+      "prediction_line": "[WARN] db-backend: Connection timeout detected trace_id=req-26333e",
+      "avg_score": 0.0,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_087",
+      "category": "Software",
+      "prediction": "A critical bug in the system's error handling mechanism caused it to fail to handle exceptions properly, resulting in a system crash. This was likely triggered ",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_088",
+      "category": "Security",
+      "prediction": "The root cause appears to be a combination of authentication failures, database connection issues, and high latency in the api-gateway service. The repeated att",
+      "prediction_line": "[ERROR] auth-service: User authentication attempt failed for user_id=67890 trace_id=req-c79e67",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_089",
+      "category": "Security",
+      "prediction": "The root cause is a combination of factors, including high latency in the API gateway and connection timeouts to the database server, which led to authenticatio",
+      "prediction_line": "[ERROR] data-store: Connection timeout to database server at 192.168.1.100 trace_id=req-9cd71e",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_090",
+      "category": "Database",
+      "prediction": "The root cause of the incident is a combination of factors leading to a connection pool exhaustion in the RDS proxy. This resulted in repeated failures to execu",
+      "prediction_line": "[ERROR] app-server: Failed to fetch data from backend, retrying... trace_id=req-9bde57",
+      "avg_score": 0.5,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_091",
+      "category": "Infrastructure",
+      "prediction": "The root cause of this incident is a failure in the database connection pool, which led to repeated failures and timeouts. This suggests that there may be an is",
+      "prediction_line": "[ERROR] api-gateway: Failed to retrieve user profile status_code=500 trace_id=req-c8cadc",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_092",
+      "category": "Infrastructure",
+      "prediction": "The backend service is not responding, causing the web-gateway to become unavailable and resulting in high latency for requests. This issue is further exacerbat",
+      "prediction_line": "[ERROR] api-server: Failed to initialize service: context deadline exceeded trace_id=req-ba708c",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_093",
+      "category": "Memory",
+      "prediction": "The repeated log entries suggest that there may be an issue with logging configuration or a misconfigured logging system, potentially causing unnecessary noise ",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_094",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of database connection timeouts and health checks failing, resulting in the service becoming temporarily unavailable.",
+      "prediction_line": "[ERROR] Health check failed trace_id=req-3a5927",
+      "avg_score": 0.6,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_095",
+      "category": "Infrastructure",
+      "prediction": "The root cause is a failure in the job-executor service that exceeded its retry limit of 3, causing multiple failed job starts and subsequent API Gateway errors",
+      "prediction_line": "[INFO] queue-service: Queue depth increased to 500 jobs trace_id=req-01cccd",
+      "avg_score": 0.2,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_096",
+      "category": "Security",
+      "prediction": "The root cause appears to be a combination of authentication issues with the build-service, which led to an unauthorized access attempt in the web-api. This sug",
+      "prediction_line": "[CRITICAL] web-api: Unauthorized access attempt detected ip=192.168.1.105 trace_id=req-7be561",
+      "avg_score": 0.3,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_097",
+      "category": "Infrastructure",
+      "prediction": "The backend service is marked unhealthy, triggering health checks, which led to a failure in establishing a connection with the database, causing timeouts and r",
+      "prediction_line": "[ERROR] web-server: Failed to establish connection with database, retrying trace_id=req-e8bff7",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_098",
+      "category": "Software",
+      "prediction": "The root cause is a combination of server overload and high latency issues across multiple nodes, leading to failed health checks and redistribution of traffic.",
+      "prediction_line": "[CRITICAL] load-balancer: High latency detected on server 192.168.1.2 trace_id=req-df5329",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_099",
+      "category": "Memory",
+      "prediction": "The root cause appears to be a combination of issues with the Windows Update Service, including connectivity problems, high memory usage, and out of bounds memo",
+      "prediction_line": "Failed to connect to update server, timeout after 60 seconds",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_100",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of issues: the instance i-1234567890abcdef0 at 172.17.0.2 is unresponsive, which led to a queue depth exceeding criti",
+      "prediction_line": "Unable to reach service endpoint 10.100.0.10:8080 after multiple retries trace_id=req-61958d",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_101",
+      "category": "Memory",
+      "prediction": "The root cause of the incident appears to be a combination of memory allocation failure in the gateway service, which led to its shutdown. This, in turn, caused",
+      "prediction_line": "[ERROR] frontend-service: HTTP 503 error while connecting to backend service trace_id=req-7ee07f",
+      "avg_score": 0.4,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_102",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of backend database connection issues and gateway service high latency. The repeated connection timeouts and maximum ",
+      "prediction_line": "[ERROR] api-service: Connection timeout to backend database trace_id=req-c6716d",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 17,
+        "parse_errors": 3
+      }
+    },
+    {
+      "id": "incident_103",
+      "category": "Database",
+      "prediction": "The root cause appears to be a failure in the database cluster's ability to replicate data from the primary node to secondary nodes, leading to data corruption ",
+      "prediction_line": "[ERROR] db-node1: Connection timeout while trying to connect to database trace_id=req-34afe6",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_104",
+      "category": "Database",
+      "prediction": "The root cause of the incident appears to be a failure in the session manager, which is causing the system to become unresponsive. This is further exacerbated b",
+      "prediction_line": "[CRITICAL] auth-service: Failed to authenticate user, retrying... trace_id=req-4a641e",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_105",
+      "category": "Infrastructure",
+      "prediction": "A combination of high queue depths in the cache-service and repeated failures in the db-cluster, leading to a cascade of service failures across multiple compon",
+      "prediction_line": "[ERROR] db-cluster: Connection timeout error while attempting to connect to database duration=10s trace_id=req-e50a13",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 1
+      }
+    },
+    {
+      "id": "incident_106",
+      "category": "Infrastructure",
+      "prediction": "The navigation module failed due to a critical error in subsystem 3, resulting in a communication timeout and subsequent system fail-safe mode activation. This ",
+      "prediction_line": "[ERROR] flight-control-system: Health check failed for critical component 7 trace_id=req-0df81a",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_107",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the issue is the failure of multiple nodes in the Elasticsearch cluster (node-2, node-4) and the inability of the Kibana Proxy to connect to i",
+      "prediction_line": "[ERROR] kibana-proxy: Failed to connect to backend service error=connection refused trace_id=req-75daf4",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_108",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the node health check mechanism, causing nodes to fail to respond within expected time frames. This has resulted in re",
+      "prediction_line": "[ERROR] Health check failed for node-007 trace_id=req-d17ff4",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_109",
+      "category": "Infrastructure",
+      "prediction": "Corrupted NPM packages have caused a system-wide service outage, leading to deployment failures and security alerts. The root cause is likely due to compromised",
+      "prediction_line": "[CRITICAL] deployment-manager: Deployment failed due to corrupted package files, halting process. trace_id=req-804134",
+      "avg_score": 0.7,
+      "line_score": 0.1,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_110",
+      "category": "Database",
+      "prediction": "The root cause appears to be a persistent issue with the database connection to one or more of the backend servers (192.168.1.10 and/or 192.168.1.11), which res",
+      "prediction_line": "[CRITICAL] db-connector: Connection failed, retrying... trace_id=req-d07cc0",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_111",
+      "category": "Configuration",
+      "prediction": "The root cause appears to be a failure in the backend-server's ability to handle incoming requests, resulting in multiple HTTP 500 errors and high latency. This",
+      "prediction_line": "[ERROR] edge-router: HTTP 500 error for request trace_id=req-05a6fe",
+      "avg_score": 0.5,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_112",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of database connection issues, HTTP service unavailability, and health check failures, which are likely related to a ",
+      "prediction_line": "[CRITICAL] web-gateway: HTTP 503 Service Unavailable",
+      "avg_score": 0.2,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 22,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_113",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of slow operations in MongoDB, which led to an out-of-memory error and upstream service failures in the API Gateway. ",
+      "prediction_line": "[WARN] mongod: Slow operation detected op=command ns=foursquare.checkins query={...} ms=765 trace_id=req-1a7bb2",
+      "avg_score": 0.3,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_114",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a misconfigured authentication system, leading to permission denied errors and invalid tokens. This is further complicated by the f",
+      "prediction_line": "[ERROR] code-review-bot: Failed to merge pull request pr_id=12345 error=permission_denied trace_id=req-a03e38",
+      "avg_score": 0.4,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_115",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the database connection, which is causing a cascade of errors throughout the system. The high latency and request time",
+      "prediction_line": "[WARN] nginx: request timeout while connecting to upstream trace_id=req-9ebede",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 8,
+        "total_lines": 17,
+        "parse_errors": 8
+      }
+    },
+    {
+      "id": "incident_116",
+      "category": "Infrastructure",
+      "prediction": "The GitLab service appears to be experiencing a widespread failure, with multiple instances of the service (gitlab-web, gitlab-sidekiq) failing to connect to th",
+      "prediction_line": "[ERROR] gitlab-web: Failed to retrieve project data from database timeout=30s trace_id=req-d915fe",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_117",
+      "category": "Database",
+      "prediction": "The root cause of the incident is a combination of PostgreSQL connection issues, slow job processing in GitLab Sidekiq, and HTTP errors on the GitLab web servic",
+      "prediction_line": "[ERROR] postgresql: Connection refused trace_id=req-8fed3a",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_118",
+      "category": "Infrastructure",
+      "prediction": "The system experienced a series of unhandled errors, leading to instability and potential data loss. The exact cause is unclear due to the lack of detailed info",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_119",
+      "category": "Memory",
+      "prediction": "The storage-service experienced a queue depth exceeding 100 requests, leading to request timeouts and failures in the api-gateway service. This caused a chain o",
+      "prediction_line": "[ERROR] storage-service: Queue depth exceeded 100 requests trace_id=req-7ef413",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 21,
+        "parse_errors": 1
+      }
+    },
+    {
+      "id": "incident_120",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of issues within the video stream service and media delivery network. However, upon closer inspection, it seems that ",
+      "prediction_line": "[ERROR] media-delivery-network: Latency increased to 800ms for stream id 67890 trace_id=req-d6afa1",
+      "avg_score": 0.6,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_121",
+      "category": "Software",
+      "prediction": "The write API is experiencing a high request volume, leading to service overload, high latency, and queue depth exceeded. This is causing errors in handling wri",
+      "prediction_line": "[CRITICAL] write-api-frontend: Service overload detected request_count=5000 trace_id=req-1a0227",
+      "avg_score": 0.4,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_122",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues with API Gateway policy validation, Service Discovery, and Load Balancer performance. Specifically, the rep",
+      "prediction_line": "[ERROR] api-gateway: Null pointer exception in policy validation trace_id=req-af11ef",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_123",
+      "category": "Software",
+      "prediction": "A latency anomaly in the position-service is causing timeouts while syncing with GLONASS satellites, resulting in a failure to update orbital mechanics calculat",
+      "prediction_line": "[WARN] position-service: Latency anomaly detected for GLONASS satellite positions trace_id=req-d62a77",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_124",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident appears to be a combination of load balancer issues, database service performance problems, and application server capacity const",
+      "prediction_line": "HTTP 503 error on request, message=\"Service Unavailable\"",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 1
+      }
+    },
+    {
+      "id": "incident_125",
+      "category": "Software",
+      "prediction": "The service deployment process timed out, causing a cascade of failures including high queue depths and high latencies in the web-router. This is likely due to ",
+      "prediction_line": "[ERROR] deploy-service: Deployment failed due to timeout trace_id=req-c7b81c",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_126",
+      "category": "Infrastructure",
+      "prediction": "The primary root cause appears to be a persistent database connection timeout issue, which is causing the system to crash and leading to repeated slow response ",
+      "prediction_line": "[ERROR] storage-service: Failed to read data block from volume, retrying trace_id=req-b1bf1c",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_127",
+      "category": "Infrastructure",
+      "prediction": "The application is experiencing a persistent issue with file system permissions, causing it to fail to create files in /dev and leading to an application crash,",
+      "prediction_line": "[ERROR] heroku-web: Failed to create file in /dev: Operation not permitted trace_id=req-5b5494",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_128",
+      "category": "Database",
+      "prediction": "The root cause of the incident appears to be a combination of multiple issues: (1) Multiple failed authentication attempts on db-service led to temporary blocki",
+      "prediction_line": "[ERROR] repo-service: Failed to fetch resource, unauthorized access attempt trace_id=req-eb7c59",
+      "avg_score": 0.1,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_129",
+      "category": "Infrastructure",
+      "prediction": "The system is experiencing a critical failure due to repeated instances of task processing times exceeding 60 seconds, indicating a potential issue with the tas",
+      "prediction_line": "[ERROR] scheduler: Failed to assign task, retrying in 5s trace_id=req-ba7d3f",
+      "avg_score": 0.65,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_130",
+      "category": "Security",
+      "prediction": "The deployment process exceeded its retry limit, indicating a failure in handling repeated failures or temporary issues during the deployment process.",
+      "prediction_line": "Deployment failed, retry limit exceeded",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 1
+      }
+    },
+    {
+      "id": "incident_131",
+      "category": "Infrastructure",
+      "prediction": "The root cause is a combination of high latency on the /data endpoint, leading to repeated timeouts and retries, which ultimately resulted in a database connect",
+      "prediction_line": "[ERROR] worker-service: Failed to process message, retrying... attempt=1 trace_id=req-05fd7a",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_132",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the honeycomb-query-service, which is causing repeated timeouts and high latency issues for incoming requests. This ha",
+      "prediction_line": "[ERROR] honeycomb-alerting-service: SLO violation detected trace_id=req-fd681a",
+      "avg_score": 0.8,
+      "line_score": 0.3,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_133",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the data processing pipeline, leading to health check failures for services y-data-storage, z-data-analyzer, x-data-pr",
+      "prediction_line": "[ERROR] api-gateway: Health check failed for service x-data-processor trace_id=req-e518d9",
+      "avg_score": 0.6,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_134",
+      "category": "Infrastructure",
+      "prediction": "The root cause of this incident appears to be a failure in the backend service, which is causing all downstream services (API gateways, data ingestors, and quer",
+      "prediction_line": "[ERROR] api-gateway: Request failed with status code 503 trace_id=req-a8c107",
+      "avg_score": 0.6,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 21,
+        "parse_errors": 5
+      }
+    },
+    {
+      "id": "incident_135",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the system's error handling mechanism, which is causing multiple errors and critical failures. This could be due to a ",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.6,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_136",
+      "category": "Infrastructure",
+      "prediction": "A combination of factors led to the failure of the power-grid-monitoring-service, including increased latency, service unresponsiveness, timeouts, and excessive",
+      "prediction_line": "[WARN] load-balancer: Increased latency detected for requests to power-grid-monitoring-service latency=1200ms trace_id=req-ab65ad",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_137",
+      "category": "Database",
+      "prediction": "The root cause of this incident is a combination of high query latency in the database service, which led to an increased error rate, and a backend service that",
+      "prediction_line": "[WARN] db-service: Query timeout for user data retrieval, took 30 seconds trace_id=req-4bd485",
+      "avg_score": 0.85,
+      "line_score": 0.1,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_138",
+      "category": "Software",
+      "prediction": "A floating point operation failed unexpectedly, causing a chain of failures that resulted in multiple service requests failing with HTTP 500 status codes and op",
+      "prediction_line": "[ERROR] compute-node-3: Operation timed out while executing calculation trace_id=req-2e3cb2",
+      "avg_score": 0.3,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_139",
+      "category": "Database",
+      "prediction": "The root cause appears to be a failure in the metadata-server, which is preventing the data-ingestor and api-gateway services from functioning properly. This is",
+      "prediction_line": "[ERROR] data-ingestor: Ingestion failed due to timeout waiting for metadata response trace_id=req-4ecd2e",
+      "avg_score": 0.2,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_140",
+      "category": "Infrastructure",
+      "prediction": "A combination of factors led to the failure of multiple services: instance-manager's inability to handle high API request latency, dhcp-server's inadequate hand",
+      "prediction_line": "[ERROR] dhcp-server: Failed to assign IP address to client, retrying trace_id=req-b141af",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_141",
+      "category": "Database",
+      "prediction": "The prolonged database query execution times exceeded a reasonable threshold, causing multiple requests to fail and triggering the load balancer's failure-over ",
+      "prediction_line": "[WARN] database-service: Query execution took 30 seconds trace_id=req-fb6d0c",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_142",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the communication with the 3PAR system, leading to a complete unresponsiveness of the storage backend. This is further",
+      "prediction_line": "[ERROR] storage-array: Connection timeout to 3PAR system trace_id=req-f83517",
+      "avg_score": 0.6,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_143",
+      "category": "Infrastructure",
+      "prediction": "The system has encountered a critical failure, indicated by multiple [ERROR] and [CRITICAL] log entries. This suggests that the root cause may be related to a c",
+      "prediction_line": "[ERROR] ",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_144",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of issues within the web application and database services. The web application experienced an internal server error,",
+      "prediction_line": "[CRITICAL] web-app: HTTP request failed with status code 500: Internal Server Error trace_id=req-a98e74",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_145",
+      "category": "Database",
+      "prediction": "The root cause appears to be a database connectivity issue, which is preventing the app-server from performing its health checks. This has resulted in an increa",
+      "prediction_line": "[CRITICAL] health-checks: App-server health check failed due to database connectivity issues trace_id=req-4b68da",
+      "avg_score": 0.3,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_146",
+      "category": "Infrastructure",
+      "prediction": "The system experienced a cascade of critical errors, including [CRITICAL] errors that prevented the system from functioning properly. Despite multiple warnings,",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_147",
+      "category": "Cloud",
+      "prediction": "The root cause of the incident is a combination of connection issues with service-backend, which led to a service timeout exceeded in API Gateway. Additionally,",
+      "prediction_line": "[ERROR] api-gateway: Health check failed for service-backend trace_id=req-c6dcf3",
+      "avg_score": 0.0,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_148",
+      "category": "Infrastructure",
+      "prediction": "The navigation subsystem is failing to maintain course corrections, leading to a critical system failure. This is caused by the telemetry system experiencing hi",
+      "prediction_line": "[ERROR] mission-control: Command execution timeout trace_id=req-73f31f",
+      "avg_score": 0.5,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_149",
+      "category": "Software",
+      "prediction": "The root cause appears to be a failure in the propulsion-module, which resulted in a loss of control and subsequent mission failure. This is likely due to a cri",
+      "prediction_line": "[ERROR] propulsion-module: Command execution timeout",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_150",
+      "category": "Software",
+      "prediction": "The repeated triggering of the system watchdog timer indicates a potential issue with the system's ability to recover from failures, possibly due to a resource ",
+      "prediction_line": "[ERROR] data-processing-unit: Memory allocation failure, retrying trace_id=req-c15c6b",
+      "avg_score": 0.65,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_151",
+      "category": "Infrastructure",
+      "prediction": "The high queue depth of 500 indicates a potential bottleneck in the system's processing capacity. The repeated failures to process requests and timeouts suggest",
+      "prediction_line": "Volume read failed with error code 123",
+      "avg_score": 0.2,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 17,
+        "parse_errors": 7
+      }
+    },
+    {
+      "id": "incident_152",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident is a combination of high latency on backend servers, cache service unavailability, and rate limiting. The load balancer detected ",
+      "prediction_line": "[ERROR] database-service: Connection timeout error ",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_153",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of issues with the database service, including high failure rates, increased latency in authentication requests, conn",
+      "prediction_line": "[CRITICAL] database-service: Connection timeout error duration=3000ms trace_id=req-a0bfa1",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_154",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of API Gateway latency spikes, backend service data mismatches, and repeated retries. The exact root cause is unclear",
+      "prediction_line": "[CRITICAL] backend-service: Data mismatch detected in response trace_id=req-abd59d",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_155",
+      "category": "Network",
+      "prediction": "The root cause of the incident appears to be a combination of issues with the service instances and their connectivity. The primary issue seems to be that the s",
+      "prediction_line": "[ERROR] pd-worker: Connection timeout to service endpoint, retrying... trace_id=req-cf2d74",
+      "avg_score": 0.6,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 19,
+        "parse_errors": 3
+      }
+    },
+    {
+      "id": "incident_156",
+      "category": "Cloud",
+      "prediction": "The root cause appears to be a failure in the communication between the SMS Gateway and the AWS SQS queue, as well as a failure in the Voice Service's invocatio",
+      "prediction_line": "[ERROR] sms-gateway: Failed to send message to AWS SQS, retrying... trace_id=req-932731",
+      "avg_score": 0.5,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_157",
+      "category": "Security",
+      "prediction": "The root cause appears to be a combination of unusual activity and high latency issues, potentially indicating a security threat or system overload. Further inv",
+      "prediction_line": "[CRITICAL] blockchain-monitor: Detected unusual activity in wallet address walle-7x8z trace_id=req-fedb3d",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_158",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident appears to be a combination of issues with the configuration service and its impact on other services. Specifically, the leader e",
+      "prediction_line": "[ERROR] config-service: Failed to connect to leader node: connection timeout trace_id=req-e24a9d",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_159",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident appears to be a combination of issues with service-b, including high error rates, health check failures, and database connection ",
+      "prediction_line": "[ERROR] HTTP 504 Gateway Timeout for request to service-b trace_id=req-1a7466",
+      "avg_score": 0.5,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_160",
+      "category": "Network",
+      "prediction": "The network plugin is not ready, causing a failure in creating pod sandboxes and syncing pods. This is likely due to a configuration issue or a missing dependen",
+      "prediction_line": "[ERROR] kubelet: Failed to create pod sandbox for \"reddit-web-7b6c4c9f6d-xw8mz\": rpc error: code = Unknown desc = network plugin is not ready: cni config uninit",
+      "avg_score": 0.4,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_161",
+      "category": "Database",
+      "prediction": "The root cause appears to be a combination of multiple backend failures, including the api-gateway service being unavailable and the bolt-service experiencing h",
+      "prediction_line": "[ERROR] db-service: Failed to connect to primary database timeout=30s trace_id=req-de7bf3",
+      "avg_score": 0.5,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_162",
+      "category": "Database",
+      "prediction": "The primary and secondary instances of the database proxy were unable to establish a stable connection, resulting in repeated timeouts and failed requests to fe",
+      "prediction_line": "[ERROR] app-server: Failed to fetch user data, retrying... trace_id=req-5cdcb7",
+      "avg_score": 0.4,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_163",
+      "category": "Security",
+      "prediction": "The root cause of the incident is a misconfigured authentication mechanism in the auth-service, which is causing it to fail to authenticate users. This failure ",
+      "prediction_line": "[ERROR] auth-service: Failed to authenticate user: Invalid credentials trace_id=req-d614d8",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_164",
+      "category": "Database",
+      "prediction": "The system's maximum capacity has been exceeded, resulting in a cascade of errors and warnings. This could be due to an unexpected increase in traffic or resour",
+      "prediction_line": "[ERROR]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_165",
+      "category": "Security",
+      "prediction": "The root cause appears to be a systemic issue with the notification-service, which is failing to send alerts for transaction timeouts. This has cascaded to othe",
+      "prediction_line": "[ERROR] blockchain-integration: Timeout while confirming transaction trace_id=req-f7d46a",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_166",
+      "category": "Memory",
+      "prediction": "The log entries appear to be a test or demonstration of different log levels, rather than an actual incident.",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_167",
+      "category": "Database",
+      "prediction": "The database service is experiencing critical levels of CPU usage, causing increased latency in read operations and ultimately leading to a cascade of failures ",
+      "prediction_line": "[CRITICAL] frontend-service: User session timeout, unable to reconnect trace_id=req-3ed51f",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_168",
+      "category": "Network",
+      "prediction": "The root cause of this incident appears to be a combination of factors, including the load balancer's inability to handle the increased incoming request queue d",
+      "prediction_line": "[ERROR] load-balancer: Request timed out after 60 seconds trace_id=req-c9b05b",
+      "avg_score": 0.2,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_169",
+      "category": "Infrastructure",
+      "prediction": "The root cause of this incident is a combination of issues with the API Gateway, specifically its inability to connect to a backend service (req-516cef) and sub",
+      "prediction_line": "[ERROR] api-gateway: Failed to connect to backend service trace_id=req-516cef",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_170",
+      "category": "Infrastructure",
+      "prediction": "The 'recommendation-engine' instance is marked as unhealthy due to a health check failure, which also triggered a failure in the 'user-service'. This indicates ",
+      "prediction_line": "[INFO] ",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_171",
+      "category": "Security",
+      "prediction": "The root cause appears to be a high queue depth in the Web Gateway, which is causing connections to be refused by the Payment Service. This, in turn, is resulti",
+      "prediction_line": "[CRITICAL] web-gateway: High queue depth detected trace_id=req-d1b594",
+      "avg_score": 0.4,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_172",
+      "category": "Database",
+      "prediction": "The root cause appears to be a systemic issue with the message-bus-producer and application-gateway services not handling timeouts properly, leading to queue in",
+      "prediction_line": "[ERROR] data-ingestion-service: Queue insertion failed for 3 consecutive attempts trace_id=req-bb754e",
+      "avg_score": 0.0,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 18,
+        "parse_errors": 4
+      }
+    },
+    {
+      "id": "incident_173",
+      "category": "Infrastructure",
+      "prediction": "The root cause of the incident appears to be a combination of database connection issues and API Gateway circuit breaker tripping. The database connection probl",
+      "prediction_line": "[CRITICAL] frontend: HTTP 503 error for request trace_id=req-f87cce",
+      "avg_score": 0.0,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_174",
+      "category": "Infrastructure",
+      "prediction": "The root cause is a failure in the backend servers, leading to a cascade of downstream errors. The repeated failures of individual servers have caused all backe",
+      "prediction_line": "[ERROR] application-server: Request failed with status code 504 Gateway Time-out trace_id=req-1e2e06",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_175",
+      "category": "Software",
+      "prediction": "Repeated timeouts in the developer-story-service led to a cascade of failures, including internal server errors on the api-gateway and high error rates. This is",
+      "prediction_line": "[CRITICAL] monitoring-alerts: Alert triggered for high error rates on api-gateway status_code=5xx rate=90% trace_id=req-b2411e",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_176",
+      "category": "Database",
+      "prediction": "The root cause of the incident is a combination of high transaction latency, repeated connection timeouts, and insufficient database resources. The system exper",
+      "prediction_line": "[ERROR] web-app: Connection timeout to database, retrying... trace_id=req-c46bdd",
+      "avg_score": 0.3,
+      "line_score": 0.4,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_177",
+      "category": "Infrastructure",
+      "prediction": "The database connection retry attempts exceeded their limit, causing a cascade of failures in downstream systems. Specifically, the message broker failed to pro",
+      "prediction_line": "message-broker: Failed to process message due to database unavailability",
+      "avg_score": 0.0,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_178",
+      "category": "Database",
+      "prediction": "The root cause appears to be a failure in the Stripe API dependencies, causing the API Gateway to fail processing requests and resulting in high latency and que",
+      "prediction_line": "[ERROR] api-gateway: Failed to process request, retrying trace_id=req-20bf00",
+      "avg_score": 0.0,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_179",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of design or manufacturing flaws that led to a catastrophic failure of the portside hull and propulsion system. This ",
+      "prediction_line": "[ERROR] propulsion-system: Engine performance degradation reported trace_id=req-a25058",
+      "avg_score": 0.5,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_180",
+      "category": "Cloud",
+      "prediction": "The root cause appears to be a combination of issues with the s3-cleanup-service and filesystem-monitor. The s3-cleanup-service is experiencing high latency and",
+      "prediction_line": "[ERROR] s3-cleanup-service: Object deletion request timed out timeout=60s trace_id=req-95b8ec",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_181",
+      "category": "Infrastructure",
+      "prediction": "The SMS gateway is experiencing a high error rate in message delivery, resulting in a queue depth exceeding the threshold. This has led to multiple failures in ",
+      "prediction_line": "[ERROR] sms-gateway: Timeout while sending request to SMSC trace_id=req-7c1278",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_182",
+      "category": "Memory",
+      "prediction": "The root cause of the incident appears to be a critical error in the dose calculation logic, which led to a cascade of subsequent errors and safety checks. This",
+      "prediction_line": "[ERROR] treatment-planner: Dose calculation service unavailable, HTTP 503 trace_id=req-6b1798",
+      "avg_score": 0.85,
+      "line_score": 0.0,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_183",
+      "category": "Security",
+      "prediction": "The root cause is a repeated failure in fetching repository configuration from the version-control-system due to unauthorized access, which has led to exhaustio",
+      "prediction_line": "[ERROR] deployment-service: Failed to fetch repository configuration from version-control-system HTTP 401 Unauthorized trace_id=req-c2fb9a",
+      "avg_score": 0.7,
+      "line_score": 0.5,
+      "correct": true,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_184",
+      "category": "Database",
+      "prediction": "The repeated occurrence of both critical and high-severity log entries suggests a systemic issue that may be causing instability or errors in the system. Furthe",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_185",
+      "category": "Network",
+      "prediction": "The root cause is a persistent issue with the AT&T gateway, causing timeouts, socket timeouts, and HTTP 503 errors. This has resulted in multiple failed message",
+      "prediction_line": "[WARN] sms-gateway: Increased retry attempts for message delivery msg_id=msg-123 trace_id=req-a2e441",
+      "avg_score": 0.6,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 15,
+        "total_lines": 16,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_186",
+      "category": "Software",
+      "prediction": "The root cause appears to be a combination of issues: the storage service is unable to read file metadata, the API gateway is failing to handle requests for unk",
+      "prediction_line": "[ERROR] storage-service: Failed to write data path=/unknown error=ENOENT trace_id=req-68ebc1",
+      "avg_score": 0.1,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_187",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a combination of backend server failures, resource retrieval issues, and unexpected hash mismatches in the content delivery network",
+      "prediction_line": "[WARN] http-server: Increased latency in response times for requests trace_id=req-db01f9",
+      "avg_score": 0.2,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_188",
+      "category": "Network",
+      "prediction": "The root cause appears to be a combination of network issues, message broker failures, and connection timeouts to an external service. The repeated failures and",
+      "prediction_line": "[ERROR] message-broker: Failed to send message within timeout limit to queue 'outbound'. Retrying... trace_id=req-20fe3b",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_189",
+      "category": "Infrastructure",
+      "prediction": "The system is experiencing a critical error due to an unresponsive upstream service, causing multiple timeouts and internal server errors, which in turn led to ",
+      "prediction_line": "[ERROR] exchange-api: Timeout while processing request trace_id=req-9b4866",
+      "avg_score": 0.1,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_190",
+      "category": "Infrastructure",
+      "prediction": "The root cause is a persistent issue with the trading-gateway service, which is not responding to requests in a timely manner. This is causing order placement f",
+      "prediction_line": "[ERROR] trading-gateway: Failed to send request, retrying... trace_id=req-712c5d",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_191",
+      "category": "Infrastructure",
+      "prediction": "The service discovery failed to register services, causing a cascade of failures in the database proxy and user service. This is due to an underlying issue with",
+      "prediction_line": "[ERROR] service-discovery: Failed to register service with error code 500 trace_id=req-b0d6d3",
+      "avg_score": 0.4,
+      "line_score": 0.6,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_192",
+      "category": "Software",
+      "prediction": "The root cause appears to be a failure in the backend service, causing request timeouts, connection resets, and increased latency on both edge-server and origin",
+      "prediction_line": "[CRITICAL] health-checker: backend health check failure trace_id=req-e5eedc",
+      "avg_score": 0.4,
+      "line_score": 0.3,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 17,
+        "total_lines": 18,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_193",
+      "category": "Database",
+      "prediction": "The root cause is that the Database Service is not properly configured, leading to the non-existence of tables 'users', 'project_members', and 'issues'. This re",
+      "prediction_line": "db-service: Failed to fetch user profile for user_id=12345 error=\"record not found\" trace_id=req-265763",
+      "avg_score": 0.2,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 21,
+        "total_lines": 22,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_194",
+      "category": "Software",
+      "prediction": "The root cause appears to be a failure in the underlying infrastructure or services that provide the necessary data for these applications. This could be due to",
+      "prediction_line": "[ERROR] recommendation-engine: Fetch recommendations failed again for user_id=67890 internal_error trace_id=req-ac4394",
+      "avg_score": 0.5,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_195",
+      "category": "Configuration",
+      "prediction": "The root cause is a failure in the load balancer or backend service infrastructure, leading to an increase in queue depth and subsequent timeouts. This may be d",
+      "prediction_line": "[CRITICAL] health-checker: Backend service failed health check trace_id=req-f0572d",
+      "avg_score": 0.3,
+      "line_score": 0.2,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 18,
+        "total_lines": 19,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_196",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the upstream services that are being called by the storage service, resulting in repeated read timeouts and write fail",
+      "prediction_line": "[ERROR] storage-service: Read timeout occurred while processing request duration=3.5s trace_id=req-f82045",
+      "avg_score": 0.1,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 20,
+        "total_lines": 21,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_197",
+      "category": "Infrastructure",
+      "prediction": "The root cause appears to be a failure in the database connectivity, causing the service-backend to fail and resulting in high latency and connection refusal. T",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.2,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_198",
+      "category": "Database",
+      "prediction": "The system is experiencing a critical failure due to an unpatched vulnerability, which has resulted in multiple warnings and errors being logged. This indicates",
+      "prediction_line": "[WARN]",
+      "avg_score": 0.1,
+      "line_score": 0.0,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_199",
+      "category": "Infrastructure",
+      "prediction": "The notification service is experiencing a critical failure due to an inability to process notifications, which has resulted in high latency and batch processin",
+      "prediction_line": "[CRITICAL] notification-service: System health check failed, unable to process notifications",
+      "avg_score": 0.65,
+      "line_score": 0.5,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 19,
+        "total_lines": 20,
+        "parse_errors": 0
+      }
+    },
+    {
+      "id": "incident_200",
+      "category": "Software",
+      "prediction": "The root cause appears to be a combination of issues with the payment service, including high transaction failure rates and failures to update transaction statu",
+      "prediction_line": "[ERROR] alert-system: Alert fired - High transaction failure rate in payment-service failures=20 threshold=15 trace_id=req-6840fc",
+      "avg_score": 0.3,
+      "line_score": 0.1,
+      "correct": false,
+      "correct_line": false,
+      "parse_stats": {
+        "parsed_lines": 16,
+        "total_lines": 17,
+        "parse_errors": 0
+      }
+    }
+  ],
+  "by_category": {
+    "Configuration": {
+      "correct": 0,
+      "total": 6
+    },
+    "Network": {
+      "correct": 2,
+      "total": 24
+    },
+    "CI-CD": {
+      "correct": 0,
+      "total": 1
+    },
+    "Database": {
+      "correct": 2,
+      "total": 46
+    },
+    "Software": {
+      "correct": 0,
+      "total": 31
+    },
+    "Infrastructure": {
+      "correct": 3,
+      "total": 66
+    },
+    "Security": {
+      "correct": 1,
+      "total": 17
+    },
+    "Memory": {
+      "correct": 1,
+      "total": 6
+    },
+    "Cloud": {
+      "correct": 0,
+      "total": 3
+    }
+  },
+  "total_incidents": 200,
+  "unscored_incidents": 0,
+  "narrative": {
+    "mean_score": 0.2715,
+    "accuracy_at_0.5": 0.185,
+    "accuracy_at_0.7": 0.045
+  },
+  "line": {
+    "mean_score": 0.1825,
+    "accuracy_at_0.5": 0.095,
+    "accuracy_at_0.7": 0.0
+  },
+  "overall_accuracy": 0.045,
+  "overall_accuracy_line": 0.0,
+  "config": {
+    "pipeline_model": "llama3.2:3b",
+    "judge_model": "qwen3:32b",
+    "score_threshold": 0.7,
+    "dataset": "symptom-only logs v2",
+    "run_date": "2026-06-11T07:35:30.392213"
+  },
+  "judge": "qwen"
+}

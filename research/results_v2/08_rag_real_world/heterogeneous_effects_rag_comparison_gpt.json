@@ -1,0 +1,560 @@
+{
+  "source": "02_rag_comparison.json",
+  "valid_tests": 50,
+  "overall_baseline_pct": 22.4,
+  "overall_rag_pct": 24.4,
+  "improved": [
+    {
+      "company": "Linux",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 70.0,
+      "improvement_pp": 70.0
+    },
+    {
+      "company": "Cloudflare",
+      "n": 2,
+      "baseline_pct": 45.0,
+      "rag_pct": 85.0,
+      "improvement_pp": 40.0
+    },
+    {
+      "company": "Uber",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 40.0,
+      "improvement_pp": 20.0
+    },
+    {
+      "company": "Homebrew",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 20.0
+    },
+    {
+      "company": "BrowserStack",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "trivago",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Valve",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Allegro",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Elastic",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    }
+  ],
+  "degraded": [
+    {
+      "company": "Therac-25",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 10.0,
+      "improvement_pp": -50.0
+    },
+    {
+      "company": "WhatsApp",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 30.0,
+      "improvement_pp": -30.0
+    },
+    {
+      "company": "ESLint",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 40.0,
+      "improvement_pp": -20.0
+    },
+    {
+      "company": "Roblox",
+      "n": 1,
+      "baseline_pct": 30.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Bitly",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 0.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "GitHub",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 10.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Stripe",
+      "n": 1,
+      "baseline_pct": 30.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -10.0
+    }
+  ],
+  "neutral": [
+    {
+      "company": "Intel",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Google",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "NPM",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 60.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "CCP Games",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Flowdock",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Bintray",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Sentry",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Slack",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Netflix",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Fastly",
+      "n": 2,
+      "baseline_pct": 25.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -5.0
+    },
+    {
+      "company": "Heroku",
+      "n": 3,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -0.0
+    },
+    {
+      "company": "Mailgun",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Pagerduty",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 60.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Strava",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Foursquare",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Stack Exchange",
+      "n": 2,
+      "baseline_pct": 15.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 5.0
+    },
+    {
+      "company": "Facebook",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "North American Electric Power System",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Joyent",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Basecamp",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Zerodha",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 25.0,
+      "improvement_pp": 5.0
+    },
+    {
+      "company": "Amazon",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Knight Capital",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 15.0,
+      "improvement_pp": -5.0
+    }
+  ],
+  "all_companies": [
+    {
+      "company": "Intel",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Google",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "NPM",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 60.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Linux",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 70.0,
+      "improvement_pp": 70.0
+    },
+    {
+      "company": "BrowserStack",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "CCP Games",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Flowdock",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Cloudflare",
+      "n": 2,
+      "baseline_pct": 45.0,
+      "rag_pct": 85.0,
+      "improvement_pp": 40.0
+    },
+    {
+      "company": "trivago",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Roblox",
+      "n": 1,
+      "baseline_pct": 30.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Bintray",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Therac-25",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 10.0,
+      "improvement_pp": -50.0
+    },
+    {
+      "company": "Sentry",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Slack",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Bitly",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 0.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Valve",
+      "n": 1,
+      "baseline_pct": 10.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Allegro",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Netflix",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "GitHub",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 10.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Stripe",
+      "n": 1,
+      "baseline_pct": 30.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -10.0
+    },
+    {
+      "company": "Elastic",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 30.0,
+      "improvement_pp": 10.0
+    },
+    {
+      "company": "Fastly",
+      "n": 2,
+      "baseline_pct": 25.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -5.0
+    },
+    {
+      "company": "Heroku",
+      "n": 3,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": -0.0
+    },
+    {
+      "company": "Mailgun",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Uber",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 40.0,
+      "improvement_pp": 20.0
+    },
+    {
+      "company": "Pagerduty",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 60.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Homebrew",
+      "n": 1,
+      "baseline_pct": 0.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 20.0
+    },
+    {
+      "company": "WhatsApp",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 30.0,
+      "improvement_pp": -30.0
+    },
+    {
+      "company": "Strava",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Foursquare",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Stack Exchange",
+      "n": 2,
+      "baseline_pct": 15.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 5.0
+    },
+    {
+      "company": "Facebook",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "ESLint",
+      "n": 1,
+      "baseline_pct": 60.0,
+      "rag_pct": 40.0,
+      "improvement_pp": -20.0
+    },
+    {
+      "company": "North American Electric Power System",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Joyent",
+      "n": 2,
+      "baseline_pct": 10.0,
+      "rag_pct": 10.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Basecamp",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Zerodha",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 25.0,
+      "improvement_pp": 5.0
+    },
+    {
+      "company": "Amazon",
+      "n": 1,
+      "baseline_pct": 20.0,
+      "rag_pct": 20.0,
+      "improvement_pp": 0.0
+    },
+    {
+      "company": "Knight Capital",
+      "n": 2,
+      "baseline_pct": 20.0,
+      "rag_pct": 15.0,
+      "improvement_pp": -5.0
+    }
+  ]
+}

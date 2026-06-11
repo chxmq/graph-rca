@@ -265,3 +265,14 @@ docker-compose.override.yaml
 **/.cache/
 *.bak
 *.orig
+
+# Root-level run logs from detached experiment runs
+/*.log
+
+# --- RCAEval dataset cache (re-downloadable from Zenodo; see its README) ---
+research/data/rcaeval/*.zip
+research/data/rcaeval/RE*/
+
+# --- Human-eval blinding: keep the answer key out of the public repo while
+# --- external raters are working; commit it after ratings are collected.
+research/tools/human_eval/answer_key.json
