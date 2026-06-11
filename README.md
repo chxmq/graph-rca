@@ -47,7 +47,7 @@ graph-rca/
 │
 ├── research/                       # Research: paper, experiments, datasets
 │   ├── paper/                      # IEEE Access manuscript (LaTeX + figures)
-│   ├── experiments/                # 9 reproducible experiment scripts
+│   ├── experiments/                # 10 reproducible experiment scripts
 │   │   ├── 01_batch_inference/
 │   │   ├── 02_scalability/
 │   │   ├── 03_baseline_comparison/
@@ -56,14 +56,16 @@ graph-rca/
 │   │   ├── 06_parser_accuracy/
 │   │   ├── 07_multi_judge_validation/
 │   │   ├── 08_rag_real_world/
-│   │   └── 09_latency_profiling/
-│   ├── results/                    # Raw JSON outputs from experiment runs
+│   │   ├── 09_latency_profiling/
+│   │   └── 10_rcaeval/             # Real-log evaluation on the RCAEval benchmark
+│   ├── results/                    # v1 outputs (leakage-era — kept as evidence, see its README)
+│   ├── results_v2/                 # Final outputs on the leak-free dataset
 │   ├── data/
-│   │   └── real_incidents/         # 200 annotated production incidents
-│   ├── tools/
-│   │   ├── check_log_leakage.py    # Audit root-cause leakage in synthetic logs
-│   │   └── regenerate_symptom_logs.py  # Regenerate symptom-only synthetic logs
-│   ├── run_all.py                  # Run all 9 experiments sequentially
+│   │   ├── real_incidents/         # 200 annotated production incidents
+│   │   ├── loghub/                 # LogHub parsing benchmarks (BGL, HDFS)
+│   │   └── rcaeval/                # RCAEval dataset cache (zips; see its README)
+│   ├── tools/                      # Leakage gate, regeneration, statistics, human-eval kit
+│   ├── run_all.py                  # Run all 10 experiments sequentially
 │   └── check_prerequisites.py      # Pre-flight dependency checker
 │
 ├── pyproject.toml                  # Python project + pytest configuration
@@ -205,7 +207,7 @@ cp app/.env.example app/.env
 To reproduce all paper results:
 
 ```bash
-# Run all 9 experiments sequentially
+# Run all 10 experiments sequentially
 python research/run_all.py
 
 # Or run a specific experiment

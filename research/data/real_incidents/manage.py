@@ -299,7 +299,15 @@ class IncidentDataset:
     # =========================================================================
     
     def generate_logs(self, model: str = "llama3.2:3b"):
-        """Generate synthetic logs for incidents missing real logs."""
+        """DEPRECATED — this generator put the ground-truth root cause in
+        the prompt, producing answer-leaking logs (the v1 leakage problem).
+        Use research/tools/regenerate_symptom_logs.py, which generates
+        symptom-only logs gated by the leakage validator."""
+        raise SystemExit(
+            "DEPRECATED: manage.py generate-logs produces answer-leaking logs.\n"
+            "Use: python research/tools/regenerate_symptom_logs.py (symptom-only, "
+            "leakage-gated), then fix_log_artifacts.py and check_log_leakage.py."
+        )
         try:
             import ollama
         except ImportError:

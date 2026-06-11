@@ -47,6 +47,8 @@ def analyze_results(rag_file: Path):
     valid_count = 0
     
     for test in rag_data.get("tests", []):
+        if test.get("baseline_score") is None or test.get("rag_score") is None:
+            continue  # unscored (judge failure) — excluded, consistent with run_experiment
         if "baseline_score" not in test:
             continue  # Skip errors
         

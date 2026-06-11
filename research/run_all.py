@@ -120,6 +120,16 @@ EXPERIMENTS = [
         "estimated_time_min": 10,
         "requires": ["ollama", "llama3.2:3b", "chromadb"],
     },
+    {
+        "num": 10,
+        "name": "RCAEval Real-Log Evaluation",
+        "dir": "10_rcaeval",
+        "script": "run_experiment.py",
+        "description": "Service-ranking Avg@5 on RCAEval real telemetry (no LLM; "
+                       "requires datasets extracted per research/data/rcaeval/README.md)",
+        "estimated_time_min": 45,
+        "requires": ["rcaeval data extracted"],
+    },
 ]
 
 @dataclass
