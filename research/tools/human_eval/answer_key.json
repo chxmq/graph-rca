@@ -1,0 +1,256 @@
+{
+  "source_file": "rag_comparison_gpt.json",
+  "seed": 1337,
+  "incidents": {
+    "incident_138": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_118": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_012": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_068": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_089": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_092": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_025": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_098": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_183": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_191": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_087": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_182": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_040": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_169": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_088": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_186": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_041": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_002": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_072": {
+      "A": "baseline",
+      "B": "rag",
+      "C": "zero_shot"
+    },
+    "incident_151": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_115": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_057": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_108": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_192": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_167": {
+      "A": "baseline",
+      "B": "rag",
+      "C": "zero_shot"
+    },
+    "incident_051": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_144": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_198": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_155": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_130": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_060": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_056": {
+      "A": "baseline",
+      "B": "rag",
+      "C": "zero_shot"
+    },
+    "incident_024": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_008": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_009": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_109": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_152": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_023": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_140": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_174": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_027": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_189": {
+      "A": "baseline",
+      "B": "rag",
+      "C": "zero_shot"
+    },
+    "incident_036": {
+      "A": "rag",
+      "B": "zero_shot",
+      "C": "baseline"
+    },
+    "incident_058": {
+      "A": "rag",
+      "B": "baseline",
+      "C": "zero_shot"
+    },
+    "incident_063": {
+      "A": "zero_shot",
+      "B": "baseline",
+      "C": "rag"
+    },
+    "incident_071": {
+      "A": "baseline",
+      "B": "rag",
+      "C": "zero_shot"
+    },
+    "incident_190": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_007": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    },
+    "incident_029": {
+      "A": "zero_shot",
+      "B": "rag",
+      "C": "baseline"
+    },
+    "incident_164": {
+      "A": "baseline",
+      "B": "zero_shot",
+      "C": "rag"
+    }
+  }
+}

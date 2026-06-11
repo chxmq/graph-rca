@@ -1,0 +1,298 @@
+{
+  "exp07": {
+    "gpt": {
+      "n_scored": 200,
+      "unscored": 0,
+      "narrative": {
+        "mean": 0.216,
+        "mean_ci95": [
+          0.198,
+          0.235
+        ],
+        "acc@0.7": 0.015,
+        "acc@0.7_ci95": [
+          0,
+          0.035
+        ],
+        "acc@0.5": 0.035
+      },
+      "line": {
+        "mean": 0.1395,
+        "acc@0.7": 0.0
+      },
+      "strata": {
+        "real_logs": {
+          "n": 4,
+          "mean": 0.725
+        },
+        "synthetic_logs": {
+          "n": 196,
+          "mean": 0.2056
+        },
+        "clean_parse": {
+          "n": 188,
+          "mean": 0.2186
+        },
+        "noisy_parse": {
+          "n": 12,
+          "mean": 0.175
+        }
+      },
+      "by_category": {
+        "CI-CD": {
+          "n": 1,
+          "mean": 0.1
+        },
+        "Cloud": {
+          "n": 3,
+          "mean": 0.2
+        },
+        "Configuration": {
+          "n": 6,
+          "mean": 0.2833
+        },
+        "Database": {
+          "n": 46,
+          "mean": 0.1957
+        },
+        "Infrastructure": {
+          "n": 66,
+          "mean": 0.2167
+        },
+        "Memory": {
+          "n": 6,
+          "mean": 0.1667
+        },
+        "Network": {
+          "n": 24,
+          "mean": 0.3167
+        },
+        "Security": {
+          "n": 17,
+          "mean": 0.2059
+        },
+        "Software": {
+          "n": 31,
+          "mean": 0.1742
+        }
+      }
+    },
+    "groq": {
+      "n_scored": 200,
+      "unscored": 0,
+      "narrative": {
+        "mean": 0.1605,
+        "mean_ci95": [
+          0.1345,
+          0.188
+        ],
+        "acc@0.7": 0.045,
+        "acc@0.7_ci95": [
+          0.02,
+          0.075
+        ],
+        "acc@0.5": 0.085
+      },
+      "line": {
+        "mean": 0.055,
+        "acc@0.7": 0.005
+      },
+      "strata": {
+        "real_logs": {
+          "n": 4,
+          "mean": 0.775
+        },
+        "synthetic_logs": {
+          "n": 196,
+          "mean": 0.148
+        },
+        "clean_parse": {
+          "n": 188,
+          "mean": 0.1644
+        },
+        "noisy_parse": {
+          "n": 12,
+          "mean": 0.1
+        }
+      },
+      "by_category": {
+        "CI-CD": {
+          "n": 1,
+          "mean": 0.0
+        },
+        "Cloud": {
+          "n": 3,
+          "mean": 0.1333
+        },
+        "Configuration": {
+          "n": 6,
+          "mean": 0.2333
+        },
+        "Database": {
+          "n": 46,
+          "mean": 0.1565
+        },
+        "Infrastructure": {
+          "n": 66,
+          "mean": 0.147
+        },
+        "Memory": {
+          "n": 6,
+          "mean": 0.1167
+        },
+        "Network": {
+          "n": 24,
+          "mean": 0.2458
+        },
+        "Security": {
+          "n": 17,
+          "mean": 0.2059
+        },
+        "Software": {
+          "n": 31,
+          "mean": 0.1065
+        }
+      }
+    },
+    "qwen": {
+      "n_scored": 200,
+      "unscored": 0,
+      "narrative": {
+        "mean": 0.2715,
+        "mean_ci95": [
+          0.2422,
+          0.301
+        ],
+        "acc@0.7": 0.045,
+        "acc@0.7_ci95": [
+          0.02,
+          0.075
+        ],
+        "acc@0.5": 0.185
+      },
+      "line": {
+        "mean": 0.1825,
+        "acc@0.7": 0.0
+      },
+      "strata": {
+        "real_logs": {
+          "n": 4,
+          "mean": 0.65
+        },
+        "synthetic_logs": {
+          "n": 196,
+          "mean": 0.2638
+        },
+        "clean_parse": {
+          "n": 186,
+          "mean": 0.2726
+        },
+        "noisy_parse": {
+          "n": 14,
+          "mean": 0.2571
+        }
+      },
+      "by_category": {
+        "CI-CD": {
+          "n": 1,
+          "mean": 0.2
+        },
+        "Cloud": {
+          "n": 3,
+          "mean": 0.3
+        },
+        "Configuration": {
+          "n": 6,
+          "mean": 0.35
+        },
+        "Database": {
+          "n": 46,
+          "mean": 0.2446
+        },
+        "Infrastructure": {
+          "n": 66,
+          "mean": 0.2705
+        },
+        "Memory": {
+          "n": 6,
+          "mean": 0.275
+        },
+        "Network": {
+          "n": 24,
+          "mean": 0.3958
+        },
+        "Security": {
+          "n": 17,
+          "mean": 0.2118
+        },
+        "Software": {
+          "n": 31,
+          "mean": 0.2339
+        }
+      }
+    },
+    "inter_judge": {
+      "gpt-groq": {
+        "rho": 0.619,
+        "p": 1.6502255539178586e-22,
+        "n": 200
+      },
+      "gpt-qwen": {
+        "rho": 0.57,
+        "p": 1.3222550312231933e-18,
+        "n": 200
+      },
+      "groq-qwen": {
+        "rho": 0.562,
+        "p": 4.730732193402515e-18,
+        "n": 200
+      }
+    }
+  },
+  "exp08": {
+    "gpt": {
+      "n": 50,
+      "zero_shot_mean": 0.226,
+      "baseline_mean": 0.224,
+      "rag_mean": 0.244,
+      "rag_delta_mean": 0.02,
+      "rag_delta_ci95": [
+        -0.026,
+        0.07
+      ],
+      "wilcoxon_rag_vs_baseline_p": 0.5684331531452385,
+      "wilcoxon_baseline_vs_zeroshot_p": 0.9700240253798306
+    },
+    "groq": {
+      "n": 48,
+      "zero_shot_mean": 0.2063,
+      "baseline_mean": 0.1583,
+      "rag_mean": 0.1958,
+      "rag_delta_mean": 0.0375,
+      "rag_delta_ci95": [
+        -0.0083,
+        0.0917
+      ],
+      "wilcoxon_rag_vs_baseline_p": 0.4377980823347766,
+      "wilcoxon_baseline_vs_zeroshot_p": 0.1443180876632486
+    },
+    "qwen": {
+      "n": 50,
+      "zero_shot_mean": 0.322,
+      "baseline_mean": 0.287,
+      "rag_mean": 0.335,
+      "rag_delta_mean": 0.048,
+      "rag_delta_ci95": [
+        -0.019,
+        0.119
+      ],
+      "wilcoxon_rag_vs_baseline_p": 0.36846142580168584,
+      "wilcoxon_baseline_vs_zeroshot_p": 0.2692811322885287
+    },
+    "pooled": {
+      "n": 148,
+      "wilcoxon_rag_vs_baseline_p": 0.16857555900296306,
+      "rag_delta_mean": 0.0351
+    }
+  }
+}
