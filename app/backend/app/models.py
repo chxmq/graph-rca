@@ -8,10 +8,15 @@ Contains all data models for:
 - RAG responses (SummaryResponse, SolutionQuery)
 """
 
+import re
+
 from pydantic import BaseModel, Field, field_validator
 from typing import Optional
 from datetime import datetime, timezone
 from uuid import uuid4
+
+# YYMMDD followed by a time separator (T or space): 081109T20:36:15, 081109 203615
+_YYMMDD_RE = re.compile(r"^\d{6}[T ]\d{2}")
 
 
 # ---------------------------------------------------------------------------
@@ -32,10 +37,14 @@ class LogEntry(BaseModel):
     trace_id: str = Field("", description="Distributed tracing ID")
     request_id: str = Field("", description="Request ID of the user generating the log")
 
-    @field_validator("timestamp")
+    @field_validator("timestamp", mode="before")
     @classmethod
     def validate_timestamp(cls, v: datetime | str) -> datetime:
         """Parse the timestamp and force tz-awareness.
+
+        mode="before" is required: in the default (after) mode pydantic's own
+        coercion rejects any non-ISO string before this validator runs, which
+        silently disabled every fallback format below.
 
         Naive timestamps (without tzinfo) are assumed to be UTC.  Mixing
         naive and aware datetimes within a single LogChain would later
@@ -46,12 +55,22 @@ class LogEntry(BaseModel):
         if isinstance(v, datetime):
             parsed = v
         else:
+            # Dot-separated dates (BGL-style: 2005.06.03 or 2005.06.03T15:42:50)
+            # are common in HPC/system logs; normalise the date part to dashes
+            # so the ISO parser accepts them.
+            if isinstance(v, str) and len(v) >= 10 and v[:10].count(".") == 2 and v[:4].isdigit():
+                v = v[:10].replace(".", "-") + v[10:]
+            # Six-digit YYMMDD dates (HDFS-style: 081109T20:36:15 or
+            # "081109 203615"): expand to a full year so ISO parsing works.
+            if isinstance(v, str) and _YYMMDD_RE.match(v):
+                v = f"20{v[0:2]}-{v[2:4]}-{v[4:6]}{v[6:]}"
             for fmt in (
                 None,
                 "%Y-%m-%d %H:%M:%S",
                 "%Y-%m-%dT%H:%M:%S",
                 "%Y-%m-%d %H:%M:%S.%f",
                 "%b %d %H:%M:%S",
+                "%Y-%m-%d %H%M%S",
             ):
                 try:
                     if fmt is None:

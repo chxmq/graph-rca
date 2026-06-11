@@ -426,9 +426,18 @@ def run_experiment(judge: JudgeClient) -> dict:
             baseline_score = judge.score(baseline_pred, test_case["root_cause"])
 
             # RAG: retrieve the most similar past incident, then re-articulate.
+            # The retrieval DISTANCE is recorded so adaptive-retrieval gates
+            # (retrieve only when a sufficiently similar incident exists) can
+            # be designed and evaluated on legitimate inputs post-hoc.
             query = f"Incident logs: {input_text[:500]}"
-            retrieved_docs = vdb.search(query=query, context="", top_k=1)
-            rag_context = f"Similar Past Incident:\n{retrieved_docs[0].text}" if retrieved_docs else ""
+            res = vdb.get_collection().query(
+                query_texts=[query], n_results=1,
+                include=["documents", "distances"],
+            )
+            docs = (res.get("documents") or [[]])[0]
+            dists = (res.get("distances") or [[]])[0]
+            rag_context = f"Similar Past Incident:\n{docs[0]}" if docs else ""
+            retrieval_distance = round(float(dists[0]), 4) if dists else None
             rag_pred = refine_with_rag(baseline_pred, pipe["chain"], rag_context) if rag_context else baseline_pred
             rag_score = judge.score(rag_pred, test_case["root_cause"])
 
@@ -442,6 +451,7 @@ def run_experiment(judge: JudgeClient) -> dict:
                 "zero_shot_pred": zero_shot_pred or "",
                 "baseline_pred": baseline_pred or "",
                 "rag_pred": rag_pred or "",
+                "retrieval_distance": retrieval_distance,
                 "parse_stats": pipe["parse_stats"],
             }
             results["tests"].append(record)

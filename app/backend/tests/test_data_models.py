@@ -135,3 +135,18 @@ def test_solution_query_sources_default():
     query = SolutionQuery(context="Error", query="Fix?", response="Check logs")
     assert query.context == "Error"
     assert query.sources == []
+
+def test_timestamp_accepts_dot_separated_dates():
+    """BGL-style dot dates (2005.06.03T15:42:50) must parse — common in HPC logs."""
+    from app.models import LogEntry
+    e = LogEntry(timestamp="2005.06.03T15:42:50Z", message="m", level="INFO")
+    assert e.timestamp.year == 2005 and e.timestamp.month == 6 and e.timestamp.day == 3
+
+
+def test_timestamp_accepts_yymmdd_dates():
+    """HDFS-style 6-digit dates must parse in both T and space forms."""
+    from app.models import LogEntry
+    e1 = LogEntry(timestamp="081109T20:36:15Z", message="m", level="INFO")
+    assert (e1.timestamp.year, e1.timestamp.month, e1.timestamp.day) == (2008, 11, 9)
+    e2 = LogEntry(timestamp="081109 203615", message="m", level="INFO")
+    assert (e2.timestamp.hour, e2.timestamp.minute) == (20, 36)
